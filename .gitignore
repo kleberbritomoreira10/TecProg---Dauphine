@@ -1,3 +1,9 @@
+# The binary file (executable)
+Dauphine
+
+# The build folder
+build/
+
 # Compiled Object files
 *.slo
 *.lo
