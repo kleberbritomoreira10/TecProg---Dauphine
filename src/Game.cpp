@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Game.h"
-#include "Util.h"
+#include "Logger.h"
 
 using namespace std;
 
@@ -26,23 +26,23 @@ Game::Game(){
 						this->texture = dTexture;
 					}
 					else{
-						log("Failed to load texture.");
+						Logger::error("Failed to load texture.");
 					}
 				}
 				else{
-					log("SDL_image could not be initialized.");
+					Logger::errorSDL("SDL_image could not be initialized.", IMG_GetError());
 				}
 			}
 			else{
-				log("Renderer could not be created.");
+				Logger::errorSDL("Renderer could not be created.", SDL_GetError());
 			}
 		}
 		else{
-			log("Window failed to be created.");
+			Logger::errorSDL("Window failed to be created.", SDL_GetError());
 		}
 	}
 	else{
-		log("SDL failed to initialize.");
+		Logger::errorSDL("SDL failed to initialize.", SDL_GetError());
 	}
 }
 
@@ -107,7 +107,7 @@ void Game::runGame(){
 
 		// Draw vertical line of yellow dots.
 		SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0x00, 0xFF);
-		for(ushort i = 0; i < SCREEN_HEIGHT; i += 4){
+		for(int i = 0; i < SCREEN_HEIGHT; i += 4){
 			SDL_RenderDrawPoint(renderer, SCREEN_WIDTH/2, i);
 		}
 

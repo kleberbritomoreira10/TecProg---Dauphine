@@ -3,16 +3,17 @@ INCLUDES	:= include
 SOURCES		:= src
 RESOURCES	:= res
 BUILD		:= build
+SDL_MINGW_ROOT = /usr/i686-w64-mingw32
 
 # Compiler
-export LD := $(CXX)
+export LD := /usr/bin/i686-w64-mingw32-g++
 # Compiler flags
-CPPFLAGS=-g -W -Wall -pedantic -ansi
+CPPFLAGS= `$(SDL_MINGW_ROOT)/bin/sdl2-config --cflags` -g -W -Wall -pedantic -ansi -static-libgcc -static-libstdc++
 # Linking flags
-LDFLAGS = -lSDL2 -lSDL2_image
+LDFLAGS = `$(SDL_MINGW_ROOT)/bin/sdl2-config --libs` -lSDL2_image
 
 # Target program name = directory name
-TARGET := $(notdir $(CURDIR))
+TARGET := $(notdir $(CURDIR)).exe
 # Automatically build a list of object files
 CPPFILES := $(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.cpp)))
 # Object files

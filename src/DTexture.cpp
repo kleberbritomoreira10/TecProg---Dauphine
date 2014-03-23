@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 #include "DTexture.h"
-#include "Util.h"
+#include "Logger.h"
 
 using namespace std;
 
@@ -34,13 +34,13 @@ bool DTexture::loadFrom(string path, SDL_Renderer *renderer){
 			this->height = image->h;
 		}
 		else{
-			log("Could not create texture from image.");
+			Logger::errorSDL("Could not create texture from image.", SDL_GetError());
 		}
 
 		SDL_FreeSurface(image);
 	}
 	else{
-		log("Unable to load image from path.");
+		Logger::errorSDL("Unable to load image from path.", IMG_GetError());
 	}
 
 	this->sdlTexture = newTexture;
@@ -76,6 +76,6 @@ void DTexture::render(int x, int y, SDL_Rect *clip){
 		SDL_RenderCopy(this->renderer, this->sdlTexture, clip, &renderQuad);
 	}
 	else{
-		log("No renderer in DTexture.");
+		Logger::log("No renderer in DTexture.");
 	}
 }

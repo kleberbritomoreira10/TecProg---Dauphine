@@ -1,8 +1,12 @@
 # The binary file (executable)
 Dauphine
+Dauphine.exe
 
 # The build folder
 build/
+
+# The windows build DLLs folder
+wlibs/
 
 # Compiled Object files
 *.slo
@@ -17,3 +21,8 @@ build/
 *.lai
 *.la
 *.a
+
+# Temporary files, just in case
+*.cpp~
+*.h~
+*.md~

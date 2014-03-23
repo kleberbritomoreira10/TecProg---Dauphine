@@ -6,10 +6,10 @@
 
 #include "DTexture.h"
 
-const ushort SCREEN_WIDTH = 1024;
-const ushort SCREEN_HEIGHT = 780;
+const int SCREEN_WIDTH = 1024;
+const int SCREEN_HEIGHT = 780;
 
-const ushort FPS = 30;
+const int FPS = 30;
 
 class Game {
 
