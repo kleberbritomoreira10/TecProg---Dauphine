@@ -8,7 +8,7 @@ SDL_MINGW_ROOT = /usr/i686-w64-mingw32
 # Compiler
 export LD := /usr/bin/i686-w64-mingw32-g++
 # Compiler flags
-CPPFLAGS= `$(SDL_MINGW_ROOT)/bin/sdl2-config --cflags` -g -W -Wall -pedantic -ansi -static-libgcc -static-libstdc++
+CPPFLAGS= `$(SDL_MINGW_ROOT)/bin/sdl2-config --cflags` -g -W -Wall -pedantic -ansi -static-libgcc -static-libstdc++ -std=c++0x
 # Linking flags
 LDFLAGS = `$(SDL_MINGW_ROOT)/bin/sdl2-config --libs` -lSDL2_image
 

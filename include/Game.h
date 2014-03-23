@@ -1,9 +1,7 @@
 #ifndef INCLUDE_GAME_H
 #define INCLUDE_GAME_H
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_image.h>
-
+#include "SDLWrapper.h"
 #include "DTexture.h"
 
 const int SCREEN_WIDTH = 1024;

@@ -2,15 +2,22 @@
 #include "Logger.h"
 
 int main(int argc, char **argv){
-
 	Logger::log("Starting Dauphine...");
 
-	Game *game;
-	game = new Game();
+	bool systemsInitialized = SDLWrapper::initialize();
 
-	game->runGame();
+	if(systemsInitialized){
+		Game *game = nullptr;
+		game = new Game();
+
+		game->runGame();
+	}
+	else{
+		Logger::error("System were not initialized.");
+	}
+
+	SDLWrapper::close();
 
 	Logger::log("Exiting Dauphine...");
-
 	return 0;
 }

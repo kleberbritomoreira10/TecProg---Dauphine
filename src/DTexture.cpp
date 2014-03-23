@@ -1,7 +1,7 @@
-#include <iostream>
-#include <string>
 #include "DTexture.h"
 #include "Logger.h"
+#include <iostream>
+#include <string>
 
 using namespace std;
 

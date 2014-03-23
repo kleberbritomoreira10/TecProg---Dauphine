@@ -1,49 +1,40 @@
-#include <iostream>
-#include <string>
 #include "Game.h"
 #include "Logger.h"
+#include <iostream>
+#include <string>
 
 using namespace std;
 
 Game::Game(){
-	const int sdlInitialized = SDL_Init(SDL_INIT_EVERYTHING);
-	if(sdlInitialized == 0){
+	
+	this->window = SDL_CreateWindow("Dauphine", 
+		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
+		SCREEN_WIDTH, SCREEN_HEIGHT,
+		SDL_WINDOW_SHOWN|SDL_WINDOW_RESIZABLE);
+	if(this->window != NULL){
 
-		this->window = SDL_CreateWindow("Dauphine", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCREEN_WIDTH, SCREEN_HEIGHT, SDL_WINDOW_SHOWN|SDL_WINDOW_RESIZABLE);
-		if(this->window != NULL){
+		this->renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
+		if(this->renderer != NULL){
 
-			this->renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED);
-			if(this->renderer != NULL){
+				this->isRunning = true;
 
-				int imgFlags = IMG_INIT_PNG;
-				if(IMG_Init(imgFlags) & imgFlags){
-					
-					this->isRunning = true;
-
-					DTexture dTexture;
-					bool loadedTexture = dTexture.loadFrom("res/hdimg.png", this->renderer);
-					if(loadedTexture){
-						this->texture = dTexture;
-					}
-					else{
-						Logger::error("Failed to load texture.");
-					}
+				DTexture dTexture;
+				bool loadedTexture = dTexture.loadFrom("res/hdimg.png", this->renderer);
+				if(loadedTexture){
+					this->texture = dTexture;
 				}
 				else{
-					Logger::errorSDL("SDL_image could not be initialized.", IMG_GetError());
+					Logger::error("Failed to load texture.");
 				}
-			}
-			else{
-				Logger::errorSDL("Renderer could not be created.", SDL_GetError());
-			}
 		}
 		else{
-			Logger::errorSDL("Window failed to be created.", SDL_GetError());
+			Logger::errorSDL("Renderer could not be created.", SDL_GetError());
 		}
 	}
 	else{
-		Logger::errorSDL("SDL failed to initialize.", SDL_GetError());
+		Logger::errorSDL("Window failed to be created.", SDL_GetError());
 	}
+
 }
 
 Game::~Game(){
@@ -54,9 +45,6 @@ Game::~Game(){
 
 	SDL_DestroyWindow(this->window);
 	this->window = NULL;
-
-	IMG_Quit();
-	SDL_Quit();
 }
 
 void Game::runGame(){
