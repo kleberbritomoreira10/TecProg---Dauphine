@@ -4,7 +4,15 @@
 #include "Sprite.h"
 
 Game::Game(Window *lGameWindow){
-	this->gameWindow = lGameWindow;
+	if(lGameWindow != nullptr){
+		this->gameWindow = lGameWindow;
+		this->isRunning = true;
+	}
+	else{
+		this->gameWindow = nullptr;
+		this->isRunning = false;
+		Logger::warning("Game window is null. Game will not run.");
+	}
 }
 
 Game::~Game(){
@@ -15,11 +23,20 @@ Game::~Game(){
 void Game::runGame(){
 	// Just an example of Sprite loading, delete this later.
 	Sprite *sprite = nullptr;
-	sprite = new Sprite(gameWindow->renderer);
+	sprite = new Sprite(this->gameWindow->renderer);
 	bool loadedSprite = sprite->loadFrom("res/dots.png");
 	if(!loadedSprite){
 		Logger::error("Couldn't load sprite.");
 	}
+
+	string beforeLog;
+	if(this->isRunning){
+		beforeLog = "Game is running fine.";
+	}
+	else{
+		beforeLog = "Game is not running.";
+	}
+	Logger::log(beforeLog);
 
 	// Main game loop.
 	while(this->isRunning){
@@ -57,4 +74,5 @@ void Game::runGame(){
 		// Renders the gameWindow.
 		gameWindow->render();
 	}
+
 }
