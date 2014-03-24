@@ -3,45 +3,19 @@
 
 #include "Sprite.h"
 
-Game::Game(){
-	// Creates the Game window.
-	this->window = SDL_CreateWindow("Dauphine", 
-		SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-		SCREEN_WIDTH, SCREEN_HEIGHT,
-		SDL_WINDOW_SHOWN|SDL_WINDOW_RESIZABLE);
-	if(this->window != nullptr){
-
-		//Creates the Game renderer.
-		this->renderer = SDL_CreateRenderer(this->window, -1, SDL_RENDERER_ACCELERATED);
-		if(this->renderer != nullptr){
-
-				// Game is successfully loaded.
-				this->isRunning = true;
-		}
-		else{
-			Logger::errorSDL("Renderer could not be created.", SDL_GetError());
-		}
-	}
-	else{
-		Logger::errorSDL("Window failed to be created.", SDL_GetError());
-	}
-
+Game::Game(Window *lGameWindow){
+	this->gameWindow = lGameWindow;
 }
 
 Game::~Game(){
-	// Destroys the Game renderer.
-	SDL_DestroyRenderer(this->renderer);
-	this->renderer = nullptr;
-
-	// Destroys the Game window.
-	SDL_DestroyWindow(this->window);
-	this->window = nullptr;
+	// Destroys the Window.
+	this->gameWindow->destroy();
 }
 
 void Game::runGame(){
 	// Just an example of Sprite loading, delete this later.
 	Sprite *sprite = nullptr;
-	sprite = new Sprite(this->renderer);
+	sprite = new Sprite(gameWindow->renderer);
 	bool loadedSprite = sprite->loadFrom("res/dots.png");
 	if(!loadedSprite){
 		Logger::error("Couldn't load sprite.");
@@ -74,14 +48,13 @@ void Game::runGame(){
 			}
 		}while(pendingEvent != 0);
 
-		// Set color and clear screen.
-		SDL_SetRenderDrawColor(renderer, 0xFF, 0xFF, 0xFF, 0xFF);
-		SDL_RenderClear(renderer);
+		// Sets the draw color and clears the screen.
+		gameWindow->clear();
 
 		// Render the example sprite.
 		sprite->render(0, 0, nullptr);
 
-		// Update screen.
-		SDL_RenderPresent(renderer);
+		// Renders the gameWindow.
+		gameWindow->render();
 	}
 }
