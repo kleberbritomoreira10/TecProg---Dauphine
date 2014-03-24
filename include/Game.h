@@ -2,28 +2,29 @@
 #define INCLUDE_GAME_H
 
 #include "SDLWrapper.h"
-#include "DTexture.h"
 
-const int SCREEN_WIDTH = 1024;
-const int SCREEN_HEIGHT = 780;
-
+// TODO: put these somewhere else.
+const int SCREEN_WIDTH = 800;
+const int SCREEN_HEIGHT = 600;
 const int FPS = 30;
 
 class Game {
 
 	public:
+		/* Creates the window and the renderer. */
 		Game();
+		/* Destroys the window and the renderer. */
 		~Game();
 
+		/* Main game loop. */
 		void runGame();
 
 		SDL_Window *window;
 		SDL_Renderer *renderer;
-		DTexture texture;
 		SDL_Event eventHandler;
 
 		bool isRunning;
 
 };
 
-#endif
+#endif //INCLUDE_GAME_H

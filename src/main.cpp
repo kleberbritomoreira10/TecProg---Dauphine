@@ -1,8 +1,15 @@
 #include "Game.h"
 #include "Logger.h"
 
+// Since argc and argv are only necessary for cross-compiling SDL_Main,
+// we do this just so the compiler doesn't warn for unused arguments.
+#define UNUSED(x) ((void)x)
+
 int main(int argc, char **argv){
 	Logger::log("Starting Dauphine...");
+
+	UNUSED(argc);
+	UNUSED(argv);
 
 	bool systemsInitialized = SDLWrapper::initialize();
 

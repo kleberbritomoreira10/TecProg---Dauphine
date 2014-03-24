@@ -15,18 +15,22 @@ bool SDLWrapper::initialize(){
 		Logger::errorSDL("Could not initialize SDL.", SDL_GetError());
 	}
 
-	// Initializing SDL_image with IMG_INIT_PNG.
-	if((IMG_Init(IMG_INIT_PNG) & IMG_INIT_PNG)){
+	// Initializing SDL_image with imgFlags.
+	const Uint32 imgFlags = IMG_INIT_PNG;
+	if((IMG_Init(imgFlags) & imgFlags)){
 		initIMG = true;
 	}
 	else{
 		Logger::errorSDL("Could not initialize SDL_IMG.", IMG_GetError());
 	}
 
+	// If even one system fails to initialize, returns false.
 	return (initSDL && initIMG);
 }
 
 void SDLWrapper::close(){
+	// Quits SDL_image.
 	IMG_Quit();
+	// Quits SDL.
 	SDL_Quit();
 }
