@@ -9,7 +9,7 @@ export LD := $(CXX)
 # Compiler flags
 CPPFLAGS=-g -W -Wall -pedantic -ansi -std=c++0x -Wextra -Wshadow
 # Linking flags
-LDFLAGS = -lSDL2 -lSDL2_image
+LDFLAGS = -lSDL2 -lSDL2_image -lSDL2_gfx -lm
 
 # Target program name = directory name
 TARGET := $(notdir $(CURDIR))

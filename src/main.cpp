@@ -6,9 +6,10 @@
 #define UNUSED(x) ((void)x)
 
 // TODO: put these somewhere else.
-const int SCREEN_WIDTH = 800;
-const int SCREEN_HEIGHT = 600;
-const int FPS = 30;
+// 16:10 aspect ratio, for now.
+const int SCREEN_WIDTH = 192 * 5;
+const int SCREEN_HEIGHT = 108 * 5;
+const int DESIRED_FPS = 60;
 
 int main(int argc, char **argv){
 	Logger::log("Starting Dauphine...");

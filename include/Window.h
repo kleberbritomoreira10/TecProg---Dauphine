@@ -9,7 +9,7 @@ using std::string;
 class Window {
 
 	public:
-		/* Creates the Window, with specified width, height and title. */
+		/* Sets all attributs, and calls initialize() */
 		Window(unsigned int lWidth, unsigned int lHeight, string lTitle = "SDL Window");
 		/* Uses destroy() to free Window. */
 		~Window();
@@ -25,6 +25,8 @@ class Window {
 		void clear();
 		/* Renders everything present in the renderer. */
 		void render();
+		/* Set a device independent resolution for rendering. */
+		void rescale(unsigned int lWidth, unsigned int lHeight);
 
 		unsigned int width;
 		unsigned int height;
@@ -33,6 +35,9 @@ class Window {
 		SDL_Renderer *renderer;
 		SDL_Window *window;
 
+	private:
+		/* Creates the Window, with specified width, height and title. */
+		void initialize();
 };
 
 #endif //INCLUDE_WINDOW_H

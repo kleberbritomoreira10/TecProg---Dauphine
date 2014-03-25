@@ -4,6 +4,7 @@
 // Add other SDL libraries here.
 #include <SDL2/SDL.h>
 #include <SDL2/SDL_image.h>
+#include <SDL2/SDL2_framerate.h>
 
 class SDLWrapper{
 	public:
