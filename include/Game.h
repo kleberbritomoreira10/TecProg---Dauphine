@@ -15,7 +15,6 @@ class Game {
 		/* Main game loop. */
 		void runGame();
 
-		SDL_Event eventHandler;
 		FPSmanager fpsManager;
 
 		bool isRunning;

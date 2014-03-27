@@ -9,7 +9,6 @@
 // 16:10 aspect ratio, for now.
 const int SCREEN_WIDTH = 192 * 5;
 const int SCREEN_HEIGHT = 108 * 5;
-const int DESIRED_FPS = 60;
 
 int main(int argc, char **argv){
 	Logger::log("Starting Dauphine...");

@@ -2,11 +2,14 @@
 #include "Logger.h"
 
 #include "Sprite.h"
+#include "Input.h"
 
 Game::Game(Window *lGameWindow){
 	if(lGameWindow != nullptr){
 		this->gameWindow = lGameWindow;
 		this->isRunning = true;
+		
+		const int DESIRED_FPS = 60;
 
 		// TODO: extract this to a method. Possibly a framerate wrapper, to work with dt.
 		// Initializes the SDL2_GFX framerate control.
@@ -40,35 +43,18 @@ void Game::runGame(){
 		Logger::error("Couldn't load sprite.");
 	}
 
+	// Creating the input handler	
+	Input *gameInput = nullptr;
+	gameInput = new Input();
+
 	// Main game loop.
 	while(this->isRunning){
 
-		// Event handling.
-		int pendingEvent = 0;
-		do{
-			pendingEvent = SDL_PollEvent(&this->eventHandler);
-			switch(this->eventHandler.type){
-				// Close button.
-				case SDL_QUIT:
-					this->isRunning = false;
-					break;
-				case SDL_KEYDOWN:
-					// Nested switch :( for the keydown inputs.
-					switch(this->eventHandler.key.keysym.sym){
-						case SDLK_ESCAPE:
-							this->isRunning = false;
-						default:
-							break;
-					}
-
-					break;
-				default:
-					break;
-			}
-		}while(pendingEvent != 0);
-
 		// Sets the draw color and clears the screen.
 		gameWindow->clear();
+		
+		// Gets the inputs
+		gameInput->input(this);
 
 		// Render the example sprite.
 		sprite->render(0, 0, nullptr);
@@ -82,3 +68,4 @@ void Game::runGame(){
 	}
 
 }
+
