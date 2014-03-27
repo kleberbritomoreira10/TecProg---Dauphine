@@ -1,6 +1,7 @@
+#include <stdio.h>
 #include "Game.h"
 #include "Logger.h"
-
+#include <time.h>
 #include "Sprite.h"
 #include "Input.h"
 
@@ -8,6 +9,10 @@ Game::Game(Window *lGameWindow){
 	if(lGameWindow != nullptr){
 		this->gameWindow = lGameWindow;
 		this->isRunning = true;
+
+		//TODO: put this in a player class...
+		// Position of rendering sprite
+		this->x = 0;
 		
 		const int DESIRED_FPS = 60;
 
@@ -46,18 +51,30 @@ void Game::runGame(){
 	// Creating the input handler	
 	Input *gameInput = nullptr;
 	gameInput = new Input();
-
+	
+	// Get the first game time.
+	double lastTime = clock();
+	
 	// Main game loop.
 	while(this->isRunning){
 
 		// Sets the draw color and clears the screen.
 		gameWindow->clear();
 		
-		// Gets the inputs
+		// Gets the inputs.
 		gameInput->input(this);
+	
+		// get the current time. 
+		double now = clock();
+		// Diff of last time and current time.
+		double dt = (now - lastTime)/1000.0;
+		// update the last time.
+		lastTime = now;
+		// Updating the game.	
+		this->update(dt);
 
 		// Render the example sprite.
-		sprite->render(0, 0, nullptr);
+		sprite->render(x, 0, nullptr);
 
 		// Renders the gameWindow.
 		gameWindow->render();
@@ -69,3 +86,7 @@ void Game::runGame(){
 
 }
 
+void Game::update(double dt){
+	// Increase sprite position
+	this->x += 1*dt;
+}

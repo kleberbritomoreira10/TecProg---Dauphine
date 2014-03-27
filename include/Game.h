@@ -11,13 +11,23 @@ class Game {
 		Game(Window *lWindow);
 		/* Destroys the window and the renderer. */
 		~Game();
-
+		
+		/* Update the game */
+		void update(double dt);
+		
 		/* Main game loop. */
 		void runGame();
 
 		FPSmanager fpsManager;
 
 		bool isRunning;
+		
+		double dt;
+		
+		int x;
+		
+		double lastTime;
+		double now;
 
 	private:
 		Window *gameWindow;
