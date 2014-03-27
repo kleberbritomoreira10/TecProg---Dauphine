@@ -7,13 +7,33 @@ using std::string;
 
 class Logger{
 	public:
-		/* Logger with a prefix of "Log: " */
+		/**
+		* The default logger.
+		* Logs the desired message with a "Log: " prefix.
+		* @params message : the message to log.
+		*/
 		static void log(const string message);
-		/* Logger with a prefix of "Warning: " */
+
+		/**
+		* The logger for warnings.
+		* Logs the desired message with a "Warning: " prefix.
+		* @params message : the message to log.
+		*/
 		static void warning(const string message);
-		/* Logger with a prefix of "Error: " */
+
+		/**
+		* The logger for errors.
+		* Logs the desired message with a "Error: " prefix.
+		* @params message : the message to log.
+		*/
 		static void error(const string message);
-		/* Logger with a prefix of "Error: ", and supports the GetError() functions */
+
+		/**
+		* The logger for internal SDL errors.
+		* Logs the desired message with a "Error: " prefix, accompanied by the error string returned by the GetError() from the SDL libraries.
+		* @params message : the message to log.
+		* @params messageSDL : the error string from SDL.
+		*/
 		static void errorSDL(const string message, const char *messageSDL);
 };
 

@@ -6,13 +6,25 @@
 class Input {
 
 	public:
-		/* Creates the game input. */
-		Input();
+		/**
+		* The constructor.
+		* Creates the input handler for the game.
+		* @params game : the game to detect input from.
+		*/
+		Input(Game *lGame);
+		
+		/**
+		* The destructor.
+		* Destroys the created input handler.
+		*/
+		~Input();
 
-		/* Gets the inputs. */
-		void input(Game *game);
+		/**
+		* Handles the input.
+		* Detects the pending events, and handles them appropriately.
+		*/
+		void handleInput();
 
-		int pendingEvent;
 		SDL_Event eventHandler;
 
 	private:
@@ -20,4 +32,4 @@ class Input {
 
 };
 
-#endif //INCLUDE_GAME_H
+#endif //INCLUDE_INPUT_H

@@ -9,23 +9,59 @@ using std::string;
 class Window {
 
 	public:
-		/* Sets all attributs, and calls initialize() */
+		/**
+		* The constructor.
+		* Sets all attributes, and calls the initialize method.
+		* @params lWidth : desired window width.
+		* @params lHeight : desired window height.
+		* @params lTitle : desired window title.
+		* @see initialize()
+		*/
 		Window(unsigned int lWidth, unsigned int lHeight, string lTitle = "SDL Window");
-		/* Uses destroy() to free Window. */
+
+		/**
+		* The destructor.
+		* Uses the destroy method to free window.
+		* @see destroy()
+		*/
 		~Window();
 
-		/* Frees window and renderer. */
+		/**
+		* Frees allocated members.
+		* Frees the SDL_Renderer and the SDL_Window.
+		*/
 		void destroy();
-		/* Minimizes the Window. */
+
+		/**
+		* Minimizes window.
+		* Uses SDLs internal method to minimize the window.
+		*/
 		void minimize();
-		/* Maximizes the Window. */
+
+		/**
+		* Maximizes window.
+		* Uses SDLs internal method to maximize the window.
+		*/
 		void maximize();
 
-		/* Clears the renderer. */
+		/**
+		* Clears the renderer.
+		* Sets the renderers draw color to black, and subsequently clears it.
+		*/
 		void clear();
-		/* Renders everything present in the renderer. */
+
+		/**
+		* Renders to screen.
+		* Updates the screen with every change in the renderer.
+		*/
 		void render();
-		/* Set a device independent resolution for rendering. */
+
+		/**
+		* Rescales the renderization.
+		* Set a device independent resolution for rendering.
+		* @params lWidth : the new resolution width.
+		* @params lHeight : the new resolution height.
+		*/
 		void rescale(unsigned int lWidth, unsigned int lHeight);
 
 		unsigned int width;

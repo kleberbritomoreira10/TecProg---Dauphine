@@ -1,9 +1,20 @@
 #include "Input.h"
-#include <stdio.h>
+#include "Logger.h"
 
-Input::Input(){}
+Input::Input(Game *lGame){
+	if(lGame != nullptr){
+		this->game = lGame;
+	}
+	else{
+		Logger::warning("Null game passed to input handler.");
+	}
+}
 
-void Input::input(Game *game){
+Input::~Input(){
+	this->game = nullptr;
+}
+
+void Input::handleInput(){
 	// Event handling.
 	int pendingEvent = 0;
 	do{
@@ -11,13 +22,13 @@ void Input::input(Game *game){
 		switch(this->eventHandler.type){
 			// Close button.
 			case SDL_QUIT:
-				game->isRunning = false;
+				this->game->isRunning = false;
 				break;
 			case SDL_KEYDOWN:
 				// Nested switch :( for the keydown inputs.
 				switch(this->eventHandler.key.keysym.sym){
 					case SDLK_ESCAPE:
-						game->isRunning = false;
+						this->game->isRunning = false;
 					default:
 						break;
 				}

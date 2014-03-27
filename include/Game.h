@@ -7,15 +7,31 @@
 class Game {
 
 	public:
-		/* Creates the window and the renderer. */
+		/**
+		* The constructor.
+		* Creates the window and the renderer.
+		* @param lWindow : a created Window.
+		*/
 		Game(Window *lWindow);
-		/* Destroys the window and the renderer. */
+
+		/**
+		* The destructor.
+		* Destroys the window and the renderer.
+		*/
 		~Game();
 		
-		/* Update the game */
-		void update(double dt);
+		/**
+		* Handles the updates.
+		* Updates all game objects. Is part of the main loop.
+		* @params lDt : Delta time. Time elapsed between one frame and the other, independent of processing speed.
+		* @see runGame()
+		*/
+		void update(double lDt);
 		
-		/* Main game loop. */
+		/**
+		* The main game loop.
+		* Orders the game structure, such as inputs, updates, and rendering.
+		*/
 		void runGame();
 
 		FPSmanager fpsManager;

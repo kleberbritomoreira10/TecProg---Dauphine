@@ -8,9 +8,18 @@
 
 class SDLWrapper{
 	public:
-		/* Initializes all the SDL systems. */
+		/**
+		* The system initializer.
+		* Initializes all the SDL systems and/or subsystems.
+		* @return true if every system was initialized successfully, else it returns false.
+		*/
 		static bool initialize();
-		/* Closes the SDL systems. */
+
+		/**
+		* Closes all open systems.
+		* Closes all systems and/or subsystems opened by the initializer method.
+		* @see initialize()
+		*/
 		static void close();
 };
 

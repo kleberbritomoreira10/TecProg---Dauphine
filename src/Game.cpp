@@ -50,10 +50,10 @@ void Game::runGame(){
 
 	// Creating the input handler	
 	Input *gameInput = nullptr;
-	gameInput = new Input();
+	gameInput = new Input(this);
 	
 	// Get the first game time.
-	double lastTime = clock();
+	double lLastTime = clock();
 	
 	// Main game loop.
 	while(this->isRunning){
@@ -62,16 +62,16 @@ void Game::runGame(){
 		gameWindow->clear();
 		
 		// Gets the inputs.
-		gameInput->input(this);
+		gameInput->handleInput();
 	
 		// get the current time. 
-		double now = clock();
+		double lNow = clock();
 		// Diff of last time and current time.
-		double dt = (now - lastTime)/1000.0;
+		double lDt = (lNow - lLastTime)/1000.0;
 		// update the last time.
-		lastTime = now;
+		lLastTime = lNow;
 		// Updating the game.	
-		this->update(dt);
+		this->update(lDt);
 
 		// Render the example sprite.
 		sprite->render(x, 0, nullptr);
@@ -86,7 +86,7 @@ void Game::runGame(){
 
 }
 
-void Game::update(double dt){
+void Game::update(double lDt){
 	// Increase sprite position
-	this->x += 1*dt;
+	this->x += 1*lDt;
 }
