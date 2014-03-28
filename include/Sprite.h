@@ -43,7 +43,7 @@ class Sprite {
 		* @params y : y position on the screen.
 		* @params clip : Clips the texture, on the SDL_Rect bounds. If null, renders the entire texture.
 		*/
-		void render(int x, int y, SDL_Rect *clip = nullptr);
+		void render(double x, double y, SDL_Rect *clip = nullptr);
 
 		int width;
 		int height;

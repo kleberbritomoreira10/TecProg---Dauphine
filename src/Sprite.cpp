@@ -65,7 +65,7 @@ void Sprite::free(){
 	}
 }
 
-void Sprite::render(int x, int y, SDL_Rect *clip){
+void Sprite::render(double x, double y, SDL_Rect *clip){
 	SDL_Rect renderQuad = {x, y, this->width, this->height};
 
 	if(clip != nullptr){

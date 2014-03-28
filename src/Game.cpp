@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include "Game.h"
 #include "Logger.h"
-#include <time.h>
+#include <stdio.h>
 #include "Sprite.h"
 #include "Input.h"
 
@@ -53,7 +53,7 @@ void Game::runGame(){
 	gameInput = new Input(this);
 	
 	// Get the first game time.
-	double lLastTime = clock();
+	double lLastTime = SDL_GetTicks();
 	
 	// Main game loop.
 	while(this->isRunning){
@@ -65,12 +65,13 @@ void Game::runGame(){
 		gameInput->handleInput();
 	
 		// get the current time. 
-		double lNow = clock();
+		double lNow = SDL_GetTicks();
 		// Diff of last time and current time.
 		double lDt = (lNow - lLastTime)/1000.0;
 		// update the last time.
 		lLastTime = lNow;
 		// Updating the game.	
+		printf("\n%lf",lDt);
 		this->update(lDt);
 
 		// Render the example sprite.
@@ -88,5 +89,5 @@ void Game::runGame(){
 
 void Game::update(double lDt){
 	// Increase sprite position
-	this->x += 1*lDt;
+	this->x += 30*lDt;
 }

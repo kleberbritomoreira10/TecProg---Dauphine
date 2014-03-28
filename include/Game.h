@@ -40,7 +40,7 @@ class Game {
 		
 		double dt;
 		
-		int x;
+		double x;
 		
 		double lastTime;
 		double now;
