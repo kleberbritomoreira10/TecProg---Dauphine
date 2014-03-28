@@ -1,8 +1,8 @@
 #ifndef INCLUDE_GAME_H
 #define INCLUDE_GAME_H
 
-#include "SDLWrapper.h"
 #include "Window.h"
+#include "Player.h"
 
 class Game {
 
@@ -34,6 +34,11 @@ class Game {
 		*/
 		void runGame();
 
+		/**
+		*Allows the association of a player to the game
+		*/
+		void setPlayer(Player *player);
+
 		FPSmanager fpsManager;
 
 		bool isRunning;
@@ -47,6 +52,7 @@ class Game {
 
 	private:
 		Window *gameWindow;
+		Player *player;
 
 };
 

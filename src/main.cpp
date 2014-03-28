@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "Logger.h"
+#include "Player.h"
 
 // Since argc and argv are only necessary for cross-compiling SDL_Main,
 // we do this just so the compiler doesn't warn for unused arguments.
@@ -22,7 +23,10 @@ int main(int argc, char **argv){
 		Window window(SCREEN_WIDTH, SCREEN_HEIGHT, "Dauphine");
 
 		Game *game = nullptr;
+		Player *player = nullptr;
 		game = new Game(&window);
+		player = new Player(0,0,&game);
+		game->setPlayer(&player);
 
 		game->runGame();
 	}

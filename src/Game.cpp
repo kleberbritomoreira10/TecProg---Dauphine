@@ -4,15 +4,12 @@
 #include <stdio.h>
 #include "Sprite.h"
 #include "Input.h"
+#include "Player.h"
 
 Game::Game(Window *lGameWindow){
 	if(lGameWindow != nullptr){
 		this->gameWindow = lGameWindow;
 		this->isRunning = true;
-
-		//TODO: put this in a player class...
-		// Position of rendering sprite
-		this->x = 0;
 		
 		const int DESIRED_FPS = 60;
 
@@ -80,6 +77,9 @@ void Game::runGame(){
 		// Renders the gameWindow.
 		gameWindow->render();
 
+		// Renders the player.
+		player->render();
+
 		// Delays the framerate, if necessary.
 		SDL_framerateDelay(&this->fpsManager);
 
@@ -88,6 +88,16 @@ void Game::runGame(){
 }
 
 void Game::update(double lDt){
-	// Increase sprite position
-	this->x += 30*lDt;
+	// Call players update.
+
+}
+
+void Game::setPlayer(Player *player){
+	// Sets the player.
+	if(this->player == nullptr){
+		this->player = player;
+	}
+	else{
+		// We do not have two player in this game.
+	}
 }
