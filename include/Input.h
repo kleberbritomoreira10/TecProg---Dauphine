@@ -23,11 +23,10 @@ class Input {
 		* Handles the input.
 		* Detects the pending events, and handles them appropriately.
 		*/
-		void handleInput();
-
-		SDL_Event eventHandler;
+		void handleInput();		
 
 	private:
+		SDL_Event eventHandler;
 		Game *game;
 
 };

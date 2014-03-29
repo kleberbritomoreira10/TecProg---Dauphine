@@ -21,7 +21,7 @@
 <table cellspacing="0" cellpadding="0">
  <tbody>
  <tr style="height: 56px;">
-  <td id="projectlogo"><img alt="Logo" src="dauphine_logo.png"/></td>
+  <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Dauphine
    &#160;<span id="projectnumber">1</span>
@@ -40,7 +40,6 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
-      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -65,6 +64,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
     <ul class="tablist">
       <li><a href="annotated.html"><span>Class&#160;List</span></a></li>
       <li><a href="classes.html"><span>Class&#160;Index</span></a></li>
+      <li><a href="hierarchy.html"><span>Class&#160;Hierarchy</span></a></li>
       <li><a href="functions.html"><span>Class&#160;Members</span></a></li>
     </ul>
   </div>
@@ -73,7 +73,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Pages</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -94,21 +94,21 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
-<tr class="memitem:a0b909bbf40cd45443c4a512271aa7bbe"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logger.html#a0b909bbf40cd45443c4a512271aa7bbe">log</a> (const string message)</td></tr>
-<tr class="memdesc:a0b909bbf40cd45443c4a512271aa7bbe"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default logger.  <a href="#a0b909bbf40cd45443c4a512271aa7bbe">More...</a><br/></td></tr>
-<tr class="separator:a0b909bbf40cd45443c4a512271aa7bbe"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad74013a9b67c503a456a51e74cc75894"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logger.html#ad74013a9b67c503a456a51e74cc75894">warning</a> (const string message)</td></tr>
-<tr class="memdesc:ad74013a9b67c503a456a51e74cc75894"><td class="mdescLeft">&#160;</td><td class="mdescRight">The logger for warnings.  <a href="#ad74013a9b67c503a456a51e74cc75894">More...</a><br/></td></tr>
-<tr class="separator:ad74013a9b67c503a456a51e74cc75894"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa81ad2fae257e7034dc89d1011d4368"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logger.html#aaa81ad2fae257e7034dc89d1011d4368">error</a> (const string message)</td></tr>
-<tr class="memdesc:aaa81ad2fae257e7034dc89d1011d4368"><td class="mdescLeft">&#160;</td><td class="mdescRight">The logger for errors.  <a href="#aaa81ad2fae257e7034dc89d1011d4368">More...</a><br/></td></tr>
-<tr class="separator:aaa81ad2fae257e7034dc89d1011d4368"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af8020ff08a041d37dcd2f89b41574141"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logger.html#af8020ff08a041d37dcd2f89b41574141">errorSDL</a> (const string message, const char *messageSDL)</td></tr>
-<tr class="memdesc:af8020ff08a041d37dcd2f89b41574141"><td class="mdescLeft">&#160;</td><td class="mdescRight">The logger for internal SDL errors.  <a href="#af8020ff08a041d37dcd2f89b41574141">More...</a><br/></td></tr>
-<tr class="separator:af8020ff08a041d37dcd2f89b41574141"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26b7fec8a599b79652bc1221d06470f5"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logger.html#a26b7fec8a599b79652bc1221d06470f5">log</a> (const string message)</td></tr>
+<tr class="memdesc:a26b7fec8a599b79652bc1221d06470f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The default logger.  <a href="#a26b7fec8a599b79652bc1221d06470f5">More...</a><br/></td></tr>
+<tr class="separator:a26b7fec8a599b79652bc1221d06470f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a924344b3301bbbdf2ec655af3e8e9f56"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logger.html#a924344b3301bbbdf2ec655af3e8e9f56">warning</a> (const string message)</td></tr>
+<tr class="memdesc:a924344b3301bbbdf2ec655af3e8e9f56"><td class="mdescLeft">&#160;</td><td class="mdescRight">The logger for warnings.  <a href="#a924344b3301bbbdf2ec655af3e8e9f56">More...</a><br/></td></tr>
+<tr class="separator:a924344b3301bbbdf2ec655af3e8e9f56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a37e1e14a3de7aa11d51ebaf21230bfa3"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logger.html#a37e1e14a3de7aa11d51ebaf21230bfa3">error</a> (const string message)</td></tr>
+<tr class="memdesc:a37e1e14a3de7aa11d51ebaf21230bfa3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The logger for errors.  <a href="#a37e1e14a3de7aa11d51ebaf21230bfa3">More...</a><br/></td></tr>
+<tr class="separator:a37e1e14a3de7aa11d51ebaf21230bfa3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c1f988d0d717f4469b6da47914fbf51"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logger.html#a0c1f988d0d717f4469b6da47914fbf51">errorSDL</a> (const string message, const char *messageSDL)</td></tr>
+<tr class="memdesc:a0c1f988d0d717f4469b6da47914fbf51"><td class="mdescLeft">&#160;</td><td class="mdescRight">The logger for internal SDL errors.  <a href="#a0c1f988d0d717f4469b6da47914fbf51">More...</a><br/></td></tr>
+<tr class="separator:a0c1f988d0d717f4469b6da47914fbf51"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="aaa81ad2fae257e7034dc89d1011d4368"></a>
+<a class="anchor" id="a37e1e14a3de7aa11d51ebaf21230bfa3"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -116,7 +116,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Logger::error </td>
+          <td class="memname">static void Logger::error </td>
           <td>(</td>
           <td class="paramtype">const string&#160;</td>
           <td class="paramname"><em>message</em>)</td><td></td>
@@ -135,7 +135,7 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af8020ff08a041d37dcd2f89b41574141"></a>
+<a class="anchor" id="a0c1f988d0d717f4469b6da47914fbf51"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -143,7 +143,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Logger::errorSDL </td>
+          <td class="memname">static void Logger::errorSDL </td>
           <td>(</td>
           <td class="paramtype">const string&#160;</td>
           <td class="paramname"><em>message</em>, </td>
@@ -172,7 +172,7 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a0b909bbf40cd45443c4a512271aa7bbe"></a>
+<a class="anchor" id="a26b7fec8a599b79652bc1221d06470f5"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -180,7 +180,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Logger::log </td>
+          <td class="memname">static void Logger::log </td>
           <td>(</td>
           <td class="paramtype">const string&#160;</td>
           <td class="paramname"><em>message</em>)</td><td></td>
@@ -199,7 +199,7 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad74013a9b67c503a456a51e74cc75894"></a>
+<a class="anchor" id="a924344b3301bbbdf2ec655af3e8e9f56"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -207,7 +207,7 @@ Static Public Member Functions</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Logger::warning </td>
+          <td class="memname">static void Logger::warning </td>
           <td>(</td>
           <td class="paramtype">const string&#160;</td>
           <td class="paramname"><em>message</em>)</td><td></td>
@@ -226,14 +226,13 @@ Static Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/caio/Desktop/Git/Dauphine/include/<a class="el" href="_logger_8h_source.html">Logger.h</a></li>
-<li>/home/caio/Desktop/Git/Dauphine/src/Logger.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Mar 26 2014 23:58:59 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Mar 28 2014 22:05:05 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

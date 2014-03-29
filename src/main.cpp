@@ -23,10 +23,7 @@ int main(int argc, char **argv){
 		Window window(SCREEN_WIDTH, SCREEN_HEIGHT, "Dauphine");
 
 		Game *game = nullptr;
-		Player *player = nullptr;
 		game = new Game(&window);
-		player = new Player(0,0,&game);
-		game->setPlayer(&player);
 
 		game->runGame();
 	}

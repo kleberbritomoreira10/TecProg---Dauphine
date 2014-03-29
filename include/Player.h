@@ -1,31 +1,38 @@
 #ifndef INCLUDE_PLAYER_H
 #define INCLUDE_PLAYER_H
 
-#include "Game.h"
+#include "Entity.h"
 
-class Player {
+class Player : public Entity {
 
 	public:
 		/**
 		* The constructor.
-		* Creates the player and associates it to a game.
-		* @param x : position in x axis.
-		* @param y : position in y axis.
-		* @param game : associates the player to a game.
+		* Creates the player by setting the position and sprite.
+		* @params lX : position in x axis.
+		* @params lY : position in y axis.
+		* @params lSprite : which sprite to use.
 		*/
-		Player(double x, double y, Game *lgame);
-		
+		Player(double lX, double lY, Sprite *lSprite);
+
 		/**
-		* Handles the render.
-		* render the player
+		* The destructor.
+		* Deallocates everything necessary.
+		*/
+		~Player();
+
+		/**
+		* Updates player.
+		* Modifies whatever is necessary, relative to the player.
+		* @params dt : Delta time. Time elapsed between one frame and the other.
+		*/
+		void update(double dt);
+
+		/**
+		* Renders player.
+		* Uses the players sprite render method.
 		*/
 		void render();
-		
-		double x;
-		double y;
-
-	private:
-		Game *lgame;
 
 };
 

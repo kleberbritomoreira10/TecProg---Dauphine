@@ -2,7 +2,6 @@
 #define INCLUDE_GAME_H
 
 #include "Window.h"
-#include "Player.h"
 
 class Game {
 
@@ -33,26 +32,12 @@ class Game {
 		* Orders the game structure, such as inputs, updates, and rendering.
 		*/
 		void runGame();
-
-		/**
-		*Allows the association of a player to the game
-		*/
-		void setPlayer(Player *player);
-
-		FPSmanager fpsManager;
-
+		
 		bool isRunning;
-		
-		double dt;
-		
-		double x;
-		
-		double lastTime;
-		double now;
 
 	private:
+		FPSmanager fpsManager;
 		Window *gameWindow;
-		Player *player;
 
 };
 

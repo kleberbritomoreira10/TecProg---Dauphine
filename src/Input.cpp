@@ -38,5 +38,3 @@ void Input::handleInput(){
 		}
 	}while(pendingEvent != 0);
 }
-
-

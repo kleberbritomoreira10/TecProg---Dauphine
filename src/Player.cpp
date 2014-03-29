@@ -1,19 +1,29 @@
-#include "Sprite.h"
-#include "Game.h"
+#include "Player.h"
+#include "Logger.h"
 
-Player::Player(double x, double y, Game *lgame){
-	this->x = x;
-	this->y = y;
-	this->game = lgame;
+Player::Player(double lX, double lY, Sprite *lSprite){
+	this->x = lX;
+	this->y = lY;
+	this->sprite = lSprite;
+
+	if(this->sprite == nullptr){
+		Logger::warning("No sprite set for the player! Null sprite.");
+	}
+}
+
+Player::~Player(){
+	this->x = 0;
+	this->y = 0;
+
+	delete this->sprite;
+	this->sprite = nullptr;
+}
+
+void Player::update(double dt){
+	//TODO: everything, I guess
+	this->x += 0.1;
 }
 
 void Player::render(){
-	Sprite *sprite = nullptr;
-	sprite = new Sprite(this->game->gameWindow->renderer);
-	bool loadedSprite = sprite->loadFrom("res/Player.png");
-	if(!loadedSprite){
-		Logger::error("Couldn't load sprite.");
-	}
-
-	sprite->render(this->x, this->y, nullptr);
+	this->sprite->render(this->x, this->y, nullptr);
 }
