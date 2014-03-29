@@ -8,6 +8,9 @@ build/
 # The windows build DLLs folder
 wlibs/
 
+# The doxygen gh-pages folder
+html/
+
 # Compiled Object files
 *.slo
 *.lo
