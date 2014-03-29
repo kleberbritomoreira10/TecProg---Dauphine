@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Dauphine
-   &#160;<span id="projectnumber">1</span>
+   &#160;<span id="projectnumber">0.1</span>
    </div>
    <div id="projectbrief">A platforming/stealth game in a medieval fantasy setting, developed with SDL2.</div>
   </td>
@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -73,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -92,6 +93,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Game Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Main structure class for the game.  
+ <a href="class_game.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_game_8h_source.html">Game.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -101,20 +107,23 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ae3d112ca6e0e55150d2fdbc704474530"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#ae3d112ca6e0e55150d2fdbc704474530">~Game</a> ()</td></tr>
 <tr class="memdesc:ae3d112ca6e0e55150d2fdbc704474530"><td class="mdescLeft">&#160;</td><td class="mdescRight">The destructor.  <a href="#ae3d112ca6e0e55150d2fdbc704474530">More...</a><br/></td></tr>
 <tr class="separator:ae3d112ca6e0e55150d2fdbc704474530"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08a864ef8c983982d3304254ea344a02"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#a08a864ef8c983982d3304254ea344a02">update</a> (double lDt)</td></tr>
-<tr class="memdesc:a08a864ef8c983982d3304254ea344a02"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the updates.  <a href="#a08a864ef8c983982d3304254ea344a02">More...</a><br/></td></tr>
-<tr class="separator:a08a864ef8c983982d3304254ea344a02"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa8c8ca9efb596230614be2f2f9e61b86"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#aa8c8ca9efb596230614be2f2f9e61b86">update</a> (double dt)</td></tr>
+<tr class="memdesc:aa8c8ca9efb596230614be2f2f9e61b86"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the updates.  <a href="#aa8c8ca9efb596230614be2f2f9e61b86">More...</a><br/></td></tr>
+<tr class="separator:aa8c8ca9efb596230614be2f2f9e61b86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc9436a9d18e48c6e1e4fbc4ea879449"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#abc9436a9d18e48c6e1e4fbc4ea879449">runGame</a> ()</td></tr>
 <tr class="memdesc:abc9436a9d18e48c6e1e4fbc4ea879449"><td class="mdescLeft">&#160;</td><td class="mdescRight">The main game loop.  <a href="#abc9436a9d18e48c6e1e4fbc4ea879449">More...</a><br/></td></tr>
 <tr class="separator:abc9436a9d18e48c6e1e4fbc4ea879449"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:adb424734b2454f9ed1e6d6bd44e6dfaf"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adb424734b2454f9ed1e6d6bd44e6dfaf"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isRunning</b></td></tr>
+<tr class="memitem:adb424734b2454f9ed1e6d6bd44e6dfaf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#adb424734b2454f9ed1e6d6bd44e6dfaf">isRunning</a></td></tr>
+<tr class="memdesc:adb424734b2454f9ed1e6d6bd44e6dfaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the game is currently running/looping or not.  <a href="#adb424734b2454f9ed1e6d6bd44e6dfaf">More...</a><br/></td></tr>
 <tr class="separator:adb424734b2454f9ed1e6d6bd44e6dfaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Main structure class for the game. </p>
+<p>Contains all the necessary functionalities to loop and update the game. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a9207d230dfceb6f32431de1d5eb54f69"></a>
 <div class="memitem">
 <div class="memproto">
@@ -130,13 +139,15 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>isRunning</b></td></t
 </div><div class="memdoc">
 
 <p>The constructor. </p>
-<p>Creates the window and the renderer. </p>
+<p>Sets the game window and tells the game that it is OK to begin looping. Also, it begins the FPS manager. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">lWindow</td><td>: a created <a class="el" href="class_window.html">Window</a>. </td></tr>
+    <tr><td class="paramname">lWindow</td><td>: a created <a class="el" href="class_window.html" title="Actual window that game runs on. ">Window</a>. </td></tr>
   </table>
   </dd>
 </dl>
+<dl class="section note"><dt>Note</dt><dd>If the <a class="el" href="class_window.html" title="Actual window that game runs on. ">Window</a> parameter is null, the game will not begin. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>Separate the FPS manager things into another class, probably a FPSWrapper. </dd></dl>
 
 </div>
 </div>
@@ -154,7 +165,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>isRunning</b></td></t
 </div><div class="memdoc">
 
 <p>The destructor. </p>
-<p>Destroys the window and the renderer. </p>
+<p>Destroys the game's <a class="el" href="class_window.html" title="Actual window that game runs on. ">Window</a>, and make sure the main loop stops. </p>
 
 </div>
 </div>
@@ -174,10 +185,12 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>isRunning</b></td></t
 
 <p>The main game loop. </p>
 <p>Orders the game structure, such as inputs, updates, and rendering. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>Remove all of the example code from inside this method. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>Handle all of this DT issues from the FPSWrapper. Also, SDL_GetTicks returns Uint32, not a double. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a08a864ef8c983982d3304254ea344a02"></a>
+<a class="anchor" id="aa8c8ca9efb596230614be2f2f9e61b86"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -185,25 +198,48 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>isRunning</b></td></t
           <td class="memname">void Game::update </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>lDt</em>)</td><td></td>
+          <td class="paramname"><em>dt</em>)</td><td></td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Handles the updates. </p>
-<p>Updates all game objects. Is part of the main loop.  lDt : Delta time. Time elapsed between one frame and the other, independent of processing speed. </p>
+<p>Updates all game objects. Is part of the main loop. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">dt</td><td>: Delta time. Time elapsed between one frame and the other, independent of processing speed. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_game.html#abc9436a9d18e48c6e1e4fbc4ea879449" title="The main game loop. ">runGame()</a> </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Implement this method. </dd></dl>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="adb424734b2454f9ed1e6d6bd44e6dfaf"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Game::isRunning</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Whether the game is currently running/looping or not. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/caio/Desktop/Git/Dauphine/include/<a class="el" href="_game_8h_source.html">Game.h</a></li>
+<li>/home/caio/Desktop/Git/Dauphine/src/<a class="el" href="_game_8cpp.html">Game.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 28 2014 22:05:05 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 29 2014 02:55:01 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

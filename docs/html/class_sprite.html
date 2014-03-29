@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Dauphine
-   &#160;<span id="projectnumber">1</span>
+   &#160;<span id="projectnumber">0.1</span>
    </div>
    <div id="projectbrief">A platforming/stealth game in a medieval fantasy setting, developed with SDL2.</div>
   </td>
@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -73,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -86,12 +87,16 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="class_sprite-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Sprite Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Visual representation of game objects.  
+ <a href="class_sprite.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_sprite_8h_source.html">Sprite.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -110,17 +115,15 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aad95e697ffa0c494e4e2038e67cf057d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#aad95e697ffa0c494e4e2038e67cf057d">render</a> (double x, double y, SDL_Rect *clip=nullptr)</td></tr>
 <tr class="memdesc:aad95e697ffa0c494e4e2038e67cf057d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the sprite.  <a href="#aad95e697ffa0c494e4e2038e67cf057d">More...</a><br/></td></tr>
 <tr class="separator:aad95e697ffa0c494e4e2038e67cf057d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a0a3364944c5e361fc9e7ae406224d682"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0a3364944c5e361fc9e7ae406224d682"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>width</b></td></tr>
-<tr class="separator:a0a3364944c5e361fc9e7ae406224d682"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1f07c8f2080c193759aec0e13503d7ab"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1f07c8f2080c193759aec0e13503d7ab"></a>
-int&#160;</td><td class="memItemRight" valign="bottom"><b>height</b></td></tr>
-<tr class="separator:a1f07c8f2080c193759aec0e13503d7ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f425d524e48eea595ef74dc310e0417"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#a8f425d524e48eea595ef74dc310e0417">getWidth</a> ()</td></tr>
+<tr class="separator:a8f425d524e48eea595ef74dc310e0417"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a02fcba350f07d226b110f7d0712f5154"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#a02fcba350f07d226b110f7d0712f5154">getHeight</a> ()</td></tr>
+<tr class="separator:a02fcba350f07d226b110f7d0712f5154"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Visual representation of game objects. </p>
+<p>Holds the SDL_Texture from the SDL2 library. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a0902f2b2dc37e42f8e4bae90a9e9f686"></a>
 <div class="memitem">
 <div class="memproto">
@@ -136,7 +139,14 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>height</b></td></tr>
 </div><div class="memdoc">
 
 <p>The constructor. </p>
-<p>Creates the sprite, and sets the desired renderer. </p>
+<p>Initializes all the data, and sets the desired renderer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lRenderer</td><td>: The renderer you want the sprite to render onto. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>If the lRenderer parameter is null, warns that the <a class="el" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a> will not be renderable. </dd></dl>
 
 </div>
 </div>
@@ -154,7 +164,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>height</b></td></tr>
 </div><div class="memdoc">
 
 <p>The destructor. </p>
-<p>Destroys everything related to the sprite. </p>
+<p>Calls the free method, and sets the renderer pointer to null. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_sprite.html#abce3359b4f055bac7384038046ed9ead" title="Frees texture, if it exists. ">free()</a> </dd></dl>
 
 </div>
 </div>
@@ -177,6 +188,38 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>height</b></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a02fcba350f07d226b110f7d0712f5154"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Sprite::getHeight </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a> height. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a8f425d524e48eea595ef74dc310e0417"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Sprite::getWidth </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a> width. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a493cb1a7309eb58f4dc1f43dc8997e42"></a>
 <div class="memitem">
 <div class="memproto">
@@ -192,8 +235,15 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>height</b></td></tr>
 </div><div class="memdoc">
 
 <p>Loads image from a path. </p>
-<p>Given an existing path for an image, loads the SDL_Texture from it.  path : the image path. </p>
-<dl class="section return"><dt>Returns</dt><dd>whether the sprites SDL_Texture was set or not (null or not). </dd></dl>
+<p>Given an existing path for an image, loads the SDL_Texture from it. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>: the image path. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>Whether the sprite's SDL_Texture (sdlTexture) is null or not. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000010">Todo:</a></b></dt><dd>Check if loading the texture via IMG_LoadTexture isn't better, and get width/height through the queryTexture method. </dd></dl>
 
 </div>
 </div>
@@ -228,17 +278,26 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>height</b></td></tr>
 </div><div class="memdoc">
 
 <p>Renders the sprite. </p>
-<p>Copy the SDL_Texture onto the renderer, at the desired x,y position.  x : x position on the screen.  y : y position on the screen.  clip : Clips the texture, on the SDL_Rect bounds. If null, renders the entire texture. </p>
+<p>Copy the SDL_Texture onto the renderer, at the desired x,y position. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x</td><td>: The position on the x axis of the screen. </td></tr>
+    <tr><td class="paramname">y</td><td>: The position on the y axis of the screen. </td></tr>
+    <tr><td class="paramname">clip</td><td>: Clips the texture, on the SDL_Rect bounds. If omitted, renders the entire texture. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/caio/Desktop/Git/Dauphine/include/<a class="el" href="_sprite_8h_source.html">Sprite.h</a></li>
+<li>/home/caio/Desktop/Git/Dauphine/src/<a class="el" href="_sprite_8cpp.html">Sprite.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 28 2014 22:05:05 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 29 2014 02:55:01 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

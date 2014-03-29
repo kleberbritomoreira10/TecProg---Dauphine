@@ -5,20 +5,24 @@ Sprite::Sprite(SDL_Renderer *lRenderer){
 	this->width = 0;
 	this->height = 0;
 	this->sdlTexture = nullptr;
-
 	this->sdlRenderer = lRenderer;
+
+	if(this->sdlRenderer == nullptr){
+		Logger::warning("Null renderer passed to Sprite. It will not be renderable.");	
+	}
 }
 
 Sprite::~Sprite(){
-	// Use the free() method to destroy everything but renderer.
+	// Use the free() method to destroy everything but the renderer.
 	free();
 
-	// Destrys the renderer.
-	SDL_DestroyRenderer(this->sdlRenderer);
+	// Just set the sdlRenderer to null. The Window class should delete or not the renderer.
 	this->sdlRenderer = nullptr;
 }
 
 bool Sprite::loadFrom(string path){
+	/// @todo Check if loading the texture via IMG_LoadTexture isn't better, and get width/height through the queryTexture method.
+
 	// Warns if loading a sprite without a renderer.
 	if(this->sdlRenderer == nullptr){
 		Logger::warning("Trying to load sprite with null renderer.");
@@ -66,7 +70,7 @@ void Sprite::free(){
 }
 
 void Sprite::render(double x, double y, SDL_Rect *clip){
-	SDL_Rect renderQuad = {(int)x, (int)y, this->width, this->height};
+	SDL_Rect renderQuad = {(int)x, (int)y, (int)this->width, (int)this->height};
 
 	if(clip != nullptr){
 		renderQuad.w = clip->w;
@@ -77,4 +81,12 @@ void Sprite::render(double x, double y, SDL_Rect *clip){
 	}
 
 	SDL_RenderCopy(this->sdlRenderer, this->sdlTexture, clip, &renderQuad);
+}
+
+unsigned int Sprite::getWidth(){
+	return this->width;
+}
+
+unsigned int Sprite::getHeight(){
+	return this->height;
 }

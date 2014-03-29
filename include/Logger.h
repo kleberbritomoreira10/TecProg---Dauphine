@@ -5,36 +5,45 @@
 
 using std::string;
 
-class Logger{
+/**
+* Class used for logging.
+* No instances are needed, all the methods are static.
+*/
+class Logger {
+	/// @todo Implement a separate generic parameter log function, to log and integer, for example.
+
 	public:
 		/**
 		* The default logger.
 		* Logs the desired message with a "Log: " prefix.
-		* @params message : the message to log.
+		* @param message : the message to log.
 		*/
 		static void log(const string message);
 
 		/**
 		* The logger for warnings.
 		* Logs the desired message with a "Warning: " prefix.
-		* @params message : the message to log.
+		* @param message : the message to log.
 		*/
 		static void warning(const string message);
 
 		/**
 		* The logger for errors.
-		* Logs the desired message with a "Error: " prefix.
-		* @params message : the message to log.
+		* Logs the desired message with an "Error: " prefix.
+		* @param message : the message to log.
 		*/
 		static void error(const string message);
 
 		/**
 		* The logger for internal SDL errors.
-		* Logs the desired message with a "Error: " prefix, accompanied by the error string returned by the GetError() from the SDL libraries.
-		* @params message : the message to log.
-		* @params messageSDL : the error string from SDL.
+		* Logs the desired message with an "Error: " prefix, accompanied by the error string returned by the GetError() from the SDL libraries.
+		* @param message : the message to log.
+		* @param messageSDL : the error string from SDL to log.
+		* @see SDL_GetError()
+		* @see IMG_GetError()
 		*/
 		static void errorSDL(const string message, const char *messageSDL);
+
 };
 
 #endif //INCLUDE_LOGGER_H

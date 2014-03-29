@@ -6,22 +6,27 @@
 
 using std::string;
 
+/**
+* Actual window that game runs on.
+* Contains the SDL window and the SDL renderer, and methods related to these.
+*/
 class Window {
 
 	public:
 		/**
 		* The constructor.
 		* Sets all attributes, and calls the initialize method.
-		* @params lWidth : desired window width.
-		* @params lHeight : desired window height.
-		* @params lTitle : desired window title.
+		* @param lWidth : The desired window width.
+		* @param lHeight : The desired window height.
+		* @param lTitle : The desired window title.
+		* @note If omitted, window title will be "SDL Window".
 		* @see initialize()
 		*/
 		Window(unsigned int lWidth, unsigned int lHeight, string lTitle = "SDL Window");
 
 		/**
 		* The destructor.
-		* Uses the destroy method to free window.
+		* Uses the destroy method to delete window.
 		* @see destroy()
 		*/
 		~Window();
@@ -59,20 +64,24 @@ class Window {
 		/**
 		* Rescales the renderization.
 		* Set a device independent resolution for rendering.
-		* @params lWidth : the new resolution width.
-		* @params lHeight : the new resolution height.
+		* @param lWidth : The new resolution width.
+		* @param lHeight : The new resolution height.
+		* @see SDL_RenderSetLogicalSize()
 		*/
 		void rescale(unsigned int lWidth, unsigned int lHeight);
 
-		unsigned int width;
-		unsigned int height;
-		string windowTitle;
-
-		SDL_Renderer *renderer;
-		SDL_Window *window;
+		SDL_Renderer *renderer; /**< The SDL renderer to render onto. */
 
 	private:
-		/* Creates the Window, with specified width, height and title. */
+		SDL_Window *window; /**< The SDL window, that will be the actual game window. */
+		unsigned int width; /**< The game Window width. */
+		unsigned int height; /**< The game Window width. */
+		string windowTitle; /**< The game Window title. */
+
+		/**
+		* Initializes the window and the renderer.
+		* Creates the Window, with specified width, height and title.
+		*/
 		void initialize();
 };
 

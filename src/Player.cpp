@@ -15,12 +15,13 @@ Player::~Player(){
 	this->x = 0;
 	this->y = 0;
 
+	/// @todo: Maybe this isn't the best place to delete the Sprite object.
 	delete this->sprite;
 	this->sprite = nullptr;
 }
 
 void Player::update(double dt){
-	//TODO: everything, I guess
+	/// @todo: Implement everything in this method, pretty much.
 	this->x += 0.1;
 }
 

@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Dauphine
-   &#160;<span id="projectnumber">1</span>
+   &#160;<span id="projectnumber">0.1</span>
    </div>
    <div id="projectbrief">A platforming/stealth game in a medieval fantasy setting, developed with SDL2.</div>
   </td>
@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -73,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -92,6 +93,11 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="title">Window Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Actual window that game runs on.  
+ <a href="class_window.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_window_8h_source.html">Window.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -122,23 +128,14 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:a4ddb6696a90ca8db80c4d12c7142da5e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a4ddb6696a90ca8db80c4d12c7142da5e"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>width</b></td></tr>
-<tr class="separator:a4ddb6696a90ca8db80c4d12c7142da5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac8e0adc74d78dd8d6bcd3cb5e72164bc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ac8e0adc74d78dd8d6bcd3cb5e72164bc"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>height</b></td></tr>
-<tr class="separator:ac8e0adc74d78dd8d6bcd3cb5e72164bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a340b289f258761b093201a2b5b52ea16"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a340b289f258761b093201a2b5b52ea16"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>windowTitle</b></td></tr>
-<tr class="separator:a340b289f258761b093201a2b5b52ea16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b52309ef359b6392454a3bb57398b5d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2b52309ef359b6392454a3bb57398b5d"></a>
-SDL_Renderer *&#160;</td><td class="memItemRight" valign="bottom"><b>renderer</b></td></tr>
+<tr class="memitem:a2b52309ef359b6392454a3bb57398b5d"><td class="memItemLeft" align="right" valign="top">SDL_Renderer *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a2b52309ef359b6392454a3bb57398b5d">renderer</a></td></tr>
+<tr class="memdesc:a2b52309ef359b6392454a3bb57398b5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The SDL renderer to render onto.  <a href="#a2b52309ef359b6392454a3bb57398b5d">More...</a><br/></td></tr>
 <tr class="separator:a2b52309ef359b6392454a3bb57398b5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae39a7755a5a6ab74bcbdbe3e2e206820"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae39a7755a5a6ab74bcbdbe3e2e206820"></a>
-SDL_Window *&#160;</td><td class="memItemRight" valign="bottom"><b>window</b></td></tr>
-<tr class="separator:ae39a7755a5a6ab74bcbdbe3e2e206820"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Actual window that game runs on. </p>
+<p>Contains the SDL window and the SDL renderer, and methods related to these. </p>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a5d8fafbaa9b06a85a8f3d40d4e18fb95"></a>
 <div class="memitem">
 <div class="memproto">
@@ -170,7 +167,16 @@ SDL_Window *&#160;</td><td class="memItemRight" valign="bottom"><b>window</b></t
 </div><div class="memdoc">
 
 <p>The constructor. </p>
-<p>Sets all attributes, and calls the initialize method.  lWidth : desired window width.  lHeight : desired window height.  lTitle : desired window title. </p>
+<p>Sets all attributes, and calls the initialize method. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lWidth</td><td>: The desired window width. </td></tr>
+    <tr><td class="paramname">lHeight</td><td>: The desired window height. </td></tr>
+    <tr><td class="paramname">lTitle</td><td>: The desired window title. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>If omitted, window title will be "SDL Window". </dd></dl>
 <dl class="section see"><dt>See Also</dt><dd>initialize() </dd></dl>
 
 </div>
@@ -189,7 +195,7 @@ SDL_Window *&#160;</td><td class="memItemRight" valign="bottom"><b>window</b></t
 </div><div class="memdoc">
 
 <p>The destructor. </p>
-<p>Uses the destroy method to free window. </p>
+<p>Uses the destroy method to delete window. </p>
 <dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_window.html#aa89262ad2538473c8d7e4d8dd641849d" title="Frees allocated members. ">destroy()</a> </dd></dl>
 
 </div>
@@ -310,17 +316,42 @@ SDL_Window *&#160;</td><td class="memItemRight" valign="bottom"><b>window</b></t
 </div><div class="memdoc">
 
 <p>Rescales the renderization. </p>
-<p>Set a device independent resolution for rendering.  lWidth : the new resolution width.  lHeight : the new resolution height. </p>
+<p>Set a device independent resolution for rendering. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">lWidth</td><td>: The new resolution width. </td></tr>
+    <tr><td class="paramname">lHeight</td><td>: The new resolution height. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section see"><dt>See Also</dt><dd>SDL_RenderSetLogicalSize() </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>Only set this if lWidth:lHeight matches the desired resolution, for example, 16:10. </dd></dl>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following file:<ul>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a2b52309ef359b6392454a3bb57398b5d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Renderer* Window::renderer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The SDL renderer to render onto. </p>
+
+</div>
+</div>
+<hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/caio/Desktop/Git/Dauphine/include/<a class="el" href="_window_8h_source.html">Window.h</a></li>
+<li>/home/caio/Desktop/Git/Dauphine/src/<a class="el" href="_window_8cpp.html">Window.cpp</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 28 2014 22:05:05 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 29 2014 02:55:01 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

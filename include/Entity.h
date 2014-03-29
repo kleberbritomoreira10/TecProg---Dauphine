@@ -1,31 +1,34 @@
 #ifndef INCLUDE_ENTITY_H
 #define INCLUDE_ENTITY_H
 
-#include "SDLWrapper.h"
 #include "Sprite.h"
 
+/**
+* Class for all the entities.
+* Generic parent class for all the game's entities.
+*/
 class Entity {
 
 	public:
 		/**
-		* Updates entity.
-		* Modifies whatever is necessary, relative to the entity.
-		* @params dt : Delta time. Time elapsed between one frame and the other.
+		* Updates the entity.
+		* Updates whatever is necessary, relative to the entity.
+		* @param dt : Delta time. Time elapsed between one frame and the other.
 		*/
 		virtual void update(double dt) const;
 
 		/**
-		* Renders entity.
-		* Copies the entity onto the desired renderer.
+		* Renders the entity.
+		* Copies the entity's texture onto the renderer.
+		* @note Usually just calls the render method from the Sprite class.
 		*/
 		virtual void render() const;
 
-		double x;
-		double y;
+		double x; /**< The position in the x axis. */
+		double y; /**< The position in the y axis. */
 
 	protected:
-		Sprite *sprite;
-		SDL_Renderer *renderer;
+		Sprite *sprite; /**< The Sprite attributed to the entity. */
 
 };
 

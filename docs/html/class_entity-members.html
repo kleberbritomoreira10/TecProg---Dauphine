@@ -24,7 +24,7 @@
   <td id="projectlogo"><img alt="Logo" src="logo.png"/></td>
   <td style="padding-left: 0.5em;">
    <div id="projectname">Dauphine
-   &#160;<span id="projectnumber">1</span>
+   &#160;<span id="projectnumber">0.1</span>
    </div>
    <div id="projectbrief">A platforming/stealth game in a medieval fantasy setting, developed with SDL2.</div>
   </td>
@@ -40,6 +40,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
   <div id="navrow1" class="tabs">
     <ul class="tablist">
       <li><a href="index.html"><span>Main&#160;Page</span></a></li>
+      <li><a href="pages.html"><span>Related&#160;Pages</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
       <li>
@@ -73,7 +74,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Pages</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -91,16 +92,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <p>This is the complete list of members for <a class="el" href="class_entity.html">Entity</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="class_entity.html#ae65a2d49d0d720fa821a532a9a9f6fec">render</a>() const </td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>renderer</b> (defined in <a class="el" href="class_entity.html">Entity</a>)</td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>sprite</b> (defined in <a class="el" href="class_entity.html">Entity</a>)</td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_entity.html#a809a91ca5a0778e1cf2aa5a4bfb2fcc8">update</a>(double dt) const </td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>x</b> (defined in <a class="el" href="class_entity.html">Entity</a>)</td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>y</b> (defined in <a class="el" href="class_entity.html">Entity</a>)</td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_entity.html#ab7069dc5ee24520bc69db10ee07348d9">render</a>() const </td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_entity.html#a4da30cea569f19c66c033358e1e99c04">sprite</a></td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_entity.html#ac895cd59047c2f64c2fd0ae588548951">update</a>(double dt) const </td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_entity.html#abe84b2274427a984d952acd6d4c4061f">x</a></td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_entity.html#aeaf8012f92ad9f8ea0df589e3fc67c8f">y</a></td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Mar 28 2014 22:05:05 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat Mar 29 2014 02:55:01 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

@@ -1,7 +1,7 @@
 #include "Game.h"
 #include "Logger.h"
 #include "Sprite.h"
-#include "Input.h"
+#include "InputHandler.h"
 #include "Player.h"
 
 Game::Game(Window *lGameWindow){
@@ -9,13 +9,12 @@ Game::Game(Window *lGameWindow){
 		this->gameWindow = lGameWindow;
 		this->isRunning = true;
 		
-		// TODO: put this somewhere else.
+		/// @todo Separate the FPS manager things into another class, probably a FPSWrapper.
+		// Initializes the SDL2_GFX framerate control.
 		const int DESIRED_FPS = 60;
 
-		// TODO: extract this to a method. Possibly a framerate wrapper, to work with dt.
-		// Initializes the SDL2_GFX framerate control.
 		SDL_initFramerate(&this->fpsManager);
-		int framerateSet = SDL_setFramerate(&this->fpsManager, DESIRED_FPS);
+		const int framerateSet = SDL_setFramerate(&this->fpsManager, DESIRED_FPS);
 		if(framerateSet == 0){
 			Logger::log("Successfully started the framerate manager.");
 		}
@@ -26,7 +25,7 @@ Game::Game(Window *lGameWindow){
 	else{
 		this->gameWindow = nullptr;
 		this->isRunning = false;
-		Logger::warning("Game window is null. Game will not run.");
+		Logger::error("Game window is null. Game will not run.");
 	}
 }
 
@@ -38,6 +37,8 @@ Game::~Game(){
 }
 
 void Game::runGame(){
+	/// @todo Remove all of the example code from inside this method.
+
 	// Just an example of Sprite loading, delete this later.
 	Sprite *sprite = nullptr;
 	sprite = new Sprite(this->gameWindow->renderer);
@@ -46,14 +47,15 @@ void Game::runGame(){
 		Logger::error("Couldn't load sprite.");
 	}
 
-	// Creating the player.
+	// Creating the player example.
 	Player *player = nullptr;
 	player = new Player(0.0, 0.0, sprite);
 
 	// Creating the input handler	
-	Input *gameInput = nullptr;
-	gameInput = new Input(this);
+	InputHandler *gameInput = nullptr;
+	gameInput = new InputHandler(this);
 	
+	/// @todo Handle all of this DT issues from the FPSWrapper. Also, SDL_GetTicks returns Uint32, not a double.
 	// Get the first game time.
 	double lastTime = SDL_GetTicks();
 	
@@ -94,5 +96,5 @@ void Game::runGame(){
 }
 
 void Game::update(double dt){
-	// Call all updates.
+	/// @todo Implement this method.
 }

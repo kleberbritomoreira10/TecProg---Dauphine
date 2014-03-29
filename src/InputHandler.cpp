@@ -1,20 +1,19 @@
-#include "Input.h"
+#include "InputHandler.h"
 #include "Logger.h"
 
-Input::Input(Game *lGame){
-	if(lGame != nullptr){
-		this->game = lGame;
-	}
-	else{
-		Logger::warning("Null game passed to input handler.");
+InputHandler::InputHandler(Game *lGame){
+	this->game = lGame;
+
+	if(this->game == nullptr){
+		Logger::warning("Null game passed to input handler. Game will have no input.");
 	}
 }
 
-Input::~Input(){
+InputHandler::~InputHandler(){
 	this->game = nullptr;
 }
 
-void Input::handleInput(){
+void InputHandler::handleInput(){
 	// Event handling.
 	int pendingEvent = 0;
 	do{
@@ -36,5 +35,5 @@ void Input::handleInput(){
 			default:			
 				break;
 		}
-	}while(pendingEvent != 0);
+	} while(pendingEvent != 0);
 }

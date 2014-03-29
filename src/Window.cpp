@@ -4,6 +4,7 @@
 Window::Window(unsigned int lWidth, unsigned int lHeight, string lTitle){
 	this->window = nullptr;
 	this->renderer = nullptr;
+	
 	this->width = lWidth;
 	this->height = lHeight;
 	this->windowTitle = lTitle;
@@ -78,6 +79,6 @@ void Window::initialize(){
 }
 
 void Window::rescale(unsigned int lWidth, unsigned int lHeight){
-	// TODO: only set this if lWidth:lHeight matches the desired resolution, for example, 16:10.
+	/// @todo Only set this if lWidth:lHeight matches the desired resolution, for example, 16:10.
 	SDL_RenderSetLogicalSize(this->renderer, lWidth, lHeight);
 }

@@ -2,6 +2,8 @@
 #include "Logger.h"
 
 bool SDLWrapper::initialize(){
+	/// @todo Check if initializing each subsystem separately is worth it.
+
 	bool initSDL = false;
 	bool initIMG = false;
 

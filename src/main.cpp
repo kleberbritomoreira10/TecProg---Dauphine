@@ -1,13 +1,11 @@
 #include "Game.h"
 #include "Logger.h"
-#include "Player.h"
 
 // Since argc and argv are only necessary for cross-compiling SDL_Main,
 // we do this just so the compiler doesn't warn for unused arguments.
 #define UNUSED(x) ((void)x)
 
-// TODO: put these somewhere else.
-// 16:10 aspect ratio, for now.
+/// @todo Put these somewhere else. 16:10 aspect ratio, for now.
 const int SCREEN_WIDTH = 192 * 5;
 const int SCREEN_HEIGHT = 108 * 5;
 

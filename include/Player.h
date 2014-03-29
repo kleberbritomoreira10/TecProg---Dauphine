@@ -3,34 +3,39 @@
 
 #include "Entity.h"
 
+/**
+* The player entity class.
+* Contains all the relevant implementation relative to the player.
+*/
 class Player : public Entity {
 
 	public:
 		/**
 		* The constructor.
 		* Creates the player by setting the position and sprite.
-		* @params lX : position in x axis.
-		* @params lY : position in y axis.
-		* @params lSprite : which sprite to use.
+		* @param lX : position in x axis.
+		* @param lY : position in y axis.
+		* @param lSprite : which sprite to use.
 		*/
 		Player(double lX, double lY, Sprite *lSprite);
 
 		/**
 		* The destructor.
-		* Deallocates everything necessary.
+		* Sets the x,y position to 0 and removes the Sprite.
 		*/
 		~Player();
 
 		/**
-		* Updates player.
+		* Updates the player.
 		* Modifies whatever is necessary, relative to the player.
-		* @params dt : Delta time. Time elapsed between one frame and the other.
+		* @param dt : Delta time. Time elapsed between one frame and the other.
 		*/
 		void update(double dt);
 
 		/**
-		* Renders player.
-		* Uses the players sprite render method.
+		* Renders the player.
+		* Uses the player's sprite render method.
+		* @see Sprite::render()
 		*/
 		void render();
 
