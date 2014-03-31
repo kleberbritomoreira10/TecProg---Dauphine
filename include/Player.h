@@ -17,7 +17,7 @@ class Player : public Entity {
 		* @param lY : position in y axis.
 		* @param lSprite : which sprite to use.
 		*/
-		Player(double lX, double lY, Sprite *lSprite);
+		Player(int lX, int lY, Sprite *lSprite);
 
 		/**
 		* The destructor.
@@ -30,7 +30,7 @@ class Player : public Entity {
 		* Modifies whatever is necessary, relative to the player.
 		* @param dt : Delta time. Time elapsed between one frame and the other.
 		*/
-		void update(double dt);
+		void update(double dt, int velX, int velY);
 
 		/**
 		* Renders the player.

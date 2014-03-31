@@ -3,6 +3,7 @@
 #include "Sprite.h"
 #include "InputHandler.h"
 #include "Player.h"
+#include <stdio.h>
 
 Game::Game(Window *lGameWindow){
 	if(lGameWindow != nullptr){
@@ -49,7 +50,7 @@ void Game::runGame(){
 
 	// Creating the player example.
 	Player *player = nullptr;
-	player = new Player(0.0, 0.0, sprite);
+	player = new Player(0, 0, sprite);
 
 	// Creating the input handler	
 	InputHandler *gameInput = nullptr;
@@ -77,9 +78,8 @@ void Game::runGame(){
 		// update the last time.
 		lastTime = now;
 
-
 		// Updating the game.	
-		player->update(dt);
+		player->update(dt, gameInput->pVelX, gameInput->pVelY);
 		// Renders the player.
 		player->render();
 

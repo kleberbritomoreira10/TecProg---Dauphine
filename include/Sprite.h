@@ -49,7 +49,7 @@ class Sprite {
 		* @param y : The position on the y axis of the screen.
 		* @param clip : Clips the texture, on the SDL_Rect bounds. If omitted, renders the entire texture.
 		*/
-		void render(double x, double y, SDL_Rect *clip = nullptr);
+		void render(int x, int y, SDL_Rect *clip = nullptr);
 
 		/**
 		* @return The Sprite width.
@@ -60,12 +60,14 @@ class Sprite {
 		* @return The Sprite height.
 		*/
 		unsigned int getHeight();
+
+		unsigned int width; /**< The loaded image's width. */
+		unsigned int height; /**< The loaded image's width. */
 		
 	private:
 		SDL_Renderer *sdlRenderer; /**< The SDL renderer to render onto. */
 		SDL_Texture* sdlTexture; /**< The SDL texture to use as the image. */
-		unsigned int width; /**< The loaded image's width. */
-		unsigned int height; /**< The loaded image's width. */
+		
 };
 
 #endif //INCLUDE_SPRITE_H

@@ -30,6 +30,9 @@ class InputHandler {
 		*/
 		void handleInput();		
 
+		int pVelX;
+		int pVelY;
+
 	private:
 		SDL_Event eventHandler; /**< SDL internal event handler. */
 		Game *game; /**< The Game to recieve input from. */
