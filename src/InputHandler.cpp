@@ -29,10 +29,10 @@ void InputHandler::handleInput(){
 	        // Adjust the velocity.
 	        switch( this->eventHandler.key.keysym.sym )
 	        {
-	            case SDLK_UP: pVelY -= VEL; break;
-	            case SDLK_DOWN: pVelY += VEL; break;
-	            case SDLK_LEFT: pVelX -= VEL; break;
-	            case SDLK_RIGHT: pVelX += VEL; break;
+	            case SDLK_UP: pVelY = -VEL; break;
+	            case SDLK_DOWN: pVelY = VEL; break;
+	            case SDLK_LEFT: pVelX = -VEL; break;
+	            case SDLK_RIGHT: pVelX = VEL; break;
 	        }
 	    }
 	    // If a key was released.
@@ -41,10 +41,10 @@ void InputHandler::handleInput(){
 	        // Adjust the velocity.
 	        switch( this->eventHandler.key.keysym.sym )
 	        {
-	            case SDLK_UP: pVelY += VEL; break;
-	            case SDLK_DOWN: pVelY -= VEL; break;
-	            case SDLK_LEFT: pVelX += VEL; break;
-	            case SDLK_RIGHT: pVelX -= VEL; break;
+	            case SDLK_UP: pVelY = 0; break;
+	            case SDLK_DOWN: pVelY = 0; break;
+	            case SDLK_LEFT: pVelX = 0; break;
+	            case SDLK_RIGHT: pVelX = 0; break;
 	        }
 	    }
 	    if( this->eventHandler.type == SDL_QUIT ){
