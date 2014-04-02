@@ -3,7 +3,6 @@
 #include "Sprite.h"
 #include "InputHandler.h"
 #include "Player.h"
-#include <stdio.h>
 
 Game::Game(Window *lGameWindow){
 	if(lGameWindow != nullptr){
@@ -49,12 +48,10 @@ void Game::runGame(){
 	}
 
 	// Creating the player example.
-	Player *player = nullptr;
-	player = new Player(0, 0, sprite);
+	Player player(300, 300, sprite);
 
 	// Creating the input handler	
-	InputHandler *gameInput = nullptr;
-	gameInput = new InputHandler(this);
+	InputHandler gameInput(this, &player);
 	
 	/// @todo Handle all of this DT issues from the FPSWrapper. Also, SDL_GetTicks returns Uint32, not a double.
 	// Get the first game time.
@@ -66,10 +63,10 @@ void Game::runGame(){
 		// Sets the draw color and clears the screen.
 		gameWindow->clear();
 		
-		
-		// Gets the inputs.
-		gameInput->handleInput();
-	
+		Command *command = gameInput.handleInput();
+		if(command != nullptr){
+			command->execute();
+		}
 
 		// get the current time. 
 		double now = SDL_GetTicks();
@@ -79,9 +76,9 @@ void Game::runGame(){
 		lastTime = now;
 
 		// Updating the game.	
-		player->update(dt, gameInput->pVelX, gameInput->pVelY);
+		player.update(dt);
 		// Renders the player.
-		player->render();
+		player.render();
 
 
 		// Renders the gameWindow.

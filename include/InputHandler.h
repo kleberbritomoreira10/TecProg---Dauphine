@@ -2,6 +2,8 @@
 #define INCLUDE_INPUTHANDLER_H
 
 #include "Game.h"
+#include "Command.h"
+#include "Player.h"
 
 /**
 * Handles player input.
@@ -16,7 +18,7 @@ class InputHandler {
 		* @param lGame : the game to detect input from.
 		* @note If the lGame parameter is null, will warn that game will have no input.
 		*/
-		InputHandler(Game *lGame);
+		InputHandler(Game *lGame, Player *lPlayer);
 		
 		/**
 		* The destructor.
@@ -27,15 +29,17 @@ class InputHandler {
 		/**
 		* Handles the input.
 		* Detects the pending events, and handles them appropriately.
+		* @return The command that was input by the user.
 		*/
-		void handleInput();		
-
-		int pVelX;
-		int pVelY;
+		Command* handleInput();
 
 	private:
 		SDL_Event eventHandler; /**< SDL internal event handler. */
 		Game *game; /**< The Game to recieve input from. */
+
+		Command *moveRightCommand;
+		Command *moveLeftCommand;
+		Command *jumpCommand;
 
 };
 

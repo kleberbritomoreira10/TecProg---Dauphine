@@ -30,7 +30,7 @@ class Player : public Entity {
 		* Modifies whatever is necessary, relative to the player.
 		* @param dt : Delta time. Time elapsed between one frame and the other.
 		*/
-		void update(double dt, int velX, int velY);
+		void update(double dt);
 
 		/**
 		* Renders the player.
@@ -38,6 +38,14 @@ class Player : public Entity {
 		* @see Sprite::render()
 		*/
 		void render();
+
+		double vx;
+		double vy;
+		double speed;
+
+		void moveLeft();
+		void moveRight();
+		void jump();
 
 };
 
