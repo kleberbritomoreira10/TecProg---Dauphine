@@ -29,24 +29,37 @@ Player::~Player(){
 	this->sprite = nullptr;
 }
 
-void Player::update(double dt){
+void Player::update(double dt, bool keyState[10]){
 	/// @todo: Implement everything in this method, pretty much.
+    if(keyState[0]){
+    	this->vy -= 10;
+    }
+    else{
+ 		if(this->y >= (SCREEN_HEIGHT - 100)){
+    		this->y = SCREEN_HEIGHT - 99;
+    		this->vy = 0;
+		}
+		else{
+			this->vy += 10;
+		}
+    }
+
+	if(keyState[1]){
+    	this->vx -= 10;
+    }
+    else if(keyState[2]){
+    	this->vx += 10;
+    }
+    else{
+    	this->vx *= 0.98;
+    }
+   
+
     this->x += this->vx * dt;
     this->y += this->vy * dt;
+
 }
 
 void Player::render(){
 	this->sprite->render(this->x, this->y, nullptr);
-}
-
-void Player::moveLeft(){
-    this->vx -= this->speed;
-}
-
-void Player::moveRight(){
-    this->vx += this->speed;
-}
-
-void Player::jump(){
-	this->vy -= 10;
 }

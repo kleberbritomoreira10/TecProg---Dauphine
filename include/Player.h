@@ -30,7 +30,7 @@ class Player : public Entity {
 		* Modifies whatever is necessary, relative to the player.
 		* @param dt : Delta time. Time elapsed between one frame and the other.
 		*/
-		void update(double dt);
+		void update(double dt, bool keyState[10]);
 
 		/**
 		* Renders the player.
@@ -42,10 +42,6 @@ class Player : public Entity {
 		double vx;
 		double vy;
 		double speed;
-
-		void moveLeft();
-		void moveRight();
-		void jump();
 
 };
 

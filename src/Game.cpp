@@ -47,11 +47,13 @@ void Game::runGame(){
 		Logger::error("Couldn't load sprite.");
 	}
 
+	bool keyState[10];
+
 	// Creating the player example.
 	Player player(300, 300, sprite);
 
 	// Creating the input handler	
-	InputHandler gameInput(this, &player);
+	InputHandler gameInput(this);
 	
 	/// @todo Handle all of this DT issues from the FPSWrapper. Also, SDL_GetTicks returns Uint32, not a double.
 	// Get the first game time.
@@ -63,10 +65,7 @@ void Game::runGame(){
 		// Sets the draw color and clears the screen.
 		gameWindow->clear();
 		
-		Command *command = gameInput.handleInput();
-		if(command != nullptr){
-			command->execute();
-		}
+		gameInput.handleInput();
 
 		// get the current time. 
 		double now = SDL_GetTicks();
@@ -76,7 +75,7 @@ void Game::runGame(){
 		lastTime = now;
 
 		// Updating the game.	
-		player.update(dt);
+		player.update(dt,gameInput.keyState);
 		// Renders the player.
 		player.render();
 
