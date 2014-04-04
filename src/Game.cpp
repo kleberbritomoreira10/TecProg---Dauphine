@@ -48,42 +48,37 @@ void Game::runGame(){
 	}
 
 	// Creating the player example.
-	// Player player(300, 300, sprite);
-	Player *player = nullptr;
-	player = new Player(300, 300, sprite);
+	Player player(300, 300, sprite);
 
-	// Creating the input handler	
+	// Creating the input handler.
 	InputHandler gameInput(this);
 	
 	/// @todo Handle all of this DT issues from the FPSWrapper. Also, SDL_GetTicks returns Uint32, not a double.
 	// Get the first game time.
 	double lastTime = SDL_GetTicks();
 	
-	// Main game loop.
+	// This is the main game loop.
 	while(this->isRunning){
 
-		// Sets the draw color and clears the screen.
+		// Clearing the screen.
 		gameWindow->clear();
 		
+		// Recieving the input.
 		gameInput.handleInput();
 
-		// get the current time. 
+		// Calculations to get the delta time.
 		double now = SDL_GetTicks();
-		// Diff of last time and current time.
 		double dt = (now - lastTime)/1000.0;
-		// update the last time.
 		lastTime = now;
 
-		// Updating the game.	
-		player->update(dt, gameInput.keyState);
-		// Renders the player.
-		player->render();
+		// Updating the game.
+		player.updateInput(gameInput.keyState);
+		player.update(dt);
 
-
-		// Renders the gameWindow.
+		// Rendering the game.
+		player.render();
 		gameWindow->render();
 		
-
 		// Delays the framerate, if necessary.
 		SDL_framerateDelay(&this->fpsManager);
 

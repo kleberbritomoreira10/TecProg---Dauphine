@@ -29,37 +29,38 @@ Player::~Player(){
 	this->sprite = nullptr;
 }
 
-void Player::update(double dt_, bool keyState_[GK_MAX]){
-	/// @todo: Implement everything in this method, pretty much.
-    if(keyState_[GK_UP]){
-    	this->vy -= this->speed;
-    }
-    else{
- 		if(this->y >= (SCREEN_HEIGHT - 100)){
-    		this->y = SCREEN_HEIGHT - 99;
-    		this->vy = 0;
-		}
-		else{
-			this->vy += this->speed;
-		}
-    }
-
-	if(keyState_[GK_LEFT]){
-    	this->vx -= this->speed;
-    }
-    else if(keyState_[GK_RIGHT]){
-    	this->vx += this->speed;
-    }
-    else{
-    	this->vx *= 0.98;
-    }
-   
-
+void Player::update(double dt_){
     this->x += this->vx * dt_;
     this->y += this->vy * dt_;
-
 }
 
 void Player::render(){
 	this->sprite->render(this->x, this->y, nullptr);
+}
+
+void Player::updateInput(bool keyState_[GK_MAX]){
+    // Jump.
+    if(keyState_[GK_UP]){
+        this->vy -= this->speed;
+    }
+    else{
+        if(this->y >= (SCREEN_HEIGHT - 100)){
+            this->y = SCREEN_HEIGHT - 99;
+            this->vy = 0;
+        }
+        else{
+            this->vy += this->speed;
+        }
+    }
+
+    // Movement.
+    if(keyState_[GK_LEFT]){
+        this->vx -= this->speed;
+    }
+    else if(keyState_[GK_RIGHT]){
+        this->vx += this->speed;
+    }
+    else{
+        this->vx *= 0.98;
+    }
 }

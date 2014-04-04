@@ -25,7 +25,7 @@ class Player : public Entity {
 		* The destructor.
 		* Sets the x,y position to 0 and removes the Sprite.
 		*/
-		~Player();
+		virtual ~Player();
 
 		/**
 		* Updates the player.
@@ -33,14 +33,21 @@ class Player : public Entity {
 		* @param dt_ : Delta time. Time elapsed between one frame and the other.
 		* @param keyState_ : The input handled boolean array that says which keys are pressed.
 		*/
-		void update(double dt_, bool keyState_[GK_MAX]);
+		virtual void update(double dt_);
 
 		/**
 		* Renders the player.
 		* Uses the player's sprite render method.
 		* @see Sprite::render()
 		*/
-		void render();
+		virtual void render();
+
+		/**
+		* Updates the player depending on recieved input.
+		* Modifies whatever is necessary, relative to the player.
+		* @param keyState_ : The input handled boolean array that says which keys are pressed.
+		*/
+		void updateInput(bool keyState_[GK_MAX]);
 
 		double vx; /**< The player's speed on the x axis. */
 		double vy; /**< The player's speed on the x axis. */
