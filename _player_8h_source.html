@@ -56,25 +56,29 @@
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define INCLUDE_PLAYER_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;Entity.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="code" href="class_player.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_player.html" title="The player entity class. ">Player</a> : <span class="keyword">public</span> <a class="code" href="class_entity.html" title="Class for all the entities. ">Entity</a> {</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <a class="code" href="class_player.html#a50b38d576dbd18d08ab276f590faea46" title="The constructor. ">Player</a>(<span class="keywordtype">double</span> lX, <span class="keywordtype">double</span> lY, <a class="code" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a> *lSprite);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="class_player.html#a749d2c00e1fe0f5c2746f7505a58c062" title="The destructor. ">~Player</a>();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#a9117f98ab1e6f0d58c099f3c721f4906" title="Updates the player. ">update</a>(<span class="keywordtype">double</span> dt);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#afe3ff7815f9366b4c4fffa2cf6556ad5" title="Renders the player. ">render</a>();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;};</div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;Sprite.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="code" href="class_player.html">   11</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_player.html" title="The player entity class. ">Player</a> : <span class="keyword">public</span> <a class="code" href="class_entity.html" title="Class for all the entities. ">Entity</a> {</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="class_player.html#aceec0ce21b4783e66cabd4573a4f41cc" title="The constructor. ">Player</a>(<span class="keywordtype">double</span> x_, <span class="keywordtype">double</span> y_, <a class="code" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a> *sprite_);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="class_player.html#a749d2c00e1fe0f5c2746f7505a58c062" title="The destructor. ">~Player</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#a99121740d8a95233d7e9de8642eb8644" title="Updates the player. ">update</a>(<span class="keywordtype">double</span> dt_, <span class="keywordtype">bool</span> keyState_[GK_MAX]);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#afe3ff7815f9366b4c4fffa2cf6556ad5" title="Renders the player. ">render</a>();</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="preprocessor">#endif //INCLUDE_PLAYER_H</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="class_player.html#ae94b76deb6ed53f49d1db40a843f30c8">   44</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_player.html#ae94b76deb6ed53f49d1db40a843f30c8" title="The player&#39;s speed on the x axis. ">vx</a>; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="class_player.html#a97c9f469ef054e12fb85c6f239de3e12">   45</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_player.html#a97c9f469ef054e12fb85c6f239de3e12" title="The player&#39;s speed on the x axis. ">vy</a>; </div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="class_player.html#a2c45aef68a4799af9e5fd2054d32e3b3">   46</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_player.html#a2c45aef68a4799af9e5fd2054d32e3b3" title="Speed that moves player on input. ">speed</a>; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;};</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="preprocessor">#endif //INCLUDE_PLAYER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 29 2014 12:26:19 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 4 2014 15:51:05 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

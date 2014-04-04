@@ -64,12 +64,18 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ac895cd59047c2f64c2fd0ae588548951"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#ac895cd59047c2f64c2fd0ae588548951">update</a> (double dt) const </td></tr>
-<tr class="memdesc:ac895cd59047c2f64c2fd0ae588548951"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the entity.  <a href="#ac895cd59047c2f64c2fd0ae588548951">More...</a><br/></td></tr>
-<tr class="separator:ac895cd59047c2f64c2fd0ae588548951"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab7069dc5ee24520bc69db10ee07348d9"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#ab7069dc5ee24520bc69db10ee07348d9">render</a> () const </td></tr>
-<tr class="memdesc:ab7069dc5ee24520bc69db10ee07348d9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the entity.  <a href="#ab7069dc5ee24520bc69db10ee07348d9">More...</a><br/></td></tr>
-<tr class="separator:ab7069dc5ee24520bc69db10ee07348d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a980f368aa07ce358583982821533a54a"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a980f368aa07ce358583982821533a54a">Entity</a> ()</td></tr>
+<tr class="memdesc:a980f368aa07ce358583982821533a54a"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor.  <a href="#a980f368aa07ce358583982821533a54a">More...</a><br/></td></tr>
+<tr class="separator:a980f368aa07ce358583982821533a54a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a588098978eea6a3486b7361605ff3f0f"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a588098978eea6a3486b7361605ff3f0f">~Entity</a> ()</td></tr>
+<tr class="memdesc:a588098978eea6a3486b7361605ff3f0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The destructor.  <a href="#a588098978eea6a3486b7361605ff3f0f">More...</a><br/></td></tr>
+<tr class="separator:a588098978eea6a3486b7361605ff3f0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf5e7c3d35df776cbba4aa5c2aab63e4"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#aaf5e7c3d35df776cbba4aa5c2aab63e4">update</a> (double dt_)</td></tr>
+<tr class="memdesc:aaf5e7c3d35df776cbba4aa5c2aab63e4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the entity.  <a href="#aaf5e7c3d35df776cbba4aa5c2aab63e4">More...</a><br/></td></tr>
+<tr class="separator:aaf5e7c3d35df776cbba4aa5c2aab63e4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a01c46243d7385ce65d38268331cf278a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a01c46243d7385ce65d38268331cf278a">render</a> ()</td></tr>
+<tr class="memdesc:a01c46243d7385ce65d38268331cf278a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the entity.  <a href="#a01c46243d7385ce65d38268331cf278a">More...</a><br/></td></tr>
+<tr class="separator:a01c46243d7385ce65d38268331cf278a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -89,8 +95,8 @@ Protected Attributes</h2></td></tr>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class for all the entities. </p>
 <p>Generic parent class for all the game's entities. </p>
-</div><h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="ab7069dc5ee24520bc69db10ee07348d9"></a>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="a980f368aa07ce358583982821533a54a"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -98,15 +104,68 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Entity::render </td>
+          <td class="memname">Entity::Entity </td>
           <td>(</td>
           <td class="paramname">)</td><td></td>
-          <td> const</td>
+          <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The constructor. </p>
+<p>Instantiates the entity </p>
+
+</div>
+</div>
+<a class="anchor" id="a588098978eea6a3486b7361605ff3f0f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual Entity::~Entity </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The destructor. </p>
+<p>Destroys the entity </p>
+
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a01c46243d7385ce65d38268331cf278a"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void Entity::render </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -115,9 +174,11 @@ Protected Attributes</h2></td></tr>
 <p>Copies the entity's texture onto the renderer. </p>
 <dl class="section note"><dt>Note</dt><dd>Usually just calls the render method from the <a class="el" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a> class. </dd></dl>
 
+<p>Reimplemented in <a class="el" href="class_player.html#afe3ff7815f9366b4c4fffa2cf6556ad5">Player</a>.</p>
+
 </div>
 </div>
-<a class="anchor" id="ac895cd59047c2f64c2fd0ae588548951"></a>
+<a class="anchor" id="aaf5e7c3d35df776cbba4aa5c2aab63e4"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -125,16 +186,16 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Entity::update </td>
+          <td class="memname">virtual void Entity::update </td>
           <td>(</td>
           <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>dt</em>)</td><td></td>
-          <td> const</td>
+          <td class="paramname"><em>dt_</em>)</td><td></td>
+          <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -143,7 +204,7 @@ Protected Attributes</h2></td></tr>
 <p>Updates whatever is necessary, relative to the entity. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">dt</td><td>: Delta time. Time elapsed between one frame and the other. </td></tr>
+    <tr><td class="paramname">dt_</td><td>: Delta time. Time elapsed between one frame and the other. </td></tr>
   </table>
   </dd>
 </dl>
@@ -201,14 +262,13 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
-<hr/>The documentation for this class was generated from the following files:<ul>
+<hr/>The documentation for this class was generated from the following file:<ul>
 <li>/home/caio/Desktop/Git/Dauphine/include/<a class="el" href="_entity_8h_source.html">Entity.h</a></li>
-<li>/home/caio/Desktop/Git/Dauphine/src/Entity.cpp</li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 29 2014 12:26:19 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 4 2014 15:51:05 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

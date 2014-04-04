@@ -44,31 +44,31 @@
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt><a class="anchor" id="_todo000002"></a>Member <a class="el" href="class_game.html#a9207d230dfceb6f32431de1d5eb54f69">Game::Game</a>  (<a class="el" href="class_window.html" title="Actual window that game runs on. ">Window</a> *lWindow)</dt>
+<dt><a class="anchor" id="_todo000003"></a>Member <a class="el" href="class_game.html#a7a03c28a0e6af3c4e1925b0c4791de4c">Game::Game</a>  (<a class="el" href="class_window.html" title="Actual window that game runs on. ">Window</a> *window_)</dt>
 <dd>Separate the FPS manager things into another class, probably a FPSWrapper.  </dd>
-<dt><a class="anchor" id="_todo000003"></a>Member <a class="el" href="class_game.html#abc9436a9d18e48c6e1e4fbc4ea879449">Game::runGame</a>  ()</dt>
+<dt><a class="anchor" id="_todo000004"></a>Member <a class="el" href="class_game.html#abc9436a9d18e48c6e1e4fbc4ea879449">Game::runGame</a>  ()</dt>
 <dd><p class="startdd">Remove all of the example code from inside this method. </p>
 <p class="enddd">Handle all of this DT issues from the FPSWrapper. Also, SDL_GetTicks returns Uint32, not a double.  </p>
 </dd>
-<dt><a class="anchor" id="_todo000005"></a>Member <a class="el" href="class_game.html#aa8c8ca9efb596230614be2f2f9e61b86">Game::update</a>  (double dt)</dt>
+<dt><a class="anchor" id="_todo000006"></a>Member <a class="el" href="class_game.html#afbff666eea1be31b9a87bf2ee8c86e4a">Game::update</a>  (double dt_)</dt>
 <dd>Implement this method.  </dd>
-<dt><a class="anchor" id="_todo000001"></a>Member <a class="el" href="class_logger.html#a0b909bbf40cd45443c4a512271aa7bbe">Logger::log</a>  (const string message)</dt>
+<dt><a class="anchor" id="_todo000001"></a>Member <a class="el" href="class_logger.html#a499f5d90cf204132c4fa35bd3a78ccf3">Logger::log</a>  (const string message_)</dt>
 <dd>Implement a separate generic parameter log function, to log and integer, for example.  </dd>
-<dt><a class="anchor" id="_todo000008"></a>Member <a class="el" href="class_player.html#a9117f98ab1e6f0d58c099f3c721f4906">Player::update</a>  (double dt)</dt>
+<dt><a class="anchor" id="_todo000009"></a>Member <a class="el" href="class_player.html#a99121740d8a95233d7e9de8642eb8644">Player::update</a>  (double dt_, bool keyState_[GK_MAX])</dt>
 <dd>: Implement everything in this method, pretty much.  </dd>
-<dt><a class="anchor" id="_todo000007"></a>Member <a class="el" href="class_player.html#a749d2c00e1fe0f5c2746f7505a58c062">Player::~Player</a>  ()</dt>
+<dt><a class="anchor" id="_todo000008"></a>Member <a class="el" href="class_player.html#a749d2c00e1fe0f5c2746f7505a58c062">Player::~Player</a>  ()</dt>
 <dd>: Maybe this isn't the best place to delete the <a class="el" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a> object.  </dd>
-<dt><a class="anchor" id="_todo000009"></a>Member <a class="el" href="class_s_d_l_wrapper.html#ae5be8c09a030f8b7809eb1957871820b">SDLWrapper::initialize</a>  ()</dt>
+<dt><a class="anchor" id="_todo000010"></a>Member <a class="el" href="class_s_d_l_wrapper.html#ae5be8c09a030f8b7809eb1957871820b">SDLWrapper::initialize</a>  ()</dt>
 <dd>Check if initializing each subsystem separately is worth it.  </dd>
-<dt><a class="anchor" id="_todo000010"></a>Member <a class="el" href="class_sprite.html#a493cb1a7309eb58f4dc1f43dc8997e42">Sprite::loadFrom</a>  (string path)</dt>
+<dt><a class="anchor" id="_todo000011"></a>Member <a class="el" href="class_sprite.html#a6144888305e054274089e9491fe7b166">Sprite::loadFrom</a>  (string path_)</dt>
 <dd>Check if loading the texture via IMG_LoadTexture isn't better, and get width/height through the queryTexture method.  </dd>
-<dt><a class="anchor" id="_todo000011"></a>Member <a class="el" href="class_window.html#a750fa60106ecb9a96c94d59e0c1ca0cb">Window::rescale</a>  (unsigned int lWidth, unsigned int lHeight)</dt>
+<dt><a class="anchor" id="_todo000012"></a>Member <a class="el" href="class_window.html#a60466f79c3dbe856c0324e378959201b">Window::rescale</a>  (unsigned int width_, unsigned int height_)</dt>
 <dd>Only set this if lWidth:lHeight matches the desired resolution, for example, 16:10. </dd>
 </dl>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 29 2014 12:26:19 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 4 2014 15:51:05 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

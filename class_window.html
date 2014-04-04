@@ -63,9 +63,9 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a5d8fafbaa9b06a85a8f3d40d4e18fb95"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a5d8fafbaa9b06a85a8f3d40d4e18fb95">Window</a> (unsigned int lWidth, unsigned int lHeight, string lTitle=&quot;SDL <a class="el" href="class_window.html">Window</a>&quot;)</td></tr>
-<tr class="memdesc:a5d8fafbaa9b06a85a8f3d40d4e18fb95"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor.  <a href="#a5d8fafbaa9b06a85a8f3d40d4e18fb95">More...</a><br/></td></tr>
-<tr class="separator:a5d8fafbaa9b06a85a8f3d40d4e18fb95"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1eec2cd4f8c260d86928da45e639d4c1"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a1eec2cd4f8c260d86928da45e639d4c1">Window</a> (unsigned int width_, unsigned int height_, string title_=&quot;SDL <a class="el" href="class_window.html">Window</a>&quot;)</td></tr>
+<tr class="memdesc:a1eec2cd4f8c260d86928da45e639d4c1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor.  <a href="#a1eec2cd4f8c260d86928da45e639d4c1">More...</a><br/></td></tr>
+<tr class="separator:a1eec2cd4f8c260d86928da45e639d4c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a245d821e6016fa1f6970ccbbedd635f6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a245d821e6016fa1f6970ccbbedd635f6">~Window</a> ()</td></tr>
 <tr class="memdesc:a245d821e6016fa1f6970ccbbedd635f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The destructor.  <a href="#a245d821e6016fa1f6970ccbbedd635f6">More...</a><br/></td></tr>
 <tr class="separator:a245d821e6016fa1f6970ccbbedd635f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -84,9 +84,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0a2093bd2ed34740c08a6a2fdfc059c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a0a2093bd2ed34740c08a6a2fdfc059c9">render</a> ()</td></tr>
 <tr class="memdesc:a0a2093bd2ed34740c08a6a2fdfc059c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders to screen.  <a href="#a0a2093bd2ed34740c08a6a2fdfc059c9">More...</a><br/></td></tr>
 <tr class="separator:a0a2093bd2ed34740c08a6a2fdfc059c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a750fa60106ecb9a96c94d59e0c1ca0cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a750fa60106ecb9a96c94d59e0c1ca0cb">rescale</a> (unsigned int lWidth, unsigned int lHeight)</td></tr>
-<tr class="memdesc:a750fa60106ecb9a96c94d59e0c1ca0cb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rescales the renderization.  <a href="#a750fa60106ecb9a96c94d59e0c1ca0cb">More...</a><br/></td></tr>
-<tr class="separator:a750fa60106ecb9a96c94d59e0c1ca0cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60466f79c3dbe856c0324e378959201b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a60466f79c3dbe856c0324e378959201b">rescale</a> (unsigned int width_, unsigned int height_)</td></tr>
+<tr class="memdesc:a60466f79c3dbe856c0324e378959201b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rescales the renderization.  <a href="#a60466f79c3dbe856c0324e378959201b">More...</a><br/></td></tr>
+<tr class="separator:a60466f79c3dbe856c0324e378959201b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -98,7 +98,7 @@ Public Attributes</h2></td></tr>
 <div class="textblock"><p>Actual window that game runs on. </p>
 <p>Contains the SDL window and the SDL renderer, and methods related to these. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a5d8fafbaa9b06a85a8f3d40d4e18fb95"></a>
+<a class="anchor" id="a1eec2cd4f8c260d86928da45e639d4c1"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -106,19 +106,19 @@ Public Attributes</h2></td></tr>
           <td class="memname">Window::Window </td>
           <td>(</td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>lWidth</em>, </td>
+          <td class="paramname"><em>width_</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>lHeight</em>, </td>
+          <td class="paramname"><em>height_</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">string&#160;</td>
-          <td class="paramname"><em>lTitle</em> = <code>&quot;SDL&#160;<a class="el" href="class_window.html">Window</a>&quot;</code>&#160;</td>
+          <td class="paramname"><em>title_</em> = <code>&quot;SDL&#160;<a class="el" href="class_window.html">Window</a>&quot;</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -132,9 +132,9 @@ Public Attributes</h2></td></tr>
 <p>Sets all attributes, and calls the initialize method. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">lWidth</td><td>: The desired window width. </td></tr>
-    <tr><td class="paramname">lHeight</td><td>: The desired window height. </td></tr>
-    <tr><td class="paramname">lTitle</td><td>: The desired window title. </td></tr>
+    <tr><td class="paramname">width_</td><td>: The desired window width. </td></tr>
+    <tr><td class="paramname">height_</td><td>: The desired window height. </td></tr>
+    <tr><td class="paramname">title_</td><td>: The desired window title. </td></tr>
   </table>
   </dd>
 </dl>
@@ -253,7 +253,7 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a750fa60106ecb9a96c94d59e0c1ca0cb"></a>
+<a class="anchor" id="a60466f79c3dbe856c0324e378959201b"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -261,13 +261,13 @@ Public Attributes</h2></td></tr>
           <td class="memname">void Window::rescale </td>
           <td>(</td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>lWidth</em>, </td>
+          <td class="paramname"><em>width_</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>lHeight</em>&#160;</td>
+          <td class="paramname"><em>height_</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -281,13 +281,13 @@ Public Attributes</h2></td></tr>
 <p>Set a device independent resolution for rendering. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">lWidth</td><td>: The new resolution width. </td></tr>
-    <tr><td class="paramname">lHeight</td><td>: The new resolution height. </td></tr>
+    <tr><td class="paramname">width_</td><td>: The new resolution width. </td></tr>
+    <tr><td class="paramname">height_</td><td>: The new resolution height. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section see"><dt>See Also</dt><dd>SDL_RenderSetLogicalSize() </dd></dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>Only set this if lWidth:lHeight matches the desired resolution, for example, 16:10. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000012">Todo:</a></b></dt><dd>Only set this if lWidth:lHeight matches the desired resolution, for example, 16:10. </dd></dl>
 
 </div>
 </div>
@@ -313,7 +313,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 29 2014 12:26:19 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 4 2014 15:51:05 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

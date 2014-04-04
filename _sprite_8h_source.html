@@ -63,32 +63,32 @@
 <div class="line"><a name="l00013"></a><span class="lineno"><a class="code" href="class_sprite.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a> {</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="class_sprite.html#a0902f2b2dc37e42f8e4bae90a9e9f686" title="The constructor. ">Sprite</a>(SDL_Renderer *lRenderer);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="class_sprite.html#aba2991c432d6c5e5d6537748c4847784" title="The constructor. ">Sprite</a>(SDL_Renderer *renderer_);</div>
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <a class="code" href="class_sprite.html#a8accab430f9d90ae5117b57d67e32b84" title="The destructor. ">~Sprite</a>();</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_sprite.html#a493cb1a7309eb58f4dc1f43dc8997e42" title="Loads image from a path. ">loadFrom</a>(<span class="keywordtype">string</span> path);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_sprite.html#a6144888305e054274089e9491fe7b166" title="Loads image from a path. ">loadFrom</a>(<span class="keywordtype">string</span> path_);</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_sprite.html#abce3359b4f055bac7384038046ed9ead" title="Frees texture, if it exists. ">free</a>();</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_sprite.html#aad95e697ffa0c494e4e2038e67cf057d" title="Renders the sprite. ">render</a>(<span class="keywordtype">double</span> x, <span class="keywordtype">double</span> y, SDL_Rect *clip = <span class="keyword">nullptr</span>);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_sprite.html#a8f425d524e48eea595ef74dc310e0417">getWidth</a>();</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_sprite.html#a02fcba350f07d226b110f7d0712f5154">getHeight</a>();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        SDL_Renderer *sdlRenderer; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        SDL_Texture* sdlTexture; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> width; </div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> height; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;};</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#endif //INCLUDE_SPRITE_H</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_sprite.html#af42f4fb5f3decffc783f77a444109593" title="Renders the sprite. ">render</a>(<span class="keywordtype">int</span> x_, <span class="keywordtype">int</span> y_, SDL_Rect *clip_ = <span class="keyword">nullptr</span>);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_sprite.html#a8f425d524e48eea595ef74dc310e0417">getWidth</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_sprite.html#a02fcba350f07d226b110f7d0712f5154">getHeight</a>();</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="class_sprite.html#a950adad23da17ce64e6e759b0b64fadd">   65</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_sprite.html#a950adad23da17ce64e6e759b0b64fadd" title="The loaded image&#39;s width. ">width</a>; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="class_sprite.html#a4d34b71316c3456acb51c3c7e57a94e2">   66</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_sprite.html#a4d34b71316c3456acb51c3c7e57a94e2" title="The loaded image&#39;s width. ">height</a>; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        SDL_Renderer *sdlRenderer; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        SDL_Texture* sdlTexture; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;};</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="preprocessor">#endif //INCLUDE_SPRITE_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat Mar 29 2014 12:26:19 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 4 2014 15:51:05 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
