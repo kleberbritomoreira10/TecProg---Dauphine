@@ -2,6 +2,7 @@
 #define INCLUDE_PLAYER_H
 
 #include "Entity.h"
+#include "Sprite.h"
 
 /**
 * The player entity class.
@@ -13,11 +14,11 @@ class Player : public Entity {
 		/**
 		* The constructor.
 		* Creates the player by setting the position and sprite.
-		* @param lX : position in x axis.
-		* @param lY : position in y axis.
-		* @param lSprite : which sprite to use.
+		* @param x_ : position in x axis.
+		* @param y_ : position in y axis.
+		* @param sprite_ : which sprite to use.
 		*/
-		Player(int lX, int lY, Sprite *lSprite);
+		Player(double x_, double y_, Sprite *sprite_);
 
 		/**
 		* The destructor.
@@ -28,9 +29,10 @@ class Player : public Entity {
 		/**
 		* Updates the player.
 		* Modifies whatever is necessary, relative to the player.
-		* @param dt : Delta time. Time elapsed between one frame and the other.
+		* @param dt_ : Delta time. Time elapsed between one frame and the other.
+		* @param keyState_ : The input handled boolean array that says which keys are pressed.
 		*/
-		void update(double dt, bool keyState[10]);
+		void update(double dt_, bool keyState_[GK_MAX]);
 
 		/**
 		* Renders the player.
@@ -39,9 +41,9 @@ class Player : public Entity {
 		*/
 		void render();
 
-		double vx;
-		double vy;
-		double speed;
+		double vx; /**< The player's speed on the x axis. */
+		double vy; /**< The player's speed on the x axis. */
+		double speed; /**< Speed that moves player on input. */
 
 };
 

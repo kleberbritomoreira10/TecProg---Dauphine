@@ -4,9 +4,9 @@
 #include "InputHandler.h"
 #include "Player.h"
 
-Game::Game(Window *lGameWindow){
-	if(lGameWindow != nullptr){
-		this->gameWindow = lGameWindow;
+Game::Game(Window *window_){
+	if(window_ != nullptr){
+		this->gameWindow = window_;
 		this->isRunning = true;
 		
 		/// @todo Separate the FPS manager things into another class, probably a FPSWrapper.
@@ -47,10 +47,10 @@ void Game::runGame(){
 		Logger::error("Couldn't load sprite.");
 	}
 
-	bool keyState[10];
-
 	// Creating the player example.
-	Player player(300, 300, sprite);
+	// Player player(300, 300, sprite);
+	Player *player = nullptr;
+	player = new Player(300, 300, sprite);
 
 	// Creating the input handler	
 	InputHandler gameInput(this);
@@ -75,9 +75,9 @@ void Game::runGame(){
 		lastTime = now;
 
 		// Updating the game.	
-		player.update(dt,gameInput.keyState);
+		player->update(dt, gameInput.keyState);
 		// Renders the player.
-		player.render();
+		player->render();
 
 
 		// Renders the gameWindow.
@@ -91,6 +91,6 @@ void Game::runGame(){
 
 }
 
-void Game::update(double dt){
+void Game::update(double dt_){
 	/// @todo Implement this method.
 }

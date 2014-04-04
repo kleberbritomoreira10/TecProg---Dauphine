@@ -6,6 +6,14 @@
 #include <SDL2/SDL_image.h>
 #include <SDL2/SDL2_framerate.h>
 
+/// @todo Find a better place for this.
+enum GameKeys {
+	GK_UP = 0,
+	GK_LEFT,
+	GK_RIGHT,
+	GK_MAX
+};
+
 /**
 * Wraps the SDL libraries.
 * And contains the initializing and closing functions for the system(s). No instances necessary.

@@ -16,33 +16,33 @@ class Logger {
 		/**
 		* The default logger.
 		* Logs the desired message with a "Log: " prefix.
-		* @param message : the message to log.
+		* @param message_ : the message to log.
 		*/
-		static void log(const string message);
+		static void log(const string message_);
 
 		/**
 		* The logger for warnings.
 		* Logs the desired message with a "Warning: " prefix.
-		* @param message : the message to log.
+		* @param message_ : the message to log.
 		*/
-		static void warning(const string message);
+		static void warning(const string message_);
 
 		/**
 		* The logger for errors.
 		* Logs the desired message with an "Error: " prefix.
-		* @param message : the message to log.
+		* @param message_ : the message to log.
 		*/
-		static void error(const string message);
+		static void error(const string message_);
 
 		/**
 		* The logger for internal SDL errors.
 		* Logs the desired message with an "Error: " prefix, accompanied by the error string returned by the GetError() from the SDL libraries.
-		* @param message : the message to log.
-		* @param messageSDL : the error string from SDL to log.
+		* @param message_ : the message to log.
+		* @param messageSDL_ : the error string from SDL to log.
 		* @see SDL_GetError()
 		* @see IMG_GetError()
 		*/
-		static void errorSDL(const string message, const char *messageSDL);
+		static void errorSDL(const string message_, const char *messageSDL_);
 
 };
 

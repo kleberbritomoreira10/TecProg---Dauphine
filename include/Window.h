@@ -16,13 +16,13 @@ class Window {
 		/**
 		* The constructor.
 		* Sets all attributes, and calls the initialize method.
-		* @param lWidth : The desired window width.
-		* @param lHeight : The desired window height.
-		* @param lTitle : The desired window title.
+		* @param width_ : The desired window width.
+		* @param height_ : The desired window height.
+		* @param title_ : The desired window title.
 		* @note If omitted, window title will be "SDL Window".
 		* @see initialize()
 		*/
-		Window(unsigned int lWidth, unsigned int lHeight, string lTitle = "SDL Window");
+		Window(unsigned int width_, unsigned int height_, string title_ = "SDL Window");
 
 		/**
 		* The destructor.
@@ -64,11 +64,11 @@ class Window {
 		/**
 		* Rescales the renderization.
 		* Set a device independent resolution for rendering.
-		* @param lWidth : The new resolution width.
-		* @param lHeight : The new resolution height.
+		* @param width_ : The new resolution width.
+		* @param height_ : The new resolution height.
 		* @see SDL_RenderSetLogicalSize()
 		*/
-		void rescale(unsigned int lWidth, unsigned int lHeight);
+		void rescale(unsigned int width_, unsigned int height_);
 
 		SDL_Renderer *renderer; /**< The SDL renderer to render onto. */
 

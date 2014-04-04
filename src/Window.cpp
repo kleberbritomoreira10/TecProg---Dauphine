@@ -1,13 +1,13 @@
 #include "Window.h"
 #include "Logger.h"
 
-Window::Window(unsigned int lWidth, unsigned int lHeight, string lTitle){
+Window::Window(unsigned int width_, unsigned int height_, string title_){
 	this->window = nullptr;
 	this->renderer = nullptr;
 	
-	this->width = lWidth;
-	this->height = lHeight;
-	this->windowTitle = lTitle;
+	this->width = width_;
+	this->height = height_;
+	this->windowTitle = title_;
 
 	initialize();
 }
@@ -78,7 +78,7 @@ void Window::initialize(){
 	}
 }
 
-void Window::rescale(unsigned int lWidth, unsigned int lHeight){
+void Window::rescale(unsigned int width_, unsigned int height_){
 	/// @todo Only set this if lWidth:lHeight matches the desired resolution, for example, 16:10.
-	SDL_RenderSetLogicalSize(this->renderer, lWidth, lHeight);
+	SDL_RenderSetLogicalSize(this->renderer, width_, height_);
 }

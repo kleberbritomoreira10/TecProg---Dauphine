@@ -1,11 +1,11 @@
 #include "Sprite.h"
 #include "Logger.h"
 
-Sprite::Sprite(SDL_Renderer *lRenderer){
+Sprite::Sprite(SDL_Renderer *renderer_){
 	this->width = 0;
 	this->height = 0;
 	this->sdlTexture = nullptr;
-	this->sdlRenderer = lRenderer;
+	this->sdlRenderer = renderer_;
 
 	if(this->sdlRenderer == nullptr){
 		Logger::warning("Null renderer passed to Sprite. It will not be renderable.");	
@@ -20,7 +20,7 @@ Sprite::~Sprite(){
 	this->sdlRenderer = nullptr;
 }
 
-bool Sprite::loadFrom(string path){
+bool Sprite::loadFrom(string path_){
 	/// @todo Check if loading the texture via IMG_LoadTexture isn't better, and get width/height through the queryTexture method.
 
 	// Warns if loading a sprite without a renderer.
@@ -34,7 +34,7 @@ bool Sprite::loadFrom(string path){
 	// The final texture.
 	SDL_Texture *newTexture = nullptr;
 
-	SDL_Surface *loadedSurface = IMG_Load(path.c_str());
+	SDL_Surface *loadedSurface = IMG_Load(path_.c_str());
 	if(loadedSurface != nullptr){
 		//Color key image to magenta.
 		//SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 0xFF, 0, 0xFF));
@@ -46,9 +46,15 @@ bool Sprite::loadFrom(string path){
 			this->width = loadedSurface->w;
 			this->height = loadedSurface->h;
 		}
+		else{
+			Logger::warning("Could not create texture from surface.");
+		}
 
 		// Free the loaded surface.
-		SDL_FreeSurface( loadedSurface );
+		SDL_FreeSurface(loadedSurface);
+	}
+	else{
+		Logger::warning("Could not load surface from path.");
 	}
 
 	// Returns whether the Sprites texture is null or not.
@@ -69,18 +75,18 @@ void Sprite::free(){
 	}
 }
 
-void Sprite::render(int x, int y, SDL_Rect *clip){
-	SDL_Rect renderQuad = {(int)x, (int)y, (int)this->width, (int)this->height};
+void Sprite::render(int x_, int y_, SDL_Rect *clip_){
+	SDL_Rect renderQuad = {(int)x_, (int)y_, (int)this->width, (int)this->height};
 
-	if(clip != nullptr){
-		renderQuad.w = clip->w;
-		renderQuad.h = clip->h;
+	if(clip_ != nullptr){
+		renderQuad.w = clip_->w;
+		renderQuad.h = clip_->h;
 	}
 	else{
 		// Don't clip the texture.
 	}
 
-	SDL_RenderCopy(this->sdlRenderer, this->sdlTexture, clip, &renderQuad);
+	SDL_RenderCopy(this->sdlRenderer, this->sdlTexture, clip_, &renderQuad);
 }
 
 unsigned int Sprite::getWidth(){

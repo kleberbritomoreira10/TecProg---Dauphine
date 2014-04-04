@@ -1,6 +1,7 @@
 #ifndef INCLUDE_GAME_H
 #define INCLUDE_GAME_H
 
+#include "SDLWrapper.h"
 #include "Window.h"
 
 /**
@@ -13,10 +14,10 @@ class Game {
 		/**
 		* The constructor.
 		* Sets the game window and tells the game that it is OK to begin looping. Also, it begins the FPS manager.
-		* @param lWindow : a created Window.
+		* @param window_ : a created Window.
 		* @note If the Window parameter is null, the game will not begin.
 		*/
-		Game(Window *lWindow);
+		Game(Window *window_);
 
 		/**
 		* The destructor.
@@ -27,10 +28,10 @@ class Game {
 		/**
 		* Handles the updates.
 		* Updates all game objects. Is part of the main loop.
-		* @param dt : Delta time. Time elapsed between one frame and the other, independent of processing speed.
+		* @param dt_ : Delta time. Time elapsed between one frame and the other, independent of processing speed.
 		* @see runGame()
 		*/
-		void update(double dt);
+		void update(double dt_);
 		
 		/**
 		* The main game loop.

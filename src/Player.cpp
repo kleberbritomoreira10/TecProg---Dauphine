@@ -4,14 +4,14 @@
 const int SCREEN_WIDTH = 192 * 5;
 const int SCREEN_HEIGHT = 108 * 5;
 
-Player::Player(int lX, int lY, Sprite *lSprite){
-	this->x = lX;
-	this->y = lY;
+Player::Player(double x_, double y_, Sprite *sprite_){
+	this->x = x_;
+	this->y = y_;
     this->vx = 0;
     this->vy = 0;
-    this->speed = 2.5;
+    this->speed = 10;
 
-	this->sprite = lSprite;
+	this->sprite = sprite_;
 
 	if(this->sprite == nullptr){
 		Logger::warning("No sprite set for the player! Null sprite.");
@@ -29,10 +29,10 @@ Player::~Player(){
 	this->sprite = nullptr;
 }
 
-void Player::update(double dt, bool keyState[10]){
+void Player::update(double dt_, bool keyState_[GK_MAX]){
 	/// @todo: Implement everything in this method, pretty much.
-    if(keyState[0]){
-    	this->vy -= 10;
+    if(keyState_[GK_UP]){
+    	this->vy -= this->speed;
     }
     else{
  		if(this->y >= (SCREEN_HEIGHT - 100)){
@@ -40,23 +40,23 @@ void Player::update(double dt, bool keyState[10]){
     		this->vy = 0;
 		}
 		else{
-			this->vy += 10;
+			this->vy += this->speed;
 		}
     }
 
-	if(keyState[1]){
-    	this->vx -= 10;
+	if(keyState_[GK_LEFT]){
+    	this->vx -= this->speed;
     }
-    else if(keyState[2]){
-    	this->vx += 10;
+    else if(keyState_[GK_RIGHT]){
+    	this->vx += this->speed;
     }
     else{
     	this->vx *= 0.98;
     }
    
 
-    this->x += this->vx * dt;
-    this->y += this->vy * dt;
+    this->x += this->vx * dt_;
+    this->y += this->vy * dt_;
 
 }
 

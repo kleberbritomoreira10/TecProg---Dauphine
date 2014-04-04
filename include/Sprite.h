@@ -16,10 +16,10 @@ class Sprite {
 		/**
 		* The constructor.
 		* Initializes all the data, and sets the desired renderer.
-		* @param lRenderer : The renderer you want the sprite to render onto.
-		* @note If the lRenderer parameter is null, warns that the Sprite will not be renderable.
+		* @param renderer_ : The renderer you want the sprite to render onto.
+		* @note If the SDL_Renderer parameter is null, warns that the Sprite will not be renderable.
 		*/
-		Sprite(SDL_Renderer *lRenderer);
+		Sprite(SDL_Renderer *renderer_);
 
 		/**
 		* The destructor.
@@ -31,10 +31,10 @@ class Sprite {
 		/**
 		* Loads image from a path.
 		* Given an existing path for an image, loads the SDL_Texture from it.
-		* @param path : the image path.
+		* @param path_ : the image path.
 		* @return Whether the sprite's SDL_Texture (sdlTexture) is null or not.
 		*/
-		bool loadFrom(string path);
+		bool loadFrom(string path_);
 
 		/**
 		* Frees texture, if it exists.
@@ -45,11 +45,12 @@ class Sprite {
 		/**
 		* Renders the sprite.
 		* Copy the SDL_Texture onto the renderer, at the desired x,y position.
-		* @param x : The position on the x axis of the screen.
-		* @param y : The position on the y axis of the screen.
-		* @param clip : Clips the texture, on the SDL_Rect bounds. If omitted, renders the entire texture.
+		* @param x_ : The position on the x axis of the screen.
+		* @param y_ : The position on the y axis of the screen.
+		* @param clip_ : Clips the texture, on the SDL_Rect bounds.
+		* @note If the 'clip_' parameter is omitted, renders the entire texture.
 		*/
-		void render(int x, int y, SDL_Rect *clip = nullptr);
+		void render(int x_, int y_, SDL_Rect *clip_ = nullptr);
 
 		/**
 		* @return The Sprite width.
