@@ -3,6 +3,7 @@
 
 #include "SDLWrapper.h"
 #include "Game.h"
+#include "InputKeys.h"
 
 /**
 * Handles player input.

@@ -3,6 +3,7 @@
 
 #include "Entity.h"
 #include "Sprite.h"
+#include "InputKeys.h"
 
 /**
 * The player entity class.

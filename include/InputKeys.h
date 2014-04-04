@@ -1,0 +1,11 @@
+#ifndef INCLUDE_INPUTKEYS_H
+#define INCLUDE_INPUTKEYS_H
+
+enum GameKeys {
+	GK_UP = 0,
+	GK_LEFT,
+	GK_RIGHT,
+	GK_MAX
+};
+
+#endif //INCLUDE_INPUTKEYS_H
