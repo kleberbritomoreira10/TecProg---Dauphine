@@ -26,14 +26,6 @@ class Game {
 		~Game();
 		
 		/**
-		* Handles the updates.
-		* Updates all game objects. Is part of the main loop.
-		* @param dt_ : Delta time. Time elapsed between one frame and the other, independent of processing speed.
-		* @see runGame()
-		*/
-		void update(double dt_);
-		
-		/**
 		* The main game loop.
 		* Orders the game structure, such as inputs, updates, and rendering.
 		*/

@@ -14,7 +14,7 @@ class Configuration {
 		const static unsigned int resolutionWidth; /**< The game's width resolution. */
 		const static unsigned int resolutionHeight; /**< The game's height resolution. */
 
-		const static unsigned int FRAMERATE; /**< The game's max framerate. */
+		const static uint32_t MAX_FRAMERATE; /**< The game's max framerate. */
 		const static string TITLE; /**< The game window's title. */
 
 		static unsigned int screenWidth; /**< The screen width. */

@@ -2,24 +2,18 @@
 #include "Sprite.h"
 #include "InputHandler.h"
 #include "Player.h"
+#include "FPSWrapper.h"
 #include "Logger.h"
 #include "Configuration.h"
+
+#include <stdio.h>
 
 Game::Game(Window *window_){
 	if(window_ != nullptr){
 		this->gameWindow = window_;
 		this->isRunning = true;
 		
-		/// @todo Separate the FPS manager things into another class, probably a FPSWrapper.
-		// Initializes the SDL2_GFX framerate control.
-		SDL_initFramerate(&this->fpsManager);
-		const int framerateSet = SDL_setFramerate(&this->fpsManager, Configuration::FRAMERATE);
-		if(framerateSet == 0){
-			Logger::log("Successfully started the framerate manager.");
-		}
-		else{
-			Logger::warning("Failed to start the framerate manager.");
-		}
+		FPSWrapper::initialize(this->fpsManager);
 	}
 	else{
 		this->gameWindow = nullptr;
@@ -52,39 +46,32 @@ void Game::runGame(){
 	// Creating the input handler.
 	InputHandler gameInput(this);
 	
-	/// @todo Handle all of this DT issues from the FPSWrapper. Also, SDL_GetTicks returns Uint32, not a double.
 	// Get the first game time.
-	double lastTime = SDL_GetTicks();
-	
+	double totalGameTime = 0.0;
+	const double deltaTime = 1.0 / 60.0;
+	double accumulatedTime = 0.0;
+
 	// This is the main game loop.
 	while(this->isRunning){
 
-		// Clearing the screen.
+		const double frameTime = FPSWrapper::delay(this->fpsManager);
+		accumulatedTime += frameTime;
+
+		// Update.
+		while(accumulatedTime >= deltaTime){
+			gameInput.handleInput();
+			player.updateInput(gameInput.keyState);
+			player.update(deltaTime);
+
+			accumulatedTime -= deltaTime;
+			totalGameTime += deltaTime;
+		}
+
+		// Render.
 		gameWindow->clear();
-		
-		// Recieving the input.
-		gameInput.handleInput();
-
-		// Calculations to get the delta time.
-		double now = SDL_GetTicks();
-		double dt = (now - lastTime)/1000.0;
-		lastTime = now;
-
-		// Updating the game.
-		player.updateInput(gameInput.keyState);
-		player.update(dt);
-
-		// Rendering the game.
 		player.render();
 		gameWindow->render();
 		
-		// Delays the framerate, if necessary.
-		SDL_framerateDelay(&this->fpsManager);
-
 	}
 
-}
-
-void Game::update(double dt_){
-	/// @todo Implement this method.
 }
