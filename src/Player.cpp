@@ -1,8 +1,6 @@
 #include "Player.h"
 #include "Logger.h"
-
-const int SCREEN_WIDTH = 192 * 5;
-const int SCREEN_HEIGHT = 108 * 5;
+#include "Configuration.h"
 
 Player::Player(double x_, double y_, Sprite *sprite_){
 	this->x = x_;
@@ -19,14 +17,9 @@ Player::Player(double x_, double y_, Sprite *sprite_){
 }
 
 Player::~Player(){
-	this->x = 0;
-	this->y = 0;
     this->vx = 0;
     this->vy = 0;
-
-	/// @todo: Maybe this isn't the best place to delete the Sprite object.
-	delete this->sprite;
-	this->sprite = nullptr;
+    this->speed = 0;	
 }
 
 void Player::update(double dt_){
@@ -35,7 +28,7 @@ void Player::update(double dt_){
 }
 
 void Player::render(){
-	this->sprite->render(this->x, this->y, nullptr);
+	this->sprite->render(this->x, this->y);
 }
 
 void Player::updateInput(bool keyState_[GK_MAX]){
@@ -44,8 +37,8 @@ void Player::updateInput(bool keyState_[GK_MAX]){
         this->vy -= this->speed;
     }
     else{
-        if(this->y >= (SCREEN_HEIGHT - 100)){
-            this->y = SCREEN_HEIGHT - 99;
+        if(this->y >= (Configuration::screenHeight - 100)){
+            this->y = Configuration::screenHeight - 99;
             this->vy = 0;
         }
         else{

@@ -1,5 +1,6 @@
 #include "Window.h"
 #include "Logger.h"
+#include "Configuration.h"
 
 Window::Window(unsigned int width_, unsigned int height_, string title_){
 	this->window = nullptr;
@@ -60,7 +61,7 @@ void Window::initialize(){
 			SDL_bool linearFilter = SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 			if(linearFilter){
 				Logger::log("Linear texture filtering enabled!");
-				rescale(192 * 5, 108 * 5);
+				rescale(Configuration::resolutionWidth * 5, Configuration::resolutionHeight * 5);
 			}
 			else{
 				Logger::warning("Linear texture filtering disabled!");

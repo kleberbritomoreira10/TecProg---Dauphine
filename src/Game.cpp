@@ -1,8 +1,9 @@
 #include "Game.h"
-#include "Logger.h"
 #include "Sprite.h"
 #include "InputHandler.h"
 #include "Player.h"
+#include "Logger.h"
+#include "Configuration.h"
 
 Game::Game(Window *window_){
 	if(window_ != nullptr){
@@ -11,10 +12,8 @@ Game::Game(Window *window_){
 		
 		/// @todo Separate the FPS manager things into another class, probably a FPSWrapper.
 		// Initializes the SDL2_GFX framerate control.
-		const int DESIRED_FPS = 60;
-
 		SDL_initFramerate(&this->fpsManager);
-		const int framerateSet = SDL_setFramerate(&this->fpsManager, DESIRED_FPS);
+		const int framerateSet = SDL_setFramerate(&this->fpsManager, Configuration::FRAMERATE);
 		if(framerateSet == 0){
 			Logger::log("Successfully started the framerate manager.");
 		}

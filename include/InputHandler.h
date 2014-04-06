@@ -29,7 +29,6 @@ class InputHandler {
 		/**
 		* Handles the input.
 		* Detects the pending events, and handles them appropriately.
-		* @return The command that was input by the user.
 		*/
 		void handleInput();
 

@@ -4,7 +4,7 @@
 #include "Sprite.h"
 
 /**
-* Class for all the entities.
+* Abstract base class for all the entities.
 * Generic parent class for all the game's entities.
 */
 class Entity {
@@ -12,20 +12,20 @@ class Entity {
 	public:
 		/**
 		* The destructor.
-		* Destroys the entity.
+		* Resets attributes and deletes the sprite.
 		*/
-		virtual ~Entity(){}
+		virtual ~Entity();
 
 		/**
 		* Updates the entity.
-		* Updates whatever is necessary, relative to the entity.
+		* Pure virtual function. Purpose is to update whatever is necessary, relative to the entity.
 		* @param dt_ : Delta time. Time elapsed between one frame and the other.
 		*/
 		virtual void update(double dt_) = 0;
 
 		/**
 		* Renders the entity.
-		* Copies the entity's texture onto the renderer.
+		* Pure virtual function. Purpose is to copy the entity's texture onto the renderer.
 		* @note Usually just calls the render method from the Sprite class.
 		*/
 		virtual void render() = 0;

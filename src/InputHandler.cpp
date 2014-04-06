@@ -3,8 +3,10 @@
 
 InputHandler::InputHandler(Game *game_){
 	this->game = game_;
-	for(int i=0; i<GK_MAX; i++)
+
+	for(unsigned int i = 0; i < GK_MAX; i++){
 		this->keyState[i] = false;
+	}
 
 	if(this->game == nullptr){
 		Logger::warning("Null game passed to input handler. Game will have no input.");
@@ -37,15 +39,17 @@ void InputHandler::handleInput(){
 
 			}
 		}
-		if(this->eventHandler.type == SDL_KEYUP){
+
+		// On keyup.
+		else if(this->eventHandler.type == SDL_KEYUP){
 			switch(this->eventHandler.key.keysym.sym){
-				case SDLK_UP:
+				case SDLK_UP: // Jump.
 					this->keyState[GK_UP] = false;
 					break;
-				case SDLK_LEFT:
+				case SDLK_LEFT: // Move left.
 					this->keyState[GK_LEFT] = false;
 					break;
-				case SDLK_RIGHT:
+				case SDLK_RIGHT: // Move right.
 					this->keyState[GK_RIGHT] = false;
 					break;
 				default:
@@ -53,7 +57,8 @@ void InputHandler::handleInput(){
 			}
 		}
 		
-		if(this->eventHandler.type == SDL_QUIT){
+		// On window exit (X).
+		else if(this->eventHandler.type == SDL_QUIT){
 	    	this->game->isRunning = false;
 	    }
 

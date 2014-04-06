@@ -1,13 +1,10 @@
 #include "Game.h"
 #include "Logger.h"
+#include "Configuration.h"
 
 // Since argc and argv are only necessary for cross-compiling SDL_Main,
 // we do this just so the compiler doesn't warn for unused arguments.
 #define UNUSED(x) ((void)x)
-
-/// @todo Put these somewhere else. 16:10 aspect ratio, for now.
-const int SCREEN_WIDTH = 192 * 5;
-const int SCREEN_HEIGHT = 108 * 5;
 
 int main(int argc, char **argv){
 	Logger::log("Starting Dauphine...");
@@ -18,7 +15,7 @@ int main(int argc, char **argv){
 	bool systemsInitialized = SDLWrapper::initialize();
 
 	if(systemsInitialized){
-		Window window(SCREEN_WIDTH, SCREEN_HEIGHT, "Dauphine");
+		Window window(Configuration::screenWidth, Configuration::screenHeight, Configuration::TITLE);
 
 		Game *game = nullptr;
 		game = new Game(&window);

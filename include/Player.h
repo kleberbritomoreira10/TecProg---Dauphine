@@ -23,15 +23,14 @@ class Player : public Entity {
 
 		/**
 		* The destructor.
-		* Sets the x,y position to 0 and removes the Sprite.
+		* Resets the attributes.
 		*/
 		virtual ~Player();
 
 		/**
 		* Updates the player.
 		* Modifies whatever is necessary, relative to the player.
-		* @param dt_ : Delta time. Time elapsed between one frame and the other.
-		* @param keyState_ : The input handled boolean array that says which keys are pressed.
+		* @param dt_ : Delta time. Time elapsed between one frame and the other, independent of processing speed.
 		*/
 		virtual void update(double dt_);
 

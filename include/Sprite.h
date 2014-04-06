@@ -61,11 +61,11 @@ class Sprite {
 		* @return The Sprite height.
 		*/
 		unsigned int getHeight();
-
-		unsigned int width; /**< The loaded image's width. */
-		unsigned int height; /**< The loaded image's width. */
 		
 	private:
+		unsigned int width; /**< The loaded image's width. */
+		unsigned int height; /**< The loaded image's width. */
+
 		SDL_Renderer *sdlRenderer; /**< The SDL renderer to render onto. */
 		SDL_Texture* sdlTexture; /**< The SDL texture to use as the image. */
 		
