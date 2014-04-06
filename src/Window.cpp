@@ -61,7 +61,7 @@ void Window::initialize(){
 			SDL_bool linearFilter = SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 			if(linearFilter){
 				Logger::log("Linear texture filtering enabled!");
-				rescale(Configuration::resolutionWidth * 5, Configuration::resolutionHeight * 5);
+				rescale(5);
 			}
 			else{
 				Logger::warning("Linear texture filtering disabled!");
@@ -79,7 +79,8 @@ void Window::initialize(){
 	}
 }
 
-void Window::rescale(unsigned int width_, unsigned int height_){
-	/// @todo Only set this if lWidth:lHeight matches the desired resolution, for example, 16:10.
-	SDL_RenderSetLogicalSize(this->renderer, width_, height_);
+void Window::rescale(unsigned int size_){
+	// Just a precaution, so the the window size doesn't get huge.
+	size_ = (size_ > 10) ? 10 : size_;
+	SDL_RenderSetLogicalSize(this->renderer, Configuration::resolutionWidth * size_, Configuration::resolutionHeight * size_);
 }

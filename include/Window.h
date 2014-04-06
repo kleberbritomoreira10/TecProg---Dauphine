@@ -64,11 +64,10 @@ class Window {
 		/**
 		* Rescales the renderization.
 		* Set a device independent resolution for rendering.
-		* @param width_ : The new resolution width.
-		* @param height_ : The new resolution height.
+		* @param size_ : Multiplies Configuration::resolutionWidth and Configuration::resolutionHeight for the new resolution.
 		* @see SDL_RenderSetLogicalSize()
 		*/
-		void rescale(unsigned int width_, unsigned int height_);
+		void rescale(unsigned int size_);
 
 		SDL_Renderer *renderer; /**< The SDL renderer to render onto. */
 

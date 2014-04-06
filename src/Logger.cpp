@@ -5,6 +5,7 @@ using std::cerr;
 using std::endl;
 
 void Logger::log(const string message_){
+	/// @todo Implement a separate generic parameter log function, to log an integer, for example.
 	cerr << "Log: " << message_ << endl;
 }
 

@@ -10,7 +10,6 @@ using std::string;
 * No instances are needed, all the methods are static.
 */
 class Logger {
-	/// @todo Implement a separate generic parameter log function, to log and integer, for example.
 
 	public:
 		/**

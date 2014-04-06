@@ -21,8 +21,6 @@ Sprite::~Sprite(){
 }
 
 bool Sprite::loadFrom(string path_){
-	/// @todo Check if loading the texture via IMG_LoadTexture isn't better, and get width/height through the queryTexture method.
-
 	// Warns if loading a sprite without a renderer.
 	if(this->sdlRenderer == nullptr){
 		Logger::warning("Trying to load sprite with null renderer.");
