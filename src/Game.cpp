@@ -5,6 +5,7 @@
 #include "FPSWrapper.h"
 #include "Logger.h"
 #include "Configuration.h"
+#include "Camera.h"
 
 #include <stdio.h>
 
@@ -32,16 +33,24 @@ Game::~Game(){
 void Game::runGame(){
 	/// @todo Remove all of the example code from inside this method.
 
+	Sprite *spriteScene = nullptr;
+	spriteScene = new Sprite(this->gameWindow->renderer);
+	bool loadedSprite = spriteScene->loadFrom("res/scene.png");
+	if(!loadedSprite){
+		Logger::error("Couldn't load sprite scene.");
+	}
+
 	// Just an example of Sprite loading, delete this later.
 	Sprite *sprite = nullptr;
 	sprite = new Sprite(this->gameWindow->renderer);
-	bool loadedSprite = sprite->loadFrom("res/player.png");
+	loadedSprite = sprite->loadFrom("res/player.png");
 	if(!loadedSprite){
 		Logger::error("Couldn't load sprite.");
 	}
 
 	// Creating the player example.
 	Player player(300, 300, sprite);
+	Camera camera(0, 0, spriteScene);
 
 	// Creating the input handler.
 	InputHandler gameInput(this);
@@ -60,6 +69,8 @@ void Game::runGame(){
 		// Update.
 		while(accumulatedTime >= deltaTime){
 			gameInput.handleInput();
+			camera.updateInput(gameInput.keyState);
+			camera.update(deltaTime);
 			player.updateInput(gameInput.keyState);
 			player.update(deltaTime);
 
@@ -69,6 +80,7 @@ void Game::runGame(){
 
 		// Render.
 		gameWindow->clear();
+		camera.render();
 		player.render();
 		gameWindow->render();
 		

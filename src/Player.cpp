@@ -45,15 +45,4 @@ void Player::updateInput(bool keyState_[GK_MAX]){
             this->vy += this->speed;
         }
     }
-
-    // Movement.
-    if(keyState_[GK_LEFT]){
-        this->vx -= this->speed;
-    }
-    else if(keyState_[GK_RIGHT]){
-        this->vx += this->speed;
-    }
-    else{
-        this->vx *= 0.98;
-    }
 }
