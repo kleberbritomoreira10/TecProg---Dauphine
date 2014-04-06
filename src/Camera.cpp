@@ -35,9 +35,18 @@ void Camera::render(){
 void Camera::updateInput(bool keyState_[GK_MAX]){
     // Movement.
     if(keyState_[GK_LEFT]){
+    	if(this->x >= Configuration::resolutionLeftLimit){
+            this->vx = Configuration::resolutionLeftLimit;
+            this->x = Configuration::resolutionLeftLimit -1;
+        }
+        else
         this->vx += this->speed;
     }
     else if(keyState_[GK_RIGHT]){
+    	if(this->x <= Configuration::resolutionRightLimit){
+            this->x = Configuration::resolutionRightLimit - 1;
+            this->vx = 0;
+        }
         this->vx -= this->speed;
     }
     else{
