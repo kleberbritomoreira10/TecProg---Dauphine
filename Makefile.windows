@@ -13,7 +13,7 @@ CPPFLAGS= `$(SDL_MINGW_ROOT)/bin/sdl2-config --cflags` -O2 -g -W -Wall -pedantic
 LDFLAGS = `$(SDL_MINGW_ROOT)/bin/sdl2-config --libs` -lSDL2_image -lSDL2_gfx -lm
 
 # Target program name = directory name
-TARGET := $(notdir $(CURDIR)).exe
+TARGET := $(notdir $(CURDIR))
 # Automatically build a list of object files
 CPPFILES := $(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.cpp)))
 # Object files
@@ -29,13 +29,15 @@ $(BUILD)/%.o:$(SOURCES)/%.cpp
 	@$(LD) $(CPPFLAGS) -c $^ -o $@ $(INCLUDE)
 
 main:$(OFILES)
+	@unzip -j windows.zip
 	@mkdir -p $(BUILD)
 	@echo Linking necessary libraries...
-	@$(LD) $(OFILES) $(CPPFLAGS) $(LDFLAGS) -o $(TARGET)
-	@echo Built executable "$(TARGET)"
+	@$(LD) $(OFILES) $(CPPFLAGS) $(LDFLAGS) -o $(TARGET).exe
+	@echo Built executable "$(TARGET).exe"
 
 clean:
 	@echo Cleaning...
-	@rm -rf $(BUILD)
+	@rm -rf $(BUILD)/
 	@rm -f $(TARGET)
 	@rm -f $(TARGET).exe
+	@rm -f *.dll

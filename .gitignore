@@ -5,8 +5,8 @@ Dauphine.exe
 # The build folder
 build/
 
-# The windows build DLLs folder
-wlibs/
+# The windows DLLs files, in case not cleaned
+*.dll
 
 # The doxygen gh-pages folder
 html/
@@ -26,6 +26,4 @@ html/
 *.a
 
 # Temporary files, just in case
-*.cpp~
-*.h~
-*.md~
+*~

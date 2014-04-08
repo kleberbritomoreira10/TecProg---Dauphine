@@ -15,11 +15,13 @@ class Sprite {
 	public:
 		/**
 		* The constructor.
-		* Initializes all the data, and sets the desired renderer.
+		* Initializes all the data, and sets the desired renderer. Loads image with the desired path.
 		* @param renderer_ : The renderer you want the sprite to render onto.
+		* @param path_ : the image path.
 		* @note If the SDL_Renderer parameter is null, warns that the Sprite will not be renderable.
+		* @see Sprite::loadFrom(string path_)
 		*/
-		Sprite(SDL_Renderer *renderer_);
+		Sprite(SDL_Renderer *renderer_, string path_);
 
 		/**
 		* The destructor.
@@ -27,14 +29,6 @@ class Sprite {
 		* @see free()
 		*/
 		~Sprite();
-
-		/**
-		* Loads image from a path.
-		* Given an existing path for an image, loads the SDL_Texture from it.
-		* @param path_ : the image path.
-		* @return Whether the sprite's SDL_Texture (sdlTexture) is null or not.
-		*/
-		bool loadFrom(string path_);
 
 		/**
 		* Frees texture, if it exists.
@@ -63,12 +57,20 @@ class Sprite {
 		unsigned int getHeight();
 		
 	private:
+		/**
+		* Loads image from a path.
+		* Given an existing path for an image, loads the SDL_Texture from it.
+		* @param path_ : the image path.
+		* @note Error message is logged if the sprite's SDL_Texture (sdlTexture) is null after method.
+		*/
+		void loadFrom(string path_);
+
 		unsigned int width; /**< The loaded image's width. */
 		unsigned int height; /**< The loaded image's width. */
 
 		SDL_Renderer *sdlRenderer; /**< The SDL renderer to render onto. */
 		SDL_Texture* sdlTexture; /**< The SDL texture to use as the image. */
-		
+
 };
 
 #endif //INCLUDE_SPRITE_H

@@ -35,6 +35,7 @@ main:$(OFILES)
 
 clean:
 	@echo Cleaning...
-	@rm -rf $(BUILD)
+	@rm -rf $(BUILD)/
 	@rm -f $(TARGET)
 	@rm -f $(TARGET).exe
+	@rm -f *.dll

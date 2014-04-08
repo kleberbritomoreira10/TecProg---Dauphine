@@ -1,7 +1,0 @@
-\AddToShipoutPicture{\BackgroundPic}
-	
-	\begin{figure}[htb]
-		\vspace{9cm}
-		\center
-		\includegraphics[scale=0.7]{alke_logo}
-	\end{figure}

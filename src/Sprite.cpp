@@ -1,7 +1,7 @@
 #include "Sprite.h"
 #include "Logger.h"
 
-Sprite::Sprite(SDL_Renderer *renderer_){
+Sprite::Sprite(SDL_Renderer *renderer_, string path_){
 	this->width = 0;
 	this->height = 0;
 	this->sdlTexture = nullptr;
@@ -10,6 +10,8 @@ Sprite::Sprite(SDL_Renderer *renderer_){
 	if(this->sdlRenderer == nullptr){
 		Logger::warning("Null renderer passed to Sprite. It will not be renderable.");	
 	}
+
+	loadFrom(path_);
 }
 
 Sprite::~Sprite(){
@@ -20,7 +22,7 @@ Sprite::~Sprite(){
 	this->sdlRenderer = nullptr;
 }
 
-bool Sprite::loadFrom(string path_){
+void Sprite::loadFrom(string path_){
 	// Warns if loading a sprite without a renderer.
 	if(this->sdlRenderer == nullptr){
 		Logger::warning("Trying to load sprite with null renderer.");
@@ -57,7 +59,11 @@ bool Sprite::loadFrom(string path_){
 
 	// Returns whether the Sprites texture is null or not.
 	this->sdlTexture = newTexture;
-	return (this->sdlTexture != nullptr);
+
+	// Display error log if image wasn't loaded.
+	if(this->sdlTexture == nullptr){
+		Logger::error("Sprite load failed: " + path_);
+	}
 }
 
 void Sprite::free(){
