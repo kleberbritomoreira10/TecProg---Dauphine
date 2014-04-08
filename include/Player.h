@@ -52,6 +52,10 @@ class Player : public Entity {
 		double vy; /**< The player's speed on the x axis. */
 		double speed; /**< Speed that moves player on input. */
 
+		bool canMove;
+
+		void setCanMove(bool move);
+
 };
 
 #endif //INCLUDE_PLAYER_H

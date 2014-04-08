@@ -8,6 +8,7 @@ Player::Player(double x_, double y_, Sprite *sprite_){
     this->vx = 0;
     this->vy = 0;
     this->speed = 10;
+    this->canMove = false;
 
 	this->sprite = sprite_;
 
@@ -45,4 +46,8 @@ void Player::updateInput(bool keyState_[GK_MAX]){
             this->vy += this->speed;
         }
     }
+}
+
+void Player::setCanMove(bool move){
+	this->canMove = move;
 }

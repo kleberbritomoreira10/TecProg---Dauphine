@@ -53,6 +53,10 @@ class Camera : public Entity {
 		double speed; /**< Speed that moves camera on input. */
 		SDL_Rect clip;
 
+		bool canMove;
+		bool canMovePlayer;
+		bool getCanMove();
+
 };
 
 #endif //INCLUDE_CAMERA_H

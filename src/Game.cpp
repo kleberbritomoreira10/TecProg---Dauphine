@@ -49,11 +49,13 @@ void Game::runGame(){
 	}
 
 	// Creating the player example.
-	Player player(300, 300, sprite);
+	Player player(450, 300, sprite);
 	Camera camera(0, 0, spriteScene);
 
 	// Creating the input handler.
 	InputHandler gameInput(this);
+
+	bool canMove = false;
 	
 	// Get the first game time.
 	double totalGameTime = 0.0;
@@ -71,6 +73,8 @@ void Game::runGame(){
 			gameInput.handleInput();
 			camera.updateInput(gameInput.keyState);
 			camera.update(deltaTime);
+			canMove = camera.getCanMove();
+			player.setCanMove(canMove);
 			player.updateInput(gameInput.keyState);
 			player.update(deltaTime);
 
