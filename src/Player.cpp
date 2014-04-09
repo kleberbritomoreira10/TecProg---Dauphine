@@ -27,10 +27,12 @@ void Player::update(double dt_){
     if(this->x > Configuration::rightLimit){
         this->vx = 0;
         this->x = Configuration::rightLimit -0.4;
+        Configuration::leftLimit = 449;
     }
     else if(this->x < Configuration::leftLimit){
         this->vx = 0;
         this->x = Configuration::leftLimit + 0.4;
+        Configuration::rightLimit = 451;
     }
     else{
         this->x += this->vx * dt_;

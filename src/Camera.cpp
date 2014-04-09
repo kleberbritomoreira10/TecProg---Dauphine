@@ -49,10 +49,10 @@ void Camera::render(){
 
 void Camera::updateInput(bool keyState_[GK_MAX]){
     // Movement.
-    if(keyState_[GK_LEFT]){
+    if(keyState_[GK_LEFT] && Configuration::rightLimit == 451){
         this->vx += this->speed; 
     }
-    else if(keyState_[GK_RIGHT]){
+    else if(keyState_[GK_RIGHT] && Configuration::leftLimit == 449){
         this->vx -= this->speed;
     }
     else{
