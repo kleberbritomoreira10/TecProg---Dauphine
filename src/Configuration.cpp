@@ -10,7 +10,7 @@ unsigned int Configuration::rightLimit = 451;
 unsigned int Configuration::leftLimit = 449;
 
 const int Configuration::resolutionLeftLimit = 0;
-const int Configuration::resolutionRightLimit = -1860;
+const int Configuration::resolutionRightLimit = -1960;
 
 const uint32_t Configuration::MAX_FRAMERATE = 60;
 

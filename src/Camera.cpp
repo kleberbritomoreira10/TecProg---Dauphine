@@ -2,6 +2,8 @@
 #include "Logger.h"
 #include "Configuration.h"
 
+#define MAX_VEL 400
+
 Camera::Camera(double x_, double y_, Sprite *sprite_){
 	this->x = x_;
 	this->y = y_;
@@ -28,17 +30,18 @@ Camera::~Camera(){
 
 void Camera::update(double dt_){
     if(this->x > Configuration::resolutionLeftLimit){
-        this->vx = Configuration::resolutionLeftLimit;
-        this->x = Configuration::resolutionLeftLimit -1;
+        this->vx = 0;
+        this->x = Configuration::resolutionLeftLimit;
         Configuration::leftLimit = 0;
         Configuration::rightLimit = 451;
     }
     else if(this->x < Configuration::resolutionRightLimit){
-        this->x = Configuration::resolutionRightLimit + 1;
         this->vx = 0;
+        this->x = Configuration::resolutionRightLimit;        
         Configuration::leftLimit = 449;
         Configuration::rightLimit = 940;
     }
+
     this->x += this->vx * dt_;
     this->y += this->vy * dt_;
 }
@@ -50,10 +53,14 @@ void Camera::render(){
 void Camera::updateInput(bool keyState_[GK_MAX]){
     // Movement.
     if(keyState_[GK_LEFT] && Configuration::rightLimit == 451){
-        this->vx += this->speed; 
+        if(this->vx < MAX_VEL){
+            this->vx += this->speed;
+        }
     }
     else if(keyState_[GK_RIGHT] && Configuration::leftLimit == 449){
-        this->vx -= this->speed;
+        if(this->vx > -MAX_VEL){
+            this->vx -= this->speed;
+        } 
     }
     else{
         this->vx *= 0.95;
