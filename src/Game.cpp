@@ -7,6 +7,7 @@
 
 #include "Player.h"
 #include "Sprite.h"
+#include "LuaScript.h"
 
 Game::Game(Window *window_){
 	if(window_ != nullptr){
@@ -31,15 +32,21 @@ Game::~Game(){
 void Game::runGame(){
 	/// @todo Remove all of the example code from inside this method.
 
+	// Getting information from lua script
+	LuaScript luaPlayer("lua/Player.lua");
+	const string scriptSpritePath = luaPlayer.get<string>("player.spritePath");
+	const double scriptX = luaPlayer.get<double>("player.position.x");
+	const double scriptY = luaPlayer.get<double>("player.position.y");
+
 	// Just an example of Sprite loading, delete this later.
 	Sprite *spriteScene = nullptr;
 	spriteScene = new Sprite(this->gameWindow->renderer, "res/scene.png");
 
 	Sprite *spritePlayer = nullptr;
-	spritePlayer = new Sprite(this->gameWindow->renderer, "res/player.png");
+	spritePlayer = new Sprite(this->gameWindow->renderer, scriptSpritePath);
 
 	// Creating the player and camera examples.
-	Player player(450, 300, spritePlayer);
+	Player player(scriptX, scriptY, spritePlayer);
 	Camera camera(0, 0, spriteScene);
 
 	// Creating the input handler.
