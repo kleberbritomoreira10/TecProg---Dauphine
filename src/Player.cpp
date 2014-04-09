@@ -2,6 +2,8 @@
 #include "Logger.h"
 #include "Configuration.h"
 
+#define MAX_VEL 400
+
 Player::Player(double x_, double y_, Sprite *sprite_){
 	this->x = x_;
 	this->y = y_;
@@ -26,12 +28,12 @@ Player::~Player(){
 void Player::update(double dt_){
     if(this->x > Configuration::rightLimit){
         this->vx = 0;
-        this->x = Configuration::rightLimit -0.4;
+        this->x = Configuration::rightLimit ;
         Configuration::leftLimit = 449;
     }
     else if(this->x < Configuration::leftLimit){
         this->vx = 0;
-        this->x = Configuration::leftLimit + 0.4;
+        this->x = Configuration::leftLimit;
         Configuration::rightLimit = 451;
     }
     else{
@@ -60,10 +62,14 @@ void Player::updateInput(bool keyState_[GK_MAX]){
     }
 
     if(keyState_[GK_LEFT]){
-        this->vx -= this->speed; 
+        if(this->vx > -MAX_VEL){
+            this->vx -= this->speed;
+        } 
     }
     else if(keyState_[GK_RIGHT]){
-        this->vx += this->speed;
+        if(this->vx < MAX_VEL){
+            this->vx += this->speed;
+        }
     }
     else{
         this->vx *= 0.95;
