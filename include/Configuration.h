@@ -22,7 +22,9 @@ class Configuration {
 
 		static unsigned int screenWidth; /**< The screen width. */
 		static unsigned int screenHeight; /**< The screen height. */
-		
+
+		static unsigned int rightLimit; /**< The screen width. */
+		static unsigned int leftLimit; /**< The screen height. */	
 };
 
 #endif //INCLUDE_CONFIGURATION_H

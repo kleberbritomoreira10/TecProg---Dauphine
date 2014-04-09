@@ -30,14 +30,14 @@ void Camera::update(double dt_){
     if(this->x > Configuration::resolutionLeftLimit){
         this->vx = Configuration::resolutionLeftLimit;
         this->x = Configuration::resolutionLeftLimit -1;
-        this->canMove = false;
-        this->canMovePlayer = true;
+        Configuration::leftLimit = 0;
+        Configuration::rightLimit = 451;
     }
     else if(this->x < Configuration::resolutionRightLimit){
         this->x = Configuration::resolutionRightLimit + 1;
         this->vx = 0;
-        this->canMove = false;
-        this->canMovePlayer = true;
+        Configuration::leftLimit = 449;
+        Configuration::rightLimit = 940;
     }
     this->x += this->vx * dt_;
     this->y += this->vy * dt_;

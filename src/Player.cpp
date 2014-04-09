@@ -24,8 +24,18 @@ Player::~Player(){
 }
 
 void Player::update(double dt_){
-    this->x += this->vx * dt_;
-    this->y += this->vy * dt_;
+    if(this->x > Configuration::rightLimit){
+        this->vx = 0;
+        this->x = Configuration::rightLimit -0.4;
+    }
+    else if(this->x < Configuration::leftLimit){
+        this->vx = 0;
+        this->x = Configuration::leftLimit + 0.4;
+    }
+    else{
+        this->x += this->vx * dt_;
+        this->y += this->vy * dt_;
+    }
 }
 
 void Player::render(){
@@ -46,6 +56,17 @@ void Player::updateInput(bool keyState_[GK_MAX]){
             this->vy += this->speed;
         }
     }
+
+    if(keyState_[GK_LEFT]){
+        this->vx -= this->speed; 
+    }
+    else if(keyState_[GK_RIGHT]){
+        this->vx += this->speed;
+    }
+    else{
+        this->vx *= 0.95;
+    }
+    
 }
 
 void Player::setCanMove(bool move){
