@@ -73,9 +73,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abce3359b4f055bac7384038046ed9ead"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#abce3359b4f055bac7384038046ed9ead">free</a> ()</td></tr>
 <tr class="memdesc:abce3359b4f055bac7384038046ed9ead"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees texture, if it exists.  <a href="#abce3359b4f055bac7384038046ed9ead">More...</a><br/></td></tr>
 <tr class="separator:abce3359b4f055bac7384038046ed9ead"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af42f4fb5f3decffc783f77a444109593"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#af42f4fb5f3decffc783f77a444109593">render</a> (int x_, int y_, SDL_Rect *clip_=nullptr)</td></tr>
-<tr class="memdesc:af42f4fb5f3decffc783f77a444109593"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the sprite.  <a href="#af42f4fb5f3decffc783f77a444109593">More...</a><br/></td></tr>
-<tr class="separator:af42f4fb5f3decffc783f77a444109593"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aefb121360da9abd2975842107b49f33a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#aefb121360da9abd2975842107b49f33a">render</a> (int x_, int y_, SDL_Rect *clip_=nullptr, double angle_=0.0, SDL_Point *center_=nullptr, SDL_RendererFlip flip_=SDL_FLIP_NONE)</td></tr>
+<tr class="memdesc:aefb121360da9abd2975842107b49f33a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the sprite.  <a href="#aefb121360da9abd2975842107b49f33a">More...</a><br/></td></tr>
+<tr class="separator:aefb121360da9abd2975842107b49f33a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f425d524e48eea595ef74dc310e0417"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#a8f425d524e48eea595ef74dc310e0417">getWidth</a> ()</td></tr>
 <tr class="separator:a8f425d524e48eea595ef74dc310e0417"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02fcba350f07d226b110f7d0712f5154"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#a02fcba350f07d226b110f7d0712f5154">getHeight</a> ()</td></tr>
@@ -248,7 +248,7 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="af42f4fb5f3decffc783f77a444109593"></a>
+<a class="anchor" id="aefb121360da9abd2975842107b49f33a"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -268,7 +268,25 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">SDL_Rect *&#160;</td>
-          <td class="paramname"><em>clip_</em> = <code>nullptr</code>&#160;</td>
+          <td class="paramname"><em>clip_</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>angle_</em> = <code>0.0</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_Point *&#160;</td>
+          <td class="paramname"><em>center_</em> = <code>nullptr</code>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">SDL_RendererFlip&#160;</td>
+          <td class="paramname"><em>flip_</em> = <code>SDL_FLIP_NONE</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -284,11 +302,16 @@ Private Attributes</h2></td></tr>
   <table class="params">
     <tr><td class="paramname">x_</td><td>: The position on the x axis of the screen. </td></tr>
     <tr><td class="paramname">y_</td><td>: The position on the y axis of the screen. </td></tr>
-    <tr><td class="paramname">clip_</td><td>: Clips the texture, on the SDL_Rect bounds. </td></tr>
+    <tr><td class="paramname">clip_</td><td>: Clips the texture, on the SDL_Rect bounds. If omitted, renders entire texture. </td></tr>
+    <tr><td class="paramname">angle_</td><td>: An angle in degrees that indicates the rotation that will be applied to the renderQuad. If omitted, no rotation will be applied. </td></tr>
+    <tr><td class="paramname">center_</td><td>: A point indicating the point around which renderQuad will be rotated. If omitted, rotation will be done in width/height center. </td></tr>
+    <tr><td class="paramname">flip_</td><td>: Value static which flipping actions should be performed on the texture. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section note"><dt>Note</dt><dd>If the 'clip_' parameter is omitted, renders the entire texture. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>The only obligatory parameters are x_ and y_. </dd>
+<dd>
+If it fails to render, logs an error message. </dd></dl>
 
 </div>
 </div>
@@ -388,7 +411,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 10 2014 21:45:01 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 11 2014 00:52:29 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

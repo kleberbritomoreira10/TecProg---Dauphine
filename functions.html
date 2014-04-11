@@ -54,6 +54,7 @@
   </div>
   <div id="navrow4" class="tabs3">
     <ul class="tablist">
+      <li><a href="#index_b"><span>b</span></a></li>
       <li><a href="#index_c"><span>c</span></a></li>
       <li><a href="#index_d"><span>d</span></a></li>
       <li><a href="#index_e"><span>e</span></a></li>
@@ -80,9 +81,19 @@
 <div class="contents">
 <div class="textblock">Here is a list of all documented class members with links to the class documentation for each member:</div>
 
+<h3><a class="anchor" id="index_b"></a>- b -</h3><ul>
+<li>background
+: <a class="el" href="class_level.html#a9df3a6a14e6faaa3d40994a667fadcc5">Level</a>
+</li>
+</ul>
+
+
 <h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
 <li>Camera()
-: <a class="el" href="class_camera.html#a924a00924fc51c8457a7d73480ce419c">Camera</a>
+: <a class="el" href="class_camera.html#a01f94c3543f56ede7af49dc778f19331">Camera</a>
+</li>
+<li>camera
+: <a class="el" href="class_level.html#a1ed54c53440e42377813bf56ec67752a">Level</a>
 </li>
 <li>clear()
 : <a class="el" href="class_window.html#a38bc43bdd1a97e5de7f346ba4c3957ef">Window</a>
@@ -138,9 +149,11 @@
 </li>
 <li>getHeight()
 : <a class="el" href="class_sprite.html#a02fcba350f07d226b110f7d0712f5154">Sprite</a>
+, <a class="el" href="class_level.html#a88e48384d4f235ceffa94ea50cf4b0c6">Level</a>
 </li>
 <li>getWidth()
-: <a class="el" href="class_sprite.html#a8f425d524e48eea595ef74dc310e0417">Sprite</a>
+: <a class="el" href="class_level.html#af2ce4cbad0726bf9149bd34a5c0aa3a7">Level</a>
+, <a class="el" href="class_sprite.html#a8f425d524e48eea595ef74dc310e0417">Sprite</a>
 </li>
 </ul>
 
@@ -152,6 +165,7 @@
 <li>height
 : <a class="el" href="class_window.html#ac8e0adc74d78dd8d6bcd3cb5e72164bc">Window</a>
 , <a class="el" href="class_sprite.html#a4d34b71316c3456acb51c3c7e57a94e2">Sprite</a>
+, <a class="el" href="class_level.html#aa715e88b922adc412a570b56b32321a7">Level</a>
 </li>
 </ul>
 
@@ -182,6 +196,9 @@
 <li>leftLimit
 : <a class="el" href="class_configuration.html#ac6deb6a33fd38f1a1302dcc7b462f8a1">Configuration</a>
 </li>
+<li>Level()
+: <a class="el" href="class_level.html#ae1d0740d51be6f3d6a8d604064845188">Level</a>
+</li>
 <li>level
 : <a class="el" href="class_lua_script.html#abf185c457bec7b34ea2d26b631dbf9f5">LuaScript</a>
 </li>
@@ -207,6 +224,9 @@
 <li>maximize()
 : <a class="el" href="class_window.html#a652b249e69ee5ff3ba8aa3bd4feccdae">Window</a>
 </li>
+<li>maxSpeed
+: <a class="el" href="class_player.html#a3e47171d423dcab69602e0f60f1ae208">Player</a>
+</li>
 <li>minimize()
 : <a class="el" href="class_window.html#a97078387be519b16401c3bb0f299aa01">Window</a>
 </li>
@@ -217,14 +237,17 @@
 <li>Player()
 : <a class="el" href="class_player.html#aceec0ce21b4783e66cabd4573a4f41cc">Player</a>
 </li>
+<li>player
+: <a class="el" href="class_level.html#a76b010ccc524cef1ae0c3adc2a63d3b1">Level</a>
+</li>
 </ul>
 
 
 <h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
 <li>render()
-: <a class="el" href="class_camera.html#abcf6c6a807fb908a75c007258251dfb5">Camera</a>
-, <a class="el" href="class_entity.html#aa7615728fd41ad13436908b1941f429b">Entity</a>
-, <a class="el" href="class_sprite.html#af42f4fb5f3decffc783f77a444109593">Sprite</a>
+: <a class="el" href="class_entity.html#aa7615728fd41ad13436908b1941f429b">Entity</a>
+, <a class="el" href="class_level.html#a1cc1e84906f0228eec0989d6e2caf30a">Level</a>
+, <a class="el" href="class_sprite.html#aefb121360da9abd2975842107b49f33a">Sprite</a>
 , <a class="el" href="class_window.html#a0a2093bd2ed34740c08a6a2fdfc059c9">Window</a>
 , <a class="el" href="class_player.html#afe3ff7815f9366b4c4fffa2cf6556ad5">Player</a>
 </li>
@@ -268,15 +291,23 @@
 <li>sdlTexture
 : <a class="el" href="class_sprite.html#a546d109413d8f3541ffde26701075bd1">Sprite</a>
 </li>
-<li>speed
-: <a class="el" href="class_camera.html#abbf9a8993dced65b00a37959f853b266">Camera</a>
-, <a class="el" href="class_player.html#a2c45aef68a4799af9e5fd2054d32e3b3">Player</a>
+<li>setBackground()
+: <a class="el" href="class_level.html#a437e4c04946073e102c1221b350e148b">Level</a>
 </li>
-<li>Sprite()
-: <a class="el" href="class_sprite.html#afcff379819393706d0c71af7b83ac13e">Sprite</a>
+<li>setCamera()
+: <a class="el" href="class_level.html#a431aa42a9e7da6c3e9a93588390d1a6c">Level</a>
+</li>
+<li>setPlayer()
+: <a class="el" href="class_level.html#af1abe74750813ed9d2a7862caf8b587a">Level</a>
+</li>
+<li>speed
+: <a class="el" href="class_player.html#a2c45aef68a4799af9e5fd2054d32e3b3">Player</a>
 </li>
 <li>sprite
 : <a class="el" href="class_entity.html#a4da30cea569f19c66c033358e1e99c04">Entity</a>
+</li>
+<li>Sprite()
+: <a class="el" href="class_sprite.html#afcff379819393706d0c71af7b83ac13e">Sprite</a>
 </li>
 </ul>
 
@@ -308,25 +339,22 @@
 : <a class="el" href="class_lua_script.html#aa1774ae17ca90a1396e9f75c4c7acf1b">LuaScript</a>
 </li>
 <li>update()
-: <a class="el" href="class_entity.html#ad465a2bd9ba1d3e68ecd609a00e1df45">Entity</a>
+: <a class="el" href="class_camera.html#a42cda7239981a5618660d04bd5893556">Camera</a>
+, <a class="el" href="class_entity.html#ad465a2bd9ba1d3e68ecd609a00e1df45">Entity</a>
 , <a class="el" href="class_player.html#a603db14db40c9596a9c8a513ea375350">Player</a>
-, <a class="el" href="class_camera.html#acc90eaa7af6e3db8ca8336e568bbbfd1">Camera</a>
 </li>
 <li>updateInput()
 : <a class="el" href="class_player.html#aad8cb8aa1770bff2296d5295adfd998f">Player</a>
-, <a class="el" href="class_camera.html#aadc741df38203173db471babdebe8a12">Camera</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_v"></a>- v -</h3><ul>
 <li>vx
-: <a class="el" href="class_camera.html#abb5796eb347b66ebd76112dbccf2ecf3">Camera</a>
-, <a class="el" href="class_player.html#ae94b76deb6ed53f49d1db40a843f30c8">Player</a>
+: <a class="el" href="class_player.html#ae94b76deb6ed53f49d1db40a843f30c8">Player</a>
 </li>
 <li>vy
-: <a class="el" href="class_camera.html#a4080ca409fb3f0af8f4349699befca92">Camera</a>
-, <a class="el" href="class_player.html#a97c9f469ef054e12fb85c6f239de3e12">Player</a>
+: <a class="el" href="class_player.html#a97c9f469ef054e12fb85c6f239de3e12">Player</a>
 </li>
 </ul>
 
@@ -336,8 +364,9 @@
 : <a class="el" href="class_logger.html#aceffcd6dfa8ae5e19ce3a139b02f36a2">Logger</a>
 </li>
 <li>width
-: <a class="el" href="class_sprite.html#a950adad23da17ce64e6e759b0b64fadd">Sprite</a>
+: <a class="el" href="class_level.html#ae7a08258b024a1c3b284c05459ce1d27">Level</a>
 , <a class="el" href="class_window.html#a4ddb6696a90ca8db80c4d12c7142da5e">Window</a>
+, <a class="el" href="class_sprite.html#a950adad23da17ce64e6e759b0b64fadd">Sprite</a>
 </li>
 <li>Window()
 : <a class="el" href="class_window.html#a1eec2cd4f8c260d86928da45e639d4c1">Window</a>
@@ -366,9 +395,6 @@
 
 
 <h3><a class="anchor" id="index_0x7e"></a>- ~ -</h3><ul>
-<li>~Camera()
-: <a class="el" href="class_camera.html#ad1897942d0ccf91052386388a497349f">Camera</a>
-</li>
 <li>~Entity()
 : <a class="el" href="class_entity.html#adf6d3f7cb1b2ba029b6b048a395cc8ae">Entity</a>
 </li>
@@ -377,6 +403,9 @@
 </li>
 <li>~InputHandler()
 : <a class="el" href="class_input_handler.html#ac1f7efb54b34d433d6ffba62627452b6">InputHandler</a>
+</li>
+<li>~Level()
+: <a class="el" href="class_level.html#a249eac1e8f19ff44134efa5e986feaca">Level</a>
 </li>
 <li>~LuaScript()
 : <a class="el" href="class_lua_script.html#a5660ae45ebd4b7a621ae21a2ed0e784b">LuaScript</a>
@@ -394,7 +423,7 @@
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 10 2014 21:45:01 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 11 2014 00:52:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
