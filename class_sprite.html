@@ -49,6 +49,8 @@
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_sprite-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Sprite Class Reference</div>  </div>
@@ -62,15 +64,12 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aba2991c432d6c5e5d6537748c4847784"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#aba2991c432d6c5e5d6537748c4847784">Sprite</a> (SDL_Renderer *renderer_)</td></tr>
-<tr class="memdesc:aba2991c432d6c5e5d6537748c4847784"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor.  <a href="#aba2991c432d6c5e5d6537748c4847784">More...</a><br/></td></tr>
-<tr class="separator:aba2991c432d6c5e5d6537748c4847784"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcff379819393706d0c71af7b83ac13e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#afcff379819393706d0c71af7b83ac13e">Sprite</a> (SDL_Renderer *renderer_, string path_)</td></tr>
+<tr class="memdesc:afcff379819393706d0c71af7b83ac13e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor.  <a href="#afcff379819393706d0c71af7b83ac13e">More...</a><br/></td></tr>
+<tr class="separator:afcff379819393706d0c71af7b83ac13e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8accab430f9d90ae5117b57d67e32b84"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#a8accab430f9d90ae5117b57d67e32b84">~Sprite</a> ()</td></tr>
 <tr class="memdesc:a8accab430f9d90ae5117b57d67e32b84"><td class="mdescLeft">&#160;</td><td class="mdescRight">The destructor.  <a href="#a8accab430f9d90ae5117b57d67e32b84">More...</a><br/></td></tr>
 <tr class="separator:a8accab430f9d90ae5117b57d67e32b84"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6144888305e054274089e9491fe7b166"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#a6144888305e054274089e9491fe7b166">loadFrom</a> (string path_)</td></tr>
-<tr class="memdesc:a6144888305e054274089e9491fe7b166"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads image from a path.  <a href="#a6144888305e054274089e9491fe7b166">More...</a><br/></td></tr>
-<tr class="separator:a6144888305e054274089e9491fe7b166"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abce3359b4f055bac7384038046ed9ead"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#abce3359b4f055bac7384038046ed9ead">free</a> ()</td></tr>
 <tr class="memdesc:abce3359b4f055bac7384038046ed9ead"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees texture, if it exists.  <a href="#abce3359b4f055bac7384038046ed9ead">More...</a><br/></td></tr>
 <tr class="separator:abce3359b4f055bac7384038046ed9ead"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -81,12 +80,33 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a8f425d524e48eea595ef74dc310e0417"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02fcba350f07d226b110f7d0712f5154"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#a02fcba350f07d226b110f7d0712f5154">getHeight</a> ()</td></tr>
 <tr class="separator:a02fcba350f07d226b110f7d0712f5154"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ac16d0357cf91ac4f3732d13a24701432"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#ac16d0357cf91ac4f3732d13a24701432">loadFrom</a> (string path_)</td></tr>
+<tr class="memdesc:ac16d0357cf91ac4f3732d13a24701432"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads image from a path.  <a href="#ac16d0357cf91ac4f3732d13a24701432">More...</a><br/></td></tr>
+<tr class="separator:ac16d0357cf91ac4f3732d13a24701432"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:a950adad23da17ce64e6e759b0b64fadd"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#a950adad23da17ce64e6e759b0b64fadd">width</a></td></tr>
+<tr class="memdesc:a950adad23da17ce64e6e759b0b64fadd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The loaded image's width.  <a href="#a950adad23da17ce64e6e759b0b64fadd">More...</a><br/></td></tr>
+<tr class="separator:a950adad23da17ce64e6e759b0b64fadd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d34b71316c3456acb51c3c7e57a94e2"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#a4d34b71316c3456acb51c3c7e57a94e2">height</a></td></tr>
+<tr class="memdesc:a4d34b71316c3456acb51c3c7e57a94e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The loaded image's width.  <a href="#a4d34b71316c3456acb51c3c7e57a94e2">More...</a><br/></td></tr>
+<tr class="separator:a4d34b71316c3456acb51c3c7e57a94e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a86042acf7d285fe26746abf14616c52d"><td class="memItemLeft" align="right" valign="top">SDL_Renderer *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#a86042acf7d285fe26746abf14616c52d">sdlRenderer</a></td></tr>
+<tr class="memdesc:a86042acf7d285fe26746abf14616c52d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The SDL renderer to render onto.  <a href="#a86042acf7d285fe26746abf14616c52d">More...</a><br/></td></tr>
+<tr class="separator:a86042acf7d285fe26746abf14616c52d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a546d109413d8f3541ffde26701075bd1"><td class="memItemLeft" align="right" valign="top">SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#a546d109413d8f3541ffde26701075bd1">sdlTexture</a></td></tr>
+<tr class="memdesc:a546d109413d8f3541ffde26701075bd1"><td class="mdescLeft">&#160;</td><td class="mdescRight">The SDL texture to use as the image.  <a href="#a546d109413d8f3541ffde26701075bd1">More...</a><br/></td></tr>
+<tr class="separator:a546d109413d8f3541ffde26701075bd1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Visual representation of game objects. </p>
 <p>Holds the SDL_Texture from the SDL2 library. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="aba2991c432d6c5e5d6537748c4847784"></a>
+<a class="anchor" id="afcff379819393706d0c71af7b83ac13e"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -94,21 +114,33 @@ Public Member Functions</h2></td></tr>
           <td class="memname">Sprite::Sprite </td>
           <td>(</td>
           <td class="paramtype">SDL_Renderer *&#160;</td>
-          <td class="paramname"><em>renderer_</em>)</td><td></td>
+          <td class="paramname"><em>renderer_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>path_</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>The constructor. </p>
-<p>Initializes all the data, and sets the desired renderer. </p>
+<p>Initializes all the data, and sets the desired renderer. Loads image with the desired path. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">renderer_</td><td>: The renderer you want the sprite to render onto. </td></tr>
+    <tr><td class="paramname">path_</td><td>: the image path. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>If the SDL_Renderer parameter is null, warns that the <a class="el" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a> will not be renderable. </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_sprite.html#ac16d0357cf91ac4f3732d13a24701432" title="Loads image from a path. ">Sprite::loadFrom(string path_)</a> </dd></dl>
 
 </div>
 </div>
@@ -182,18 +214,26 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a6144888305e054274089e9491fe7b166"></a>
+<a class="anchor" id="ac16d0357cf91ac4f3732d13a24701432"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool Sprite::loadFrom </td>
+          <td class="memname">void Sprite::loadFrom </td>
           <td>(</td>
           <td class="paramtype">string&#160;</td>
           <td class="paramname"><em>path_</em>)</td><td></td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Loads image from a path. </p>
@@ -204,7 +244,7 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Whether the sprite's SDL_Texture (sdlTexture) is null or not. </dd></dl>
+<dl class="section note"><dt>Note</dt><dd>Error message is logged if the sprite's SDL_Texture (sdlTexture) is null after method. </dd></dl>
 
 </div>
 </div>
@@ -252,6 +292,95 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a4d34b71316c3456acb51c3c7e57a94e2"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Sprite::height</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The loaded image's width. </p>
+
+</div>
+</div>
+<a class="anchor" id="a86042acf7d285fe26746abf14616c52d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Renderer* Sprite::sdlRenderer</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The SDL renderer to render onto. </p>
+
+</div>
+</div>
+<a class="anchor" id="a546d109413d8f3541ffde26701075bd1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Texture* Sprite::sdlTexture</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The SDL texture to use as the image. </p>
+
+</div>
+</div>
+<a class="anchor" id="a950adad23da17ce64e6e759b0b64fadd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Sprite::width</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The loaded image's width. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/caio/Desktop/Git/Dauphine/include/<a class="el" href="_sprite_8h_source.html">Sprite.h</a></li>
 <li>/home/caio/Desktop/Git/Dauphine/src/Sprite.cpp</li>
@@ -259,7 +388,7 @@ Public Member Functions</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 6 2014 07:14:13 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 10 2014 21:45:01 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

@@ -50,6 +50,8 @@
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
+<a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_window-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Window Class Reference</div>  </div>
@@ -93,6 +95,27 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:a2b52309ef359b6392454a3bb57398b5d"><td class="memItemLeft" align="right" valign="top">SDL_Renderer *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a2b52309ef359b6392454a3bb57398b5d">renderer</a></td></tr>
 <tr class="memdesc:a2b52309ef359b6392454a3bb57398b5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The SDL renderer to render onto.  <a href="#a2b52309ef359b6392454a3bb57398b5d">More...</a><br/></td></tr>
 <tr class="separator:a2b52309ef359b6392454a3bb57398b5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ab8bedded50af796c7f44603bb71ba33b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#ab8bedded50af796c7f44603bb71ba33b">initialize</a> ()</td></tr>
+<tr class="memdesc:ab8bedded50af796c7f44603bb71ba33b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the window and the renderer.  <a href="#ab8bedded50af796c7f44603bb71ba33b">More...</a><br/></td></tr>
+<tr class="separator:ab8bedded50af796c7f44603bb71ba33b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private Attributes</h2></td></tr>
+<tr class="memitem:ae39a7755a5a6ab74bcbdbe3e2e206820"><td class="memItemLeft" align="right" valign="top">SDL_Window *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#ae39a7755a5a6ab74bcbdbe3e2e206820">window</a></td></tr>
+<tr class="memdesc:ae39a7755a5a6ab74bcbdbe3e2e206820"><td class="mdescLeft">&#160;</td><td class="mdescRight">The SDL window, that will be the actual game window.  <a href="#ae39a7755a5a6ab74bcbdbe3e2e206820">More...</a><br/></td></tr>
+<tr class="separator:ae39a7755a5a6ab74bcbdbe3e2e206820"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4ddb6696a90ca8db80c4d12c7142da5e"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a4ddb6696a90ca8db80c4d12c7142da5e">width</a></td></tr>
+<tr class="memdesc:a4ddb6696a90ca8db80c4d12c7142da5e"><td class="mdescLeft">&#160;</td><td class="mdescRight">The game <a class="el" href="class_window.html" title="Actual window that game runs on. ">Window</a> width.  <a href="#a4ddb6696a90ca8db80c4d12c7142da5e">More...</a><br/></td></tr>
+<tr class="separator:a4ddb6696a90ca8db80c4d12c7142da5e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8e0adc74d78dd8d6bcd3cb5e72164bc"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#ac8e0adc74d78dd8d6bcd3cb5e72164bc">height</a></td></tr>
+<tr class="memdesc:ac8e0adc74d78dd8d6bcd3cb5e72164bc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The game <a class="el" href="class_window.html" title="Actual window that game runs on. ">Window</a> width.  <a href="#ac8e0adc74d78dd8d6bcd3cb5e72164bc">More...</a><br/></td></tr>
+<tr class="separator:ac8e0adc74d78dd8d6bcd3cb5e72164bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a340b289f258761b093201a2b5b52ea16"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a340b289f258761b093201a2b5b52ea16">windowTitle</a></td></tr>
+<tr class="memdesc:a340b289f258761b093201a2b5b52ea16"><td class="mdescLeft">&#160;</td><td class="mdescRight">The game <a class="el" href="class_window.html" title="Actual window that game runs on. ">Window</a> title.  <a href="#a340b289f258761b093201a2b5b52ea16">More...</a><br/></td></tr>
+<tr class="separator:a340b289f258761b093201a2b5b52ea16"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Actual window that game runs on. </p>
@@ -139,7 +162,7 @@ Public Attributes</h2></td></tr>
   </dd>
 </dl>
 <dl class="section note"><dt>Note</dt><dd>If omitted, window title will be "SDL Window". </dd></dl>
-<dl class="section see"><dt>See Also</dt><dd>initialize() </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_window.html#ab8bedded50af796c7f44603bb71ba33b" title="Initializes the window and the renderer. ">initialize()</a> </dd></dl>
 
 </div>
 </div>
@@ -196,6 +219,32 @@ Public Attributes</h2></td></tr>
 
 <p>Frees allocated members. </p>
 <p>Frees the SDL_Renderer and the SDL_Window. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab8bedded50af796c7f44603bb71ba33b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Window::initialize </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Initializes the window and the renderer. </p>
+<p>Creates the <a class="el" href="class_window.html" title="Actual window that game runs on. ">Window</a>, with specified width, height and title. </p>
 
 </div>
 </div>
@@ -280,6 +329,28 @@ Public Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ac8e0adc74d78dd8d6bcd3cb5e72164bc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Window::height</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The game <a class="el" href="class_window.html" title="Actual window that game runs on. ">Window</a> width. </p>
+
+</div>
+</div>
 <a class="anchor" id="a2b52309ef359b6392454a3bb57398b5d"></a>
 <div class="memitem">
 <div class="memproto">
@@ -294,6 +365,72 @@ Public Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a4ddb6696a90ca8db80c4d12c7142da5e"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Window::width</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The game <a class="el" href="class_window.html" title="Actual window that game runs on. ">Window</a> width. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae39a7755a5a6ab74bcbdbe3e2e206820"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Window* Window::window</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The SDL window, that will be the actual game window. </p>
+
+</div>
+</div>
+<a class="anchor" id="a340b289f258761b093201a2b5b52ea16"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Window::windowTitle</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The game <a class="el" href="class_window.html" title="Actual window that game runs on. ">Window</a> title. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/caio/Desktop/Git/Dauphine/include/<a class="el" href="_window_8h_source.html">Window.h</a></li>
 <li>/home/caio/Desktop/Git/Dauphine/src/Window.cpp</li>
@@ -301,7 +438,7 @@ Public Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sun Apr 6 2014 07:14:13 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 10 2014 21:45:01 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
