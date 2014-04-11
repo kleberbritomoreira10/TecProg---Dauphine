@@ -39,3 +39,4 @@ clean:
 	@rm -f $(TARGET)
 	@rm -f $(TARGET).exe
 	@rm -f *.dll
+	@rm -f LICENSES.txt

@@ -6,11 +6,7 @@ https://github.com/CaioIcy/UnLua
 https://github.com/EliasD/unnamed_lua_binder
 */
 
-extern "C" {
-	#include <lua.h>
-	#include <lauxlib.h>
-	#include <lualib.h>
-}
+#include "lua.hpp"
 
 #include <string>
 #include <vector>

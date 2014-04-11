@@ -5,8 +5,9 @@ Dauphine.exe
 # The build folder
 build/
 
-# The windows DLLs files, in case not cleaned
+# The windows.zip files
 *.dll
+LICENSES.txt
 
 # The doxygen gh-pages folder
 html/
