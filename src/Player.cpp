@@ -2,15 +2,15 @@
 #include "Logger.h"
 #include "Configuration.h"
 
-#define MAX_VEL 400
-
 Player::Player(double x_, double y_, Sprite *sprite_){
 	this->x = x_;
 	this->y = y_;
     this->vx = 0;
     this->vy = 0;
-    this->speed = 10;
-    this->canMove = false;
+    this->speed = 15;
+    this->maxSpeed = 0;
+    this->cameraX = 0;
+    this->cameraY = 0;
 
 	this->sprite = sprite_;
 
@@ -20,33 +20,36 @@ Player::Player(double x_, double y_, Sprite *sprite_){
 }
 
 Player::~Player(){
+    this->x = 0;
+    this->y = 0;
     this->vx = 0;
     this->vy = 0;
-    this->speed = 0;	
+    this->speed = 0;
+    this->cameraX = 0;
+    this->cameraY = 0;
+    this->maxSpeed = 0;
 }
 
 void Player::update(double dt_){
-    if(this->x > Configuration::rightLimit){
-        this->vx = 0;
-        this->x = Configuration::rightLimit ;
-        Configuration::leftLimit = 449;
+    /// @todo Get actual player W/H and level W/H.
+    this->x += this->vx * dt_;
+    if((this->x < 0) || (this->x + 100 > 3000)){
+        this->x -= this->vx * dt_;
     }
-    else if(this->x < Configuration::leftLimit){
-        this->vx = 0;
-        this->x = Configuration::leftLimit;
-        Configuration::rightLimit = 451;
-    }
-    else{
-        this->x += this->vx * dt_;
-        this->y += this->vy * dt_;
+
+    this->y += this->vy * dt_;
+    if((this->y < 0) || (this->y + 100 > 540)){
+        this->y -= this->vy * dt_;
     }
 }
 
 void Player::render(){
-	this->sprite->render(this->x, this->y);
+	this->sprite->render(this->x - this->cameraX, this->y - this->cameraY);
 }
 
 void Player::updateInput(bool keyState_[GK_MAX]){
+    /// @todo Fix all these magic/weird numbers.
+
     // Jump.
     if(keyState_[GK_UP]){
         this->vy -= this->speed;
@@ -77,6 +80,7 @@ void Player::updateInput(bool keyState_[GK_MAX]){
     
 }
 
-void Player::setCanMove(bool move){
-	this->canMove = move;
+void Player::setCameraXY(double x_, double y_){
+    this->cameraX = x_;
+    this->cameraY = y_;
 }

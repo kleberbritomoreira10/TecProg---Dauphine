@@ -9,53 +9,23 @@
 * The camera class.
 * Contains all the relevant implementation relative to the camera.
 */
-class Camera : public Entity {
+class Camera {
 
 	public:
-		/**
-		* The constructor.
-		* Creates the camera by setting the position and sprite.
-		* @param x_ : position in x axis.
-		* @param y_ : position in y axis.
-		* @param sprite_ : which sprite to use.
-		*/
-		Camera(double x_, double y_, Sprite *sprite_);
+		Camera();
+		~Camera();
 
-		/**
-		* The destructor.
-		* Resets the attributes.
-		*/
-		virtual ~Camera();
+		void update();
+		void setPlayerXY(double x_, double y_);
+		void setLevelWH(unsigned int width_, unsigned int height_);
 
-		/**
-		* Updates the camera.
-		* Modifies whatever is necessary, relative to the camera.
-		* @param dt_ : Delta time. Time elapsed between one frame and the other, independent of processing speed.
-		*/
-		virtual void update(double dt_);
-
-		/**
-		* Renders the camera.
-		* Uses the camera's sprite render method.
-		* @see Sprite::render()
-		*/
-		virtual void render();
-
-		/**
-		* Updates the camera depending on recieved input.
-		* Modifies whatever is necessary, relative to the camera.
-		* @param keyState_ : The input handled boolean array that says which keys are pressed.
-		*/
-		void updateInput(bool keyState_[GK_MAX]);
-
-		double vx; /**< The camera's speed on the x axis. */
-		double vy; /**< The camera's speed on the x axis. */
-		double speed; /**< Speed that moves camera on input. */
 		SDL_Rect clip;
 
-		bool canMove;
-		bool canMovePlayer;
-		bool getCanMove();
+	private:
+		double playerX;
+		double playerY;
+		unsigned int levelW;
+		unsigned int levelH;
 
 };
 

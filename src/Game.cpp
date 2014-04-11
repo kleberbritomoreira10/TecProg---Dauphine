@@ -4,7 +4,7 @@
 #include "FPSWrapper.h"
 #include "Logger.h"
 #include "Configuration.h"
-
+#include "Level.h"
 #include "Player.h"
 #include "Sprite.h"
 #include "LuaScript.h"
@@ -39,20 +39,25 @@ void Game::runGame(){
 	const double scriptY = luaPlayer.unlua_get<double>("player.position.y");
 
 	// Just an example of Sprite loading, delete this later.
-	Sprite *spriteScene = nullptr;
-	spriteScene = new Sprite(this->gameWindow->renderer, "res/scene.png");
+	Sprite *spriteLevelBackground = nullptr;
+	spriteLevelBackground = new Sprite(this->gameWindow->renderer, "res/scene.png");
+	const unsigned int bgWidth = spriteLevelBackground->getWidth();
+	const unsigned int bgHeight = spriteLevelBackground->getHeight();
 
 	Sprite *spritePlayer = nullptr;
 	spritePlayer = new Sprite(this->gameWindow->renderer, scriptSpritePath);
 
-	// Creating the player and camera examples.
+	// Creating level, camera and player.
+	Level level(bgWidth, bgHeight);
+	Camera camera;
 	Player player(scriptX, scriptY, spritePlayer);
-	Camera camera(0, 0, spriteScene);
+	level.setBackground(spriteLevelBackground);
+	level.setPlayer(player);
+	level.setCamera(camera);
+
 
 	// Creating the input handler.
 	InputHandler gameInput(this);
-
-	bool canMove = false;
 	
 	// Get the first game time.
 	double totalGameTime = 0.0;
@@ -68,14 +73,13 @@ void Game::runGame(){
 		// Update.
 		while(accumulatedTime >= deltaTime){
 			gameInput.handleInput();
-			camera.updateInput(gameInput.keyState);
+
 			player.updateInput(gameInput.keyState);
-
-			canMove = camera.getCanMove();
-			player.setCanMove(canMove);
-
-			camera.update(deltaTime);
 			player.update(deltaTime);
+
+			level.update();
+
+			camera.update();
 
 			accumulatedTime -= deltaTime;
 			totalGameTime += deltaTime;
@@ -83,7 +87,7 @@ void Game::runGame(){
 
 		// Render.
 		gameWindow->clear();
-		camera.render();
+		level.render(&camera.clip);
 		player.render();
 		gameWindow->render();
 		

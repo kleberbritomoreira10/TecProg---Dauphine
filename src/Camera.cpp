@@ -1,72 +1,52 @@
 #include "Camera.h"
 #include "Logger.h"
 #include "Configuration.h"
+#include "Level.h"
 
-#define MAX_VEL 400
-
-Camera::Camera(double x_, double y_, Sprite *sprite_){
-	this->x = x_;
-	this->y = y_;
-    this->vx = 0;
-    this->vy = 0;
-    this->speed = 10;
-
-    this->canMove = true;
-    this->canMovePlayer = false;
-
-	this->sprite = sprite_;
-	if(this->sprite == nullptr){
-		Logger::warning("No sprite set for the camera! Null sprite.");
-	}
-
-	this->clip = {(int)x_, (int)y_, (int)Configuration::screenWidth, (int)Configuration::screenHeight};
+Camera::Camera(){
+    /// @todo If the player changes the resolution, so should this clip.
+    this->playerX = 0;
+    this->playerY = 0;
+    this->levelW = 0;
+    this->levelH = 0;
+    this->clip = {0, 0, (int)Configuration::screenWidth, (int)Configuration::screenHeight};
 }
 
 Camera::~Camera(){
-    this->vx = 0;
-    this->vy = 0;
-    this->speed = 0;	
+    this->playerX = 0;
+    this->playerY = 0;
+    this->levelW = 0;
+    this->levelH = 0;
+    this->clip = {0, 0, 0, 0};
 }
 
-void Camera::update(double dt_){
-    if(this->x > Configuration::resolutionLeftLimit){
-        this->vx = 0;
-        this->x = Configuration::resolutionLeftLimit;
-        Configuration::leftLimit = 0;
-        Configuration::rightLimit = 451;
-    }
-    else if(this->x < Configuration::resolutionRightLimit){
-        this->vx = 0;
-        this->x = Configuration::resolutionRightLimit;        
-        Configuration::leftLimit = 449;
-        Configuration::rightLimit = 940;
-    }
+void Camera::update(){
+    /// @todo Get the actual player width/height.
+    int playerW = 100;
+    int playerH = 100;
+    this->clip.x = ( this->playerX + playerW / 2 ) - this->clip.w / 2;
+    this->clip.y = ( this->playerY + playerH / 2 ) - this->clip.h / 2;
 
-    this->x += this->vx * dt_;
-    this->y += this->vy * dt_;
-}
-
-void Camera::render(){
-	this->sprite->render(this->x, this->y);
-}
-
-void Camera::updateInput(bool keyState_[GK_MAX]){
-    // Movement.
-    if(keyState_[GK_LEFT] && Configuration::rightLimit == 451){
-        if(this->vx < MAX_VEL){
-            this->vx += this->speed;
-        }
+    if(this->clip.x < 0){
+        this->clip.x = 0;
     }
-    else if(keyState_[GK_RIGHT] && Configuration::leftLimit == 449){
-        if(this->vx > -MAX_VEL){
-            this->vx -= this->speed;
-        } 
+    if(this->clip.y < 0){
+        this->clip.y = 0;
     }
-    else{
-        this->vx *= 0.95;
+    if(this->clip.x > (int)this->levelW - this->clip.w){
+        this->clip.x = (int)this->levelW - this->clip.w;
+    }
+    if(this->clip.y > (int)this->levelH - this->clip.h){
+        this->clip.y = (int)this->levelH - this->clip.h;
     }
 }
 
-bool Camera::getCanMove(){
-    return this->canMovePlayer;
+void Camera::setPlayerXY(double x_, double y_){
+    this->playerX = x_;
+    this->playerY = y_;
+}
+
+void Camera::setLevelWH(unsigned int width_, unsigned int height_){
+    this->levelW = width_;
+    this->levelH = height_;
 }

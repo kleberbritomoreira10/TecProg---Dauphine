@@ -51,10 +51,13 @@ class Player : public Entity {
 		double vx; /**< The player's speed on the x axis. */
 		double vy; /**< The player's speed on the x axis. */
 		double speed; /**< Speed that moves player on input. */
+		double maxSpeed; /**< Player max speed. */
 
-		bool canMove;
+		void setCameraXY(double x_, double y_);
 
-		void setCanMove(bool move);
+	private:
+		double cameraX;
+		double cameraY;
 
 };
 

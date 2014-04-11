@@ -41,10 +41,14 @@ class Sprite {
 		* Copy the SDL_Texture onto the renderer, at the desired x,y position.
 		* @param x_ : The position on the x axis of the screen.
 		* @param y_ : The position on the y axis of the screen.
-		* @param clip_ : Clips the texture, on the SDL_Rect bounds.
-		* @note If the 'clip_' parameter is omitted, renders the entire texture.
+		* @param clip_ : Clips the texture, on the SDL_Rect bounds. If omitted, renders entire texture.
+		* @param angle_ : An angle in degrees that indicates the rotation that will be applied to the renderQuad. If omitted, no rotation will be applied.
+		* @param center_ : A point indicating the point around which renderQuad will be rotated. If omitted, rotation will be done in width/height center.
+		* @param flip_ : Value static which flipping actions should be performed on the texture.
+		* @note The only obligatory parameters are x_ and y_.
+		* @note If it fails to render, logs an error message.
 		*/
-		void render(int x_, int y_, SDL_Rect *clip_ = nullptr);
+		void render(int x_, int y_, SDL_Rect *clip_ = nullptr, double angle_ = 0.0, SDL_Point* center_ = nullptr, SDL_RendererFlip flip_ = SDL_FLIP_NONE);
 
 		/**
 		* @return The Sprite width.
