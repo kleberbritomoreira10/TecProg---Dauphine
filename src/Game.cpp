@@ -33,19 +33,20 @@ void Game::runGame(){
 	/// @todo Remove all of the example code from inside this method.
 
 	// Getting information from lua script
-	LuaScript luaPlayer("lua/Player.lua");
-	const string scriptSpritePath = luaPlayer.unlua_get<string>("player.spritePath");
-	const double scriptX = luaPlayer.unlua_get<double>("player.position.x");
-	const double scriptY = luaPlayer.unlua_get<double>("player.position.y");
+	LuaScript luaLevel1("lua/Level1.lua");
+	const string scriptPlayerSpritePath = luaLevel1.unlua_get<string>("level.player.spritePath");
+	const string scriptBackgroundSpritePath = luaLevel1.unlua_get<string>("level.background.spritePath");
+	const double scriptX = luaLevel1.unlua_get<double>("level.player.position.x");
+	const double scriptY = luaLevel1.unlua_get<double>("level.player.position.y");
 
 	// Just an example of Sprite loading, delete this later.
 	Sprite *spriteLevelBackground = nullptr;
-	spriteLevelBackground = new Sprite(this->gameWindow->renderer, "res/scene.png");
+	spriteLevelBackground = new Sprite(this->gameWindow->renderer, scriptBackgroundSpritePath);
 	const unsigned int bgWidth = spriteLevelBackground->getWidth();
 	const unsigned int bgHeight = spriteLevelBackground->getHeight();
 
 	Sprite *spritePlayer = nullptr;
-	spritePlayer = new Sprite(this->gameWindow->renderer, scriptSpritePath);
+	spritePlayer = new Sprite(this->gameWindow->renderer, scriptPlayerSpritePath);
 
 	// Creating level, camera and player.
 	Level level(bgWidth, bgHeight);
