@@ -16,7 +16,9 @@ Level::~Level(){
 
 void Level::update(){
 	this->player->setCameraXY(this->camera->clip.x, this->camera->clip.y);
+	this->player->setLevelWH(this->width, this->height);
 	this->camera->setPlayerXY(this->player->x, this->player->y);
+	this->camera->setPlayerWH(this->player->width, this->player->height);
 	this->camera->setLevelWH(this->width, this->height);
 }
 

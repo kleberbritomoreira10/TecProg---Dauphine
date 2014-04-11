@@ -48,7 +48,7 @@ class Sprite {
 		* @note The only obligatory parameters are x_ and y_.
 		* @note If it fails to render, logs an error message.
 		*/
-		void render(int x_, int y_, SDL_Rect *clip_ = nullptr, double angle_ = 0.0, SDL_Point* center_ = nullptr, SDL_RendererFlip flip_ = SDL_FLIP_NONE);
+		void render(double x_, double y_, SDL_Rect *clip_ = nullptr, double angle_ = 0.0, SDL_Point* center_ = nullptr, SDL_RendererFlip flip_ = SDL_FLIP_NONE);
 
 		/**
 		* @return The Sprite width.

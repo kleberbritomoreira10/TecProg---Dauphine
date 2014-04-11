@@ -79,7 +79,7 @@ void Sprite::free(){
 	}
 }
 
-void Sprite::render(int x_, int y_, SDL_Rect *clip_, double angle_, SDL_Point* center_, SDL_RendererFlip flip_){
+void Sprite::render(double x_, double y_, SDL_Rect *clip_, double angle_, SDL_Point* center_, SDL_RendererFlip flip_){
 	// This is the destination SDL_Rect structure.
 	SDL_Rect renderQuad = {(int)x_, (int)y_, (int)this->width, (int)this->height};
 

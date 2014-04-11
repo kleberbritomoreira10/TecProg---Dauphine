@@ -8,15 +8,23 @@ Player::Player(double x_, double y_, Sprite *sprite_){
     this->vx = 0;
     this->vy = 0;
     this->speed = 15;
-    this->maxSpeed = 0;
+    this->maxSpeed = 1000;
     this->cameraX = 0;
     this->cameraY = 0;
+    this->levelW = 0;
+    this->levelH = 0;
 
 	this->sprite = sprite_;
 
 	if(this->sprite == nullptr){
 		Logger::warning("No sprite set for the player! Null sprite.");
+        this->width = 0;
+        this->height = 0;
 	}
+    else{
+        this->width = this->sprite->getWidth();
+        this->height = this->sprite->getHeight();
+    }
 }
 
 Player::~Player(){
@@ -31,20 +39,34 @@ Player::~Player(){
 }
 
 void Player::update(double dt_){
-    /// @todo Get actual player W/H and level W/H.
-    this->x += this->vx * dt_;
-    if((this->x < 0) || (this->x + 100 > 3000)){
-        this->x -= this->vx * dt_;
+    const double vxdt = this->vx * dt_;
+    const double vydt = this->vy * dt_;
+
+    this->x += vxdt;
+    if(this->x < 0){
+        this->x = 0;
+        this->vx = 0;
+    }
+    else if(this->x + this->width > this->levelW){
+        this->x = this->levelW - this->width;
+        this->vx = 0;
     }
 
-    this->y += this->vy * dt_;
-    if((this->y < 0) || (this->y + 100 > 540)){
-        this->y -= this->vy * dt_;
+    this->y += vydt;
+    if(this->y < 0){
+        this->y = 0;
+        this->vy = 0;
+    }
+    else if(this->y + this->height > this->levelH){
+        this->y = this->levelH - this->height;
+        this->vy = 0;
     }
 }
 
 void Player::render(){
-	this->sprite->render(this->x - this->cameraX, this->y - this->cameraY);
+    const int dx = this->x - this->cameraX;
+    const int dy = this->y - this->cameraY;
+	this->sprite->render(dx, dy);
 }
 
 void Player::updateInput(bool keyState_[GK_MAX]){
@@ -55,22 +77,17 @@ void Player::updateInput(bool keyState_[GK_MAX]){
         this->vy -= this->speed;
     }
     else{
-        if(this->y >= (Configuration::screenHeight - 100)){
-            this->y = Configuration::screenHeight - 99;
-            this->vy = 0;
-        }
-        else{
-            this->vy += this->speed;
-        }
+        this->vy += this->speed; //gravity
     }
 
+    // Movement.
     if(keyState_[GK_LEFT]){
-        if(this->vx > -MAX_VEL){
+        if(this->vx > -this->maxSpeed){
             this->vx -= this->speed;
         } 
     }
     else if(keyState_[GK_RIGHT]){
-        if(this->vx < MAX_VEL){
+        if(this->vx < this->maxSpeed){
             this->vx += this->speed;
         }
     }
@@ -83,4 +100,9 @@ void Player::updateInput(bool keyState_[GK_MAX]){
 void Player::setCameraXY(double x_, double y_){
     this->cameraX = x_;
     this->cameraY = y_;
+}
+
+void Player::setLevelWH(unsigned int width_, unsigned int height_){
+    this->levelW = width_;
+    this->levelH = height_;
 }

@@ -48,16 +48,28 @@ class Player : public Entity {
 		*/
 		void updateInput(bool keyState_[GK_MAX]);
 
+		/**
+		* @param x_,y_ : Sets the players knowledge of the cameras x,y position.
+		* @see Level::update()
+		*/
+		void setCameraXY(double x_, double y_);
+
+		/**
+		* @param width_,height_ : Sets the players knowledge of the level width,height.
+		* @see Level::update()
+		*/
+		void setLevelWH(unsigned int width_, unsigned int height_);
+
 		double vx; /**< The player's speed on the x axis. */
 		double vy; /**< The player's speed on the x axis. */
 		double speed; /**< Speed that moves player on input. */
 		double maxSpeed; /**< Player max speed. */
 
-		void setCameraXY(double x_, double y_);
-
 	private:
 		double cameraX;
 		double cameraY;
+		unsigned int levelW;
+		unsigned int levelH;
 
 };
 

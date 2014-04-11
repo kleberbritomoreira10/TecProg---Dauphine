@@ -7,7 +7,7 @@ using std::string;
 
 /**
 * Game configuration class.
-* @todo Properly implement and refactor the Configuration.
+* @todo Properly implement with lua and refactor the Configuration.
 */
 class Configuration {
 	public:

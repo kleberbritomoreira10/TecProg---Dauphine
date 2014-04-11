@@ -21,11 +21,8 @@ Camera::~Camera(){
 }
 
 void Camera::update(){
-    /// @todo Get the actual player width/height.
-    int playerW = 100;
-    int playerH = 100;
-    this->clip.x = ( this->playerX + playerW / 2 ) - this->clip.w / 2;
-    this->clip.y = ( this->playerY + playerH / 2 ) - this->clip.h / 2;
+    this->clip.x = ( this->playerX + this->playerW / 2 ) - this->clip.w / 2;
+    this->clip.y = ( this->playerY + this->playerH / 2 ) - this->clip.h / 2;
 
     if(this->clip.x < 0){
         this->clip.x = 0;
@@ -44,6 +41,11 @@ void Camera::update(){
 void Camera::setPlayerXY(double x_, double y_){
     this->playerX = x_;
     this->playerY = y_;
+}
+
+void Camera::setPlayerWH(unsigned int width_, unsigned int height_){
+    this->playerW = width_;
+    this->playerH = height_;
 }
 
 void Camera::setLevelWH(unsigned int width_, unsigned int height_){

@@ -32,6 +32,8 @@ class Entity {
 
 		double x; /**< The position in the x axis. */
 		double y; /**< The position in the y axis. */
+		unsigned int width; /**< The entitys width, from its sprite. */
+		unsigned int height; /**< The entitys height, from its sprite. */
 
 	protected:
 		Sprite *sprite; /**< The Sprite attributed to the entity. */

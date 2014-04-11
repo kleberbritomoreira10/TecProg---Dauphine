@@ -28,14 +28,14 @@ class Level {
 		~Level();
 
 		/**
-		*
-		*
+		* Updates the objects within the Level.
+		* Sets the relevant information for its Player and Camera.
 		*/
 		void update();
 
 		/**
 		* Renders the level.
-		* 
+		* Always render on 0,0 position.
 		* @param clip_ : Clips the texture, on the SDL_Rect bounds.
 		* @see Sprite::render()
 		*/
