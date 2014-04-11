@@ -69,8 +69,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a249eac1e8f19ff44134efa5e986feaca"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_level.html#a249eac1e8f19ff44134efa5e986feaca">~Level</a> ()</td></tr>
 <tr class="memdesc:a249eac1e8f19ff44134efa5e986feaca"><td class="mdescLeft">&#160;</td><td class="mdescRight">The destructor.  <a href="#a249eac1e8f19ff44134efa5e986feaca">More...</a><br/></td></tr>
 <tr class="separator:a249eac1e8f19ff44134efa5e986feaca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62e412eaad753d2baa2f94239cb80e41"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a62e412eaad753d2baa2f94239cb80e41"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>update</b> ()</td></tr>
+<tr class="memitem:a62e412eaad753d2baa2f94239cb80e41"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_level.html#a62e412eaad753d2baa2f94239cb80e41">update</a> ()</td></tr>
+<tr class="memdesc:a62e412eaad753d2baa2f94239cb80e41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the objects within the <a class="el" href="class_level.html" title="Represents the current level. ">Level</a>.  <a href="#a62e412eaad753d2baa2f94239cb80e41">More...</a><br/></td></tr>
 <tr class="separator:a62e412eaad753d2baa2f94239cb80e41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1cc1e84906f0228eec0989d6e2caf30a"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_level.html#a1cc1e84906f0228eec0989d6e2caf30a">render</a> (SDL_Rect *clip_)</td></tr>
 <tr class="memdesc:a1cc1e84906f0228eec0989d6e2caf30a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the level.  <a href="#a1cc1e84906f0228eec0989d6e2caf30a">More...</a><br/></td></tr>
@@ -210,13 +210,14 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Renders the level. </p>
+<p>Always render on 0,0 position. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">clip_</td><td>: Clips the texture, on the SDL_Rect bounds. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_sprite.html#aefb121360da9abd2975842107b49f33a" title="Renders the sprite. ">Sprite::render()</a> </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_sprite.html#adb1c84ac16f4e748fcc0855d45a271ca" title="Renders the sprite. ">Sprite::render()</a> </dd></dl>
 
 </div>
 </div>
@@ -284,6 +285,24 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+
+</div>
+</div>
+<a class="anchor" id="a62e412eaad753d2baa2f94239cb80e41"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Level::update </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates the objects within the <a class="el" href="class_level.html" title="Represents the current level. ">Level</a>. </p>
+<p>Sets the relevant information for its <a class="el" href="class_player.html" title="The player entity class. ">Player</a> and <a class="el" href="class_camera.html" title="The camera class. ">Camera</a>. </p>
 
 </div>
 </div>
@@ -405,7 +424,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 11 2014 00:52:29 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 11 2014 08:33:50 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
