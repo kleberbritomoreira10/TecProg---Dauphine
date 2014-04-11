@@ -7,40 +7,55 @@ https://github.com/EliasD/unnamed_lua_binder
 */
 
 LuaScript::LuaScript(const string& filename_) {
+    /// @todo Log an error message for different lua error codes.
+    this->level = 0;
     this->luaState = luaL_newstate();
-    if (luaL_loadfile(this->luaState, filename_.c_str()) || lua_pcall(luaState, 0, 0, 0)) {
+
+    const int loadedFile = luaL_loadfile(this->luaState, filename_.c_str());
+    const int calledFunction = lua_pcall(luaState, 0, 0, 0);
+
+    if (loadedFile == LUA_OK && calledFunction == LUA_OK) {
+        if(this->luaState != nullptr){
+            luaL_openlibs(this->luaState);
+        }
+    }
+    else{
         Logger::error("Failed to load (" + filename_ + ")");
-        this->luaState = 0;
+        this->luaState = nullptr;
     }
 
-    if(this->luaState){
-        luaL_openlibs(this->luaState);
-    }
 }
 
 LuaScript::~LuaScript() {
-    if(this->luaState){
+    if(this->luaState != nullptr){
         lua_close(this->luaState);
     }
+    this->level = 0;
 }
 
-vector<int> LuaScript::getIntVector(const string& name_) {
-    vector<int> v;
-    lua_gettostack(name_);
-    if(lua_isnil(this->luaState, -1)) { // array is not found
+vector<int> LuaScript::unlua_getIntVector(const string& name_) {
+    vector<int> intVector;
+
+    const bool gotToStack = unlua_getToStack(name_);
+    const bool arrayNotFound = lua_isnil(this->luaState, -1);
+    if(gotToStack && arrayNotFound){
+
+        lua_pushnil(this->luaState);
+        while(lua_next(this->luaState, -2)) {
+            intVector.push_back((int)lua_tonumber(this->luaState, -1));
+            lua_pop(this->luaState, 1);
+        }
+        unlua_clean();
+        return intVector;
+    }
+    else{
         return vector<int>();
     }
-    lua_pushnil(this->luaState);
-    while(lua_next(this->luaState, -2)) {
-        v.push_back((int)lua_tonumber(this->luaState, -1));
-        lua_pop(this->luaState, 1);
-    }
-    clean();
-    return v;
+    
 }
 
-vector<string> LuaScript::getTableKeys(const string& name_) {
-    string code = 
+vector<string> LuaScript::unlua_getTableKeys(const string& name_) {
+    string code =
         "function getKeys(name_) "
         "s = \"\""
         "for k, v in pairs(_G[name_]) do "
@@ -61,19 +76,20 @@ vector<string> LuaScript::getTableKeys(const string& name_) {
 
     Logger::log("TEMP: " + test);
 
-    for(unsigned int i = 0; i < test.size(); i++) {     
+    for(unsigned int i = 0; i < test.size(); i++) {
         if(test.at(i) != ',') {
             temp += test.at(i);
-        } else {
+        }
+        else {
             strings.push_back(temp);
             temp= "";
         }
     }
-    clean();
+    unlua_clean();
     return strings;
 }
 
-bool LuaScript::lua_gettostack(const string& variableName_) {
+bool LuaScript::unlua_getToStack(const string& variableName_) {
     this->level = 0;
     string var = "";
     for(unsigned int i = 0; i < variableName_.size(); i++) {
@@ -113,8 +129,3 @@ bool LuaScript::lua_gettostack(const string& variableName_) {
     return true;
 }
 
-// Generic get
-template<typename T>
-T LuaScript::lua_get(const string& variableName_) {
-    return 0;
-}

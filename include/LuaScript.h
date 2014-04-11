@@ -7,12 +7,10 @@ https://github.com/EliasD/unnamed_lua_binder
 */
 
 extern "C" {
-	# include <lua.h>
-	# include <lauxlib.h>
-	# include <lualib.h>
+	#include <lua.h>
+	#include <lauxlib.h>
+	#include <lualib.h>
 }
-
-#include "Logger.h"
 
 #include <string>
 #include <vector>
@@ -20,107 +18,88 @@ extern "C" {
 using std::string;
 using std::vector;
 
+/**
+* Parses lua scripts into C++.
+*
+*/
 class LuaScript {
 
 	public:
+		/**
+		* The constructor.
+		* Initializes a new lua state, and loads the desired script.
+		* @param filename_ : Path to the desired script, i.e. "lua/level1/Player.lua".
+		*/
 		LuaScript(const string& filename_);
-		virtual ~LuaScript();
-		
-		vector<int> getIntVector(const string& name_);
-		vector<string> getTableKeys(const string& name_);
-		bool lua_gettostack(const string& variableName_);
 
-		inline void clean(){
+		/**
+		* The destructor.
+		* Closes the lua state, if open.
+		*/
+		virtual ~LuaScript();
+
+		/**
+		* Gets value of desired variable.
+		* Template for the different get methods, which recieve a different type of value.
+		* @param variableName_ : The varaible you want to get a value from.
+		* @return The T value stored in 'variableName_' inside the lua script.
+		*/
+		template<typename T>
+		T unlua_get(const std::string& variableName_);
+		
+		/**
+		* Gets an int vector.
+		* 
+		* @param name_ : The table which contains the int vector.
+		* @return An int vector, containing all the ints inside the 'name_' array from the lua script.
+		*/
+		vector<int> unlua_getIntVector(const string& name_);
+
+		/**
+		* Gets the keys from a table.
+		*
+		* @param name_ : The name of the table.
+		* @return A string vector, containing all the keys from inside the 'name_' table from the lua script.
+		*/
+		vector<string> unlua_getTableKeys(const string& name_);
+
+	private:
+		lua_State* luaState; /**< a */
+		int level; /**< a */
+
+		inline void unlua_clean(){
 		    int n = lua_gettop(this->luaState);
 		    lua_pop(this->luaState, n);
 		}
 
-		template<typename T>
-		T get(const std::string& variableName_);
+		/**
+		* Validates existance of the variable.
+		* Checks where the 'variableName_' variable exists inside the lua script.
+		* @param variableName_ : The varaible you want to get a value from.
+		* @return True for success, false for failure to get variable.
+		*/
+		bool unlua_getToStack(const string& variableName_);		
 
+		/**
+		* Gets a T type value from lua script.
+		*
+		* @param variableName_ : The varaible you want to get a value from.
+		* @return T type value.
+		*/
 		template<typename T>
-		T lua_get(const string& variableName_);
+		T unlua_getValue(const string& variableName_);
 
+		/**
+		* Gets a default value.
+		* 
+		* @return Value 0 or a string "null", depending on how it is called.
+		*/
 		template<typename T>
-		T lua_getdefault();
-
-	private:
-		lua_State* luaState;
-		int level;
+		T unlua_getDefault();
 
 };
 
 // Template definitions.
-// LuaScript::get
-
-template<typename T>
-T LuaScript::get(const std::string& variableName_) {
-    if(!luaState) {
-        Logger::error("Script is not loaded! [" + variableName_ + "]");
-        return lua_getdefault<T>();
-    }
-
-    T result;
-    if(lua_gettostack(variableName_)) { // variable succesfully on top of stack
-        result = lua_get<T>(variableName_);  
-    }
-    else {
-        result = lua_getdefault<T>();
-    }
-
-
-    clean();
-    return result;
-}
-
-// LuaScript::lua_getdefault
-
-template<typename T>
-T LuaScript::lua_getdefault() {
-	return 0;
-}
-
-// LuaScript::lua_get
-
-template <> 
-inline bool LuaScript::lua_get<bool>(const string& variableName_) {
-	((void)(variableName_));
-	return (bool)lua_toboolean(luaState, -1);
-}
-
-template <> 
-inline double LuaScript::lua_get<double>(const string& variableName_) {
-	if(!lua_isnumber(luaState, -1)) {
-		Logger::warning("'" + variableName_ + "' is not a number!");
-	}
-	return (double)lua_tonumber(luaState, -1);
-}
-
-template <>
-inline int LuaScript::lua_get<int>(const string& variableName_) {
-	if(!lua_isnumber(luaState, -1)) {
-		Logger::warning("'" + variableName_ + "' is not a number!");
-	}
-	return (int)lua_tonumber(luaState, -1);
-}
-
-template <>
-inline string LuaScript::lua_get<string>(const string& variableName_) {
-	string s = "null";
-	if(lua_isstring(luaState, -1)) {
-		s = string(lua_tostring(luaState, -1));
-	} else {
-		Logger::warning("'" + variableName_ + "' is not a string!");
-	}
-	return s;
-}
-
-// LuaScript::lua_getdefault
-
-template<>
-inline string LuaScript::lua_getdefault<string>() {
-	return "null";
-}
-
+#include "LuaScript.tpp"
 
 #endif //INCLUDE_LUASCRIPT_H

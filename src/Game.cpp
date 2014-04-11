@@ -34,9 +34,9 @@ void Game::runGame(){
 
 	// Getting information from lua script
 	LuaScript luaPlayer("lua/Player.lua");
-	const string scriptSpritePath = luaPlayer.get<string>("player.spritePath");
-	const double scriptX = luaPlayer.get<double>("player.position.x");
-	const double scriptY = luaPlayer.get<double>("player.position.y");
+	const string scriptSpritePath = luaPlayer.unlua_get<string>("player.spritePath");
+	const double scriptX = luaPlayer.unlua_get<double>("player.position.x");
+	const double scriptY = luaPlayer.unlua_get<double>("player.position.y");
 
 	// Just an example of Sprite loading, delete this later.
 	Sprite *spriteScene = nullptr;
