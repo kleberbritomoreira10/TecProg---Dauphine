@@ -3,10 +3,11 @@
 
 #include "SDLWrapper.h"
 #include "Window.h"
+#include "State.h"
 
 /**
 * Main structure class for the game.
-* Contains all the necessary functionalities to loop and update the game.
+* Contains all the necessary functionalities to loop and update the game. Controls the current state.
 */
 class Game {
 
@@ -38,9 +39,10 @@ class Game {
 		void signalQuit();
 		
 	private:
-		bool isRunning; /**< Whether the game is currently running/looping or not. */
-		FPSmanager fpsManager; /**< The FPSManager from SDL2_GFX. Handles the framerate capping. */
 		Window *window; /**< The game Window. */
+		bool isRunning; /**< Whether the game is currently running/looping or not. */		
+		State *currentState; /**< The current state, which the game is in. */
+		FPSmanager fpsManager; /**< The FPSManager from SDL2_GFX. Handles the framerate capping. */
 
 };
 

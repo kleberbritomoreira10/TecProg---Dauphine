@@ -2,6 +2,8 @@
 #include "Logger.h"
 
 bool SDLWrapper::initialize(){
+	/// @todo Initialize SDL_Mixer and SDL_TTF. And not do INIT_EVERYTHING.
+
 	bool initSDL = false;
 	bool initIMG = false;
 

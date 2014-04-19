@@ -5,12 +5,17 @@
 #include "SDLWrapper.h"
 #include "Player.h"
 #include "Camera.h"
+#include "Entity.h"
+#include "State.h"
+
+#include <list>
+using std::list;
 
 /**
 * Represents the current level.
 * Contains background, player and a camera. Should contain all(?) game objects related to that level in the future.
 */
-class Level {
+class Level : public State {
 	
 	public:
 		/**
@@ -28,10 +33,21 @@ class Level {
 		~Level();
 
 		/**
-		* Updates the objects within the Level.
-		* Sets the relevant information for its Player and Camera.
+		*
 		*/
-		void update();
+		virtual void load();
+		
+		/**
+		* Updates the objects within the Level.
+		* Calls 
+		* @note Sets the relevant information for its Player and Camera.
+		*/
+		virtual void update(double dt_);
+
+		/**
+		*
+		*/
+		virtual void unload();
 
 		/**
 		* Renders the level.
@@ -62,14 +78,21 @@ class Level {
 		*/
 		void setCamera(Camera &camera_);
 
+		/**
+		*
+		*/
+		void addEntity(Entity *entity);
+
 	private:
+		Sprite *background; /**< The levels background sprite. */
+
 		unsigned int width; /**< Width that defines the horizontal limits. */
 		unsigned int height; /**< Height that defines the vertical limits. */
 
-		// Objects levelObjects[]
-		Player *player; /**< The player instance in that Level. */
+		Player *player; /**< The direct reference to player, even though its in the list. */
 		Camera *camera; /**< The current camera for that Level. */
-		Sprite *background; /**< The levels background sprite. */
+
+		list<Entity*> entities; /**< List of all the entities in the level. */
 
 };
 

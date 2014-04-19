@@ -3,18 +3,23 @@
 #include "Configuration.h"
 #include "Level.h"
 
-Camera::Camera(){
-    /// @todo If the player changes the resolution, so should this clip.
-    this->playerX = 0;
-    this->playerY = 0;
-    this->levelW = 0;
-    this->levelH = 0;
-    this->clip = {0, 0, (int)Configuration::getScreenWidth(), (int)Configuration::getScreenHeight()};
+Camera::Camera():
+    playerX(0),
+    playerY(0),
+    playerW(0),
+    playerH(0),
+    levelW(0),
+    levelH(0),
+    clip{0, 0, (int)Configuration::getScreenWidth(), (int)Configuration::getScreenHeight()}
+{
+    /// @todo If the player changes the resolution, so should the clip.
 }
 
 Camera::~Camera(){
     this->playerX = 0;
     this->playerY = 0;
+    this->playerW = 0;
+    this->playerH = 0;
     this->levelW = 0;
     this->levelH = 0;
     this->clip = {0, 0, 0, 0};

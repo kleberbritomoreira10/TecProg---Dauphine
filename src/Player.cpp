@@ -2,32 +2,23 @@
 #include "Logger.h"
 #include "Configuration.h"
 
-Player::Player(double x_, double y_, Sprite *sprite_){
-
-	this->x = x_;
-	this->y = y_;
-
-    this->vx = 0;
-    this->vy = 0;
-
-    this->speed = 15;
-    this->maxSpeed = 1000;
-    
-    this->cameraX = 0;
-    this->cameraY = 0;
-    this->levelW = 0;
-    this->levelH = 0;
-
-	this->sprite = sprite_;
-
-	if(this->sprite == nullptr){
-		Logger::warning("No sprite set for the player! Null sprite.");
-        this->width = 0;
-        this->height = 0;
-	}
-    else{
+Player::Player(double x_, double y_, Sprite *sprite_) :
+    Entity(x_, y_, sprite_),
+    vx(0),
+    vy(0),
+    speed(15),
+    maxSpeed(1000),
+    cameraX(0),
+    cameraY(0),
+    levelW(0),
+    levelH(0)
+{
+	if(this->sprite != nullptr){
         this->width = this->sprite->getWidth();
         this->height = this->sprite->getHeight();
+	}
+    else{
+        Logger::warning("No sprite set for the player! Null sprite.");
     }
 }
 

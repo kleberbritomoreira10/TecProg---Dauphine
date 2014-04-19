@@ -1,11 +1,13 @@
 #ifndef INCLUDE_INPUTKEYS_H
 #define INCLUDE_INPUTKEYS_H
 
+#include <cstdint>
+
 enum GameKeys : uint8_t { 
 	UP = 0,
-	LEFT = 1,
-	RIGHT = 2,
-	MAX = 3
+	LEFT,
+	RIGHT,
+	MAX
 };
 
 #endif //INCLUDE_INPUTKEYS_H

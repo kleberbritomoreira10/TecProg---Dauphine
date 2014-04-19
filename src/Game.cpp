@@ -9,16 +9,16 @@
 #include "Sprite.h"
 #include "LuaScript.h"
 
-Game::Game(Window *window_){
-	if(window_ != nullptr){
-		this->window = window_;
+Game::Game(Window *window_) :
+	window(window_),
+	isRunning(false),
+	currentState(nullptr)
+{
+	if(this->window != nullptr){
 		this->isRunning = true;
-		
 		FPSWrapper::initialize(this->fpsManager);
 	}
 	else{
-		this->window = nullptr;
-		this->isRunning = false;
 		Logger::error("Game window is null. Game will not run.");
 	}
 }
@@ -27,6 +27,7 @@ Game::~Game(){
 	this->window->destroy();
 	this->window = nullptr;
 	this->isRunning = false;
+	this->currentState = nullptr;
 }
 
 void Game::runGame(){
@@ -52,8 +53,7 @@ void Game::runGame(){
 	Player player(scriptX, scriptY, spritePlayer);
 	level.setPlayer(player);
 	level.setCamera(camera);
-
-
+	
 	// Creating the input handler.
 	InputHandler inputHandler(this);
 	
@@ -71,11 +71,9 @@ void Game::runGame(){
 		// Update.
 		while(accumulatedTime >= deltaTime){
 			inputHandler.handleInput();
-
 			player.updateInput(inputHandler.getKeyStates());
-			player.update(deltaTime);
 
-			level.update();
+			level.update(deltaTime);
 
 			camera.update();
 
@@ -87,7 +85,6 @@ void Game::runGame(){
 		window->clear();
 
 		level.render(camera.getClip());
-		player.render();
 
 		window->render();
 		

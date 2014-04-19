@@ -69,12 +69,13 @@ class Sprite {
 		*/
 		void loadFrom(string path_);
 
-		unsigned int width; /**< The loaded image's width. */
-		unsigned int height; /**< The loaded image's width. */
-
 		SDL_Renderer *sdlRenderer; /**< The SDL renderer to render onto. */
 		SDL_Texture* sdlTexture; /**< The SDL texture to use as the image. */
 
+		unsigned int width; /**< The loaded image's width. */
+		unsigned int height; /**< The loaded image's width. */
+
+		
 };
 
 #endif //INCLUDE_SPRITE_H

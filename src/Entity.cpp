@@ -1,5 +1,13 @@
 #include "Entity.h"
 
+Entity::Entity(double x_, double y_, Sprite *sprite_) :
+    x(x_),
+    y(y_),
+    sprite(sprite_)
+{
+	// Only serves as the initializer for the derived classes.
+}
+
 Entity::~Entity(){
 	this->x = 0;
 	this->y = 0;

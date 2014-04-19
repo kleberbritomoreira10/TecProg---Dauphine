@@ -1,9 +1,9 @@
 #include "InputHandler.h"
 #include "Logger.h"
 
-InputHandler::InputHandler(Game *game_){
-	this->game = game_;
-
+InputHandler::InputHandler(Game *game_) :
+	game(game_)
+{
 	for(unsigned int i = 0; i < GameKeys::MAX; i++){
 		this->keyStates[i] = false;
 	}

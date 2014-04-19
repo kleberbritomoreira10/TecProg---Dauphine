@@ -1,12 +1,12 @@
 #include "Sprite.h"
 #include "Logger.h"
 
-Sprite::Sprite(SDL_Renderer *renderer_, string path_){
-	this->width = 0;
-	this->height = 0;
-	this->sdlTexture = nullptr;
-	this->sdlRenderer = renderer_;
-
+Sprite::Sprite(SDL_Renderer *renderer_, string path_) :
+	sdlRenderer(renderer_),
+	sdlTexture(nullptr),
+	width(0),
+	height(0)
+{
 	if(this->sdlRenderer == nullptr){
 		Logger::warning("Null renderer passed to Sprite. It will not be renderable.");	
 	}
