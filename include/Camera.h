@@ -29,6 +29,11 @@ class Camera {
 		void update();
 
 		/**
+		* @return The camera clip (an SDL_RECT).
+		*/
+		SDL_Rect& getClip();
+
+		/**
 		* @param x_,y_ : Sets the cameras knowledge of the players x,y position.
 		* @see Level::update()
 		*/
@@ -46,8 +51,6 @@ class Camera {
 		*/
 		void setLevelWH(unsigned int width_, unsigned int height_);
 
-		SDL_Rect clip; /**< Clip which will be used to clip the rendering only to the extent of the camera. */
-
 	private:
 		double playerX;
 		double playerY;
@@ -55,6 +58,7 @@ class Camera {
 		unsigned int playerH;
 		unsigned int levelW;
 		unsigned int levelH;
+		SDL_Rect clip; /**< Clip which will be used to clip the rendering only to the extent of the camera. */
 
 };
 

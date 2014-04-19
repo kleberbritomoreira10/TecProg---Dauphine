@@ -16,10 +16,10 @@ class Level {
 		/**
 		* The constructor.
 		* Defines the levels width and height limits.
-		* @param width_ : Desired horizontal limit.
-		* @param height_ : Desired vertical limit.
+		* @param background_ : Sets the background sprite, which defines the levels width and height.
+		* @todo Probably isn't the best practice to make the background define the width/height. We might not want a background sprite later.
 		*/
-		Level(unsigned int width_, unsigned int height_);
+		Level(Sprite *background_);
 
 		/**
 		* The destructor.
@@ -39,7 +39,7 @@ class Level {
 		* @param clip_ : Clips the texture, on the SDL_Rect bounds.
 		* @see Sprite::render()
 		*/
-		void render(SDL_Rect *clip_);
+		void render(SDL_Rect &clip_);
 
 		/**
 		* @return The Level width.
@@ -61,11 +61,6 @@ class Level {
 		* @note You should only set the camera after setting the player. Will warn if you didn't.
 		*/
 		void setCamera(Camera &camera_);
-
-		/**
-		* @param background_ : Sets the background sprite for the level.
-		*/
-		void setBackground(Sprite *background_);
 
 	private:
 		unsigned int width; /**< Width that defines the horizontal limits. */

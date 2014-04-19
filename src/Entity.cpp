@@ -9,3 +9,11 @@ Entity::~Entity(){
 	delete this->sprite;
 	this->sprite = nullptr;
 }
+
+unsigned int Entity::getWidth(){
+	return this->width;
+}
+
+unsigned int Entity::getHeight(){
+	return this->height;
+}

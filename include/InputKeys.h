@@ -1,11 +1,11 @@
 #ifndef INCLUDE_INPUTKEYS_H
 #define INCLUDE_INPUTKEYS_H
 
-enum GameKeys {
-	GK_UP = 0,
-	GK_LEFT,
-	GK_RIGHT,
-	GK_MAX
+enum GameKeys : uint8_t { 
+	UP = 0,
+	LEFT = 1,
+	RIGHT = 2,
+	MAX = 3
 };
 
 #endif //INCLUDE_INPUTKEYS_H

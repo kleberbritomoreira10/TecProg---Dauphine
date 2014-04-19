@@ -2,8 +2,8 @@
 #define INCLUDE_SPRITE_H
 
 #include "SDLWrapper.h"
-#include <string>
 
+#include <string>
 using std::string;
 
 /**

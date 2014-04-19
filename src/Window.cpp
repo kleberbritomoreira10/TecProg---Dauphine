@@ -47,10 +47,13 @@ void Window::render(){
 void Window::initialize(){
 	// Creates the SDL window.
 	const Uint32 windowFlags = SDL_WINDOW_SHOWN;
-	this->window = SDL_CreateWindow(this->windowTitle.c_str(), 
+	this->window = SDL_CreateWindow(
+		this->windowTitle.c_str(), 
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
 		this->width, this->height,
-		windowFlags);
+		windowFlags
+	);
+	
 	if(this->window != nullptr){
 
 		// Creates the SDL renderer.
@@ -82,5 +85,9 @@ void Window::initialize(){
 void Window::rescale(unsigned int size_){
 	// Just a precaution, so the the window size doesn't get huge.
 	size_ = (size_ > 10) ? 10 : size_;
-	SDL_RenderSetLogicalSize(this->renderer, Configuration::resolutionWidth * size_, Configuration::resolutionHeight * size_);
+	SDL_RenderSetLogicalSize(this->renderer, Configuration::RESOLUTION_WIDTH * size_, Configuration::RESOLUTION_HEIGHT * size_);
+}
+
+SDL_Renderer* Window::getRenderer(){
+	return this->renderer;
 }

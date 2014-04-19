@@ -3,12 +3,16 @@
 #include "Configuration.h"
 
 Player::Player(double x_, double y_, Sprite *sprite_){
+
 	this->x = x_;
 	this->y = y_;
+
     this->vx = 0;
     this->vy = 0;
+
     this->speed = 15;
     this->maxSpeed = 1000;
+    
     this->cameraX = 0;
     this->cameraY = 0;
     this->levelW = 0;
@@ -28,8 +32,6 @@ Player::Player(double x_, double y_, Sprite *sprite_){
 }
 
 Player::~Player(){
-    this->x = 0;
-    this->y = 0;
     this->vx = 0;
     this->vy = 0;
     this->speed = 0;
@@ -39,28 +41,32 @@ Player::~Player(){
 }
 
 void Player::update(double dt_){
-    const double vxdt = this->vx * dt_;
-    const double vydt = this->vy * dt_;
+    this->x += this->vx * dt_;
 
-    this->x += vxdt;
+    // Left wall.
     if(this->x < 0){
         this->x = 0;
         this->vx = 0;
     }
+    // Right wall.
     else if(this->x + this->width > this->levelW){
         this->x = this->levelW - this->width;
         this->vx = 0;
     }
 
-    this->y += vydt;
+    this->y += this->vy * dt_;
+
+    // Top wall.
     if(this->y < 0){
         this->y = 0;
         this->vy = 0;
     }
+    // Bottom wall.
     else if(this->y + this->height > this->levelH){
         this->y = this->levelH - this->height;
         this->vy = 0;
     }
+    
 }
 
 void Player::render(){
@@ -69,11 +75,11 @@ void Player::render(){
 	this->sprite->render(dx, dy);
 }
 
-void Player::updateInput(bool keyState_[GK_MAX]){
+void Player::updateInput(array<bool, GameKeys::MAX> keyStates_){
     /// @todo Fix all these magic/weird numbers.
 
     // Jump.
-    if(keyState_[GK_UP]){
+    if(keyStates_[GameKeys::UP]){
         this->vy -= this->speed;
     }
     else{
@@ -81,12 +87,12 @@ void Player::updateInput(bool keyState_[GK_MAX]){
     }
 
     // Movement.
-    if(keyState_[GK_LEFT]){
+    if(keyStates_[GameKeys::LEFT]){
         if(this->vx > -this->maxSpeed){
             this->vx -= this->speed;
         } 
     }
-    else if(keyState_[GK_RIGHT]){
+    else if(keyStates_[GameKeys::RIGHT]){
         if(this->vx < this->maxSpeed){
             this->vx += this->speed;
         }

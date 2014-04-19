@@ -11,21 +11,21 @@
 
 Game::Game(Window *window_){
 	if(window_ != nullptr){
-		this->gameWindow = window_;
+		this->window = window_;
 		this->isRunning = true;
 		
 		FPSWrapper::initialize(this->fpsManager);
 	}
 	else{
-		this->gameWindow = nullptr;
+		this->window = nullptr;
 		this->isRunning = false;
 		Logger::error("Game window is null. Game will not run.");
 	}
 }
 
 Game::~Game(){
-	this->gameWindow->destroy();
-	this->gameWindow = nullptr;
+	this->window->destroy();
+	this->window = nullptr;
 	this->isRunning = false;
 }
 
@@ -41,24 +41,21 @@ void Game::runGame(){
 
 	// Just an example of Sprite loading, delete this later.
 	Sprite *spriteLevelBackground = nullptr;
-	spriteLevelBackground = new Sprite(this->gameWindow->renderer, scriptBackgroundSpritePath);
-	const unsigned int bgWidth = spriteLevelBackground->getWidth();
-	const unsigned int bgHeight = spriteLevelBackground->getHeight();
+	spriteLevelBackground = new Sprite(this->window->getRenderer(), scriptBackgroundSpritePath);
 
 	Sprite *spritePlayer = nullptr;
-	spritePlayer = new Sprite(this->gameWindow->renderer, scriptPlayerSpritePath);
+	spritePlayer = new Sprite(this->window->getRenderer(), scriptPlayerSpritePath);
 
 	// Creating level, camera and player.
-	Level level(bgWidth, bgHeight);
+	Level level(spriteLevelBackground);
 	Camera camera;
 	Player player(scriptX, scriptY, spritePlayer);
-	level.setBackground(spriteLevelBackground);
 	level.setPlayer(player);
 	level.setCamera(camera);
 
 
 	// Creating the input handler.
-	InputHandler gameInput(this);
+	InputHandler inputHandler(this);
 	
 	// Get the first game time.
 	double totalGameTime = 0.0;
@@ -73,9 +70,9 @@ void Game::runGame(){
 
 		// Update.
 		while(accumulatedTime >= deltaTime){
-			gameInput.handleInput();
+			inputHandler.handleInput();
 
-			player.updateInput(gameInput.keyState);
+			player.updateInput(inputHandler.getKeyStates());
 			player.update(deltaTime);
 
 			level.update();
@@ -87,11 +84,17 @@ void Game::runGame(){
 		}
 
 		// Render.
-		gameWindow->clear();
-		level.render(&camera.clip);
+		window->clear();
+
+		level.render(camera.getClip());
 		player.render();
-		gameWindow->render();
+
+		window->render();
 		
 	}
 
+}
+
+void Game::signalQuit(){
+	this->isRunning = false;
 }

@@ -5,6 +5,9 @@
 #include "Sprite.h"
 #include "InputKeys.h"
 
+#include <array>
+using std::array;
+
 /**
 * The player entity class.
 * Contains all the relevant implementation relative to the player.
@@ -44,9 +47,9 @@ class Player : public Entity {
 		/**
 		* Updates the player depending on recieved input.
 		* Modifies whatever is necessary, relative to the player.
-		* @param keyState_ : The input handled boolean array that says which keys are pressed.
+		* @param keyStates_ : The input handled boolean array that says which keys are pressed.
 		*/
-		void updateInput(bool keyState_[GK_MAX]);
+		void updateInput(array<bool, GameKeys::MAX> keyStates_);
 
 		/**
 		* @param x_,y_ : Sets the players knowledge of the cameras x,y position.
@@ -60,12 +63,12 @@ class Player : public Entity {
 		*/
 		void setLevelWH(unsigned int width_, unsigned int height_);
 
+	private:
 		double vx; /**< The player's speed on the x axis. */
 		double vy; /**< The player's speed on the x axis. */
 		double speed; /**< Speed that moves player on input. */
 		double maxSpeed; /**< Player max speed. */
 
-	private:
 		double cameraX;
 		double cameraY;
 		unsigned int levelW;

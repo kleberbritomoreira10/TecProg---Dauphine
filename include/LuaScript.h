@@ -9,9 +9,9 @@ https://github.com/EliasD/unnamed_lua_binder
 #include "lua.hpp"
 
 #include <string>
-#include <vector>
-
 using std::string;
+
+#include <vector>
 using std::vector;
 
 /**

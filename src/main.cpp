@@ -15,7 +15,7 @@ int main(int argc, char **argv){
 	bool systemsInitialized = SDLWrapper::initialize();
 
 	if(systemsInitialized){
-		Window window(Configuration::screenWidth, Configuration::screenHeight, Configuration::TITLE);
+		Window window(Configuration::getScreenWidth(), Configuration::getScreenHeight(), Configuration::TITLE);
 
 		Game *game = nullptr;
 		game = new Game(&window);

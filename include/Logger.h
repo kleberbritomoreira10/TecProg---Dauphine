@@ -2,7 +2,6 @@
 #define INCLUDE_LOGGER_H
 
 #include <string>
-
 using std::string;
 
 /**

@@ -31,11 +31,16 @@ class Game {
 		*/
 		void runGame();
 		
-		bool isRunning; /**< Whether the game is currently running/looping or not. */
-
+		/**
+		* Tell the game to quit.
+		* Sets the isRunning attribute to false.
+		*/
+		void signalQuit();
+		
 	private:
+		bool isRunning; /**< Whether the game is currently running/looping or not. */
 		FPSmanager fpsManager; /**< The FPSManager from SDL2_GFX. Handles the framerate capping. */
-		Window *gameWindow; /**< The game Window. */
+		Window *window; /**< The game Window. */
 
 };
 

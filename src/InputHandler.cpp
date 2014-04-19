@@ -4,8 +4,8 @@
 InputHandler::InputHandler(Game *game_){
 	this->game = game_;
 
-	for(unsigned int i = 0; i < GK_MAX; i++){
-		this->keyState[i] = false;
+	for(unsigned int i = 0; i < GameKeys::MAX; i++){
+		this->keyStates[i] = false;
 	}
 
 	if(this->game == nullptr){
@@ -26,13 +26,13 @@ void InputHandler::handleInput(){
 		if(this->eventHandler.type == SDL_KEYDOWN){
 			switch(this->eventHandler.key.keysym.sym){
 				case SDLK_UP: // Jump.
-					this->keyState[GK_UP] = true;
+					this->keyStates[GameKeys::UP] = true;
 					break;
 				case SDLK_LEFT: // Move left.
-					this->keyState[GK_LEFT] = true;
+					this->keyStates[GameKeys::LEFT] = true;
 					break;
 				case SDLK_RIGHT: // Move right.
-					this->keyState[GK_RIGHT] = true;
+					this->keyStates[GameKeys::RIGHT] = true;
 					break;
 				default:
 					break;
@@ -44,13 +44,13 @@ void InputHandler::handleInput(){
 		else if(this->eventHandler.type == SDL_KEYUP){
 			switch(this->eventHandler.key.keysym.sym){
 				case SDLK_UP: // Jump.
-					this->keyState[GK_UP] = false;
+					this->keyStates[GameKeys::UP] = false;
 					break;
 				case SDLK_LEFT: // Move left.
-					this->keyState[GK_LEFT] = false;
+					this->keyStates[GameKeys::LEFT] = false;
 					break;
 				case SDLK_RIGHT: // Move right.
-					this->keyState[GK_RIGHT] = false;
+					this->keyStates[GameKeys::RIGHT] = false;
 					break;
 				default:
 					break;
@@ -59,8 +59,12 @@ void InputHandler::handleInput(){
 		
 		// On window exit (X).
 		else if(this->eventHandler.type == SDL_QUIT){
-	    	this->game->isRunning = false;
+	    	this->game->signalQuit();
 	    }
 
 	} while(pendingEvent != 0);
+}
+
+array<bool, GameKeys::MAX> InputHandler::getKeyStates(){
+	return this->keyStates;
 }

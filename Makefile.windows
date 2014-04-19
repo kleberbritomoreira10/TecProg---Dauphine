@@ -12,8 +12,8 @@ CPPFLAGS= `$(SDL_MINGW_ROOT)/bin/sdl2-config --cflags` -O2 -g -W -Wall -pedantic
 # Linking flags
 LDFLAGS = `$(SDL_MINGW_ROOT)/bin/sdl2-config --libs` -lSDL2_image -lSDL2_gfx -lm -llua52
 
-# Target program name = directory name
-TARGET := $(notdir $(CURDIR))
+# Target program name
+TARGET := Dauphine
 # Automatically build a list of object files
 CPPFILES := $(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.cpp)))
 # Object files

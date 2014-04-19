@@ -2,8 +2,8 @@
 #define INCLUDE_WINDOW_H
 
 #include "SDLWrapper.h"
-#include <string>
 
+#include <string>
 using std::string;
 
 /**
@@ -69,9 +69,13 @@ class Window {
 		*/
 		void rescale(unsigned int size_);
 
-		SDL_Renderer *renderer; /**< The SDL renderer to render onto. */
+		/**
+		* @return The renderer attribute.
+		*/
+		SDL_Renderer* getRenderer();
 
 	private:
+		SDL_Renderer *renderer; /**< The SDL renderer to render onto. */
 		SDL_Window *window; /**< The SDL window, that will be the actual game window. */
 		unsigned int width; /**< The game Window width. */
 		unsigned int height; /**< The game Window width. */

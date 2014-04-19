@@ -11,8 +11,8 @@ CPPFLAGS=-O2 -g -W -Wall -pedantic -ansi -std=c++0x -Wextra -Wshadow
 # Linking flags
 LDFLAGS = -lSDL2 -lSDL2_image -lSDL2_gfx -llua -ldl -lm
 
-# Target program name = directory name
-TARGET := $(notdir $(CURDIR))
+# Target program name
+TARGET := Dauphine
 # Automatically build a list of object files
 CPPFILES := $(foreach dir,$(SOURCES),$(notdir $(wildcard $(dir)/*.cpp)))
 # Object files

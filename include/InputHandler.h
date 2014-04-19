@@ -5,6 +5,9 @@
 #include "Game.h"
 #include "InputKeys.h"
 
+#include <array>
+using std::array;
+
 /**
 * Handles player input.
 * Using SDL event handling, recieves the player input accordingly.
@@ -32,9 +35,13 @@ class InputHandler {
 		*/
 		void handleInput();
 
-		bool keyState[GK_MAX]; /**< Boolean array that controls which keys are pressed or not. */
+		/**
+		* @return The keyStates attribute.
+		*/
+		array<bool, GameKeys::MAX> getKeyStates();
 
 	private:
+		array<bool, GameKeys::MAX> keyStates; /**< Boolean array that controls which keys are pressed or not. */
 		SDL_Event eventHandler; /**< SDL internal event handler. */
 		Game *game; /**< The Game to recieve input from. */
 

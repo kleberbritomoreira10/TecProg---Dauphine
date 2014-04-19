@@ -9,7 +9,7 @@ Camera::Camera(){
     this->playerY = 0;
     this->levelW = 0;
     this->levelH = 0;
-    this->clip = {0, 0, (int)Configuration::screenWidth, (int)Configuration::screenHeight};
+    this->clip = {0, 0, (int)Configuration::getScreenWidth(), (int)Configuration::getScreenHeight()};
 }
 
 Camera::~Camera(){
@@ -24,18 +24,26 @@ void Camera::update(){
     this->clip.x = ( this->playerX + this->playerW / 2 ) - this->clip.w / 2;
     this->clip.y = ( this->playerY + this->playerH / 2 ) - this->clip.h / 2;
 
+    // Left wall.
     if(this->clip.x < 0){
         this->clip.x = 0;
     }
+    // Right wall.
+    else if(this->clip.x > (int)this->levelW - this->clip.w){
+        this->clip.x = (int)this->levelW - this->clip.w;
+    }
+    // Top wall.
     if(this->clip.y < 0){
         this->clip.y = 0;
     }
-    if(this->clip.x > (int)this->levelW - this->clip.w){
-        this->clip.x = (int)this->levelW - this->clip.w;
-    }
-    if(this->clip.y > (int)this->levelH - this->clip.h){
+    // Bottom wall.
+    else if(this->clip.y > (int)this->levelH - this->clip.h){
         this->clip.y = (int)this->levelH - this->clip.h;
     }
+}
+
+SDL_Rect& Camera::getClip(){
+    return this->clip;
 }
 
 void Camera::setPlayerXY(double x_, double y_){
