@@ -49,7 +49,6 @@
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_window-members.html">List of all members</a>  </div>
@@ -89,12 +88,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0d7c171a31ea6cf664a0f92ce4f29aaa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a0d7c171a31ea6cf664a0f92ce4f29aaa">rescale</a> (unsigned int size_)</td></tr>
 <tr class="memdesc:a0d7c171a31ea6cf664a0f92ce4f29aaa"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rescales the renderization.  <a href="#a0d7c171a31ea6cf664a0f92ce4f29aaa">More...</a><br/></td></tr>
 <tr class="separator:a0d7c171a31ea6cf664a0f92ce4f29aaa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a2b52309ef359b6392454a3bb57398b5d"><td class="memItemLeft" align="right" valign="top">SDL_Renderer *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a2b52309ef359b6392454a3bb57398b5d">renderer</a></td></tr>
-<tr class="memdesc:a2b52309ef359b6392454a3bb57398b5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The SDL renderer to render onto.  <a href="#a2b52309ef359b6392454a3bb57398b5d">More...</a><br/></td></tr>
-<tr class="separator:a2b52309ef359b6392454a3bb57398b5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2418ad8ae2af2f4c5badd9cbb8656c1"><td class="memItemLeft" align="right" valign="top">SDL_Renderer *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#ae2418ad8ae2af2f4c5badd9cbb8656c1">getRenderer</a> ()</td></tr>
+<tr class="separator:ae2418ad8ae2af2f4c5badd9cbb8656c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -104,6 +99,9 @@ Private Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:a2b52309ef359b6392454a3bb57398b5d"><td class="memItemLeft" align="right" valign="top">SDL_Renderer *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#a2b52309ef359b6392454a3bb57398b5d">renderer</a></td></tr>
+<tr class="memdesc:a2b52309ef359b6392454a3bb57398b5d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The SDL renderer to render onto.  <a href="#a2b52309ef359b6392454a3bb57398b5d">More...</a><br/></td></tr>
+<tr class="separator:a2b52309ef359b6392454a3bb57398b5d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae39a7755a5a6ab74bcbdbe3e2e206820"><td class="memItemLeft" align="right" valign="top">SDL_Window *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_window.html#ae39a7755a5a6ab74bcbdbe3e2e206820">window</a></td></tr>
 <tr class="memdesc:ae39a7755a5a6ab74bcbdbe3e2e206820"><td class="mdescLeft">&#160;</td><td class="mdescRight">The SDL window, that will be the actual game window.  <a href="#ae39a7755a5a6ab74bcbdbe3e2e206820">More...</a><br/></td></tr>
 <tr class="separator:ae39a7755a5a6ab74bcbdbe3e2e206820"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -222,6 +220,22 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ae2418ad8ae2af2f4c5badd9cbb8656c1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Renderer * Window::getRenderer </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The renderer attribute. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="ab8bedded50af796c7f44603bb71ba33b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -320,7 +334,7 @@ Private Attributes</h2></td></tr>
 <p>Set a device independent resolution for rendering. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">size_</td><td>: Multiplies <a class="el" href="class_configuration.html#a5b733811a9215c5bba90d16604cfabcf" title="The game&#39;s width resolution. ">Configuration::resolutionWidth</a> and <a class="el" href="class_configuration.html#a469e15c3c77e7eced8d2682aa127e10b" title="The game&#39;s height resolution. ">Configuration::resolutionHeight</a> for the new resolution. </td></tr>
+    <tr><td class="paramname">size_</td><td>: Multiplies Configuration::resolutionWidth and Configuration::resolutionHeight for the new resolution. </td></tr>
   </table>
   </dd>
 </dl>
@@ -354,11 +368,19 @@ Private Attributes</h2></td></tr>
 <a class="anchor" id="a2b52309ef359b6392454a3bb57398b5d"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">SDL_Renderer* Window::renderer</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>The SDL renderer to render onto. </p>
@@ -438,7 +460,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 11 2014 08:33:51 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 18 2014 21:06:46 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

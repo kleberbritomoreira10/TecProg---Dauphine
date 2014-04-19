@@ -49,7 +49,6 @@
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_camera-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -73,18 +72,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a42cda7239981a5618660d04bd5893556"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a42cda7239981a5618660d04bd5893556">update</a> ()</td></tr>
 <tr class="memdesc:a42cda7239981a5618660d04bd5893556"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the camera clip.  <a href="#a42cda7239981a5618660d04bd5893556">More...</a><br/></td></tr>
 <tr class="separator:a42cda7239981a5618660d04bd5893556"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4bff0d442826eaf1e0337c4cd15532c5"><td class="memItemLeft" align="right" valign="top">SDL_Rect &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a4bff0d442826eaf1e0337c4cd15532c5">getClip</a> ()</td></tr>
+<tr class="separator:a4bff0d442826eaf1e0337c4cd15532c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83f466d1ea69eba908308e55366a188d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a83f466d1ea69eba908308e55366a188d">setPlayerXY</a> (double x_, double y_)</td></tr>
 <tr class="separator:a83f466d1ea69eba908308e55366a188d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a911ac8a8e01df4201fc97f391f7d093d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a911ac8a8e01df4201fc97f391f7d093d">setPlayerWH</a> (unsigned int width_, unsigned int height_)</td></tr>
 <tr class="separator:a911ac8a8e01df4201fc97f391f7d093d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b60d73d2c0d5b8215bd5ce1b423d3c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a7b60d73d2c0d5b8215bd5ce1b423d3c1">setLevelWH</a> (unsigned int width_, unsigned int height_)</td></tr>
 <tr class="separator:a7b60d73d2c0d5b8215bd5ce1b423d3c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:a3e33feaa65673d9de0067aecabdbe249"><td class="memItemLeft" align="right" valign="top">SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a3e33feaa65673d9de0067aecabdbe249">clip</a></td></tr>
-<tr class="memdesc:a3e33feaa65673d9de0067aecabdbe249"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clip which will be used to clip the rendering only to the extent of the camera.  <a href="#a3e33feaa65673d9de0067aecabdbe249">More...</a><br/></td></tr>
-<tr class="separator:a3e33feaa65673d9de0067aecabdbe249"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -106,6 +101,9 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>levelW</b></t
 <tr class="memitem:a561e153f11f640088936dcb63cd2924a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a561e153f11f640088936dcb63cd2924a"></a>
 unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>levelH</b></td></tr>
 <tr class="separator:a561e153f11f640088936dcb63cd2924a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e33feaa65673d9de0067aecabdbe249"><td class="memItemLeft" align="right" valign="top">SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a3e33feaa65673d9de0067aecabdbe249">clip</a></td></tr>
+<tr class="memdesc:a3e33feaa65673d9de0067aecabdbe249"><td class="mdescLeft">&#160;</td><td class="mdescRight">Clip which will be used to clip the rendering only to the extent of the camera.  <a href="#a3e33feaa65673d9de0067aecabdbe249">More...</a><br/></td></tr>
+<tr class="separator:a3e33feaa65673d9de0067aecabdbe249"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The camera class. </p>
@@ -126,7 +124,7 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>levelH</b></t
 
 <p>The constructor. </p>
 <p>Initializes all the attributes. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">Todo:</a></b></dt><dd>If the player changes the resolution, so should this clip. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>If the player changes the resolution, so should this clip. </dd></dl>
 
 </div>
 </div>
@@ -149,6 +147,22 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>levelH</b></t
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a4bff0d442826eaf1e0337c4cd15532c5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Rect &amp; Camera::getClip </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The camera clip (an SDL_RECT). </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a7b60d73d2c0d5b8215bd5ce1b423d3c1"></a>
 <div class="memitem">
 <div class="memproto">
@@ -270,11 +284,19 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>levelH</b></t
 <a class="anchor" id="a3e33feaa65673d9de0067aecabdbe249"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">SDL_Rect Camera::clip</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Clip which will be used to clip the rendering only to the extent of the camera. </p>
@@ -288,7 +310,7 @@ unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>levelH</b></t
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 11 2014 08:33:50 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 18 2014 21:06:46 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

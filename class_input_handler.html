@@ -49,7 +49,6 @@
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
-<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_input_handler-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -73,15 +72,14 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a820f483265aa3f6da39b9d93c1311966"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#a820f483265aa3f6da39b9d93c1311966">handleInput</a> ()</td></tr>
 <tr class="memdesc:a820f483265aa3f6da39b9d93c1311966"><td class="mdescLeft">&#160;</td><td class="mdescRight">Handles the input.  <a href="#a820f483265aa3f6da39b9d93c1311966">More...</a><br/></td></tr>
 <tr class="separator:a820f483265aa3f6da39b9d93c1311966"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public Attributes</h2></td></tr>
-<tr class="memitem:ad85e7d742a564db8498a5565929c3ec6"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#ad85e7d742a564db8498a5565929c3ec6">keyState</a> [GK_MAX]</td></tr>
-<tr class="memdesc:ad85e7d742a564db8498a5565929c3ec6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boolean array that controls which keys are pressed or not.  <a href="#ad85e7d742a564db8498a5565929c3ec6">More...</a><br/></td></tr>
-<tr class="separator:ad85e7d742a564db8498a5565929c3ec6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa410e20f88f27f85f806d6b2e32a4626"><td class="memItemLeft" align="right" valign="top">array&lt; bool, GameKeys::MAX &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#aa410e20f88f27f85f806d6b2e32a4626">getKeyStates</a> ()</td></tr>
+<tr class="separator:aa410e20f88f27f85f806d6b2e32a4626"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:adce79aa13d698a3f076f6ed7ae0afb3d"><td class="memItemLeft" align="right" valign="top">array&lt; bool, GameKeys::MAX &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#adce79aa13d698a3f076f6ed7ae0afb3d">keyStates</a></td></tr>
+<tr class="memdesc:adce79aa13d698a3f076f6ed7ae0afb3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boolean array that controls which keys are pressed or not.  <a href="#adce79aa13d698a3f076f6ed7ae0afb3d">More...</a><br/></td></tr>
+<tr class="separator:adce79aa13d698a3f076f6ed7ae0afb3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a1ba6c4c76983e1cdd44798f8da0a66"><td class="memItemLeft" align="right" valign="top">SDL_Event&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#a8a1ba6c4c76983e1cdd44798f8da0a66">eventHandler</a></td></tr>
 <tr class="memdesc:a8a1ba6c4c76983e1cdd44798f8da0a66"><td class="mdescLeft">&#160;</td><td class="mdescRight">SDL internal event handler.  <a href="#a8a1ba6c4c76983e1cdd44798f8da0a66">More...</a><br/></td></tr>
 <tr class="separator:a8a1ba6c4c76983e1cdd44798f8da0a66"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -138,6 +136,22 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="aa410e20f88f27f85f806d6b2e32a4626"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">array&lt; bool, GameKeys::MAX &gt; InputHandler::getKeyStates </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The keyStates attribute. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="a820f483265aa3f6da39b9d93c1311966"></a>
 <div class="memitem">
 <div class="memproto">
@@ -201,14 +215,22 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ad85e7d742a564db8498a5565929c3ec6"></a>
+<a class="anchor" id="adce79aa13d698a3f076f6ed7ae0afb3d"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool InputHandler::keyState[GK_MAX]</td>
+          <td class="memname">array&lt;bool, GameKeys::MAX&gt; InputHandler::keyStates</td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Boolean array that controls which keys are pressed or not. </p>
@@ -222,7 +244,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 11 2014 08:33:50 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 18 2014 21:06:46 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
