@@ -50,7 +50,7 @@ class Logger {
 		*/
 		static void verbose(const string& message_);
 
-		static bool isVerbose;
+		static bool isVerbose; /**< If the verbose is activated or not. */
 
 };
 

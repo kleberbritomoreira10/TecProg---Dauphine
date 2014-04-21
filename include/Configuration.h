@@ -6,16 +6,16 @@ using std::string;
 
 /**
 * Game configuration class.
-* @todo Properly implement with lua and refactor the Configuration.
+* @todo Properly implement with lua(?) and refactor the Configuration.
 */
 class Configuration {
 
 	public:
-		const static unsigned int RESOLUTION_WIDTH; /**< The game's width resolution. */
-		const static unsigned int RESOLUTION_HEIGHT; /**< The game's height resolution. */
+		const static unsigned int resolutionWidth; /**< The game's width resolution. */
+		const static unsigned int resolutionHeight; /**< The game's height resolution. */
 
-		const static uint32_t MAX_FRAMERATE; /**< The game's max framerate. */
-		const static string TITLE; /**< The game window's title. */
+		const static uint32_t maxFramerate; /**< The game's max framerate. */
+		const static string windowTitle; /**< The game window's title. */
 
 		/**
 		* @return The current screen width.

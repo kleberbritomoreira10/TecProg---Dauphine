@@ -1,5 +1,4 @@
 #include "Level.h"
-#include "Logger.h"
 
 Level::Level() :
 	background(nullptr),
@@ -8,19 +7,25 @@ Level::Level() :
 	player(nullptr),
 	camera(nullptr)
 {
-	
+	// Only serves as the initializer for the derived classes.
 }
 
 Level::~Level(){
-	this->width = 0;
-	this->height = 0;
-	this->player = nullptr;
-	this->camera = nullptr;
+	if(this->camera != nullptr){
+		delete this->camera;
+		this->camera = nullptr;
+	}
+	
+	if(this->player != nullptr){
+		delete this->player;
+		this->player = nullptr;
+	}
 
-	/// @todo: Maybe this isn't the best place to delete the Sprite object.
-	this->background->free();
-	this->background = nullptr;
-	delete this->background;
+	if(this->background != nullptr){
+		this->background->free();
+		delete this->background;
+		this->background = nullptr;
+	}
 }
 
 unsigned int Level::getWidth(){

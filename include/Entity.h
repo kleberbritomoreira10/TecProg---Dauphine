@@ -4,21 +4,22 @@
 #include "Sprite.h"
 
 /**
-* Abstract base class for all the entities.
-* Generic parent class for all the game's entities.
+* Base class for all game objects (entities).
+* The entity contains the (x,y) position, width and height, and a sprite.
 */
 class Entity {
 
 	public:
 		/**
 		* The destructor.
-		* Resets attributes and deletes the sprite.
+		* Deletes the sprite.
 		*/
 		virtual ~Entity();
 
 		/**
 		* Updates the entity.
-		* Pure virtual function. Purpose is to update whatever is necessary, relative to the entity.
+		* Pure virtual function. Purpose is to update whatever is necessary, relative to the
+		* 	entity.
 		* @param dt_ : Delta time. Time elapsed between one frame and the other.
 		*/
 		virtual void update(double dt_) = 0;
@@ -44,9 +45,16 @@ class Entity {
 		double y; /**< The position in the y axis. */
 
 	protected:
-		Entity(double x_, double y_, Sprite *sprite_);
+		/**
+		* The constructor.
+		* Initializes all the attributes.
+		* @param x_ : position in x axis.
+		* @param y_ : position in y axis.
+		* @param sprite_ : which sprite to use.
+		*/
+		Entity(double x_, double y_, Sprite* sprite_);
 
-		Sprite *sprite; /**< The Sprite attributed to the entity. */
+		Sprite* sprite; /**< The Sprite attributed to the entity. */
 		unsigned int width; /**< The entitys width, from its sprite. */
 		unsigned int height; /**< The entitys height, from its sprite. */
 

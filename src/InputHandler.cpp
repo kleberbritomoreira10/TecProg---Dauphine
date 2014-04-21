@@ -1,5 +1,4 @@
 #include "InputHandler.h"
-#include "Logger.h"
 
 InputHandler* InputHandler::instance = nullptr;
 
@@ -20,7 +19,7 @@ InputHandler* InputHandler::getInstance(){
 }
 
 InputHandler::~InputHandler(){
-
+	delete InputHandler::instance;
 }
 
 void InputHandler::handleInput(){
@@ -43,7 +42,7 @@ void InputHandler::handleInput(){
 				case SDLK_DOWN: // Move down.
 					this->keyStates[GameKeys::DOWN] = true;
 					break;
-				case SDLK_c: // Move rolling.
+				case SDLK_c: // Roll.
 					this->keyStates[GameKeys::ROLL] = true;
 					break;
 				default:
@@ -66,7 +65,7 @@ void InputHandler::handleInput(){
 				case SDLK_DOWN: // Move down.
 					this->keyStates[GameKeys::DOWN] = false;
 					break;
-				case SDLK_c: // Move rolling.
+				case SDLK_c: // Roll.
 					this->keyStates[GameKeys::ROLL] = false;
 					break;
 				default:

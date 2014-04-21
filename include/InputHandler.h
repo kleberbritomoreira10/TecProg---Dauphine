@@ -2,7 +2,6 @@
 #define INCLUDE_INPUTHANDLER_H
 
 #include "SDLWrapper.h"
-#include "Game.h"
 #include "InputKeys.h"
 
 #include <array>
@@ -15,12 +14,15 @@ using std::array;
 class InputHandler {
 
 	public:
-
+		/**
+		* @return The InputHandler instance.
+		* Singleton implementation.
+		*/
 		static InputHandler* getInstance();
 		
 		/**
 		* The destructor.
-		* Sets the member data 'Game' back to null.
+		* Deletes the InputHandler instance.
 		*/
 		~InputHandler();
 
@@ -41,20 +43,18 @@ class InputHandler {
 		bool signalQuit();
 
 	private:
-
 		/**
 		* The constructor.
-		* By setting the game to recieve input from, creates the input handler.
-		* @param game_ : the game to detect input from.
-		* @note If the Game parameter is null, will warn that game will have no input.
+		* Used to create the input handler instance.
 		*/
 		InputHandler();
 
-		static InputHandler* instance;
+		static InputHandler* instance; /**< The InputHandler instance (Singleton). */
 
-		array<bool, GameKeys::MAX> keyStates; /**< Boolean array that controls which keys are pressed or not. */
+		array<bool, GameKeys::MAX> keyStates; /**< Boolean array that controls which keys are
+			pressed or not. */
 		SDL_Event eventHandler; /**< SDL internal event handler. */
-		bool quit;
+		bool quit; /**< If the quit signal was recieved or not. */
 
 };
 

@@ -85,7 +85,7 @@ void Window::initialize(){
 void Window::rescale(unsigned int size_){
 	// Just a precaution, so the the window size doesn't get huge.
 	size_ = (size_ > 10) ? 10 : size_;
-	SDL_RenderSetLogicalSize(Window::sdlRenderer, Configuration::RESOLUTION_WIDTH * size_, Configuration::RESOLUTION_HEIGHT * size_);
+	SDL_RenderSetLogicalSize(Window::sdlRenderer, Configuration::resolutionWidth * size_, Configuration::resolutionHeight * size_);
 }
 
 SDL_Renderer* Window::getRenderer(){

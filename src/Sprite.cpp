@@ -2,7 +2,7 @@
 #include "Window.h"
 #include "Logger.h"
 
-Sprite::Sprite(string path_) :
+Sprite::Sprite(const string& path_) :
 	sdlRenderer(Window::getRenderer()),
 	sdlTexture(nullptr),
 	width(0),
@@ -23,7 +23,7 @@ Sprite::~Sprite(){
 	this->sdlRenderer = nullptr;
 }
 
-void Sprite::loadFrom(string path_){
+void Sprite::loadFrom(const string& path_){
 	// Warns if loading a sprite without a renderer.
 	if(this->sdlRenderer == nullptr){
 		Logger::warning("Trying to load sprite with null renderer.");
@@ -33,9 +33,9 @@ void Sprite::loadFrom(string path_){
 	free();
 
 	// The final texture.
-	SDL_Texture *newTexture = nullptr;
+	SDL_Texture* newTexture = nullptr;
 
-	SDL_Surface *loadedSurface = IMG_Load(path_.c_str());
+	SDL_Surface* loadedSurface = IMG_Load(path_.c_str());
 	if(loadedSurface != nullptr){
 		//Color key image to magenta.
 		//SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 0xFF, 0, 0xFF));
@@ -80,7 +80,9 @@ void Sprite::free(){
 	}
 }
 
-void Sprite::render(double x_, double y_, SDL_Rect *clip_, double angle_, SDL_Point* center_, SDL_RendererFlip flip_){
+void Sprite::render(double x_, double y_, SDL_Rect* clip_, double angle_, SDL_Point* center_,
+	SDL_RendererFlip flip_){
+
 	// This is the destination SDL_Rect structure.
 	SDL_Rect renderQuad = {(int)x_, (int)y_, (int)this->width, (int)this->height};
 
@@ -92,7 +94,9 @@ void Sprite::render(double x_, double y_, SDL_Rect *clip_, double angle_, SDL_Po
 		// Don't clip the texture.
 	}
 
-	int successfullRender = SDL_RenderCopyEx(this->sdlRenderer, this->sdlTexture, clip_, &renderQuad, angle_, center_, flip_);
+	int successfullRender = SDL_RenderCopyEx(this->sdlRenderer, this->sdlTexture, clip_,
+		&renderQuad, angle_, center_, flip_);
+	
 	if(successfullRender != 0){
 		Logger::errorSDL("Failed to render sprite.", SDL_GetError());
 	}

@@ -1,64 +1,67 @@
 #ifndef INCLUDE_CONTROLWRAPPER_H
 #define INCLUDE_CONTROLWRAPPER_H
 
-#include "SDLWrapper.h"
-#include <cmath>
+// #include "SDLWrapper.h"
+// #include <cmath>
 
-#define CONTROLLERSTICK_DEAD_ZONE 8000;
-#define SHOULDER_DEAD_ZONE 8000;
+// #define CONTROLLERSTICK_DEAD_ZONE 8000;
+// #define SHOULDER_DEAD_ZONE 8000;
 
-#define CONTROL_EVENT
+// #define CONTROL_EVENT
 
-namespace commands{
+// namespace commands{
 
-	enum{
+// 	enum{
 		
-		UP;
-		DOWN;
-		LEFT;
-		RIGHT;
+// 		UP,
+// 		DOWN,
+// 		LEFT,
+// 		RIGHT,
 
-		JUMP;
-		ATTACK;
-		USE;
-		HOOK;
+// 		JUMP,
+// 		ATTACK,
+// 		USE,
+// 		HOOK,
 
-		ROLL;
-		AIM;
-		CROUCH;
-		INVENTORY;
+// 		ROLL,
+// 		AIM,
+// 		CROUCH,
+// 		INVENTORY,
 
-		START;
-		SELECT;
-	};
+// 		START,
+// 		SELECT
+// 	};
 
-}
+// }
 
+/**
+* @todo Refactor.
+*/
 class ControlWrapper {
 	
-	public:
-		/**
-		* Pointers to the game controller and keyboard
-		*/
-		Uint32 controlEventType;
+// 	public:
+// 		/**
+// 		* Pointers to the game controller and keyboard
+// 		*/
+// 		Uint32 controlEventType;
 
-		/**
-		* Initializes Controller managing.
-		* Initializes the Control manager, sets the SDL User Event. 
-		* If no controller is found, defaults to keyboard
-		*/
-		static void initialize();
+// 		*
+// 		* Initializes Controller managing.
+// 		* Initializes the Control manager, sets the SDL User Event. 
+// 		* If no controller is found, defaults to keyboard
+		
+// 		static void initialize();
 
-		/**
-		* Checks the input and decides the appropriate SDL_UserEvent data fields, then pushes this event to the stack.  
-		*/
-		static void decide();
+// 		/**
+// 		* Checks the input and decides the appropriate SDL_UserEvent data fields, then pushes this event to the stack.  
+// 		*/
+// 		static void decide();
 	
-	private:
-		/**
-		* Pointers to the game controller and keyboard
-		*/
-		SDL_GameController* gameController = NULL;
+// 	private:
+// 		/**
+// 		* Pointer to the game controller and keyboard
+// 		*/
+// 		static SDL_GameController* gameController;
 };
 
-#endif
+#endif // INCLUDE_CONTROLWRAPPER_H

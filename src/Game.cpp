@@ -1,13 +1,7 @@
 #include "Game.h"
 #include "InputHandler.h"
-#include "Camera.h"
 #include "FPSWrapper.h"
 #include "Logger.h"
-#include "Configuration.h"
-#include "Player.h"
-#include "Sprite.h"
-#include "LuaScript.h"
-
 #include "StateSplash.h"
 #include "LevelOne.h"
 
@@ -15,7 +9,7 @@ State* Game::currentState = nullptr;
 State* Game::stateSplash = nullptr;
 State* Game::levelOne = nullptr;
 
-Game::Game(Window *window_) :
+Game::Game(Window* window_) :
 	window(window_),
 	isRunning(false)
 {
@@ -36,13 +30,12 @@ Game::Game(Window *window_) :
 Game::~Game(){
 	this->window->destroy();
 	this->window = nullptr;
-	this->isRunning = false;
 }
 
 void Game::runGame(){
 	
 	// Creating the input handler.
-	InputHandler *inputHandler = InputHandler::getInstance();
+	InputHandler* inputHandler = InputHandler::getInstance();
 	
 	// Get the first game time.
 	double totalGameTime = 0.0;

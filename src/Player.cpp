@@ -2,7 +2,7 @@
 #include "Logger.h"
 #include "Configuration.h"
 
-Player::Player(double x_, double y_, Sprite *sprite_) :
+Player::Player(double x_, double y_, Sprite* sprite_) :
     Entity(x_, y_, sprite_),
     vx(0),
     vy(0),
@@ -11,8 +11,7 @@ Player::Player(double x_, double y_, Sprite *sprite_) :
     cameraX(0),
     cameraY(0),
     levelW(0),
-    levelH(0),
-    canJump(true)
+    levelH(0)
 {
     this->state = STATE_JUMPING;
 	if(this->sprite != nullptr){
@@ -25,15 +24,15 @@ Player::Player(double x_, double y_, Sprite *sprite_) :
 }
 
 Player::~Player(){
-    this->vx = 0;
-    this->vy = 0;
-    this->speed = 0;
-    this->cameraX = 0;
-    this->cameraY = 0;
-    this->maxSpeed = 0;
+    if(this->sprite != nullptr){
+        this->sprite->free();
+        delete this->sprite;
+        this->sprite = nullptr;
+    }
 }
 
 void Player::update(double dt_){
+    /// @todo Fix all these magic/weird numbers.
     this->x += this->vx * dt_;
 
     // Left wall.
@@ -55,7 +54,7 @@ void Player::update(double dt_){
         this->vy = 0;
     }
     // Bottom wall.
-    else if(this->y + this->height + 40 > this->levelH){ // Caiooooooooo AQUIII
+    else if(this->y + this->height + 40 > this->levelH){
         this->y = this->levelH - this->height - 40;
         this->vy = 0;
         this->state = STATE_STANDING;
@@ -87,9 +86,11 @@ void Player::updateInput(array<bool, GameKeys::MAX> keyStates_){
                 this->state = STATE_CROUCHING;
             }
             break;
+
         case STATE_JUMPING:
             this->vy += 2*this->speed;
             break;
+
         case STATE_CROUCHING:
             if(!keyStates_[GameKeys::DOWN]){
                 this->speed = 15;
@@ -97,6 +98,7 @@ void Player::updateInput(array<bool, GameKeys::MAX> keyStates_){
                 this->state = STATE_STANDING;
             }
             break;
+
         case STATE_ROLLING:
             this->vx *= 0.95;
             if(this->vx < 3 && this->vx > (-3)){
@@ -104,24 +106,25 @@ void Player::updateInput(array<bool, GameKeys::MAX> keyStates_){
                 this->vx = 0;
             }
             break;
+
         default:
             break;
     }
 
     // Movement.
     if(keyStates_[GameKeys::LEFT]){
-                if(this->vx > -this->maxSpeed){
-                    this->vx -= this->speed;
-                } 
-            }
-            else if(keyStates_[GameKeys::RIGHT]){
-                if(this->vx < this->maxSpeed){
-                    this->vx += this->speed;
-                }
-            }
-            else{
-                this->vx *= 0.95;
-            }
+        if(this->vx > -this->maxSpeed){
+            this->vx -= this->speed;
+        } 
+    }
+    else if(keyStates_[GameKeys::RIGHT]){
+        if(this->vx < this->maxSpeed){
+            this->vx += this->speed;
+        }
+    }
+    else{
+        this->vx *= 0.95;
+    }
     
 }
 

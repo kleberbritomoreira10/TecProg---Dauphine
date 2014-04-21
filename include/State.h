@@ -7,29 +7,31 @@
 #include <list>
 using std::list;
 
-#include <cstdint>
-
 class State {
 
 	public:
-
 		/**
-		*
+		* The destructor.
+		* 
 		*/
 		virtual ~State();
 
 		/**
-		*
+		* Loads necessary objects.
+		* Pure virtual function. Purpose is to load all things relevant to the state.
 		*/
 		virtual void load() = 0;
 
 		/**
-		*
+		* Update all entities.
+		* Pure virtual function. Purpose is to update all the entities in the list.
+		* @param dt_ : Delta time. Time elapsed between one frame and the other.
 		*/
 		virtual void update(double dt_) = 0;
 
 		/**
-		*
+		* Unloads necessary objects.
+		* Pure virtual function. Purpose is to unload whatever was previously loaded.
 		*/
 		virtual void unload() = 0;
 
@@ -41,10 +43,13 @@ class State {
 		virtual void render() = 0;
 
 		/**
-		*
+		* Adds an entity to the list.
 		*/
-		void addEntity(Entity *entity);
+		void addEntity(Entity* entity);
 
+		/**
+		* @return Null, just so Game knows the if the State is a Level or not.
+		*/
 		virtual Player* getPlayer();
 
 	protected:

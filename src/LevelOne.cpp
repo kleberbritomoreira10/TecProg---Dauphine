@@ -18,7 +18,7 @@ void LevelOne::update(double dt_){
 	this->camera->setPlayerWH(this->player->getWidth(), this->player->getHeight());
 
 	// Update all the entities in the list.
-	for(Entity *entity : entities){
+	for(Entity* entity : entities){
         entity->update(dt_);
 	}
 
@@ -35,7 +35,7 @@ void LevelOne::render(){
 	}
 
 	// Render all the entities in the list.
-	for(Entity *entity : entities){
+	for(Entity* entity : entities){
         entity->render();
 	}
 
@@ -46,22 +46,24 @@ void LevelOne::load(){
 
 	// Getting information from lua script
 	LuaScript luaLevel1("lua/Level1.lua");
-	const string scriptPlayerSpritePath = luaLevel1.unlua_get<string>("level.player.spritePath");
-	const string scriptBackgroundSpritePath = luaLevel1.unlua_get<string>("level.background.spritePath");
+	const string scriptPlayerSpritePath = luaLevel1.unlua_get<string>(
+		"level.player.spritePath");
+	const string scriptBackgroundSpritePath = luaLevel1.unlua_get<string>(
+		"level.background.spritePath");
 	const double scriptX = luaLevel1.unlua_get<double>("level.player.position.x");
 	const double scriptY = luaLevel1.unlua_get<double>("level.player.position.y");
 	const unsigned int levelW = luaLevel1.unlua_get<int>("level.boundaries.width");
 	const unsigned int levelH = luaLevel1.unlua_get<int>("level.boundaries.height");
 
 	// Just an example of Sprite loading, delete this later.
-	Sprite *spriteLevelBackground = nullptr;
+	Sprite* spriteLevelBackground = nullptr;
 	spriteLevelBackground = new Sprite(scriptBackgroundSpritePath);
 
-	Sprite *spritePlayer = nullptr;
+	Sprite* spritePlayer = nullptr;
 	spritePlayer = new Sprite(scriptPlayerSpritePath);
 	
-	Camera *lCamera = new Camera();
-	Player *lPlayer = new Player(scriptX, scriptY, spritePlayer);
+	Camera* lCamera = new Camera();
+	Player* lPlayer = new Player(scriptX, scriptY, spritePlayer);
 
 	this->background = spriteLevelBackground;
 	if(this->background == nullptr){
@@ -78,19 +80,24 @@ void LevelOne::load(){
 void LevelOne::unload(){
 	Logger::verbose("Unloading level 1...");
 
-	delete this->camera;
-	this->camera = nullptr;
+	if(this->camera != nullptr){
+		delete this->camera;
+		this->camera = nullptr;
+	}
+	
+	if(this->player != nullptr){
+		delete this->player;
+		this->player = nullptr;
+	}
 
-	delete this->player;
-	this->player = nullptr;
-
-	this->background->free();
-	delete this->background;
-	this->background = nullptr;
-
+	if(this->background != nullptr){
+		this->background->free();
+		delete this->background;
+		this->background = nullptr;
+	}
 }
 
-void LevelOne::setPlayer(Player *player_){
+void LevelOne::setPlayer(Player* player_){
 	this->player = player_;
 
 	if(this->player != nullptr){
@@ -103,7 +110,7 @@ void LevelOne::setPlayer(Player *player_){
 	
 }
 
-void LevelOne::setCamera(Camera *camera_){
+void LevelOne::setCamera(Camera* camera_){
 	this->camera = camera_;
 
 	if(this->camera != nullptr){

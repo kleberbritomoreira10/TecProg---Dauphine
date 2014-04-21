@@ -2,7 +2,7 @@
 #include "Logger.h"
 #include "Configuration.h"
 
-int main(int argc, char **argv){
+int main(int argc, char** argv){
 	if(argc == 2 && argv[1] == std::string("-v")){
 		Logger::isVerbose = true;
 	}
@@ -12,9 +12,9 @@ int main(int argc, char **argv){
 	bool systemsInitialized = SDLWrapper::initialize();
 
 	if(systemsInitialized){
-		Window window(Configuration::getScreenWidth(), Configuration::getScreenHeight(), Configuration::TITLE);
+		Window window(Configuration::getScreenWidth(), Configuration::getScreenHeight(), Configuration::windowTitle);
 
-		Game *game = nullptr;
+		Game* game = nullptr;
 		game = new Game(&window);
 
 		game->runGame();

@@ -1,33 +1,25 @@
 #include "Camera.h"
-#include "Logger.h"
 #include "Configuration.h"
-#include "Level.h"
 
 Camera::Camera():
-    playerX(0),
-    playerY(0),
+    playerX(0.0),
+    playerY(0.0),
     playerW(0),
     playerH(0),
     levelW(0),
     levelH(0),
     clip{0, 0, (int)Configuration::getScreenWidth(), (int)Configuration::getScreenHeight()}
 {
-    /// @todo If the player changes the resolution, so should the clip.
+    /// @todo If the player changes the resolution, so should the clip. (?)
 }
 
 Camera::~Camera(){
-    this->playerX = 0;
-    this->playerY = 0;
-    this->playerW = 0;
-    this->playerH = 0;
-    this->levelW = 0;
-    this->levelH = 0;
-    this->clip = {0, 0, 0, 0};
+
 }
 
 void Camera::update(){
-    this->clip.x = ( this->playerX + this->playerW / 2 ) - this->clip.w / 2;
-    this->clip.y = ( this->playerY + this->playerH / 2 ) - this->clip.h / 2;
+    this->clip.x = (this->playerX + this->playerW / 2) - (this->clip.w / 2);
+    this->clip.y = (this->playerY + this->playerH / 2) - (this->clip.h / 2);
 
     // Left wall.
     if(this->clip.x < 0){
