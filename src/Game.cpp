@@ -26,6 +26,7 @@ Game::Game(Window *window_) :
 		FPSWrapper::initialize(this->fpsManager);
 
 		Game::currentState = Game::stateSplash;
+		Game::currentState->load();
 	}
 	else{
 		Logger::error("Game window is null. Game will not run.");

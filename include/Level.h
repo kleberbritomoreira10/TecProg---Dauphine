@@ -13,7 +13,7 @@
 */
 class Level : public State {
 	
-	public:
+	public:	
 		
 		/**
 		* The destructor.
@@ -37,6 +37,12 @@ class Level : public State {
 		Player* getPlayer();
 
 	protected:
+
+		/**
+		* The constructor.
+		*
+		*/
+		Level();
 
 		/**
 		* @param player_ : Sets the player for the level.

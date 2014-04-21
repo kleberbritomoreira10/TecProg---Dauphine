@@ -42,6 +42,16 @@ class Logger {
 		*/
 		static void errorSDL(const string& message_, const char *messageSDL_);
 
+		/**
+		* The verbose logger.
+		* Logs the desired message with a "Verbose: " prefix.
+		* @param message_ : the message to log.
+		* @note Activated with the -v flag.
+		*/
+		static void verbose(const string& message_);
+
+		static bool isVerbose;
+
 };
 
 #endif //INCLUDE_LOGGER_H

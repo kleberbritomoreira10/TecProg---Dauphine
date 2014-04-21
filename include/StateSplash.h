@@ -39,7 +39,6 @@ class StateSplash : public State {
 		double passedTime;
 		double lifeTime;
 
-
 };
 
 #endif // INCLUDE_STATESPLASH_H

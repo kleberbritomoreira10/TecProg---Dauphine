@@ -2,15 +2,12 @@
 #include "Logger.h"
 #include "Configuration.h"
 
-// Since argc and argv are only necessary for cross-compiling SDL_Main,
-// we do this just so the compiler doesn't warn for unused arguments.
-#define UNUSED(x) ((void)x)
-
 int main(int argc, char **argv){
-	Logger::log("Starting Dauphine...");
+	if(argc == 2 && argv[1] == std::string("-v")){
+		Logger::isVerbose = true;
+	}
 
-	UNUSED(argc);
-	UNUSED(argv);
+	Logger::verbose("Starting Dauphine...");	
 
 	bool systemsInitialized = SDLWrapper::initialize();
 
@@ -28,6 +25,6 @@ int main(int argc, char **argv){
 
 	SDLWrapper::close();
 
-	Logger::log("Exiting Dauphine...");
+	Logger::verbose("Exiting Dauphine...");
 	return 0;
 }

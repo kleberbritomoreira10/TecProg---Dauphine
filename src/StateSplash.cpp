@@ -7,27 +7,14 @@ using std::string;
 
 StateSplash::StateSplash() :
 	splash(nullptr),
-	passedTime(0),
-	lifeTime(0)
+	passedTime(0.0),
+	lifeTime(0.0)
 {
-	LuaScript *luaSplash = new LuaScript("lua/Splash.lua");
-	const string splashPath = luaSplash->unlua_get<string>("splash.spritePath");
-	const double luaLifeTime = luaSplash->unlua_get<double>("splash.lifeTime");
 
-	Sprite *lSplash = new Sprite(splashPath);
-	this->splash = lSplash;
-
-	this->lifeTime = luaLifeTime;
-
-	load();
 }
 
 StateSplash::~StateSplash(){
-	unload();
-}
 
-void StateSplash::load(){
-	
 }
 
 void StateSplash::update(double dt_){
@@ -37,6 +24,17 @@ void StateSplash::update(double dt_){
 		Game::setState((*Game::levelOne));
 	}
 
+}
+
+void StateSplash::load(){
+	LuaScript *luaSplash = new LuaScript("lua/Splash.lua");
+	const string splashPath = luaSplash->unlua_get<string>("splash.spritePath");
+	const double luaLifeTime = luaSplash->unlua_get<double>("splash.lifeTime");
+
+	Sprite *lSplash = new Sprite(splashPath);
+	this->splash = lSplash;
+
+	this->lifeTime = luaLifeTime;
 }
 
 void StateSplash::unload(){

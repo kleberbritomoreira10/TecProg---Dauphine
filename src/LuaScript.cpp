@@ -74,7 +74,7 @@ vector<string> LuaScript::unlua_getTableKeys(const string& name_) {
     vector<string> strings;
     string temp = "";
 
-    Logger::log("TEMP: " + test);
+    Logger::verbose("TEMP: " + test);
 
     for(unsigned int i = 0; i < test.size(); i++) {
         if(test.at(i) != ',') {

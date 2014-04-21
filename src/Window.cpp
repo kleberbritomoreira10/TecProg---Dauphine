@@ -70,7 +70,7 @@ void Window::initialize(){
 				Logger::warning("Linear texture filtering disabled!");
 			}
 
-			Logger::log("Game successfully loaded.");
+			Logger::verbose("Game successfully loaded.");
 				
 		}
 		else{

@@ -2,42 +2,14 @@
 #include "LuaScript.h"
 #include "Logger.h"
 
-LevelOne::LevelOne(){
-	load();
+LevelOne::LevelOne() :
+	Level()
+{
 
-	// Getting information from lua script
-	LuaScript luaLevel1("lua/Level1.lua");
-	const string scriptPlayerSpritePath = luaLevel1.unlua_get<string>("level.player.spritePath");
-	const string scriptBackgroundSpritePath = luaLevel1.unlua_get<string>("level.background.spritePath");
-	const double scriptX = luaLevel1.unlua_get<double>("level.player.position.x");
-	const double scriptY = luaLevel1.unlua_get<double>("level.player.position.y");
-	const unsigned int levelW = luaLevel1.unlua_get<int>("level.boundaries.width");
-	const unsigned int levelH = luaLevel1.unlua_get<int>("level.boundaries.height");
-
-	// Just an example of Sprite loading, delete this later.
-	Sprite *spriteLevelBackground = nullptr;
-	spriteLevelBackground = new Sprite(scriptBackgroundSpritePath);
-
-	Sprite *spritePlayer = nullptr;
-	spritePlayer = new Sprite(scriptPlayerSpritePath);
-	
-	Camera *lCamera = new Camera();
-	Player *lPlayer = new Player(scriptX, scriptY, spritePlayer);
-
-	this->background = spriteLevelBackground;
-	if(this->background == nullptr){
-		Logger::warning("Level background is null! No background will be set.");
-	}
-
-	this->width = levelW;
-	this->height = levelH;
-
-	setPlayer(lPlayer);
-	setCamera(lCamera);
 }
 
 LevelOne::~LevelOne(){
-	unload();
+
 }
 
 void LevelOne::update(double dt_){
@@ -70,11 +42,52 @@ void LevelOne::render(){
 }
 
 void LevelOne::load(){
-	Logger::log("Loading level 1...");
+	Logger::verbose("Loading level 1...");
+
+	// Getting information from lua script
+	LuaScript luaLevel1("lua/Level1.lua");
+	const string scriptPlayerSpritePath = luaLevel1.unlua_get<string>("level.player.spritePath");
+	const string scriptBackgroundSpritePath = luaLevel1.unlua_get<string>("level.background.spritePath");
+	const double scriptX = luaLevel1.unlua_get<double>("level.player.position.x");
+	const double scriptY = luaLevel1.unlua_get<double>("level.player.position.y");
+	const unsigned int levelW = luaLevel1.unlua_get<int>("level.boundaries.width");
+	const unsigned int levelH = luaLevel1.unlua_get<int>("level.boundaries.height");
+
+	// Just an example of Sprite loading, delete this later.
+	Sprite *spriteLevelBackground = nullptr;
+	spriteLevelBackground = new Sprite(scriptBackgroundSpritePath);
+
+	Sprite *spritePlayer = nullptr;
+	spritePlayer = new Sprite(scriptPlayerSpritePath);
+	
+	Camera *lCamera = new Camera();
+	Player *lPlayer = new Player(scriptX, scriptY, spritePlayer);
+
+	this->background = spriteLevelBackground;
+	if(this->background == nullptr){
+		Logger::warning("Level background is null! No background will be set.");
+	}
+
+	this->width = levelW;
+	this->height = levelH;
+
+	setPlayer(lPlayer);
+	setCamera(lCamera);
 }
 
 void LevelOne::unload(){
-	Logger::log("Unloading level 1...");
+	Logger::verbose("Unloading level 1...");
+
+	delete this->camera;
+	this->camera = nullptr;
+
+	delete this->player;
+	this->player = nullptr;
+
+	this->background->free();
+	delete this->background;
+	this->background = nullptr;
+
 }
 
 void LevelOne::setPlayer(Player *player_){

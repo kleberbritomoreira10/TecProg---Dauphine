@@ -1,16 +1,15 @@
 #include "Level.h"
 #include "Logger.h"
 
-// Level::Level() :
-// 	width(0),
-// 	height(0),
-// 	player(nullptr),
-// 	camera(nullptr)
-// {
-
-
+Level::Level() :
+	background(nullptr),
+	width(0),
+	height(0),
+	player(nullptr),
+	camera(nullptr)
+{
 	
-// }
+}
 
 Level::~Level(){
 	this->width = 0;
