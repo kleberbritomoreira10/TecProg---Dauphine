@@ -81,11 +81,21 @@ void Player::updateInput(array<bool, GameKeys::MAX> keyStates_){
                  this->state = STATE_ROLLING;
                  this->vx = 100*this->speed;
             }
+            if(keyStates_[GameKeys::DOWN]){
+                this->speed = 7.5;
+                this->maxSpeed = 350;
+                this->state = STATE_CROUCHING;
+            }
             break;
         case STATE_JUMPING:
             this->vy += 2*this->speed;
             break;
         case STATE_CROUCHING:
+            if(!keyStates_[GameKeys::DOWN]){
+                this->speed = 15;
+                this->maxSpeed = 500;
+                this->state = STATE_STANDING;
+            }
             break;
         case STATE_ROLLING:
             this->vx *= 0.95;

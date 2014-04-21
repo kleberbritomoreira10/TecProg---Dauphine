@@ -1,0 +1,79 @@
+#include "FPSWrapper.h"
+#include "Logger.h"
+#include "Configuration.h"
+
+void ControlWrapper::initialize(){
+	
+	if(SDL_NumJoysticks() > 0)
+        gameController = SDL_GameControllerOpen(0);
+
+    //Allocates one User Event
+    this.controlEventType = SDL_RegisterEvents(1);
+
+    if (controlEvent == ((Uint32)-1))
+    	Logger::log("Unable to set User Event Type for Control Wrapper");
+
+    return;
+}
+
+ void decide(){
+	
+	int pendingEvent = 0;
+	do{
+		pendingEvent = SDL_PollEvent(&this->eventHandler); 
+		
+		// On keydown.
+		if(this->eventHandler.jbutton.type == SDL_CONTROLLERBUTTONDOWN){
+			switch(this->eventHandler.cbutton.button){
+				case SDLK_UP: // Jump.
+					this->keyStates[GameKeys::UP] = true;
+					break;
+				case SDLK_LEFT: // Move left.
+					this->keyStates[GameKeys::LEFT] = true;
+					break;
+				case SDLK_RIGHT: // Move right.
+					this->keyStates[GameKeys::RIGHT] = true;
+					break;
+				case SDLK_DOWN: // Move down.
+					this->keyStates[GameKeys::DOWN] = true;
+					break;
+				case SDLK_c: // Move rolling.
+					this->keyStates[GameKeys::ROLL] = true;
+					break;
+				default:
+					break;
+			}
+		}
+
+		// On keyup.
+		else if(this->eventHandler.type == SDL_KEYUP){
+			switch(this->eventHandler.key.keysym.sym){
+				case SDLK_UP: // Jump.
+					this->keyStates[GameKeys::UP] = false;
+					break;
+				case SDLK_LEFT: // Move left.
+					this->keyStates[GameKeys::LEFT] = false;
+					break;
+				case SDLK_RIGHT: // Move right.
+					this->keyStates[GameKeys::RIGHT] = false;
+					break;
+				case SDLK_DOWN: // Move down.
+					this->keyStates[GameKeys::DOWN] = false;
+					break;
+				case SDLK_c: // Move rolling.
+					this->keyStates[GameKeys::ROLL] = false;
+					break;
+				default:
+					break;
+			}
+		}
+		
+		// On window exit (X).
+		else if(this->eventHandler.type == SDL_QUIT){
+	    	this->quit = true;
+	    }
+
+	} while(pendingEvent != 0);
+
+	return;
+}
