@@ -73,6 +73,7 @@ class Player : public Entity {
 		double cameraY;
 		unsigned int levelW;
 		unsigned int levelH;
+		bool canJump;
 
 };
 

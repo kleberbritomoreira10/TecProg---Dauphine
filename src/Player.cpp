@@ -7,11 +7,12 @@ Player::Player(double x_, double y_, Sprite *sprite_) :
     vx(0),
     vy(0),
     speed(15),
-    maxSpeed(1000),
+    maxSpeed(500),
     cameraX(0),
     cameraY(0),
     levelW(0),
-    levelH(0)
+    levelH(0),
+    canJump(true)
 {
 	if(this->sprite != nullptr){
         this->width = this->sprite->getWidth();
@@ -53,9 +54,10 @@ void Player::update(double dt_){
         this->vy = 0;
     }
     // Bottom wall.
-    else if(this->y + this->height > this->levelH){
-        this->y = this->levelH - this->height;
+    else if(this->y + this->height + 40 > this->levelH){ // Caiooooooooo AQUIII
+        this->y = this->levelH - this->height - 40;
         this->vy = 0;
+        this->canJump = true;
     }
     
 }
@@ -70,8 +72,9 @@ void Player::updateInput(array<bool, GameKeys::MAX> keyStates_){
     /// @todo Fix all these magic/weird numbers.
 
     // Jump.
-    if(keyStates_[GameKeys::UP]){
-        this->vy -= this->speed;
+    if(keyStates_[GameKeys::UP] && this->canJump){
+        this->canJump = false;
+        this->vy = -30*this->speed;
     }
     else{
         this->vy += this->speed; //gravity
