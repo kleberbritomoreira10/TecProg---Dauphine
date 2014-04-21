@@ -1,5 +1,10 @@
 level = {
 
+	boundaries = {
+		width = 1920,
+		height = 1080
+	},
+
 	background = {
 		spritePath = "res/hdimg.png"
 	},

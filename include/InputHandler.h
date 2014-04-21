@@ -15,13 +15,8 @@ using std::array;
 class InputHandler {
 
 	public:
-		/**
-		* The constructor.
-		* By setting the game to recieve input from, creates the input handler.
-		* @param game_ : the game to detect input from.
-		* @note If the Game parameter is null, will warn that game will have no input.
-		*/
-		InputHandler(Game *game_);
+
+		static InputHandler* getInstance();
 		
 		/**
 		* The destructor.
@@ -40,10 +35,26 @@ class InputHandler {
 		*/
 		array<bool, GameKeys::MAX> getKeyStates();
 
+		/**
+		* @return If a quit signal was recieved or not.
+		*/
+		bool signalQuit();
+
 	private:
+
+		/**
+		* The constructor.
+		* By setting the game to recieve input from, creates the input handler.
+		* @param game_ : the game to detect input from.
+		* @note If the Game parameter is null, will warn that game will have no input.
+		*/
+		InputHandler();
+
+		static InputHandler* instance;
+
 		array<bool, GameKeys::MAX> keyStates; /**< Boolean array that controls which keys are pressed or not. */
 		SDL_Event eventHandler; /**< SDL internal event handler. */
-		Game *game; /**< The Game to recieve input from. */
+		bool quit;
 
 };
 

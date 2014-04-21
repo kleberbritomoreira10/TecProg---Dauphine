@@ -1,21 +1,16 @@
 #include "Level.h"
 #include "Logger.h"
 
-Level::Level(Sprite *background_) :
-	background(background_),
-	width(0),
-	height(0),
-	player(nullptr),
-	camera(nullptr)
-{
-	if(this->background != nullptr){
-		this->width = this->background->getWidth();
-		this->height = this->background->getHeight();
-	}
-	else{
-		Logger::warning("Level background is null! No background will be set.");
-	}	
-}
+// Level::Level() :
+// 	width(0),
+// 	height(0),
+// 	player(nullptr),
+// 	camera(nullptr)
+// {
+
+
+	
+// }
 
 Level::~Level(){
 	this->width = 0;
@@ -35,4 +30,8 @@ unsigned int Level::getWidth(){
 
 unsigned int Level::getHeight(){
 	return this->height;
+}
+
+Player* Level::getPlayer(){
+	return this->player;
 }

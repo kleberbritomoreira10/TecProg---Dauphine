@@ -4,19 +4,28 @@
 #include "FPSWrapper.h"
 #include "Logger.h"
 #include "Configuration.h"
-#include "LevelOne.h"
 #include "Player.h"
 #include "Sprite.h"
 #include "LuaScript.h"
 
+#include "StateSplash.h"
+#include "LevelOne.h"
+
+State* Game::currentState = nullptr;
+State* Game::stateSplash = nullptr;
+State* Game::levelOne = nullptr;
+
 Game::Game(Window *window_) :
 	window(window_),
-	isRunning(false),
-	currentState(nullptr)
+	isRunning(false)
 {
+	initializeStates();
+
 	if(this->window != nullptr){
 		this->isRunning = true;
 		FPSWrapper::initialize(this->fpsManager);
+
+		Game::currentState = Game::stateSplash;
 	}
 	else{
 		Logger::error("Game window is null. Game will not run.");
@@ -27,35 +36,12 @@ Game::~Game(){
 	this->window->destroy();
 	this->window = nullptr;
 	this->isRunning = false;
-	this->currentState = nullptr;
 }
 
 void Game::runGame(){
-	/// @todo Remove all of the example code from inside this method.
-
-	// Getting information from lua script
-	LuaScript luaLevel1("lua/Level1.lua");
-	const string scriptPlayerSpritePath = luaLevel1.unlua_get<string>("level.player.spritePath");
-	const string scriptBackgroundSpritePath = luaLevel1.unlua_get<string>("level.background.spritePath");
-	const double scriptX = luaLevel1.unlua_get<double>("level.player.position.x");
-	const double scriptY = luaLevel1.unlua_get<double>("level.player.position.y");
-
-	// Just an example of Sprite loading, delete this later.
-	Sprite *spriteLevelBackground = nullptr;
-	spriteLevelBackground = new Sprite(this->window->getRenderer(), scriptBackgroundSpritePath);
-
-	Sprite *spritePlayer = nullptr;
-	spritePlayer = new Sprite(this->window->getRenderer(), scriptPlayerSpritePath);
-
-	// Creating level, camera and player.
-	LevelOne level(spriteLevelBackground);
-	Camera camera;
-	Player player(scriptX, scriptY, spritePlayer);
-	level.setPlayer(player);
-	level.setCamera(camera);
 	
 	// Creating the input handler.
-	InputHandler inputHandler(this);
+	InputHandler *inputHandler = InputHandler::getInstance();
 	
 	// Get the first game time.
 	double totalGameTime = 0.0;
@@ -70,12 +56,21 @@ void Game::runGame(){
 
 		// Update.
 		while(accumulatedTime >= deltaTime){
-			inputHandler.handleInput();
-			player.updateInput(inputHandler.getKeyStates());
+			inputHandler->handleInput();
+			array<bool, GameKeys::MAX> gameKeys = inputHandler->getKeyStates();
 
-			level.update(deltaTime);
+			// Check for a quit signal from input.
+			if(inputHandler->signalQuit()){
+				this->isRunning = false;
+				return;
+			}
+			
+			// State is a level (has a player).
+			if(Game::currentState->getPlayer() != nullptr){
+				Game::currentState->getPlayer()->updateInput(gameKeys);
+			}
 
-			camera.update();
+			Game::currentState->update(deltaTime);
 
 			accumulatedTime -= deltaTime;
 			totalGameTime += deltaTime;
@@ -84,7 +79,7 @@ void Game::runGame(){
 		// Render.
 		window->clear();
 
-		level.render(camera.getClip());
+		Game::currentState->render();
 
 		window->render();
 		
@@ -92,6 +87,15 @@ void Game::runGame(){
 
 }
 
-void Game::signalQuit(){
-	this->isRunning = false;
+void Game::setState(State& state_){
+	/// @todo Implement the transition between states.
+	Game::currentState->unload();
+	Game::currentState = &state_;
+	Game::currentState->load();
+}
+
+void Game::initializeStates(){
+	// Initialize all the states in Game here.
+	Game::stateSplash = new StateSplash();
+	Game::levelOne = new LevelOne();
 }

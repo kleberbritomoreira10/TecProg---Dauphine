@@ -72,7 +72,7 @@ class Window {
 		/**
 		* @return The renderer attribute.
 		*/
-		SDL_Renderer* getRenderer();
+		static SDL_Renderer* getRenderer();
 
 	private:
 		unsigned int width; /**< The game Window width. */
@@ -80,7 +80,7 @@ class Window {
 		string windowTitle; /**< The game Window title. */
 
 		SDL_Window *sdlWindow; /**< The SDL window, that will be the actual game window. */
-		SDL_Renderer *sdlRenderer; /**< The SDL renderer to render onto. */
+		static SDL_Renderer *sdlRenderer; /**< The SDL renderer to render onto. */
 
 		/**
 		* Initializes the window and the renderer.

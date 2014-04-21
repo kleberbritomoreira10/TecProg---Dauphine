@@ -5,6 +5,9 @@
 #include "Window.h"
 #include "State.h"
 
+#include <array>
+using std::array;
+
 /**
 * Main structure class for the game.
 * Contains all the necessary functionalities to loop and update the game. Controls the current state.
@@ -31,18 +34,19 @@ class Game {
 		* Orders the game structure, such as inputs, updates, and rendering.
 		*/
 		void runGame();
-		
-		/**
-		* Tell the game to quit.
-		* Sets the isRunning attribute to false.
-		*/
-		void signalQuit();
+
+		static void initializeStates();
+		static void setState(State& state_);
+
+		static State* stateSplash;
+		static State* levelOne;
 		
 	private:
 		Window *window; /**< The game Window. */
 		bool isRunning; /**< Whether the game is currently running/looping or not. */		
-		State *currentState; /**< The current state, which the game is in. */
 		FPSmanager fpsManager; /**< The FPSManager from SDL2_GFX. Handles the framerate capping. */
+
+		static State* currentState; /**< The current state, which the game is in. */
 
 };
 

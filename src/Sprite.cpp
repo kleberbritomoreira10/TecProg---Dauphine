@@ -1,8 +1,9 @@
 #include "Sprite.h"
+#include "Window.h"
 #include "Logger.h"
 
-Sprite::Sprite(SDL_Renderer *renderer_, string path_) :
-	sdlRenderer(renderer_),
+Sprite::Sprite(string path_) :
+	sdlRenderer(Window::getRenderer()),
 	sdlTexture(nullptr),
 	width(0),
 	height(0)

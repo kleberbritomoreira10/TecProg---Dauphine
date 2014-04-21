@@ -5,12 +5,13 @@
 #include "Sprite.h"
 #include "Player.h"
 #include "Camera.h"
+#include "State.h"
 
 /**
 * Abstract class for levels.
 * Contains background, player and a camera.
 */
-class Level {
+class Level : public State {
 	
 	public:
 		
@@ -19,25 +20,6 @@ class Level {
 		* Resets all attributes.
 		*/
 		virtual ~Level();
-
-		/**
-		* Renders the level.
-		* Always render on 0,0 position.
-		* @param clip_ : Clips the texture, on the SDL_Rect bounds.
-		* @see Sprite::render()
-		*/
-		virtual void render(SDL_Rect &clip_) = 0;
-
-		/**
-		* @param player_ : Sets the player for the level.
-		*/
-		virtual void setPlayer(Player &player_) = 0;
-
-		/**
-		* @param camera_ : Sets the camera for the level.
-		* @note You should only set the camera after setting the player. Will warn if you didn't.
-		*/
-		virtual void setCamera(Camera &camera_) = 0;
 
 		/**
 		* @return The Level width.
@@ -49,14 +31,23 @@ class Level {
 		*/
 		unsigned int getHeight();
 
-	protected:
 		/**
-		* The constructor.
-		* Defines the levels width and height limits.
-		* @param background_ : Sets the background sprite, which defines the levels width and height.
-		* @todo Probably isn't the best practice to make the background define the width/height. We might not want a background sprite later.
+		* @return The Level Player.
 		*/
-		Level(Sprite *background_);
+		Player* getPlayer();
+
+	protected:
+
+		/**
+		* @param player_ : Sets the player for the level.
+		*/
+		virtual void setPlayer(Player *player_) = 0;
+
+		/**
+		* @param camera_ : Sets the camera for the level.
+		* @note You should only set the camera after setting the player. Will warn if you didn't.
+		*/
+		virtual void setCamera(Camera *camera_) = 0;
 
 		Sprite *background; /**< The levels background sprite. */
 

@@ -1,20 +1,26 @@
 #include "InputHandler.h"
 #include "Logger.h"
 
-InputHandler::InputHandler(Game *game_) :
-	game(game_)
+InputHandler* InputHandler::instance = nullptr;
+
+InputHandler::InputHandler() :
+	quit(false)
 {
 	for(unsigned int i = 0; i < GameKeys::MAX; i++){
 		this->keyStates[i] = false;
 	}
+}
 
-	if(this->game == nullptr){
-		Logger::warning("Null game passed to input handler. Game will have no input.");
+InputHandler* InputHandler::getInstance(){
+	if(InputHandler::instance == nullptr){
+		InputHandler::instance =  new InputHandler();
 	}
+
+	return InputHandler::instance;
 }
 
 InputHandler::~InputHandler(){
-	this->game = nullptr;
+
 }
 
 void InputHandler::handleInput(){
@@ -36,7 +42,6 @@ void InputHandler::handleInput(){
 					break;
 				default:
 					break;
-
 			}
 		}
 
@@ -59,7 +64,7 @@ void InputHandler::handleInput(){
 		
 		// On window exit (X).
 		else if(this->eventHandler.type == SDL_QUIT){
-	    	this->game->signalQuit();
+	    	this->quit = true;
 	    }
 
 	} while(pendingEvent != 0);
@@ -67,4 +72,8 @@ void InputHandler::handleInput(){
 
 array<bool, GameKeys::MAX> InputHandler::getKeyStates(){
 	return this->keyStates;
+}
+
+bool InputHandler::signalQuit(){
+	return this->quit;
 }

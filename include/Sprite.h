@@ -16,12 +16,10 @@ class Sprite {
 		/**
 		* The constructor.
 		* Initializes all the data, and sets the desired renderer. Loads image with the desired path.
-		* @param renderer_ : The renderer you want the sprite to render onto.
 		* @param path_ : the image path.
-		* @note If the SDL_Renderer parameter is null, warns that the Sprite will not be renderable.
 		* @see Sprite::loadFrom(string path_)
 		*/
-		Sprite(SDL_Renderer *renderer_, string path_);
+		Sprite(string path_);
 
 		/**
 		* The destructor.

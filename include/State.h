@@ -2,9 +2,12 @@
 #define INCLUDE_STATE_H
 
 #include "Entity.h"
+#include "Player.h"
 
 #include <list>
 using std::list;
+
+#include <cstdint>
 
 class State {
 
@@ -31,9 +34,18 @@ class State {
 		virtual void unload() = 0;
 
 		/**
+		* Renders the level.
+		* Always render on 0,0 position.
+		* @see Sprite::render()
+		*/
+		virtual void render() = 0;
+
+		/**
 		*
 		*/
 		void addEntity(Entity *entity);
+
+		virtual Player* getPlayer();
 
 	protected:
 

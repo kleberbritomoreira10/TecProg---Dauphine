@@ -8,14 +8,14 @@
 * The first level of the game.
 * 
 */
-class LevelOne : public Level, public State {
+class LevelOne : public Level {
 	
 	public:
 		/**
 		* The constructor.
 		* 
 		*/
-		LevelOne(Sprite *background_);
+		LevelOne();
 
 		/**
 		* The destructor.
@@ -43,22 +43,22 @@ class LevelOne : public Level, public State {
 		/**
 		* Renders the level.
 		* Always render on 0,0 position.
-		* @param clip_ : Clips the texture, on the SDL_Rect bounds.
 		* @see Sprite::render()
 		*/
-		virtual void render(SDL_Rect &clip_);
+		virtual void render();
+
+	protected:
 
 		/**
 		* @param player_ : Sets the player for the level.
 		*/
-		virtual void setPlayer(Player &player_);
+		virtual void setPlayer(Player *player_);
 
 		/**
 		* @param camera_ : Sets the camera for the level.
 		* @note You should only set the camera after setting the player. Will warn if you didn't.
 		*/
-		virtual void setCamera(Camera &camera_);
-
+		virtual void setCamera(Camera *camera_);
 
 };
 
