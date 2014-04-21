@@ -49,7 +49,10 @@
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_game-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Game Class Reference</div>  </div>
@@ -72,25 +75,46 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:abc9436a9d18e48c6e1e4fbc4ea879449"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#abc9436a9d18e48c6e1e4fbc4ea879449">runGame</a> ()</td></tr>
 <tr class="memdesc:abc9436a9d18e48c6e1e4fbc4ea879449"><td class="mdescLeft">&#160;</td><td class="mdescRight">The main game loop.  <a href="#abc9436a9d18e48c6e1e4fbc4ea879449">More...</a><br/></td></tr>
 <tr class="separator:abc9436a9d18e48c6e1e4fbc4ea879449"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0272257b4386285d3f59bfa4304b3455"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#a0272257b4386285d3f59bfa4304b3455">signalQuit</a> ()</td></tr>
-<tr class="memdesc:a0272257b4386285d3f59bfa4304b3455"><td class="mdescLeft">&#160;</td><td class="mdescRight">Tell the game to quit.  <a href="#a0272257b4386285d3f59bfa4304b3455">More...</a><br/></td></tr>
-<tr class="separator:a0272257b4386285d3f59bfa4304b3455"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:afc16bd0d077c53218c27f16e0bf56cbb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#afc16bd0d077c53218c27f16e0bf56cbb">initializeStates</a> ()</td></tr>
+<tr class="memdesc:afc16bd0d077c53218c27f16e0bf56cbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads all the states.  <a href="#afc16bd0d077c53218c27f16e0bf56cbb">More...</a><br/></td></tr>
+<tr class="separator:afc16bd0d077c53218c27f16e0bf56cbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc54f1426ac57696d849acd8f067b1f4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#acc54f1426ac57696d849acd8f067b1f4">setState</a> (<a class="el" href="class_state.html">State</a> &amp;state_)</td></tr>
+<tr class="memdesc:acc54f1426ac57696d849acd8f067b1f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current game state.  <a href="#acc54f1426ac57696d849acd8f067b1f4">More...</a><br/></td></tr>
+<tr class="separator:acc54f1426ac57696d849acd8f067b1f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:a143d602b3009c52fe6802cd7122c175d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_state.html">State</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#a143d602b3009c52fe6802cd7122c175d">stateSplash</a> = nullptr</td></tr>
+<tr class="memdesc:a143d602b3009c52fe6802cd7122c175d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The logo splash screen.  <a href="#a143d602b3009c52fe6802cd7122c175d">More...</a><br/></td></tr>
+<tr class="separator:a143d602b3009c52fe6802cd7122c175d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae21f84dedd4e1c8722190f4c8b3aa29d"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_state.html">State</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#ae21f84dedd4e1c8722190f4c8b3aa29d">levelOne</a> = nullptr</td></tr>
+<tr class="memdesc:ae21f84dedd4e1c8722190f4c8b3aa29d"><td class="mdescLeft">&#160;</td><td class="mdescRight">First game level.  <a href="#ae21f84dedd4e1c8722190f4c8b3aa29d">More...</a><br/></td></tr>
+<tr class="separator:ae21f84dedd4e1c8722190f4c8b3aa29d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
+<tr class="memitem:a553924bcccf9f9b1c04e385041852f17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_window.html">Window</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#a553924bcccf9f9b1c04e385041852f17">window</a></td></tr>
+<tr class="memdesc:a553924bcccf9f9b1c04e385041852f17"><td class="mdescLeft">&#160;</td><td class="mdescRight">The game <a class="el" href="class_window.html" title="Actual window that game runs on. ">Window</a>.  <a href="#a553924bcccf9f9b1c04e385041852f17">More...</a><br/></td></tr>
+<tr class="separator:a553924bcccf9f9b1c04e385041852f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb424734b2454f9ed1e6d6bd44e6dfaf"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#adb424734b2454f9ed1e6d6bd44e6dfaf">isRunning</a></td></tr>
 <tr class="memdesc:adb424734b2454f9ed1e6d6bd44e6dfaf"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether the game is currently running/looping or not.  <a href="#adb424734b2454f9ed1e6d6bd44e6dfaf">More...</a><br/></td></tr>
 <tr class="separator:adb424734b2454f9ed1e6d6bd44e6dfaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5817ea6f0896abffc6ab8bc893382a31"><td class="memItemLeft" align="right" valign="top">FPSmanager&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#a5817ea6f0896abffc6ab8bc893382a31">fpsManager</a></td></tr>
 <tr class="memdesc:a5817ea6f0896abffc6ab8bc893382a31"><td class="mdescLeft">&#160;</td><td class="mdescRight">The FPSManager from SDL2_GFX.  <a href="#a5817ea6f0896abffc6ab8bc893382a31">More...</a><br/></td></tr>
 <tr class="separator:a5817ea6f0896abffc6ab8bc893382a31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a553924bcccf9f9b1c04e385041852f17"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_window.html">Window</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#a553924bcccf9f9b1c04e385041852f17">window</a></td></tr>
-<tr class="memdesc:a553924bcccf9f9b1c04e385041852f17"><td class="mdescLeft">&#160;</td><td class="mdescRight">The game <a class="el" href="class_window.html" title="Actual window that game runs on. ">Window</a>.  <a href="#a553924bcccf9f9b1c04e385041852f17">More...</a><br/></td></tr>
-<tr class="separator:a553924bcccf9f9b1c04e385041852f17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:ab18cee52fbdd99d4969eda65b4b741c7"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_state.html">State</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#ab18cee52fbdd99d4969eda65b4b741c7">currentState</a> = nullptr</td></tr>
+<tr class="memdesc:ab18cee52fbdd99d4969eda65b4b741c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current state, which the game is in.  <a href="#ab18cee52fbdd99d4969eda65b4b741c7">More...</a><br/></td></tr>
+<tr class="separator:ab18cee52fbdd99d4969eda65b4b741c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Main structure class for the game. </p>
-<p>Contains all the necessary functionalities to loop and update the game. </p>
+<p>Contains all the necessary functionalities to loop and update the game. Is the state machine (controls current state), contains all the different possible states. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a7a03c28a0e6af3c4e1925b0c4791de4c"></a>
 <div class="memitem">
@@ -132,11 +156,37 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The destructor. </p>
-<p>Destroys the game's <a class="el" href="class_window.html" title="Actual window that game runs on. ">Window</a>, and make sure the main loop stops. </p>
+<p>Destroys the game's <a class="el" href="class_window.html" title="Actual window that game runs on. ">Window</a>. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="afc16bd0d077c53218c27f16e0bf56cbb"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::initializeStates </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Loads all the states. </p>
+<p>Every new state implemented should be initialized here. </p>
+
+</div>
+</div>
 <a class="anchor" id="abc9436a9d18e48c6e1e4fbc4ea879449"></a>
 <div class="memitem">
 <div class="memproto">
@@ -152,29 +202,68 @@ Private Attributes</h2></td></tr>
 
 <p>The main game loop. </p>
 <p>Orders the game structure, such as inputs, updates, and rendering. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Remove all of the example code from inside this method. </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a0272257b4386285d3f59bfa4304b3455"></a>
+<a class="anchor" id="acc54f1426ac57696d849acd8f067b1f4"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Game::signalQuit </td>
+          <td class="memname">void Game::setState </td>
           <td>(</td>
-          <td class="paramname">)</td><td></td>
+          <td class="paramtype"><a class="el" href="class_state.html">State</a> &amp;&#160;</td>
+          <td class="paramname"><em>state_</em>)</td><td></td>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
-<p>Tell the game to quit. </p>
-<p>Sets the isRunning attribute to false. </p>
+<p>Sets the current game state. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_state.html#a9bd7c8e4125d963e1f86dd40ff385302" title="Loads necessary objects. ">State::load()</a> </dd>
+<dd>
+<a class="el" href="class_state.html#ae66f8186af50a49d43de9e6f269a7c71" title="Unloads necessary objects. ">State::unload()</a> </dd></dl>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">state_</td><td>: The state you want to be changed into. All states are inside <a class="el" href="class_game.html" title="Main structure class for the game. ">Game</a>. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>Implement the transition between states. </dd></dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ab18cee52fbdd99d4969eda65b4b741c7"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_state.html">State</a> * Game::currentState = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The current state, which the game is in. </p>
+
+</div>
+</div>
 <a class="anchor" id="a5817ea6f0896abffc6ab8bc893382a31"></a>
 <div class="memitem">
 <div class="memproto">
@@ -220,6 +309,51 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ae21f84dedd4e1c8722190f4c8b3aa29d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_state.html">State</a> * Game::levelOne = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>First game level. </p>
+
+</div>
+</div>
+<a class="anchor" id="a143d602b3009c52fe6802cd7122c175d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_state.html">State</a> * Game::stateSplash = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The logo splash screen. </p>
+<p>First state of the game. </p>
+
+</div>
+</div>
 <a class="anchor" id="a553924bcccf9f9b1c04e385041852f17"></a>
 <div class="memitem">
 <div class="memproto">
@@ -249,7 +383,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 21:06:46 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 21 2014 19:28:24 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

@@ -54,6 +54,7 @@
   </div>
   <div id="navrow4" class="tabs3">
     <ul class="tablist">
+      <li><a href="#index_a"><span>a</span></a></li>
       <li><a href="#index_c"><span>c</span></a></li>
       <li><a href="#index_d"><span>d</span></a></li>
       <li><a href="#index_e"><span>e</span></a></li>
@@ -67,6 +68,7 @@
       <li><a href="#index_r"><span>r</span></a></li>
       <li><a href="#index_s"><span>s</span></a></li>
       <li><a href="#index_u"><span>u</span></a></li>
+      <li><a href="#index_v"><span>v</span></a></li>
       <li><a href="#index_w"><span>w</span></a></li>
       <li><a href="#index_0x7e"><span>~</span></a></li>
     </ul>
@@ -74,6 +76,13 @@
 </div><!-- top -->
 <div class="contents">
 &#160;
+
+<h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
+<li>addEntity()
+: <a class="el" href="class_state.html#a53a41483850524b811e57dca3cd75a3b">State</a>
+</li>
+</ul>
+
 
 <h3><a class="anchor" id="index_c"></a>- c -</h3><ul>
 <li>Camera()
@@ -99,6 +108,9 @@
 
 
 <h3><a class="anchor" id="index_e"></a>- e -</h3><ul>
+<li>Entity()
+: <a class="el" href="class_entity.html#adfaf4b4303373536f38f67fcdbac9151">Entity</a>
+</li>
 <li>error()
 : <a class="el" href="class_logger.html#a778646936e41c60f99ccec9ce9ea072c">Logger</a>
 </li>
@@ -127,8 +139,15 @@
 , <a class="el" href="class_sprite.html#a02fcba350f07d226b110f7d0712f5154">Sprite</a>
 , <a class="el" href="class_entity.html#aabc8b9eb5a82e2ebea415814754b0de3">Entity</a>
 </li>
+<li>getInstance()
+: <a class="el" href="class_input_handler.html#a698a54e374eddd1f831a463ef609fe10">InputHandler</a>
+</li>
 <li>getKeyStates()
 : <a class="el" href="class_input_handler.html#aa410e20f88f27f85f806d6b2e32a4626">InputHandler</a>
+</li>
+<li>getPlayer()
+: <a class="el" href="class_level.html#a98b9579253fbf55f7d631853c4cd7e9c">Level</a>
+, <a class="el" href="class_state.html#a603702919c3bafa3cb0714a1f55f72f6">State</a>
 </li>
 <li>getRenderer()
 : <a class="el" href="class_window.html#ae2418ad8ae2af2f4c5badd9cbb8656c1">Window</a>
@@ -160,18 +179,29 @@
 , <a class="el" href="class_s_d_l_wrapper.html#ae5be8c09a030f8b7809eb1957871820b">SDLWrapper</a>
 , <a class="el" href="class_window.html#ab8bedded50af796c7f44603bb71ba33b">Window</a>
 </li>
+<li>initializeStates()
+: <a class="el" href="class_game.html#afc16bd0d077c53218c27f16e0bf56cbb">Game</a>
+</li>
 <li>InputHandler()
-: <a class="el" href="class_input_handler.html#ae2140b52e080b1186f11897c820407f4">InputHandler</a>
+: <a class="el" href="class_input_handler.html#a698aa4af4f326a9881835fda251ca996">InputHandler</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_l"></a>- l -</h3><ul>
 <li>Level()
-: <a class="el" href="class_level.html#ae51b9fa929f9c6d3a9013b9c81db1112">Level</a>
+: <a class="el" href="class_level.html#a7a696c928ca5d5354db6e50e46d0f67d">Level</a>
+</li>
+<li>LevelOne()
+: <a class="el" href="class_level_one.html#a3fe4df62466654e6e7617377c8bd67a7">LevelOne</a>
+</li>
+<li>load()
+: <a class="el" href="class_state.html#a9bd7c8e4125d963e1f86dd40ff385302">State</a>
+, <a class="el" href="class_state_splash.html#a60e645ec37ab22c06ba6fa9ffda2db64">StateSplash</a>
+, <a class="el" href="class_level_one.html#ac50584197a1b4858db61f4e00d15b41d">LevelOne</a>
 </li>
 <li>loadFrom()
-: <a class="el" href="class_sprite.html#ac16d0357cf91ac4f3732d13a24701432">Sprite</a>
+: <a class="el" href="class_sprite.html#a049d9b15153d7b619e051a8f912f7ff6">Sprite</a>
 </li>
 <li>log()
 : <a class="el" href="class_logger.html#a091d94db18ef4db49ce40c731dbec526">Logger</a>
@@ -202,9 +232,11 @@
 <h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
 <li>render()
 : <a class="el" href="class_entity.html#aa7615728fd41ad13436908b1941f429b">Entity</a>
-, <a class="el" href="class_level.html#a10e3119b8896d632ff725725e47f70e4">Level</a>
+, <a class="el" href="class_level_one.html#a215728d5a6306eebdd96fd994bee814d">LevelOne</a>
 , <a class="el" href="class_sprite.html#adb1c84ac16f4e748fcc0855d45a271ca">Sprite</a>
 , <a class="el" href="class_window.html#a0a2093bd2ed34740c08a6a2fdfc059c9">Window</a>
+, <a class="el" href="class_state_splash.html#adf0548de28764ccf02c2d80262211742">StateSplash</a>
+, <a class="el" href="class_state.html#a71f5105bcdc39481be7684d853fe12e9">State</a>
 , <a class="el" href="class_player.html#afe3ff7815f9366b4c4fffa2cf6556ad5">Player</a>
 </li>
 <li>rescale()
@@ -218,17 +250,19 @@
 
 <h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
 <li>setCamera()
-: <a class="el" href="class_level.html#a431aa42a9e7da6c3e9a93588390d1a6c">Level</a>
+: <a class="el" href="class_level.html#aba78cf6675a9b16c0748fff46b4068c5">Level</a>
+, <a class="el" href="class_level_one.html#ace0ce431ac08c5924f8870339202e36e">LevelOne</a>
 </li>
 <li>setCameraXY()
 : <a class="el" href="class_player.html#ac5acb13d6fd5ab9cb5208ef2cbe25bf7">Player</a>
 </li>
 <li>setLevelWH()
-: <a class="el" href="class_player.html#abea2489d388d574e07732fa5d9d1d2db">Player</a>
-, <a class="el" href="class_camera.html#a7b60d73d2c0d5b8215bd5ce1b423d3c1">Camera</a>
+: <a class="el" href="class_camera.html#a7b60d73d2c0d5b8215bd5ce1b423d3c1">Camera</a>
+, <a class="el" href="class_player.html#abea2489d388d574e07732fa5d9d1d2db">Player</a>
 </li>
 <li>setPlayer()
-: <a class="el" href="class_level.html#af1abe74750813ed9d2a7862caf8b587a">Level</a>
+: <a class="el" href="class_level.html#a24dc12f4b029f77bfba2ac725518d061">Level</a>
+, <a class="el" href="class_level_one.html#a04f152a47396c50da9802d612d503f0f">LevelOne</a>
 </li>
 <li>setPlayerWH()
 : <a class="el" href="class_camera.html#a911ac8a8e01df4201fc97f391f7d093d">Camera</a>
@@ -236,16 +270,27 @@
 <li>setPlayerXY()
 : <a class="el" href="class_camera.html#a83f466d1ea69eba908308e55366a188d">Camera</a>
 </li>
+<li>setState()
+: <a class="el" href="class_game.html#acc54f1426ac57696d849acd8f067b1f4">Game</a>
+</li>
 <li>signalQuit()
-: <a class="el" href="class_game.html#a0272257b4386285d3f59bfa4304b3455">Game</a>
+: <a class="el" href="class_input_handler.html#abf21c50e1ab745a4df1d6ca2de9a8ece">InputHandler</a>
 </li>
 <li>Sprite()
-: <a class="el" href="class_sprite.html#afcff379819393706d0c71af7b83ac13e">Sprite</a>
+: <a class="el" href="class_sprite.html#ab127ae81ef8a93b9ddea9287edfedfdb">Sprite</a>
+</li>
+<li>StateSplash()
+: <a class="el" href="class_state_splash.html#aa7a94bd48f519a41807859a39533851f">StateSplash</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_u"></a>- u -</h3><ul>
+<li>unload()
+: <a class="el" href="class_level_one.html#a1dac6d3ab33402ce8f1985e0809328e1">LevelOne</a>
+, <a class="el" href="class_state.html#ae66f8186af50a49d43de9e6f269a7c71">State</a>
+, <a class="el" href="class_state_splash.html#ac3fc0fd44f00944721d3e7a5183127f3">StateSplash</a>
+</li>
 <li>unlua_get()
 : <a class="el" href="class_lua_script.html#aa9f9c7356caaecbfbc794f6711f097d3">LuaScript</a>
 </li>
@@ -266,12 +311,21 @@
 </li>
 <li>update()
 : <a class="el" href="class_player.html#a603db14db40c9596a9c8a513ea375350">Player</a>
-, <a class="el" href="class_level.html#a62e412eaad753d2baa2f94239cb80e41">Level</a>
-, <a class="el" href="class_entity.html#ad465a2bd9ba1d3e68ecd609a00e1df45">Entity</a>
+, <a class="el" href="class_level_one.html#ac19981c44a1885856303335f79f67425">LevelOne</a>
+, <a class="el" href="class_state_splash.html#a774a9555c95dfab43dda699cc884c478">StateSplash</a>
+, <a class="el" href="class_state.html#ac9f156dc81466b6adb086ed092f66afe">State</a>
 , <a class="el" href="class_camera.html#a42cda7239981a5618660d04bd5893556">Camera</a>
+, <a class="el" href="class_entity.html#ad465a2bd9ba1d3e68ecd609a00e1df45">Entity</a>
 </li>
 <li>updateInput()
 : <a class="el" href="class_player.html#a46a6853e25b3d93393e0708533b05246">Player</a>
+</li>
+</ul>
+
+
+<h3><a class="anchor" id="index_v"></a>- v -</h3><ul>
+<li>verbose()
+: <a class="el" href="class_logger.html#aad4f0607283b90caa180b30ceaeb44d0">Logger</a>
 </li>
 </ul>
 
@@ -302,6 +356,9 @@
 <li>~Level()
 : <a class="el" href="class_level.html#a249eac1e8f19ff44134efa5e986feaca">Level</a>
 </li>
+<li>~LevelOne()
+: <a class="el" href="class_level_one.html#a43952923e3867bbdf882d18ac809ae34">LevelOne</a>
+</li>
 <li>~LuaScript()
 : <a class="el" href="class_lua_script.html#a5660ae45ebd4b7a621ae21a2ed0e784b">LuaScript</a>
 </li>
@@ -311,6 +368,12 @@
 <li>~Sprite()
 : <a class="el" href="class_sprite.html#a8accab430f9d90ae5117b57d67e32b84">Sprite</a>
 </li>
+<li>~State()
+: <a class="el" href="class_state.html#afab438d92b90dc18d194dbd9c9c8bab3">State</a>
+</li>
+<li>~StateSplash()
+: <a class="el" href="class_state_splash.html#ad8a5adbfb46887fbaed7bdc27de01257">StateSplash</a>
+</li>
 <li>~Window()
 : <a class="el" href="class_window.html#a245d821e6016fa1f6970ccbbedd635f6">Window</a>
 </li>
@@ -318,7 +381,7 @@
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 21:06:46 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 21 2014 19:28:25 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

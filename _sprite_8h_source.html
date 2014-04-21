@@ -63,32 +63,33 @@
 <div class="line"><a name="l00013"></a><span class="lineno"><a class="code" href="class_sprite.html">   13</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a> {</div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="class_sprite.html#afcff379819393706d0c71af7b83ac13e" title="The constructor. ">Sprite</a>(SDL_Renderer *renderer_, <span class="keywordtype">string</span> path_);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="class_sprite.html#a8accab430f9d90ae5117b57d67e32b84" title="The destructor. ">~Sprite</a>();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_sprite.html#abce3359b4f055bac7384038046ed9ead" title="Frees texture, if it exists. ">free</a>();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_sprite.html#adb1c84ac16f4e748fcc0855d45a271ca" title="Renders the sprite. ">render</a>(<span class="keywordtype">double</span> x_, <span class="keywordtype">double</span> y_, SDL_Rect *clip_ = <span class="keyword">nullptr</span>, <span class="keywordtype">double</span> angle_ = 0.0, SDL_Point* center_ = <span class="keyword">nullptr</span>, SDL_RendererFlip flip_ = SDL_FLIP_NONE);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_sprite.html#a8f425d524e48eea595ef74dc310e0417">getWidth</a>();</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_sprite.html#a02fcba350f07d226b110f7d0712f5154">getHeight</a>();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_sprite.html#ac16d0357cf91ac4f3732d13a24701432" title="Loads image from a path. ">loadFrom</a>(<span class="keywordtype">string</span> path_);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
-<div class="line"><a name="l00072"></a><span class="lineno"><a class="code" href="class_sprite.html#a950adad23da17ce64e6e759b0b64fadd">   72</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_sprite.html#a950adad23da17ce64e6e759b0b64fadd" title="The loaded image&#39;s width. ">width</a>; </div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="code" href="class_sprite.html#a4d34b71316c3456acb51c3c7e57a94e2">   73</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_sprite.html#a4d34b71316c3456acb51c3c7e57a94e2" title="The loaded image&#39;s width. ">height</a>; </div>
-<div class="line"><a name="l00075"></a><span class="lineno"><a class="code" href="class_sprite.html#a86042acf7d285fe26746abf14616c52d">   75</a></span>&#160;        SDL_Renderer *<a class="code" href="class_sprite.html#a86042acf7d285fe26746abf14616c52d" title="The SDL renderer to render onto. ">sdlRenderer</a>; </div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="code" href="class_sprite.html#a546d109413d8f3541ffde26701075bd1">   76</a></span>&#160;        SDL_Texture* <a class="code" href="class_sprite.html#a546d109413d8f3541ffde26701075bd1" title="The SDL texture to use as the image. ">sdlTexture</a>; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;};</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="preprocessor">#endif //INCLUDE_SPRITE_H</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="class_sprite.html#ab127ae81ef8a93b9ddea9287edfedfdb" title="The constructor. ">Sprite</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; path_);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="class_sprite.html#a8accab430f9d90ae5117b57d67e32b84" title="The destructor. ">~Sprite</a>();</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_sprite.html#abce3359b4f055bac7384038046ed9ead" title="Frees texture, if it exists. ">free</a>();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_sprite.html#adb1c84ac16f4e748fcc0855d45a271ca" title="Renders the sprite. ">render</a>(<span class="keywordtype">double</span> x_, <span class="keywordtype">double</span> y_, SDL_Rect* clip_ = <span class="keyword">nullptr</span>, <span class="keywordtype">double</span> angle_ = 0.0,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            SDL_Point* center_ = <span class="keyword">nullptr</span>, SDL_RendererFlip flip_ = SDL_FLIP_NONE);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_sprite.html#a8f425d524e48eea595ef74dc310e0417">getWidth</a>();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_sprite.html#a02fcba350f07d226b110f7d0712f5154">getHeight</a>();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_sprite.html#a049d9b15153d7b619e051a8f912f7ff6" title="Loads image from a path. ">loadFrom</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; path_);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="code" href="class_sprite.html#a86042acf7d285fe26746abf14616c52d">   77</a></span>&#160;        SDL_Renderer* <a class="code" href="class_sprite.html#a86042acf7d285fe26746abf14616c52d" title="The SDL renderer to render onto. ">sdlRenderer</a>; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="class_sprite.html#a546d109413d8f3541ffde26701075bd1">   78</a></span>&#160;        SDL_Texture* <a class="code" href="class_sprite.html#a546d109413d8f3541ffde26701075bd1" title="The SDL texture to use as the image. ">sdlTexture</a>; </div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="class_sprite.html#a950adad23da17ce64e6e759b0b64fadd">   80</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_sprite.html#a950adad23da17ce64e6e759b0b64fadd" title="The loaded image&#39;s width. ">width</a>; </div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="code" href="class_sprite.html#a4d34b71316c3456acb51c3c7e57a94e2">   81</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_sprite.html#a4d34b71316c3456acb51c3c7e57a94e2" title="The loaded image&#39;s width. ">height</a>; </div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;};</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;<span class="preprocessor">#endif //INCLUDE_SPRITE_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 21:06:46 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 21 2014 19:28:24 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

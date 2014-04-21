@@ -49,7 +49,10 @@
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_input_handler-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">InputHandler Class Reference</div>  </div>
@@ -63,9 +66,6 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:ae2140b52e080b1186f11897c820407f4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#ae2140b52e080b1186f11897c820407f4">InputHandler</a> (<a class="el" href="class_game.html">Game</a> *game_)</td></tr>
-<tr class="memdesc:ae2140b52e080b1186f11897c820407f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor.  <a href="#ae2140b52e080b1186f11897c820407f4">More...</a><br/></td></tr>
-<tr class="separator:ae2140b52e080b1186f11897c820407f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1f7efb54b34d433d6ffba62627452b6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#ac1f7efb54b34d433d6ffba62627452b6">~InputHandler</a> ()</td></tr>
 <tr class="memdesc:ac1f7efb54b34d433d6ffba62627452b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">The destructor.  <a href="#ac1f7efb54b34d433d6ffba62627452b6">More...</a><br/></td></tr>
 <tr class="separator:ac1f7efb54b34d433d6ffba62627452b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -74,49 +74,43 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a820f483265aa3f6da39b9d93c1311966"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa410e20f88f27f85f806d6b2e32a4626"><td class="memItemLeft" align="right" valign="top">array&lt; bool, GameKeys::MAX &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#aa410e20f88f27f85f806d6b2e32a4626">getKeyStates</a> ()</td></tr>
 <tr class="separator:aa410e20f88f27f85f806d6b2e32a4626"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abf21c50e1ab745a4df1d6ca2de9a8ece"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#abf21c50e1ab745a4df1d6ca2de9a8ece">signalQuit</a> ()</td></tr>
+<tr class="separator:abf21c50e1ab745a4df1d6ca2de9a8ece"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:a698a54e374eddd1f831a463ef609fe10"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_input_handler.html">InputHandler</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#a698a54e374eddd1f831a463ef609fe10">getInstance</a> ()</td></tr>
+<tr class="separator:a698a54e374eddd1f831a463ef609fe10"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:a698aa4af4f326a9881835fda251ca996"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#a698aa4af4f326a9881835fda251ca996">InputHandler</a> ()</td></tr>
+<tr class="memdesc:a698aa4af4f326a9881835fda251ca996"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor.  <a href="#a698aa4af4f326a9881835fda251ca996">More...</a><br/></td></tr>
+<tr class="separator:a698aa4af4f326a9881835fda251ca996"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:adce79aa13d698a3f076f6ed7ae0afb3d"><td class="memItemLeft" align="right" valign="top">array&lt; bool, GameKeys::MAX &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#adce79aa13d698a3f076f6ed7ae0afb3d">keyStates</a></td></tr>
-<tr class="memdesc:adce79aa13d698a3f076f6ed7ae0afb3d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Boolean array that controls which keys are pressed or not.  <a href="#adce79aa13d698a3f076f6ed7ae0afb3d">More...</a><br/></td></tr>
+<tr class="memdesc:adce79aa13d698a3f076f6ed7ae0afb3d"><td class="mdescLeft">&#160;</td><td class="mdescRight"><pre class="fragment">              Boolean array that controls which keys are
+</pre><p> pressed or not.  <a href="#adce79aa13d698a3f076f6ed7ae0afb3d">More...</a><br/></td></tr>
 <tr class="separator:adce79aa13d698a3f076f6ed7ae0afb3d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8a1ba6c4c76983e1cdd44798f8da0a66"><td class="memItemLeft" align="right" valign="top">SDL_Event&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#a8a1ba6c4c76983e1cdd44798f8da0a66">eventHandler</a></td></tr>
 <tr class="memdesc:a8a1ba6c4c76983e1cdd44798f8da0a66"><td class="mdescLeft">&#160;</td><td class="mdescRight">SDL internal event handler.  <a href="#a8a1ba6c4c76983e1cdd44798f8da0a66">More...</a><br/></td></tr>
 <tr class="separator:a8a1ba6c4c76983e1cdd44798f8da0a66"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8e965d3b40b9c52a03e227aed2864b92"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_game.html">Game</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#a8e965d3b40b9c52a03e227aed2864b92">game</a></td></tr>
-<tr class="memdesc:a8e965d3b40b9c52a03e227aed2864b92"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="class_game.html" title="Main structure class for the game. ">Game</a> to recieve input from.  <a href="#a8e965d3b40b9c52a03e227aed2864b92">More...</a><br/></td></tr>
-<tr class="separator:a8e965d3b40b9c52a03e227aed2864b92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae83295e50f34dd7e2b54f9ac4dcecac8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#ae83295e50f34dd7e2b54f9ac4dcecac8">quit</a></td></tr>
+<tr class="memdesc:ae83295e50f34dd7e2b54f9ac4dcecac8"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the quit signal was recieved or not.  <a href="#ae83295e50f34dd7e2b54f9ac4dcecac8">More...</a><br/></td></tr>
+<tr class="separator:ae83295e50f34dd7e2b54f9ac4dcecac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a0909ade773a1c38a46be37d0c8f0cfb5"><td class="memItemLeft" align="right" valign="top">static <a class="el" href="class_input_handler.html">InputHandler</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#a0909ade773a1c38a46be37d0c8f0cfb5">instance</a> = nullptr</td></tr>
+<tr class="memdesc:a0909ade773a1c38a46be37d0c8f0cfb5"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="class_input_handler.html" title="Handles player input. ">InputHandler</a> instance (Singleton).  <a href="#a0909ade773a1c38a46be37d0c8f0cfb5">More...</a><br/></td></tr>
+<tr class="separator:a0909ade773a1c38a46be37d0c8f0cfb5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Handles player input. </p>
 <p>Using SDL event handling, recieves the player input accordingly. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="ae2140b52e080b1186f11897c820407f4"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">InputHandler::InputHandler </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="class_game.html">Game</a> *&#160;</td>
-          <td class="paramname"><em>game_</em>)</td><td></td>
-          <td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>The constructor. </p>
-<p>By setting the game to recieve input from, creates the input handler. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">game_</td><td>: the game to detect input from. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section note"><dt>Note</dt><dd>If the <a class="el" href="class_game.html" title="Main structure class for the game. ">Game</a> parameter is null, will warn that game will have no input. </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="ac1f7efb54b34d433d6ffba62627452b6"></a>
 <div class="memitem">
 <div class="memproto">
@@ -131,11 +125,61 @@ Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The destructor. </p>
-<p>Sets the member data '<a class="el" href="class_game.html" title="Main structure class for the game. ">Game</a>' back to null. </p>
+<p>Deletes the <a class="el" href="class_input_handler.html" title="Handles player input. ">InputHandler</a> instance. </p>
+
+</div>
+</div>
+<a class="anchor" id="a698aa4af4f326a9881835fda251ca996"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">InputHandler::InputHandler </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The constructor. </p>
+<p>Used to create the input handler instance. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a698a54e374eddd1f831a463ef609fe10"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_input_handler.html">InputHandler</a> * InputHandler::getInstance </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="class_input_handler.html" title="Handles player input. ">InputHandler</a> instance. Singleton implementation. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="aa410e20f88f27f85f806d6b2e32a4626"></a>
 <div class="memitem">
 <div class="memproto">
@@ -170,6 +214,22 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="abf21c50e1ab745a4df1d6ca2de9a8ece"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool InputHandler::signalQuit </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>If a quit signal was recieved or not. </dd></dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Data Documentation</h2>
 <a class="anchor" id="a8a1ba6c4c76983e1cdd44798f8da0a66"></a>
 <div class="memitem">
@@ -193,7 +253,7 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a8e965d3b40b9c52a03e227aed2864b92"></a>
+<a class="anchor" id="a0909ade773a1c38a46be37d0c8f0cfb5"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -201,17 +261,17 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_game.html">Game</a>* InputHandler::game</td>
+          <td class="memname"><a class="el" href="class_input_handler.html">InputHandler</a> * InputHandler::instance = nullptr</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+<span class="mlabels"><span class="mlabel">static</span><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>The <a class="el" href="class_game.html" title="Main structure class for the game. ">Game</a> to recieve input from. </p>
+<p>The <a class="el" href="class_input_handler.html" title="Handles player input. ">InputHandler</a> instance (Singleton). </p>
 
 </div>
 </div>
@@ -233,7 +293,30 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Boolean array that controls which keys are pressed or not. </p>
+<p><pre class="fragment">              Boolean array that controls which keys are
+</pre><p> pressed or not. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae83295e50f34dd7e2b54f9ac4dcecac8"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool InputHandler::quit</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>If the quit signal was recieved or not. </p>
 
 </div>
 </div>
@@ -244,7 +327,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 21:06:46 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 21 2014 19:28:24 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

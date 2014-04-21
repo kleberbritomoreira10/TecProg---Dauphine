@@ -49,6 +49,7 @@
 <div class="header">
   <div class="summary">
 <a href="#pub-static-methods">Static Public Member Functions</a> &#124;
+<a href="#pub-static-attribs">Static Public Attributes</a> &#124;
 <a href="class_logger-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Logger Class Reference</div>  </div>
@@ -74,6 +75,15 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:a69d45ba5d15f650bf5bc86d04b89cdfe"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logger.html#a69d45ba5d15f650bf5bc86d04b89cdfe">errorSDL</a> (const string &amp;message_, const char *messageSDL_)</td></tr>
 <tr class="memdesc:a69d45ba5d15f650bf5bc86d04b89cdfe"><td class="mdescLeft">&#160;</td><td class="mdescRight">The logger for internal SDL errors.  <a href="#a69d45ba5d15f650bf5bc86d04b89cdfe">More...</a><br/></td></tr>
 <tr class="separator:a69d45ba5d15f650bf5bc86d04b89cdfe"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aad4f0607283b90caa180b30ceaeb44d0"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logger.html#aad4f0607283b90caa180b30ceaeb44d0">verbose</a> (const string &amp;message_)</td></tr>
+<tr class="memdesc:aad4f0607283b90caa180b30ceaeb44d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The verbose logger.  <a href="#aad4f0607283b90caa180b30ceaeb44d0">More...</a><br/></td></tr>
+<tr class="separator:aad4f0607283b90caa180b30ceaeb44d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
+Static Public Attributes</h2></td></tr>
+<tr class="memitem:ae30227e919c8a1301bd8a4d48eb18972"><td class="memItemLeft" align="right" valign="top">static bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_logger.html#ae30227e919c8a1301bd8a4d48eb18972">isVerbose</a> = false</td></tr>
+<tr class="memdesc:ae30227e919c8a1301bd8a4d48eb18972"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the verbose is activated or not.  <a href="#ae30227e919c8a1301bd8a4d48eb18972">More...</a><br/></td></tr>
+<tr class="separator:ae30227e919c8a1301bd8a4d48eb18972"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class used for logging. </p>
@@ -193,6 +203,40 @@ IMG_GetError() </dd></dl>
 
 </div>
 </div>
+<a class="anchor" id="aad4f0607283b90caa180b30ceaeb44d0"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Logger::verbose </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>message_</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The verbose logger. </p>
+<p>Logs the desired message with a "Verbose: " prefix. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">message_</td><td>: the message to log. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section note"><dt>Note</dt><dd>Activated with the -v flag. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="aceffcd6dfa8ae5e19ce3a139b02f36a2"></a>
 <div class="memitem">
 <div class="memproto">
@@ -226,6 +270,29 @@ IMG_GetError() </dd></dl>
 
 </div>
 </div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="ae30227e919c8a1301bd8a4d48eb18972"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Logger::isVerbose = false</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>If the verbose is activated or not. </p>
+
+</div>
+</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/caio/Desktop/Git/Dauphine/include/<a class="el" href="_logger_8h_source.html">Logger.h</a></li>
 <li>/home/caio/Desktop/Git/Dauphine/src/Logger.cpp</li>
@@ -233,7 +300,7 @@ IMG_GetError() </dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 21:06:46 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 21 2014 19:28:25 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

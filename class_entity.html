@@ -50,6 +50,7 @@
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pub-attribs">Public Attributes</a> &#124;
+<a href="#pro-methods">Protected Member Functions</a> &#124;
 <a href="#pro-attribs">Protected Attributes</a> &#124;
 <a href="class_entity-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -57,7 +58,7 @@
 </div><!--header-->
 <div class="contents">
 
-<p>Abstract base class for all the entities.  
+<p>Base class for all game objects (entities).  
  <a href="class_entity.html#details">More...</a></p>
 
 <p><code>#include &lt;<a class="el" href="_entity_8h_source.html">Entity.h</a>&gt;</code></p>
@@ -87,6 +88,12 @@ Public Attributes</h2></td></tr>
 <tr class="memdesc:aeaf8012f92ad9f8ea0df589e3fc67c8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The position in the y axis.  <a href="#aeaf8012f92ad9f8ea0df589e3fc67c8f">More...</a><br/></td></tr>
 <tr class="separator:aeaf8012f92ad9f8ea0df589e3fc67c8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected Member Functions</h2></td></tr>
+<tr class="memitem:adfaf4b4303373536f38f67fcdbac9151"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#adfaf4b4303373536f38f67fcdbac9151">Entity</a> (double x_, double y_, <a class="el" href="class_sprite.html">Sprite</a> *sprite_)</td></tr>
+<tr class="memdesc:adfaf4b4303373536f38f67fcdbac9151"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor.  <a href="#adfaf4b4303373536f38f67fcdbac9151">More...</a><br/></td></tr>
+<tr class="separator:adfaf4b4303373536f38f67fcdbac9151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr class="memitem:a4da30cea569f19c66c033358e1e99c04"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_sprite.html">Sprite</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a4da30cea569f19c66c033358e1e99c04">sprite</a></td></tr>
@@ -100,8 +107,8 @@ Protected Attributes</h2></td></tr>
 <tr class="separator:aebf02bb745e69e68f44d5b5cee318d97"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p>Abstract base class for all the entities. </p>
-<p>Generic parent class for all the game's entities. </p>
+<div class="textblock"><p>Base class for all game objects (entities). </p>
+<p>The entity contains the (x,y) position, width and height, and a sprite. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="adf6d3f7cb1b2ba029b6b048a395cc8ae"></a>
 <div class="memitem">
@@ -125,8 +132,58 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The destructor. </p>
-<p>Resets attributes and deletes the sprite. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>: Maybe this isn't the best place to delete the <a class="el" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a> object. </dd></dl>
+<p>Deletes the sprite. </p>
+
+</div>
+</div>
+<a class="anchor" id="adfaf4b4303373536f38f67fcdbac9151"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Entity::Entity </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>x_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>y_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_sprite.html">Sprite</a> *&#160;</td>
+          <td class="paramname"><em>sprite_</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The constructor. </p>
+<p>Initializes all the attributes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">x_</td><td>: position in x axis. </td></tr>
+    <tr><td class="paramname">y_</td><td>: position in y axis. </td></tr>
+    <tr><td class="paramname">sprite_</td><td>: which sprite to use. </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -143,7 +200,7 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="class_entity.html" title="Abstract base class for all the entities. ">Entity</a> height. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="class_entity.html" title="Base class for all game objects (entities). ">Entity</a> height. </dd></dl>
 
 </div>
 </div>
@@ -159,7 +216,7 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="class_entity.html" title="Abstract base class for all the entities. ">Entity</a> width. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="class_entity.html" title="Base class for all game objects (entities). ">Entity</a> width. </dd></dl>
 
 </div>
 </div>
@@ -329,7 +386,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 21:06:46 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 21 2014 19:28:24 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

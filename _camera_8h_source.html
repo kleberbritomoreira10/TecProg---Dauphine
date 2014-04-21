@@ -70,25 +70,25 @@
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_camera.html#a83f466d1ea69eba908308e55366a188d">setPlayerXY</a>(<span class="keywordtype">double</span> x_, <span class="keywordtype">double</span> y_);</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_camera.html#a911ac8a8e01df4201fc97f391f7d093d">setPlayerWH</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> width_, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> height_);</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_camera.html#a7b60d73d2c0d5b8215bd5ce1b423d3c1">setLevelWH</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> width_, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> height_);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordtype">double</span> playerX;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordtype">double</span> playerY;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> playerW;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> playerH;</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> levelW;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> levelH;</div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="class_camera.html#a3e33feaa65673d9de0067aecabdbe249">   61</a></span>&#160;        SDL_Rect <a class="code" href="class_camera.html#a3e33feaa65673d9de0067aecabdbe249" title="Clip which will be used to clip the rendering only to the extent of the camera. ">clip</a>; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;};</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif //INCLUDE_CAMERA_H</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_camera.html#a911ac8a8e01df4201fc97f391f7d093d">setPlayerWH</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> width_, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> height_);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_camera.html#a7b60d73d2c0d5b8215bd5ce1b423d3c1">setLevelWH</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> width_, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> height_);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="class_camera.html#ae8a97e7569f9463d1d1bc8eeb8f7c09f">   56</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_camera.html#ae8a97e7569f9463d1d1bc8eeb8f7c09f" title="The current x position of the player. ">playerX</a>; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="class_camera.html#a6ca4d2271b8a7d8c802d3438a202ad35">   57</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_camera.html#a6ca4d2271b8a7d8c802d3438a202ad35" title="The current y position of the player. ">playerY</a>; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="class_camera.html#a515877d3f1e9d0f10052c629fae315b3">   58</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_camera.html#a515877d3f1e9d0f10052c629fae315b3" title="The current width of the player. ">playerW</a>; </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="class_camera.html#a0e10267a1295e8a0a773712f62aa0fb2">   59</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_camera.html#a0e10267a1295e8a0a773712f62aa0fb2" title="The current height of the player. ">playerH</a>; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="class_camera.html#afcf1ecd0a79a95e8097109be04dd1779">   60</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_camera.html#afcf1ecd0a79a95e8097109be04dd1779" title="The width of the level. ">levelW</a>; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="class_camera.html#a561e153f11f640088936dcb63cd2924a">   61</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_camera.html#a561e153f11f640088936dcb63cd2924a" title="The height of the level. ">levelH</a>; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="class_camera.html#a3e33feaa65673d9de0067aecabdbe249">   62</a></span>&#160;        SDL_Rect <a class="code" href="class_camera.html#a3e33feaa65673d9de0067aecabdbe249" title="            Clip which will be used to clip the rendering only to the extent of  the camera...">clip</a>; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;};</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;<span class="preprocessor">#endif //INCLUDE_CAMERA_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 21:06:46 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 21 2014 19:28:24 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

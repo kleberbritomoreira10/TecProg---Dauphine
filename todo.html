@@ -44,27 +44,33 @@
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt><a class="anchor" id="_todo000003"></a>Member <a class="el" href="class_camera.html#a01f94c3543f56ede7af49dc778f19331">Camera::Camera</a>  ()</dt>
-<dd>If the player changes the resolution, so should this clip.  </dd>
+<dt><a class="anchor" id="_todo000004"></a>Member <a class="el" href="class_camera.html#a01f94c3543f56ede7af49dc778f19331">Camera::Camera</a>  ()</dt>
+<dd>If the player changes the resolution, so should the clip. (?)  </dd>
 <dt><a class="anchor" id="_todo000001"></a>Class <a class="el" href="class_configuration.html">Configuration</a>  </dt>
-<dd>Properly implement with lua and refactor the <a class="el" href="class_configuration.html" title="Game configuration class. ">Configuration</a>.  </dd>
-<dt><a class="anchor" id="_todo000004"></a>Member <a class="el" href="class_entity.html#adf6d3f7cb1b2ba029b6b048a395cc8ae">Entity::~Entity</a>  ()</dt>
-<dd>: Maybe this isn't the best place to delete the <a class="el" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a> object.  </dd>
-<dt><a class="anchor" id="_todo000005"></a>Member <a class="el" href="class_game.html#abc9436a9d18e48c6e1e4fbc4ea879449">Game::runGame</a>  ()</dt>
-<dd>Remove all of the example code from inside this method.  </dd>
-<dt><a class="anchor" id="_todo000002"></a>Member <a class="el" href="class_level.html#ae51b9fa929f9c6d3a9013b9c81db1112">Level::Level</a>  (<a class="el" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a> *background_)</dt>
-<dd>Probably isn't the best practice to make the background define the width/height. We might not want a background sprite later.  </dd>
+<dd>Properly implement with lua(?) and refactor the <a class="el" href="class_configuration.html" title="Game configuration class. ">Configuration</a>.  </dd>
+<dt><a class="anchor" id="_todo000002"></a>Class <a class="el" href="class_control_wrapper.html">ControlWrapper</a>  </dt>
+<dd>Refactor.  </dd>
+<dt><a class="anchor" id="_todo000005"></a>Member <a class="el" href="class_game.html#acc54f1426ac57696d849acd8f067b1f4">Game::setState</a>  (<a class="el" href="class_state.html">State</a> &amp;state_)</dt>
+<dd>Implement the transition between states.  </dd>
 <dt><a class="anchor" id="_todo000006"></a>Member <a class="el" href="class_logger.html#a091d94db18ef4db49ce40c731dbec526">Logger::log</a>  (const string &amp;message_)</dt>
 <dd>Implement a separate generic parameter log function, to log an integer, for example.  </dd>
 <dt><a class="anchor" id="_todo000007"></a>Member <a class="el" href="class_lua_script.html#af22d8ecac5c8621231b5d27d13be5387">LuaScript::LuaScript</a>  (const string &amp;filename_)</dt>
 <dd>Log an error message for different lua error codes.  </dd>
-<dt><a class="anchor" id="_todo000008"></a>Member <a class="el" href="class_player.html#a46a6853e25b3d93393e0708533b05246">Player::updateInput</a>  (array&lt; bool, GameKeys::MAX &gt; keyStates_)</dt>
-<dd>Fix all these magic/weird numbers. </dd>
+<dt><a class="anchor" id="_todo000008"></a>Member <a class="el" href="class_player.html#a603db14db40c9596a9c8a513ea375350">Player::update</a>  (double dt_)</dt>
+<dd>Fix all these magic/weird numbers.  </dd>
+<dt><a class="anchor" id="_todo000009"></a>Member <a class="el" href="class_player.html#a46a6853e25b3d93393e0708533b05246">Player::updateInput</a>  (array&lt; bool, GameKeys::MAX &gt; keyStates_)</dt>
+<dd>Fix all these magic/weird numbers.  </dd>
+<dt><a class="anchor" id="_todo000003"></a>Member <a class="el" href="class_player.html#a749d2c00e1fe0f5c2746f7505a58c062">Player::~Player</a>  ()</dt>
+<dd>See if just the entity deleting the sprite is enough.  </dd>
+<dt><a class="anchor" id="_todo000010"></a>Member <a class="el" href="class_s_d_l_wrapper.html#ae5be8c09a030f8b7809eb1957871820b">SDLWrapper::initialize</a>  ()</dt>
+<dd>Initialize SDL_Mixer and SDL_TTF. And not do INIT_EVERYTHING.  </dd>
+<dt><a class="anchor" id="_todo000011"></a>Member <a class="el" href="class_state.html#afab438d92b90dc18d194dbd9c9c8bab3">State::~State</a>  ()</dt>
+<dd>Destroy entities inside list? </dd>
 </dl>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 21:06:46 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 21 2014 19:28:24 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

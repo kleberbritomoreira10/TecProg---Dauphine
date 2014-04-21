@@ -48,7 +48,9 @@
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-types">Public Types</a> &#124;
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-attribs">Public Attributes</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_player-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -61,6 +63,19 @@
 
 <p><code>#include &lt;<a class="el" href="_player_8h_source.html">Player.h</a>&gt;</code></p>
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public Types</h2></td></tr>
+<tr class="memitem:a3425231da8afb3c5d902604737ddc4ef"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>State</b> : int { <br/>
+&#160;&#160;<b>STATE_STANDING</b> = 0, 
+<b>STATE_WALKING</b>, 
+<b>STATE_JUMPING</b>, 
+<b>STATE_CROUCHING</b>, 
+<br/>
+&#160;&#160;<b>STATE_ROLLING</b>
+<br/>
+ }</td></tr>
+<tr class="separator:a3425231da8afb3c5d902604737ddc4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aceec0ce21b4783e66cabd4573a4f41cc"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#aceec0ce21b4783e66cabd4573a4f41cc">Player</a> (double x_, double y_, <a class="el" href="class_sprite.html">Sprite</a> *sprite_)</td></tr>
@@ -91,6 +106,19 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aabc8b9eb5a82e2ebea415814754b0de3 inherit pub_methods_class_entity"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#aabc8b9eb5a82e2ebea415814754b0de3">getHeight</a> ()</td></tr>
 <tr class="separator:aabc8b9eb5a82e2ebea415814754b0de3 inherit pub_methods_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public Attributes</h2></td></tr>
+<tr class="memitem:ac4a623bf6650a719187c50bb0413b9a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_state.html">State</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#ac4a623bf6650a719187c50bb0413b9a0">state</a></td></tr>
+<tr class="memdesc:ac4a623bf6650a719187c50bb0413b9a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current state the player is in (for the player internal state).  <a href="#ac4a623bf6650a719187c50bb0413b9a0">More...</a><br/></td></tr>
+<tr class="separator:ac4a623bf6650a719187c50bb0413b9a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pub_attribs_class_entity"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_entity')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_entity.html">Entity</a></td></tr>
+<tr class="memitem:abe84b2274427a984d952acd6d4c4061f inherit pub_attribs_class_entity"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#abe84b2274427a984d952acd6d4c4061f">x</a></td></tr>
+<tr class="memdesc:abe84b2274427a984d952acd6d4c4061f inherit pub_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">The position in the x axis.  <a href="#abe84b2274427a984d952acd6d4c4061f">More...</a><br/></td></tr>
+<tr class="separator:abe84b2274427a984d952acd6d4c4061f inherit pub_attribs_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaf8012f92ad9f8ea0df589e3fc67c8f inherit pub_attribs_class_entity"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#aeaf8012f92ad9f8ea0df589e3fc67c8f">y</a></td></tr>
+<tr class="memdesc:aeaf8012f92ad9f8ea0df589e3fc67c8f inherit pub_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">The position in the y axis.  <a href="#aeaf8012f92ad9f8ea0df589e3fc67c8f">More...</a><br/></td></tr>
+<tr class="separator:aeaf8012f92ad9f8ea0df589e3fc67c8f inherit pub_attribs_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
 <tr class="memitem:ae94b76deb6ed53f49d1db40a843f30c8"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#ae94b76deb6ed53f49d1db40a843f30c8">vx</a></td></tr>
@@ -105,28 +133,25 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a3e47171d423dcab69602e0f60f1ae208"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a3e47171d423dcab69602e0f60f1ae208">maxSpeed</a></td></tr>
 <tr class="memdesc:a3e47171d423dcab69602e0f60f1ae208"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="class_player.html" title="The player entity class. ">Player</a> max speed.  <a href="#a3e47171d423dcab69602e0f60f1ae208">More...</a><br/></td></tr>
 <tr class="separator:a3e47171d423dcab69602e0f60f1ae208"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af61538d0ab9a634fb0be450b45d113b9"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="af61538d0ab9a634fb0be450b45d113b9"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>cameraX</b></td></tr>
+<tr class="memitem:af61538d0ab9a634fb0be450b45d113b9"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#af61538d0ab9a634fb0be450b45d113b9">cameraX</a></td></tr>
+<tr class="memdesc:af61538d0ab9a634fb0be450b45d113b9"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current x position of the camera.  <a href="#af61538d0ab9a634fb0be450b45d113b9">More...</a><br/></td></tr>
 <tr class="separator:af61538d0ab9a634fb0be450b45d113b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a91271217943f93b2ca45a83c39ba66bd"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a91271217943f93b2ca45a83c39ba66bd"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>cameraY</b></td></tr>
+<tr class="memitem:a91271217943f93b2ca45a83c39ba66bd"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a91271217943f93b2ca45a83c39ba66bd">cameraY</a></td></tr>
+<tr class="memdesc:a91271217943f93b2ca45a83c39ba66bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current y position of the camera.  <a href="#a91271217943f93b2ca45a83c39ba66bd">More...</a><br/></td></tr>
 <tr class="separator:a91271217943f93b2ca45a83c39ba66bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab2c8b5c7c137203d2a24923126eed42b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ab2c8b5c7c137203d2a24923126eed42b"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>levelW</b></td></tr>
+<tr class="memitem:ab2c8b5c7c137203d2a24923126eed42b"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#ab2c8b5c7c137203d2a24923126eed42b">levelW</a></td></tr>
+<tr class="memdesc:ab2c8b5c7c137203d2a24923126eed42b"><td class="mdescLeft">&#160;</td><td class="mdescRight">The width of the level.  <a href="#ab2c8b5c7c137203d2a24923126eed42b">More...</a><br/></td></tr>
 <tr class="separator:ab2c8b5c7c137203d2a24923126eed42b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae354a5a0f2be740dcb1da2a025e1b5fc"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae354a5a0f2be740dcb1da2a025e1b5fc"></a>
-unsigned int&#160;</td><td class="memItemRight" valign="bottom"><b>levelH</b></td></tr>
+<tr class="memitem:ae354a5a0f2be740dcb1da2a025e1b5fc"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#ae354a5a0f2be740dcb1da2a025e1b5fc">levelH</a></td></tr>
+<tr class="memdesc:ae354a5a0f2be740dcb1da2a025e1b5fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">The height of the level.  <a href="#ae354a5a0f2be740dcb1da2a025e1b5fc">More...</a><br/></td></tr>
 <tr class="separator:ae354a5a0f2be740dcb1da2a025e1b5fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pub_attribs_class_entity"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_entity')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_entity.html">Entity</a></td></tr>
-<tr class="memitem:abe84b2274427a984d952acd6d4c4061f inherit pub_attribs_class_entity"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#abe84b2274427a984d952acd6d4c4061f">x</a></td></tr>
-<tr class="memdesc:abe84b2274427a984d952acd6d4c4061f inherit pub_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">The position in the x axis.  <a href="#abe84b2274427a984d952acd6d4c4061f">More...</a><br/></td></tr>
-<tr class="separator:abe84b2274427a984d952acd6d4c4061f inherit pub_attribs_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeaf8012f92ad9f8ea0df589e3fc67c8f inherit pub_attribs_class_entity"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#aeaf8012f92ad9f8ea0df589e3fc67c8f">y</a></td></tr>
-<tr class="memdesc:aeaf8012f92ad9f8ea0df589e3fc67c8f inherit pub_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">The position in the y axis.  <a href="#aeaf8012f92ad9f8ea0df589e3fc67c8f">More...</a><br/></td></tr>
-<tr class="separator:aeaf8012f92ad9f8ea0df589e3fc67c8f inherit pub_attribs_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="inherit_header pro_methods_class_entity"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_entity')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_entity.html">Entity</a></td></tr>
+<tr class="memitem:adfaf4b4303373536f38f67fcdbac9151 inherit pro_methods_class_entity"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#adfaf4b4303373536f38f67fcdbac9151">Entity</a> (double x_, double y_, <a class="el" href="class_sprite.html">Sprite</a> *sprite_)</td></tr>
+<tr class="memdesc:adfaf4b4303373536f38f67fcdbac9151 inherit pro_methods_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor.  <a href="#adfaf4b4303373536f38f67fcdbac9151">More...</a><br/></td></tr>
+<tr class="separator:adfaf4b4303373536f38f67fcdbac9151 inherit pro_methods_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pro_attribs_class_entity"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_entity')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_entity.html">Entity</a></td></tr>
 <tr class="memitem:a4da30cea569f19c66c033358e1e99c04 inherit pro_attribs_class_entity"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_sprite.html">Sprite</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a4da30cea569f19c66c033358e1e99c04">sprite</a></td></tr>
 <tr class="memdesc:a4da30cea569f19c66c033358e1e99c04 inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a> attributed to the entity.  <a href="#a4da30cea569f19c66c033358e1e99c04">More...</a><br/></td></tr>
@@ -207,7 +232,8 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The destructor. </p>
-<p>Resets the attributes. </p>
+<p>Deletes the sprite. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">Todo:</a></b></dt><dd>See if just the entity deleting the sprite is enough. </dd></dl>
 
 </div>
 </div>
@@ -266,11 +292,11 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">x_,y_</td><td>: Sets the players knowledge of the cameras x,y position. </td></tr>
+    <tr><td class="paramname">x_,y_</td><td>: Tells the player what are the current (x,y) position of the camera. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_level.html#a62e412eaad753d2baa2f94239cb80e41" title="Updates the objects within the Level. ">Level::update()</a> </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_state.html#ac9f156dc81466b6adb086ed092f66afe" title="Update all entities. ">Level::update()</a> </dd></dl>
 
 </div>
 </div>
@@ -299,11 +325,11 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">width_,height_</td><td>: Sets the players knowledge of the level width,height. </td></tr>
+    <tr><td class="paramname">width_,height_</td><td>: Tells the player what the width and height of the level is. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_level.html#a62e412eaad753d2baa2f94239cb80e41" title="Updates the objects within the Level. ">Level::update()</a> </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_state.html#ac9f156dc81466b6adb086ed092f66afe" title="Update all entities. ">Level::update()</a> </dd></dl>
 
 </div>
 </div>
@@ -337,6 +363,7 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>Fix all these magic/weird numbers. </dd></dl>
 
 <p>Implements <a class="el" href="class_entity.html#ad465a2bd9ba1d3e68ecd609a00e1df45">Entity</a>.</p>
 
@@ -364,11 +391,99 @@ Additional Inherited Members</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>Fix all these magic/weird numbers. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Todo:</a></b></dt><dd>Fix all these magic/weird numbers. </dd></dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="af61538d0ab9a634fb0be450b45d113b9"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Player::cameraX</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The current x position of the camera. </p>
+
+</div>
+</div>
+<a class="anchor" id="a91271217943f93b2ca45a83c39ba66bd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Player::cameraY</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The current y position of the camera. </p>
+
+</div>
+</div>
+<a class="anchor" id="ae354a5a0f2be740dcb1da2a025e1b5fc"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Player::levelH</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The height of the level. </p>
+
+</div>
+</div>
+<a class="anchor" id="ab2c8b5c7c137203d2a24923126eed42b"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">unsigned int Player::levelW</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The width of the level. </p>
+
+</div>
+</div>
 <a class="anchor" id="a3e47171d423dcab69602e0f60f1ae208"></a>
 <div class="memitem">
 <div class="memproto">
@@ -410,6 +525,20 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Speed that moves player on input. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac4a623bf6650a719187c50bb0413b9a0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_state.html">State</a> Player::state</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Current state the player is in (for the player internal state). </p>
 
 </div>
 </div>
@@ -464,7 +593,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 18 2014 21:06:46 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 21 2014 19:28:25 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
