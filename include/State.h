@@ -1,15 +1,14 @@
 #ifndef INCLUDE_STATE_H
 #define INCLUDE_STATE_H
 
-#include <cstdint>
+#include "Entity.h"
+
+#include <list>
+using std::list;
 
 class State {
 
 	public:
-
-		// enum class GameState : uint8_t {
-		//     Menu, Level_One, Quit
-		// };
 
 		/**
 		*
@@ -30,6 +29,15 @@ class State {
 		*
 		*/
 		virtual void unload() = 0;
+
+		/**
+		*
+		*/
+		void addEntity(Entity *entity);
+
+	protected:
+
+		list<Entity*> entities; /**< List of all the entities in the state. */
 
 };
 

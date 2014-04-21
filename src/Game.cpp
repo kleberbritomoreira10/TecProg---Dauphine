@@ -4,7 +4,7 @@
 #include "FPSWrapper.h"
 #include "Logger.h"
 #include "Configuration.h"
-#include "Level.h"
+#include "LevelOne.h"
 #include "Player.h"
 #include "Sprite.h"
 #include "LuaScript.h"
@@ -48,7 +48,7 @@ void Game::runGame(){
 	spritePlayer = new Sprite(this->window->getRenderer(), scriptPlayerSpritePath);
 
 	// Creating level, camera and player.
-	Level level(spriteLevelBackground);
+	LevelOne level(spriteLevelBackground);
 	Camera camera;
 	Player player(scriptX, scriptY, spritePlayer);
 	level.setPlayer(player);
