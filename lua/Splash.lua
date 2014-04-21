@@ -1,4 +1,4 @@
 splash = {
 	spritePath = "res/techs_white_bg.png",
-	lifeTime = 2.5
+	lifeTime = 0.1
 }

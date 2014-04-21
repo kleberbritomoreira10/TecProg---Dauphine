@@ -40,6 +40,12 @@ void InputHandler::handleInput(){
 				case SDLK_RIGHT: // Move right.
 					this->keyStates[GameKeys::RIGHT] = true;
 					break;
+				case SDLK_DOWN: // Move down.
+					this->keyStates[GameKeys::DOWN] = true;
+					break;
+				case SDLK_c: // Move rolling.
+					this->keyStates[GameKeys::ROLL] = true;
+					break;
 				default:
 					break;
 			}
@@ -56,6 +62,12 @@ void InputHandler::handleInput(){
 					break;
 				case SDLK_RIGHT: // Move right.
 					this->keyStates[GameKeys::RIGHT] = false;
+					break;
+				case SDLK_DOWN: // Move down.
+					this->keyStates[GameKeys::DOWN] = false;
+					break;
+				case SDLK_c: // Move rolling.
+					this->keyStates[GameKeys::ROLL] = false;
 					break;
 				default:
 					break;

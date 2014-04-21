@@ -14,6 +14,7 @@ Player::Player(double x_, double y_, Sprite *sprite_) :
     levelH(0),
     canJump(true)
 {
+    this->state = STATE_JUMPING;
 	if(this->sprite != nullptr){
         this->width = this->sprite->getWidth();
         this->height = this->sprite->getHeight();
@@ -57,7 +58,7 @@ void Player::update(double dt_){
     else if(this->y + this->height + 40 > this->levelH){ // Caiooooooooo AQUIII
         this->y = this->levelH - this->height - 40;
         this->vy = 0;
-        this->canJump = true;
+        this->state = STATE_STANDING;
     }
     
 }
@@ -70,30 +71,47 @@ void Player::render(){
 
 void Player::updateInput(array<bool, GameKeys::MAX> keyStates_){
     /// @todo Fix all these magic/weird numbers.
-
-    // Jump.
-    if(keyStates_[GameKeys::UP] && this->canJump){
-        this->canJump = false;
-        this->vy = -30*this->speed;
-    }
-    else{
-        this->vy += this->speed; //gravity
+    switch(this->state){
+        case STATE_STANDING:
+            if(keyStates_[GameKeys::UP]){
+                this->state = STATE_JUMPING;
+                this->vy = -40*this->speed;
+            }
+            if(keyStates_[GameKeys::ROLL]){
+                 this->state = STATE_ROLLING;
+                 this->vx = 100*this->speed;
+            }
+            break;
+        case STATE_JUMPING:
+            this->vy += 2*this->speed;
+            break;
+        case STATE_CROUCHING:
+            break;
+        case STATE_ROLLING:
+            this->vx *= 0.95;
+            if(this->vx < 3 && this->vx > (-3)){
+                this->state = STATE_STANDING;
+                this->vx = 0;
+            }
+            break;
+        default:
+            break;
     }
 
     // Movement.
     if(keyStates_[GameKeys::LEFT]){
-        if(this->vx > -this->maxSpeed){
-            this->vx -= this->speed;
-        } 
-    }
-    else if(keyStates_[GameKeys::RIGHT]){
-        if(this->vx < this->maxSpeed){
-            this->vx += this->speed;
-        }
-    }
-    else{
-        this->vx *= 0.95;
-    }
+                if(this->vx > -this->maxSpeed){
+                    this->vx -= this->speed;
+                } 
+            }
+            else if(keyStates_[GameKeys::RIGHT]){
+                if(this->vx < this->maxSpeed){
+                    this->vx += this->speed;
+                }
+            }
+            else{
+                this->vx *= 0.95;
+            }
     
 }
 

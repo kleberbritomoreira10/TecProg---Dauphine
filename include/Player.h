@@ -63,6 +63,17 @@ class Player : public Entity {
 		*/
 		void setLevelWH(unsigned int width_, unsigned int height_);
 
+		enum State
+		{
+			STATE_STANDING,
+			STATE_WALKING,
+			STATE_JUMPING,
+			STATE_CROUCHING,
+			STATE_ROLLING
+		};
+
+		State state;
+
 	private:
 		double vx; /**< The player's speed on the x axis. */
 		double vy; /**< The player's speed on the x axis. */
