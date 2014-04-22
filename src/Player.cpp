@@ -78,7 +78,6 @@ void Player::updateInput(array<bool, GameKeys::MAX> keyStates_){
             }
             if(keyStates_[GameKeys::ROLL]){
                  this->state = STATE_ROLLING;
-                 this->vx = 100*this->speed;
             }
             if(keyStates_[GameKeys::DOWN]){
                 this->speed = 7.5;
@@ -100,18 +99,15 @@ void Player::updateInput(array<bool, GameKeys::MAX> keyStates_){
             break;
 
         case STATE_ROLLING:
-            this->vx *= 0.95;
-            if(this->vx < 3 && this->vx > (-3)){
-                this->state = STATE_STANDING;
-                this->vx = 0;
-            }
+            this->vx = 70*this->speed;
+            this->state = STATE_STANDING;
             break;
 
         default:
             break;
     }
 
-    // Movement.
+    // X movement.
     if(keyStates_[GameKeys::LEFT]){
         if(this->vx > -this->maxSpeed){
             this->vx -= this->speed;
