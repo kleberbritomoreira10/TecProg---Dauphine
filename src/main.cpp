@@ -7,12 +7,15 @@ int main(int argc, char** argv){
 		Logger::isVerbose = true;
 	}
 
-	Logger::verbose("Starting Dauphine...");	
+	Logger::verbose("Starting Dauphine...");
+
+	Configuration::initialize();
 
 	bool systemsInitialized = SDLWrapper::initialize();
 
 	if(systemsInitialized){
-		Window window(Configuration::getScreenWidth(), Configuration::getScreenHeight(), Configuration::windowTitle);
+		Window window(Configuration::getScreenWidth(), Configuration::getScreenHeight(),
+			Configuration::getWindowTitle());
 
 		Game* game = nullptr;
 		game = new Game(&window);

@@ -5,7 +5,7 @@
 void FPSWrapper::initialize(FPSmanager& fpsManager_){
 	SDL_initFramerate(&fpsManager_);
 
-	const int framerateIsSet = SDL_setFramerate(&fpsManager_, Configuration::maxFramerate);
+	const int framerateIsSet = SDL_setFramerate(&fpsManager_, Configuration::getMaxFramerate());
 	if(framerateIsSet == 0){
 		Logger::log("Successfully started the framerate manager.");
 	}

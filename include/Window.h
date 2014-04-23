@@ -7,8 +7,8 @@
 using std::string;
 
 /**
-* Actual window that game runs on.
-* Contains the SDL window and the SDL renderer, and methods related to these.
+* Represents actual window that game runs on.
+* Contains the SDL_Window and the SDL_Renderer, and methods related to these.
 */
 class Window {
 
@@ -20,14 +20,15 @@ class Window {
 		* @param height_ : The desired window height.
 		* @param title_ : The desired window title.
 		* @note If omitted, window title will be "SDL Window".
-		* @see initialize()
+		* @see Window::initialize
 		*/
-		Window(unsigned int width_, unsigned int height_, string title_ = "SDL Window");
+		Window(const unsigned int width_, const unsigned int height_,
+			const string& title_ = "SDL Window");
 
 		/**
 		* The destructor.
 		* Uses the destroy method to delete window.
-		* @see destroy()
+		* @see Window::destroy
 		*/
 		~Window();
 
@@ -64,8 +65,9 @@ class Window {
 		/**
 		* Rescales the renderization.
 		* Set a device independent resolution for rendering.
-		* @param size_ : Multiplies Configuration::resolutionWidth and Configuration::resolutionHeight for the new resolution.
-		* @see SDL_RenderSetLogicalSize()
+		* @param size_ : Multiplies Configuration::resolutionWidth and
+		* 	Configuration::resolutionHeight for the new resolution.
+		* @see SDL_RenderSetLogicalSize
 		*/
 		void rescale(unsigned int size_);
 
@@ -75,18 +77,20 @@ class Window {
 		static SDL_Renderer* getRenderer();
 
 	private:
-		unsigned int width; /**< The game Window width. */
-		unsigned int height; /**< The game Window width. */
-		string windowTitle; /**< The game Window title. */
-
-		SDL_Window *sdlWindow; /**< The SDL window, that will be the actual game window. */
-		static SDL_Renderer *sdlRenderer; /**< The SDL renderer to render onto. */
-
 		/**
 		* Initializes the window and the renderer.
 		* Creates the Window, with specified width, height and title.
 		*/
 		void initialize();
+		
+		unsigned int width; /**< The game Window width. */
+		unsigned int height; /**< The game Window width. */
+		const string windowTitle; /**< The game Window title. */
+
+		SDL_Window *sdlWindow; /**< The SDL window, that will be the actual game window. */
+		static SDL_Renderer *sdlRenderer; /**< The SDL renderer to render onto. */
+
+		
 };
 
 #endif //INCLUDE_WINDOW_H

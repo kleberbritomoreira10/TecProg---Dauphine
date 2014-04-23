@@ -11,11 +11,35 @@ using std::string;
 class Configuration {
 
 	public:
-		const static unsigned int resolutionWidth; /**< The game's width resolution. */
-		const static unsigned int resolutionHeight; /**< The game's height resolution. */
+		/**
+		* Initializes all the attributes.
+		*/
+		static void initialize();
 
-		const static uint32_t maxFramerate; /**< The game's max framerate. */
-		const static string windowTitle; /**< The game window's title. */
+		/**
+		* @return resolutionWidth
+		*/
+		static unsigned int getResolutionWidth();
+
+		/**
+		* @return resolutionHeight
+		*/
+		static unsigned int getResolutionHeight();
+
+		/**
+		* @return maxFramerate
+		*/
+		static uint32_t getMaxFramerate();
+
+		/**
+		* @return windowTitle
+		*/
+		static string getWindowTitle();
+
+		/**
+		* @return initialMultiplier
+		*/
+		static unsigned int getInitialMultiplier();
 
 		/**
 		* @return The current screen width.
@@ -28,6 +52,15 @@ class Configuration {
 		static unsigned int getScreenHeight();
 
 	private:
+		static unsigned int resolutionWidth; /**< The game's width resolution. */
+		static unsigned int resolutionHeight; /**< The game's height resolution. */
+
+		static uint32_t maxFramerate; /**< The game's max framerate. */
+		static string windowTitle; /**< The game window's title. */
+
+		static unsigned int initialMultiplier; /**< The initial multiplier for the
+			resolutions. */
+
 		static unsigned int screenWidth; /**< The screen width. */
 		static unsigned int screenHeight; /**< The screen height. */
 
