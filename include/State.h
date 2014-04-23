@@ -47,11 +47,6 @@ class State {
 		*/
 		void addEntity(Entity* entity);
 
-		/**
-		* @return Null, just so Game knows the if the State is a Level or not.
-		*/
-		virtual Player* getPlayer();
-
 	protected:
 
 		list<Entity*> entities; /**< List of all the entities in the state. */

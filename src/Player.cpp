@@ -1,4 +1,5 @@
 #include "Player.h"
+#include "InputHandler.h"
 #include "Logger.h"
 #include "Configuration.h"
 
@@ -32,6 +33,17 @@ Player::~Player(){
 }
 
 void Player::update(double dt_){
+    updateInput();
+    updateMovement(dt_);    
+}
+
+void Player::render(){
+    const int dx = this->x - this->cameraX;
+    const int dy = this->y - this->cameraY;
+	this->sprite->render(dx, dy);
+}
+
+void Player::updateMovement(double dt_){
     /// @todo Fix all these magic/weird numbers.
     this->x += this->vx * dt_;
 
@@ -59,27 +71,23 @@ void Player::update(double dt_){
         this->vy = 0;
         this->state = STATE_STANDING;
     }
-    
 }
 
-void Player::render(){
-    const int dx = this->x - this->cameraX;
-    const int dy = this->y - this->cameraY;
-	this->sprite->render(dx, dy);
-}
+void Player::updateInput(){
+    InputHandler* inputHandler = InputHandler::getInstance();
+    const array<bool, GameKeys::MAX> keyStates = inputHandler->getKeyStates();
 
-void Player::updateInput(array<bool, GameKeys::MAX> keyStates_){
     /// @todo Fix all these magic/weird numbers.
     switch(this->state){
         case STATE_STANDING:
-            if(keyStates_[GameKeys::UP]){
+            if(keyStates[GameKeys::UP]){
                 this->state = STATE_JUMPING;
                 this->vy = -40*this->speed;
             }
-            if(keyStates_[GameKeys::ROLL]){
+            if(keyStates[GameKeys::ROLL]){
                  this->state = STATE_ROLLING;
             }
-            if(keyStates_[GameKeys::DOWN]){
+            if(keyStates[GameKeys::DOWN]){
                 this->speed = 7.5;
                 this->maxSpeed = 350;
                 this->state = STATE_CROUCHING;
@@ -91,7 +99,7 @@ void Player::updateInput(array<bool, GameKeys::MAX> keyStates_){
             break;
 
         case STATE_CROUCHING:
-            if(!keyStates_[GameKeys::DOWN]){
+            if(!keyStates[GameKeys::DOWN]){
                 this->speed = 15;
                 this->maxSpeed = 500;
                 this->state = STATE_STANDING;
@@ -108,12 +116,12 @@ void Player::updateInput(array<bool, GameKeys::MAX> keyStates_){
     }
 
     // X movement.
-    if(keyStates_[GameKeys::LEFT]){
+    if(keyStates[GameKeys::LEFT]){
         if(this->vx > -this->maxSpeed){
             this->vx -= this->speed;
         } 
     }
-    else if(keyStates_[GameKeys::RIGHT]){
+    else if(keyStates[GameKeys::RIGHT]){
         if(this->vx < this->maxSpeed){
             this->vx += this->speed;
         }

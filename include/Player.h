@@ -15,6 +15,9 @@ using std::array;
 class Player : public Entity {
 
 	public:
+		/**
+		* Possible player states.
+		*/
 		enum State : int {
 			STATE_STANDING = 0,
 			STATE_WALKING,
@@ -41,9 +44,9 @@ class Player : public Entity {
 
 		/**
 		* Updates the player.
-		* Modifies whatever is necessary, relative to the player.
+		* @see Player::updateInput, Player::updateMovement
 		* @param dt_ : Delta time. Time elapsed between one frame and the other, independent
-			of processing speed.
+		* 	of processing speed.
 		*/
 		virtual void update(double dt_);
 
@@ -55,11 +58,18 @@ class Player : public Entity {
 		virtual void render();
 
 		/**
+		* Updates the players position.
+		* Update is based on what input was recieved, and the players velocity.
+		* @param dt_ : Delta time. Time elapsed between one frame and the other, independent
+		* 	of processing speed.
+		*/
+		void updateMovement(double dt_);
+
+		/**
 		* Updates the player depending on recieved input.
 		* Modifies whatever is necessary, relative to the player.
-		* @param keyStates_ : The input handled boolean array that says which keys are pressed.
 		*/
-		void updateInput(array<bool, GameKeys::MAX> keyStates_);
+		void updateInput();
 
 		/**
 		* @param x_, y_ : Tells the player what are the current (x,y) position of the camera.

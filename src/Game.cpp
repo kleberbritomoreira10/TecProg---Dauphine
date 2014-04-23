@@ -51,17 +51,11 @@ void Game::runGame(){
 		// Update.
 		while(accumulatedTime >= deltaTime){
 			inputHandler->handleInput();
-			array<bool, GameKeys::MAX> gameKeys = inputHandler->getKeyStates();
 
 			// Check for a quit signal from input.
 			if(inputHandler->signalQuit()){
 				this->isRunning = false;
 				return;
-			}
-			
-			// State is a level (has a player).
-			if(Game::currentState->getPlayer() != nullptr){
-				Game::currentState->getPlayer()->updateInput(gameKeys);
 			}
 
 			Game::currentState->update(deltaTime);
