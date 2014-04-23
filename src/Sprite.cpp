@@ -3,29 +3,20 @@
 #include "Logger.h"
 
 Sprite::Sprite(const string& path_) :
-	sdlRenderer(Window::getRenderer()),
 	sdlTexture(nullptr),
 	width(0),
 	height(0)
 {
-	if(this->sdlRenderer == nullptr){
-		Logger::warning("Null renderer passed to Sprite. It will not be renderable.");	
-	}
-
 	loadFrom(path_);
 }
 
 Sprite::~Sprite(){
-	// Use the free() method to destroy everything but the renderer.
 	free();
-
-	// Just set the sdlRenderer to null. The Window class should delete or not the renderer.
-	this->sdlRenderer = nullptr;
 }
 
 void Sprite::loadFrom(const string& path_){
 	// Warns if loading a sprite without a renderer.
-	if(this->sdlRenderer == nullptr){
+	if(Window::getRenderer() == nullptr){
 		Logger::warning("Trying to load sprite with null renderer.");
 	}
 
@@ -41,7 +32,7 @@ void Sprite::loadFrom(const string& path_){
 		//SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 0xFF, 0, 0xFF));
 
 		// Create texture from the surface pixels.
-        newTexture = SDL_CreateTextureFromSurface(this->sdlRenderer, loadedSurface);
+        newTexture = SDL_CreateTextureFromSurface(Window::getRenderer(), loadedSurface);
 		if(newTexture != nullptr){
 			// Set the Sprites width and height, from the loaded surface.
 			this->width = loadedSurface->w;
@@ -94,7 +85,7 @@ void Sprite::render(double x_, double y_, SDL_Rect* clip_, double angle_, SDL_Po
 		// Don't clip the texture.
 	}
 
-	int successfullRender = SDL_RenderCopyEx(this->sdlRenderer, this->sdlTexture, clip_,
+	int successfullRender = SDL_RenderCopyEx(Window::getRenderer(), this->sdlTexture, clip_,
 		&renderQuad, angle_, center_, flip_);
 	
 	if(successfullRender != 0){

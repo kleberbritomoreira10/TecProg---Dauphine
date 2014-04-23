@@ -34,24 +34,22 @@ LuaScript::~LuaScript() {
 }
 
 vector<int> LuaScript::unlua_getIntVector(const string& name_) {
-    vector<int> intVector;
+    vector<int> v;
+    unlua_getToStack(name_);
 
-    const bool gotToStack = unlua_getToStack(name_);
-    const bool arrayNotFound = lua_isnil(this->luaState, -1);
-    if(gotToStack && arrayNotFound){
-
-        lua_pushnil(this->luaState);
-        while(lua_next(this->luaState, -2)) {
-            intVector.push_back((int)lua_tonumber(this->luaState, -1));
-            lua_pop(this->luaState, 1);
-        }
-        unlua_clean();
-        return intVector;
-    }
-    else{
+    // If the array is not found
+    if(lua_isnil(this->luaState, -1)) {
         return vector<int>();
     }
+
+    lua_pushnil(this->luaState);
+    while(lua_next(this->luaState, -2)) {
+        v.push_back((int)lua_tonumber(this->luaState, -1));
+        lua_pop(this->luaState, 1);
+    }
     
+    unlua_clean();
+    return v;
 }
 
 vector<string> LuaScript::unlua_getTableKeys(const string& name_) {

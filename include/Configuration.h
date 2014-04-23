@@ -6,7 +6,8 @@ using std::string;
 
 /**
 * Game configuration class.
-* @todo Properly implement with lua(?) and refactor the Configuration.
+* @todo Refactor the Configuration class.
+* @todo Implement all the possible resolutions the game will "want".
 */
 class Configuration {
 
@@ -38,8 +39,19 @@ class Configuration {
 
 		/**
 		* @return initialMultiplier
+		* @see Window::rescale
 		*/
-		static unsigned int getInitialMultiplier();
+		static unsigned int getLogicalRenderSize();
+
+		/**
+		* @return cameraDistanceWidth
+		*/
+		static unsigned int getCameraDistanceWidth();
+
+		/**
+		* @return cameraDistanceHeight
+		*/
+		static unsigned int getCameraDistanceHeight();
 
 		/**
 		* @return The current screen width.
@@ -52,17 +64,19 @@ class Configuration {
 		static unsigned int getScreenHeight();
 
 	private:
-		static unsigned int resolutionWidth; /**< The game's width resolution. */
-		static unsigned int resolutionHeight; /**< The game's height resolution. */
+		static const unsigned int resolutionWidth; /**< The game's width resolution. (16) */
+		static const unsigned int resolutionHeight; /**< The game's height resolution. (10) */
 
 		static uint32_t maxFramerate; /**< The game's max framerate. */
 		static string windowTitle; /**< The game window's title. */
 
-		static unsigned int initialMultiplier; /**< The initial multiplier for the
-			resolutions. */
+		static unsigned int logicalRenderSize; /**< The size of the logical rendering. */
 
 		static unsigned int screenWidth; /**< The screen width. */
 		static unsigned int screenHeight; /**< The screen height. */
+
+		static unsigned int cameraDistanceWidth; /**< The width distance of the camera. */
+		static unsigned int cameraDistanceHeight; /**< The height distance of the camera. */
 
 };
 

@@ -34,7 +34,7 @@ Player::~Player(){
 
 void Player::update(double dt_){
     updateInput();
-    updateMovement(dt_);    
+    updatePosition(dt_);
 }
 
 void Player::render(){
@@ -43,7 +43,7 @@ void Player::render(){
 	this->sprite->render(dx, dy);
 }
 
-void Player::updateMovement(double dt_){
+void Player::updatePosition(double dt_){
     /// @todo Fix all these magic/weird numbers.
     this->x += this->vx * dt_;
 

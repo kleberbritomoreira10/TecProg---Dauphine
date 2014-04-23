@@ -18,12 +18,12 @@ class Camera {
 
 		/**
 		* The destructor.
-		* 
 		*/
 		~Camera();
 
 		/**
-		* Updates the camera clip.
+		* Updates the camera.
+		* @see Camera::updatePosition
 		* Centralizes the player on the screen.
 		*/
 		void update();
@@ -32,6 +32,12 @@ class Camera {
 		* @return The camera clip (an SDL_Rect).
 		*/
 		SDL_Rect& getClip();
+
+		/**
+		* Updates the cameras position.
+		* Based on the players position, change cameras position.
+		*/
+		void updatePosition();
 
 		/**
 		* @param x_, y_ : Tells the camera what are the current (x,y) position of the player.

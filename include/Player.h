@@ -44,7 +44,7 @@ class Player : public Entity {
 
 		/**
 		* Updates the player.
-		* @see Player::updateInput, Player::updateMovement
+		* @see Player::updateInput, Player::updatePosition
 		* @param dt_ : Delta time. Time elapsed between one frame and the other, independent
 		* 	of processing speed.
 		*/
@@ -63,7 +63,7 @@ class Player : public Entity {
 		* @param dt_ : Delta time. Time elapsed between one frame and the other, independent
 		* 	of processing speed.
 		*/
-		void updateMovement(double dt_);
+		void updatePosition(double dt_);
 
 		/**
 		* Updates the player depending on recieved input.

@@ -74,7 +74,6 @@ class Sprite {
 		*/
 		void loadFrom(const string& path_);
 
-		SDL_Renderer* sdlRenderer; /**< The SDL renderer to render onto. */
 		SDL_Texture* sdlTexture; /**< The SDL texture to use as the image. */
 
 		unsigned int width; /**< The loaded image's width. */

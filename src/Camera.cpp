@@ -8,7 +8,7 @@ Camera::Camera():
     playerH(0),
     levelW(0),
     levelH(0),
-    clip{0, 0, (int)Configuration::getScreenWidth(), (int)Configuration::getScreenHeight()}
+    clip{0, 0, (int)Configuration::getCameraDistanceWidth(), (int)Configuration::getCameraDistanceHeight()}
 {
     /// @todo If the player changes the resolution, so should the clip. (?)
 }
@@ -18,6 +18,14 @@ Camera::~Camera(){
 }
 
 void Camera::update(){
+    updatePosition();
+}
+
+SDL_Rect& Camera::getClip(){
+    return this->clip;
+}
+
+void Camera::updatePosition(){
     this->clip.x = (this->playerX + this->playerW / 2) - (this->clip.w / 2);
     this->clip.y = (this->playerY + this->playerH / 2) - (this->clip.h / 2);
 
@@ -37,10 +45,6 @@ void Camera::update(){
     else if(this->clip.y > (int)this->levelH - this->clip.h){
         this->clip.y = (int)this->levelH - this->clip.h;
     }
-}
-
-SDL_Rect& Camera::getClip(){
-    return this->clip;
 }
 
 void Camera::setPlayerXY(double x_, double y_){

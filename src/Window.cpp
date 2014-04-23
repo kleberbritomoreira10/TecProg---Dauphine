@@ -7,12 +7,10 @@ SDL_Renderer* Window::sdlRenderer = nullptr;
 
 
 Window::Window(const unsigned int width_, const unsigned int height_, const string& title_) :
-	width(width_),
-	height(height_)	,
 	windowTitle(title_),
 	sdlWindow(nullptr)
 {
-	initialize();
+	create(width_, height_);
 }
 
 Window::~Window(){
@@ -46,13 +44,15 @@ void Window::render(){
 	SDL_RenderPresent(Window::sdlRenderer);
 }
 
-void Window::initialize(){
+void Window::create(const unsigned int width_, const unsigned int height_){
+	/// @todo Toggle VSync.
+
 	// Creates the SDL window.
 	const Uint32 windowFlags = SDL_WINDOW_SHOWN;
 	this->sdlWindow = SDL_CreateWindow(
 		this->windowTitle.c_str(), 
 		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-		this->width, this->height,
+		width_, height_,
 		windowFlags
 	);
 	
@@ -66,7 +66,7 @@ void Window::initialize(){
 			SDL_bool linearFilter = SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 			if(linearFilter){
 				Logger::log("Linear texture filtering enabled!");
-				rescale(Configuration::getInitialMultiplier());
+				rescale(Configuration::getLogicalRenderSize());
 			}
 			else{
 				Logger::warning("Linear texture filtering disabled!");
@@ -84,11 +84,22 @@ void Window::initialize(){
 	}
 }
 
+void Window::resize(const unsigned int width_, const unsigned int height_){
+	SDL_SetWindowSize(this->sdlWindow, width_, height_);
+}
+
 void Window::rescale(unsigned int size_){
-	// Just a precaution, so the the window size doesn't get huge.
-	size_ = (size_ > 10) ? 10 : size_;
-	SDL_RenderSetLogicalSize(Window::sdlRenderer, Configuration::getResolutionWidth() * size_,
-		Configuration::getResolutionHeight() * size_);
+	// Just a precaution, so there is no abuse on the size.
+	if(size_ > 10){
+		size_ = 10;
+		Logger::warning("Trying to rescale for a value to big.");
+	}
+
+	SDL_RenderSetLogicalSize(
+		Window::sdlRenderer,
+		Configuration::getResolutionWidth() * size_,
+		Configuration::getResolutionHeight() * size_
+	);
 }
 
 SDL_Renderer* Window::getRenderer(){
