@@ -6,14 +6,14 @@ level = {
 	},
 
 	background = {
-		spritePath = "res/hdimg.png"
+		spritePath = "res/newbg.png"
 	},
 
 	player = {
 	    position = {
 	    	x = 450.0, y = 300.0
 	    },
-	    spritePath = "res/player.png",
+	    spritePath = "res/nadine.png",
 	}
 
 }

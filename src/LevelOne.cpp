@@ -1,4 +1,5 @@
 #include "LevelOne.h"
+#include "AudioHandler.h"
 #include "LuaScript.h"
 #include "Logger.h"
 
@@ -43,6 +44,9 @@ void LevelOne::render(){
 
 void LevelOne::load(){
 	Logger::verbose("Loading level 1...");
+
+	AudioHandler* audioHandler = AudioHandler::getInstance();
+	audioHandler->changeMusic("res/idk.ogg");
 
 	// Getting information from lua script
 	LuaScript luaLevel1("lua/Level1.lua");

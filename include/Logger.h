@@ -37,8 +37,7 @@ class Logger {
 		* Logs the desired message with an "Error: " prefix, accompanied by the error string returned by the GetError() from the SDL libraries.
 		* @param message_ : the message to log.
 		* @param messageSDL_ : the error string from SDL to log.
-		* @see SDL_GetError()
-		* @see IMG_GetError()
+		* @see SDL_GetError, IMG_GetError, Mix_GetError
 		*/
 		static void errorSDL(const string& message_, const char *messageSDL_);
 

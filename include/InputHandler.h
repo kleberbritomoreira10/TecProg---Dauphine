@@ -15,8 +15,8 @@ class InputHandler {
 
 	public:
 		/**
-		* @return The InputHandler instance.
 		* Singleton implementation.
+		* @return The InputHandler::instance
 		*/
 		static InputHandler* getInstance();
 		
