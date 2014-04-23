@@ -65,45 +65,47 @@
 <div class="line"><a name="l00015"></a><span class="lineno"><a class="code" href="class_player.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_player.html" title="The player entity class. ">Player</a> : <span class="keyword">public</span> <a class="code" href="class_entity.html" title="Base class for all game objects (entities). ">Entity</a> {</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keyword">enum</span> State : <span class="keywordtype">int</span> {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            STATE_STANDING = 0,</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            STATE_WALKING,</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            STATE_JUMPING,</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            STATE_CROUCHING,</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            STATE_ROLLING</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        };</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="class_player.html#aceec0ce21b4783e66cabd4573a4f41cc" title="The constructor. ">Player</a>(<span class="keywordtype">double</span> x_, <span class="keywordtype">double</span> y_, <a class="code" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a>* sprite_);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="class_player.html#a749d2c00e1fe0f5c2746f7505a58c062" title="The destructor. ">~Player</a>();</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_player.html#a603db14db40c9596a9c8a513ea375350" title="Updates the player. ">update</a>(<span class="keywordtype">double</span> dt_);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_player.html#afe3ff7815f9366b4c4fffa2cf6556ad5" title="Renders the player. ">render</a>();</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#a46a6853e25b3d93393e0708533b05246" title="Updates the player depending on recieved input. ">updateInput</a>(array&lt;bool, GameKeys::MAX&gt; keyStates_);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#ac5acb13d6fd5ab9cb5208ef2cbe25bf7">setCameraXY</a>(<span class="keywordtype">double</span> x_, <span class="keywordtype">double</span> y_);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#abea2489d388d574e07732fa5d9d1d2db">setLevelWH</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> width_, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> height_);</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;</div>
-<div class="line"><a name="l00076"></a><span class="lineno"><a class="code" href="class_player.html#ac4a623bf6650a719187c50bb0413b9a0">   76</a></span>&#160;        State <a class="code" href="class_player.html#ac4a623bf6650a719187c50bb0413b9a0" title="Current state the player is in (for the player internal state). ">state</a>; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00079"></a><span class="lineno"><a class="code" href="class_player.html#ae94b76deb6ed53f49d1db40a843f30c8">   79</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_player.html#ae94b76deb6ed53f49d1db40a843f30c8" title="The player&#39;s speed on the x axis. ">vx</a>; </div>
-<div class="line"><a name="l00080"></a><span class="lineno"><a class="code" href="class_player.html#a97c9f469ef054e12fb85c6f239de3e12">   80</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_player.html#a97c9f469ef054e12fb85c6f239de3e12" title="The player&#39;s speed on the x axis. ">vy</a>; </div>
-<div class="line"><a name="l00081"></a><span class="lineno"><a class="code" href="class_player.html#a2c45aef68a4799af9e5fd2054d32e3b3">   81</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_player.html#a2c45aef68a4799af9e5fd2054d32e3b3" title="Speed that moves player on input. ">speed</a>; </div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="code" href="class_player.html#a3e47171d423dcab69602e0f60f1ae208">   82</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_player.html#a3e47171d423dcab69602e0f60f1ae208" title="Player max speed. ">maxSpeed</a>; </div>
-<div class="line"><a name="l00084"></a><span class="lineno"><a class="code" href="class_player.html#af61538d0ab9a634fb0be450b45d113b9">   84</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_player.html#af61538d0ab9a634fb0be450b45d113b9" title="The current x position of the camera. ">cameraX</a>; </div>
-<div class="line"><a name="l00085"></a><span class="lineno"><a class="code" href="class_player.html#a91271217943f93b2ca45a83c39ba66bd">   85</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_player.html#a91271217943f93b2ca45a83c39ba66bd" title="The current y position of the camera. ">cameraY</a>; </div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="code" href="class_player.html#ab2c8b5c7c137203d2a24923126eed42b">   86</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_player.html#ab2c8b5c7c137203d2a24923126eed42b" title="The width of the level. ">levelW</a>; </div>
-<div class="line"><a name="l00087"></a><span class="lineno"><a class="code" href="class_player.html#ae354a5a0f2be740dcb1da2a025e1b5fc">   87</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_player.html#ae354a5a0f2be740dcb1da2a025e1b5fc" title="The height of the level. ">levelH</a>; </div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;};</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;<span class="preprocessor">#endif //INCLUDE_PLAYER_H</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="class_player.html#a3425231da8afb3c5d902604737ddc4ef">   21</a></span>&#160;        <span class="keyword">enum</span> <a class="code" href="class_player.html#a3425231da8afb3c5d902604737ddc4ef" title="Possible player states. ">State</a> : <span class="keywordtype">int</span> {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            STATE_STANDING = 0,</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            STATE_WALKING,</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            STATE_JUMPING,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            STATE_CROUCHING,</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            STATE_ROLLING</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        };</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="class_player.html#aceec0ce21b4783e66cabd4573a4f41cc" title="The constructor. ">Player</a>(<span class="keywordtype">double</span> x_, <span class="keywordtype">double</span> y_, <a class="code" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a>* sprite_);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keyword">virtual</span> <a class="code" href="class_player.html#a749d2c00e1fe0f5c2746f7505a58c062" title="The destructor. ">~Player</a>();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_player.html#a603db14db40c9596a9c8a513ea375350" title="Updates the player. ">update</a>(<span class="keywordtype">double</span> dt_);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_player.html#afe3ff7815f9366b4c4fffa2cf6556ad5" title="Renders the player. ">render</a>();</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#a472840e169c3b375735279c06cde2ac1" title="Updates the players position. ">updatePosition</a>(<span class="keywordtype">double</span> dt_);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#a4b20238e04015da71c61456091d2f1c9" title="Updates the player depending on recieved input. ">updateInput</a>();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#ac5acb13d6fd5ab9cb5208ef2cbe25bf7">setCameraXY</a>(<span class="keywordtype">double</span> x_, <span class="keywordtype">double</span> y_);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_player.html#abea2489d388d574e07732fa5d9d1d2db">setLevelWH</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> width_, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> height_);</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="code" href="class_player.html#ac4a623bf6650a719187c50bb0413b9a0">   86</a></span>&#160;        <a class="code" href="class_player.html#a3425231da8afb3c5d902604737ddc4ef" title="Possible player states. ">State</a> <a class="code" href="class_player.html#ac4a623bf6650a719187c50bb0413b9a0" title="Current state the player is in (for the player internal state). ">state</a>; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="code" href="class_player.html#ae94b76deb6ed53f49d1db40a843f30c8">   89</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_player.html#ae94b76deb6ed53f49d1db40a843f30c8" title="The player&#39;s speed on the x axis. ">vx</a>; </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="code" href="class_player.html#a97c9f469ef054e12fb85c6f239de3e12">   90</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_player.html#a97c9f469ef054e12fb85c6f239de3e12" title="The player&#39;s speed on the x axis. ">vy</a>; </div>
+<div class="line"><a name="l00091"></a><span class="lineno"><a class="code" href="class_player.html#a2c45aef68a4799af9e5fd2054d32e3b3">   91</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_player.html#a2c45aef68a4799af9e5fd2054d32e3b3" title="Speed that moves player on input. ">speed</a>; </div>
+<div class="line"><a name="l00092"></a><span class="lineno"><a class="code" href="class_player.html#a3e47171d423dcab69602e0f60f1ae208">   92</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_player.html#a3e47171d423dcab69602e0f60f1ae208" title="Player max speed. ">maxSpeed</a>; </div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="code" href="class_player.html#af61538d0ab9a634fb0be450b45d113b9">   94</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_player.html#af61538d0ab9a634fb0be450b45d113b9" title="The current x position of the camera. ">cameraX</a>; </div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="code" href="class_player.html#a91271217943f93b2ca45a83c39ba66bd">   95</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_player.html#a91271217943f93b2ca45a83c39ba66bd" title="The current y position of the camera. ">cameraY</a>; </div>
+<div class="line"><a name="l00096"></a><span class="lineno"><a class="code" href="class_player.html#ab2c8b5c7c137203d2a24923126eed42b">   96</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_player.html#ab2c8b5c7c137203d2a24923126eed42b" title="The width of the level. ">levelW</a>; </div>
+<div class="line"><a name="l00097"></a><span class="lineno"><a class="code" href="class_player.html#ae354a5a0f2be740dcb1da2a025e1b5fc">   97</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_player.html#ae354a5a0f2be740dcb1da2a025e1b5fc" title="The height of the level. ">levelH</a>; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;};</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="preprocessor">#endif //INCLUDE_PLAYER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 21 2014 19:28:24 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 23 2014 01:49:18 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

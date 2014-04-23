@@ -71,10 +71,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:ad1897942d0ccf91052386388a497349f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The destructor. <br/></td></tr>
 <tr class="separator:ad1897942d0ccf91052386388a497349f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a42cda7239981a5618660d04bd5893556"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a42cda7239981a5618660d04bd5893556">update</a> ()</td></tr>
-<tr class="memdesc:a42cda7239981a5618660d04bd5893556"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the camera clip.  <a href="#a42cda7239981a5618660d04bd5893556">More...</a><br/></td></tr>
+<tr class="memdesc:a42cda7239981a5618660d04bd5893556"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the camera.  <a href="#a42cda7239981a5618660d04bd5893556">More...</a><br/></td></tr>
 <tr class="separator:a42cda7239981a5618660d04bd5893556"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bff0d442826eaf1e0337c4cd15532c5"><td class="memItemLeft" align="right" valign="top">SDL_Rect &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a4bff0d442826eaf1e0337c4cd15532c5">getClip</a> ()</td></tr>
 <tr class="separator:a4bff0d442826eaf1e0337c4cd15532c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aecf07f908ef1bfa2c2f1bb5cd4192d8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#aecf07f908ef1bfa2c2f1bb5cd4192d8d">updatePosition</a> ()</td></tr>
+<tr class="memdesc:aecf07f908ef1bfa2c2f1bb5cd4192d8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the cameras position.  <a href="#aecf07f908ef1bfa2c2f1bb5cd4192d8d">More...</a><br/></td></tr>
+<tr class="separator:aecf07f908ef1bfa2c2f1bb5cd4192d8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a83f466d1ea69eba908308e55366a188d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a83f466d1ea69eba908308e55366a188d">setPlayerXY</a> (double x_, double y_)</td></tr>
 <tr class="separator:a83f466d1ea69eba908308e55366a188d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a911ac8a8e01df4201fc97f391f7d093d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a911ac8a8e01df4201fc97f391f7d093d">setPlayerWH</a> (unsigned int width_, unsigned int height_)</td></tr>
@@ -126,7 +129,7 @@ Private Attributes</h2></td></tr>
 
 <p>The constructor. </p>
 <p>Initializes all the attributes. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd>If the player changes the resolution, so should the clip. (?) </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>If the player changes the resolution, so should the clip. (?) </dd></dl>
 
 </div>
 </div>
@@ -259,8 +262,26 @@ Private Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Updates the camera clip. </p>
-<p>Centralizes the player on the screen. </p>
+<p>Updates the camera. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_camera.html#aecf07f908ef1bfa2c2f1bb5cd4192d8d" title="Updates the cameras position. ">Camera::updatePosition</a> Centralizes the player on the screen. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aecf07f908ef1bfa2c2f1bb5cd4192d8d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::updatePosition </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates the cameras position. </p>
+<p>Based on the players position, change cameras position. </p>
 
 </div>
 </div>
@@ -427,7 +448,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 21 2014 19:28:24 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 23 2014 01:49:18 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

@@ -65,7 +65,7 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a3425231da8afb3c5d902604737ddc4ef"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><b>State</b> : int { <br/>
+<tr class="memitem:a3425231da8afb3c5d902604737ddc4ef"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a3425231da8afb3c5d902604737ddc4ef">State</a> : int { <br/>
 &#160;&#160;<b>STATE_STANDING</b> = 0, 
 <b>STATE_WALKING</b>, 
 <b>STATE_JUMPING</b>, 
@@ -74,6 +74,7 @@ Public Types</h2></td></tr>
 &#160;&#160;<b>STATE_ROLLING</b>
 <br/>
  }</td></tr>
+<tr class="memdesc:a3425231da8afb3c5d902604737ddc4ef"><td class="mdescLeft">&#160;</td><td class="mdescRight">Possible player states. <br/></td></tr>
 <tr class="separator:a3425231da8afb3c5d902604737ddc4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
@@ -90,9 +91,12 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:afe3ff7815f9366b4c4fffa2cf6556ad5"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#afe3ff7815f9366b4c4fffa2cf6556ad5">render</a> ()</td></tr>
 <tr class="memdesc:afe3ff7815f9366b4c4fffa2cf6556ad5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the player.  <a href="#afe3ff7815f9366b4c4fffa2cf6556ad5">More...</a><br/></td></tr>
 <tr class="separator:afe3ff7815f9366b4c4fffa2cf6556ad5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46a6853e25b3d93393e0708533b05246"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a46a6853e25b3d93393e0708533b05246">updateInput</a> (array&lt; bool, GameKeys::MAX &gt; keyStates_)</td></tr>
-<tr class="memdesc:a46a6853e25b3d93393e0708533b05246"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the player depending on recieved input.  <a href="#a46a6853e25b3d93393e0708533b05246">More...</a><br/></td></tr>
-<tr class="separator:a46a6853e25b3d93393e0708533b05246"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a472840e169c3b375735279c06cde2ac1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a472840e169c3b375735279c06cde2ac1">updatePosition</a> (double dt_)</td></tr>
+<tr class="memdesc:a472840e169c3b375735279c06cde2ac1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the players position.  <a href="#a472840e169c3b375735279c06cde2ac1">More...</a><br/></td></tr>
+<tr class="separator:a472840e169c3b375735279c06cde2ac1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b20238e04015da71c61456091d2f1c9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#a4b20238e04015da71c61456091d2f1c9">updateInput</a> ()</td></tr>
+<tr class="memdesc:a4b20238e04015da71c61456091d2f1c9"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the player depending on recieved input.  <a href="#a4b20238e04015da71c61456091d2f1c9">More...</a><br/></td></tr>
+<tr class="separator:a4b20238e04015da71c61456091d2f1c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac5acb13d6fd5ab9cb5208ef2cbe25bf7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#ac5acb13d6fd5ab9cb5208ef2cbe25bf7">setCameraXY</a> (double x_, double y_)</td></tr>
 <tr class="separator:ac5acb13d6fd5ab9cb5208ef2cbe25bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abea2489d388d574e07732fa5d9d1d2db"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#abea2489d388d574e07732fa5d9d1d2db">setLevelWH</a> (unsigned int width_, unsigned int height_)</td></tr>
@@ -108,7 +112,7 @@ Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
-<tr class="memitem:ac4a623bf6650a719187c50bb0413b9a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_state.html">State</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#ac4a623bf6650a719187c50bb0413b9a0">state</a></td></tr>
+<tr class="memitem:ac4a623bf6650a719187c50bb0413b9a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_player.html#a3425231da8afb3c5d902604737ddc4ef">State</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_player.html#ac4a623bf6650a719187c50bb0413b9a0">state</a></td></tr>
 <tr class="memdesc:ac4a623bf6650a719187c50bb0413b9a0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Current state the player is in (for the player internal state).  <a href="#ac4a623bf6650a719187c50bb0413b9a0">More...</a><br/></td></tr>
 <tr class="separator:ac4a623bf6650a719187c50bb0413b9a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_class_entity"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_entity')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_entity.html">Entity</a></td></tr>
@@ -356,28 +360,26 @@ Additional Inherited Members</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Updates the player. </p>
-<p>Modifies whatever is necessary, relative to the player. </p>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_player.html#a4b20238e04015da71c61456091d2f1c9" title="Updates the player depending on recieved input. ">Player::updateInput</a>, <a class="el" href="class_player.html#a472840e169c3b375735279c06cde2ac1" title="Updates the players position. ">Player::updatePosition</a> </dd></dl>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">dt_</td><td>: Delta time. Time elapsed between one frame and the other, independent of processing speed. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000008">Todo:</a></b></dt><dd>Fix all these magic/weird numbers. </dd></dl>
 
 <p>Implements <a class="el" href="class_entity.html#ad465a2bd9ba1d3e68ecd609a00e1df45">Entity</a>.</p>
 
 </div>
 </div>
-<a class="anchor" id="a46a6853e25b3d93393e0708533b05246"></a>
+<a class="anchor" id="a4b20238e04015da71c61456091d2f1c9"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void Player::updateInput </td>
           <td>(</td>
-          <td class="paramtype">array&lt; bool, GameKeys::MAX &gt;&#160;</td>
-          <td class="paramname"><em>keyStates_</em>)</td><td></td>
+          <td class="paramname">)</td><td></td>
           <td></td>
         </tr>
       </table>
@@ -385,13 +387,33 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Updates the player depending on recieved input. </p>
 <p>Modifies whatever is necessary, relative to the player. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>Fix all these magic/weird numbers. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a472840e169c3b375735279c06cde2ac1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Player::updatePosition </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>dt_</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Updates the players position. </p>
+<p>Update is based on what input was recieved, and the players velocity. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">keyStates_</td><td>: The input handled boolean array that says which keys are pressed. </td></tr>
+    <tr><td class="paramname">dt_</td><td>: Delta time. Time elapsed between one frame and the other, independent of processing speed. </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000009">Todo:</a></b></dt><dd>Fix all these magic/weird numbers. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000010">Todo:</a></b></dt><dd>Fix all these magic/weird numbers. </dd></dl>
 
 </div>
 </div>
@@ -533,7 +555,7 @@ Additional Inherited Members</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="class_state.html">State</a> Player::state</td>
+          <td class="memname"><a class="el" href="class_player.html#a3425231da8afb3c5d902604737ddc4ef">State</a> Player::state</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -593,7 +615,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 21 2014 19:28:25 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 23 2014 01:49:18 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

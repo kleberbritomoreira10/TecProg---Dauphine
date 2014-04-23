@@ -50,6 +50,7 @@
       <li class="current"><a href="functions.html"><span>All</span></a></li>
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -103,6 +104,12 @@
 <li>Camera()
 : <a class="el" href="class_camera.html#a01f94c3543f56ede7af49dc778f19331">Camera</a>
 </li>
+<li>cameraDistanceHeight
+: <a class="el" href="class_configuration.html#ab1df391e86cd95764b62bf817d11f0ef">Configuration</a>
+</li>
+<li>cameraDistanceWidth
+: <a class="el" href="class_configuration.html#ab4c70c72580771e9f7d9925388355bb5">Configuration</a>
+</li>
 <li>cameraX
 : <a class="el" href="class_player.html#af61538d0ab9a634fb0be450b45d113b9">Player</a>
 </li>
@@ -117,6 +124,9 @@
 </li>
 <li>close()
 : <a class="el" href="class_s_d_l_wrapper.html#abc531dfce7f782dc0af1e1b1f217fef2">SDLWrapper</a>
+</li>
+<li>create()
+: <a class="el" href="class_window.html#a25b4e6d9c7d514cbb63b7851de2526e5">Window</a>
 </li>
 <li>currentState
 : <a class="el" href="class_game.html#ab18cee52fbdd99d4969eda65b4b741c7">Game</a>
@@ -167,13 +177,19 @@
 <li>Game()
 : <a class="el" href="class_game.html#a7a03c28a0e6af3c4e1925b0c4791de4c">Game</a>
 </li>
+<li>getCameraDistanceHeight()
+: <a class="el" href="class_configuration.html#a722602faba9b9a85986134b2e402ee2e">Configuration</a>
+</li>
+<li>getCameraDistanceWidth()
+: <a class="el" href="class_configuration.html#aca07033d9bb9876e06d41375efb9c0c7">Configuration</a>
+</li>
 <li>getClip()
 : <a class="el" href="class_camera.html#a4bff0d442826eaf1e0337c4cd15532c5">Camera</a>
 </li>
 <li>getHeight()
-: <a class="el" href="class_level.html#a88e48384d4f235ceffa94ea50cf4b0c6">Level</a>
+: <a class="el" href="class_entity.html#aabc8b9eb5a82e2ebea415814754b0de3">Entity</a>
+, <a class="el" href="class_level.html#a88e48384d4f235ceffa94ea50cf4b0c6">Level</a>
 , <a class="el" href="class_sprite.html#a02fcba350f07d226b110f7d0712f5154">Sprite</a>
-, <a class="el" href="class_entity.html#aabc8b9eb5a82e2ebea415814754b0de3">Entity</a>
 </li>
 <li>getInstance()
 : <a class="el" href="class_input_handler.html#a698a54e374eddd1f831a463ef609fe10">InputHandler</a>
@@ -181,12 +197,23 @@
 <li>getKeyStates()
 : <a class="el" href="class_input_handler.html#aa410e20f88f27f85f806d6b2e32a4626">InputHandler</a>
 </li>
+<li>getLogicalRenderSize()
+: <a class="el" href="class_configuration.html#a6b7e62e989bfea784eb78ceff3825f11">Configuration</a>
+</li>
+<li>getMaxFramerate()
+: <a class="el" href="class_configuration.html#aafc1e20b38ec523edfa494ecf373d6c5">Configuration</a>
+</li>
 <li>getPlayer()
 : <a class="el" href="class_level.html#a98b9579253fbf55f7d631853c4cd7e9c">Level</a>
-, <a class="el" href="class_state.html#a603702919c3bafa3cb0714a1f55f72f6">State</a>
 </li>
 <li>getRenderer()
 : <a class="el" href="class_window.html#ae2418ad8ae2af2f4c5badd9cbb8656c1">Window</a>
+</li>
+<li>getResolutionHeight()
+: <a class="el" href="class_configuration.html#aec8b7cf23825cfc8e4d8440fab006b56">Configuration</a>
+</li>
+<li>getResolutionWidth()
+: <a class="el" href="class_configuration.html#a7ba0944628b1828721c99027797c29d1">Configuration</a>
 </li>
 <li>getScreenHeight()
 : <a class="el" href="class_configuration.html#a1b3606b352023365c918603e4151effe">Configuration</a>
@@ -195,9 +222,12 @@
 : <a class="el" href="class_configuration.html#a492a60b34681cbfaf813e94524cc92d4">Configuration</a>
 </li>
 <li>getWidth()
-: <a class="el" href="class_entity.html#a6ef38983d55696bba55f36b568f527e9">Entity</a>
+: <a class="el" href="class_level.html#af2ce4cbad0726bf9149bd34a5c0aa3a7">Level</a>
 , <a class="el" href="class_sprite.html#a8f425d524e48eea595ef74dc310e0417">Sprite</a>
-, <a class="el" href="class_level.html#af2ce4cbad0726bf9149bd34a5c0aa3a7">Level</a>
+, <a class="el" href="class_entity.html#a6ef38983d55696bba55f36b568f527e9">Entity</a>
+</li>
+<li>getWindowTitle()
+: <a class="el" href="class_configuration.html#a7f0cadcd7cb4a78a861dbc502f4e333d">Configuration</a>
 </li>
 </ul>
 
@@ -207,8 +237,7 @@
 : <a class="el" href="class_input_handler.html#a820f483265aa3f6da39b9d93c1311966">InputHandler</a>
 </li>
 <li>height
-: <a class="el" href="class_window.html#ac8e0adc74d78dd8d6bcd3cb5e72164bc">Window</a>
-, <a class="el" href="class_sprite.html#a4d34b71316c3456acb51c3c7e57a94e2">Sprite</a>
+: <a class="el" href="class_sprite.html#a4d34b71316c3456acb51c3c7e57a94e2">Sprite</a>
 , <a class="el" href="class_level.html#aa715e88b922adc412a570b56b32321a7">Level</a>
 , <a class="el" href="class_entity.html#aebf02bb745e69e68f44d5b5cee318d97">Entity</a>
 </li>
@@ -217,9 +246,9 @@
 
 <h3><a class="anchor" id="index_i"></a>- i -</h3><ul>
 <li>initialize()
-: <a class="el" href="class_f_p_s_wrapper.html#ac5849b5e6229efba666b19282f08bfa0">FPSWrapper</a>
+: <a class="el" href="class_configuration.html#aa04cb3c24d2d5557fd519963fa0cb345">Configuration</a>
+, <a class="el" href="class_f_p_s_wrapper.html#ac5849b5e6229efba666b19282f08bfa0">FPSWrapper</a>
 , <a class="el" href="class_s_d_l_wrapper.html#ae5be8c09a030f8b7809eb1957871820b">SDLWrapper</a>
-, <a class="el" href="class_window.html#ab8bedded50af796c7f44603bb71ba33b">Window</a>
 </li>
 <li>initializeStates()
 : <a class="el" href="class_game.html#afc16bd0d077c53218c27f16e0bf56cbb">Game</a>
@@ -271,8 +300,8 @@
 : <a class="el" href="class_state_splash.html#a44e8ecf16d58fa2354e7ba307f680fb4">StateSplash</a>
 </li>
 <li>load()
-: <a class="el" href="class_state.html#a9bd7c8e4125d963e1f86dd40ff385302">State</a>
-, <a class="el" href="class_level_one.html#ac50584197a1b4858db61f4e00d15b41d">LevelOne</a>
+: <a class="el" href="class_level_one.html#ac50584197a1b4858db61f4e00d15b41d">LevelOne</a>
+, <a class="el" href="class_state.html#a9bd7c8e4125d963e1f86dd40ff385302">State</a>
 , <a class="el" href="class_state_splash.html#a60e645ec37ab22c06ba6fa9ffda2db64">StateSplash</a>
 </li>
 <li>loadFrom()
@@ -280,6 +309,9 @@
 </li>
 <li>log()
 : <a class="el" href="class_logger.html#a091d94db18ef4db49ce40c731dbec526">Logger</a>
+</li>
+<li>logicalRenderSize
+: <a class="el" href="class_configuration.html#a9c18ad1f19aa75b6c8fa4a626cc206f0">Configuration</a>
 </li>
 <li>LuaScript()
 : <a class="el" href="class_lua_script.html#af22d8ecac5c8621231b5d27d13be5387">LuaScript</a>
@@ -292,7 +324,7 @@
 
 <h3><a class="anchor" id="index_m"></a>- m -</h3><ul>
 <li>maxFramerate
-: <a class="el" href="class_configuration.html#aaccbd42c46358ab40bc054ea4016e04d">Configuration</a>
+: <a class="el" href="class_configuration.html#ae0480202acc37209e339ad7da33c89a2">Configuration</a>
 </li>
 <li>maximize()
 : <a class="el" href="class_window.html#a652b249e69ee5ff3ba8aa3bd4feccdae">Window</a>
@@ -310,11 +342,11 @@
 <li>passedTime
 : <a class="el" href="class_state_splash.html#aa718587687130e892c57e4b87e2cba8f">StateSplash</a>
 </li>
-<li>Player()
-: <a class="el" href="class_player.html#aceec0ce21b4783e66cabd4573a4f41cc">Player</a>
-</li>
 <li>player
 : <a class="el" href="class_level.html#a76b010ccc524cef1ae0c3adc2a63d3b1">Level</a>
+</li>
+<li>Player()
+: <a class="el" href="class_player.html#aceec0ce21b4783e66cabd4573a4f41cc">Player</a>
 </li>
 <li>playerH
 : <a class="el" href="class_camera.html#a0e10267a1295e8a0a773712f62aa0fb2">Camera</a>
@@ -345,11 +377,14 @@
 , <a class="el" href="class_sprite.html#adb1c84ac16f4e748fcc0855d45a271ca">Sprite</a>
 , <a class="el" href="class_state.html#a71f5105bcdc39481be7684d853fe12e9">State</a>
 , <a class="el" href="class_player.html#afe3ff7815f9366b4c4fffa2cf6556ad5">Player</a>
-, <a class="el" href="class_window.html#a0a2093bd2ed34740c08a6a2fdfc059c9">Window</a>
 , <a class="el" href="class_state_splash.html#adf0548de28764ccf02c2d80262211742">StateSplash</a>
+, <a class="el" href="class_window.html#a0a2093bd2ed34740c08a6a2fdfc059c9">Window</a>
 </li>
 <li>rescale()
 : <a class="el" href="class_window.html#a0d7c171a31ea6cf664a0f92ce4f29aaa">Window</a>
+</li>
+<li>resize()
+: <a class="el" href="class_window.html#a3c322c6691e9180b98ad18545013954c">Window</a>
 </li>
 <li>resolutionHeight
 : <a class="el" href="class_configuration.html#a469e15c3c77e7eced8d2682aa127e10b">Configuration</a>
@@ -372,7 +407,6 @@
 </li>
 <li>sdlRenderer
 : <a class="el" href="class_window.html#a3c56f31300b017074ab06800b2164e40">Window</a>
-, <a class="el" href="class_sprite.html#a86042acf7d285fe26746abf14616c52d">Sprite</a>
 </li>
 <li>sdlTexture
 : <a class="el" href="class_sprite.html#a546d109413d8f3541ffde26701075bd1">Sprite</a>
@@ -381,8 +415,8 @@
 : <a class="el" href="class_window.html#a6be667ef970fd951a4853e7bcc933ac8">Window</a>
 </li>
 <li>setCamera()
-: <a class="el" href="class_level_one.html#ace0ce431ac08c5924f8870339202e36e">LevelOne</a>
-, <a class="el" href="class_level.html#aba78cf6675a9b16c0748fff46b4068c5">Level</a>
+: <a class="el" href="class_level.html#aba78cf6675a9b16c0748fff46b4068c5">Level</a>
+, <a class="el" href="class_level_one.html#ace0ce431ac08c5924f8870339202e36e">LevelOne</a>
 </li>
 <li>setCameraXY()
 : <a class="el" href="class_player.html#ac5acb13d6fd5ab9cb5208ef2cbe25bf7">Player</a>
@@ -413,20 +447,23 @@
 <li>splash
 : <a class="el" href="class_state_splash.html#a823d686b252c4b318e890d532ceb38f9">StateSplash</a>
 </li>
-<li>sprite
-: <a class="el" href="class_entity.html#a4da30cea569f19c66c033358e1e99c04">Entity</a>
-</li>
 <li>Sprite()
 : <a class="el" href="class_sprite.html#ab127ae81ef8a93b9ddea9287edfedfdb">Sprite</a>
+</li>
+<li>sprite
+: <a class="el" href="class_entity.html#a4da30cea569f19c66c033358e1e99c04">Entity</a>
 </li>
 <li>state
 : <a class="el" href="class_player.html#ac4a623bf6650a719187c50bb0413b9a0">Player</a>
 </li>
-<li>stateSplash
-: <a class="el" href="class_game.html#a143d602b3009c52fe6802cd7122c175d">Game</a>
+<li>State
+: <a class="el" href="class_player.html#a3425231da8afb3c5d902604737ddc4ef">Player</a>
 </li>
 <li>StateSplash()
 : <a class="el" href="class_state_splash.html#aa7a94bd48f519a41807859a39533851f">StateSplash</a>
+</li>
+<li>stateSplash
+: <a class="el" href="class_game.html#a143d602b3009c52fe6802cd7122c175d">Game</a>
 </li>
 </ul>
 
@@ -456,15 +493,19 @@
 : <a class="el" href="class_lua_script.html#aa1774ae17ca90a1396e9f75c4c7acf1b">LuaScript</a>
 </li>
 <li>update()
-: <a class="el" href="class_player.html#a603db14db40c9596a9c8a513ea375350">Player</a>
-, <a class="el" href="class_level_one.html#ac19981c44a1885856303335f79f67425">LevelOne</a>
+: <a class="el" href="class_entity.html#ad465a2bd9ba1d3e68ecd609a00e1df45">Entity</a>
 , <a class="el" href="class_state_splash.html#a774a9555c95dfab43dda699cc884c478">StateSplash</a>
-, <a class="el" href="class_state.html#ac9f156dc81466b6adb086ed092f66afe">State</a>
 , <a class="el" href="class_camera.html#a42cda7239981a5618660d04bd5893556">Camera</a>
-, <a class="el" href="class_entity.html#ad465a2bd9ba1d3e68ecd609a00e1df45">Entity</a>
+, <a class="el" href="class_state.html#ac9f156dc81466b6adb086ed092f66afe">State</a>
+, <a class="el" href="class_level_one.html#ac19981c44a1885856303335f79f67425">LevelOne</a>
+, <a class="el" href="class_player.html#a603db14db40c9596a9c8a513ea375350">Player</a>
 </li>
 <li>updateInput()
-: <a class="el" href="class_player.html#a46a6853e25b3d93393e0708533b05246">Player</a>
+: <a class="el" href="class_player.html#a4b20238e04015da71c61456091d2f1c9">Player</a>
+</li>
+<li>updatePosition()
+: <a class="el" href="class_camera.html#aecf07f908ef1bfa2c2f1bb5cd4192d8d">Camera</a>
+, <a class="el" href="class_player.html#a472840e169c3b375735279c06cde2ac1">Player</a>
 </li>
 </ul>
 
@@ -489,18 +530,17 @@
 <li>width
 : <a class="el" href="class_entity.html#ac5e09232fb967bf716cc6e6684d32cea">Entity</a>
 , <a class="el" href="class_sprite.html#a950adad23da17ce64e6e759b0b64fadd">Sprite</a>
-, <a class="el" href="class_window.html#a4ddb6696a90ca8db80c4d12c7142da5e">Window</a>
 , <a class="el" href="class_level.html#ae7a08258b024a1c3b284c05459ce1d27">Level</a>
 </li>
 <li>Window()
-: <a class="el" href="class_window.html#a1eec2cd4f8c260d86928da45e639d4c1">Window</a>
+: <a class="el" href="class_window.html#a71093c3202ab9b091010a05d9a9c84f3">Window</a>
 </li>
 <li>window
 : <a class="el" href="class_game.html#a553924bcccf9f9b1c04e385041852f17">Game</a>
 </li>
 <li>windowTitle
-: <a class="el" href="class_window.html#a340b289f258761b093201a2b5b52ea16">Window</a>
-, <a class="el" href="class_configuration.html#ace81e16d42acc99af482d9180ea8e066">Configuration</a>
+: <a class="el" href="class_window.html#a42629517c5bb0d29566ffddb46d8547a">Window</a>
+, <a class="el" href="class_configuration.html#a4d10c6129f6a7c9f2967e7d8513bedab">Configuration</a>
 </li>
 </ul>
 
@@ -560,7 +600,7 @@
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 21 2014 19:28:25 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 23 2014 01:49:18 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
