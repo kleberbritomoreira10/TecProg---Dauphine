@@ -3,6 +3,8 @@
 #include "LuaScript.h"
 #include "Logger.h"
 
+#include "Tile.h"
+
 LevelOne::LevelOne() :
 	Level()
 {
@@ -14,17 +16,12 @@ LevelOne::~LevelOne(){
 }
 
 void LevelOne::update(double dt_){
-	this->player->setCameraXY(this->camera->getClip().x, this->camera->getClip().y);
-	this->camera->setPlayerXY(this->player->x, this->player->y);
-	this->camera->setPlayerWH(this->player->getWidth(), this->player->getHeight());
-
 	// Update all the entities in the list.
 	for(Entity* entity : entities){
         entity->update(dt_);
 	}
 
 	this->camera->update();
-
 }
 
 void LevelOne::render(){
@@ -35,11 +32,13 @@ void LevelOne::render(){
 		Logger::warning("No background set for this Level!");
 	}
 
+	const int cameraX = this->camera->getClip().x;
+	const int cameraY = this->camera->getClip().y;
+
 	// Render all the entities in the list.
 	for(Entity* entity : entities){
-        entity->render();
+        entity->render(cameraX, cameraY);
 	}
-
 }
 
 void LevelOne::load(){
@@ -66,8 +65,8 @@ void LevelOne::load(){
 	Sprite* spritePlayer = nullptr;
 	spritePlayer = new Sprite(scriptPlayerSpritePath);
 	
-	Camera* lCamera = new Camera();
 	Player* lPlayer = new Player(scriptX, scriptY, spritePlayer);
+	Camera* lCamera = new Camera(lPlayer);
 
 	this->background = spriteLevelBackground;
 	if(this->background == nullptr){
@@ -79,6 +78,11 @@ void LevelOne::load(){
 
 	setPlayer(lPlayer);
 	setCamera(lCamera);
+
+	// Tile example (remove).
+	Sprite* tileSprite = new Sprite("res/green_tile.png");
+	Tile* tile = new Tile(750, 600, tileSprite);
+	addEntity(tile);
 }
 
 void LevelOne::unload(){
@@ -128,5 +132,5 @@ void LevelOne::setCamera(Camera* camera_){
 	else{
 		Logger::warning("Setting a null camera!");
 	}
-	
+
 }

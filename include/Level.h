@@ -53,13 +53,13 @@ class Level : public State {
 		*/
 		virtual void setCamera(Camera* camera_) = 0;
 
-		Sprite *background; /**< The levels background sprite. */
+		Sprite* background; /**< The levels background sprite. */
 
 		unsigned int width; /**< Width that defines the horizontal limits. */
 		unsigned int height; /**< Height that defines the vertical limits. */
 
-		Player *player; /**< The direct reference to player, even though its in the list. */
-		Camera *camera; /**< The current camera for that Level. */
+		Player* player; /**< The direct reference to player, even though its in the list. */
+		Camera* camera; /**< The current camera for that level. */
 
 };
 

@@ -13,7 +13,7 @@ Game::Game(Window* window_) :
 	window(window_),
 	isRunning(false)
 {
-	initializeStates();
+	Game::initializeStates();
 
 	if(this->window != nullptr){
 		this->isRunning = true;
@@ -28,8 +28,16 @@ Game::Game(Window* window_) :
 }
 
 Game::~Game(){
-	this->window->destroy();
-	this->window = nullptr;
+	if(this->currentState != nullptr){
+		this->currentState->unload();
+	}
+
+	Game::destroyStates();
+
+	if(this->window != nullptr){
+		this->window->destroy();
+		this->window = nullptr;
+	}
 }
 
 void Game::runGame(){
@@ -86,4 +94,10 @@ void Game::initializeStates(){
 	// Initialize all the states in Game here.
 	Game::stateSplash = new StateSplash();
 	Game::levelOne = new LevelOne();
+}
+
+void Game::destroyStates(){
+	// Delete all the states in Game here.
+	delete Game::stateSplash;
+	delete Game::levelOne;
 }

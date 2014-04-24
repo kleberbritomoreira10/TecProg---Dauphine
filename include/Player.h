@@ -53,9 +53,11 @@ class Player : public Entity {
 		/**
 		* Renders the player.
 		* Uses the player's sprite render method.
-		* @see Sprite::render()
+		* @see Sprite::render
+		* @param cameraX_ : The x position of the camera.
+		* @param cameraY_ : The y position of the camera.
 		*/
-		virtual void render();
+		virtual void render(const double cameraX_, const double cameraY_);
 
 		/**
 		* Updates the players position.
@@ -72,12 +74,6 @@ class Player : public Entity {
 		void updateInput();
 
 		/**
-		* @param x_, y_ : Tells the player what are the current (x,y) position of the camera.
-		* @see Level::update()
-		*/
-		void setCameraXY(double x_, double y_);
-
-		/**
 		* @param width_,height_ : Tells the player what the width and height of the level is.
 		* @see Level::update()
 		*/
@@ -91,8 +87,6 @@ class Player : public Entity {
 		double speed; /**< Speed that moves player on input. */
 		double maxSpeed; /**< Player max speed. */
 
-		double cameraX; /**< The current x position of the camera. */
-		double cameraY; /**< The current y position of the camera. */
 		unsigned int levelW; /**< The width of the level. */
 		unsigned int levelH; /**< The height of the level. */
 		

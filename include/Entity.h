@@ -28,8 +28,10 @@ class Entity {
 		* Renders the entity.
 		* Pure virtual function. Purpose is to copy the entity's texture onto the renderer.
 		* @note Usually just calls the render method from the Sprite class.
+		* @param cameraX_ : The x position of the camera.
+		* @param cameraY_ : The y position of the camera.
 		*/
-		virtual void render() = 0;
+		virtual void render(const double cameraX_, const double cameraY_) = 0;
 
 		/**
 		* @return The Entity width.

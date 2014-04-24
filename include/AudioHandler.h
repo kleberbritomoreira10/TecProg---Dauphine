@@ -22,7 +22,6 @@ class AudioHandler {
 		*/
 		static AudioHandler* getInstance();
 
-
 		/**
 		* The destructor.
 		* Deletes the AudioHandler::instance and closes SDL_Mixer.

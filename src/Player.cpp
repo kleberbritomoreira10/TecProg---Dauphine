@@ -1,5 +1,6 @@
 #include "Player.h"
 #include "InputHandler.h"
+#include "Camera.h"
 #include "Logger.h"
 #include "Configuration.h"
 
@@ -9,8 +10,6 @@ Player::Player(double x_, double y_, Sprite* sprite_) :
     vy(0),
     speed(15),
     maxSpeed(500),
-    cameraX(0),
-    cameraY(0),
     levelW(0),
     levelH(0)
 {
@@ -37,10 +36,12 @@ void Player::update(double dt_){
     updatePosition(dt_);
 }
 
-void Player::render(){
-    const int dx = this->x - this->cameraX;
-    const int dy = this->y - this->cameraY;
-	this->sprite->render(dx, dy);
+void Player::render(const double cameraX_, const double cameraY_){
+    if(this->sprite != nullptr){
+        const double dx = this->x - cameraX_;
+        const double dy = this->y - cameraY_;
+        this->sprite->render(dx, dy);
+    }
 }
 
 void Player::updatePosition(double dt_){
@@ -130,11 +131,6 @@ void Player::updateInput(){
         this->vx *= 0.95;
     }
     
-}
-
-void Player::setCameraXY(double x_, double y_){
-    this->cameraX = x_;
-    this->cameraY = y_;
 }
 
 void Player::setLevelWH(unsigned int width_, unsigned int height_){

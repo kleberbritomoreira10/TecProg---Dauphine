@@ -1,11 +1,8 @@
 #include "Camera.h"
 #include "Configuration.h"
 
-Camera::Camera():
-    playerX(0.0),
-    playerY(0.0),
-    playerW(0),
-    playerH(0),
+Camera::Camera(Entity* entity_):
+    entity(entity_),
     levelW(0),
     levelH(0),
     clip{0, 0, (int)Configuration::getCameraDistanceWidth(), (int)Configuration::getCameraDistanceHeight()}
@@ -26,8 +23,8 @@ SDL_Rect& Camera::getClip(){
 }
 
 void Camera::updatePosition(){
-    this->clip.x = (this->playerX + this->playerW / 2) - (this->clip.w / 2);
-    this->clip.y = (this->playerY + this->playerH / 2) - (this->clip.h / 2);
+    this->clip.x = (this->entity->x + this->entity->getWidth() / 2) - (this->clip.w / 2);
+    this->clip.y = (this->entity->y + this->entity->getHeight() / 2) - (this->clip.h / 2);
 
     // Left wall.
     if(this->clip.x < 0){
@@ -47,14 +44,8 @@ void Camera::updatePosition(){
     }
 }
 
-void Camera::setPlayerXY(double x_, double y_){
-    this->playerX = x_;
-    this->playerY = y_;
-}
-
-void Camera::setPlayerWH(unsigned int width_, unsigned int height_){
-    this->playerW = width_;
-    this->playerH = height_;
+void Camera::centralizeOn(Entity* entity_){
+    this->entity = entity_;
 }
 
 void Camera::setLevelWH(unsigned int width_, unsigned int height_){

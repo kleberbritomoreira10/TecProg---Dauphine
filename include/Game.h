@@ -24,7 +24,7 @@ class Game {
 
 		/**
 		* The destructor.
-		* Destroys the game's Window.
+		* Destroys the game's Window and states, and unloads current state.
 		*/
 		~Game();
 		
@@ -39,6 +39,12 @@ class Game {
 		* Every new state implemented should be initialized here.
 		*/
 		static void initializeStates();
+
+		/**
+		* Deletes all the loaded states.
+		* Every new state implemented should be deleted here.
+		*/
+		static void destroyStates();
 
 		/**
 		* Sets the current game state.

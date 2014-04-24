@@ -54,7 +54,8 @@ class LevelOne : public Level {
 
 		/**
 		* @param camera_ : Sets the camera for the level.
-		* @note You should only set the camera after setting the player. Will warn if you didn't.
+		* @note You should only set the camera after setting the player. Will warn if you
+		* 	didn't.
 		*/
 		virtual void setCamera(Camera* camera_);
 

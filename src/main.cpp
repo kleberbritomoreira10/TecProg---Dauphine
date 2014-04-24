@@ -21,6 +21,10 @@ int main(int argc, char** argv){
 		game = new Game(&window);
 
 		game->runGame();
+
+		if(game != nullptr){
+			delete game;
+		}
 	}
 	else{
 		Logger::error("System were not initialized.");

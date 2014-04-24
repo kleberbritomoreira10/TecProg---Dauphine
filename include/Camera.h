@@ -2,6 +2,7 @@
 #define INCLUDE_CAMERA_H
 
 #include "SDLWrapper.h"
+#include "Entity.h"
 
 /**
 * The camera class.
@@ -13,8 +14,9 @@ class Camera {
 		/**
 		* The constructor.
 		* Initializes all the attributes.
+		* @param entity_ : The entity to centralize the camera on.
 		*/
-		Camera();
+		Camera(Entity* entity_);
 
 		/**
 		* The destructor.
@@ -29,28 +31,15 @@ class Camera {
 		void update();
 
 		/**
+		* Changes the entity to centralize upon.
+		* @param entity_ : The entity to centralize the camera on.
+		*/
+		void centralizeOn(Entity* entity_);
+
+		/**
 		* @return The camera clip (an SDL_Rect).
 		*/
 		SDL_Rect& getClip();
-
-		/**
-		* Updates the cameras position.
-		* Based on the players position, change cameras position.
-		*/
-		void updatePosition();
-
-		/**
-		* @param x_, y_ : Tells the camera what are the current (x,y) position of the player.
-		* @see Level::update()
-		*/
-		void setPlayerXY(double x_, double y_);
-
-		/**
-		* @param width_, height_ : Tells the camera what are the current width and height of
-		* 	the player.
-		* @see Level::update()
-		*/
-		void setPlayerWH(unsigned int width_, unsigned int height_);
 
 		/**
 		* @param width_,height_ : Tells the camera what the width and height of the level is.
@@ -59,10 +48,13 @@ class Camera {
 		void setLevelWH(unsigned int width_, unsigned int height_);
 
 	private:
-		double playerX; /**< The current x position of the player. */
-		double playerY; /**< The current y position of the player. */
-		unsigned int playerW; /**< The current width of the player. */
-		unsigned int playerH; /**< The current height of the player. */
+		/**
+		* Updates the cameras position.
+		* Based on the players position, change cameras position.
+		*/
+		void updatePosition();
+
+		Entity* entity; /**< Reference to the entity. */
 		unsigned int levelW; /**< The width of the level. */
 		unsigned int levelH; /**< The height of the level. */
 		SDL_Rect clip; /**< Clip which will be used to clip the rendering only to the extent of
