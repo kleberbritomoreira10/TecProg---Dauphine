@@ -81,6 +81,9 @@ Static Public Member Functions</h2></td></tr>
 <tr class="memitem:afc16bd0d077c53218c27f16e0bf56cbb"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#afc16bd0d077c53218c27f16e0bf56cbb">initializeStates</a> ()</td></tr>
 <tr class="memdesc:afc16bd0d077c53218c27f16e0bf56cbb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads all the states.  <a href="#afc16bd0d077c53218c27f16e0bf56cbb">More...</a><br/></td></tr>
 <tr class="separator:afc16bd0d077c53218c27f16e0bf56cbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a684834abb420aba6d30094d1fe273818"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#a684834abb420aba6d30094d1fe273818">destroyStates</a> ()</td></tr>
+<tr class="memdesc:a684834abb420aba6d30094d1fe273818"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes all the loaded states.  <a href="#a684834abb420aba6d30094d1fe273818">More...</a><br/></td></tr>
+<tr class="separator:a684834abb420aba6d30094d1fe273818"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc54f1426ac57696d849acd8f067b1f4"><td class="memItemLeft" align="right" valign="top">static void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#acc54f1426ac57696d849acd8f067b1f4">setState</a> (<a class="el" href="class_state.html">State</a> &amp;state_)</td></tr>
 <tr class="memdesc:acc54f1426ac57696d849acd8f067b1f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the current game state.  <a href="#acc54f1426ac57696d849acd8f067b1f4">More...</a><br/></td></tr>
 <tr class="separator:acc54f1426ac57696d849acd8f067b1f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -156,11 +159,37 @@ Static Private Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The destructor. </p>
-<p>Destroys the game's <a class="el" href="class_window.html" title="Represents actual window that game runs on. ">Window</a>. </p>
+<p>Destroys the game's <a class="el" href="class_window.html" title="Represents actual window that game runs on. ">Window</a> and states, and unloads current state. </p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a684834abb420aba6d30094d1fe273818"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Game::destroyStates </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">static</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Deletes all the loaded states. </p>
+<p>Every new state implemented should be deleted here. </p>
+
+</div>
+</div>
 <a class="anchor" id="afc16bd0d077c53218c27f16e0bf56cbb"></a>
 <div class="memitem">
 <div class="memproto">
@@ -383,7 +412,7 @@ Static Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 23 2014 19:10:28 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 23 2014 22:57:04 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

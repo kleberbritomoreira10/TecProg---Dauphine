@@ -64,27 +64,27 @@
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_entity.html#ad465a2bd9ba1d3e68ecd609a00e1df45" title="Updates the entity. ">update</a>(<span class="keywordtype">double</span> dt_) = 0;</div>
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_entity.html#aa7615728fd41ad13436908b1941f429b" title="Renders the entity. ">render</a>() = 0;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_entity.html#a6ef38983d55696bba55f36b568f527e9">getWidth</a>();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_entity.html#aabc8b9eb5a82e2ebea415814754b0de3">getHeight</a>();</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;</div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="code" href="class_entity.html#abe84b2274427a984d952acd6d4c4061f">   44</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_entity.html#abe84b2274427a984d952acd6d4c4061f" title="The position in the x axis. ">x</a>; </div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="code" href="class_entity.html#aeaf8012f92ad9f8ea0df589e3fc67c8f">   45</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_entity.html#aeaf8012f92ad9f8ea0df589e3fc67c8f" title="The position in the y axis. ">y</a>; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <a class="code" href="class_entity.html#adfaf4b4303373536f38f67fcdbac9151" title="The constructor. ">Entity</a>(<span class="keywordtype">double</span> x_, <span class="keywordtype">double</span> y_, <a class="code" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a>* sprite_);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="class_entity.html#a4da30cea569f19c66c033358e1e99c04">   57</a></span>&#160;        <a class="code" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a>* <a class="code" href="class_entity.html#a4da30cea569f19c66c033358e1e99c04" title="The Sprite attributed to the entity. ">sprite</a>; </div>
-<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="class_entity.html#ac5e09232fb967bf716cc6e6684d32cea">   58</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_entity.html#ac5e09232fb967bf716cc6e6684d32cea" title="The entitys width, from its sprite. ">width</a>; </div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="class_entity.html#aebf02bb745e69e68f44d5b5cee318d97">   59</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_entity.html#aebf02bb745e69e68f44d5b5cee318d97" title="The entitys height, from its sprite. ">height</a>; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif //INCLUDE_ENTITY_H</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_entity.html#a61e5674c0d1bb48b9ddc7ba0480b0d1a" title="Renders the entity. ">render</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> cameraX_, <span class="keyword">const</span> <span class="keywordtype">double</span> cameraY_) = 0;</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_entity.html#a6ef38983d55696bba55f36b568f527e9">getWidth</a>();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_entity.html#aabc8b9eb5a82e2ebea415814754b0de3">getHeight</a>();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="class_entity.html#abe84b2274427a984d952acd6d4c4061f">   46</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_entity.html#abe84b2274427a984d952acd6d4c4061f" title="The position in the x axis. ">x</a>; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="class_entity.html#aeaf8012f92ad9f8ea0df589e3fc67c8f">   47</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_entity.html#aeaf8012f92ad9f8ea0df589e3fc67c8f" title="The position in the y axis. ">y</a>; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <a class="code" href="class_entity.html#adfaf4b4303373536f38f67fcdbac9151" title="The constructor. ">Entity</a>(<span class="keywordtype">double</span> x_, <span class="keywordtype">double</span> y_, <a class="code" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a>* sprite_);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;</div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="class_entity.html#a4da30cea569f19c66c033358e1e99c04">   59</a></span>&#160;        <a class="code" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a>* <a class="code" href="class_entity.html#a4da30cea569f19c66c033358e1e99c04" title="The Sprite attributed to the entity. ">sprite</a>; </div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="code" href="class_entity.html#ac5e09232fb967bf716cc6e6684d32cea">   60</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_entity.html#ac5e09232fb967bf716cc6e6684d32cea" title="The entitys width, from its sprite. ">width</a>; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="class_entity.html#aebf02bb745e69e68f44d5b5cee318d97">   61</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_entity.html#aebf02bb745e69e68f44d5b5cee318d97" title="The entitys height, from its sprite. ">height</a>; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;};</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;<span class="preprocessor">#endif //INCLUDE_ENTITY_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 23 2014 19:10:28 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 23 2014 22:57:03 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

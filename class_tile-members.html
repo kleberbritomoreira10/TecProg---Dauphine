@@ -48,27 +48,31 @@
 </div><!-- top -->
 <div class="header">
   <div class="headertitle">
-<div class="title">Entity Member List</div>  </div>
+<div class="title">Tile Member List</div>  </div>
 </div><!--header-->
 <div class="contents">
 
-<p>This is the complete list of members for <a class="el" href="class_entity.html">Entity</a>, including all inherited members.</p>
+<p>This is the complete list of members for <a class="el" href="class_tile.html">Tile</a>, including all inherited members.</p>
 <table class="directory">
   <tr class="even"><td class="entry"><a class="el" href="class_entity.html#adfaf4b4303373536f38f67fcdbac9151">Entity</a>(double x_, double y_, Sprite *sprite_)</td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr><td class="entry"><a class="el" href="class_entity.html#aabc8b9eb5a82e2ebea415814754b0de3">getHeight</a>()</td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_entity.html#a6ef38983d55696bba55f36b568f527e9">getWidth</a>()</td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_entity.html#aebf02bb745e69e68f44d5b5cee318d97">height</a></td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_entity.html#a61e5674c0d1bb48b9ddc7ba0480b0d1a">render</a>(const double cameraX_, const double cameraY_)=0</td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>isSolid</b>() (defined in <a class="el" href="class_tile.html">Tile</a>)</td><td class="entry"><a class="el" href="class_tile.html">Tile</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tile.html#a620df1a25ceda06b78d68e095a982269">render</a>(const double cameraX_, const double cameraY_)</td><td class="entry"><a class="el" href="class_tile.html">Tile</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>solid</b> (defined in <a class="el" href="class_tile.html">Tile</a>)</td><td class="entry"><a class="el" href="class_tile.html">Tile</a></td><td class="entry"><span class="mlabel">private</span></td></tr>
   <tr><td class="entry"><a class="el" href="class_entity.html#a4da30cea569f19c66c033358e1e99c04">sprite</a></td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_entity.html#ad465a2bd9ba1d3e68ecd609a00e1df45">update</a>(double dt_)=0</td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_entity.html#ac5e09232fb967bf716cc6e6684d32cea">width</a></td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_entity.html#abe84b2274427a984d952acd6d4c4061f">x</a></td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_entity.html#aeaf8012f92ad9f8ea0df589e3fc67c8f">y</a></td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_entity.html#adf6d3f7cb1b2ba029b6b048a395cc8ae">~Entity</a>()</td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Tile</b>(double x_, double y_, Sprite *sprite_) (defined in <a class="el" href="class_tile.html">Tile</a>)</td><td class="entry"><a class="el" href="class_tile.html">Tile</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_tile.html#a276277a38455333e72cb4a75c8fbe650">update</a>(double dt_)</td><td class="entry"><a class="el" href="class_tile.html">Tile</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_entity.html#ac5e09232fb967bf716cc6e6684d32cea">width</a></td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_entity.html#abe84b2274427a984d952acd6d4c4061f">x</a></td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_entity.html#aeaf8012f92ad9f8ea0df589e3fc67c8f">y</a></td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_entity.html#adf6d3f7cb1b2ba029b6b048a395cc8ae">~Entity</a>()</td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~Tile</b>() (defined in <a class="el" href="class_tile.html">Tile</a>)</td><td class="entry"><a class="el" href="class_tile.html">Tile</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 23 2014 22:57:03 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 23 2014 22:57:04 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

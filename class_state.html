@@ -58,8 +58,9 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:afab438d92b90dc18d194dbd9c9c8bab3"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_state.html#afab438d92b90dc18d194dbd9c9c8bab3">~State</a> ()</td></tr>
-<tr class="memdesc:afab438d92b90dc18d194dbd9c9c8bab3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The destructor.  <a href="#afab438d92b90dc18d194dbd9c9c8bab3">More...</a><br/></td></tr>
+<tr class="memitem:afab438d92b90dc18d194dbd9c9c8bab3"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="afab438d92b90dc18d194dbd9c9c8bab3"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_state.html#afab438d92b90dc18d194dbd9c9c8bab3">~State</a> ()</td></tr>
+<tr class="memdesc:afab438d92b90dc18d194dbd9c9c8bab3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The destructor. <br/></td></tr>
 <tr class="separator:afab438d92b90dc18d194dbd9c9c8bab3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9bd7c8e4125d963e1f86dd40ff385302"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_state.html#a9bd7c8e4125d963e1f86dd40ff385302">load</a> ()=0</td></tr>
 <tr class="memdesc:a9bd7c8e4125d963e1f86dd40ff385302"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads necessary objects.  <a href="#a9bd7c8e4125d963e1f86dd40ff385302">More...</a><br/></td></tr>
@@ -77,6 +78,10 @@ Public Member Functions</h2></td></tr>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_state.html#a53a41483850524b811e57dca3cd75a3b">addEntity</a> (<a class="el" href="class_entity.html">Entity</a> *entity)</td></tr>
 <tr class="memdesc:a53a41483850524b811e57dca3cd75a3b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an entity to the list. <br/></td></tr>
 <tr class="separator:a53a41483850524b811e57dca3cd75a3b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa137595a6ecce6aa1f13049d4cf41088"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa137595a6ecce6aa1f13049d4cf41088"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_state.html#aa137595a6ecce6aa1f13049d4cf41088">cleanEntities</a> ()</td></tr>
+<tr class="memdesc:aa137595a6ecce6aa1f13049d4cf41088"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes all the entities inside the list, and clears it. <br/></td></tr>
+<tr class="separator:aa137595a6ecce6aa1f13049d4cf41088"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -84,33 +89,6 @@ Protected Attributes</h2></td></tr>
 <tr class="memdesc:ab11196b86e9243c5cfc1e840c92a3d39"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of all the entities in the state.  <a href="#ab11196b86e9243c5cfc1e840c92a3d39">More...</a><br/></td></tr>
 <tr class="separator:ab11196b86e9243c5cfc1e840c92a3d39"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="afab438d92b90dc18d194dbd9c9c8bab3"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">State::~State </td>
-          <td>(</td>
-          <td class="paramname">)</td><td></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The destructor. </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000013">Todo:</a></b></dt><dd>Destroy entities inside list? </dd></dl>
-
-</div>
-</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a class="anchor" id="a9bd7c8e4125d963e1f86dd40ff385302"></a>
 <div class="memitem">
@@ -262,7 +240,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 23 2014 19:10:29 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 23 2014 22:57:04 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

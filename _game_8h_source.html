@@ -70,22 +70,24 @@
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_game.html#afc16bd0d077c53218c27f16e0bf56cbb" title="Loads all the states. ">initializeStates</a>();</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_game.html#acc54f1426ac57696d849acd8f067b1f4" title="Sets the current game state. ">setState</a>(<a class="code" href="class_state.html">State</a>&amp; state_);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="class_game.html#a143d602b3009c52fe6802cd7122c175d">   51</a></span>&#160;        <span class="keyword">static</span> <a class="code" href="class_state.html">State</a>* <a class="code" href="class_game.html#a143d602b3009c52fe6802cd7122c175d" title="The logo splash screen. ">stateSplash</a>; </div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="class_game.html#ae21f84dedd4e1c8722190f4c8b3aa29d">   52</a></span>&#160;        <span class="keyword">static</span> <a class="code" href="class_state.html">State</a>* <a class="code" href="class_game.html#ae21f84dedd4e1c8722190f4c8b3aa29d" title="First game level. ">levelOne</a>; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="code" href="class_game.html#a553924bcccf9f9b1c04e385041852f17">   55</a></span>&#160;        <a class="code" href="class_window.html" title="Represents actual window that game runs on. ">Window</a> *<a class="code" href="class_game.html#a553924bcccf9f9b1c04e385041852f17" title="The game Window. ">window</a>; </div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="class_game.html#adb424734b2454f9ed1e6d6bd44e6dfaf">   56</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_game.html#adb424734b2454f9ed1e6d6bd44e6dfaf" title="Whether the game is currently running/looping or not. ">isRunning</a>; </div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="class_game.html#a5817ea6f0896abffc6ab8bc893382a31">   57</a></span>&#160;        FPSmanager <a class="code" href="class_game.html#a5817ea6f0896abffc6ab8bc893382a31" title="The FPSManager from SDL2_GFX. ">fpsManager</a>; </div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="code" href="class_game.html#ab18cee52fbdd99d4969eda65b4b741c7">   59</a></span>&#160;        <span class="keyword">static</span> <a class="code" href="class_state.html">State</a>* <a class="code" href="class_game.html#ab18cee52fbdd99d4969eda65b4b741c7" title="The current state, which the game is in. ">currentState</a>; </div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;};</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;<span class="preprocessor">#endif //INCLUDE_GAME_H</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_game.html#a684834abb420aba6d30094d1fe273818" title="Deletes all the loaded states. ">destroyStates</a>();</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">void</span> <a class="code" href="class_game.html#acc54f1426ac57696d849acd8f067b1f4" title="Sets the current game state. ">setState</a>(<a class="code" href="class_state.html">State</a>&amp; state_);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="class_game.html#a143d602b3009c52fe6802cd7122c175d">   57</a></span>&#160;        <span class="keyword">static</span> <a class="code" href="class_state.html">State</a>* <a class="code" href="class_game.html#a143d602b3009c52fe6802cd7122c175d" title="The logo splash screen. ">stateSplash</a>; </div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="code" href="class_game.html#ae21f84dedd4e1c8722190f4c8b3aa29d">   58</a></span>&#160;        <span class="keyword">static</span> <a class="code" href="class_state.html">State</a>* <a class="code" href="class_game.html#ae21f84dedd4e1c8722190f4c8b3aa29d" title="First game level. ">levelOne</a>; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="class_game.html#a553924bcccf9f9b1c04e385041852f17">   61</a></span>&#160;        <a class="code" href="class_window.html" title="Represents actual window that game runs on. ">Window</a> *<a class="code" href="class_game.html#a553924bcccf9f9b1c04e385041852f17" title="The game Window. ">window</a>; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="class_game.html#adb424734b2454f9ed1e6d6bd44e6dfaf">   62</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_game.html#adb424734b2454f9ed1e6d6bd44e6dfaf" title="Whether the game is currently running/looping or not. ">isRunning</a>; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="class_game.html#a5817ea6f0896abffc6ab8bc893382a31">   63</a></span>&#160;        FPSmanager <a class="code" href="class_game.html#a5817ea6f0896abffc6ab8bc893382a31" title="The FPSManager from SDL2_GFX. ">fpsManager</a>; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="class_game.html#ab18cee52fbdd99d4969eda65b4b741c7">   65</a></span>&#160;        <span class="keyword">static</span> <a class="code" href="class_state.html">State</a>* <a class="code" href="class_game.html#ab18cee52fbdd99d4969eda65b4b741c7" title="The current state, which the game is in. ">currentState</a>; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;};</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;<span class="preprocessor">#endif //INCLUDE_GAME_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 23 2014 19:10:28 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 23 2014 22:57:03 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

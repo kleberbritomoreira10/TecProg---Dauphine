@@ -49,6 +49,7 @@
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_camera-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -63,9 +64,9 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a01f94c3543f56ede7af49dc778f19331"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a01f94c3543f56ede7af49dc778f19331">Camera</a> ()</td></tr>
-<tr class="memdesc:a01f94c3543f56ede7af49dc778f19331"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor.  <a href="#a01f94c3543f56ede7af49dc778f19331">More...</a><br/></td></tr>
-<tr class="separator:a01f94c3543f56ede7af49dc778f19331"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a14556b4f396f19e2f283a59a26c251e3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a14556b4f396f19e2f283a59a26c251e3">Camera</a> (<a class="el" href="class_entity.html">Entity</a> *entity_)</td></tr>
+<tr class="memdesc:a14556b4f396f19e2f283a59a26c251e3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor.  <a href="#a14556b4f396f19e2f283a59a26c251e3">More...</a><br/></td></tr>
+<tr class="separator:a14556b4f396f19e2f283a59a26c251e3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1897942d0ccf91052386388a497349f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad1897942d0ccf91052386388a497349f"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#ad1897942d0ccf91052386388a497349f">~Camera</a> ()</td></tr>
 <tr class="memdesc:ad1897942d0ccf91052386388a497349f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The destructor. <br/></td></tr>
@@ -73,32 +74,25 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a42cda7239981a5618660d04bd5893556"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a42cda7239981a5618660d04bd5893556">update</a> ()</td></tr>
 <tr class="memdesc:a42cda7239981a5618660d04bd5893556"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the camera.  <a href="#a42cda7239981a5618660d04bd5893556">More...</a><br/></td></tr>
 <tr class="separator:a42cda7239981a5618660d04bd5893556"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1e51998c5cdcfc12c2474037b34ccf5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#ac1e51998c5cdcfc12c2474037b34ccf5">centralizeOn</a> (<a class="el" href="class_entity.html">Entity</a> *entity_)</td></tr>
+<tr class="memdesc:ac1e51998c5cdcfc12c2474037b34ccf5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the entity to centralize upon.  <a href="#ac1e51998c5cdcfc12c2474037b34ccf5">More...</a><br/></td></tr>
+<tr class="separator:ac1e51998c5cdcfc12c2474037b34ccf5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4bff0d442826eaf1e0337c4cd15532c5"><td class="memItemLeft" align="right" valign="top">SDL_Rect &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a4bff0d442826eaf1e0337c4cd15532c5">getClip</a> ()</td></tr>
 <tr class="separator:a4bff0d442826eaf1e0337c4cd15532c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aecf07f908ef1bfa2c2f1bb5cd4192d8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#aecf07f908ef1bfa2c2f1bb5cd4192d8d">updatePosition</a> ()</td></tr>
-<tr class="memdesc:aecf07f908ef1bfa2c2f1bb5cd4192d8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the cameras position.  <a href="#aecf07f908ef1bfa2c2f1bb5cd4192d8d">More...</a><br/></td></tr>
-<tr class="separator:aecf07f908ef1bfa2c2f1bb5cd4192d8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a83f466d1ea69eba908308e55366a188d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a83f466d1ea69eba908308e55366a188d">setPlayerXY</a> (double x_, double y_)</td></tr>
-<tr class="separator:a83f466d1ea69eba908308e55366a188d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a911ac8a8e01df4201fc97f391f7d093d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a911ac8a8e01df4201fc97f391f7d093d">setPlayerWH</a> (unsigned int width_, unsigned int height_)</td></tr>
-<tr class="separator:a911ac8a8e01df4201fc97f391f7d093d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7b60d73d2c0d5b8215bd5ce1b423d3c1"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a7b60d73d2c0d5b8215bd5ce1b423d3c1">setLevelWH</a> (unsigned int width_, unsigned int height_)</td></tr>
 <tr class="separator:a7b60d73d2c0d5b8215bd5ce1b423d3c1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:aecf07f908ef1bfa2c2f1bb5cd4192d8d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#aecf07f908ef1bfa2c2f1bb5cd4192d8d">updatePosition</a> ()</td></tr>
+<tr class="memdesc:aecf07f908ef1bfa2c2f1bb5cd4192d8d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the cameras position.  <a href="#aecf07f908ef1bfa2c2f1bb5cd4192d8d">More...</a><br/></td></tr>
+<tr class="separator:aecf07f908ef1bfa2c2f1bb5cd4192d8d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:ae8a97e7569f9463d1d1bc8eeb8f7c09f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#ae8a97e7569f9463d1d1bc8eeb8f7c09f">playerX</a></td></tr>
-<tr class="memdesc:ae8a97e7569f9463d1d1bc8eeb8f7c09f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current x position of the player.  <a href="#ae8a97e7569f9463d1d1bc8eeb8f7c09f">More...</a><br/></td></tr>
-<tr class="separator:ae8a97e7569f9463d1d1bc8eeb8f7c09f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ca4d2271b8a7d8c802d3438a202ad35"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a6ca4d2271b8a7d8c802d3438a202ad35">playerY</a></td></tr>
-<tr class="memdesc:a6ca4d2271b8a7d8c802d3438a202ad35"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current y position of the player.  <a href="#a6ca4d2271b8a7d8c802d3438a202ad35">More...</a><br/></td></tr>
-<tr class="separator:a6ca4d2271b8a7d8c802d3438a202ad35"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a515877d3f1e9d0f10052c629fae315b3"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a515877d3f1e9d0f10052c629fae315b3">playerW</a></td></tr>
-<tr class="memdesc:a515877d3f1e9d0f10052c629fae315b3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current width of the player.  <a href="#a515877d3f1e9d0f10052c629fae315b3">More...</a><br/></td></tr>
-<tr class="separator:a515877d3f1e9d0f10052c629fae315b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0e10267a1295e8a0a773712f62aa0fb2"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a0e10267a1295e8a0a773712f62aa0fb2">playerH</a></td></tr>
-<tr class="memdesc:a0e10267a1295e8a0a773712f62aa0fb2"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current height of the player.  <a href="#a0e10267a1295e8a0a773712f62aa0fb2">More...</a><br/></td></tr>
-<tr class="separator:a0e10267a1295e8a0a773712f62aa0fb2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95a102b6f070e3ae901ce182b4fa12e1"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_entity.html">Entity</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#a95a102b6f070e3ae901ce182b4fa12e1">entity</a></td></tr>
+<tr class="memdesc:a95a102b6f070e3ae901ce182b4fa12e1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reference to the entity.  <a href="#a95a102b6f070e3ae901ce182b4fa12e1">More...</a><br/></td></tr>
+<tr class="separator:a95a102b6f070e3ae901ce182b4fa12e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afcf1ecd0a79a95e8097109be04dd1779"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_camera.html#afcf1ecd0a79a95e8097109be04dd1779">levelW</a></td></tr>
 <tr class="memdesc:afcf1ecd0a79a95e8097109be04dd1779"><td class="mdescLeft">&#160;</td><td class="mdescRight">The width of the level.  <a href="#afcf1ecd0a79a95e8097109be04dd1779">More...</a><br/></td></tr>
 <tr class="separator:afcf1ecd0a79a95e8097109be04dd1779"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -114,14 +108,15 @@ Private Attributes</h2></td></tr>
 <div class="textblock"><p>The camera class. </p>
 <p>Contains all the relevant implementation relative to the camera. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="a01f94c3543f56ede7af49dc778f19331"></a>
+<a class="anchor" id="a14556b4f396f19e2f283a59a26c251e3"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">Camera::Camera </td>
           <td>(</td>
-          <td class="paramname">)</td><td></td>
+          <td class="paramtype"><a class="el" href="class_entity.html">Entity</a> *&#160;</td>
+          <td class="paramname"><em>entity_</em>)</td><td></td>
           <td></td>
         </tr>
       </table>
@@ -129,11 +124,41 @@ Private Attributes</h2></td></tr>
 
 <p>The constructor. </p>
 <p>Initializes all the attributes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity_</td><td>: The entity to centralize the camera on. </td></tr>
+  </table>
+  </dd>
+</dl>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">Todo:</a></b></dt><dd>If the player changes the resolution, so should the clip. (?) </dd></dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ac1e51998c5cdcfc12c2474037b34ccf5"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Camera::centralizeOn </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="class_entity.html">Entity</a> *&#160;</td>
+          <td class="paramname"><em>entity_</em>)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Changes the entity to centralize upon. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">entity_</td><td>: The entity to centralize the camera on. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="a4bff0d442826eaf1e0337c4cd15532c5"></a>
 <div class="memitem">
 <div class="memproto">
@@ -183,72 +208,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a911ac8a8e01df4201fc97f391f7d093d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Camera::setPlayerWH </td>
-          <td>(</td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>width_</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>height_</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">width_,height_</td><td>: Tells the camera what are the current width and height of the player. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_state.html#ac9f156dc81466b6adb086ed092f66afe" title="Update all entities. ">Level::update()</a> </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a83f466d1ea69eba908308e55366a188d"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void Camera::setPlayerXY </td>
-          <td>(</td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>x_</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double&#160;</td>
-          <td class="paramname"><em>y_</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">x_,y_</td><td>: Tells the camera what are the current (x,y) position of the player. </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_state.html#ac9f156dc81466b6adb086ed092f66afe" title="Update all entities. ">Level::update()</a> </dd></dl>
-
-</div>
-</div>
 <a class="anchor" id="a42cda7239981a5618660d04bd5893556"></a>
 <div class="memitem">
 <div class="memproto">
@@ -270,6 +229,9 @@ Private Attributes</h2></td></tr>
 <a class="anchor" id="aecf07f908ef1bfa2c2f1bb5cd4192d8d"></a>
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">void Camera::updatePosition </td>
@@ -278,6 +240,11 @@ Private Attributes</h2></td></tr>
           <td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>Updates the cameras position. </p>
@@ -306,6 +273,28 @@ Private Attributes</h2></td></tr>
 
 <p><pre class="fragment">            Clip which will be used to clip the rendering only to the extent of
 </pre><p> the camera. </p>
+
+</div>
+</div>
+<a class="anchor" id="a95a102b6f070e3ae901ce182b4fa12e1"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_entity.html">Entity</a>* Camera::entity</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Reference to the entity. </p>
 
 </div>
 </div>
@@ -353,94 +342,6 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a0e10267a1295e8a0a773712f62aa0fb2"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int Camera::playerH</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The current height of the player. </p>
-
-</div>
-</div>
-<a class="anchor" id="a515877d3f1e9d0f10052c629fae315b3"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">unsigned int Camera::playerW</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The current width of the player. </p>
-
-</div>
-</div>
-<a class="anchor" id="ae8a97e7569f9463d1d1bc8eeb8f7c09f"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">double Camera::playerX</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The current x position of the player. </p>
-
-</div>
-</div>
-<a class="anchor" id="a6ca4d2271b8a7d8c802d3438a202ad35"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">double Camera::playerY</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The current y position of the player. </p>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/caio/Desktop/Git/Dauphine/include/<a class="el" href="_camera_8h_source.html">Camera.h</a></li>
 <li>/home/caio/Desktop/Git/Dauphine/src/Camera.cpp</li>
@@ -448,7 +349,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 23 2014 19:10:28 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Apr 23 2014 22:57:03 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
