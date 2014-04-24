@@ -1,9 +1,9 @@
-#ifndef INCLUDE_ACTIONWALKING_H
-#define INCLUDE_ACTIONWALKING_H
+#ifndef INCLUDE_ACTIONIDLE_H
+#define INCLUDE_ACTIONIDLE_H
 
 #include "Action.h"
 
-class ActionWalking : public Action {
+class ActionIdle : public Action {
 
 	public:
 
@@ -11,12 +11,12 @@ class ActionWalking : public Action {
 		* The constructor.
 		* Initializes all the attributes.
 		*/
-		ActionWalking();
+		ActionIdle();
 
 		/**
 		* The destructor.
 		*/
-		~ActionWalking();
+		~ActionIdle();
 
 		/**
 		* Loads the player.
@@ -32,7 +32,7 @@ class ActionWalking : public Action {
 
 		/**
 		* Unloads everything that was loaded.
-		* @see ActionWalking::load
+		* @see ActionIdle::load
 		*/
 		virtual void unload();
 
@@ -49,4 +49,4 @@ class ActionWalking : public Action {
 
 };
 
-#endif // INCLUDE_ACTIONWALKING_H
+#endif // INCLUDE_ACTIONIDLE_H

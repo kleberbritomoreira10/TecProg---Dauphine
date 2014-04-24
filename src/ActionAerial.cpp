@@ -20,34 +20,23 @@ void ActionAerial::update(double dt_){
 	InputHandler* inputHandler = InputHandler::getInstance();
 	const array<bool, GameKeys::MAX> keyStates = inputHandler->getKeyStates();
 
-	this->player->vy += 2*this->player->speed;
+	// Idle
+    if(this->player->isGrounded){
+    	this->player->setAction((*Player::actionIdle));
+    	return;
+    }
 
-	if(keyStates[GameKeys::LEFT] || keyStates[GameKeys::RIGHT]){
-    	//this->player->setState((*Player::Walking));
-    	if(keyStates[GameKeys::LEFT]){
-	        if(this->player->vx > -this->player->maxSpeed){
-	            this->player->vx -= this->player->speed;
-	        } 
-	    }
-	    else if(keyStates[GameKeys::RIGHT]){
-	        if(this->player->vx < this->player->maxSpeed){
-	            this->player->vx += this->player->speed;
-	        }
-	    }
-    }
-    else{
-        this->player->vx *= 0.95;
-    }
+	// Gravity
+	this->player->applyGravity();
+
+	// Move (while on air)
+    this->player->move(keyStates[GameKeys::LEFT], keyStates[GameKeys::RIGHT]);
+
+    
 }
 
 void ActionAerial::load(){
-	LuaScript luaSplash("lua/Standing.lua");
-	const string standingPath = luaSplash.unlua_get<string>("standing.spritePath");
-
-	Sprite* lStand = new Sprite(standingPath);
-	this->sprite = lStand;
-
-	this->player->vy = (-40) * this->player->speed;
+	Logger::verbose("load-> AERIAL");
 }
 
 void ActionAerial::unload(){

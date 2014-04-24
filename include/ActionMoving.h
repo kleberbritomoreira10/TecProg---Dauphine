@@ -1,9 +1,9 @@
-#ifndef INCLUDE_ACTIONSTANDING_H
-#define INCLUDE_ACTIONSTANDING_H
+#ifndef INCLUDE_ACTIONMOVING_H
+#define INCLUDE_ACTIONMOVING_H
 
 #include "Action.h"
 
-class ActionStanding : public Action {
+class ActionMoving : public Action {
 
 	public:
 
@@ -11,12 +11,12 @@ class ActionStanding : public Action {
 		* The constructor.
 		* Initializes all the attributes.
 		*/
-		ActionStanding();
+		ActionMoving();
 
 		/**
 		* The destructor.
 		*/
-		~ActionStanding();
+		~ActionMoving();
 
 		/**
 		* Loads the player.
@@ -32,7 +32,7 @@ class ActionStanding : public Action {
 
 		/**
 		* Unloads everything that was loaded.
-		* @see ActionStanding::load
+		* @see ActionMoving::load
 		*/
 		virtual void unload();
 
@@ -49,4 +49,4 @@ class ActionStanding : public Action {
 
 };
 
-#endif // INCLUDE_ACTIONSTANDING_H
+#endif // INCLUDE_ACTIONMOVING_H

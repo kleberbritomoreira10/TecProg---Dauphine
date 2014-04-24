@@ -8,11 +8,6 @@ Action::Action() :
 }
 
 Action::~Action(){
-	if(this->player != nullptr){
-		delete this->player;
-		this->player = nullptr;
-	}
-
 	if(this->sprite != nullptr){
 		this->sprite->free();
 		delete this->sprite;

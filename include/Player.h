@@ -15,7 +15,6 @@ class Action;
 class Player : public Entity {
 
 	public:
-
 		/**
 		* The constructor.
 		* Creates the player by setting the position and sprite.
@@ -58,23 +57,22 @@ class Player : public Entity {
 		void updatePosition(double dt_);
 
 		/**
-		* Updates the player depending on recieved input.
-		* Modifies whatever is necessary, relative to the player.
-		*/
-		void updateInput();
-
-		/**
 		* @param width_,height_ : Tells the player what the width and height of the level is.
 		* @see Level::update()
 		*/
 		void setLevelWH(unsigned int width_, unsigned int height_);
-
 
 		/**
 		* Loads all the states.
 		* Every new state implemented should be initialized here.
 		*/
 		static void initializeStates();
+
+		/**
+		* Deletes all the loaded states.
+		* Every new state implemented should be deleted here.
+		*/
+		static void destroyStates();
 
 		/**
 		* Sets the current game state.
@@ -84,15 +82,22 @@ class Player : public Entity {
 		*/
 		static void setAction(Action& action_);
 
-		static Action* actionStanding; /**< The action of stand. First state of the player. */
+		static Action* actionIdle; /**< The action of stand. First state of the player. */
 		static Action* actionAerial; /**< The action of */
-		static Action* actionWalking; /**< The action of */
-
+		static Action* actionMoving; /**< The action of */
+		static Action* actionRolling; /**< The action of */
+		static Action* actionCrouching; /**< The action of */
 
 		double vx; /**< The player's speed on the x axis. */
 		double vy; /**< The player's speed on the x axis. */
 		double speed; /**< Speed that moves player on input. */
 		double maxSpeed; /**< Player max speed. */
+		bool isGrounded;
+
+		void jump();
+		void applyGravity();
+		void move(bool movingLeft_, bool movingRight_);
+		void slowVx();
 
 	private:
 		
