@@ -4,9 +4,9 @@
 #include "Entity.h"
 #include "Sprite.h"
 #include "InputKeys.h"
+#include "Action.h"
 
-#include <array>
-using std::array;
+class Action;
 
 /**
 * The player entity class.
@@ -15,16 +15,6 @@ using std::array;
 class Player : public Entity {
 
 	public:
-		/**
-		* Possible player states.
-		*/
-		enum State : int {
-			STATE_STANDING = 0,
-			STATE_WALKING,
-			STATE_JUMPING,
-			STATE_CROUCHING,
-			STATE_ROLLING
-		};
 
 		/**
 		* The constructor.
@@ -79,13 +69,34 @@ class Player : public Entity {
 		*/
 		void setLevelWH(unsigned int width_, unsigned int height_);
 
-		State state; /**< Current state the player is in (for the player internal state). */
 
-	private:
+		/**
+		* Loads all the states.
+		* Every new state implemented should be initialized here.
+		*/
+		static void initializeStates();
+
+		/**
+		* Sets the current game state.
+		* @see Action::load
+		* @see Action::unload
+		* @param state_ : The state you want to be changed into. All states are inside Player.
+		*/
+		static void setAction(Action& action_);
+
+		static Action* actionStanding; /**< The action of stand. First state of the player. */
+		static Action* actionAerial; /**< The action of */
+		static Action* actionWalking; /**< The action of */
+
+
 		double vx; /**< The player's speed on the x axis. */
 		double vy; /**< The player's speed on the x axis. */
 		double speed; /**< Speed that moves player on input. */
 		double maxSpeed; /**< Player max speed. */
+
+	private:
+		
+		static Action* currentAction; /**< The current action, which the player is in. */
 
 		unsigned int levelW; /**< The width of the level. */
 		unsigned int levelH; /**< The height of the level. */

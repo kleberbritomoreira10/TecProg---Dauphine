@@ -2,7 +2,6 @@
 #define INCLUDE_STATE_H
 
 #include "Entity.h"
-#include "Player.h"
 
 #include <list>
 using std::list;

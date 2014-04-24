@@ -1,8 +1,16 @@
 #include "Player.h"
 #include "InputHandler.h"
-#include "Camera.h"
 #include "Logger.h"
 #include "Configuration.h"
+
+#include "ActionStanding.h"
+#include "ActionAerial.h"
+#include "ActionWalking.h"
+
+Action* Player::currentAction = nullptr;
+Action* Player::actionStanding = nullptr;
+Action* Player::actionAerial = nullptr;
+Action* Player::actionWalking = nullptr;
 
 Player::Player(double x_, double y_, Sprite* sprite_) :
     Entity(x_, y_, sprite_),
@@ -13,10 +21,16 @@ Player::Player(double x_, double y_, Sprite* sprite_) :
     levelW(0),
     levelH(0)
 {
-    this->state = STATE_JUMPING;
+
+    Player::initializeStates();
+
 	if(this->sprite != nullptr){
         this->width = this->sprite->getWidth();
         this->height = this->sprite->getHeight();
+
+        Player::currentAction = Player::actionAerial;
+        Player::currentAction->setPlayer(this);
+        Player::currentAction->load();
 	}
     else{
         Logger::warning("No sprite set for the player! Null sprite.");
@@ -32,7 +46,8 @@ Player::~Player(){
 }
 
 void Player::update(double dt_){
-    updateInput();
+    //updateInput();
+    Player::currentAction->update(dt_);
     updatePosition(dt_);
 }
 
@@ -70,7 +85,7 @@ void Player::updatePosition(double dt_){
     else if(this->y + this->height + 40 > this->levelH){
         this->y = this->levelH - this->height - 40;
         this->vy = 0;
-        this->state = STATE_STANDING;
+        Player::setAction((*Player::actionStanding));
     }
 }
 
@@ -79,7 +94,7 @@ void Player::updateInput(){
     const array<bool, GameKeys::MAX> keyStates = inputHandler->getKeyStates();
 
     /// @todo Fix all these magic/weird numbers.
-    switch(this->state){
+    /*switch(this->state){
         case STATE_STANDING:
             if(keyStates[GameKeys::UP]){
                 this->state = STATE_JUMPING;
@@ -114,26 +129,29 @@ void Player::updateInput(){
 
         default:
             break;
-    }
+    }*/
 
-    // X movement.
-    if(keyStates[GameKeys::LEFT]){
-        if(this->vx > -this->maxSpeed){
-            this->vx -= this->speed;
-        } 
-    }
-    else if(keyStates[GameKeys::RIGHT]){
-        if(this->vx < this->maxSpeed){
-            this->vx += this->speed;
-        }
-    }
-    else{
-        this->vx *= 0.95;
-    }
-    
 }
 
 void Player::setLevelWH(unsigned int width_, unsigned int height_){
     this->levelW = width_;
     this->levelH = height_;
 }
+
+void Player::initializeStates(){
+    // Initialize all the states in Player here.
+    Player::actionStanding = new ActionStanding();
+    Player::actionAerial = new ActionAerial();
+    Player::actionWalking = new ActionWalking();
+}
+
+void Player::setAction(Action& action_){
+    Player* player = Player::currentAction->getPlayer();
+    
+    Player::currentAction->unload();
+    Player::currentAction = &action_;
+
+    Player::currentAction->setPlayer(player);
+    Player::currentAction->load();
+}
+
