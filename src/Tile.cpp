@@ -12,7 +12,9 @@ Tile::Tile(double x_, double y_, Sprite* sprite_) :
 
 Tile::~Tile(){
 	if(this->sprite != nullptr){
+		this->sprite->free();
 		delete this->sprite;
+		this->sprite = nullptr;
 	}
 }
 

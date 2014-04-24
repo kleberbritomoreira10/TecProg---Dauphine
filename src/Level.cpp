@@ -15,11 +15,6 @@ Level::~Level(){
 		delete this->camera;
 		this->camera = nullptr;
 	}
-	
-	if(this->player != nullptr){
-		delete this->player;
-		this->player = nullptr;
-	}
 
 	if(this->background != nullptr){
 		this->background->free();

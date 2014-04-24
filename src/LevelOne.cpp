@@ -87,22 +87,7 @@ void LevelOne::load(){
 
 void LevelOne::unload(){
 	Logger::verbose("Unloading level 1...");
-
-	if(this->camera != nullptr){
-		delete this->camera;
-		this->camera = nullptr;
-	}
-	
-	if(this->player != nullptr){
-		delete this->player;
-		this->player = nullptr;
-	}
-
-	if(this->background != nullptr){
-		this->background->free();
-		delete this->background;
-		this->background = nullptr;
-	}
+	cleanEntities();
 }
 
 void LevelOne::setPlayer(Player* player_){

@@ -47,6 +47,11 @@ class State {
 		*/
 		void addEntity(Entity* entity);
 
+		/**
+		* Deletes all the entities inside the list, and clears it.
+		*/
+		void cleanEntities();
+
 	protected:
 
 		list<Entity*> entities; /**< List of all the entities in the state. */

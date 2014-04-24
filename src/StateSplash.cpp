@@ -43,6 +43,8 @@ void StateSplash::unload(){
 		delete this->splash;
 		this->splash = nullptr;
 	}
+
+	cleanEntities();
 }
 
 void StateSplash::render(){
