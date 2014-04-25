@@ -27,8 +27,7 @@ SDL_Surface* gScreenSurface = nullptr;
 
 SDL_Renderer* sdlRenderer = nullptr;
 
-//The image we will load and show on the screen
-SDL_Surface* gXOut = nullptr;
+SDL_Surface* loadedSurface;
 
 unsigned int width;
 unsigned int height;
@@ -82,11 +81,13 @@ bool loadMedia()
 	// The final texture.
 	SDL_Texture* newTexture = nullptr;
 
-	SDL_Surface* loadedSurface = IMG_Load("nadine.png");
+	loadedSurface = IMG_Load("nadine.png");
 	if(loadedSurface != nullptr){
 		//Color key image to magenta.
 		//SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 0xFF, 0, 0xFF));
 		sdlRenderer = SDL_CreateRenderer(sdlWindow, -1, SDL_RENDERER_ACCELERATED);
+		SDL_SetRenderDrawColor( sdlRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+		SDL_RenderClear(sdlRenderer);
 		// Create texture from the surface pixels.
 		if(sdlWindow == nullptr){
 			printf("fodeu");
@@ -102,8 +103,6 @@ bool loadMedia()
 			printf("Could not create texture from surface.\n");
 		}
 
-		// Free the loaded surface.
-		SDL_FreeSurface(loadedSurface);
 	}
 	else{
 		printf("Could not load surface from path.\n");
@@ -124,22 +123,31 @@ bool loadMedia()
 
 void close()
 {
+	if(sdlTexture != nullptr){
+		 //Destroy texture
+		fprintf(stderr,"## $%x freeing\n", sdlTexture);
+		SDL_DestroyTexture(sdlTexture);
+	}
+	if(loadedSurface != nullptr){
+		// Free the loaded surface.
+		fprintf(stderr,"## $%x freeing\n", loadedSurface);
+		SDL_FreeSurface(loadedSurface);
+	}
+	if(sdlRenderer != nullptr){
+		//Destroy renderer
+		fprintf(stderr,"## $%x freeing\n", sdlRenderer);
+		SDL_DestroyRenderer(sdlRenderer);
+	}
+	if(sdlWindow != nullptr){
+		//Destroy window
+		fprintf(stderr,"## $%x freeing\n", sdlWindow);
+		SDL_DestroyWindow( sdlWindow );
+	}
 
-	//Deallocate surface
-	SDL_FreeSurface( gXOut );
-	gXOut = nullptr;
-
-	//Destroy window
-	SDL_DestroyWindow( sdlWindow );
-	sdlWindow = nullptr;
-
-	//Destroy renderer
-	SDL_DestroyRenderer(sdlRenderer);
-	sdlRenderer = nullptr;
-
-	//Destroy texture
-	SDL_DestroyTexture(sdlTexture);
 	sdlTexture = nullptr;
+	sdlRenderer = nullptr;
+	sdlWindow = nullptr;
+	loadedSurface = nullptr;
 
 	//Quit SDL subsystems
 	SDL_Quit();
@@ -192,7 +200,6 @@ int main( int argc, char* args[] )
 				//Update the surface
 				SDL_RenderPresent( sdlRenderer );
 
-				//printf("%s", SDL_GetError());
 			}
 		}
 	}
