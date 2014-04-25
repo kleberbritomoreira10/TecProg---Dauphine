@@ -19,20 +19,12 @@ bool loadMedia();
 //Frees media and shuts down SDL
 void close();
 
-//The window we'll be rendering to
 SDL_Window* sdlWindow = nullptr;
-	
-//The surface contained by the window
-SDL_Surface* gScreenSurface = nullptr;
-
 SDL_Renderer* sdlRenderer = nullptr;
 
-SDL_Surface* loadedSurface;
-
-unsigned int width;
-unsigned int height;
-
-SDL_Texture* sdlTexture;
+SDL_Texture* sdlTexture = nullptr;
+unsigned int width = 0;
+unsigned int height = 0;
 
 bool init()
 {
@@ -50,11 +42,12 @@ bool init()
 		//Create window
 		const Uint32 windowFlags = SDL_WINDOW_SHOWN;
 		sdlWindow = SDL_CreateWindow(
-		"Teste", 
-		SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
-		SCREEN_WIDTH, SCREEN_HEIGHT,
-		windowFlags
-	);
+			"Teste", 
+			SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED,
+			SCREEN_WIDTH, SCREEN_HEIGHT,
+			windowFlags
+		);
+
 		if( sdlWindow == nullptr )
 		{
 			printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
@@ -62,8 +55,7 @@ bool init()
 		}
 		else
 		{
-			//Get window surface
-			gScreenSurface = SDL_GetWindowSurface( sdlWindow );
+			printf("window created!\n");
 		}
 	}
 
@@ -72,26 +64,15 @@ bool init()
 
 bool loadMedia()
 {
-
-	// Warns if loading a sprite without a renderer.
-	if(sdlWindow == nullptr){
-		printf("Trying to load sprite with null renderer.\n");
-	}
+	sdlRenderer = SDL_CreateRenderer(sdlWindow, -1, SDL_RENDERER_ACCELERATED);
+	SDL_SetRenderDrawColor( sdlRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
+	SDL_RenderClear(sdlRenderer);
 
 	// The final texture.
 	SDL_Texture* newTexture = nullptr;
 
-	loadedSurface = IMG_Load("nadine.png");
+	SDL_Surface* loadedSurface = IMG_Load("nadine.png");
 	if(loadedSurface != nullptr){
-		//Color key image to magenta.
-		//SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 0xFF, 0, 0xFF));
-		sdlRenderer = SDL_CreateRenderer(sdlWindow, -1, SDL_RENDERER_ACCELERATED);
-		SDL_SetRenderDrawColor( sdlRenderer, 0xFF, 0xFF, 0xFF, 0xFF );
-		SDL_RenderClear(sdlRenderer);
-		// Create texture from the surface pixels.
-		if(sdlWindow == nullptr){
-			printf("fodeu");
-		}
 
         newTexture = SDL_CreateTextureFromSurface(sdlRenderer, loadedSurface);
 		if(newTexture != nullptr){
@@ -103,14 +84,15 @@ bool loadMedia()
 			printf("Could not create texture from surface.\n");
 		}
 
+		SDL_FreeSurface(loadedSurface);
 	}
 	else{
 		printf("Could not load surface from path.\n");
 	}
 
-	// Returns whether the Sprites texture is null or not.
 	sdlTexture = newTexture;
 
+	// Returns whether the Sprites texture is null or not.
 	// Display error log if image wasn't loaded.
 	if(sdlTexture == nullptr){
 		printf("Sprite load failed\n");
@@ -119,37 +101,16 @@ bool loadMedia()
 	else{
 		return true;
 	}
+
 }
 
 void close()
 {
-	if(sdlTexture != nullptr){
-		 //Destroy texture
-		fprintf(stderr,"## $%x freeing\n", sdlTexture);
-		SDL_DestroyTexture(sdlTexture);
-	}
-	if(loadedSurface != nullptr){
-		// Free the loaded surface.
-		fprintf(stderr,"## $%x freeing\n", loadedSurface);
-		SDL_FreeSurface(loadedSurface);
-	}
-	if(sdlRenderer != nullptr){
-		//Destroy renderer
-		fprintf(stderr,"## $%x freeing\n", sdlRenderer);
-		SDL_DestroyRenderer(sdlRenderer);
-	}
-	if(sdlWindow != nullptr){
-		//Destroy window
-		fprintf(stderr,"## $%x freeing\n", sdlWindow);
-		SDL_DestroyWindow( sdlWindow );
-	}
+	SDL_DestroyTexture(sdlTexture);
+	SDL_DestroyRenderer(sdlRenderer);
+	SDL_DestroyWindow(sdlWindow);
 
-	sdlTexture = nullptr;
-	sdlRenderer = nullptr;
-	sdlWindow = nullptr;
-	loadedSurface = nullptr;
-
-	//Quit SDL subsystems
+	IMG_Quit();
 	SDL_Quit();
 }
 
@@ -191,7 +152,7 @@ int main( int argc, char* args[] )
 				SDL_Rect renderQuad = {0, 0, 200, 200};
 
 				int successfullRender = SDL_RenderCopyEx(sdlRenderer, sdlTexture, nullptr,
-				&renderQuad, 0.0, nullptr, SDL_FLIP_NONE);
+					&renderQuad, 0.0, nullptr, SDL_FLIP_NONE);
 	
 				if(successfullRender != 0){
 					printf("Failed to render sprite. %s", SDL_GetError());
