@@ -35,6 +35,11 @@ void ActionMoving::update(double dt_){
 
     this->player->move(keyStates[GameKeys::LEFT], keyStates[GameKeys::RIGHT]);
 
+    if(keyStates[GameKeys::ROLL]){
+        this->player->setAction((*Player::actionRolling));
+        return;
+    }
+
     // Idle
     if(this->player->vx < 1.0 && this->player->vx > (-1.0)){
         this->player->setAction((*Player::actionIdle));

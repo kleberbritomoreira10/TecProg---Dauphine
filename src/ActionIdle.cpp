@@ -40,6 +40,11 @@ void ActionIdle::update(double dt_){
 		this->player->setAction((*Player::actionMoving));
 		return;
 	}
+
+	if(keyStates[GameKeys::ROLL]){
+        this->player->setAction((*Player::actionRolling));
+        return;
+    }
 }
 
 void ActionIdle::load(){

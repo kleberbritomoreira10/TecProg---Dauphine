@@ -98,6 +98,7 @@ class Player : public Entity {
 		void applyGravity();
 		void move(bool movingLeft_, bool movingRight_);
 		void slowVx();
+		void roll();
 
 	private:
 		

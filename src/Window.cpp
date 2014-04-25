@@ -92,7 +92,7 @@ void Window::rescale(unsigned int size_){
 	// Just a precaution, so there is no abuse on the size.
 	if(size_ > 10){
 		size_ = 10;
-		Logger::warning("Trying to rescale for a value to big.");
+		Logger::warning("Trying to rescale for a value too big.");
 	}
 
 	SDL_RenderSetLogicalSize(

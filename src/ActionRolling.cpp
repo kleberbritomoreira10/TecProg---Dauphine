@@ -44,7 +44,7 @@ void ActionRolling::update(double dt_){
 
 void ActionRolling::load(){
 	Logger::verbose("load-> ROLL");
-	this->player->vx = 70 * this->player->speed;
+	this->player->roll();
 }
 
 void ActionRolling::unload(){

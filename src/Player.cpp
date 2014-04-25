@@ -6,6 +6,7 @@
 #include "ActionIdle.h"
 #include "ActionAerial.h"
 #include "ActionMoving.h"
+#include "ActionRolling.h"
 
 Action* Player::currentAction = nullptr;
 Action* Player::actionIdle = nullptr;
@@ -101,34 +102,6 @@ void Player::updatePosition(double dt_){
 
 }
 
-/*
-    switch(this->state){
-        case STATE_STANDING:
-
-            if(keyStates[GameKeys::ROLL]){
-                 this->state = STATE_ROLLING;
-            }
-            if(keyStates[GameKeys::DOWN]){
-                this->speed = 7.5;
-                this->maxSpeed = 350;
-                this->state = STATE_CROUCHING;
-            }
-            break;
-
-        case STATE_CROUCHING:
-            if(!keyStates[GameKeys::DOWN]){
-                this->speed = 15;
-                this->maxSpeed = 500;
-                this->state = STATE_STANDING;
-            }
-            break;
-
-        case STATE_ROLLING:
-            this->vx = 70*this->speed;
-            this->state = STATE_STANDING;
-            break;
-*/
-
 void Player::setLevelWH(unsigned int width_, unsigned int height_){
     this->levelW = width_;
     this->levelH = height_;
@@ -139,6 +112,7 @@ void Player::initializeStates(){
     Player::actionIdle = new ActionIdle();
     Player::actionAerial = new ActionAerial();
     Player::actionMoving = new ActionMoving();
+    Player::actionRolling = new ActionRolling();
 }
 
 void Player::destroyStates(){
@@ -146,7 +120,7 @@ void Player::destroyStates(){
     delete Player::actionIdle;
     delete Player::actionAerial;
     delete Player::actionMoving;
-    //delete Player::actionRolling;
+    delete Player::actionRolling;
     //delete Player::actionCrouching;
 }
 
@@ -187,4 +161,8 @@ void Player::move(bool movingLeft_, bool movingRight_){
 
 void Player::slowVx(){
     this->vx *= 0.8;
+}
+
+void Player::roll(){
+    this->vx = 70 * this->speed;
 }
