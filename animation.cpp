@@ -124,16 +124,22 @@ bool loadMedia()
 
 void close()
 {
+
 	//Deallocate surface
 	SDL_FreeSurface( gXOut );
 	gXOut = nullptr;
 
-	SDL_DestroyTexture(sdlTexture);
-	sdlTexture = nullptr;
-
 	//Destroy window
 	SDL_DestroyWindow( sdlWindow );
 	sdlWindow = nullptr;
+
+	//Destroy renderer
+	SDL_DestroyRenderer(sdlRenderer);
+	sdlRenderer = nullptr;
+
+	//Destroy texture
+	SDL_DestroyTexture(sdlTexture);
+	sdlTexture = nullptr;
 
 	//Quit SDL subsystems
 	SDL_Quit();
