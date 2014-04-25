@@ -3,7 +3,7 @@
 
 #include "SDLWrapper.h"
 #include "Window.h"
-#include "State.h"
+#include "GameState.h"
 
 /**
 * Main structure class for the game.
@@ -48,21 +48,21 @@ class Game {
 
 		/**
 		* Sets the current game state.
-		* @see State::load()
-		* @see State::unload()
+		* @see GameState::load()
+		* @see GameState::unload()
 		* @param state_ : The state you want to be changed into. All states are inside Game.
 		*/
-		static void setState(State& state_);
+		static void setState(GameState& state_);
 
-		static State* stateSplash; /**< The logo splash screen. First state of the game. */
-		static State* levelOne; /**< First game level. */
+		static GameState* stateSplash; /**< The logo splash screen. First state of the game. */
+		static GameState* levelOne; /**< First game level. */
 		
 	private:
 		Window *window; /**< The game Window. */
 		bool isRunning; /**< Whether the game is currently running/looping or not. */		
 		FPSmanager fpsManager; /**< The FPSManager from SDL2_GFX. Handles the framerate
 			capping. */
-		static State* currentState; /**< The current state, which the game is in. */
+		static GameState* currentState; /**< The current state, which the game is in. */
 
 };
 

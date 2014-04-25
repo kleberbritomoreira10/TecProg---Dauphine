@@ -3,7 +3,7 @@
 
 #include "Sprite.h"
 #include "Player.h"
-#include "State.h"
+#include "GameState.h"
 
 class Player;
 
@@ -11,7 +11,7 @@ class Player;
 * Abstract class for levels.
 * Contains a background, player and a camera.
 */
-class Action : public State {
+class Action : public GameState {
 	
 	public:	
 		/**

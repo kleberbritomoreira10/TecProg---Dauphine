@@ -6,14 +6,14 @@
 #include <list>
 using std::list;
 
-class State {
+class GameState {
 
 	public:
 		/**
 		* The destructor.
 		* 
 		*/
-		virtual ~State();
+		virtual ~GameState();
 
 		/**
 		* Loads necessary objects.

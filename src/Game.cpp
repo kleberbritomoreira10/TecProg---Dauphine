@@ -5,9 +5,9 @@
 #include "StateSplash.h"
 #include "LevelOne.h"
 
-State* Game::currentState = nullptr;
-State* Game::stateSplash = nullptr;
-State* Game::levelOne = nullptr;
+GameState* Game::currentState = nullptr;
+GameState* Game::stateSplash = nullptr;
+GameState* Game::levelOne = nullptr;
 
 Game::Game(Window* window_) :
 	window(window_),
@@ -83,7 +83,7 @@ void Game::runGame(){
 
 }
 
-void Game::setState(State& state_){
+void Game::setState(GameState& state_){
 	/// @todo Implement the transition between states.
 	Game::currentState->unload();
 	Game::currentState = &state_;

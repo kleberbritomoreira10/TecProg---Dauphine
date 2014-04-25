@@ -1,10 +1,10 @@
 #ifndef INCLUDE_STATESPLASH_H
 #define INCLUDE_STATESPLASH_H
 
-#include "State.h"
+#include "GameState.h"
 #include "Sprite.h"
 
-class StateSplash : public State {
+class StateSplash : public GameState {
 
 	public:
 		/**
@@ -25,7 +25,7 @@ class StateSplash : public State {
 		virtual void load();
 
 		/**
-		* Updates the objects within the State.
+		* Updates the objects within the GameState.
 		* @param dt_ : Delta time. Time elapsed between one frame and the other.
 		*/
 		virtual void update(double dt_);
