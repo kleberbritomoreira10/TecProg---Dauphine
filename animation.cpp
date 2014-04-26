@@ -71,7 +71,7 @@ bool loadMedia()
 	// The final texture.
 	SDL_Texture* newTexture = nullptr;
 
-	SDL_Surface* loadedSurface = IMG_Load("nadine.png");
+	SDL_Surface* loadedSurface = IMG_Load("nadineSprite.png");
 	if(loadedSurface != nullptr){
 
         newTexture = SDL_CreateTextureFromSurface(sdlRenderer, loadedSurface);
@@ -136,6 +136,15 @@ int main( int argc, char* args[] )
 			//Event handler
 			SDL_Event e;
 
+			int lastdt = SDL_GetTicks();
+
+		    //Quanto tempo desde a ultima troca de frame
+		    int totalElapsedTime = 0;
+		    //Delay em ms para mudar o frame
+		    int delay = 200;
+
+		    int x = 0;
+
 			//While application is running
 			while( !quit )
 			{
@@ -149,9 +158,25 @@ int main( int argc, char* args[] )
 					}
 				}
 
-				SDL_Rect renderQuad = {0, 0, 200, 200};
+				//Indica quanto tempo, em ms, se passou desde ultimo frame
+		        int dt = SDL_GetTicks() - lastdt;
+		        lastdt = SDL_GetTicks();
 
-				int successfullRender = SDL_RenderCopyEx(sdlRenderer, sdlTexture, nullptr,
+				SDL_Rect renderQuad = {50, 50, 229, 229};
+				SDL_Rect clip = {x,0,229,229};
+
+				//Verifica se mudou frame
+		        totalElapsedTime += dt;
+		        if(totalElapsedTime >= delay) {
+		            totalElapsedTime -= delay;
+		            x += 229;
+		            if(x > 11*229)
+		            	x=0;
+		        }
+
+				SDL_RenderClear(sdlRenderer);
+
+				int successfullRender = SDL_RenderCopyEx(sdlRenderer, sdlTexture, &clip,
 					&renderQuad, 0.0, nullptr, SDL_FLIP_NONE);
 	
 				if(successfullRender != 0){
