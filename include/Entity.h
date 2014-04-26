@@ -22,7 +22,7 @@ class Entity {
 		* 	entity.
 		* @param dt_ : Delta time. Time elapsed between one frame and the other.
 		*/
-		virtual void update(double dt_) = 0;
+		virtual void update(const double dt_) = 0;
 
 		/**
 		* Renders the entity.

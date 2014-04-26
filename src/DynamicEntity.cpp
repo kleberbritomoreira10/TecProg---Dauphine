@@ -17,7 +17,12 @@ DynamicEntity::~DynamicEntity(){
     
 }
 
-void DynamicEntity::updatePosition(double dt_){
+void DynamicEntity::setLevelWH(unsigned int width_, unsigned int height_){
+    this->levelW = width_;
+    this->levelH = height_;
+}
+
+void DynamicEntity::updatePosition(const double dt_){
     /// @todo Fix all these magic/weird numbers.
     this->x += this->vx * dt_;
 

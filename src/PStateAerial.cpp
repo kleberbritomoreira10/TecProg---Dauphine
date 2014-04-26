@@ -13,7 +13,7 @@ void PStateAerial::handleInput(const array<bool, GameKeys::MAX> keyStates_){
 
 	// Idle
     if(this->player->isGrounded){
-    	this->player->changeState((*Player::actionIdle));
+    	this->player->changeState((*Player::stateIdle));
     	return;
     }
 

@@ -2,12 +2,12 @@
 #include "InputHandler.h"
 #include "FPSWrapper.h"
 #include "Logger.h"
-#include "StateSplash.h"
+#include "GStateSplash.h"
 #include "LevelOne.h"
 
-GameState* Game::currentState = nullptr;
-GameState* Game::stateSplash = nullptr;
-GameState* Game::levelOne = nullptr;
+StateGame* Game::currentState = nullptr;
+StateGame* Game::stateSplash = nullptr;
+StateGame* Game::levelOne = nullptr;
 
 Game::Game(Window* window_) :
 	window(window_),
@@ -83,7 +83,7 @@ void Game::runGame(){
 
 }
 
-void Game::setState(GameState& state_){
+void Game::setState(StateGame& state_){
 	/// @todo Implement the transition between states.
 	Game::currentState->unload();
 	Game::currentState = &state_;
@@ -92,7 +92,7 @@ void Game::setState(GameState& state_){
 
 void Game::initializeStates(){
 	// Initialize all the states in Game here.
-	Game::stateSplash = new StateSplash();
+	Game::stateSplash = new GStateSplash();
 	Game::levelOne = new LevelOne();
 }
 

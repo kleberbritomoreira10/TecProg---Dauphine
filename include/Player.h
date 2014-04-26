@@ -4,9 +4,9 @@
 #include "DynamicEntity.h"
 #include "Sprite.h"
 #include "InputKeys.h"
-#include "PlayerState.h"
+#include "StatePlayer.h"
 
-class PlayerState;
+class StatePlayer;
 
 /**
 * The player entity class.
@@ -37,7 +37,7 @@ class Player : public DynamicEntity {
 		* @param dt_ : Delta time. Time elapsed between one frame and the other, independent
 		* 	of processing speed.
 		*/
-		virtual void update(double dt_);
+		virtual void update(const double dt_);
 
 		/**
 		* Renders the player.
@@ -47,12 +47,6 @@ class Player : public DynamicEntity {
 		* @param cameraY_ : The y position of the camera.
 		*/
 		virtual void render(const double cameraX_, const double cameraY_);
-
-		/**
-		* @param width_,height_ : Tells the player what the width and height of the level is.
-		* @see Level::update()
-		*/
-		void setLevelWH(unsigned int width_, unsigned int height_);
 
 		/**
 		* Loads all the states.
@@ -68,23 +62,20 @@ class Player : public DynamicEntity {
 
 		/**
 		* Sets the current game state.
-		* @see PlayerState::load
-		* @see PlayerState::unload
+		* @see StatePlayer::load
+		* @see StatePlayer::unload
 		* @param state_ : The state you want to be changed into. All states are inside Player.
 		*/
-		static void changeState(PlayerState& state_);
+		static void changeState(StatePlayer& state_);
 
-		static PlayerState* actionIdle; /**< The action of stand. First state of the player. */
-		static PlayerState* actionAerial; /**< The action of */
-		static PlayerState* actionMoving; /**< The action of */
-		static PlayerState* actionRolling; /**< The action of */
-		static PlayerState* actionCrouching; /**< The action of */
+		static StatePlayer* stateIdle; /**< For PStateIdle. */
+		static StatePlayer* stateAerial; /**< For PStateAerial. */
+		static StatePlayer* stateMoving; /**< For PStateMoving. */
+		static StatePlayer* stateRolling; /**< For PStateRolling. */
+		static StatePlayer* stateCrouching; /**< For PStateCrouching. */
 
 	private:
-		
-		static PlayerState* currentAction; /**< The current action, which the player is in. */
-
-		
+		static StatePlayer* currentState; /**< The current state, which the player is in. */	
 		
 };
 

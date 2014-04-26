@@ -11,7 +11,7 @@ class Tile : public Entity {
 
 		Tile(double x_, double y_, Sprite* sprite_);
 		virtual ~Tile();
-		virtual void update(double dt_);
+		virtual void update(const double dt_);
 		virtual void render(const double cameraX_, const double cameraY_);
 		bool isSolid();
 

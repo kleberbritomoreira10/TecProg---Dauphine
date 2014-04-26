@@ -8,12 +8,12 @@
 #include "PStateMoving.h"
 #include "PStateRolling.h"
 
-PlayerState* Player::currentAction = nullptr;
-PlayerState* Player::actionIdle = nullptr;
-PlayerState* Player::actionAerial = nullptr;
-PlayerState* Player::actionMoving = nullptr;
-PlayerState* Player::actionRolling = nullptr;
-PlayerState* Player::actionCrouching = nullptr;
+StatePlayer* Player::currentState = nullptr;
+StatePlayer* Player::stateIdle = nullptr;
+StatePlayer* Player::stateAerial = nullptr;
+StatePlayer* Player::stateMoving = nullptr;
+StatePlayer* Player::stateRolling = nullptr;
+StatePlayer* Player::stateCrouching = nullptr;
 
 Player::Player(double x_, double y_, Sprite* sprite_) :
     DynamicEntity(x_, y_, sprite_)
@@ -25,9 +25,9 @@ Player::Player(double x_, double y_, Sprite* sprite_) :
         this->width = this->sprite->getWidth();
         this->height = this->sprite->getHeight();
 
-        Player::currentAction = Player::actionIdle;
-        Player::currentAction->player = this;
-        Player::currentAction->enter();
+        Player::currentState = Player::stateIdle;
+        Player::currentState->player = this;
+        Player::currentState->enter();
 	}
     else{
         Logger::warning("No sprite set for the player! Null sprite.");
@@ -35,8 +35,8 @@ Player::Player(double x_, double y_, Sprite* sprite_) :
 }
 
 Player::~Player(){
-    if(this->currentAction != nullptr){
-        this->currentAction->exit();
+    if(this->currentState != nullptr){
+        this->currentState->exit();
     }
 
     Player::destroyStates();
@@ -48,11 +48,11 @@ Player::~Player(){
     }
 }
 
-void Player::update(double dt_){
+void Player::update(const double dt_){
     InputHandler* inputHandler = InputHandler::getInstance();
     array<bool, GameKeys::MAX> keyStates = inputHandler->getKeyStates();
 
-    Player::currentAction->handleInput(keyStates);
+    Player::currentState->handleInput(keyStates);
     updatePosition(dt_);
 }
 
@@ -64,35 +64,30 @@ void Player::render(const double cameraX_, const double cameraY_){
     }
 }
 
-void Player::setLevelWH(unsigned int width_, unsigned int height_){
-    this->levelW = width_;
-    this->levelH = height_;
-}
-
 void Player::initializeStates(){
     // Initialize all the states in Player here.
-    Player::actionIdle = new PStateIdle();
-    Player::actionAerial = new PStateAerial();
-    Player::actionMoving = new PStateMoving();
-    Player::actionRolling = new PStateRolling();
+    Player::stateIdle = new PStateIdle();
+    Player::stateAerial = new PStateAerial();
+    Player::stateMoving = new PStateMoving();
+    Player::stateRolling = new PStateRolling();
 }
 
 void Player::destroyStates(){
     // Delete all the states in Player here.
-    delete Player::actionIdle;
-    delete Player::actionAerial;
-    delete Player::actionMoving;
-    delete Player::actionRolling;
-    //delete Player::actionCrouching;
+    delete Player::stateIdle;
+    delete Player::stateAerial;
+    delete Player::stateMoving;
+    delete Player::stateRolling;
+    //delete Player::stateCrouching;
 }
 
-void Player::changeState(PlayerState& state_){
-    Player* l_player = Player::currentAction->player;
+void Player::changeState(StatePlayer& state_){
+    Player* l_player = Player::currentState->player;
     
-    Player::currentAction->exit();
-    Player::currentAction = &state_;
+    Player::currentState->exit();
+    Player::currentState = &state_;
 
-    Player::currentAction->player = l_player;
-    Player::currentAction->enter();
+    Player::currentState->player = l_player;
+    Player::currentState->enter();
 }
 
