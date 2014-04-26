@@ -4,13 +4,13 @@
 #include "Sprite.h"
 #include "Player.h"
 #include "Camera.h"
-#include "State.h"
+#include "StateGame.h"
 
 /**
 * Abstract class for levels.
 * Contains a background, player and a camera.
 */
-class Level : public State {
+class Level : public StateGame {
 	
 	public:	
 		/**

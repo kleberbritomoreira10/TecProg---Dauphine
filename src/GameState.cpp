@@ -1,14 +1,14 @@
-#include "State.h"
+#include "StateGame.h"
 
-State::~State(){
+StateGame::~StateGame(){
 	cleanEntities();
 }
 
-void State::addEntity(Entity *entity){
+void StateGame::addEntity(Entity *entity){
 	this->entities.push_back(entity);
 }
 
-void State::cleanEntities(){
+void StateGame::cleanEntities(){
 	if(!this->entities.empty()){
 		for(list<Entity *>::iterator it = this->entities.begin(); it != this->entities.end();
 			it++){

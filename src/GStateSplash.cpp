@@ -1,11 +1,11 @@
-#include "StateSplash.h"
+#include "GStateSplash.h"
 #include "LuaScript.h"
 #include "Game.h"
 
 #include <string>
 using std::string;
 
-StateSplash::StateSplash() :
+GStateSplash::GStateSplash() :
 	splash(nullptr),
 	passedTime(0.0),
 	lifeTime(0.0)
@@ -13,11 +13,11 @@ StateSplash::StateSplash() :
 
 }
 
-StateSplash::~StateSplash(){
+GStateSplash::~GStateSplash(){
 
 }
 
-void StateSplash::update(double dt_){
+void GStateSplash::update(double dt_){
 	this->passedTime += dt_;
 
 	if(this->passedTime >= this->lifeTime){
@@ -26,7 +26,7 @@ void StateSplash::update(double dt_){
 
 }
 
-void StateSplash::load(){
+void GStateSplash::load(){
 	LuaScript luaSplash("lua/Splash.lua");
 	const string splashPath = luaSplash.unlua_get<string>("splash.spritePath");
 	const double luaLifeTime = luaSplash.unlua_get<double>("splash.lifeTime");
@@ -37,7 +37,7 @@ void StateSplash::load(){
 	this->lifeTime = luaLifeTime;
 }
 
-void StateSplash::unload(){
+void GStateSplash::unload(){
 	if(this->splash != nullptr){
 		this->splash->free();
 		delete this->splash;
@@ -47,7 +47,7 @@ void StateSplash::unload(){
 	cleanEntities();
 }
 
-void StateSplash::render(){
+void GStateSplash::render(){
 	if(this->splash != nullptr){
 		this->splash->render(0, 0);
 	}

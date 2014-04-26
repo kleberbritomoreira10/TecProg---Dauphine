@@ -6,14 +6,17 @@
 #include <list>
 using std::list;
 
-class State {
+/**
+* Parent class for other game states.
+*/
+class StateGame {
 
 	public:
 		/**
 		* The destructor.
 		* 
 		*/
-		virtual ~State();
+		virtual ~StateGame();
 
 		/**
 		* Loads necessary objects.
@@ -52,7 +55,6 @@ class State {
 		void cleanEntities();
 
 	protected:
-
 		list<Entity*> entities; /**< List of all the entities in the state. */
 
 };
