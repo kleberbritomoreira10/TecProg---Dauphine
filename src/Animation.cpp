@@ -18,18 +18,22 @@ Animation::~Animation(){
 
 void Animation::update(SDL_Rect *clip, int dt_, double deltaT_){
 
-	//Verifica se mudou frame
+	// Compare the position on the sprite with the number of positions to know if is the
+	// end of the animation.
+	bool endOfAnimation = (this->posX + 1) >= this->numberOfImages;
+
+	// Verifica se mudou frame.
     this->totalElapsedTime += dt_;
     if(this->totalElapsedTime >= (int) deltaT_) {
         this->totalElapsedTime -= (int) deltaT_;
         this->posX += 1;
         if(this->isLoop){
-        	if(this->posX >= this->numberOfImages){
+        	if(endOfAnimation){
         		this->posX= 0;
         	}
     	}
     	else {
-    		if(this->posX >= this->numberOfImages){
+    		if(endOfAnimation){
         		this->posX -= 1;
         	}
     	}
@@ -37,10 +41,12 @@ void Animation::update(SDL_Rect *clip, int dt_, double deltaT_){
 
    	int positionX_ = this->posX * this->spriteWidth;
 	int positionY_ = this->posY * this->spriteHeight;
+	updateClip(clip, positionX_, positionY_, this->spriteWidth, this->spriteHeight);
+}
 
-    clip->x = positionX_;
+void Animation::updateClip(SDL_Rect *clip, int positionX_, int positionY_, int spriteWidth_, int spriteHeight_ ){
+	clip->x = positionX_;
 	clip->y = positionY_;
-	clip->w = this->spriteWidth;
-	clip->h = this->spriteHeight;
-
+	clip->w = spriteWidth_;
+	clip->h = spriteHeight_;
 }

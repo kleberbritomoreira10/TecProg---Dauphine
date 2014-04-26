@@ -14,6 +14,8 @@ class Animation{
 
 		void update(SDL_Rect *clip, int dt_, double deltaT_);
 
+		void updateClip(SDL_Rect *clip, int positionX_, int positionY_, int spriteWidth_, int spriteHeight_ );
+
 		int posX;
 		int posY;
 		int spriteWidth;
