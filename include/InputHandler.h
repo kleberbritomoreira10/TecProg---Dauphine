@@ -3,6 +3,7 @@
 
 #include "SDLWrapper.h"
 #include "InputKeys.h"
+#include "ControlWrapper.h"
 
 #include <array>
 using std::array;

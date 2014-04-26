@@ -1,4 +1,5 @@
 #include "InputHandler.h"
+#include "ControlWrapper.h"
 
 InputHandler* InputHandler::instance = nullptr;
 
@@ -23,14 +24,20 @@ InputHandler::~InputHandler(){
 }
 
 void InputHandler::handleInput(){
+
 	int pendingEvent = 0;
+	
+	SDL_GameController* _gameController = SDL_GameControllerOpen(0);
+
+	// ControlWrapper::decide();
+
 	do{
 		pendingEvent = SDL_PollEvent(&this->eventHandler); 
-		
+
 		// On keydown.
 		if(this->eventHandler.type == SDL_KEYDOWN){
 			switch(this->eventHandler.key.keysym.sym){
-				case SDLK_UP: // Jump.
+				case SDLK_SPACE: // Jump.
 					this->keyStates[GameKeys::UP] = true;
 					break;
 				case SDLK_LEFT: // Move left.
@@ -38,9 +45,6 @@ void InputHandler::handleInput(){
 					break;
 				case SDLK_RIGHT: // Move right.
 					this->keyStates[GameKeys::RIGHT] = true;
-					break;
-				case SDLK_DOWN: // Move down.
-					this->keyStates[GameKeys::DOWN] = true;
 					break;
 				case SDLK_c: // Roll.
 					this->keyStates[GameKeys::ROLL] = true;
@@ -53,7 +57,7 @@ void InputHandler::handleInput(){
 		// On keyup.
 		else if(this->eventHandler.type == SDL_KEYUP){
 			switch(this->eventHandler.key.keysym.sym){
-				case SDLK_UP: // Jump.
+				case SDLK_SPACE: // Jump.
 					this->keyStates[GameKeys::UP] = false;
 					break;
 				case SDLK_LEFT: // Move left.
@@ -61,9 +65,6 @@ void InputHandler::handleInput(){
 					break;
 				case SDLK_RIGHT: // Move right.
 					this->keyStates[GameKeys::RIGHT] = false;
-					break;
-				case SDLK_DOWN: // Move down.
-					this->keyStates[GameKeys::DOWN] = false;
 					break;
 				case SDLK_c: // Roll.
 					this->keyStates[GameKeys::ROLL] = false;
@@ -73,7 +74,7 @@ void InputHandler::handleInput(){
 			}
 		}
 		
-		// On window exit (X).
+		//On window exit (X).
 		else if(this->eventHandler.type == SDL_QUIT){
 	    	this->quit = true;
 	    }

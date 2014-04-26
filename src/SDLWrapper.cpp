@@ -1,6 +1,7 @@
 #include "SDLWrapper.h"
 #include "AudioHandler.h"
 #include "Logger.h"
+#include "ControlWrapper.h"
 
 bool SDLWrapper::initialize(){
 	/// @todo Initialize SDL_Mixer and SDL_TTF. And not do INIT_EVERYTHING.
@@ -39,6 +40,12 @@ bool SDLWrapper::initialize(){
 	else{
 		Logger::errorSDL("Could not initialize SDL_Mixer", Mix_GetError());
 	}
+
+	/**
+	*Initializes controller Wrapper. 
+	*No need to check for failures as it will default back to keyboard in case it does not manage to initialize properly
+	*/
+	ControlWrapper* controlWrapper = ControlWrapper::getInstance();
 
 	// If even one system fails to initialize, returns false.
 	return (initSDL && initIMG && initMixer);

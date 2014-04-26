@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "InputHandler.h"
+#include "ControlWrapper.h"
 #include "FPSWrapper.h"
 #include "Logger.h"
 #include "StateSplash.h"
@@ -44,7 +45,7 @@ void Game::runGame(){
 	
 	// Creating the input handler.
 	InputHandler* inputHandler = InputHandler::getInstance();
-	
+
 	// Get the first game time.
 	double totalGameTime = 0.0;
 	const double deltaTime = 1.0 / 60.0;
