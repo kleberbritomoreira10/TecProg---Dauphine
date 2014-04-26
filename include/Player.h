@@ -1,7 +1,7 @@
 #ifndef INCLUDE_PLAYER_H
 #define INCLUDE_PLAYER_H
 
-#include "Entity.h"
+#include "DynamicEntity.h"
 #include "Sprite.h"
 #include "InputKeys.h"
 #include "PlayerState.h"
@@ -12,7 +12,7 @@ class PlayerState;
 * The player entity class.
 * Contains all the relevant implementation relative to the player.
 */
-class Player : public Entity {
+class Player : public DynamicEntity {
 
 	public:
 		/**
@@ -49,14 +49,6 @@ class Player : public Entity {
 		virtual void render(const double cameraX_, const double cameraY_);
 
 		/**
-		* Updates the players position.
-		* Update is based on what input was recieved, and the players velocity.
-		* @param dt_ : Delta time. Time elapsed between one frame and the other, independent
-		* 	of processing speed.
-		*/
-		void updatePosition(double dt_);
-
-		/**
 		* @param width_,height_ : Tells the player what the width and height of the level is.
 		* @see Level::update()
 		*/
@@ -88,24 +80,11 @@ class Player : public Entity {
 		static PlayerState* actionRolling; /**< The action of */
 		static PlayerState* actionCrouching; /**< The action of */
 
-		double vx; /**< The player's speed on the x axis. */
-		double vy; /**< The player's speed on the x axis. */
-		double speed; /**< Speed that moves player on input. */
-		double maxSpeed; /**< Player max speed. */
-		bool isGrounded;
-
-		void jump();
-		void applyGravity();
-		void move(bool movingLeft_, bool movingRight_);
-		void slowVx();
-		void roll();
-
 	private:
 		
 		static PlayerState* currentAction; /**< The current action, which the player is in. */
 
-		unsigned int levelW; /**< The width of the level. */
-		unsigned int levelH; /**< The height of the level. */
+		
 		
 };
 
