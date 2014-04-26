@@ -4,9 +4,9 @@
 #include "Entity.h"
 #include "Sprite.h"
 #include "InputKeys.h"
-#include "Action.h"
+#include "PlayerState.h"
 
-class Action;
+class PlayerState;
 
 /**
 * The player entity class.
@@ -76,17 +76,17 @@ class Player : public Entity {
 
 		/**
 		* Sets the current game state.
-		* @see Action::load
-		* @see Action::unload
+		* @see PlayerState::load
+		* @see PlayerState::unload
 		* @param state_ : The state you want to be changed into. All states are inside Player.
 		*/
-		static void setAction(Action& action_);
+		static void changeState(PlayerState& state_);
 
-		static Action* actionIdle; /**< The action of stand. First state of the player. */
-		static Action* actionAerial; /**< The action of */
-		static Action* actionMoving; /**< The action of */
-		static Action* actionRolling; /**< The action of */
-		static Action* actionCrouching; /**< The action of */
+		static PlayerState* actionIdle; /**< The action of stand. First state of the player. */
+		static PlayerState* actionAerial; /**< The action of */
+		static PlayerState* actionMoving; /**< The action of */
+		static PlayerState* actionRolling; /**< The action of */
+		static PlayerState* actionCrouching; /**< The action of */
 
 		double vx; /**< The player's speed on the x axis. */
 		double vy; /**< The player's speed on the x axis. */
@@ -102,7 +102,7 @@ class Player : public Entity {
 
 	private:
 		
-		static Action* currentAction; /**< The current action, which the player is in. */
+		static PlayerState* currentAction; /**< The current action, which the player is in. */
 
 		unsigned int levelW; /**< The width of the level. */
 		unsigned int levelH; /**< The height of the level. */
