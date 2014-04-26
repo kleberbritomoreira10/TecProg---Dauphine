@@ -50,7 +50,6 @@
       <li><a href="functions.html"><span>All</span></a></li>
       <li class="current"><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
-      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
@@ -80,7 +79,7 @@
 
 <h3><a class="anchor" id="index_a"></a>- a -</h3><ul>
 <li>addEntity()
-: <a class="el" href="class_state.html#a53a41483850524b811e57dca3cd75a3b">State</a>
+: <a class="el" href="class_state_game.html#a6f6f76fbd5af8f4063d46f8072f9bde4">StateGame</a>
 </li>
 <li>AudioHandler()
 : <a class="el" href="class_audio_handler.html#a605b5c91270eb7cad7a0ac60b354b56b">AudioHandler</a>
@@ -98,8 +97,11 @@
 <li>changeMusic()
 : <a class="el" href="class_audio_handler.html#a46937b175d26ac912546d81238ad3337">AudioHandler</a>
 </li>
+<li>changeState()
+: <a class="el" href="class_player.html#a3a8534a7a75d9685cdce479b4dba2ca0">Player</a>
+</li>
 <li>cleanEntities()
-: <a class="el" href="class_state.html#aa137595a6ecce6aa1f13049d4cf41088">State</a>
+: <a class="el" href="class_state_game.html#a996bc9fb1ac73c0a71cefac045b7d1a5">StateGame</a>
 </li>
 <li>clear()
 : <a class="el" href="class_window.html#a38bc43bdd1a97e5de7f346ba4c3957ef">Window</a>
@@ -121,12 +123,23 @@
 : <a class="el" href="class_window.html#aa89262ad2538473c8d7e4d8dd641849d">Window</a>
 </li>
 <li>destroyStates()
-: <a class="el" href="class_game.html#a684834abb420aba6d30094d1fe273818">Game</a>
+: <a class="el" href="class_player.html#aa7fe1da9ddea5a64d2d6b41d80a0869c">Player</a>
+, <a class="el" href="class_game.html#a684834abb420aba6d30094d1fe273818">Game</a>
+</li>
+<li>DynamicEntity()
+: <a class="el" href="class_dynamic_entity.html#a5fbd000bacef64a0ef979ba8f357808f">DynamicEntity</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_e"></a>- e -</h3><ul>
+<li>enter()
+: <a class="el" href="class_p_state_aerial.html#ae5ba98d2733d9a12b46cc2dbcc8df382">PStateAerial</a>
+, <a class="el" href="class_p_state_idle.html#a204ccf37e39c602aee4f4274c225870e">PStateIdle</a>
+, <a class="el" href="class_p_state_rolling.html#a62ce8aca46f311c1cb5a7ed15fbe96ea">PStateRolling</a>
+, <a class="el" href="class_state_player.html#a2caafa2a86685e8c74265ecfe76fad66">StatePlayer</a>
+, <a class="el" href="class_p_state_moving.html#a10c2afe400856e138167ea9f617f88fe">PStateMoving</a>
+</li>
 <li>Entity()
 : <a class="el" href="class_entity.html#adfaf4b4303373536f38f67fcdbac9151">Entity</a>
 </li>
@@ -135,6 +148,13 @@
 </li>
 <li>errorSDL()
 : <a class="el" href="class_logger.html#a69d45ba5d15f650bf5bc86d04b89cdfe">Logger</a>
+</li>
+<li>exit()
+: <a class="el" href="class_p_state_idle.html#ac3e11af69ca67e654e7bb504ee59ac4e">PStateIdle</a>
+, <a class="el" href="class_p_state_rolling.html#a2d60f150e60306011abc6ae2e54900e9">PStateRolling</a>
+, <a class="el" href="class_p_state_moving.html#a4408eb59d5f12e44406c2de9f8669e23">PStateMoving</a>
+, <a class="el" href="class_state_player.html#ae4a8a6649c2dcf00cda216712ab2c220">StatePlayer</a>
+, <a class="el" href="class_p_state_aerial.html#a697b7a47881088021e0fcfce9e022b70">PStateAerial</a>
 </li>
 </ul>
 
@@ -204,12 +224,20 @@
 <li>getWindowTitle()
 : <a class="el" href="class_configuration.html#a7f0cadcd7cb4a78a861dbc502f4e333d">Configuration</a>
 </li>
+<li>GStateSplash()
+: <a class="el" href="class_g_state_splash.html#a692d8a50a69c9e9d19bb2bff937fe35b">GStateSplash</a>
+</li>
 </ul>
 
 
 <h3><a class="anchor" id="index_h"></a>- h -</h3><ul>
 <li>handleInput()
 : <a class="el" href="class_input_handler.html#a820f483265aa3f6da39b9d93c1311966">InputHandler</a>
+, <a class="el" href="class_state_player.html#a1cfd998737ed4154a7e26e55aaaf6433">StatePlayer</a>
+, <a class="el" href="class_p_state_rolling.html#a777d932c83d0e42c5dec3a9452b8f3ed">PStateRolling</a>
+, <a class="el" href="class_p_state_moving.html#a03f9b00b910b166ec7491daf2bee3e21">PStateMoving</a>
+, <a class="el" href="class_p_state_idle.html#a1cefd39bcf541c174340735c77955657">PStateIdle</a>
+, <a class="el" href="class_p_state_aerial.html#a0baa861057b80248aebca534b211d355">PStateAerial</a>
 </li>
 </ul>
 
@@ -222,7 +250,8 @@
 , <a class="el" href="class_f_p_s_wrapper.html#ac5849b5e6229efba666b19282f08bfa0">FPSWrapper</a>
 </li>
 <li>initializeStates()
-: <a class="el" href="class_game.html#afc16bd0d077c53218c27f16e0bf56cbb">Game</a>
+: <a class="el" href="class_player.html#acadd0200d2f8cf6dd09f7a1fc68b0c8a">Player</a>
+, <a class="el" href="class_game.html#afc16bd0d077c53218c27f16e0bf56cbb">Game</a>
 </li>
 <li>InputHandler()
 : <a class="el" href="class_input_handler.html#a698aa4af4f326a9881835fda251ca996">InputHandler</a>
@@ -238,9 +267,9 @@
 : <a class="el" href="class_level_one.html#a3fe4df62466654e6e7617377c8bd67a7">LevelOne</a>
 </li>
 <li>load()
-: <a class="el" href="class_state.html#a9bd7c8e4125d963e1f86dd40ff385302">State</a>
-, <a class="el" href="class_state_splash.html#a60e645ec37ab22c06ba6fa9ffda2db64">StateSplash</a>
-, <a class="el" href="class_level_one.html#ac50584197a1b4858db61f4e00d15b41d">LevelOne</a>
+: <a class="el" href="class_level_one.html#ac50584197a1b4858db61f4e00d15b41d">LevelOne</a>
+, <a class="el" href="class_state_game.html#a924e531e28b8afcbb82858eecef0a084">StateGame</a>
+, <a class="el" href="class_g_state_splash.html#a8bc32551059c49598b9254bfb9c7ee31">GStateSplash</a>
 </li>
 <li>loadFrom()
 : <a class="el" href="class_sprite.html#a049d9b15153d7b619e051a8f912f7ff6">Sprite</a>
@@ -274,19 +303,31 @@
 <li>playMusic()
 : <a class="el" href="class_audio_handler.html#aa2a12ba2a153edefb2d9229767f04b47">AudioHandler</a>
 </li>
+<li>PStateAerial()
+: <a class="el" href="class_p_state_aerial.html#af7126c560054105cd229c1c2803e907d">PStateAerial</a>
+</li>
+<li>PStateIdle()
+: <a class="el" href="class_p_state_idle.html#a19123b2e75f12f1bc11935aed6cd7a42">PStateIdle</a>
+</li>
+<li>PStateMoving()
+: <a class="el" href="class_p_state_moving.html#a894f84bec97a868383dd3e38f8b604de">PStateMoving</a>
+</li>
+<li>PStateRolling()
+: <a class="el" href="class_p_state_rolling.html#a54155aae7eb658320b938bc71d628516">PStateRolling</a>
+</li>
 </ul>
 
 
 <h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
 <li>render()
 : <a class="el" href="class_entity.html#a61e5674c0d1bb48b9ddc7ba0480b0d1a">Entity</a>
-, <a class="el" href="class_level_one.html#a215728d5a6306eebdd96fd994bee814d">LevelOne</a>
-, <a class="el" href="class_sprite.html#adb1c84ac16f4e748fcc0855d45a271ca">Sprite</a>
-, <a class="el" href="class_window.html#a0a2093bd2ed34740c08a6a2fdfc059c9">Window</a>
-, <a class="el" href="class_state.html#a71f5105bcdc39481be7684d853fe12e9">State</a>
-, <a class="el" href="class_tile.html#a620df1a25ceda06b78d68e095a982269">Tile</a>
-, <a class="el" href="class_state_splash.html#adf0548de28764ccf02c2d80262211742">StateSplash</a>
+, <a class="el" href="class_g_state_splash.html#ae4f3525db4cb4931e7bef1d71b196bb4">GStateSplash</a>
 , <a class="el" href="class_player.html#aa9f504c0cd5c4d9c7383ca78c1a36b46">Player</a>
+, <a class="el" href="class_window.html#a0a2093bd2ed34740c08a6a2fdfc059c9">Window</a>
+, <a class="el" href="class_sprite.html#adb1c84ac16f4e748fcc0855d45a271ca">Sprite</a>
+, <a class="el" href="class_tile.html#a620df1a25ceda06b78d68e095a982269">Tile</a>
+, <a class="el" href="class_state_game.html#a9e181e234d99aa11beead047152a8e92">StateGame</a>
+, <a class="el" href="class_level_one.html#a215728d5a6306eebdd96fd994bee814d">LevelOne</a>
 </li>
 <li>rescale()
 : <a class="el" href="class_window.html#a0d7c171a31ea6cf664a0f92ce4f29aaa">Window</a>
@@ -316,7 +357,7 @@
 </li>
 <li>setLevelWH()
 : <a class="el" href="class_camera.html#a7b60d73d2c0d5b8215bd5ce1b423d3c1">Camera</a>
-, <a class="el" href="class_player.html#abea2489d388d574e07732fa5d9d1d2db">Player</a>
+, <a class="el" href="class_dynamic_entity.html#ac1b13abb475e8b7b1916a3dc6fa78d47">DynamicEntity</a>
 </li>
 <li>setMusicVolume()
 : <a class="el" href="class_audio_handler.html#a68d00941dddc05e756d6eea507990f56">AudioHandler</a>
@@ -326,16 +367,13 @@
 , <a class="el" href="class_level_one.html#a04f152a47396c50da9802d612d503f0f">LevelOne</a>
 </li>
 <li>setState()
-: <a class="el" href="class_game.html#acc54f1426ac57696d849acd8f067b1f4">Game</a>
+: <a class="el" href="class_game.html#afe05f8509503232b658dbca59247f513">Game</a>
 </li>
 <li>signalQuit()
 : <a class="el" href="class_input_handler.html#abf21c50e1ab745a4df1d6ca2de9a8ece">InputHandler</a>
 </li>
 <li>Sprite()
 : <a class="el" href="class_sprite.html#ab127ae81ef8a93b9ddea9287edfedfdb">Sprite</a>
-</li>
-<li>StateSplash()
-: <a class="el" href="class_state_splash.html#aa7a94bd48f519a41807859a39533851f">StateSplash</a>
 </li>
 <li>stopMusic()
 : <a class="el" href="class_audio_handler.html#aeff0546d72fab5587f86c830efb6f40e">AudioHandler</a>
@@ -345,9 +383,9 @@
 
 <h3><a class="anchor" id="index_u"></a>- u -</h3><ul>
 <li>unload()
-: <a class="el" href="class_level_one.html#a1dac6d3ab33402ce8f1985e0809328e1">LevelOne</a>
-, <a class="el" href="class_state.html#ae66f8186af50a49d43de9e6f269a7c71">State</a>
-, <a class="el" href="class_state_splash.html#ac3fc0fd44f00944721d3e7a5183127f3">StateSplash</a>
+: <a class="el" href="class_g_state_splash.html#a0f5955e32c49d13b6eebe62e592a0db8">GStateSplash</a>
+, <a class="el" href="class_level_one.html#a1dac6d3ab33402ce8f1985e0809328e1">LevelOne</a>
+, <a class="el" href="class_state_game.html#aa7114cda03ff5ef57dc37c2e720e5634">StateGame</a>
 </li>
 <li>unlua_get()
 : <a class="el" href="class_lua_script.html#aa9f9c7356caaecbfbc794f6711f097d3">LuaScript</a>
@@ -368,19 +406,16 @@
 : <a class="el" href="class_lua_script.html#aa1774ae17ca90a1396e9f75c4c7acf1b">LuaScript</a>
 </li>
 <li>update()
-: <a class="el" href="class_entity.html#ad465a2bd9ba1d3e68ecd609a00e1df45">Entity</a>
-, <a class="el" href="class_player.html#a603db14db40c9596a9c8a513ea375350">Player</a>
-, <a class="el" href="class_tile.html#a276277a38455333e72cb4a75c8fbe650">Tile</a>
+: <a class="el" href="class_entity.html#a5fc199d856ead370374f90b9ab216b48">Entity</a>
+, <a class="el" href="class_tile.html#a4aaba0beda63e3807682bca439b01b58">Tile</a>
+, <a class="el" href="class_state_game.html#a5c85500632adc10301208ad46ebd3a11">StateGame</a>
+, <a class="el" href="class_player.html#a5fc1b10886df85d351a62dc5b88fe42d">Player</a>
+, <a class="el" href="class_g_state_splash.html#a4a46154d12deb78dbe2f4ec440b46fad">GStateSplash</a>
 , <a class="el" href="class_camera.html#a42cda7239981a5618660d04bd5893556">Camera</a>
-, <a class="el" href="class_state_splash.html#a774a9555c95dfab43dda699cc884c478">StateSplash</a>
 , <a class="el" href="class_level_one.html#ac19981c44a1885856303335f79f67425">LevelOne</a>
-, <a class="el" href="class_state.html#ac9f156dc81466b6adb086ed092f66afe">State</a>
-</li>
-<li>updateInput()
-: <a class="el" href="class_player.html#a4b20238e04015da71c61456091d2f1c9">Player</a>
 </li>
 <li>updatePosition()
-: <a class="el" href="class_player.html#a472840e169c3b375735279c06cde2ac1">Player</a>
+: <a class="el" href="class_dynamic_entity.html#a175c68f35b4c2bc1e80f12a4d73e5eed">DynamicEntity</a>
 , <a class="el" href="class_camera.html#aecf07f908ef1bfa2c2f1bb5cd4192d8d">Camera</a>
 </li>
 </ul>
@@ -410,11 +445,17 @@
 <li>~Camera()
 : <a class="el" href="class_camera.html#ad1897942d0ccf91052386388a497349f">Camera</a>
 </li>
+<li>~DynamicEntity()
+: <a class="el" href="class_dynamic_entity.html#a2b5f64d1928b49bfa45befad5af8894a">DynamicEntity</a>
+</li>
 <li>~Entity()
 : <a class="el" href="class_entity.html#adf6d3f7cb1b2ba029b6b048a395cc8ae">Entity</a>
 </li>
 <li>~Game()
 : <a class="el" href="class_game.html#ae3d112ca6e0e55150d2fdbc704474530">Game</a>
+</li>
+<li>~GStateSplash()
+: <a class="el" href="class_g_state_splash.html#a7fb79161a4f0c4ae20d4193a609dda53">GStateSplash</a>
 </li>
 <li>~InputHandler()
 : <a class="el" href="class_input_handler.html#ac1f7efb54b34d433d6ffba62627452b6">InputHandler</a>
@@ -431,14 +472,26 @@
 <li>~Player()
 : <a class="el" href="class_player.html#a749d2c00e1fe0f5c2746f7505a58c062">Player</a>
 </li>
+<li>~PStateAerial()
+: <a class="el" href="class_p_state_aerial.html#a829295e2ded69fc203d19d42171ce216">PStateAerial</a>
+</li>
+<li>~PStateIdle()
+: <a class="el" href="class_p_state_idle.html#a12b589307184363fa48c5a9a642239ed">PStateIdle</a>
+</li>
+<li>~PStateMoving()
+: <a class="el" href="class_p_state_moving.html#af8df38d0178df2f3dc5875ac484af2b8">PStateMoving</a>
+</li>
+<li>~PStateRolling()
+: <a class="el" href="class_p_state_rolling.html#a2d5b3503bf11dd184a0573369189b8d6">PStateRolling</a>
+</li>
 <li>~Sprite()
 : <a class="el" href="class_sprite.html#a8accab430f9d90ae5117b57d67e32b84">Sprite</a>
 </li>
-<li>~State()
-: <a class="el" href="class_state.html#afab438d92b90dc18d194dbd9c9c8bab3">State</a>
+<li>~StateGame()
+: <a class="el" href="class_state_game.html#afbdf7c96f1f13b3686a744fd7ca97949">StateGame</a>
 </li>
-<li>~StateSplash()
-: <a class="el" href="class_state_splash.html#ad8a5adbfb46887fbaed7bdc27de01257">StateSplash</a>
+<li>~StatePlayer()
+: <a class="el" href="class_state_player.html#a752728546fcc25a6aa49019ac5b55103">StatePlayer</a>
 </li>
 <li>~Window()
 : <a class="el" href="class_window.html#a245d821e6016fa1f6970ccbbedd635f6">Window</a>
@@ -447,7 +500,7 @@
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Wed Apr 23 2014 22:57:04 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 25 2014 22:46:29 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
