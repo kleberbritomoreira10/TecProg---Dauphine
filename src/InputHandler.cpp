@@ -1,5 +1,5 @@
 #include "InputHandler.h"
-#include "ControlWrapper.h"
+#include "ControllerHandler.h"
 
 InputHandler* InputHandler::instance = nullptr;
 
@@ -26,13 +26,12 @@ InputHandler::~InputHandler(){
 void InputHandler::handleInput(){
 
 	int pendingEvent = 0;
-	
-	SDL_GameController* _gameController = SDL_GameControllerOpen(0);
-
-	// ControlWrapper::decide();
 
 	do{
 		pendingEvent = SDL_PollEvent(&this->eventHandler); 
+
+		if(this->eventHandler.type == SDL_CONTROLLERBUTTONDOWN || this->eventHandler.type == SDL_CONTROLLERBUTTONUP)
+			ControllerHandler::handle(this->eventHandler);
 
 		// On keydown.
 		if(this->eventHandler.type == SDL_KEYDOWN){

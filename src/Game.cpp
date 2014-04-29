@@ -1,6 +1,5 @@
 #include "Game.h"
 #include "InputHandler.h"
-#include "ControlWrapper.h"
 #include "FPSWrapper.h"
 #include "Logger.h"
 #include "GStateSplash.h"
