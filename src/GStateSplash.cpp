@@ -21,7 +21,7 @@ void GStateSplash::update(double dt_){
 	this->passedTime += dt_;
 
 	if(this->passedTime >= this->lifeTime){
-		Game::setState((*Game::levelOne));
+		Game::setState((*Game::menu));
 	}
 
 }

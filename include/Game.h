@@ -56,7 +56,8 @@ class Game {
 
 		static StateGame* stateSplash; /**< The logo splash screen. First state of the game. */
 		static StateGame* levelOne; /**< First game level. */
-		
+		static StateGame* menu;
+
 	private:
 		Window *window; /**< The game Window. */
 		bool isRunning; /**< Whether the game is currently running/looping or not. */		
