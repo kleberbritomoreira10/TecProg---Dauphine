@@ -20,9 +20,6 @@ void Sprite::loadFrom(const string& path_){
 		Logger::warning("Trying to load sprite with null renderer.");
 	}
 
-	// Frees the texture if it already exists.
-	free();
-
 	// The final texture.
 	SDL_Texture* newTexture = nullptr;
 

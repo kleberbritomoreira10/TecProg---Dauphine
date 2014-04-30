@@ -1,5 +1,8 @@
 #include "DynamicEntity.h"
 
+#include "Logger.h"
+#include "Window.h"
+
 DynamicEntity::DynamicEntity(double x_, double y_, Sprite* sprite_) :
     Entity(x_, y_, sprite_),
     vx(0),
@@ -10,7 +13,7 @@ DynamicEntity::DynamicEntity(double x_, double y_, Sprite* sprite_) :
     levelW(0),
     levelH(0)
 {
-
+    this->rectangle = {(int)this->x, (int)this->y, (int)this->width, (int)this->height};
 }
 
 DynamicEntity::~DynamicEntity(){
@@ -54,6 +57,20 @@ void DynamicEntity::updatePosition(const double dt_){
         this->isGrounded = false;
     }
 
+    this->rectangle = {(int)this->x, (int)this->y, (int)this->width, (int)this->height};
+
+    // Check collision with solid tiles.
+    
+    // for(vector<Tile*>::const_iterator it = this->tiles.begin(); it != this->tiles.end(); it++){
+    //     if((*it)->isSolid()){
+    //         bool collided = checkCollision(this->rectangle, (*it)->getRectangle());
+    //         if(collided){
+    //             this->vx = 0;
+    //             this->vy = 0;
+    //         }
+    //     }
+    // }
+
 }
 
 void DynamicEntity::jump(){
@@ -87,4 +104,8 @@ void DynamicEntity::slowVx(){
 
 void DynamicEntity::roll(){
     this->vx = 70 * this->speed;
+}
+
+void DynamicEntity::setTiles(vector<Tile*>& tiles_){
+    this->tiles = tiles_;
 }

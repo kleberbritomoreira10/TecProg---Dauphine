@@ -22,9 +22,6 @@ Player::Player(double x_, double y_, Sprite* sprite_) :
     Player::initializeStates();
 
 	if(this->sprite != nullptr){
-        this->width = this->sprite->getWidth();
-        this->height = this->sprite->getHeight();
-
         Player::currentState = Player::stateIdle;
         Player::currentState->player = this;
         Player::currentState->enter();
@@ -42,7 +39,6 @@ Player::~Player(){
     Player::destroyStates();
 
     if(this->sprite != nullptr){
-        this->sprite->free();
         delete this->sprite;
         this->sprite = nullptr;
     }

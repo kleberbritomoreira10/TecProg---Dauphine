@@ -45,7 +45,8 @@ bool SDLWrapper::initialize(){
 	*Initializes controller Wrapper. 
 	*No need to check for failures as it will default back to keyboard in case it does not manage to initialize properly
 	*/
-	ControllerHandler* controllerHandler = ControllerHandler::getInstance();
+	ControllerHandler* controlWrapper = ControllerHandler::getInstance();
+	(void(controlWrapper));
 
 	// If even one system fails to initialize, returns false.
 	return (initSDL && initIMG && initMixer);

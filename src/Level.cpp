@@ -17,7 +17,6 @@ Level::~Level(){
 	}
 
 	if(this->background != nullptr){
-		this->background->free();
 		delete this->background;
 		this->background = nullptr;
 	}

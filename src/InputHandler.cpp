@@ -26,6 +26,9 @@ InputHandler::~InputHandler(){
 void InputHandler::handleInput(){
 
 	int pendingEvent = 0;
+	
+	//SDL_GameController* _gameController = SDL_GameControllerOpen(0);
+	// ControllerHandler::decide();
 
 	do{
 		pendingEvent = SDL_PollEvent(&this->eventHandler); 

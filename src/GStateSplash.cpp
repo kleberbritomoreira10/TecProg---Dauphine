@@ -39,7 +39,6 @@ void GStateSplash::load(){
 
 void GStateSplash::unload(){
 	if(this->splash != nullptr){
-		this->splash->free();
 		delete this->splash;
 		this->splash = nullptr;
 	}

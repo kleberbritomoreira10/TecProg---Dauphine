@@ -2,6 +2,10 @@
 #define INCLUDE_DYNAMICENTITY_H
 
 #include "Entity.h"
+#include "Tile.h"
+
+#include <vector>
+using std::vector;
 
 /**
 * Subclass of Entity.
@@ -36,6 +40,8 @@ class DynamicEntity : public Entity {
 		*/
 		virtual void setLevelWH(unsigned int width_, unsigned int height_);
 
+		void setTiles(vector<Tile*>& tiles_);
+
 		double vx; /**< The dynamic entity's speed on the x axis. */
 		double vy; /**< The dynamic entity's speed on the x axis. */
 		double speed; /**< Speed that moves dynamic entity on input. */
@@ -52,7 +58,10 @@ class DynamicEntity : public Entity {
 		virtual void updatePosition(const double dt_);
 
 		unsigned int levelW; /**< The width of the level. */
-		unsigned int levelH; /**< The height of the level. */		
+		unsigned int levelH; /**< The height of the level. */
+
+		vector<Tile*> tiles;
+		SDL_Rect rectangle;
 
 };
 

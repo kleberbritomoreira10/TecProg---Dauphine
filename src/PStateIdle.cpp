@@ -6,7 +6,7 @@ void PStateIdle::enter(){
 }
 
 void PStateIdle::exit(){
-
+	Logger::verbose("exit-> IDLE");
 }
 
 void PStateIdle::handleInput(const array<bool, GameKeys::MAX> keyStates_){

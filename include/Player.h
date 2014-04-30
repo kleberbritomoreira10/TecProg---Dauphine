@@ -75,7 +75,7 @@ class Player : public DynamicEntity {
 		static StatePlayer* stateCrouching; /**< For PStateCrouching. */
 
 	private:
-		static StatePlayer* currentState; /**< The current state, which the player is in. */	
+		static StatePlayer* currentState; /**< The current state, which the player is in. */
 		
 };
 
