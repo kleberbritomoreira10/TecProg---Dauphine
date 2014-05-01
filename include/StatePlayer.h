@@ -5,7 +5,6 @@
 #include "InputKeys.h"
 
 #include <array>
-using std::array;
 
 class Player;
 
@@ -38,7 +37,7 @@ class StatePlayer {
 		* While the Player is on the state, this method runs every update.
 		* @param keyStates_ : Boolean array that contains all input data.
 		*/
-		virtual void handleInput(const array<bool, GameKeys::MAX> keyStates_) = 0;
+		virtual void handleInput(const std::array<bool, GameKeys::MAX> keyStates_) = 0;
 
 		Player* player; /**< Reference to the player. */
 

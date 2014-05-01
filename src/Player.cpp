@@ -46,7 +46,7 @@ Player::~Player(){
 
 void Player::update(const double dt_){
     InputHandler* inputHandler = InputHandler::getInstance();
-    array<bool, GameKeys::MAX> keyStates = inputHandler->getKeyStates();
+    std::array<bool, GameKeys::MAX> keyStates = inputHandler->getKeyStates();
 
     Player::currentState->handleInput(keyStates);
     updatePosition(dt_);

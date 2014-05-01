@@ -9,7 +9,7 @@ void PStateIdle::exit(){
 	Logger::verbose("exit-> IDLE");
 }
 
-void PStateIdle::handleInput(const array<bool, GameKeys::MAX> keyStates_){
+void PStateIdle::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 
 	// Aerial
 	if(!this->player->isGrounded){

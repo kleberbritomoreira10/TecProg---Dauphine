@@ -3,7 +3,6 @@
 #include "Game.h"
 
 #include <string>
-using std::string;
 
 GStateSplash::GStateSplash() :
 	current(0),
@@ -38,10 +37,10 @@ void GStateSplash::load(){
 	Logger::verbose("Loading splash screens...");
 
 	LuaScript luaSplash("lua/Splash.lua");
-	const string logoPath = luaSplash.unlua_get<string>("splash.spriteLogo");
-	const string techsPath = luaSplash.unlua_get<string>("splash.spriteTechs");
-	const string licensesPath = luaSplash.unlua_get<string>("splash.spriteLicenses");
-	const string esrbPath = luaSplash.unlua_get<string>("splash.spriteEsrb");
+	const std::string logoPath = luaSplash.unlua_get<std::string>("splash.spriteLogo");
+	const std::string techsPath = luaSplash.unlua_get<std::string>("splash.spriteTechs");
+	const std::string licensesPath = luaSplash.unlua_get<std::string>("splash.spriteLicenses");
+	const std::string esrbPath = luaSplash.unlua_get<std::string>("splash.spriteEsrb");
 	const double luaLifeTime = luaSplash.unlua_get<double>("splash.lifeTime");
 
 	this->images[0] = new Sprite(logoPath);

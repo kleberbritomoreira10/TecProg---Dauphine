@@ -106,6 +106,6 @@ void DynamicEntity::roll(){
     this->vx = 70 * this->speed;
 }
 
-void DynamicEntity::setTiles(vector<Tile*>& tiles_){
+void DynamicEntity::setTiles(std::vector<Tile*>& tiles_){
     this->tiles = tiles_;
 }

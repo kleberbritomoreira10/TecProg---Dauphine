@@ -56,7 +56,7 @@ void AudioHandler::free(){
 	}
 }
 
-void AudioHandler::setCurrentMusic(const string& path_){
+void AudioHandler::setCurrentMusic(const std::string& path_){
 	if(this->currentMusic != nullptr){
 		Mix_FreeMusic(this->currentMusic);
 	}
@@ -82,7 +82,7 @@ void AudioHandler::setMusicVolume(const unsigned int percent_){
 	Mix_VolumeMusic(value);
 }
 
-void AudioHandler::setCurrentEffect(const string& path_){
+void AudioHandler::setCurrentEffect(const std::string& path_){
 	if(this->currentEffect)
 		Mix_FreeChunk(this->currentEffect);
 
@@ -103,7 +103,7 @@ void AudioHandler::setEffectVolume(const unsigned int percent_){
 	Mix_Volume(1, value);
 }
 
-void AudioHandler::changeMusic(const string& path_){
+void AudioHandler::changeMusic(const std::string& path_){
 	stopMusic();
 	setCurrentMusic(path_);
 	playMusic(MIX_LOOP);

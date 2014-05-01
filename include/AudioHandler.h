@@ -4,9 +4,7 @@
 #define MIX_LOOP -1
 
 #include "SDLWrapper.h"
-
 #include <string>
-using std::string;
 
 /**
 * The audio handler.
@@ -66,21 +64,21 @@ class AudioHandler {
 		* Stops the music, sets it, and plays it with infinite looping.
 		* @param path_ : The path to the desired music.
 		*/
-		void changeMusic(const string& path_);
+		void changeMusic(const std::string& path_);
 
 		/**
 		* Sets the current music.
 		* If one already exists, frees it first.
 		* @param path_ : The path to the desired music.
 		*/
-		void setCurrentMusic(const string& path_);
+		void setCurrentMusic(const std::string& path_);
 
 		/**
 		* Sets the current effect.
 		* If one already exists, frees it first.
 		* @param path_ : The path to the desired effect.
 		*/
-		void setCurrentEffect(const string& path_);
+		void setCurrentEffect(const std::string& path_);
 
 	private:
 		/**

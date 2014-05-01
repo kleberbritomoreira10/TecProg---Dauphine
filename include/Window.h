@@ -4,7 +4,6 @@
 #include "SDLWrapper.h"
 
 #include <string>
-using std::string;
 
 /**
 * Represents actual window that game runs on.
@@ -23,7 +22,7 @@ class Window {
 		* @see Window::initialize
 		*/
 		Window(const unsigned int width_, const unsigned int height_,
-			const string& title_ = "SDL Window");
+			const std::string& title_ = "SDL Window");
 
 		/**
 		* The destructor.
@@ -92,7 +91,7 @@ class Window {
 		*/
 		void rescale(unsigned int size_);
 
-		const string windowTitle; /**< The game Window title. */
+		const std::string windowTitle; /**< The game Window title. */
 		SDL_Window *sdlWindow; /**< The SDL window, that will be the actual game window. */
 		static SDL_Renderer *sdlRenderer; /**< The SDL renderer to render onto. */
 

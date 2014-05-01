@@ -5,7 +5,6 @@
 #include "InputKeys.h"
 
 #include <array>
-using std::array;
 
 /**
 * Handles player input.
@@ -35,7 +34,7 @@ class InputHandler {
 		/**
 		* @return The keyStates attribute.
 		*/
-		array<bool, GameKeys::MAX> getKeyStates();
+		std::array<bool, GameKeys::MAX> getKeyStates();
 
 		/**
 		* @return If a quit signal was recieved or not.
@@ -51,7 +50,7 @@ class InputHandler {
 
 		static InputHandler* instance; /**< The InputHandler instance (Singleton). */
 
-		array<bool, GameKeys::MAX> keyStates; /**< Boolean array that controls which keys are
+		std::array<bool, GameKeys::MAX> keyStates; /**< Boolean array that controls which keys are
 			pressed or not. */
 		SDL_Event eventHandler; /**< SDL internal event handler. */
 		bool quit; /**< If the quit signal was recieved or not. */

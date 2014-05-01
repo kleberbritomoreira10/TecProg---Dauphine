@@ -10,7 +10,7 @@ void StateGame::addEntity(Entity *entity){
 
 void StateGame::cleanEntities(){
 	if(!this->entities.empty()){
-		for(list<Entity *>::iterator it = this->entities.begin(); it != this->entities.end();
+		for(std::list<Entity *>::iterator it = this->entities.begin(); it != this->entities.end();
 			it++){
 
 			if((*it) != nullptr){

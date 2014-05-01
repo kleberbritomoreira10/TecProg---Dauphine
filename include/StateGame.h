@@ -4,7 +4,6 @@
 #include "Entity.h"
 
 #include <list>
-using std::list;
 
 /**
 * Parent class for other game states.
@@ -55,7 +54,7 @@ class StateGame {
 		void cleanEntities();
 
 	protected:
-		list<Entity*> entities; /**< List of all the entities in the state. */
+		std::list<Entity*> entities; /**< List of all the entities in the state. */
 
 };
 

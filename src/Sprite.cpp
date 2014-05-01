@@ -2,7 +2,7 @@
 #include "Window.h"
 #include "Logger.h"
 
-Sprite::Sprite(const string& path_) :
+Sprite::Sprite(const std::string& path_) :
 	sdlTexture(nullptr),
 	width(0),
 	height(0)
@@ -14,7 +14,7 @@ Sprite::~Sprite(){
 	free();
 }
 
-void Sprite::loadFrom(const string& path_){
+void Sprite::loadFrom(const std::string& path_){
 	// Warns if loading a sprite without a renderer.
 	if(Window::getRenderer() == nullptr){
 		Logger::warning("Trying to load sprite with null renderer.");

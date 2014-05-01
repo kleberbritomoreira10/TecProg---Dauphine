@@ -7,13 +7,12 @@
 #include "Tile.h"
 
 #include <vector>
-using std::vector;
 
 class TileMap : public Entity {
 
 	public:
 
-		TileMap(const vector<int>& tileData_);
+		TileMap(const std::vector<int>& tileData_);
 		~TileMap();
 
 		/**
@@ -33,9 +32,9 @@ class TileMap : public Entity {
 		*/
 		virtual void render(const double cameraX_, const double cameraY_);
 
-		void create(const vector<int>& tileData_);
+		void create(const std::vector<int>& tileData_);
 
-		vector<Tile*> tiles;
+		std::vector<Tile*> tiles;
 
 	private:
 		void clipTiles();

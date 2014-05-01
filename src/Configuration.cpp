@@ -7,7 +7,7 @@ const unsigned int Configuration::resolutionWidth = 192;
 const unsigned int Configuration::resolutionHeight = 108;
 
 uint32_t Configuration::maxFramerate = 0;
-string Configuration::windowTitle = "";
+std::string Configuration::windowTitle = "";
 unsigned int Configuration::logicalRenderSize = 0;
 unsigned int Configuration::screenWidth = 0;
 unsigned int Configuration::screenHeight = 0;
@@ -23,7 +23,7 @@ void Configuration::initialize(){
 	Configuration::maxFramerate =
 		(uint32_t) luaConfig.unlua_get<int>("config.maxFramerate");
 
-	Configuration::windowTitle = luaConfig.unlua_get<string>("config.windowTitle");
+	Configuration::windowTitle = luaConfig.unlua_get<std::string>("config.windowTitle");
 
 	Configuration::logicalRenderSize =
 		(unsigned int) luaConfig.unlua_get<int>("config.cameraDistance");
@@ -54,7 +54,7 @@ uint32_t Configuration::getMaxFramerate(){
 	return Configuration::maxFramerate;
 }
 
-string Configuration::getWindowTitle(){
+std::string Configuration::getWindowTitle(){
 	return Configuration::windowTitle;
 }
 

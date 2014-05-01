@@ -29,7 +29,7 @@ T LuaScript::unlua_getDefault() {
 }
 
 template<>
-inline string LuaScript::unlua_getDefault<string>() {
+inline std::string LuaScript::unlua_getDefault<std::string>() {
 	return "null";
 }
 
@@ -37,18 +37,18 @@ inline string LuaScript::unlua_getDefault<string>() {
 // LuaScript::unlua_getValue
 
 template<typename T>
-T LuaScript::unlua_getValue(const string& variableName_) {
+T LuaScript::unlua_getValue(const std::string& variableName_) {
     return 0;
 }
 
 template <> 
-inline bool LuaScript::unlua_getValue<bool>(const string& variableName_) {
+inline bool LuaScript::unlua_getValue<bool>(const std::string& variableName_) {
 	((void)(variableName_));
 	return (bool)lua_toboolean(luaState, -1);
 }
 
 template <> 
-inline double LuaScript::unlua_getValue<double>(const string& variableName_) {
+inline double LuaScript::unlua_getValue<double>(const std::string& variableName_) {
 	if(!lua_isnumber(luaState, -1)) {
 		Logger::warning("'" + variableName_ + "' is not a number!");
 	}
@@ -56,7 +56,7 @@ inline double LuaScript::unlua_getValue<double>(const string& variableName_) {
 }
 
 template <>
-inline int LuaScript::unlua_getValue<int>(const string& variableName_) {
+inline int LuaScript::unlua_getValue<int>(const std::string& variableName_) {
 	if(!lua_isnumber(luaState, -1)) {
 		Logger::warning("'" + variableName_ + "' is not a number!");
 	}
@@ -64,10 +64,10 @@ inline int LuaScript::unlua_getValue<int>(const string& variableName_) {
 }
 
 template <>
-inline string LuaScript::unlua_getValue<string>(const string& variableName_) {
-	string s = "null";
+inline std::string LuaScript::unlua_getValue<std::string>(const std::string& variableName_) {
+	std::string s = "null";
 	if(lua_isstring(luaState, -1)) {
-		s = string(lua_tostring(luaState, -1));
+		s = std::string(lua_tostring(luaState, -1));
 	} else {
 		Logger::warning("'" + variableName_ + "' is not a string!");
 	}

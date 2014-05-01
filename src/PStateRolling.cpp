@@ -10,7 +10,7 @@ void PStateRolling::exit(){
 
 }
 
-void PStateRolling::handleInput(const array<bool, GameKeys::MAX> keyStates_){
+void PStateRolling::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 
 	// Aerial
 	if(!this->player->isGrounded){

@@ -6,7 +6,7 @@ https://github.com/CaioIcy/UnLua
 https://github.com/EliasD/unnamed_lua_binder
 */
 
-LuaScript::LuaScript(const string& filename_) {
+LuaScript::LuaScript(const std::string& filename_) {
     /// @todo Log an error message for different lua error codes.
     this->level = 0;
     this->luaState = luaL_newstate();
@@ -33,13 +33,13 @@ LuaScript::~LuaScript() {
     this->level = 0;
 }
 
-vector<int> LuaScript::unlua_getIntVector(const string& name_) {
-    vector<int> v;
+std::vector<int> LuaScript::unlua_getIntVector(const std::string& name_) {
+    std::vector<int> v;
     unlua_getToStack(name_);
 
     // If the array is not found
     if(lua_isnil(this->luaState, -1)) {
-        return vector<int>();
+        return std::vector<int>();
     }
 
     lua_pushnil(this->luaState);
@@ -52,8 +52,8 @@ vector<int> LuaScript::unlua_getIntVector(const string& name_) {
     return v;
 }
 
-vector<string> LuaScript::unlua_getTableKeys(const string& name_) {
-    string code =
+std::vector<std::string> LuaScript::unlua_getTableKeys(const std::string& name_) {
+    std::string code =
         "function getKeys(name_) "
         "s = \"\""
         "for k, v in pairs(_G[name_]) do "
@@ -68,9 +68,9 @@ vector<string> LuaScript::unlua_getTableKeys(const string& name_) {
     lua_pushstring(this->luaState, name_.c_str());
     lua_pcall(this->luaState, 1 , 1, 0); // execute function
 
-    const string test = lua_tostring(luaState, -1);
-    vector<string> strings;
-    string temp = "";
+    const std::string test = lua_tostring(luaState, -1);
+    std::vector<std::string> strings;
+    std::string temp = "";
 
     Logger::verbose("TEMP: " + test);
 
@@ -87,9 +87,9 @@ vector<string> LuaScript::unlua_getTableKeys(const string& name_) {
     return strings;
 }
 
-bool LuaScript::unlua_getToStack(const string& variableName_) {
+bool LuaScript::unlua_getToStack(const std::string& variableName_) {
     this->level = 0;
-    string var = "";
+    std::string var = "";
     for(unsigned int i = 0; i < variableName_.size(); i++) {
         if(variableName_.at(i) == '.') {
             if(this->level == 0) {

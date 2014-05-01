@@ -9,7 +9,7 @@ void PStateAerial::exit(){
 
 }
 
-void PStateAerial::handleInput(const array<bool, GameKeys::MAX> keyStates_){
+void PStateAerial::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 
 	// Idle
     if(this->player->isGrounded){

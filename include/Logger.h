@@ -2,7 +2,6 @@
 #define INCLUDE_LOGGER_H
 
 #include <string>
-using std::string;
 
 /**
 * Class used for logging.
@@ -16,21 +15,21 @@ class Logger {
 		* Logs the desired message with a "Log: " prefix.
 		* @param message_ : the message to log.
 		*/
-		static void log(const string& message_);
+		static void log(const std::string& message_);
 
 		/**
 		* The logger for warnings.
 		* Logs the desired message with a "Warning: " prefix.
 		* @param message_ : the message to log.
 		*/
-		static void warning(const string& message_);
+		static void warning(const std::string& message_);
 
 		/**
 		* The logger for errors.
 		* Logs the desired message with an "Error: " prefix.
 		* @param message_ : the message to log.
 		*/
-		static void error(const string& message_);
+		static void error(const std::string& message_);
 
 		/**
 		* The logger for internal SDL errors.
@@ -39,7 +38,7 @@ class Logger {
 		* @param messageSDL_ : the error string from SDL to log.
 		* @see SDL_GetError, IMG_GetError, Mix_GetError
 		*/
-		static void errorSDL(const string& message_, const char *messageSDL_);
+		static void errorSDL(const std::string& message_, const char *messageSDL_);
 
 		/**
 		* The verbose logger.
@@ -47,7 +46,7 @@ class Logger {
 		* @param message_ : the message to log.
 		* @note Activated with the -v flag.
 		*/
-		static void verbose(const string& message_);
+		static void verbose(const std::string& message_);
 
 		static bool isVerbose; /**< If the verbose is activated or not. */
 

@@ -3,7 +3,6 @@
 #include "Game.h"
 
 #include <string>
-using std::string;
 
 GStateMenu::GStateMenu() :
 	menuImage(nullptr),
@@ -30,7 +29,7 @@ void GStateMenu::load(){
 	Logger::verbose("Loading menu...");
 
 	LuaScript luaMenu("lua/Menu.lua");
-	const string menuPath = luaMenu.unlua_get<string>("menu.spritePath");
+	const std::string menuPath = luaMenu.unlua_get<std::string>("menu.spritePath");
 	const double luaLifeTime = luaMenu.unlua_get<double>("menu.lifeTime");
 
 	this->menuImage = new Sprite(menuPath);

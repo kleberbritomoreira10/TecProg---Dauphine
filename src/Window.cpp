@@ -6,7 +6,7 @@
 SDL_Renderer* Window::sdlRenderer = nullptr;
 
 
-Window::Window(const unsigned int width_, const unsigned int height_, const string& title_) :
+Window::Window(const unsigned int width_, const unsigned int height_, const std::string& title_) :
 	windowTitle(title_),
 	sdlWindow(nullptr)
 {

@@ -26,9 +26,9 @@ void LevelOne::load(){
 
 	// Getting information from lua script.
 	LuaScript luaLevel1("lua/Level1.lua");
-	const string scriptPlayerSpritePath = luaLevel1.unlua_get<string>(
+	const std::string scriptPlayerSpritePath = luaLevel1.unlua_get<std::string>(
 		"level.player.spritePath");
-	const string scriptBackgroundSpritePath = luaLevel1.unlua_get<string>(
+	const std::string scriptBackgroundSpritePath = luaLevel1.unlua_get<std::string>(
 		"level.background.spritePath");
 	const double scriptX = luaLevel1.unlua_get<double>("level.player.position.x");
 	const double scriptY = luaLevel1.unlua_get<double>("level.player.position.y");
@@ -60,7 +60,7 @@ void LevelOne::load(){
 
 	int numberOfTiles = 0;
 	mapFile >> numberOfTiles;
-	vector<int> tileData;
+	std::vector<int> tileData;
 	for(int i = 0; i < numberOfTiles; i++){
 		int tileType = 0;
 		mapFile >> tileType;

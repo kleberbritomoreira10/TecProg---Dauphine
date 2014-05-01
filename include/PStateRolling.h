@@ -33,7 +33,7 @@ class PStateRolling : public StatePlayer {
 		/**
 		* @see StatePlayer::handleInput
 		*/
-		virtual void handleInput(const array<bool, GameKeys::MAX> keyStates_);
+		virtual void handleInput(const std::array<bool, GameKeys::MAX> keyStates_);
 
 };
 

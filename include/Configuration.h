@@ -2,7 +2,6 @@
 #define INCLUDE_CONFIGURATION_H
 
 #include <string>
-using std::string;
 
 /**
 * Game configuration class.
@@ -35,7 +34,7 @@ class Configuration {
 		/**
 		* @return windowTitle
 		*/
-		static string getWindowTitle();
+		static std::string getWindowTitle();
 
 		/**
 		* @return initialMultiplier
@@ -68,7 +67,7 @@ class Configuration {
 		static const unsigned int resolutionHeight; /**< The game's height resolution. (10) */
 
 		static uint32_t maxFramerate; /**< The game's max framerate. */
-		static string windowTitle; /**< The game window's title. */
+		static std::string windowTitle; /**< The game window's title. */
 
 		static unsigned int logicalRenderSize; /**< The size of the logical rendering. */
 

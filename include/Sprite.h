@@ -4,7 +4,6 @@
 #include "SDLWrapper.h"
 
 #include <string>
-using std::string;
 
 /**
 * Visual representation of game objects.
@@ -20,7 +19,7 @@ class Sprite {
 		* @param path_ : the image path.
 		* @see Sprite::loadFrom(string path_)
 		*/
-		Sprite(const string& path_);
+		Sprite(const std::string& path_);
 
 		/**
 		* The destructor.
@@ -72,7 +71,7 @@ class Sprite {
 		* @note Error message is logged if the sprite's SDL_Texture (sdlTexture) is null after
 			method.
 		*/
-		void loadFrom(const string& path_);
+		void loadFrom(const std::string& path_);
 
 		SDL_Texture* sdlTexture; /**< The SDL texture to use as the image. */
 
