@@ -27,13 +27,13 @@ void GStateMenu::update(double dt_){
 }
 
 void GStateMenu::load(){
-	LuaScript luaSplash("lua/Menu.lua");
-	const string splashPath = luaSplash.unlua_get<string>("menu.spritePath");
-	const double luaLifeTime = luaSplash.unlua_get<double>("menu.lifeTime");
+	Logger::verbose("Loading menu...");
 
-	Sprite* lSplash = new Sprite(splashPath);
-	this->menuImage = lSplash;
+	LuaScript luaMenu("lua/Menu.lua");
+	const string menuPath = luaMenu.unlua_get<string>("menu.spritePath");
+	const double luaLifeTime = luaMenu.unlua_get<double>("menu.lifeTime");
 
+	this->menuImage = new Sprite(menuPath);
 	this->lifeTime = luaLifeTime;
 }
 
