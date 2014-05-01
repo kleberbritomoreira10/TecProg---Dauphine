@@ -1,26 +1,26 @@
-#ifndef INCLUDE_STATEmenu_H
-#define INCLUDE_STATEmenu_H
+#ifndef INCLUDE_GSTATEMENU_H
+#define INCLUDE_GSTATEMENU_H
 
 #include "StateGame.h"
 #include "Sprite.h"
 
 /**
 * The state for the initial menu screen.
-* Game state that will contain the initial menu images, before the main menu state is called.
+* Game state that will contain the main menu.
 */
-class Menu : public StateGame {
+class GStateMenu : public StateGame {
 
 	public:
 		/**
 		* The constructor.
 		* Initializes all the attributes.
 		*/
-		Menu();
+		GStateMenu();
 
 		/**
 		* The destructor.
 		*/
-		virtual ~Menu();
+		virtual ~GStateMenu();
 
 		/**
 		* Loads the level.
@@ -36,7 +36,7 @@ class Menu : public StateGame {
 
 		/**
 		* Unloads everything that was loaded.
-		* @see Menu::load
+		* @see GStateMenu::load
 		*/
 		virtual void unload();
 
@@ -48,11 +48,10 @@ class Menu : public StateGame {
 		virtual void render();
 
 	private:
-		
-		Sprite* menu; /**< The image shown on the menu. */
+		Sprite* menuImage; /**< The image shown on the menu. */
 		double passedTime; /**< The time already elapsed since the beggining of the menu. */
 		double lifeTime; /**< The amount of time the menu will be shown. */
 
 };
 
-#endif // INCLUDE_STATEmenu_H
+#endif // INCLUDE_GSTATEMENU_H

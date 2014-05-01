@@ -48,7 +48,7 @@ void GStateSplash::unload(){
 
 void GStateSplash::render(){
 	if(this->splash != nullptr){
-		this->splash->render(0, 0);
+		this->splash->render(0, 0, nullptr, true);
 	}
 	else{
 		Logger::warning("No background set for the splash screen!");

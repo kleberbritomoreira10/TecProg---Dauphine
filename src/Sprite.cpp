@@ -68,7 +68,7 @@ void Sprite::free(){
 	}
 }
 
-void Sprite::render(double x_, double y_, SDL_Rect* clip_, double angle_, SDL_Point* center_,
+void Sprite::render(double x_, double y_, SDL_Rect* clip_, bool stretch_, double angle_, SDL_Point* center_,
 	SDL_RendererFlip flip_){
 
 	// This is the destination SDL_Rect structure.
@@ -82,8 +82,11 @@ void Sprite::render(double x_, double y_, SDL_Rect* clip_, double angle_, SDL_Po
 		// Don't clip the texture.
 	}
 
-	int successfullRender = SDL_RenderCopyEx(Window::getRenderer(), this->sdlTexture, clip_,
-		&renderQuad, angle_, center_, flip_);
+	int successfullRender = (!stretch_) ?
+		SDL_RenderCopyEx(Window::getRenderer(), this->sdlTexture, clip_,
+			&renderQuad, angle_, center_, flip_) :
+		SDL_RenderCopyEx(Window::getRenderer(), this->sdlTexture, clip_,
+			nullptr, angle_, center_, flip_);
 	
 	if(successfullRender != 0){
 		Logger::errorSDL("Failed to render sprite.", SDL_GetError());

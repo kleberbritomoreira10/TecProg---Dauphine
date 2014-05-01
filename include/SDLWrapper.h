@@ -8,6 +8,8 @@
 #include <SDL2/SDL_mixer.h>
 #include <SDL2/SDL2_framerate.h>
 
+#include <string>
+
 /**
 * Wraps the SDL libraries.
 * And contains the initializing and closing functions for the system(s). No instances
@@ -29,6 +31,10 @@ class SDLWrapper {
 		* @see initialize()
 		*/
 		static void close();
+
+	private:
+		static void logSDLVersion(const std::string& what, const SDL_version& compiled,
+			const SDL_version& linked, std::string revision = std::string(""));
 
 };
 

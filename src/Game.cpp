@@ -4,7 +4,7 @@
 #include "Logger.h"
 #include "GStateSplash.h"
 #include "LevelOne.h"
-#include "Menu.h"
+#include "GStateMenu.h"
 
 StateGame* Game::currentState = nullptr;
 StateGame* Game::stateSplash = nullptr;
@@ -96,7 +96,7 @@ void Game::initializeStates(){
 	// Initialize all the states in Game here.
 	Game::stateSplash = new GStateSplash();
 	Game::levelOne = new LevelOne();
-	Game::menu = new Menu();
+	Game::menu = new GStateMenu();
 }
 
 void Game::destroyStates(){
