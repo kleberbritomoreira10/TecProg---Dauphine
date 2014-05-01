@@ -1,4 +1,4 @@
 menu = {
-	spritePath = "res/green_tile64.png",
-	lifeTime = 1.0
+	spritePath = "res/title.jpg",
+	lifeTime = 7.0
 }
