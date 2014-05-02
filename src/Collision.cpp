@@ -1,6 +1,6 @@
-#include "Util.h"
+#include "Collision.h"
 
-bool Util::checkCollision(SDL_Rect& a, SDL_Rect& b){
+bool Collision::checkCollision(SDL_Rect& a, SDL_Rect& b){
     //The sides of the rectangles
     int leftA, leftB;
     int rightA, rightB;

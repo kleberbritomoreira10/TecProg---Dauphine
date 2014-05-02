@@ -15,10 +15,11 @@ class AudioHandler {
 
 	public:
 		/**
-		* Singleton implementation.
-		* @return The AudioHandler::instance
+		* The constructor.
+		* Initializes attributes and calls the initializing function.
+		* @see AudioHandler::initialize
 		*/
-		static AudioHandler* getInstance();
+		AudioHandler();
 
 		/**
 		* The destructor.
@@ -81,26 +82,6 @@ class AudioHandler {
 		void setCurrentEffect(const std::string& path_);
 
 	private:
-		/**
-		* Initializes SDL_Mixer.
-		* Frequency, channels and chunksize are hardcoded inside.
-		*/
-		void initialize();
-
-		/**
-		* Frees attributes.
-		* Frees currentMusic and currentEffect, and sets them to null.
-		*/
-		void free();
-
-		/**
-		* The constructor.
-		* Initializes attributes and calls the initializing function.
-		* @see AudioHandler::initialize
-		*/
-		AudioHandler();
-
-		static AudioHandler* instance; /**< The AudioHandler instance (Singleton). */
 		Mix_Music* currentMusic; /**< The current music that is playing. */
 		Mix_Chunk* currentEffect; /**< The current effect that is playing. */
 

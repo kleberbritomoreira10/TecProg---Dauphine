@@ -5,6 +5,9 @@
 #include "Window.h"
 #include "StateGame.h"
 
+#include "AudioHandler.h"
+#include "InputHandler.h"
+
 /**
 * Main structure class for the game.
 * Contains all the necessary functionalities to loop and update the game.
@@ -14,13 +17,10 @@ class Game {
 
 	public:
 		/**
-		* The constructor.
-		* Sets the game window and tells the game that it is OK to begin looping. Also, it
-		* 	begins the FPS manager.
-		* @param window_ : a created Window.
-		* @note If the Window parameter is null, the game will not begin.
+		*
+		*
 		*/
-		Game(Window* window_);
+		static Game& instance();
 
 		/**
 		* The destructor.
@@ -58,11 +58,27 @@ class Game {
 		static StateGame* levelOne; /**< First game level. */
 		static StateGame* menu;
 
+		AudioHandler& getAudioHandler();
+		std::array<bool, GameKeys::MAX> getInput();
+
 	private:
+		/**
+		* The constructor.
+		* Sets the game window and tells the game that it is OK to begin looping. Also, it
+		* 	begins the FPS manager.
+		* @param window_ : a created Window.
+		* @note If the Window parameter is null, the game will not begin.
+		*/
+		Game();
+
 		Window *window; /**< The game Window. */
 		bool isRunning; /**< Whether the game is currently running/looping or not. */		
 		FPSmanager fpsManager; /**< The FPSManager from SDL2_GFX. Handles the framerate
 			capping. */
+
+		AudioHandler* audioHandler;
+		InputHandler* inputHandler;
+
 		static StateGame* currentState; /**< The current state, which the game is in. */
 
 };

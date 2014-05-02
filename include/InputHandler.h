@@ -14,10 +14,10 @@ class InputHandler {
 
 	public:
 		/**
-		* Singleton implementation.
-		* @return The InputHandler::instance
+		* The constructor.
+		* Used to create the input handler instance.
 		*/
-		static InputHandler* getInstance();
+		InputHandler();
 		
 		/**
 		* The destructor.
@@ -42,17 +42,9 @@ class InputHandler {
 		bool signalQuit();
 
 	private:
-		/**
-		* The constructor.
-		* Used to create the input handler instance.
-		*/
-		InputHandler();
-
-		static InputHandler* instance; /**< The InputHandler instance (Singleton). */
-
 		std::array<bool, GameKeys::MAX> keyStates; /**< Boolean array that controls which keys are
 			pressed or not. */
-		SDL_Event eventHandler; /**< SDL internal event handler. */
+		SDL_Event sdlEvent; /**< SDL internal event structure. */
 		bool quit; /**< If the quit signal was recieved or not. */
 
 };

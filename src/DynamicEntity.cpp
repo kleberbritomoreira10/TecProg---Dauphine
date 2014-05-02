@@ -1,7 +1,5 @@
 #include "DynamicEntity.h"
-
 #include "Logger.h"
-#include "Window.h"
 
 DynamicEntity::DynamicEntity(double x_, double y_, Sprite* sprite_) :
     Entity(x_, y_, sprite_),

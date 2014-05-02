@@ -1,51 +1,14 @@
 #include "AudioHandler.h"
 #include "Logger.h"
 
-
-AudioHandler* AudioHandler::instance = nullptr;
-
-
 AudioHandler::AudioHandler() :
 	currentMusic(nullptr),
 	currentEffect(nullptr)
 {
-	initialize();
+
 }
 
 AudioHandler::~AudioHandler(){
-	free();
-
-	if(AudioHandler::instance != nullptr){
-		delete AudioHandler::instance;
-	}
-	
-	Mix_CloseAudio();
-	Mix_Quit();
-}
-
-AudioHandler* AudioHandler::getInstance(){
-	if(AudioHandler::instance == nullptr){
-		AudioHandler::instance = new AudioHandler();
-	}
-	
-	return AudioHandler::instance;
-}
-
-void AudioHandler::initialize(){
-	const int frequency = 44100;
-	const int channels = 2;
-	const int chunksize = 4096;
-
-	const int initialized = Mix_OpenAudio(frequency, MIX_DEFAULT_FORMAT, channels, chunksize);
-
-	if(initialized != 0) {
-		Logger::warning("Could not open audio handler.");
-		free();
-		AudioHandler::instance = nullptr;
-	}
-}
-
-void AudioHandler::free(){
 	if(this->currentMusic != nullptr){
 		Mix_FreeMusic(this->currentMusic);
 		this->currentMusic = nullptr;

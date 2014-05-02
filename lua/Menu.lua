@@ -1,4 +1,4 @@
 menu = {
 	spritePath = "res/title.jpg",
-	lifeTime = 2.0
+	lifeTime = 0.6
 }

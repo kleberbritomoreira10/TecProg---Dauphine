@@ -77,6 +77,7 @@ class Sprite {
 
 		unsigned int width; /**< The loaded image's width. */
 		unsigned int height; /**< The loaded image's width. */
+		const std::string path;
 
 		
 };

@@ -2,7 +2,7 @@
 #include "Logger.h"
 
 void PStateMoving::enter(){
-    Logger::verbose("enter-> MOVING");
+
 }
 
 void PStateMoving::exit(){

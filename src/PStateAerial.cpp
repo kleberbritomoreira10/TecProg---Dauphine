@@ -2,7 +2,7 @@
 #include "Logger.h"
 
 void PStateAerial::enter(){
-	Logger::verbose("enter-> AERIAL");
+
 }
 
 void PStateAerial::exit(){

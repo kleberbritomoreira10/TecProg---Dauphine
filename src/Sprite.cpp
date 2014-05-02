@@ -5,12 +5,14 @@
 Sprite::Sprite(const std::string& path_) :
 	sdlTexture(nullptr),
 	width(0),
-	height(0)
+	height(0),
+	path(path_)
 {
-	loadFrom(path_);
+	loadFrom(this->path);
 }
 
 Sprite::~Sprite(){
+	Logger::verbose("Sprite destructor called for " + this->path);
 	free();
 }
 

@@ -1,44 +1,37 @@
 #include "InputHandler.h"
 #include "ControllerHandler.h"
 
-InputHandler* InputHandler::instance = nullptr;
-
 InputHandler::InputHandler() :
 	quit(false)
 {
 	for(unsigned int i = 0; i < GameKeys::MAX; i++){
 		this->keyStates[i] = false;
 	}
-}
 
-InputHandler* InputHandler::getInstance(){
-	if(InputHandler::instance == nullptr){
-		InputHandler::instance =  new InputHandler();
-	}
-
-	return InputHandler::instance;
+	// Opens controller handling.
+	(void)ControllerHandler::instance();
 }
 
 InputHandler::~InputHandler(){
-	delete InputHandler::instance;
+
 }
 
 void InputHandler::handleInput(){
 
 	int pendingEvent = 0;
-	
-	//SDL_GameController* _gameController = SDL_GameControllerOpen(0);
-	// ControllerHandler::decide();
 
 	do{
-		pendingEvent = SDL_PollEvent(&this->eventHandler); 
+		pendingEvent = SDL_PollEvent(&this->sdlEvent); 
 
-		if(this->eventHandler.type == SDL_CONTROLLERBUTTONDOWN || this->eventHandler.type == SDL_CONTROLLERBUTTONUP)
-			ControllerHandler::handle(this->eventHandler);
+		if(this->sdlEvent.type == SDL_CONTROLLERBUTTONDOWN
+			|| this->sdlEvent.type == SDL_CONTROLLERBUTTONUP){
+			
+			ControllerHandler::instance().handleInput(this->sdlEvent);
+		}
 
 		// On keydown.
-		if(this->eventHandler.type == SDL_KEYDOWN){
-			switch(this->eventHandler.key.keysym.sym){
+		if(this->sdlEvent.type == SDL_KEYDOWN){
+			switch(this->sdlEvent.key.keysym.sym){
 				case SDLK_SPACE: // Jump.
 					this->keyStates[GameKeys::UP] = true;
 					break;
@@ -57,8 +50,8 @@ void InputHandler::handleInput(){
 		}
 
 		// On keyup.
-		else if(this->eventHandler.type == SDL_KEYUP){
-			switch(this->eventHandler.key.keysym.sym){
+		else if(this->sdlEvent.type == SDL_KEYUP){
+			switch(this->sdlEvent.key.keysym.sym){
 				case SDLK_SPACE: // Jump.
 					this->keyStates[GameKeys::UP] = false;
 					break;
@@ -77,7 +70,7 @@ void InputHandler::handleInput(){
 		}
 		
 		//On window exit (X).
-		else if(this->eventHandler.type == SDL_QUIT){
+		else if(this->sdlEvent.type == SDL_QUIT){
 	    	this->quit = true;
 	    }
 

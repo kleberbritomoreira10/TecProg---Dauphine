@@ -1,5 +1,5 @@
 #include "LevelOne.h"
-#include "AudioHandler.h"
+#include "Game.h"
 #include "LuaScript.h"
 #include "Logger.h"
 
@@ -21,8 +21,7 @@ void LevelOne::load(){
 	Logger::verbose("Loading level 1...");
 
 	// Changing the music.
-	AudioHandler* audioHandler = AudioHandler::getInstance();
-	audioHandler->changeMusic("res/idk.ogg");
+	Game::instance().getAudioHandler().changeMusic("res/idk.ogg");
 
 	// Getting information from lua script.
 	LuaScript luaLevel1("lua/Level1.lua");

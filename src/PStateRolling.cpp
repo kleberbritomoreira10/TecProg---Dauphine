@@ -2,7 +2,6 @@
 #include "Logger.h"
 
 void PStateRolling::enter(){
-	Logger::verbose("enter-> ROLL");
 	this->player->roll();
 }
 

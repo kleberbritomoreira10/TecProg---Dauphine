@@ -14,17 +14,8 @@ int main(int argc, char** argv){
 	bool systemsInitialized = SDLWrapper::initialize();
 
 	if(systemsInitialized){
-		Window window(Configuration::getScreenWidth(), Configuration::getScreenHeight(),
-			Configuration::getWindowTitle());
-
-		Game* game = nullptr;
-		game = new Game(&window);
-
-		game->runGame();
-
-		if(game != nullptr){
-			delete game;
-		}
+		Game::instance().runGame();
+		delete &Game::instance();
 	}
 	else{
 		Logger::error("System were not initialized.");

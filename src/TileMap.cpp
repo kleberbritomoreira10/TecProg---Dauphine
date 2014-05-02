@@ -2,7 +2,7 @@
 #include "Configuration.h"
 #include "Logger.h"
 
-#include "Util.h"
+#include "Collision.h"
 
 TileMap::TileMap(const std::vector<int>& tileData_) :
 	Entity(0.0, 0.0, new Sprite("res/tilesheet.png"))
@@ -40,7 +40,7 @@ void TileMap::update(const double dt_){
 void TileMap::render(const double cameraX_, const double cameraY_){
 	for(std::vector<Tile*>::const_iterator it = tiles.begin(); it != tiles.end(); it++){
 		SDL_Rect camera = {(int)cameraX_, (int)cameraY_, (int)Configuration::getCameraDistanceWidth(), (int)Configuration::getCameraDistanceHeight()};
-		if(Util::checkCollision(camera, (*it)->getRectangle())){
+		if(Collision::checkCollision(camera, (*it)->getRectangle())){
 			const int dx = (*it)->getRectangle().x - cameraX_;
 			const int dy = (*it)->getRectangle().y - cameraY_;
 			this->sprite->render(dx, dy, &clips[(*it)->getType()]);

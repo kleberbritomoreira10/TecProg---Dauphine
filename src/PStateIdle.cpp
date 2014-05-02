@@ -2,11 +2,11 @@
 #include "Logger.h"
 
 void PStateIdle::enter(){
-	Logger::verbose("enter-> IDLE");
+
 }
 
 void PStateIdle::exit(){
-	Logger::verbose("exit-> IDLE");
+
 }
 
 void PStateIdle::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){

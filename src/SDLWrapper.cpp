@@ -1,9 +1,6 @@
 #include "SDLWrapper.h"
-#include "AudioHandler.h"
 #include "Logger.h"
-#include "ControllerHandler.h"
 #include <sstream>
-
 
 bool SDLWrapper::initialize(){
 	/// @todo Initialize SDL_Mixer and SDL_TTF. And not do INIT_EVERYTHING.
@@ -45,8 +42,11 @@ bool SDLWrapper::initialize(){
 	}
 
 	// Initializing SDL_mixer.
-	AudioHandler* audioHandler = AudioHandler::getInstance();
-	if(audioHandler != nullptr){
+	const int frequency = 44100;
+	const int channels = 2;
+	const int chunksize = 4096;
+	const int initialized = Mix_OpenAudio(frequency, MIX_DEFAULT_FORMAT, channels, chunksize);
+	if(initialized == 0){
 		initMixer = true;
 
 		Logger::verbose("Initialized SDL_Mixer.");
@@ -57,38 +57,37 @@ bool SDLWrapper::initialize(){
 		Logger::errorSDL("Could not initialize SDL_Mixer", Mix_GetError());
 	}
 
-	/**
-	*Initializes controller Wrapper. 
-	*No need to check for failures as it will default back to keyboard in case it does not manage to initialize properly
-	*/
-	ControllerHandler* controlWrapper = ControllerHandler::getInstance();
-	(void(controlWrapper));
-
 	// If even one system fails to initialize, returns false.
 	return (initSDL && initIMG && initMixer);
 }
 
 void SDLWrapper::close(){
 	Logger::verbose("Closing SDL.");
+
+	// Quits SDL_mixer.
+	Mix_CloseAudio();
+	Mix_Quit();
+
 	// Quits SDL_image.
 	IMG_Quit();
+
 	// Quits SDL.
 	SDL_Quit();
 }
 
-void SDLWrapper::logSDLVersion(const std::string& what,
-                                const SDL_version& compiled,
-                                const SDL_version& linked,
-                                std::string revision)
-{
-  std::stringstream ss;
-  ss << what << " Version (Compiled): "
-     << (int)compiled.major << "."
-     << (int)compiled.minor << "."
-     << (int)compiled.patch;
-  if (!revision.empty())
-    ss << " (" << revision << ")";
-  Logger::verbose(ss.str());
+void SDLWrapper::logSDLVersion(const std::string& what, const SDL_version& compiled,
+	const SDL_version& linked, std::string revision){
 
-	Logger::verbose(what + " Version (Runtime):  " + std::to_string(linked.major) + "." + std::to_string(linked.minor) + "." + std::to_string(linked.patch));
+	std::stringstream ss;
+
+	ss << what << " Version (Compiled): " << (int)compiled.major << "." << (int)compiled.minor
+		<< "." << (int)compiled.patch;
+
+	if (!revision.empty()){
+		ss << " (" << revision << ")";
+	}
+	
+	Logger::verbose(ss.str());
+	Logger::verbose(what + " Version (Runtime):  " + std::to_string(linked.major) + "." +
+		std::to_string(linked.minor) + "." + std::to_string(linked.patch));
 }

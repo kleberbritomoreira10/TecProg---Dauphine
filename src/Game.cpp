@@ -1,7 +1,11 @@
 #include "Game.h"
-#include "InputHandler.h"
 #include "FPSWrapper.h"
+
 #include "Logger.h"
+#include "Configuration.h"
+
+#include <cassert>
+
 #include "GStateSplash.h"
 #include "LevelOne.h"
 #include "GStateMenu.h"
@@ -11,30 +15,42 @@ StateGame* Game::stateSplash = nullptr;
 StateGame* Game::levelOne = nullptr;
 StateGame* Game::menu = nullptr;
 
-Game::Game(Window* window_) :
-	window(window_),
+Game& Game::instance(){
+	static Game* instance = new Game();
+	return *instance;
+}
+
+Game::Game() :
+	window(nullptr),
 	isRunning(false)
 {
 	Game::initializeStates();
 
-	if(this->window != nullptr){
-		this->isRunning = true;
-		FPSWrapper::initialize(this->fpsManager);
+	this->window = new Window(Configuration::getScreenWidth(),
+		Configuration::getScreenHeight(), Configuration::getWindowTitle());
 
-		Game::currentState = Game::stateSplash;
-		Game::currentState->load();
-	}
-	else{
-		Logger::error("Game window is null. Game will not run.");
-	}
+	assert(this->window != nullptr && "The window should not be null!");
+
+	this->isRunning = true;
+	FPSWrapper::initialize(this->fpsManager);
+
+	Game::currentState = Game::stateSplash;
+	Game::currentState->load();
 }
 
 Game::~Game(){
-	if(this->currentState != nullptr){
-		this->currentState->unload();
+	if(Game::currentState != nullptr){
+		Game::currentState->unload();
 	}
 
 	Game::destroyStates();
+
+	if(this->audioHandler != nullptr){
+		delete this->audioHandler;
+	}
+	if(this->inputHandler != nullptr){
+		delete this->inputHandler;
+	}
 
 	if(this->window != nullptr){
 		this->window->destroy();
@@ -43,9 +59,10 @@ Game::~Game(){
 }
 
 void Game::runGame(){
-	
+
 	// Creating the input handler.
-	InputHandler* inputHandler = InputHandler::getInstance();
+	this->audioHandler = new AudioHandler();
+	this->inputHandler = new InputHandler();
 
 	// Get the first game time.
 	double totalGameTime = 0.0;
@@ -60,10 +77,10 @@ void Game::runGame(){
 
 		// Update.
 		while(accumulatedTime >= deltaTime){
-			inputHandler->handleInput();
+			this->inputHandler->handleInput();
 
 			// Check for a quit signal from input.
-			if(inputHandler->signalQuit()){
+			if(this->inputHandler->signalQuit()){
 				this->isRunning = false;
 				return;
 			}
@@ -104,4 +121,12 @@ void Game::destroyStates(){
 	delete Game::stateSplash;
 	delete Game::levelOne;
 	delete Game::menu;
+}
+
+AudioHandler& Game::getAudioHandler(){
+	return (*(this->audioHandler));
+}
+
+std::array<bool, GameKeys::MAX> Game::getInput(){
+	return this->inputHandler->getKeyStates();
 }

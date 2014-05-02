@@ -1,5 +1,5 @@
 #include "Player.h"
-#include "InputHandler.h"
+#include "Game.h"
 #include "Logger.h"
 #include "Configuration.h"
 
@@ -45,8 +45,7 @@ Player::~Player(){
 }
 
 void Player::update(const double dt_){
-    InputHandler* inputHandler = InputHandler::getInstance();
-    std::array<bool, GameKeys::MAX> keyStates = inputHandler->getKeyStates();
+    std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
     Player::currentState->handleInput(keyStates);
     updatePosition(dt_);

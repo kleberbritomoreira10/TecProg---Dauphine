@@ -1,11 +1,10 @@
 #ifndef INCLUDE_CONTROLLERHANDLER_H
 #define INCLUDE_CONTROLLERHANDLER_H
-#include "SDLWrapper.h"
-#include "Logger.h"
-#include <cmath>
 
-#define CONTROLLERSTICK_DEAD_ZONE 8000;
-#define TRIGGER_DEAD_ZONE 8000;
+#define CONTROLLERSTICK_DEAD_ZONE 8000
+#define TRIGGER_DEAD_ZONE 8000
+
+#include "SDLWrapper.h"
 
 namespace controllerMap{
 
@@ -49,6 +48,7 @@ namespace controllerMap{
 		RATRIGGER //Left Analogue Trigger Y - 5
 	};
 }
+
 class ControllerHandler {
 	
 	public:
@@ -56,13 +56,13 @@ class ControllerHandler {
 		* Singleton implementation.
 		* @return The ControlWrapper::instance
 		*/
-		static ControllerHandler* getInstance();
+		static ControllerHandler& instance();
 		
 		/**
 		* Handles controller the input.
 		* Detects the pending events, and simulates an appropriate KeyEvent by pushing one into a stack.
 		*/
-		static void handle(SDL_Event eventHandler);
+		void handleInput(SDL_Event& sdlEvent_);
 
 	private:
 		/**
@@ -71,8 +71,7 @@ class ControllerHandler {
 		*/
 		ControllerHandler();
 
-		static ControllerHandler* instance; /**< The InputHandler instance (Singleton). */
-		static SDL_GameController* gameController; /**< Pointer to the controller */
+		SDL_GameController* gameController; /**< Pointer to the controller */
 };
 
 #endif

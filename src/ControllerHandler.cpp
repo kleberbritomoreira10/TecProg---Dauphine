@@ -1,41 +1,34 @@
 #include "ControllerHandler.h"
+#include "Logger.h"
 
-ControllerHandler* ControllerHandler::instance = nullptr;
-
-SDL_GameController* ControllerHandler::gameController = nullptr; /**< Pointer to the controllerMap */
-
-ControllerHandler::ControllerHandler(){
+ControllerHandler::ControllerHandler() :
+    gameController(nullptr)
+{
 
 	if(SDL_NumJoysticks() > 0){
-         gameController = SDL_GameControllerOpen(0);
+         this->gameController = SDL_GameControllerOpen(0);
  	}
 
-	if(gameController == nullptr){
-		Logger::log("Unable open Controller. Defaulting to Keyboard.");
+	if(this->gameController == nullptr){
+		Logger::warning("Unable to find a controller, defaulting to keyboard.");
     }
 
-    return;
 }
 
-ControllerHandler* ControllerHandler::getInstance(){
-    if(ControllerHandler::instance == nullptr){
-        ControllerHandler::instance =  new ControllerHandler();
-    }
-
-    return ControllerHandler::instance;
+ControllerHandler& ControllerHandler::instance(){
+    static ControllerHandler* instance = new ControllerHandler();
+    return (*instance);
 }
 
-void ControllerHandler::handle(SDL_Event eventHandler){
+void ControllerHandler::handleInput(SDL_Event& sdlEvent_){
     
-    // static SDL_Event eventHandler; /**< SDL internal event handler. */
-
     SDL_Event fakeKeyInput;
         
-    if(eventHandler.type == SDL_CONTROLLERBUTTONDOWN){
+    if(sdlEvent_.type == SDL_CONTROLLERBUTTONDOWN){
 
         fakeKeyInput.type = SDL_KEYDOWN;
 
-        switch(eventHandler.cbutton.button){
+        switch(sdlEvent_.cbutton.button){
             case controllerMap::buttons::FACE_DOWN: // Jump.
                 fakeKeyInput.key.keysym.sym = SDLK_SPACE; 
                 fakeKeyInput.key.state = SDL_PRESSED;
@@ -64,11 +57,11 @@ void ControllerHandler::handle(SDL_Event eventHandler){
     }
 
     // On keyup.
-    if(eventHandler.type == SDL_CONTROLLERBUTTONUP){
+    if(sdlEvent_.type == SDL_CONTROLLERBUTTONUP){
 
         fakeKeyInput.type = SDL_KEYUP;
 
-        switch(eventHandler.cbutton.button){
+        switch(sdlEvent_.cbutton.button){
 
             case controllerMap::buttons::FACE_DOWN: // Jump.
                 fakeKeyInput.key.keysym.sym = SDLK_SPACE; 
@@ -97,5 +90,4 @@ void ControllerHandler::handle(SDL_Event eventHandler){
         SDL_PushEvent(&fakeKeyInput);
     }
 
-	return;
 }
