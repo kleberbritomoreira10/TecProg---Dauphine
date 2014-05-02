@@ -1,22 +1,19 @@
 #include "StateGame.h"
+#include "Logger.h"
 
 StateGame::~StateGame(){
-	cleanEntities();
+	Logger::log("--- StateGame destructor");
+	cleanEntities(); // Should be called in each state unload.
 }
 
 void StateGame::addEntity(Entity *entity){
 	this->entities.push_back(entity);
 }
 
-void StateGame::cleanEntities(){
-	if(!this->entities.empty()){
-		for(std::list<Entity *>::iterator it = this->entities.begin(); it != this->entities.end();
-			it++){
 
-			if((*it) != nullptr){
-				delete (*it);
-			}
-		}
-		entities.clear();
+void StateGame::cleanEntities(){
+	for(std::vector<Entity*>::const_iterator it = this->entities.begin(); it != this->entities.end(); it++){
+		delete (*it);
 	}
+	this->entities.clear();
 }

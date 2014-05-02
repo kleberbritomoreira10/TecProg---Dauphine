@@ -29,12 +29,6 @@ class Sprite {
 		~Sprite();
 
 		/**
-		* Frees texture, if it exists.
-		* If the texture already exists, frees everything but the set renderer.
-		*/
-		void free();
-
-		/**
 		* Renders the sprite.
 		* Copy the SDL_Texture onto the renderer, at the desired x,y position.
 		* @param x_ : The position on the x axis of the screen.

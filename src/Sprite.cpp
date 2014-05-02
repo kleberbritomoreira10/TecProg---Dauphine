@@ -13,7 +13,11 @@ Sprite::Sprite(const std::string& path_) :
 
 Sprite::~Sprite(){
 	Logger::verbose("Sprite destructor called for " + this->path);
-	free();
+
+	if(this->sdlTexture != nullptr){
+		SDL_DestroyTexture(this->sdlTexture);
+		this->sdlTexture = nullptr;
+	}
 }
 
 void Sprite::loadFrom(const std::string& path_){
@@ -54,19 +58,6 @@ void Sprite::loadFrom(const std::string& path_){
 	// Display error log if image wasn't loaded.
 	if(this->sdlTexture == nullptr){
 		Logger::error("Sprite load failed: " + path_);
-	}
-}
-
-void Sprite::free(){
-	// If the texture already exists, free it.
-	if(this->sdlTexture != nullptr){
-		SDL_DestroyTexture(this->sdlTexture);
-		this->sdlTexture = nullptr;
-		this->width = 0;
-		this->height = 0;
-	}
-	else{
-		// Do nothing.
 	}
 }
 

@@ -20,7 +20,7 @@ void GStateMenu::update(double dt_){
 	this->passedTime += dt_;
 
 	if(this->passedTime >= this->lifeTime){
-		Game::setState((*Game::levelOne));
+		Game::instance().setState(Game::GStates::LEVEL_ONE);
 	}
 
 }

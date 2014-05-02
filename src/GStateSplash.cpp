@@ -23,7 +23,7 @@ void GStateSplash::update(double dt_){
 
 	if(this->passedTime >= this->lifeTime){
 		if(this->current >= NUMBER_OF_SPLASH_IMAGES - 1){
-			Game::setState((*Game::menu));
+			Game::instance().setState(Game::GStates::MENU);
 		}
 		else{
 			this->passedTime = 0;

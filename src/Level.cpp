@@ -1,7 +1,6 @@
 #include "Level.h"
 
 Level::Level() :
-	background(nullptr),
 	width(0),
 	height(0),
 	player(nullptr),
@@ -14,11 +13,6 @@ Level::~Level(){
 	if(this->camera != nullptr){
 		delete this->camera;
 		this->camera = nullptr;
-	}
-
-	if(this->background != nullptr){
-		delete this->background;
-		this->background = nullptr;
 	}
 }
 

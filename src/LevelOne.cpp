@@ -35,9 +35,6 @@ void LevelOne::load(){
 	const unsigned int levelH = luaLevel1.unlua_get<int>("level.boundaries.height");
 
 	// Loading the sprites.
-	Sprite* spriteLevelBackground = nullptr;
-	spriteLevelBackground = new Sprite(scriptBackgroundSpritePath);
-
 	Sprite* spritePlayer = nullptr;
 	spritePlayer = new Sprite(scriptPlayerSpritePath);
 
@@ -45,11 +42,6 @@ void LevelOne::load(){
 	Player* lPlayer = new Player(scriptX, scriptY, spritePlayer);
 
 	Camera* lCamera = new Camera(lPlayer);
-
-	this->background = spriteLevelBackground;
-	if(this->background == nullptr){
-		Logger::warning("Level background is null! No background will be set.");
-	}
 
 	this->width = levelW;
 	this->height = levelH;
@@ -83,7 +75,7 @@ void LevelOne::unload(){
 
 void LevelOne::update(double dt_){
 	// Update all the entities in the list.
-	for(Entity* entity : entities){
+	for(auto entity : entities){
         entity->update(dt_);
 	}
 
@@ -91,18 +83,11 @@ void LevelOne::update(double dt_){
 }
 
 void LevelOne::render(){
-	if(this->background != nullptr){
-		this->background->render(0, 0, &this->camera->getClip());
-	}
-	else{
-		Logger::warning("No background set for this Level!");
-	}
-
 	const int cameraX = this->camera->getClip().x;
 	const int cameraY = this->camera->getClip().y;
 
 	// Render all the entities in the list.
-	for(Entity* entity : entities){
+	for(auto entity : entities){
         entity->render(cameraX, cameraY);
 	}
 }

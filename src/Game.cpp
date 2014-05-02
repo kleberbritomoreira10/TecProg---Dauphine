@@ -10,11 +10,6 @@
 #include "LevelOne.h"
 #include "GStateMenu.h"
 
-StateGame* Game::currentState = nullptr;
-StateGame* Game::stateSplash = nullptr;
-StateGame* Game::levelOne = nullptr;
-StateGame* Game::menu = nullptr;
-
 Game& Game::instance(){
 	static Game* instance = new Game();
 	return *instance;
@@ -22,34 +17,41 @@ Game& Game::instance(){
 
 Game::Game() :
 	window(nullptr),
-	isRunning(false)
+	isRunning(false),
+	audioHandler(nullptr),
+	inputHandler(nullptr),
+	resourceManager(nullptr),
+	currentState(nullptr),
+	statesMap()
 {
-	Game::initializeStates();
+	initializeStates();
 
-	this->window = new Window(Configuration::getScreenWidth(),
-		Configuration::getScreenHeight(), Configuration::getWindowTitle());
+	this->window = new Window(Configuration::getScreenWidth(), Configuration::getScreenHeight(), Configuration::getWindowTitle());
 
 	assert(this->window != nullptr && "The window should not be null!");
 
 	this->isRunning = true;
 	FPSWrapper::initialize(this->fpsManager);
 
-	Game::currentState = Game::stateSplash;
-	Game::currentState->load();
+	this->currentState = this->statesMap.at(GStates::SPLASH);
+	this->currentState->load();
 }
 
 Game::~Game(){
-	if(Game::currentState != nullptr){
-		Game::currentState->unload();
+	if(this->currentState != nullptr){
+		this->currentState->unload();
 	}
 
-	Game::destroyStates();
+	this->statesMap.clear();
 
 	if(this->audioHandler != nullptr){
 		delete this->audioHandler;
 	}
 	if(this->inputHandler != nullptr){
 		delete this->inputHandler;
+	}
+	if(this->resourceManager != nullptr){
+		delete this->resourceManager;
 	}
 
 	if(this->window != nullptr){
@@ -63,6 +65,7 @@ void Game::runGame(){
 	// Creating the input handler.
 	this->audioHandler = new AudioHandler();
 	this->inputHandler = new InputHandler();
+	this->resourceManager = new ResourceManager();
 
 	// Get the first game time.
 	double totalGameTime = 0.0;
@@ -85,7 +88,7 @@ void Game::runGame(){
 				return;
 			}
 
-			Game::currentState->update(deltaTime);
+			this->currentState->update(deltaTime);
 
 			accumulatedTime -= deltaTime;
 			totalGameTime += deltaTime;
@@ -94,7 +97,7 @@ void Game::runGame(){
 		// Render.
 		window->clear();
 
-		Game::currentState->render();
+		this->currentState->render();
 
 		window->render();
 		
@@ -102,25 +105,30 @@ void Game::runGame(){
 
 }
 
-void Game::setState(StateGame& state_){
+void Game::setState(GStates state_){
 	/// @todo Implement the transition between states.
-	Game::currentState->unload();
-	Game::currentState = &state_;
-	Game::currentState->load();
+	this->currentState->unload();
+	this->currentState = this->statesMap.at(state_);
+	this->currentState->load();
 }
 
 void Game::initializeStates(){
 	// Initialize all the states in Game here.
-	Game::stateSplash = new GStateSplash();
-	Game::levelOne = new LevelOne();
-	Game::menu = new GStateMenu();
-}
 
-void Game::destroyStates(){
-	// Delete all the states in Game here.
-	delete Game::stateSplash;
-	delete Game::levelOne;
-	delete Game::menu;
+	// Typedefs for all the states shared_ptr.
+	typedef std::shared_ptr<GStateSplash>	SplashPtr;
+	typedef std::shared_ptr<GStateMenu>		MenuPtr;
+	typedef std::shared_ptr<LevelOne>		LevelOnePtr;
+
+	// Set the shared_ptr for each state.
+	SplashPtr splash = std::make_shared<GStateSplash>();
+	MenuPtr menu = std::make_shared<GStateMenu>();
+	LevelOnePtr levelOne = std::make_shared<LevelOne>();
+
+	// Emplace the states pointers onto the map.
+	this->statesMap.emplace(GStates::SPLASH, 	splash);
+	this->statesMap.emplace(GStates::MENU,		menu);
+	this->statesMap.emplace(GStates::LEVEL_ONE,	levelOne);
 }
 
 AudioHandler& Game::getAudioHandler(){
@@ -129,4 +137,8 @@ AudioHandler& Game::getAudioHandler(){
 
 std::array<bool, GameKeys::MAX> Game::getInput(){
 	return this->inputHandler->getKeyStates();
+}
+
+ResourceManager& Game::getResources(){
+	return (*(this->resourceManager));
 }

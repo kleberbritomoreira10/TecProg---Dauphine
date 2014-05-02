@@ -53,8 +53,6 @@ class Level : public StateGame {
 		*/
 		virtual void setCamera(Camera* camera_) = 0;
 
-		Sprite* background; /**< The levels background sprite. */
-
 		unsigned int width; /**< Width that defines the horizontal limits. */
 		unsigned int height; /**< Height that defines the vertical limits. */
 

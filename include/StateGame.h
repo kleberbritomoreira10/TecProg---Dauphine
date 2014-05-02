@@ -1,9 +1,8 @@
-#ifndef INCLUDE_STATE_H
-#define INCLUDE_STATE_H
+#ifndef INCLUDE_STATEGAME_H
+#define INCLUDE_STATEGAME_H
 
 #include "Entity.h"
-
-#include <list>
+#include <vector>
 
 /**
 * Parent class for other game states.
@@ -25,7 +24,7 @@ class StateGame {
 
 		/**
 		* Update all entities.
-		* Pure virtual function. Purpose is to update all the entities in the list.
+		* Pure virtual function. Purpose is to update all the entities in the vector.
 		* @param dt_ : Delta time. Time elapsed between one frame and the other.
 		*/
 		virtual void update(double dt_) = 0;
@@ -44,18 +43,18 @@ class StateGame {
 		virtual void render() = 0;
 
 		/**
-		* Adds an entity to the list.
+		* Adds an entity to the vector.
 		*/
 		void addEntity(Entity* entity);
 
 		/**
-		* Deletes all the entities inside the list, and clears it.
+		* Deletes all the entities inside the vector.
 		*/
 		void cleanEntities();
 
 	protected:
-		std::list<Entity*> entities; /**< List of all the entities in the state. */
+		std::vector<Entity*> entities; /**< List of all the entities in the state. */
 
 };
 
-#endif //INCLUDE_STATE_H
+#endif //INCLUDE_STATEGAME_H

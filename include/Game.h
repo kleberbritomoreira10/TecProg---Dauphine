@@ -5,8 +5,12 @@
 #include "Window.h"
 #include "StateGame.h"
 
+#include <map>
+#include <memory>
+
 #include "AudioHandler.h"
 #include "InputHandler.h"
+#include "ResourceManager.h"
 
 /**
 * Main structure class for the game.
@@ -16,6 +20,14 @@
 class Game {
 
 	public:
+		typedef std::shared_ptr<StateGame> StateGamePtr;
+
+		enum GStates : uint8_t {
+			SPLASH = 0,
+			MENU,
+			LEVEL_ONE
+		};
+
 		/**
 		*
 		*
@@ -35,31 +47,20 @@ class Game {
 		void runGame();
 
 		/**
-		* Loads all the states.
-		* Every new state implemented should be initialized here.
-		*/
-		static void initializeStates();
-
-		/**
-		* Deletes all the loaded states.
-		* Every new state implemented should be deleted here.
-		*/
-		static void destroyStates();
-
-		/**
 		* Sets the current game state.
 		* @see StateGame::load()
 		* @see StateGame::unload()
 		* @param state_ : The state you want to be changed into. All states are inside Game.
 		*/
-		static void setState(StateGame& state_);
+		void setState(GStates state_);
 
-		static StateGame* stateSplash; /**< The logo splash screen. First state of the game. */
-		static StateGame* levelOne; /**< First game level. */
-		static StateGame* menu;
+		//static StateGame* stateSplash; /**< The logo splash screen. First state of the game. */
+		//static StateGame* levelOne; /**< First game level. */
+		//static StateGame* menu;
 
 		AudioHandler& getAudioHandler();
 		std::array<bool, GameKeys::MAX> getInput();
+		ResourceManager& getResources();
 
 	private:
 		/**
@@ -71,15 +72,32 @@ class Game {
 		*/
 		Game();
 
+		/**
+		* Loads all the states.
+		* Every new state implemented should be initialized here.
+		*/
+		void initializeStates();
+
+		/**
+		* Deletes all the loaded states.
+		* Every new state implemented should be deleted here.
+		*/
+		void destroyStates();
+
 		Window *window; /**< The game Window. */
 		bool isRunning; /**< Whether the game is currently running/looping or not. */		
-		FPSmanager fpsManager; /**< The FPSManager from SDL2_GFX. Handles the framerate
-			capping. */
 
 		AudioHandler* audioHandler;
 		InputHandler* inputHandler;
+		ResourceManager* resourceManager;
 
-		static StateGame* currentState; /**< The current state, which the game is in. */
+		StateGamePtr currentState; /**< The current state, which the game is in. */
+
+		std::map<GStates, StateGamePtr> statesMap;
+
+		FPSmanager fpsManager; /**< The FPSManager from SDL2_GFX. Handles the framerate
+			capping. */
+
 
 };
 
