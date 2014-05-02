@@ -8,24 +8,17 @@
 #include "PStateMoving.h"
 #include "PStateRolling.h"
 
-StatePlayer* Player::currentState = nullptr;
-StatePlayer* Player::stateIdle = nullptr;
-StatePlayer* Player::stateAerial = nullptr;
-StatePlayer* Player::stateMoving = nullptr;
-StatePlayer* Player::stateRolling = nullptr;
-StatePlayer* Player::stateCrouching = nullptr;
-
 Player::Player(double x_, double y_, Sprite* sprite_) :
     DynamicEntity(x_, y_, sprite_)
 {
 
-    Player::initializeStates();
+    initializeStates();
 
-	if(this->sprite != nullptr){
-        Player::currentState = Player::stateIdle;
-        Player::currentState->player = this;
-        Player::currentState->enter();
-	}
+    if(this->sprite != nullptr){
+        this->currentState = this->statesMap.at(IDLE);
+        this->currentState->player = this;
+        this->currentState->enter();
+    }
     else{
         Logger::warning("No sprite set for the player! Null sprite.");
     }
@@ -36,12 +29,12 @@ Player::~Player(){
         this->currentState->exit();
     }
 
-    Player::destroyStates();
+    destroyStates();
 
-    if(this->sprite != nullptr){
-        delete this->sprite;
-        this->sprite = nullptr;
-    }
+    // if(this->sprite != nullptr){
+    //     delete this->sprite;
+    //     this->sprite = nullptr;
+    // }
 }
 
 void Player::update(const double dt_){
@@ -61,28 +54,27 @@ void Player::render(const double cameraX_, const double cameraY_){
 
 void Player::initializeStates(){
     // Initialize all the states in Player here.
-    Player::stateIdle = new PStateIdle();
-    Player::stateAerial = new PStateAerial();
-    Player::stateMoving = new PStateMoving();
-    Player::stateRolling = new PStateRolling();
+    this->statesMap.emplace(IDLE, new PStateIdle());
+    this->statesMap.emplace(MOVING, new PStateMoving());
+    this->statesMap.emplace(AERIAL, new PStateAerial());
+    this->statesMap.emplace(ROLLING, new PStateRolling());
 }
 
 void Player::destroyStates(){
     // Delete all the states in Player here.
-    delete Player::stateIdle;
-    delete Player::stateAerial;
-    delete Player::stateMoving;
-    delete Player::stateRolling;
-    //delete Player::stateCrouching;
+    std::map<PStates, StatePlayer*>::const_iterator it;
+    for(it = this->statesMap.begin(); it != this->statesMap.end(); it++){
+        delete it->second;
+    }
 }
 
-void Player::changeState(StatePlayer& state_){
-    Player* l_player = Player::currentState->player;
+void Player::changeState(PStates state_){
+    Player* l_player = this->currentState->player;
     
-    Player::currentState->exit();
-    Player::currentState = &state_;
+    this->currentState->exit();
+    this->currentState = this->statesMap.at(state_);
 
-    Player::currentState->player = l_player;
-    Player::currentState->enter();
+    this->currentState->player = l_player;
+    this->currentState->enter();
 }
 

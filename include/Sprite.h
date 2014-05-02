@@ -3,7 +3,7 @@
 
 #include "SDLWrapper.h"
 #include "Animation.h"
-
+#include <memory>
 #include <string>
 
 /**
@@ -13,6 +13,8 @@
 class Sprite {
 
 	public:
+		typedef std::shared_ptr<Sprite> SpritePtr;
+
 		/**
 		* The constructor.
 		* Initializes all the data, and sets the desired renderer. Loads image with the desired

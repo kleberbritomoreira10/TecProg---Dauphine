@@ -6,6 +6,8 @@
 #include "InputKeys.h"
 #include "StatePlayer.h"
 
+#include <map>
+
 class StatePlayer;
 
 /**
@@ -15,6 +17,13 @@ class StatePlayer;
 class Player : public DynamicEntity {
 
 	public:
+		enum PStates : uint8_t {
+			IDLE = 0,
+			MOVING,
+			AERIAL,
+			ROLLING
+		};
+
 		/**
 		* The constructor.
 		* Creates the player by setting the position and sprite.
@@ -52,13 +61,13 @@ class Player : public DynamicEntity {
 		* Loads all the states.
 		* Every new state implemented should be initialized here.
 		*/
-		static void initializeStates();
+		void initializeStates();
 
 		/**
 		* Deletes all the loaded states.
 		* Every new state implemented should be deleted here.
 		*/
-		static void destroyStates();
+		void destroyStates();
 
 		/**
 		* Sets the current game state.
@@ -66,16 +75,17 @@ class Player : public DynamicEntity {
 		* @see StatePlayer::unload
 		* @param state_ : The state you want to be changed into. All states are inside Player.
 		*/
-		static void changeState(StatePlayer& state_);
+		void changeState(PStates state_);
 
-		static StatePlayer* stateIdle; /**< For PStateIdle. */
-		static StatePlayer* stateAerial; /**< For PStateAerial. */
-		static StatePlayer* stateMoving; /**< For PStateMoving. */
-		static StatePlayer* stateRolling; /**< For PStateRolling. */
-		static StatePlayer* stateCrouching; /**< For PStateCrouching. */
+		// static StatePlayer* stateIdle; /**< For PStateIdle. */
+		// static StatePlayer* stateAerial; /**< For PStateAerial. */
+		// static StatePlayer* stateMoving; /**< For PStateMoving. */
+		// static StatePlayer* stateRolling; /**< For PStateRolling. */
+		// static StatePlayer* stateCrouching; /**< For PStateCrouching. */
 
 	private:
-		static StatePlayer* currentState; /**< The current state, which the player is in. */
+		StatePlayer* currentState; /**< The current state, which the player is in. */
+		std::map<PStates, StatePlayer*> statesMap;
 		
 };
 
