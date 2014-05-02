@@ -53,10 +53,10 @@ class ControllerHandler {
 	
 	public:
 		/**
-		* Singleton implementation.
-		* @return The ControlWrapper::instance
+		* The constructor.
+		* Used to create the control wrapper instance.
 		*/
-		static ControllerHandler& instance();
+		ControllerHandler();
 		
 		/**
 		* Handles controller the input.
@@ -65,12 +65,6 @@ class ControllerHandler {
 		void handleInput(SDL_Event& sdlEvent_);
 
 	private:
-		/**
-		* The constructor.
-		* Used to create the control wrapper instance.
-		*/
-		ControllerHandler();
-
 		SDL_GameController* gameController; /**< Pointer to the controller */
 };
 

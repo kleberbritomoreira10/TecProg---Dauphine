@@ -15,11 +15,6 @@ ControllerHandler::ControllerHandler() :
 
 }
 
-ControllerHandler& ControllerHandler::instance(){
-    static ControllerHandler* instance = new ControllerHandler();
-    return (*instance);
-}
-
 void ControllerHandler::handleInput(SDL_Event& sdlEvent_){
     
     SDL_Event fakeKeyInput;

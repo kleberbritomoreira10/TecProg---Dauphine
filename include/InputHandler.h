@@ -3,6 +3,7 @@
 
 #include "SDLWrapper.h"
 #include "InputKeys.h"
+#include "ControllerHandler.h"
 
 #include <array>
 
@@ -42,6 +43,7 @@ class InputHandler {
 		bool signalQuit();
 
 	private:
+		ControllerHandler* controllerHandler;
 		std::array<bool, GameKeys::MAX> keyStates; /**< Boolean array that controls which keys are
 			pressed or not. */
 		SDL_Event sdlEvent; /**< SDL internal event structure. */

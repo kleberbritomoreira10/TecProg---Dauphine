@@ -1,5 +1,4 @@
 #include "InputHandler.h"
-#include "ControllerHandler.h"
 
 InputHandler::InputHandler() :
 	quit(false)
@@ -9,11 +8,14 @@ InputHandler::InputHandler() :
 	}
 
 	// Opens controller handling.
-	(void)ControllerHandler::instance();
+	this->controllerHandler = new ControllerHandler();
 }
 
 InputHandler::~InputHandler(){
-
+	if(this->controllerHandler != nullptr){
+		delete this->controllerHandler;
+		this->controllerHandler = nullptr;
+	}	
 }
 
 void InputHandler::handleInput(){
@@ -26,7 +28,7 @@ void InputHandler::handleInput(){
 		if(this->sdlEvent.type == SDL_CONTROLLERBUTTONDOWN
 			|| this->sdlEvent.type == SDL_CONTROLLERBUTTONUP){
 			
-			ControllerHandler::instance().handleInput(this->sdlEvent);
+			this->controllerHandler->handleInput(this->sdlEvent);
 		}
 
 		// On keydown.
