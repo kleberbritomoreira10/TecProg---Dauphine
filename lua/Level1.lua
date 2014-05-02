@@ -14,7 +14,7 @@ level = {
 	    	x = 450.0,
 	    	y = 300.0,
 	    },
-	    spritePath = "res/nadine.png",
+	    spritePath = "res/nadineSprite.png",
 	},
 
 }

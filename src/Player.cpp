@@ -55,7 +55,7 @@ void Player::render(const double cameraX_, const double cameraY_){
     if(this->sprite != nullptr){
         const double dx = this->x - cameraX_;
         const double dy = this->y - cameraY_;
-        this->sprite->render(dx, dy);
+        this->sprite->render(dx, dy, clip);
     }
 }
 

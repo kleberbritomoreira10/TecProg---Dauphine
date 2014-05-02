@@ -40,7 +40,7 @@ void LevelOne::load(){
 
 	// Loading the player and the camera.
 	Player* lPlayer = new Player(scriptX, scriptY, spritePlayer);
-
+	lPlayer->getSprite()->animation->setParameters(0, 0, lPlayer->getWidth(), lPlayer->getHeight(), 11, true);
 	Camera* lCamera = new Camera(lPlayer);
 
 	this->width = levelW;
@@ -78,7 +78,7 @@ void LevelOne::update(double dt_){
 	for(auto entity : entities){
         entity->update(dt_);
 	}
-
+	this->player->getSprite()->animation->update(this->player->clip, dt_, 5);
 	this->camera->update();
 }
 

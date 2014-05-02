@@ -2,6 +2,7 @@
 #define INCLUDE_ENTITY_H
 
 #include "Sprite.h"
+#include "SDLWrapper.h"
 
 /**
 * Base class for all game objects (entities).
@@ -43,8 +44,12 @@ class Entity {
 		*/
 		unsigned int getHeight();
 
+		Sprite* getSprite();
+
 		double x; /**< The position in the x axis. */
 		double y; /**< The position in the y axis. */
+
+		SDL_Rect* clip;
 
 	protected:
 		/**

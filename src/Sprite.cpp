@@ -6,7 +6,8 @@ Sprite::Sprite(const std::string& path_) :
 	sdlTexture(nullptr),
 	width(0),
 	height(0),
-	path(path_)
+	path(path_),
+	animation(new Animation())
 {
 	loadFrom(this->path);
 }
@@ -72,7 +73,7 @@ void Sprite::render(double x_, double y_, SDL_Rect* clip_, bool stretch_, double
 		renderQuad.h = clip_->h;
 	}
 	else{
-		// Don't clip the texture.
+
 	}
 
 	int successfullRender = (!stretch_) ?
@@ -93,3 +94,4 @@ unsigned int Sprite::getWidth(){
 unsigned int Sprite::getHeight(){
 	return this->height;
 }
+

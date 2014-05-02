@@ -1,16 +1,18 @@
 #include "Entity.h"
+#include "SDLWrapper.h"
 
 Entity::Entity(double x_, double y_, Sprite* sprite_) :
     x(x_),
     y(y_),
     sprite(sprite_),
+    clip(new SDL_Rect()),
     width(0),
     height(0)
 {
 	// Only serves as the initializer for the derived classes.
 	if(this->sprite != nullptr){
-		this->width = this->sprite->getWidth();
-		this->height = this->sprite->getHeight();
+		this->width = 229;
+		this->height = 229;
 	}
 
 }
@@ -28,4 +30,8 @@ unsigned int Entity::getWidth(){
 
 unsigned int Entity::getHeight(){
 	return this->height;
+}
+
+Sprite* Entity::getSprite(){
+	return this->sprite;
 }
