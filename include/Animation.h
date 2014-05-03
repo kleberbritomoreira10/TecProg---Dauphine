@@ -37,6 +37,8 @@ class Animation{
 		*/
 		void update(SDL_Rect& clip_, const double dt_, const double totalTime_);
 
+		void changeAnimation(const int x_, const int y_, const int numberOfImages_, const bool loop_);
+
 	private:
 		/**
 		* Updates the clip to a new position.
@@ -52,7 +54,7 @@ class Animation{
 		int spriteHeight; /**< The sprite height. */
 		int numberOfImages; /**< The number of images to animate inside the spritesheet. */
 		bool loop; /**< Whether to loop or not. */
-		int totalElapsedTime; /**< Total time elapsed on the animation. */
+		double totalElapsedTime; /**< Total time elapsed on the animation. */
 
 };
 

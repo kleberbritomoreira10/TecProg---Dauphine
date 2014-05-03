@@ -82,7 +82,7 @@ class Player : public DynamicEntity {
 		/**
 		* @return The players current animation setting.
 		*/
-		Animation& getAnimation();
+		Animation *getAnimation();
 
 	private:
 		Animation* animation; /**< Current player animation. */

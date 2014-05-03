@@ -16,7 +16,7 @@ Player::Player(const double x_, const double y_, Sprite* const sprite_) :
     initializeStates();
 
     // Shouldn't be here.
-    this->animation = new Animation(0, 0, this->width, this->height, 11, true);
+    this->animation = new Animation(0, 0, this->width, this->height, 11, false);
 
     if(this->sprite != nullptr){
         this->currentState = this->statesMap.at(IDLE);
@@ -40,7 +40,7 @@ void Player::update(const double dt_){
 
     Player::currentState->handleInput(keyStates);
     updatePosition(dt_);
-    this->animation->update(this->clip, dt_, 10);
+    this->animation->update(this->clip, dt_, 1);
 }
 
 void Player::render(const double cameraX_, const double cameraY_){
@@ -73,6 +73,6 @@ void Player::changeState(const PStates state_){
     this->currentState->enter();
 }
 
-Animation& Player::getAnimation(){
-    return (*(this->animation));
+Animation *Player::getAnimation(){
+    return (this->animation);
 }

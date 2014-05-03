@@ -10,7 +10,7 @@ Animation::Animation(const int x_, const int y_, const int spriteWidth_,
 	spriteHeight(spriteHeight_),
 	numberOfImages(numberOfImages_),
 	loop(loop_),
-	totalElapsedTime(0)
+	totalElapsedTime(0.0)
 {
 
 }
@@ -25,10 +25,10 @@ void Animation::update(SDL_Rect& clip, const double dt_, const double totalTime_
 	// end of the animation.
 	const bool endOfAnimation = (this->x + 1) >= this->numberOfImages;
 
-	const int deltaT = (int)(totalTime_ / this->numberOfImages);
+	const double deltaT = (totalTime_ / this->numberOfImages);
 
 	// Check if the frame has changed.
-    this->totalElapsedTime += (int)dt_;
+    this->totalElapsedTime += dt_;
 
     if(this->totalElapsedTime >= deltaT) {
         this->totalElapsedTime -= deltaT;
@@ -48,6 +48,13 @@ void Animation::update(SDL_Rect& clip, const double dt_, const double totalTime_
    	const int positionX_ = this->x * this->spriteWidth;
 	const int positionY_ = this->y * this->spriteHeight;
 	updateClip(clip, positionX_, positionY_);
+}
+
+void Animation::changeAnimation(const int x_, const int y_, const int numberOfImages_, const bool loop_){
+	this->x = x_;
+	this->y = y_;
+	this->numberOfImages = numberOfImages_;
+	this->loop = loop_;
 }
 
 void Animation::updateClip(SDL_Rect& clip, const int x_, const int y_){
