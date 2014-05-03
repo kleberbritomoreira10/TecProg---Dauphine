@@ -6,22 +6,20 @@
 class Animation{
 
 	public:
-		Animation(int posX_ = 0, int posY_ = 0, int spriteWidth_ = 229, int spriteHeight_ = 229, int numberOfImages_ = 11, bool isLoop_ = true);
+		Animation(int x_, int y_, int spriteWidth_, int spriteHeight_, int numberOfImages_, bool loop_);
 		~Animation();
 
-		void setParameters(int posX_, int posY_, int spriteWidth_, int spriteHeight_, int numberOfImages_, bool isLoop_);
-		void update(SDL_Rect& clip, int dt_, double totalTime_);
-
+		void update(SDL_Rect& clip, double dt_, double totalTime_);
 
 	private:
 		void updateClip(SDL_Rect& clip, int positionX_, int positionY_, int spriteWidth_, int spriteHeight_ );
 
-		int posX;
-		int posY;
+		int x;
+		int y;
 		int spriteWidth;
 		int spriteHeight;
 		int numberOfImages;
-		bool isLoop;
+		bool loop;
 		int totalElapsedTime;
 
 };

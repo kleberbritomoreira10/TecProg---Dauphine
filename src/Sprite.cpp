@@ -7,8 +7,7 @@ Sprite::Sprite(const std::string& path_) :
 	sdlTexture(nullptr),
 	width(0),
 	height(0),
-	path(path_),
-	animation(new Animation())
+	path(path_)
 {
 	loadFrom(this->path);
 }
@@ -86,8 +85,4 @@ unsigned int Sprite::getWidth(){
 
 unsigned int Sprite::getHeight(){
 	return this->height;
-}
-
-Animation& Sprite::getAnimation(){
-	return (*(this->animation));
 }

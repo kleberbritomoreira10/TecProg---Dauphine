@@ -32,3 +32,9 @@ void PStateRolling::handleInput(const std::array<bool, GameKeys::MAX> keyStates_
         return;
     }
 }
+
+PStateRolling::PStateRolling(Player* player_) :
+    StatePlayer(player_)
+{
+
+}

@@ -12,8 +12,9 @@ void StateGame::addEntity(Entity *entity){
 
 
 void StateGame::cleanEntities(){
-	for(std::vector<Entity*>::const_iterator it = this->entities.begin(); it != this->entities.end(); it++){
-		delete (*it);
+	for(auto entity : this->entities){
+		delete entity;
 	}
+
 	this->entities.clear();
 }

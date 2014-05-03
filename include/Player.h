@@ -77,15 +77,12 @@ class Player : public DynamicEntity {
 		*/
 		void changeState(PStates state_);
 
-		// static StatePlayer* stateIdle; /**< For PStateIdle. */
-		// static StatePlayer* stateAerial; /**< For PStateAerial. */
-		// static StatePlayer* stateMoving; /**< For PStateMoving. */
-		// static StatePlayer* stateRolling; /**< For PStateRolling. */
-		// static StatePlayer* stateCrouching; /**< For PStateCrouching. */
+		Animation& getAnimation();
 
 	private:
+		Animation* animation;
 		StatePlayer* currentState; /**< The current state, which the player is in. */
-		std::map<PStates, StatePlayer*> statesMap;
+		std::map<PStates, StatePlayer*> statesMap; /**< Map containing all possible states. */
 		
 };
 

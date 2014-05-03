@@ -12,8 +12,9 @@ class PStateMoving : public StatePlayer {
 	public:
 		/**
 		* The constructor.
+		* @param player_ : Reference to the player.
 		*/
-		PStateMoving(){}
+		PStateMoving(Player* player_);
 		
 		/**
 		* The destructor.

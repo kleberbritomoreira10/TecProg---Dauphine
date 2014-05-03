@@ -30,10 +30,6 @@ unsigned int Entity::getHeight(){
 	return this->height;
 }
 
-Animation& Entity::getAnimation(){
-	return this->sprite->getAnimation();
-}
-
 SDL_Rect& Entity::getClip(){
 	return this->clip;
 }

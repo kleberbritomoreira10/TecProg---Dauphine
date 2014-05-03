@@ -1,13 +1,13 @@
 #include "Animation.h"
 #include "Logger.h"
 
-Animation::Animation(int posX_, int posY_, int spriteWidth_, int spriteHeight_, int numberOfImages_, bool isLoop_):
-	posX(posX_),
-	posY(posY_),
+Animation::Animation(int x_, int y_, int spriteWidth_, int spriteHeight_, int numberOfImages_, bool loop_):
+	x(x_),
+	y(y_),
 	spriteWidth(spriteWidth_),
 	spriteHeight(spriteHeight_),
 	numberOfImages(numberOfImages_),
-	isLoop(isLoop_),
+	loop(loop_),
 	totalElapsedTime(0)
 {
 
@@ -17,44 +17,34 @@ Animation::~Animation(){
 
 }
 
-void Animation::setParameters(int posX_, int posY_, int spriteWidth_, int spriteHeight_, int numberOfImages_, bool isLoop_){
-	this->posX = posX_;
-	this->posY = posY_;
-	this->spriteWidth = spriteWidth_;
-	this->spriteHeight = spriteHeight_;
-	this->numberOfImages = numberOfImages_;
-	this->isLoop = isLoop_;
-}
-
-void Animation::update(SDL_Rect& clip, int dt_, double totalTime_){
+void Animation::update(SDL_Rect& clip, double dt_, double totalTime_){
 
 	// Compare the position on the sprite with the number of positions to know if is the
 	// end of the animation.
-	bool endOfAnimation = (this->posX + 1) >= this->numberOfImages;
+	bool endOfAnimation = (this->x + 1) >= this->numberOfImages;
 
-	int deltaT_ = totalTime_/ this->numberOfImages;
-
-	//Logger::log("position X: " + std::to_string(this->posX));
+	int deltaT_ = (int)(totalTime_ / this->numberOfImages);
 
 	// Verifica se mudou frame.
-    this->totalElapsedTime += dt_;
+    this->totalElapsedTime += (int)dt_;
+
     if(this->totalElapsedTime >= deltaT_) {
         this->totalElapsedTime -= deltaT_;
-        this->posX += 1;
-        if(this->isLoop){
+        this->x += 1;
+        if(this->loop){
         	if(endOfAnimation){
-        		this->posX= 0;
+        		this->x= 0;
         	}
     	}
     	else {
     		if(endOfAnimation){
-        		this->posX -= 1;
+        		this->x -= 1;
         	}
     	}
     }
 
-   	int positionX_ = this->posX * this->spriteWidth;
-	int positionY_ = this->posY * this->spriteHeight;
+   	int positionX_ = this->x * this->spriteWidth;
+	int positionY_ = this->y * this->spriteHeight;
 	updateClip(clip, positionX_, positionY_, this->spriteWidth, this->spriteHeight);
 }
 

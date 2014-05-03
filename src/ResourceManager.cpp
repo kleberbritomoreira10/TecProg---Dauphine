@@ -8,26 +8,26 @@ ResourceManager::ResourceManager() :
 }
 
 ResourceManager::~ResourceManager(){
-	std::map<std::string,Sprite::SpritePtr>::iterator it;
+	std::map<std::string, Sprite::SpritePtr>::const_iterator it;
+	
 	for(it = this->resources.begin(); it != this->resources.end(); it++){
 		if(it->second.use_count() != 1){
 			Logger::warning("Resource deleted with use count different than 1 (" + it->first + ").");
 		}
-		// else{
-		// 	Logger::verbose("Resource deleted successfully (" + it->first + ").");
-		// }
 	}
 }
 
 Sprite* ResourceManager::get(const std::string& name_){
-	std::map<std::string,Sprite::SpritePtr>::iterator it;
+	std::map<std::string, Sprite::SpritePtr>::const_iterator it;
 	it = this->resources.find(name_);
 
 	if (it != this->resources.end()){
 		return it->second.get();
 	}
-
-	return load(name_).get();
+	else{
+		return load(name_).get();
+	}
+	
 }
 
 void ResourceManager::registerResource(const std::string& name_, Sprite::SpritePtr resource_){
@@ -35,7 +35,7 @@ void ResourceManager::registerResource(const std::string& name_, Sprite::SpriteP
 }
 
 void ResourceManager::unregisterResource(const std::string& name_){
-	std::map<std::string,Sprite::SpritePtr>::iterator it;
+	std::map<std::string, Sprite::SpritePtr>::const_iterator it;
 	it = this->resources.find(name_);
 
 	if (it != this->resources.end()){

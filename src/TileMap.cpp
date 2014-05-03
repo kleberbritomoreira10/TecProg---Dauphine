@@ -15,9 +15,8 @@ void TileMap::create(const std::vector<int>& tileData_){
 	int tileX = 0;
 	int tileY = 0;
 
-	for(std::vector<int>::const_iterator it = tileData_.begin(); it != tileData_.end(); it++){
-
-		this->tiles.push_back(new Tile(tileX, tileY, (*it)));
+	for(auto tileData : tileData_){
+		this->tiles.push_back(new Tile(tileX, tileY, tileData));
 
 		tileX += TILE_SIZE;
 		if(tileX >= 1920){
@@ -28,8 +27,8 @@ void TileMap::create(const std::vector<int>& tileData_){
 }
 
 TileMap::~TileMap(){
-	for(std::vector<Tile*>::const_iterator it = tiles.begin(); it != tiles.end(); it++){
-		delete (*it);
+	for(auto tile : this->tiles){
+		delete tile;
 	}
 }
 
@@ -38,12 +37,16 @@ void TileMap::update(const double dt_){
 }
 
 void TileMap::render(const double cameraX_, const double cameraY_){
-	for(std::vector<Tile*>::const_iterator it = tiles.begin(); it != tiles.end(); it++){
-		SDL_Rect camera = {(int)cameraX_, (int)cameraY_, (int)Configuration::getCameraDistanceWidth(), (int)Configuration::getCameraDistanceHeight()};
-		if(Collision::checkCollision(camera, (*it)->getRectangle())){
-			const int dx = (*it)->getRectangle().x - cameraX_;
-			const int dy = (*it)->getRectangle().y - cameraY_;
-			this->sprite->render(dx, dy, &clips[(*it)->getType()]);
+	SDL_Rect camera = {(int)cameraX_, (int)cameraY_, (int)Configuration::getCameraDistanceWidth(), (int)Configuration::getCameraDistanceHeight()};
+
+	for(auto tile : this->tiles){
+
+		bool tileIsOnScreen = Collision::checkCollision(camera, tile->getRectangle());
+		if(tileIsOnScreen){
+
+			const int dx = tile->getRectangle().x - cameraX_;
+			const int dy = tile->getRectangle().y - cameraY_;
+			this->sprite->render(dx, dy, &clips[tile->getType()]);
 		}
 	}
 }

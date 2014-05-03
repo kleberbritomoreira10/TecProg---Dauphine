@@ -9,14 +9,17 @@
 #include "PStateRolling.h"
 
 Player::Player(double x_, double y_, Sprite* sprite_) :
-    DynamicEntity(x_, y_, sprite_)
+    DynamicEntity(x_, y_, sprite_),
+    animation(nullptr)
 {
 
     initializeStates();
 
+    // Shouldn't be here.
+    this->animation = new Animation(0, 0, this->width, this->height, 11, true);
+
     if(this->sprite != nullptr){
         this->currentState = this->statesMap.at(IDLE);
-        this->currentState->player = this;
         this->currentState->enter();
     }
     else{
@@ -37,6 +40,7 @@ void Player::update(const double dt_){
 
     Player::currentState->handleInput(keyStates);
     updatePosition(dt_);
+    this->animation->update(this->clip, dt_, 5);
 }
 
 void Player::render(const double cameraX_, const double cameraY_){
@@ -49,10 +53,10 @@ void Player::render(const double cameraX_, const double cameraY_){
 
 void Player::initializeStates(){
     // Initialize all the states in Player here.
-    this->statesMap.emplace(IDLE, new PStateIdle());
-    this->statesMap.emplace(MOVING, new PStateMoving());
-    this->statesMap.emplace(AERIAL, new PStateAerial());
-    this->statesMap.emplace(ROLLING, new PStateRolling());
+    this->statesMap.emplace(IDLE, new PStateIdle(this));
+    this->statesMap.emplace(MOVING, new PStateMoving(this));
+    this->statesMap.emplace(AERIAL, new PStateAerial(this));
+    this->statesMap.emplace(ROLLING, new PStateRolling(this));
 }
 
 void Player::destroyStates(){
@@ -64,12 +68,11 @@ void Player::destroyStates(){
 }
 
 void Player::changeState(PStates state_){
-    Player* l_player = this->currentState->player;
-    
     this->currentState->exit();
     this->currentState = this->statesMap.at(state_);
-
-    this->currentState->player = l_player;
     this->currentState->enter();
 }
 
+Animation& Player::getAnimation(){
+    return (*(this->animation));
+}

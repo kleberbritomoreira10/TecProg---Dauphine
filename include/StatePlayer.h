@@ -16,9 +16,15 @@ class StatePlayer {
 
 	public:
 		/**
+		* The constructor.
+		* @param player_ : Reference to the player.
+		*/
+		StatePlayer(Player* player_);
+
+		/**
 		* The destructor.
 		*/
-		virtual ~StatePlayer(){}
+		virtual ~StatePlayer();
 
 		/**
 		* Method called on load.

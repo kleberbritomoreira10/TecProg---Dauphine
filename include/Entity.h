@@ -44,7 +44,6 @@ class Entity {
 		*/
 		unsigned int getHeight();
 
-		Animation& getAnimation();
 		SDL_Rect& getClip();
 
 		double x; /**< The position in the x axis. */
