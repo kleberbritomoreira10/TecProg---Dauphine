@@ -57,37 +57,35 @@
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;SDLWrapper.h&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;InputKeys.h&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">using</span> std::array;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;ControllerHandler.h&quot;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
 <div class="line"><a name="l00014"></a><span class="lineno"><a class="code" href="class_input_handler.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_input_handler.html" title="Handles player input. ">InputHandler</a> {</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keyword">static</span> <a class="code" href="class_input_handler.html" title="Handles player input. ">InputHandler</a>* <a class="code" href="class_input_handler.html#a698a54e374eddd1f831a463ef609fe10" title="Singleton implementation. ">getInstance</a>();</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="class_input_handler.html#a698aa4af4f326a9881835fda251ca996" title="The constructor. ">InputHandler</a>();</div>
 <div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        </div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="class_input_handler.html#ac1f7efb54b34d433d6ffba62627452b6" title="The destructor. ">~InputHandler</a>();</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_input_handler.html#a820f483265aa3f6da39b9d93c1311966" title="Handles the input. ">handleInput</a>();</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        array&lt;bool, GameKeys::MAX&gt; <a class="code" href="class_input_handler.html#aa410e20f88f27f85f806d6b2e32a4626">getKeyStates</a>();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        std::array&lt;bool, GameKeys::MAX&gt; <a class="code" href="class_input_handler.html#af7087290a2fd7d973a47768049cfe5eb">getKeyStates</a>();</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_input_handler.html#abf21c50e1ab745a4df1d6ca2de9a8ece">signalQuit</a>();</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <a class="code" href="class_input_handler.html#a698aa4af4f326a9881835fda251ca996" title="The constructor. ">InputHandler</a>();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="class_input_handler.html#a0909ade773a1c38a46be37d0c8f0cfb5">   52</a></span>&#160;        <span class="keyword">static</span> <a class="code" href="class_input_handler.html" title="Handles player input. ">InputHandler</a>* <a class="code" href="class_input_handler.html#a0909ade773a1c38a46be37d0c8f0cfb5" title="The InputHandler instance (Singleton). ">instance</a>; </div>
-<div class="line"><a name="l00054"></a><span class="lineno"><a class="code" href="class_input_handler.html#adce79aa13d698a3f076f6ed7ae0afb3d">   54</a></span>&#160;        array&lt;bool, GameKeys::MAX&gt; <a class="code" href="class_input_handler.html#adce79aa13d698a3f076f6ed7ae0afb3d" title="              Boolean array that controls which keys are  pressed or not. ">keyStates</a>; </div>
-<div class="line"><a name="l00056"></a><span class="lineno"><a class="code" href="class_input_handler.html#a8a1ba6c4c76983e1cdd44798f8da0a66">   56</a></span>&#160;        SDL_Event <a class="code" href="class_input_handler.html#a8a1ba6c4c76983e1cdd44798f8da0a66" title="SDL internal event handler. ">eventHandler</a>; </div>
-<div class="line"><a name="l00057"></a><span class="lineno"><a class="code" href="class_input_handler.html#ae83295e50f34dd7e2b54f9ac4dcecac8">   57</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_input_handler.html#ae83295e50f34dd7e2b54f9ac4dcecac8" title="If the quit signal was recieved or not. ">quit</a>; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;};</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="preprocessor">#endif //INCLUDE_INPUTHANDLER_H</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno"><a class="code" href="class_input_handler.html#a50ac48002b081c2c03af8f638c47dbe7">   46</a></span>&#160;        <a class="code" href="class_controller_handler.html" title="The input handler for joysticks. ">ControllerHandler</a>* <a class="code" href="class_input_handler.html#a50ac48002b081c2c03af8f638c47dbe7" title="Handles input if joystick is present. ">controllerHandler</a>; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="code" href="class_input_handler.html#af8e03451ccf5a1028b2bc38ed85fad19">   47</a></span>&#160;        std::array&lt;bool, GameKeys::MAX&gt; <a class="code" href="class_input_handler.html#af8e03451ccf5a1028b2bc38ed85fad19" title="                   Boolean array that controls which keys are  pressed or not. ">keyStates</a>; </div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="code" href="class_input_handler.html#ab2fa06988077060c7a3dca6c3d643dd3">   49</a></span>&#160;        SDL_Event <a class="code" href="class_input_handler.html#ab2fa06988077060c7a3dca6c3d643dd3" title="SDL internal event structure. ">sdlEvent</a>; </div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="code" href="class_input_handler.html#ae83295e50f34dd7e2b54f9ac4dcecac8">   50</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_input_handler.html#ae83295e50f34dd7e2b54f9ac4dcecac8" title="If the quit signal was recieved or not. ">quit</a>; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;};</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;<span class="preprocessor">#endif //INCLUDE_INPUTHANDLER_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 22:46:28 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 3 2014 02:25:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

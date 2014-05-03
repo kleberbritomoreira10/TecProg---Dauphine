@@ -55,8 +55,10 @@
 <p>This is the complete list of members for <a class="el" href="class_dynamic_entity.html">DynamicEntity</a>, including all inherited members.</p>
 <table class="directory">
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>applyGravity</b>() (defined in <a class="el" href="class_dynamic_entity.html">DynamicEntity</a>)</td><td class="entry"><a class="el" href="class_dynamic_entity.html">DynamicEntity</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_dynamic_entity.html#a5fbd000bacef64a0ef979ba8f357808f">DynamicEntity</a>(double x_, double y_, Sprite *sprite_)</td><td class="entry"><a class="el" href="class_dynamic_entity.html">DynamicEntity</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_entity.html#adfaf4b4303373536f38f67fcdbac9151">Entity</a>(double x_, double y_, Sprite *sprite_)</td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_entity.html#a0b4b3fa2d30ea59c4d54c6d7a510dd0f">clip</a></td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_dynamic_entity.html#a4fdebd26b71e73564cbbecc4e02a8862">DynamicEntity</a>(const double x_, const double y_, Sprite *const sprite_)</td><td class="entry"><a class="el" href="class_dynamic_entity.html">DynamicEntity</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_entity.html#a6be886b9dff92e1b16ac54921efdfb52">Entity</a>(const double x_, const double y_, Sprite *const sprite_)</td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_entity.html#a35f8cd572e6ccfd3be86369e849bcd92">getClip</a>()</td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_entity.html#aabc8b9eb5a82e2ebea415814754b0de3">getHeight</a>()</td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_entity.html#a6ef38983d55696bba55f36b568f527e9">getWidth</a>()</td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_entity.html#aebf02bb745e69e68f44d5b5cee318d97">height</a></td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
@@ -65,10 +67,10 @@
   <tr class="even"><td class="entry"><a class="el" href="class_dynamic_entity.html#aae9c390c6896261de8e7752b07677eff">levelH</a></td><td class="entry"><a class="el" href="class_dynamic_entity.html">DynamicEntity</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr><td class="entry"><a class="el" href="class_dynamic_entity.html#a43190a3248dbc7bbe01d6637afd36e36">levelW</a></td><td class="entry"><a class="el" href="class_dynamic_entity.html">DynamicEntity</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_dynamic_entity.html#a9fdede02bb776c8ff1d12db39c24f98a">maxSpeed</a></td><td class="entry"><a class="el" href="class_dynamic_entity.html">DynamicEntity</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0"><td class="entry"><b>move</b>(bool movingLeft_, bool movingRight_) (defined in <a class="el" href="class_dynamic_entity.html">DynamicEntity</a>)</td><td class="entry"><a class="el" href="class_dynamic_entity.html">DynamicEntity</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0"><td class="entry"><b>move</b>(const bool movingLeft_, const bool movingRight_) (defined in <a class="el" href="class_dynamic_entity.html">DynamicEntity</a>)</td><td class="entry"><a class="el" href="class_dynamic_entity.html">DynamicEntity</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_entity.html#a61e5674c0d1bb48b9ddc7ba0480b0d1a">render</a>(const double cameraX_, const double cameraY_)=0</td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>roll</b>() (defined in <a class="el" href="class_dynamic_entity.html">DynamicEntity</a>)</td><td class="entry"><a class="el" href="class_dynamic_entity.html">DynamicEntity</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_dynamic_entity.html#ac1b13abb475e8b7b1916a3dc6fa78d47">setLevelWH</a>(unsigned int width_, unsigned int height_)</td><td class="entry"><a class="el" href="class_dynamic_entity.html">DynamicEntity</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_dynamic_entity.html#a6a995a7e31990ae931d0fc14ff786d9f">setLevelWH</a>(const unsigned int width_, const unsigned int height_)</td><td class="entry"><a class="el" href="class_dynamic_entity.html">DynamicEntity</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr bgcolor="#f0f0f0"><td class="entry"><b>slowVx</b>() (defined in <a class="el" href="class_dynamic_entity.html">DynamicEntity</a>)</td><td class="entry"><a class="el" href="class_dynamic_entity.html">DynamicEntity</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_dynamic_entity.html#afb9769a95740aa1819e1d843d1a7c4db">speed</a></td><td class="entry"><a class="el" href="class_dynamic_entity.html">DynamicEntity</a></td><td class="entry"></td></tr>
   <tr><td class="entry"><a class="el" href="class_entity.html#a4da30cea569f19c66c033358e1e99c04">sprite</a></td><td class="entry"><a class="el" href="class_entity.html">Entity</a></td><td class="entry"><span class="mlabel">protected</span></td></tr>
@@ -84,7 +86,7 @@
 </table></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 22:46:28 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 3 2014 02:25:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

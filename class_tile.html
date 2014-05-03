@@ -55,79 +55,62 @@
 <div class="title">Tile Class Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p>Class that represents a tile.  
+ <a href="class_tile.html#details">More...</a></p>
+
+<p><code>#include &lt;<a class="el" href="_tile_8h_source.html">Tile.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa0893751bccf73b4dc6ea06c4c25065f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa0893751bccf73b4dc6ea06c4c25065f"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Tile</b> (double x_, double y_, <a class="el" href="class_sprite.html">Sprite</a> *sprite_)</td></tr>
-<tr class="separator:aa0893751bccf73b4dc6ea06c4c25065f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4aaba0beda63e3807682bca439b01b58"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tile.html#a4aaba0beda63e3807682bca439b01b58">update</a> (const double dt_)</td></tr>
-<tr class="memdesc:a4aaba0beda63e3807682bca439b01b58"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the entity.  <a href="#a4aaba0beda63e3807682bca439b01b58">More...</a><br/></td></tr>
-<tr class="separator:a4aaba0beda63e3807682bca439b01b58"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a620df1a25ceda06b78d68e095a982269"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tile.html#a620df1a25ceda06b78d68e095a982269">render</a> (const double cameraX_, const double cameraY_)</td></tr>
-<tr class="memdesc:a620df1a25ceda06b78d68e095a982269"><td class="mdescLeft">&#160;</td><td class="mdescRight">Renders the entity.  <a href="#a620df1a25ceda06b78d68e095a982269">More...</a><br/></td></tr>
-<tr class="separator:a620df1a25ceda06b78d68e095a982269"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a222cf7a0fa8383daab3292c6e6bdebba"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a222cf7a0fa8383daab3292c6e6bdebba"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>isSolid</b> ()</td></tr>
-<tr class="separator:a222cf7a0fa8383daab3292c6e6bdebba"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_methods_class_entity"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_entity')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_entity.html">Entity</a></td></tr>
-<tr class="memitem:adf6d3f7cb1b2ba029b6b048a395cc8ae inherit pub_methods_class_entity"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#adf6d3f7cb1b2ba029b6b048a395cc8ae">~Entity</a> ()</td></tr>
-<tr class="memdesc:adf6d3f7cb1b2ba029b6b048a395cc8ae inherit pub_methods_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">The destructor.  <a href="#adf6d3f7cb1b2ba029b6b048a395cc8ae">More...</a><br/></td></tr>
-<tr class="separator:adf6d3f7cb1b2ba029b6b048a395cc8ae inherit pub_methods_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ef38983d55696bba55f36b568f527e9 inherit pub_methods_class_entity"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a6ef38983d55696bba55f36b568f527e9">getWidth</a> ()</td></tr>
-<tr class="separator:a6ef38983d55696bba55f36b568f527e9 inherit pub_methods_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabc8b9eb5a82e2ebea415814754b0de3 inherit pub_methods_class_entity"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#aabc8b9eb5a82e2ebea415814754b0de3">getHeight</a> ()</td></tr>
-<tr class="separator:aabc8b9eb5a82e2ebea415814754b0de3 inherit pub_methods_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeaf233ea4cfd90e05e43211147bf59a3"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tile.html#aeaf233ea4cfd90e05e43211147bf59a3">Tile</a> (const int x_, const int y_, const int tileType_)</td></tr>
+<tr class="memdesc:aeaf233ea4cfd90e05e43211147bf59a3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor Initializes all attributes.  <a href="#aeaf233ea4cfd90e05e43211147bf59a3">More...</a><br/></td></tr>
+<tr class="separator:aeaf233ea4cfd90e05e43211147bf59a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98634abbd93fa13d0578d7103202d03d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a98634abbd93fa13d0578d7103202d03d"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tile.html#a98634abbd93fa13d0578d7103202d03d">~Tile</a> ()</td></tr>
+<tr class="memdesc:a98634abbd93fa13d0578d7103202d03d"><td class="mdescLeft">&#160;</td><td class="mdescRight">The destructor. <br/></td></tr>
+<tr class="separator:a98634abbd93fa13d0578d7103202d03d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7910738fad3a48396d2050dedbf5c9f1"><td class="memItemLeft" align="right" valign="top">SDL_Rect &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tile.html#a7910738fad3a48396d2050dedbf5c9f1">getRectangle</a> ()</td></tr>
+<tr class="separator:a7910738fad3a48396d2050dedbf5c9f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8582d28ecc7a974dd6d5263d73b8f1f1"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tile.html#a8582d28ecc7a974dd6d5263d73b8f1f1">getType</a> ()</td></tr>
+<tr class="separator:a8582d28ecc7a974dd6d5263d73b8f1f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a9eec63370c6138ac19a5b48d1f32f855"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a9eec63370c6138ac19a5b48d1f32f855"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>solid</b></td></tr>
-<tr class="separator:a9eec63370c6138ac19a5b48d1f32f855"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
-Additional Inherited Members</h2></td></tr>
-<tr class="inherit_header pub_attribs_class_entity"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_class_entity')"><img src="closed.png" alt="-"/>&#160;Public Attributes inherited from <a class="el" href="class_entity.html">Entity</a></td></tr>
-<tr class="memitem:abe84b2274427a984d952acd6d4c4061f inherit pub_attribs_class_entity"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#abe84b2274427a984d952acd6d4c4061f">x</a></td></tr>
-<tr class="memdesc:abe84b2274427a984d952acd6d4c4061f inherit pub_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">The position in the x axis.  <a href="#abe84b2274427a984d952acd6d4c4061f">More...</a><br/></td></tr>
-<tr class="separator:abe84b2274427a984d952acd6d4c4061f inherit pub_attribs_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeaf8012f92ad9f8ea0df589e3fc67c8f inherit pub_attribs_class_entity"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#aeaf8012f92ad9f8ea0df589e3fc67c8f">y</a></td></tr>
-<tr class="memdesc:aeaf8012f92ad9f8ea0df589e3fc67c8f inherit pub_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">The position in the y axis.  <a href="#aeaf8012f92ad9f8ea0df589e3fc67c8f">More...</a><br/></td></tr>
-<tr class="separator:aeaf8012f92ad9f8ea0df589e3fc67c8f inherit pub_attribs_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_methods_class_entity"><td colspan="2" onclick="javascript:toggleInherit('pro_methods_class_entity')"><img src="closed.png" alt="-"/>&#160;Protected Member Functions inherited from <a class="el" href="class_entity.html">Entity</a></td></tr>
-<tr class="memitem:adfaf4b4303373536f38f67fcdbac9151 inherit pro_methods_class_entity"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#adfaf4b4303373536f38f67fcdbac9151">Entity</a> (double x_, double y_, <a class="el" href="class_sprite.html">Sprite</a> *sprite_)</td></tr>
-<tr class="memdesc:adfaf4b4303373536f38f67fcdbac9151 inherit pro_methods_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor.  <a href="#adfaf4b4303373536f38f67fcdbac9151">More...</a><br/></td></tr>
-<tr class="separator:adfaf4b4303373536f38f67fcdbac9151 inherit pro_methods_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pro_attribs_class_entity"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_entity')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_entity.html">Entity</a></td></tr>
-<tr class="memitem:a4da30cea569f19c66c033358e1e99c04 inherit pro_attribs_class_entity"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_sprite.html">Sprite</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a4da30cea569f19c66c033358e1e99c04">sprite</a></td></tr>
-<tr class="memdesc:a4da30cea569f19c66c033358e1e99c04 inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">The <a class="el" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a> attributed to the entity.  <a href="#a4da30cea569f19c66c033358e1e99c04">More...</a><br/></td></tr>
-<tr class="separator:a4da30cea569f19c66c033358e1e99c04 inherit pro_attribs_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac5e09232fb967bf716cc6e6684d32cea inherit pro_attribs_class_entity"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#ac5e09232fb967bf716cc6e6684d32cea">width</a></td></tr>
-<tr class="memdesc:ac5e09232fb967bf716cc6e6684d32cea inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">The entitys width, from its sprite.  <a href="#ac5e09232fb967bf716cc6e6684d32cea">More...</a><br/></td></tr>
-<tr class="separator:ac5e09232fb967bf716cc6e6684d32cea inherit pro_attribs_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aebf02bb745e69e68f44d5b5cee318d97 inherit pro_attribs_class_entity"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#aebf02bb745e69e68f44d5b5cee318d97">height</a></td></tr>
-<tr class="memdesc:aebf02bb745e69e68f44d5b5cee318d97 inherit pro_attribs_class_entity"><td class="mdescLeft">&#160;</td><td class="mdescRight">The entitys height, from its sprite.  <a href="#aebf02bb745e69e68f44d5b5cee318d97">More...</a><br/></td></tr>
-<tr class="separator:aebf02bb745e69e68f44d5b5cee318d97 inherit pro_attribs_class_entity"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a47b4b331f7bd36979c40b68a041c7759"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tile.html#a47b4b331f7bd36979c40b68a041c7759">type</a></td></tr>
+<tr class="memdesc:a47b4b331f7bd36979c40b68a041c7759"><td class="mdescLeft">&#160;</td><td class="mdescRight">The type of the <a class="el" href="class_tile.html" title="Class that represents a tile. ">Tile</a>.  <a href="#a47b4b331f7bd36979c40b68a041c7759">More...</a><br/></td></tr>
+<tr class="separator:a47b4b331f7bd36979c40b68a041c7759"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43551e657dc00cd8779ffeafcb13ecf0"><td class="memItemLeft" align="right" valign="top">SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_tile.html#a43551e657dc00cd8779ffeafcb13ecf0">rectangle</a></td></tr>
+<tr class="memdesc:a43551e657dc00cd8779ffeafcb13ecf0"><td class="mdescLeft">&#160;</td><td class="mdescRight">The clip for the <a class="el" href="class_tile.html" title="Class that represents a tile. ">Tile</a>.  <a href="#a43551e657dc00cd8779ffeafcb13ecf0">More...</a><br/></td></tr>
+<tr class="separator:a43551e657dc00cd8779ffeafcb13ecf0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a620df1a25ceda06b78d68e095a982269"></a>
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p>Class that represents a tile. </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">Todo:</a></b></dt><dd><p class="startdd">Actually implement the tiles that will be in the game. </p>
+<p class="enddd">Implement solid tile. </p>
+</dd></dl>
+</div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a class="anchor" id="aeaf233ea4cfd90e05e43211147bf59a3"></a>
 <div class="memitem">
 <div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Tile::render </td>
+          <td class="memname">Tile::Tile </td>
           <td>(</td>
-          <td class="paramtype">const double&#160;</td>
-          <td class="paramname"><em>cameraX_</em>, </td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>x_</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const double&#160;</td>
-          <td class="paramname"><em>cameraY_</em>&#160;</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>y_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>tileType_</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -135,29 +118,55 @@ Additional Inherited Members</h2></td></tr>
           <td></td><td></td>
         </tr>
       </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
 </div><div class="memdoc">
 
-<p>Renders the entity. </p>
-<p>Pure virtual function. Purpose is to copy the entity's texture onto the renderer. </p>
-<dl class="section note"><dt>Note</dt><dd>Usually just calls the render method from the <a class="el" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a> class. </dd></dl>
+<p>The constructor Initializes all attributes. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">cameraX_</td><td>: The x position of the camera. </td></tr>
-    <tr><td class="paramname">cameraY_</td><td>: The y position of the camera. </td></tr>
+    <tr><td class="paramname">x_</td><td>: The x for the tile rectangle. </td></tr>
+    <tr><td class="paramname">y_</td><td>: The y for the tile rectangle. </td></tr>
+    <tr><td class="paramname">tileType_</td><td>: The type of the tile. </td></tr>
   </table>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_entity.html#a61e5674c0d1bb48b9ddc7ba0480b0d1a">Entity</a>.</p>
+</div>
+</div>
+<h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a7910738fad3a48396d2050dedbf5c9f1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Rect &amp; Tile::getRectangle </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="class_tile.html" title="Class that represents a tile. ">Tile</a> rectangle (clip). </dd></dl>
 
 </div>
 </div>
-<a class="anchor" id="a4aaba0beda63e3807682bca439b01b58"></a>
+<a class="anchor" id="a8582d28ecc7a974dd6d5263d73b8f1f1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Tile::getType </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="class_tile.html" title="Class that represents a tile. ">Tile</a> type. </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a43551e657dc00cd8779ffeafcb13ecf0"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -165,30 +174,39 @@ Additional Inherited Members</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">void Tile::update </td>
-          <td>(</td>
-          <td class="paramtype">const double&#160;</td>
-          <td class="paramname"><em>dt_</em>)</td><td></td>
-          <td></td>
+          <td class="memname">SDL_Rect Tile::rectangle</td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
-<p>Updates the entity. </p>
-<p>Pure virtual function. Purpose is to update whatever is necessary, relative to the entity. </p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">dt_</td><td>: Delta time. Time elapsed between one frame and the other. </td></tr>
-  </table>
-  </dd>
-</dl>
+<p>The clip for the <a class="el" href="class_tile.html" title="Class that represents a tile. ">Tile</a>. </p>
 
-<p>Implements <a class="el" href="class_entity.html#a5fc199d856ead370374f90b9ab216b48">Entity</a>.</p>
+</div>
+</div>
+<a class="anchor" id="a47b4b331f7bd36979c40b68a041c7759"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Tile::type</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The type of the <a class="el" href="class_tile.html" title="Class that represents a tile. ">Tile</a>. </p>
 
 </div>
 </div>
@@ -199,7 +217,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 22:46:28 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 3 2014 02:25:31 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

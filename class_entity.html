@@ -65,8 +65,9 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:adf6d3f7cb1b2ba029b6b048a395cc8ae"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#adf6d3f7cb1b2ba029b6b048a395cc8ae">~Entity</a> ()</td></tr>
-<tr class="memdesc:adf6d3f7cb1b2ba029b6b048a395cc8ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">The destructor.  <a href="#adf6d3f7cb1b2ba029b6b048a395cc8ae">More...</a><br/></td></tr>
+<tr class="memitem:adf6d3f7cb1b2ba029b6b048a395cc8ae"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="adf6d3f7cb1b2ba029b6b048a395cc8ae"></a>
+virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#adf6d3f7cb1b2ba029b6b048a395cc8ae">~Entity</a> ()</td></tr>
+<tr class="memdesc:adf6d3f7cb1b2ba029b6b048a395cc8ae"><td class="mdescLeft">&#160;</td><td class="mdescRight">The destructor. <br/></td></tr>
 <tr class="separator:adf6d3f7cb1b2ba029b6b048a395cc8ae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5fc199d856ead370374f90b9ab216b48"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a5fc199d856ead370374f90b9ab216b48">update</a> (const double dt_)=0</td></tr>
 <tr class="memdesc:a5fc199d856ead370374f90b9ab216b48"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the entity.  <a href="#a5fc199d856ead370374f90b9ab216b48">More...</a><br/></td></tr>
@@ -78,6 +79,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a6ef38983d55696bba55f36b568f527e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabc8b9eb5a82e2ebea415814754b0de3"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#aabc8b9eb5a82e2ebea415814754b0de3">getHeight</a> ()</td></tr>
 <tr class="separator:aabc8b9eb5a82e2ebea415814754b0de3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a35f8cd572e6ccfd3be86369e849bcd92"><td class="memItemLeft" align="right" valign="top">SDL_Rect &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a35f8cd572e6ccfd3be86369e849bcd92">getClip</a> ()</td></tr>
+<tr class="separator:a35f8cd572e6ccfd3be86369e849bcd92"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -90,9 +93,9 @@ Public Attributes</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
-<tr class="memitem:adfaf4b4303373536f38f67fcdbac9151"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#adfaf4b4303373536f38f67fcdbac9151">Entity</a> (double x_, double y_, <a class="el" href="class_sprite.html">Sprite</a> *sprite_)</td></tr>
-<tr class="memdesc:adfaf4b4303373536f38f67fcdbac9151"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor.  <a href="#adfaf4b4303373536f38f67fcdbac9151">More...</a><br/></td></tr>
-<tr class="separator:adfaf4b4303373536f38f67fcdbac9151"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6be886b9dff92e1b16ac54921efdfb52"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a6be886b9dff92e1b16ac54921efdfb52">Entity</a> (const double x_, const double y_, <a class="el" href="class_sprite.html">Sprite</a> *const sprite_)</td></tr>
+<tr class="memdesc:a6be886b9dff92e1b16ac54921efdfb52"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor.  <a href="#a6be886b9dff92e1b16ac54921efdfb52">More...</a><br/></td></tr>
+<tr class="separator:a6be886b9dff92e1b16ac54921efdfb52"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -105,38 +108,15 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:aebf02bb745e69e68f44d5b5cee318d97"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#aebf02bb745e69e68f44d5b5cee318d97">height</a></td></tr>
 <tr class="memdesc:aebf02bb745e69e68f44d5b5cee318d97"><td class="mdescLeft">&#160;</td><td class="mdescRight">The entitys height, from its sprite.  <a href="#aebf02bb745e69e68f44d5b5cee318d97">More...</a><br/></td></tr>
 <tr class="separator:aebf02bb745e69e68f44d5b5cee318d97"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b4b3fa2d30ea59c4d54c6d7a510dd0f"><td class="memItemLeft" align="right" valign="top">SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a0b4b3fa2d30ea59c4d54c6d7a510dd0f">clip</a></td></tr>
+<tr class="memdesc:a0b4b3fa2d30ea59c4d54c6d7a510dd0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current clip on the spritesheet, to determine animation.  <a href="#a0b4b3fa2d30ea59c4d54c6d7a510dd0f">More...</a><br/></td></tr>
+<tr class="separator:a0b4b3fa2d30ea59c4d54c6d7a510dd0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base class for all game objects (entities). </p>
 <p>The entity contains the (x,y) position, width and height, and a sprite. </p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" id="adf6d3f7cb1b2ba029b6b048a395cc8ae"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Entity::~Entity </td>
-          <td>(</td>
-          <td class="paramname">)</td><td></td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The destructor. </p>
-<p>Deletes the sprite. </p>
-
-</div>
-</div>
-<a class="anchor" id="adfaf4b4303373536f38f67fcdbac9151"></a>
+<a class="anchor" id="a6be886b9dff92e1b16ac54921efdfb52"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -146,19 +126,19 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td class="memname">Entity::Entity </td>
           <td>(</td>
-          <td class="paramtype">double&#160;</td>
+          <td class="paramtype">const double&#160;</td>
           <td class="paramname"><em>x_</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">double&#160;</td>
+          <td class="paramtype">const double&#160;</td>
           <td class="paramname"><em>y_</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype"><a class="el" href="class_sprite.html">Sprite</a> *&#160;</td>
+          <td class="paramtype"><a class="el" href="class_sprite.html">Sprite</a> *const&#160;</td>
           <td class="paramname"><em>sprite_</em>&#160;</td>
         </tr>
         <tr>
@@ -184,10 +164,27 @@ Protected Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>Fix magic numbers. </dd></dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="a35f8cd572e6ccfd3be86369e849bcd92"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Rect &amp; Entity::getClip </td>
+          <td>(</td>
+          <td class="paramname">)</td><td></td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="class_entity.html" title="Base class for all game objects (entities). ">Entity</a> clip. </dd></dl>
+
+</div>
+</div>
 <a class="anchor" id="aabc8b9eb5a82e2ebea415814754b0de3"></a>
 <div class="memitem">
 <div class="memproto">
@@ -263,7 +260,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="class_player.html#aa9f504c0cd5c4d9c7383ca78c1a36b46">Player</a>, and <a class="el" href="class_tile.html#a620df1a25ceda06b78d68e095a982269">Tile</a>.</p>
+<p>Implemented in <a class="el" href="class_player.html#aa9f504c0cd5c4d9c7383ca78c1a36b46">Player</a>, and <a class="el" href="class_tile_map.html#a32a55b24dcd57316042e66443299c1dc">TileMap</a>.</p>
 
 </div>
 </div>
@@ -298,11 +295,33 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="class_player.html#a5fc1b10886df85d351a62dc5b88fe42d">Player</a>, and <a class="el" href="class_tile.html#a4aaba0beda63e3807682bca439b01b58">Tile</a>.</p>
+<p>Implemented in <a class="el" href="class_player.html#a5fc1b10886df85d351a62dc5b88fe42d">Player</a>, and <a class="el" href="class_tile_map.html#a0cae9a5e06510fa8e1a140d21259a091">TileMap</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a0b4b3fa2d30ea59c4d54c6d7a510dd0f"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">SDL_Rect Entity::clip</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>The current clip on the spritesheet, to determine animation. </p>
+
+</div>
+</div>
 <a class="anchor" id="aebf02bb745e69e68f44d5b5cee318d97"></a>
 <div class="memitem">
 <div class="memproto">
@@ -404,7 +423,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 22:46:28 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 3 2014 02:25:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

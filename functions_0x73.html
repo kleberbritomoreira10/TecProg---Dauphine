@@ -50,12 +50,13 @@
       <li class="current"><a href="functions.html"><span>All</span></a></li>
       <li><a href="functions_func.html"><span>Functions</span></a></li>
       <li><a href="functions_vars.html"><span>Variables</span></a></li>
+      <li><a href="functions_type.html"><span>Typedefs</span></a></li>
+      <li><a href="functions_enum.html"><span>Enumerations</span></a></li>
     </ul>
   </div>
   <div id="navrow4" class="tabs3">
     <ul class="tablist">
       <li><a href="functions.html#index_a"><span>a</span></a></li>
-      <li><a href="functions_0x62.html#index_b"><span>b</span></a></li>
       <li><a href="functions_0x63.html#index_c"><span>c</span></a></li>
       <li><a href="functions_0x64.html#index_d"><span>d</span></a></li>
       <li><a href="functions_0x65.html#index_e"><span>e</span></a></li>
@@ -66,10 +67,12 @@
       <li><a href="functions_0x6b.html#index_k"><span>k</span></a></li>
       <li><a href="functions_0x6c.html#index_l"><span>l</span></a></li>
       <li><a href="functions_0x6d.html#index_m"><span>m</span></a></li>
+      <li><a href="functions_0x6e.html#index_n"><span>n</span></a></li>
       <li><a href="functions_0x70.html#index_p"><span>p</span></a></li>
       <li><a href="functions_0x71.html#index_q"><span>q</span></a></li>
       <li><a href="functions_0x72.html#index_r"><span>r</span></a></li>
       <li class="current"><a href="functions_0x73.html#index_s"><span>s</span></a></li>
+      <li><a href="functions_0x74.html#index_t"><span>t</span></a></li>
       <li><a href="functions_0x75.html#index_u"><span>u</span></a></li>
       <li><a href="functions_0x76.html#index_v"><span>v</span></a></li>
       <li><a href="functions_0x77.html#index_w"><span>w</span></a></li>
@@ -89,6 +92,9 @@
 <li>screenWidth
 : <a class="el" href="class_configuration.html#aef24b67543ea3560d93544769d7aa2b8">Configuration</a>
 </li>
+<li>sdlEvent
+: <a class="el" href="class_input_handler.html#ab2fa06988077060c7a3dca6c3d643dd3">InputHandler</a>
+</li>
 <li>sdlRenderer
 : <a class="el" href="class_window.html#a3c56f31300b017074ab06800b2164e40">Window</a>
 </li>
@@ -99,31 +105,31 @@
 : <a class="el" href="class_window.html#a6be667ef970fd951a4853e7bcc933ac8">Window</a>
 </li>
 <li>setCamera()
-: <a class="el" href="class_level.html#aba78cf6675a9b16c0748fff46b4068c5">Level</a>
-, <a class="el" href="class_level_one.html#ace0ce431ac08c5924f8870339202e36e">LevelOne</a>
+: <a class="el" href="class_level_one.html#ac2ad8b0e24ce53fb9075a5d3611bf6a0">LevelOne</a>
+, <a class="el" href="class_level.html#ab1c85c44045086e53e8605ea4a71d39f">Level</a>
 </li>
 <li>setCurrentEffect()
-: <a class="el" href="class_audio_handler.html#ac5bfc9b175e06985b00392cf0c7a5add">AudioHandler</a>
+: <a class="el" href="class_audio_handler.html#a50a583061e96a984f96b60c3d392a948">AudioHandler</a>
 </li>
 <li>setCurrentMusic()
-: <a class="el" href="class_audio_handler.html#adf6802db6d45c5e0c3a76c6ad71bd495">AudioHandler</a>
+: <a class="el" href="class_audio_handler.html#aca81071ce7b30e1cdf5970fcd6a4adc8">AudioHandler</a>
 </li>
 <li>setEffectVolume()
 : <a class="el" href="class_audio_handler.html#a5b50cf59bb164ebc877956ddf2de5563">AudioHandler</a>
 </li>
 <li>setLevelWH()
-: <a class="el" href="class_camera.html#a7b60d73d2c0d5b8215bd5ce1b423d3c1">Camera</a>
-, <a class="el" href="class_dynamic_entity.html#ac1b13abb475e8b7b1916a3dc6fa78d47">DynamicEntity</a>
+: <a class="el" href="class_camera.html#a6768fadda07535ae32ff269f255b7a79">Camera</a>
+, <a class="el" href="class_dynamic_entity.html#a6a995a7e31990ae931d0fc14ff786d9f">DynamicEntity</a>
 </li>
 <li>setMusicVolume()
 : <a class="el" href="class_audio_handler.html#a68d00941dddc05e756d6eea507990f56">AudioHandler</a>
 </li>
 <li>setPlayer()
-: <a class="el" href="class_level.html#a24dc12f4b029f77bfba2ac725518d061">Level</a>
-, <a class="el" href="class_level_one.html#a04f152a47396c50da9802d612d503f0f">LevelOne</a>
+: <a class="el" href="class_level_one.html#ab883cb0c0459279c74c91961d6a68f2e">LevelOne</a>
+, <a class="el" href="class_level.html#a9c8f44106b4827a4da09cf5cc1339d93">Level</a>
 </li>
 <li>setState()
-: <a class="el" href="class_game.html#afe05f8509503232b658dbca59247f513">Game</a>
+: <a class="el" href="class_game.html#af2a572d29d710deaf195971fef475bb8">Game</a>
 </li>
 <li>signalQuit()
 : <a class="el" href="class_input_handler.html#abf21c50e1ab745a4df1d6ca2de9a8ece">InputHandler</a>
@@ -131,32 +137,27 @@
 <li>speed
 : <a class="el" href="class_dynamic_entity.html#afb9769a95740aa1819e1d843d1a7c4db">DynamicEntity</a>
 </li>
-<li>splash
-: <a class="el" href="class_g_state_splash.html#a7c765188667ac3ccaadf445c231f9515">GStateSplash</a>
+<li>Sprite()
+: <a class="el" href="class_sprite.html#a0c5597fedd9b09878ec8acddca54c2f7">Sprite</a>
 </li>
 <li>sprite
 : <a class="el" href="class_entity.html#a4da30cea569f19c66c033358e1e99c04">Entity</a>
 </li>
-<li>Sprite()
-: <a class="el" href="class_sprite.html#ab127ae81ef8a93b9ddea9287edfedfdb">Sprite</a>
+<li>spriteHeight
+: <a class="el" href="class_animation.html#abf5b6b0b0178b93bf86e0a2551ac1c06">Animation</a>
 </li>
-<li>stateAerial
-: <a class="el" href="class_player.html#a48b05fe2436abe4190ef684e26d82a39">Player</a>
+<li>SpritePtr
+: <a class="el" href="class_sprite.html#a636fde0cb2cce321526d7c25c37717e3">Sprite</a>
 </li>
-<li>stateCrouching
-: <a class="el" href="class_player.html#acd4e846e4778794d91f63445162db7ca">Player</a>
+<li>spriteWidth
+: <a class="el" href="class_animation.html#a030a8f97b36c7e77ba8ce544ea3b3132">Animation</a>
 </li>
-<li>stateIdle
-: <a class="el" href="class_player.html#a2203b8aa564c980224ef579e4cd02777">Player</a>
+<li>StatePlayer()
+: <a class="el" href="class_state_player.html#a78f4adb4ddf2b2b59a6b26a537f74912">StatePlayer</a>
 </li>
-<li>stateMoving
-: <a class="el" href="class_player.html#abef2585c97a2c35ab57382a071d54ce0">Player</a>
-</li>
-<li>stateRolling
-: <a class="el" href="class_player.html#a4dc32d1078f9e44c0053a61385125eee">Player</a>
-</li>
-<li>stateSplash
-: <a class="el" href="class_game.html#ab7e449ac2b8d9a1fc4aed0a13da3e7f7">Game</a>
+<li>statesMap
+: <a class="el" href="class_player.html#abf589351714d92a8f8b4421798f1d10a">Player</a>
+, <a class="el" href="class_game.html#a9d6b3d33b550f2ac3425d324d5e235e8">Game</a>
 </li>
 <li>stopMusic()
 : <a class="el" href="class_audio_handler.html#aeff0546d72fab5587f86c830efb6f40e">AudioHandler</a>
@@ -165,7 +166,7 @@
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 22:46:29 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 3 2014 02:25:31 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

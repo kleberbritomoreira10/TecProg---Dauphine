@@ -44,37 +44,45 @@
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt><a class="anchor" id="_todo000005"></a>Member <a class="el" href="class_camera.html#a14556b4f396f19e2f283a59a26c251e3">Camera::Camera</a>  (<a class="el" href="class_entity.html" title="Base class for all game objects (entities). ">Entity</a> *entity_)</dt>
+<dt><a class="anchor" id="_todo000008"></a>Member <a class="el" href="class_camera.html#a9e26f3ccfeb2d6dd6b1ec037676c6784">Camera::Camera</a>  (<a class="el" href="class_entity.html" title="Base class for all game objects (entities). ">Entity</a> *const entity_)</dt>
 <dd>If the player changes the resolution, so should the clip. (?)  </dd>
 <dt><a class="anchor" id="_todo000001"></a>Class <a class="el" href="class_configuration.html">Configuration</a>  </dt>
 <dd><p class="startdd">Refactor the <a class="el" href="class_configuration.html" title="Game configuration class. ">Configuration</a> class. </p>
 <p class="enddd">Implement all the possible resolutions the game will "want".  </p>
 </dd>
-<dt><a class="anchor" id="_todo000006"></a>Member <a class="el" href="class_configuration.html#aa04cb3c24d2d5557fd519963fa0cb345">Configuration::initialize</a>  ()</dt>
+<dt><a class="anchor" id="_todo000009"></a>Member <a class="el" href="class_configuration.html#aa04cb3c24d2d5557fd519963fa0cb345">Configuration::initialize</a>  ()</dt>
 <dd>Make sure recieved ints are not negative.  </dd>
-<dt><a class="anchor" id="_todo000002"></a>Class <a class="el" href="class_control_wrapper.html">ControlWrapper</a>  </dt>
-<dd>Refactor.  </dd>
-<dt><a class="anchor" id="_todo000007"></a>Member <a class="el" href="class_dynamic_entity.html#a175c68f35b4c2bc1e80f12a4d73e5eed">DynamicEntity::updatePosition</a>  (const double dt_)</dt>
+<dt><a class="anchor" id="_todo000010"></a>Member <a class="el" href="class_dynamic_entity.html#a175c68f35b4c2bc1e80f12a4d73e5eed">DynamicEntity::updatePosition</a>  (const double dt_)</dt>
 <dd>Fix all these magic/weird numbers.  </dd>
-<dt><a class="anchor" id="_todo000008"></a>Member <a class="el" href="class_game.html#afe05f8509503232b658dbca59247f513">Game::setState</a>  (<a class="el" href="class_state_game.html" title="Parent class for other game states. ">StateGame</a> &amp;state_)</dt>
+<dt><a class="anchor" id="_todo000011"></a>Member <a class="el" href="class_entity.html#a6be886b9dff92e1b16ac54921efdfb52">Entity::Entity</a>  (const double x_, const double y_, <a class="el" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a> *const sprite_)</dt>
+<dd>Fix magic numbers.  </dd>
+<dt><a class="anchor" id="_todo000012"></a>Member <a class="el" href="class_game.html#af2a572d29d710deaf195971fef475bb8">Game::setState</a>  (const GStates state_)</dt>
 <dd>Implement the transition between states.  </dd>
-<dt><a class="anchor" id="_todo000009"></a>Member <a class="el" href="class_logger.html#a091d94db18ef4db49ce40c731dbec526">Logger::log</a>  (const string &amp;message_)</dt>
+<dt><a class="anchor" id="_todo000013"></a>Member <a class="el" href="class_logger.html#a6ea55782dfd82593dbc046d03dd57043">Logger::log</a>  (const std::string &amp;message_)</dt>
 <dd>Implement a separate generic parameter log function, to log an integer, for example.  </dd>
-<dt><a class="anchor" id="_todo000010"></a>Member <a class="el" href="class_lua_script.html#af22d8ecac5c8621231b5d27d13be5387">LuaScript::LuaScript</a>  (const string &amp;filename_)</dt>
+<dt><a class="anchor" id="_todo000014"></a>Member <a class="el" href="class_lua_script.html#ab71073245cb4a3aaca3f56000b1033ab">LuaScript::LuaScript</a>  (const std::string &amp;filename_)</dt>
 <dd>Log an error message for different lua error codes.  </dd>
-<dt><a class="anchor" id="_todo000003"></a>Member <a class="el" href="class_player.html#a749d2c00e1fe0f5c2746f7505a58c062">Player::~Player</a>  ()</dt>
-<dd>See if just the entity deleting the sprite is enough.  </dd>
-<dt><a class="anchor" id="_todo000011"></a>Member <a class="el" href="class_s_d_l_wrapper.html#ae5be8c09a030f8b7809eb1957871820b">SDLWrapper::initialize</a>  ()</dt>
-<dd>Initialize SDL_Mixer and SDL_TTF. And not do INIT_EVERYTHING.  </dd>
-<dt><a class="anchor" id="_todo000012"></a>Member <a class="el" href="class_window.html#a25b4e6d9c7d514cbb63b7851de2526e5">Window::create</a>  (const unsigned int width_, const unsigned int height_)</dt>
+<dt><a class="anchor" id="_todo000002"></a>Class <a class="el" href="class_resource_manager.html">ResourceManager</a>  </dt>
+<dd>Generalize the resource manager for audio, not just sprites.  </dd>
+<dt><a class="anchor" id="_todo000003"></a>Member <a class="el" href="class_s_d_l_wrapper.html#ae5be8c09a030f8b7809eb1957871820b">SDLWrapper::initialize</a>  ()</dt>
+<dd>Initialize SDL_TTF. And not do INIT_EVERYTHING.  </dd>
+<dt><a class="anchor" id="_todo000004"></a>Class <a class="el" href="class_tile.html">Tile</a>  </dt>
+<dd><p class="startdd">Actually implement the tiles that will be in the game. </p>
+<p class="enddd">Implement solid tile.  </p>
+</dd>
+<dt><a class="anchor" id="_todo000005"></a>Class <a class="el" href="class_tile_map.html">TileMap</a>  </dt>
+<dd>Revise <a class="el" href="class_tile.html" title="Class that represents a tile. ">Tile</a> placement implementation.  </dd>
+<dt><a class="anchor" id="_todo000006"></a>Member <a class="el" href="class_tile_map.html#a70b0b8623bd0fe235eb62bacb5b19b21">TileMap::clipTiles</a>  ()</dt>
+<dd>Refactor this method.  </dd>
+<dt><a class="anchor" id="_todo000015"></a>Member <a class="el" href="class_window.html#a25b4e6d9c7d514cbb63b7851de2526e5">Window::create</a>  (const unsigned int width_, const unsigned int height_)</dt>
 <dd>Toggle VSync.  </dd>
-<dt><a class="anchor" id="_todo000004"></a>Member <a class="el" href="class_window.html#a3c322c6691e9180b98ad18545013954c">Window::resize</a>  (const unsigned int width_, const unsigned int height_)</dt>
+<dt><a class="anchor" id="_todo000007"></a>Member <a class="el" href="class_window.html#a3c322c6691e9180b98ad18545013954c">Window::resize</a>  (const unsigned int width_, const unsigned int height_)</dt>
 <dd>Instead of directly choosing width and height, choose from a pre-defined list of resolutions. </dd>
 </dl>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 22:46:28 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 3 2014 02:25:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

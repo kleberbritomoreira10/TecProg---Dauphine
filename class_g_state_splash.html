@@ -73,9 +73,9 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="memitem:a8bc32551059c49598b9254bfb9c7ee31"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_state_splash.html#a8bc32551059c49598b9254bfb9c7ee31">load</a> ()</td></tr>
 <tr class="memdesc:a8bc32551059c49598b9254bfb9c7ee31"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads the level.  <a href="#a8bc32551059c49598b9254bfb9c7ee31">More...</a><br/></td></tr>
 <tr class="separator:a8bc32551059c49598b9254bfb9c7ee31"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4a46154d12deb78dbe2f4ec440b46fad"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_state_splash.html#a4a46154d12deb78dbe2f4ec440b46fad">update</a> (double dt_)</td></tr>
-<tr class="memdesc:a4a46154d12deb78dbe2f4ec440b46fad"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the objects within the <a class="el" href="class_state_game.html" title="Parent class for other game states. ">StateGame</a>.  <a href="#a4a46154d12deb78dbe2f4ec440b46fad">More...</a><br/></td></tr>
-<tr class="separator:a4a46154d12deb78dbe2f4ec440b46fad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c9f7f994868aa68c6c765e7cd02ff1a"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_state_splash.html#a8c9f7f994868aa68c6c765e7cd02ff1a">update</a> (const double dt_)</td></tr>
+<tr class="memdesc:a8c9f7f994868aa68c6c765e7cd02ff1a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the objects within the <a class="el" href="class_state_game.html" title="Parent class for other game states. ">StateGame</a>.  <a href="#a8c9f7f994868aa68c6c765e7cd02ff1a">More...</a><br/></td></tr>
+<tr class="separator:a8c9f7f994868aa68c6c765e7cd02ff1a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f5955e32c49d13b6eebe62e592a0db8"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_state_splash.html#a0f5955e32c49d13b6eebe62e592a0db8">unload</a> ()</td></tr>
 <tr class="memdesc:a0f5955e32c49d13b6eebe62e592a0db8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Unloads everything that was loaded.  <a href="#a0f5955e32c49d13b6eebe62e592a0db8">More...</a><br/></td></tr>
 <tr class="separator:a0f5955e32c49d13b6eebe62e592a0db8"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -87,33 +87,36 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_state_game.html#afbdf7c96f1f13b3686a744fd7ca97949">~StateGame</a> ()</td></tr>
 <tr class="memdesc:afbdf7c96f1f13b3686a744fd7ca97949 inherit pub_methods_class_state_game"><td class="mdescLeft">&#160;</td><td class="mdescRight">The destructor. <br/></td></tr>
 <tr class="separator:afbdf7c96f1f13b3686a744fd7ca97949 inherit pub_methods_class_state_game"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6f6f76fbd5af8f4063d46f8072f9bde4 inherit pub_methods_class_state_game"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6f6f76fbd5af8f4063d46f8072f9bde4"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_state_game.html#a6f6f76fbd5af8f4063d46f8072f9bde4">addEntity</a> (<a class="el" href="class_entity.html">Entity</a> *entity)</td></tr>
-<tr class="memdesc:a6f6f76fbd5af8f4063d46f8072f9bde4 inherit pub_methods_class_state_game"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an entity to the list. <br/></td></tr>
-<tr class="separator:a6f6f76fbd5af8f4063d46f8072f9bde4 inherit pub_methods_class_state_game"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c6d63667f1d8c12e83daaf3a5e389cf inherit pub_methods_class_state_game"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a1c6d63667f1d8c12e83daaf3a5e389cf"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_state_game.html#a1c6d63667f1d8c12e83daaf3a5e389cf">addEntity</a> (<a class="el" href="class_entity.html">Entity</a> *const entity)</td></tr>
+<tr class="memdesc:a1c6d63667f1d8c12e83daaf3a5e389cf inherit pub_methods_class_state_game"><td class="mdescLeft">&#160;</td><td class="mdescRight">Adds an entity to the vector. <br/></td></tr>
+<tr class="separator:a1c6d63667f1d8c12e83daaf3a5e389cf inherit pub_methods_class_state_game"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a996bc9fb1ac73c0a71cefac045b7d1a5 inherit pub_methods_class_state_game"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a996bc9fb1ac73c0a71cefac045b7d1a5"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_state_game.html#a996bc9fb1ac73c0a71cefac045b7d1a5">cleanEntities</a> ()</td></tr>
-<tr class="memdesc:a996bc9fb1ac73c0a71cefac045b7d1a5 inherit pub_methods_class_state_game"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes all the entities inside the list, and clears it. <br/></td></tr>
+<tr class="memdesc:a996bc9fb1ac73c0a71cefac045b7d1a5 inherit pub_methods_class_state_game"><td class="mdescLeft">&#160;</td><td class="mdescRight">Deletes all the entities inside the vector. <br/></td></tr>
 <tr class="separator:a996bc9fb1ac73c0a71cefac045b7d1a5 inherit pub_methods_class_state_game"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
-<tr class="memitem:a7c765188667ac3ccaadf445c231f9515"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_sprite.html">Sprite</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_state_splash.html#a7c765188667ac3ccaadf445c231f9515">splash</a></td></tr>
-<tr class="memdesc:a7c765188667ac3ccaadf445c231f9515"><td class="mdescLeft">&#160;</td><td class="mdescRight">The image shown on the splash.  <a href="#a7c765188667ac3ccaadf445c231f9515">More...</a><br/></td></tr>
-<tr class="separator:a7c765188667ac3ccaadf445c231f9515"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a82effba472015357574e84821b9a3bf4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_state_splash.html#a82effba472015357574e84821b9a3bf4">current</a></td></tr>
+<tr class="memdesc:a82effba472015357574e84821b9a3bf4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determines which is the current splash image.  <a href="#a82effba472015357574e84821b9a3bf4">More...</a><br/></td></tr>
+<tr class="separator:a82effba472015357574e84821b9a3bf4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad56266f001a226e3853fca27b5597443"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_state_splash.html#ad56266f001a226e3853fca27b5597443">passedTime</a></td></tr>
 <tr class="memdesc:ad56266f001a226e3853fca27b5597443"><td class="mdescLeft">&#160;</td><td class="mdescRight">The time already elapsed since the beggining of the splash.  <a href="#ad56266f001a226e3853fca27b5597443">More...</a><br/></td></tr>
 <tr class="separator:ad56266f001a226e3853fca27b5597443"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf354c2e82ccac0aabc241e4eb251fc3"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_state_splash.html#abf354c2e82ccac0aabc241e4eb251fc3">lifeTime</a></td></tr>
 <tr class="memdesc:abf354c2e82ccac0aabc241e4eb251fc3"><td class="mdescLeft">&#160;</td><td class="mdescRight">The amount of time the splash will be shown.  <a href="#abf354c2e82ccac0aabc241e4eb251fc3">More...</a><br/></td></tr>
 <tr class="separator:abf354c2e82ccac0aabc241e4eb251fc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac0fb39609512b954fd0dd9dda366ae94"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_sprite.html">Sprite</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_g_state_splash.html#ac0fb39609512b954fd0dd9dda366ae94">images</a> [NUMBER_OF_SPLASH_IMAGES]</td></tr>
+<tr class="memdesc:ac0fb39609512b954fd0dd9dda366ae94"><td class="mdescLeft">&#160;</td><td class="mdescRight">Contains all the splash images.  <a href="#ac0fb39609512b954fd0dd9dda366ae94">More...</a><br/></td></tr>
+<tr class="separator:ac0fb39609512b954fd0dd9dda366ae94"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 Additional Inherited Members</h2></td></tr>
 <tr class="inherit_header pro_attribs_class_state_game"><td colspan="2" onclick="javascript:toggleInherit('pro_attribs_class_state_game')"><img src="closed.png" alt="-"/>&#160;Protected Attributes inherited from <a class="el" href="class_state_game.html">StateGame</a></td></tr>
-<tr class="memitem:af0eaa97ed1c3beda906a9dc801d44eb7 inherit pro_attribs_class_state_game"><td class="memItemLeft" align="right" valign="top">list&lt; <a class="el" href="class_entity.html">Entity</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_state_game.html#af0eaa97ed1c3beda906a9dc801d44eb7">entities</a></td></tr>
-<tr class="memdesc:af0eaa97ed1c3beda906a9dc801d44eb7 inherit pro_attribs_class_state_game"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of all the entities in the state.  <a href="#af0eaa97ed1c3beda906a9dc801d44eb7">More...</a><br/></td></tr>
-<tr class="separator:af0eaa97ed1c3beda906a9dc801d44eb7 inherit pro_attribs_class_state_game"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a235653a14367a3a5e203c5ed607ba4c2 inherit pro_attribs_class_state_game"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="class_entity.html">Entity</a> * &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_state_game.html#a235653a14367a3a5e203c5ed607ba4c2">entities</a></td></tr>
+<tr class="memdesc:a235653a14367a3a5e203c5ed607ba4c2 inherit pro_attribs_class_state_game"><td class="mdescLeft">&#160;</td><td class="mdescRight">List of all the entities in the state.  <a href="#a235653a14367a3a5e203c5ed607ba4c2">More...</a><br/></td></tr>
+<tr class="separator:a235653a14367a3a5e203c5ed607ba4c2 inherit pro_attribs_class_state_game"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The state for the initial splash screen. </p>
@@ -189,7 +192,7 @@ Additional Inherited Members</h2></td></tr>
 
 <p>Renders the state. </p>
 <p>Always renders on 0,0 position. </p>
-<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_sprite.html#adb1c84ac16f4e748fcc0855d45a271ca" title="Renders the sprite. ">Sprite::render</a> </dd></dl>
+<dl class="section see"><dt>See Also</dt><dd><a class="el" href="class_sprite.html#ac82a01b98130b9b1403667059640163b" title="Renders the sprite. ">Sprite::render</a> </dd></dl>
 
 <p>Implements <a class="el" href="class_state_game.html#a9e181e234d99aa11beead047152a8e92">StateGame</a>.</p>
 
@@ -223,7 +226,7 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a4a46154d12deb78dbe2f4ec440b46fad"></a>
+<a class="anchor" id="a8c9f7f994868aa68c6c765e7cd02ff1a"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -233,7 +236,7 @@ Additional Inherited Members</h2></td></tr>
         <tr>
           <td class="memname">void GStateSplash::update </td>
           <td>(</td>
-          <td class="paramtype">double&#160;</td>
+          <td class="paramtype">const double&#160;</td>
           <td class="paramname"><em>dt_</em>)</td><td></td>
           <td></td>
         </tr>
@@ -253,11 +256,55 @@ Additional Inherited Members</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implements <a class="el" href="class_state_game.html#a5c85500632adc10301208ad46ebd3a11">StateGame</a>.</p>
+<p>Implements <a class="el" href="class_state_game.html#a300539fe737d6bbab4b4d6fe4b6a2e98">StateGame</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="a82effba472015357574e84821b9a3bf4"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int GStateSplash::current</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Determines which is the current splash image. </p>
+
+</div>
+</div>
+<a class="anchor" id="ac0fb39609512b954fd0dd9dda366ae94"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_sprite.html">Sprite</a>* GStateSplash::images[NUMBER_OF_SPLASH_IMAGES]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Contains all the splash images. </p>
+
+</div>
+</div>
 <a class="anchor" id="abf354c2e82ccac0aabc241e4eb251fc3"></a>
 <div class="memitem">
 <div class="memproto">
@@ -302,28 +349,6 @@ Additional Inherited Members</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a7c765188667ac3ccaadf445c231f9515"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="class_sprite.html">Sprite</a>* GStateSplash::splash</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">private</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>The image shown on the splash. </p>
-
-</div>
-</div>
 <hr/>The documentation for this class was generated from the following files:<ul>
 <li>/home/caio/Git/Dauphine/include/<a class="el" href="_g_state_splash_8h_source.html">GStateSplash.h</a></li>
 <li>/home/caio/Git/Dauphine/src/GStateSplash.cpp</li>
@@ -331,7 +356,7 @@ Additional Inherited Members</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 22:46:28 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 3 2014 02:25:31 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

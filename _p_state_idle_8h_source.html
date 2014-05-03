@@ -60,23 +60,23 @@
 <div class="line"><a name="l00010"></a><span class="lineno"><a class="code" href="class_p_state_idle.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_p_state_idle.html" title="The state when the player is idle. ">PStateIdle</a> : <span class="keyword">public</span> <a class="code" href="class_state_player.html" title="Parent class for other player states. ">StatePlayer</a> {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="code" href="class_p_state_idle.html#a19123b2e75f12f1bc11935aed6cd7a42">   16</a></span>&#160;        <a class="code" href="class_p_state_idle.html#a19123b2e75f12f1bc11935aed6cd7a42" title="The constructor. ">PStateIdle</a>(){}</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        </div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="class_p_state_idle.html#a12b589307184363fa48c5a9a642239ed">   21</a></span>&#160;        <span class="keyword">virtual</span> <a class="code" href="class_p_state_idle.html#a12b589307184363fa48c5a9a642239ed" title="The destructor. ">~PStateIdle</a>(){}</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_p_state_idle.html#a204ccf37e39c602aee4f4274c225870e">enter</a>();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_p_state_idle.html#ac3e11af69ca67e654e7bb504ee59ac4e">exit</a>();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_p_state_idle.html#a1cefd39bcf541c174340735c77955657">handleInput</a>(<span class="keyword">const</span> array&lt;bool, GameKeys::MAX&gt; keyStates_);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;};</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif // INCLUDE_PSTATEIDLE_H</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="class_p_state_idle.html#a2eaf980b04a9e1a7aac5dd024a0f1c67" title="The constructor. ">PStateIdle</a>(<a class="code" href="class_player.html" title="The player entity class. ">Player</a>* <span class="keyword">const</span> player_);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="code" href="class_p_state_idle.html#a12b589307184363fa48c5a9a642239ed">   22</a></span>&#160;        <span class="keyword">virtual</span> <a class="code" href="class_p_state_idle.html#a12b589307184363fa48c5a9a642239ed" title="The destructor. ">~PStateIdle</a>(){}</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_p_state_idle.html#a204ccf37e39c602aee4f4274c225870e">enter</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_p_state_idle.html#ac3e11af69ca67e654e7bb504ee59ac4e">exit</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_p_state_idle.html#a8fca9abee93fea70a08f2bd818595081">handleInput</a>(<span class="keyword">const</span> std::array&lt;bool, GameKeys::MAX&gt; keyStates_);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;};</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif // INCLUDE_PSTATEIDLE_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 22:46:28 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 3 2014 02:25:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

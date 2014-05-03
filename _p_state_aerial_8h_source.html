@@ -60,23 +60,23 @@
 <div class="line"><a name="l00010"></a><span class="lineno"><a class="code" href="class_p_state_aerial.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_p_state_aerial.html" title="The state for when the player is not grounded. ">PStateAerial</a> : <span class="keyword">public</span> <a class="code" href="class_state_player.html" title="Parent class for other player states. ">StatePlayer</a> {</div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="code" href="class_p_state_aerial.html#af7126c560054105cd229c1c2803e907d">   16</a></span>&#160;        <a class="code" href="class_p_state_aerial.html#af7126c560054105cd229c1c2803e907d" title="The constructor. ">PStateAerial</a>(){}</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno"><a class="code" href="class_p_state_aerial.html#a829295e2ded69fc203d19d42171ce216">   21</a></span>&#160;        <span class="keyword">virtual</span> <a class="code" href="class_p_state_aerial.html#a829295e2ded69fc203d19d42171ce216" title="The destructor. ">~PStateAerial</a>(){}</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_p_state_aerial.html#ae5ba98d2733d9a12b46cc2dbcc8df382">enter</a>();</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_p_state_aerial.html#a697b7a47881088021e0fcfce9e022b70">exit</a>();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_p_state_aerial.html#a0baa861057b80248aebca534b211d355">handleInput</a>(<span class="keyword">const</span> array&lt;bool, GameKeys::MAX&gt; keyStates_);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;};</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="preprocessor">#endif // INCLUDE_PSTATEAERIAL_H</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <a class="code" href="class_p_state_aerial.html#a5e105e355f41f54f8a6b48039f0a8d70" title="The constructor. ">PStateAerial</a>(<a class="code" href="class_player.html" title="The player entity class. ">Player</a>* <span class="keyword">const</span> player_);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="code" href="class_p_state_aerial.html#a829295e2ded69fc203d19d42171ce216">   22</a></span>&#160;        <span class="keyword">virtual</span> <a class="code" href="class_p_state_aerial.html#a829295e2ded69fc203d19d42171ce216" title="The destructor. ">~PStateAerial</a>(){}</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_p_state_aerial.html#ae5ba98d2733d9a12b46cc2dbcc8df382">enter</a>();</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_p_state_aerial.html#a697b7a47881088021e0fcfce9e022b70">exit</a>();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_p_state_aerial.html#af91e5d258f0665a43d09758b44a89517">handleInput</a>(<span class="keyword">const</span> std::array&lt;bool, GameKeys::MAX&gt; keyStates_);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;};</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="preprocessor">#endif // INCLUDE_PSTATEAERIAL_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 25 2014 22:46:28 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Sat May 3 2014 02:25:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
