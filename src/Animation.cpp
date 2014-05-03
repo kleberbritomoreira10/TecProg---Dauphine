@@ -26,7 +26,7 @@ void Animation::setParameters(int posX_, int posY_, int spriteWidth_, int sprite
 	this->isLoop = isLoop_;
 }
 
-void Animation::update(SDL_Rect *clip, int dt_, double totalTime_){
+void Animation::update(SDL_Rect& clip, int dt_, double totalTime_){
 
 	// Compare the position on the sprite with the number of positions to know if is the
 	// end of the animation.
@@ -34,7 +34,7 @@ void Animation::update(SDL_Rect *clip, int dt_, double totalTime_){
 
 	int deltaT_ = totalTime_/ this->numberOfImages;
 
-	Logger::log("position X: " + std::to_string(this->posX));
+	//Logger::log("position X: " + std::to_string(this->posX));
 
 	// Verifica se mudou frame.
     this->totalElapsedTime += dt_;
@@ -58,9 +58,9 @@ void Animation::update(SDL_Rect *clip, int dt_, double totalTime_){
 	updateClip(clip, positionX_, positionY_, this->spriteWidth, this->spriteHeight);
 }
 
-void Animation::updateClip(SDL_Rect *clip, int positionX_, int positionY_, int spriteWidth_, int spriteHeight_ ){
-	clip->x = positionX_;
-	clip->y = positionY_;
-	clip->w = spriteWidth_;
-	clip->h = spriteHeight_;
+void Animation::updateClip(SDL_Rect& clip, int positionX_, int positionY_, int spriteWidth_, int spriteHeight_ ){
+	clip.x = positionX_;
+	clip.y = positionY_;
+	clip.w = spriteWidth_;
+	clip.h = spriteHeight_;
 }

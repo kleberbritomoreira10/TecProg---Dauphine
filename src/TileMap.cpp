@@ -1,11 +1,11 @@
 #include "TileMap.h"
 #include "Configuration.h"
 #include "Logger.h"
-
+#include "Game.h"
 #include "Collision.h"
 
-TileMap::TileMap(const std::vector<int>& tileData_) :
-	Entity(0.0, 0.0, new Sprite("res/tilesheet.png"))
+TileMap::TileMap(const std::vector<int>& tileData_, const std::string& path_) :
+	Entity(0.0, 0.0, Game::instance().getResources().get(path_))
 {
 	clipTiles();
 	create(tileData_);

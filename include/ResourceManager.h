@@ -2,19 +2,21 @@
 #define INCLUDE_RESOURCEMANAGER_H
 
 #include <map>
-
 #include <string>
-
 #include "Sprite.h"
 
-
+/**
+*
+*
+* @todo Generalize the resource manager for audio, not just sprites.
+*/
 class ResourceManager {
 
 	public:
 		ResourceManager();
 		~ResourceManager();
 		
-		Sprite::SpritePtr get(const std::string& name_);
+		Sprite* get(const std::string& name_);
 
 	private:
 		Sprite::SpritePtr load(const std::string& path_);
@@ -22,7 +24,7 @@ class ResourceManager {
 		void registerResource(const std::string& name_, Sprite::SpritePtr resource_);
 		void unregisterResource(const std::string& name_);
 
-		std::map <std::string, Sprite::SpritePtr> resources;
+		std::map<std::string, Sprite::SpritePtr> resources;
 
 };
 

@@ -2,7 +2,7 @@
 #include "Logger.h"
 
 StateGame::~StateGame(){
-	Logger::log("--- StateGame destructor");
+	//Logger::log("--- StateGame destructor");
 	cleanEntities(); // Should be called in each state unload.
 }
 

@@ -12,7 +12,7 @@ class TileMap : public Entity {
 
 	public:
 
-		TileMap(const std::vector<int>& tileData_);
+		TileMap(const std::vector<int>& tileData_, const std::string& path_);
 		~TileMap();
 
 		/**

@@ -60,7 +60,7 @@ class Sprite {
 		*/
 		unsigned int getHeight();
 
-		Animation* animation;
+		Animation& getAnimation();
 		
 	private:
 		/**
@@ -77,10 +77,8 @@ class Sprite {
 		unsigned int width; /**< The loaded image's width. */
 		unsigned int height; /**< The loaded image's width. */
 		const std::string path;
+		Animation* animation;
 
-
-
-		
 };
 
 #endif //INCLUDE_SPRITE_H

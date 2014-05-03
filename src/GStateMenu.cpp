@@ -32,16 +32,12 @@ void GStateMenu::load(){
 	const std::string menuPath = luaMenu.unlua_get<std::string>("menu.spritePath");
 	const double luaLifeTime = luaMenu.unlua_get<double>("menu.lifeTime");
 
-	this->menuImage = new Sprite(menuPath);
+	this->menuImage = Game::instance().getResources().get(menuPath);
 	this->lifeTime = luaLifeTime;
 }
 
 void GStateMenu::unload(){
-	if(this->menuImage != nullptr){
-		delete this->menuImage;
-		this->menuImage = nullptr;
-	}
-
+	Logger::verbose("\tUnloading menu...");
 	cleanEntities();
 }
 

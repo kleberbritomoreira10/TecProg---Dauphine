@@ -1,5 +1,5 @@
 #include "ResourceManager.h"
-#include <iostream>
+#include "Logger.h"
 
 ResourceManager::ResourceManager() :
 	resources()
@@ -10,19 +10,24 @@ ResourceManager::ResourceManager() :
 ResourceManager::~ResourceManager(){
 	std::map<std::string,Sprite::SpritePtr>::iterator it;
 	for(it = this->resources.begin(); it != this->resources.end(); it++){
-		std::cout << it->first << " : " << it->second <<  " : " << it->second.use_count() << std::endl;
+		if(it->second.use_count() != 1){
+			Logger::warning("Resource deleted with use count different than 1 (" + it->first + ").");
+		}
+		// else{
+		// 	Logger::verbose("Resource deleted successfully (" + it->first + ").");
+		// }
 	}
 }
 
-Sprite::SpritePtr ResourceManager::get(const std::string& name_){
+Sprite* ResourceManager::get(const std::string& name_){
 	std::map<std::string,Sprite::SpritePtr>::iterator it;
 	it = this->resources.find(name_);
 
 	if (it != this->resources.end()){
-		return it->second;
+		return it->second.get();
 	}
 
-	return load(name_);
+	return load(name_).get();
 }
 
 void ResourceManager::registerResource(const std::string& name_, Sprite::SpritePtr resource_){

@@ -1,6 +1,7 @@
 #include "Sprite.h"
 #include "Window.h"
 #include "Logger.h"
+#include <cassert>
 
 Sprite::Sprite(const std::string& path_) :
 	sdlTexture(nullptr),
@@ -13,8 +14,6 @@ Sprite::Sprite(const std::string& path_) :
 }
 
 Sprite::~Sprite(){
-	Logger::verbose("Sprite destructor called for " + this->path);
-
 	if(this->sdlTexture != nullptr){
 		SDL_DestroyTexture(this->sdlTexture);
 		this->sdlTexture = nullptr;
@@ -22,19 +21,13 @@ Sprite::~Sprite(){
 }
 
 void Sprite::loadFrom(const std::string& path_){
-	// Warns if loading a sprite without a renderer.
-	if(Window::getRenderer() == nullptr){
-		Logger::warning("Trying to load sprite with null renderer.");
-	}
+	assert(Window::getRenderer() != nullptr && "Window renderer should not be null!");
 
 	// The final texture.
 	SDL_Texture* newTexture = nullptr;
 
 	SDL_Surface* loadedSurface = IMG_Load(path_.c_str());
 	if(loadedSurface != nullptr){
-		//Color key image to magenta.
-		//SDL_SetColorKey(loadedSurface, SDL_TRUE, SDL_MapRGB(loadedSurface->format, 0xFF, 0, 0xFF));
-
 		// Create texture from the surface pixels.
         newTexture = SDL_CreateTextureFromSurface(Window::getRenderer(), loadedSurface);
 		if(newTexture != nullptr){
@@ -43,14 +36,14 @@ void Sprite::loadFrom(const std::string& path_){
 			this->height = loadedSurface->h;
 		}
 		else{
-			Logger::warning("Could not create texture from surface.");
+			Logger::errorSDL("Could not create texture from surface.", SDL_GetError());
 		}
 
 		// Free the loaded surface.
 		SDL_FreeSurface(loadedSurface);
 	}
 	else{
-		Logger::warning("Could not load surface from path.");
+		Logger::errorSDL("Could not load surface from path.", IMG_GetError());
 	}
 
 	// Returns whether the Sprites texture is null or not.
@@ -95,3 +88,6 @@ unsigned int Sprite::getHeight(){
 	return this->height;
 }
 
+Animation& Sprite::getAnimation(){
+	return (*(this->animation));
+}

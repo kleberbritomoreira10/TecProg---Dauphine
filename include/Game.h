@@ -20,8 +20,6 @@
 class Game {
 
 	public:
-		typedef std::shared_ptr<StateGame> StateGamePtr;
-
 		enum GStates : uint8_t {
 			SPLASH = 0,
 			MENU,
@@ -91,9 +89,9 @@ class Game {
 		InputHandler* inputHandler;
 		ResourceManager* resourceManager;
 
-		StateGamePtr currentState; /**< The current state, which the game is in. */
+		StateGame* currentState; /**< The current state, which the game is in. */
 
-		std::map<GStates, StateGamePtr> statesMap;
+		std::map<GStates, StateGame*> statesMap;
 
 		FPSmanager fpsManager; /**< The FPSManager from SDL2_GFX. Handles the framerate
 			capping. */

@@ -43,22 +43,17 @@ void GStateSplash::load(){
 	const std::string esrbPath = luaSplash.unlua_get<std::string>("splash.spriteEsrb");
 	const double luaLifeTime = luaSplash.unlua_get<double>("splash.lifeTime");
 
-	this->images[0] = new Sprite(logoPath);
-	this->images[1] = new Sprite(techsPath);
-	this->images[2] = new Sprite(licensesPath);
-	this->images[3] = new Sprite(esrbPath);
+	this->images[0] = Game::instance().getResources().get(logoPath);
+	this->images[1] = Game::instance().getResources().get(techsPath);
+	this->images[2] = Game::instance().getResources().get(licensesPath);
+	this->images[3] = Game::instance().getResources().get(esrbPath);
 
 	this->lifeTime = luaLifeTime;
 }
 
 void GStateSplash::unload(){
+	Logger::verbose("\tUnloading splash screens...");
 	this->current = 0;
-
-	for(unsigned int i = 0; i < NUMBER_OF_SPLASH_IMAGES; i++){
-		delete this->images[i];
-		this->images[i] = nullptr;
-	}
-
 	cleanEntities();
 }
 

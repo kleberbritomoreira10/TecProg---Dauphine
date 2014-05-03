@@ -18,9 +18,9 @@ Game& Game::instance(){
 Game::Game() :
 	window(nullptr),
 	isRunning(false),
-	audioHandler(nullptr),
-	inputHandler(nullptr),
-	resourceManager(nullptr),
+	audioHandler(new AudioHandler()),
+	inputHandler(new InputHandler()),
+	resourceManager(new ResourceManager()),
 	currentState(nullptr),
 	statesMap()
 {
@@ -32,9 +32,6 @@ Game::Game() :
 
 	this->isRunning = true;
 	FPSWrapper::initialize(this->fpsManager);
-
-	this->currentState = this->statesMap.at(GStates::SPLASH);
-	this->currentState->load();
 }
 
 Game::~Game(){
@@ -42,7 +39,7 @@ Game::~Game(){
 		this->currentState->unload();
 	}
 
-	this->statesMap.clear();
+	destroyStates();
 
 	if(this->audioHandler != nullptr){
 		delete this->audioHandler;
@@ -61,11 +58,8 @@ Game::~Game(){
 }
 
 void Game::runGame(){
-
-	// Creating the input handler.
-	this->audioHandler = new AudioHandler();
-	this->inputHandler = new InputHandler();
-	this->resourceManager = new ResourceManager();
+	this->currentState = this->statesMap.at(GStates::SPLASH);
+	this->currentState->load();
 
 	// Get the first game time.
 	double totalGameTime = 0.0;
@@ -115,20 +109,17 @@ void Game::setState(GStates state_){
 void Game::initializeStates(){
 	// Initialize all the states in Game here.
 
-	// Typedefs for all the states shared_ptr.
-	typedef std::shared_ptr<GStateSplash>	SplashPtr;
-	typedef std::shared_ptr<GStateMenu>		MenuPtr;
-	typedef std::shared_ptr<LevelOne>		LevelOnePtr;
-
-	// Set the shared_ptr for each state.
-	SplashPtr splash = std::make_shared<GStateSplash>();
-	MenuPtr menu = std::make_shared<GStateMenu>();
-	LevelOnePtr levelOne = std::make_shared<LevelOne>();
-
 	// Emplace the states pointers onto the map.
-	this->statesMap.emplace(GStates::SPLASH, 	splash);
-	this->statesMap.emplace(GStates::MENU,		menu);
-	this->statesMap.emplace(GStates::LEVEL_ONE,	levelOne);
+	this->statesMap.emplace(GStates::SPLASH, new GStateSplash());
+	this->statesMap.emplace(GStates::MENU, new GStateMenu());
+	this->statesMap.emplace(GStates::LEVEL_ONE,	new LevelOne());
+}
+
+void Game::destroyStates(){
+	std::map<GStates, StateGame*>::const_iterator it;
+    for(it = this->statesMap.begin(); it != this->statesMap.end(); it++){
+        delete it->second;
+    }
 }
 
 AudioHandler& Game::getAudioHandler(){

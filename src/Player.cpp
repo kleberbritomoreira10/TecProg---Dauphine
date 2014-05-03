@@ -30,11 +30,6 @@ Player::~Player(){
     }
 
     destroyStates();
-
-    // if(this->sprite != nullptr){
-    //     delete this->sprite;
-    //     this->sprite = nullptr;
-    // }
 }
 
 void Player::update(const double dt_){
@@ -48,7 +43,7 @@ void Player::render(const double cameraX_, const double cameraY_){
     if(this->sprite != nullptr){
         const double dx = this->x - cameraX_;
         const double dy = this->y - cameraY_;
-        this->sprite->render(dx, dy, clip);
+        this->sprite->render(dx, dy, &clip);
     }
 }
 

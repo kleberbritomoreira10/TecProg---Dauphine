@@ -44,12 +44,11 @@ class Entity {
 		*/
 		unsigned int getHeight();
 
-		Sprite* getSprite();
+		Animation& getAnimation();
+		SDL_Rect& getClip();
 
 		double x; /**< The position in the x axis. */
 		double y; /**< The position in the y axis. */
-
-		SDL_Rect* clip;
 
 	protected:
 		/**
@@ -64,6 +63,7 @@ class Entity {
 		Sprite* sprite; /**< The Sprite attributed to the entity. */
 		unsigned int width; /**< The entitys width, from its sprite. */
 		unsigned int height; /**< The entitys height, from its sprite. */
+		SDL_Rect clip;
 
 };
 
