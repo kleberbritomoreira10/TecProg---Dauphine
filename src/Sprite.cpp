@@ -54,7 +54,8 @@ void Sprite::loadFrom(const std::string& path_){
 	}
 }
 
-void Sprite::render(double x_, double y_, SDL_Rect* clip_, bool stretch_, double angle_, SDL_Point* center_,
+void Sprite::render(const double x_, const double y_, SDL_Rect* const clip_,
+	const bool stretch_, const double angle_, SDL_Point* const center_,
 	SDL_RendererFlip flip_){
 
 	// This is the destination SDL_Rect structure.

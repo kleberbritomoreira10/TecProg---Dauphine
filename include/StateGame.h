@@ -12,7 +12,6 @@ class StateGame {
 	public:
 		/**
 		* The destructor.
-		* 
 		*/
 		virtual ~StateGame();
 
@@ -27,7 +26,7 @@ class StateGame {
 		* Pure virtual function. Purpose is to update all the entities in the vector.
 		* @param dt_ : Delta time. Time elapsed between one frame and the other.
 		*/
-		virtual void update(double dt_) = 0;
+		virtual void update(const double dt_) = 0;
 
 		/**
 		* Unloads necessary objects.
@@ -45,7 +44,7 @@ class StateGame {
 		/**
 		* Adds an entity to the vector.
 		*/
-		void addEntity(Entity* entity);
+		void addEntity(Entity* const entity);
 
 		/**
 		* Deletes all the entities inside the vector.

@@ -1,10 +1,11 @@
 #include "Tile.h"
 #include "Logger.h"
 
-Tile::Tile(int x_, int y_, int tileType_) :
-	type(tileType_)
+Tile::Tile(const int x_, const int y_, const int tileType_) :
+	type(tileType_),
+	rectangle{x_, y_, TILE_WIDTH, TILE_HEIGHT}
 {
-	this->rectangle = {x_, y_, TILE_WIDTH, TILE_HEIGHT};
+
 }
 
 Tile::~Tile(){

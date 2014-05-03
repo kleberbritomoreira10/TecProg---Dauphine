@@ -38,7 +38,7 @@ class Logger {
 		* @param messageSDL_ : the error string from SDL to log.
 		* @see SDL_GetError, IMG_GetError, Mix_GetError
 		*/
-		static void errorSDL(const std::string& message_, const char *messageSDL_);
+		static void errorSDL(const std::string& message_, const char* messageSDL_);
 
 		/**
 		* The verbose logger.

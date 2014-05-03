@@ -31,7 +31,7 @@ class LevelOne : public Level {
 		* Updates the objects within the Level.
 		* @param dt_ : Delta time. Time elapsed between one frame and the other.
 		*/
-		virtual void update(double dt_);
+		virtual void update(const double dt_);
 
 		/**
 		* Unloads everything that was loaded.
@@ -50,14 +50,14 @@ class LevelOne : public Level {
 		/**
 		* @param player_ : Sets the player for the level.
 		*/
-		virtual void setPlayer(Player* player_);
+		virtual void setPlayer(Player* const player_);
 
 		/**
 		* @param camera_ : Sets the camera for the level.
 		* @note You should only set the camera after setting the player. Will warn if you
 		* 	didn't.
 		*/
-		virtual void setCamera(Camera* camera_);
+		virtual void setCamera(Camera* const camera_);
 
 };
 

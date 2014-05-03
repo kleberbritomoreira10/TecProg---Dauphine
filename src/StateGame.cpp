@@ -2,11 +2,10 @@
 #include "Logger.h"
 
 StateGame::~StateGame(){
-	//Logger::log("--- StateGame destructor");
 	cleanEntities(); // Should be called in each state unload.
 }
 
-void StateGame::addEntity(Entity *entity){
+void StateGame::addEntity(Entity* const entity){
 	this->entities.push_back(entity);
 }
 

@@ -1,4 +1,5 @@
 #include "Level.h"
+#include <iostream>
 
 Level::Level() :
 	width(0),
@@ -22,8 +23,4 @@ unsigned int Level::getWidth(){
 
 unsigned int Level::getHeight(){
 	return this->height;
-}
-
-Player* Level::getPlayer(){
-	return this->player;
 }

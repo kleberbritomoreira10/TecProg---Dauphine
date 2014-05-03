@@ -20,6 +20,9 @@
 class Game {
 
 	public:
+		/**
+		* All possible game states.
+		*/
 		enum GStates : uint8_t {
 			SPLASH = 0,
 			MENU,
@@ -27,8 +30,8 @@ class Game {
 		};
 
 		/**
-		*
-		*
+		* Singleton imeplementation for Game.
+		* @return The instance for a Game.
 		*/
 		static Game& instance();
 
@@ -48,16 +51,23 @@ class Game {
 		* Sets the current game state.
 		* @see StateGame::load()
 		* @see StateGame::unload()
-		* @param state_ : The state you want to be changed into. All states are inside Game.
+		* @param state_ : The state you want to be changed into.
 		*/
-		void setState(GStates state_);
+		void setState(const GStates state_);
 
-		//static StateGame* stateSplash; /**< The logo splash screen. First state of the game. */
-		//static StateGame* levelOne; /**< First game level. */
-		//static StateGame* menu;
-
+		/**
+		* @return The Game audioHandler.
+		*/
 		AudioHandler& getAudioHandler();
+
+		/**
+		* @return The boolean array recieved from the InputHandler.
+		*/
 		std::array<bool, GameKeys::MAX> getInput();
+
+		/**
+		* @return The resource manager.
+		*/
 		ResourceManager& getResources();
 
 	private:
@@ -65,8 +75,7 @@ class Game {
 		* The constructor.
 		* Sets the game window and tells the game that it is OK to begin looping. Also, it
 		* 	begins the FPS manager.
-		* @param window_ : a created Window.
-		* @note If the Window parameter is null, the game will not begin.
+		* @note If the Window cannot be created, the game will not begin.
 		*/
 		Game();
 
@@ -82,16 +91,16 @@ class Game {
 		*/
 		void destroyStates();
 
-		Window *window; /**< The game Window. */
+		Window* window; /**< The game Window. */
 		bool isRunning; /**< Whether the game is currently running/looping or not. */		
 
-		AudioHandler* audioHandler;
-		InputHandler* inputHandler;
-		ResourceManager* resourceManager;
+		AudioHandler* audioHandler; /**< The Game AudioHandler. */
+		InputHandler* inputHandler; /**< The Game InputHandler. */
+		ResourceManager* resourceManager; /**< The Game ResourceManager. */
 
 		StateGame* currentState; /**< The current state, which the game is in. */
 
-		std::map<GStates, StateGame*> statesMap;
+		std::map<GStates, StateGame*> statesMap; /**< Map containing all possible states. */
 
 		FPSmanager fpsManager; /**< The FPSManager from SDL2_GFX. Handles the framerate
 			capping. */

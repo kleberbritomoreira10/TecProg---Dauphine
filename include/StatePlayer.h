@@ -19,7 +19,7 @@ class StatePlayer {
 		* The constructor.
 		* @param player_ : Reference to the player.
 		*/
-		StatePlayer(Player* player_);
+		StatePlayer(Player* const player_);
 
 		/**
 		* The destructor.

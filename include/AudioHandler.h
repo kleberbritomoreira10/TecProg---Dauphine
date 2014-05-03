@@ -16,14 +16,13 @@ class AudioHandler {
 	public:
 		/**
 		* The constructor.
-		* Initializes attributes and calls the initializing function.
-		* @see AudioHandler::initialize
+		* Initializes all the attributes.
 		*/
 		AudioHandler();
 
 		/**
 		* The destructor.
-		* Deletes the AudioHandler::instance and closes SDL_Mixer.
+		* Frees the allocated attributes.
 		*/
 		virtual ~AudioHandler();
 

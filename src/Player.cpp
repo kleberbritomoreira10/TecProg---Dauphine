@@ -8,7 +8,7 @@
 #include "PStateMoving.h"
 #include "PStateRolling.h"
 
-Player::Player(double x_, double y_, Sprite* sprite_) :
+Player::Player(const double x_, const double y_, Sprite* const sprite_) :
     DynamicEntity(x_, y_, sprite_),
     animation(nullptr)
 {
@@ -40,7 +40,7 @@ void Player::update(const double dt_){
 
     Player::currentState->handleInput(keyStates);
     updatePosition(dt_);
-    this->animation->update(this->clip, dt_, 5);
+    this->animation->update(this->clip, dt_, 10);
 }
 
 void Player::render(const double cameraX_, const double cameraY_){
@@ -67,7 +67,7 @@ void Player::destroyStates(){
     }
 }
 
-void Player::changeState(PStates state_){
+void Player::changeState(const PStates state_){
     this->currentState->exit();
     this->currentState = this->statesMap.at(state_);
     this->currentState->enter();

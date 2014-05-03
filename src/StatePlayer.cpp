@@ -1,6 +1,6 @@
 #include "StatePlayer.h"
 
-StatePlayer::StatePlayer(Player* player_) :
+StatePlayer::StatePlayer(Player* const player_) :
 	player(player_)
 {
 

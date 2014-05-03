@@ -22,6 +22,7 @@ class SDLWrapper {
 		* The system initializer.
 		* Initializes all the SDL systems and/or subsystems.
 		* @return True if every system was initialized successfully, else it returns false.
+		* @todo Initialize SDL_TTF. And not do INIT_EVERYTHING.
 		*/
 		static bool initialize();
 
@@ -33,8 +34,15 @@ class SDLWrapper {
 		static void close();
 
 	private:
-		static void logSDLVersion(const std::string& what, const SDL_version& compiled,
-			const SDL_version& linked, std::string revision = std::string(""));
+		/**
+		* Logs the SDL API version.
+		* @param what_ : What API is being logged about.
+		* @param compiled_ : The compiled version.
+		* @param linked_ : The linked version.
+		* @param revision_ : If any, the revision.
+		*/
+		static void logSDLVersion(const std::string& what_, const SDL_version& compiled_,
+			const SDL_version& linked_, std::string revision_ = std::string(""));
 
 };
 

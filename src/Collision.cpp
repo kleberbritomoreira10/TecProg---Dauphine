@@ -1,38 +1,25 @@
 #include "Collision.h"
 
-bool Collision::checkCollision(SDL_Rect& a, SDL_Rect& b){
-    //The sides of the rectangles
-    int leftA, leftB;
-    int rightA, rightB;
-    int topA, topB;
-    int bottomA, bottomB;
+bool Collision::rectsCollided(const SDL_Rect& a_, const SDL_Rect& b_){
+    // Calculate the sides of rect A.
+    const int leftA = a_.x;
+    const int rightA = a_.x + a_.w;
+    const int topA = a_.y;
+    const int bottomA = a_.y + a_.h;
 
-    //Calculate the sides of rect A
-    leftA = a.x;
-    rightA = a.x + a.w;
-    topA = a.y;
-    bottomA = a.y + a.h;
+    // Calculate the sides of rect B.
+    const int leftB = b_.x;
+    const int rightB = b_.x + b_.w;
+    const int topB = b_.y;
+    const int bottomB = b_.y + b_.h;
 
-    //Calculate the sides of rect B
-    leftB = b.x;
-    rightB = b.x + b.w;
-    topB = b.y;
-    bottomB = b.y + b.h;
-
-    //If any of the sides from A are outside of B
-    if( bottomA <= topB ){
+    // If any of the sides from A are outside of B.
+    if(bottomA <= topB || topA >= bottomB || rightA <= leftB || leftA >= rightB){
         return false;
     }
-    if( topA >= bottomB ){
-        return false;
-    }
-    if( rightA <= leftB ){
-        return false;
-    }
-    if( leftA >= rightB ){
-        return false;
+    // If none of the sides from A are outside B.
+    else{
+        return true;
     }
 
-    //If none of the sides from A are outside B
-    return true;
 }

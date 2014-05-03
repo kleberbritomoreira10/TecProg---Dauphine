@@ -49,23 +49,28 @@ namespace controllerMap{
 	};
 }
 
+/**
+* The input handler for joysticks.
+*/
 class ControllerHandler {
 	
 	public:
 		/**
 		* The constructor.
-		* Used to create the control wrapper instance.
+		* Verifies if there is a joystick present.
 		*/
 		ControllerHandler();
 		
 		/**
 		* Handles controller the input.
-		* Detects the pending events, and simulates an appropriate KeyEvent by pushing one into a stack.
+		* Detects the pending events, and simulates an appropriate KeyEvent by pushing one into
+		* 	a stack.
+		* @param sdlEvent_ : The SDL internal event structure.
 		*/
 		void handleInput(SDL_Event& sdlEvent_);
 
 	private:
-		SDL_GameController* gameController; /**< Pointer to the controller */
+		SDL_GameController* gameController; /**< Pointer to the controller. */
 };
 
 #endif

@@ -14,7 +14,7 @@ class PStateAerial : public StatePlayer {
 		* The constructor.
 		* @param player_ : Reference to the player.
 		*/
-		PStateAerial(Player* player_);
+		PStateAerial(Player* const player_);
 
 		/**
 		* The destructor.

@@ -18,7 +18,7 @@ GStateSplash::~GStateSplash(){
 
 }
 
-void GStateSplash::update(double dt_){
+void GStateSplash::update(const double dt_){
 	this->passedTime += dt_;
 
 	if(this->passedTime >= this->lifeTime){

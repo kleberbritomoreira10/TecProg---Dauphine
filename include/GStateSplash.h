@@ -34,7 +34,7 @@ class GStateSplash : public StateGame {
 		* Updates the objects within the StateGame.
 		* @param dt_ : Delta time. Time elapsed between one frame and the other.
 		*/
-		virtual void update(double dt_);
+		virtual void update(const double dt_);
 
 		/**
 		* Unloads everything that was loaded.
@@ -50,10 +50,10 @@ class GStateSplash : public StateGame {
 		virtual void render();
 
 	private:
-		int current;
+		int current; /**< Determines which is the current splash image. */
 		double passedTime; /**< The time already elapsed since the beggining of the splash. */
 		double lifeTime; /**< The amount of time the splash will be shown. */
-		Sprite* images[NUMBER_OF_SPLASH_IMAGES];
+		Sprite* images[NUMBER_OF_SPLASH_IMAGES]; /**< Contains all the splash images. */
 
 };
 

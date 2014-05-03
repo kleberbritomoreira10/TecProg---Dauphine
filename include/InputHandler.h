@@ -43,7 +43,7 @@ class InputHandler {
 		bool signalQuit();
 
 	private:
-		ControllerHandler* controllerHandler;
+		ControllerHandler* controllerHandler; /**< Handles input if joystick is present. */
 		std::array<bool, GameKeys::MAX> keyStates; /**< Boolean array that controls which keys are
 			pressed or not. */
 		SDL_Event sdlEvent; /**< SDL internal event structure. */

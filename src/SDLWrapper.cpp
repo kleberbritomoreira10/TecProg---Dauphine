@@ -3,8 +3,6 @@
 #include <sstream>
 
 bool SDLWrapper::initialize(){
-	/// @todo Initialize SDL_Mixer and SDL_TTF. And not do INIT_EVERYTHING.
-
 	bool initSDL = false;
 	bool initIMG = false;
 	bool initMixer = false;
@@ -75,19 +73,19 @@ void SDLWrapper::close(){
 	SDL_Quit();
 }
 
-void SDLWrapper::logSDLVersion(const std::string& what, const SDL_version& compiled,
-	const SDL_version& linked, std::string revision){
+void SDLWrapper::logSDLVersion(const std::string& what_, const SDL_version& compiled_,
+	const SDL_version& linked_, std::string revision_){
 
 	std::stringstream ss;
 
-	ss << what << " Version (Compiled): " << (int)compiled.major << "." << (int)compiled.minor
-		<< "." << (int)compiled.patch;
+	ss << what_ << " Version (Compiled): " << (int)compiled_.major << "." << (int)compiled_.minor
+		<< "." << (int)compiled_.patch;
 
-	if (!revision.empty()){
-		ss << " (" << revision << ")";
+	if (!revision_.empty()){
+		ss << " (" << revision_ << ")";
 	}
 	
 	Logger::verbose(ss.str());
-	Logger::verbose(what + " Version (Runtime):  " + std::to_string(linked.major) + "." +
-		std::to_string(linked.minor) + "." + std::to_string(linked.patch));
+	Logger::verbose(what_ + " Version (Runtime):  " + std::to_string(linked_.major) + "." +
+		std::to_string(linked_.minor) + "." + std::to_string(linked_.patch));
 }

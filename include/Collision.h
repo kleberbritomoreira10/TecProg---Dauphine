@@ -3,10 +3,17 @@
 
 #include "SDLWrapper.h"
 
+/**
+* For now, has simple collision detection.
+*/
 class Collision {
 
 	public:
-		static bool checkCollision(SDL_Rect& a, SDL_Rect& b);
+		/**
+		* @return Whether two SDL_Rects collided.
+		* @param a_ , b_ : The rectangles to check.
+		*/
+		static bool rectsCollided(const SDL_Rect& a_, const SDL_Rect& b_);
 
 };
 

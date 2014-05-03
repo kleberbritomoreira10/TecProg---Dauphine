@@ -29,11 +29,6 @@ class Level : public StateGame {
 		*/
 		unsigned int getHeight();
 
-		/**
-		* @return The Level Player.
-		*/
-		Player* getPlayer();
-
 	protected:
 		/**
 		* The constructor.
@@ -44,14 +39,14 @@ class Level : public StateGame {
 		/**
 		* @param player_ : Sets the player for the level.
 		*/
-		virtual void setPlayer(Player* player_) = 0;
+		virtual void setPlayer(Player* const player_) = 0;
 
 		/**
 		* @param camera_ : Sets the camera for the level.
 		* @note You should only set the camera after setting the player. Will warn if you
 		* 	didn't.
 		*/
-		virtual void setCamera(Camera* camera_) = 0;
+		virtual void setCamera(Camera* const camera_) = 0;
 
 		unsigned int width; /**< Width that defines the horizontal limits. */
 		unsigned int height; /**< Height that defines the vertical limits. */

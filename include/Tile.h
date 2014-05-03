@@ -21,22 +21,43 @@ const int TILE_HEIGHT = 48;
 
 #include "SDLWrapper.h"
 
+/**
+* Class that represents a tile.
+* @todo Actually implement the tiles that will be in the game.
+* @todo Implement solid tile.
+*/
 class Tile {
 
 	public:
-		Tile(int x_, int y_, int tileType_);
+		/**
+		* The constructor
+		* Initializes all attributes.
+		* @param x_ : The x for the tile rectangle.
+		* @param y_ : The y for the tile rectangle.
+		* @param tileType_ : The type of the tile.
+		*/
+		Tile(const int x_, const int y_, const int tileType_);
+
+		/**
+		* The destructor.
+		*/
 		~Tile();
+
+		/**
+		* @return The Tile rectangle (clip).
+		*/
 		SDL_Rect& getRectangle();
+
+		/**
+		* @return The Tile type.
+		*/
 		int getType();
 
-		/// @todo Implement solid tile.
-		int x;
-		int y;
-
 	private:
-		int type;
-		SDL_Rect rectangle;
+		int type; /**< The type of the Tile. */
+		SDL_Rect rectangle; /**< The clip for the Tile. */
 
 
 };
+
 #endif // INCLUDE_TILE_H

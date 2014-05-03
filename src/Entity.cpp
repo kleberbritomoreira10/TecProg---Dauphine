@@ -1,7 +1,7 @@
 #include "Entity.h"
 #include "SDLWrapper.h"
 
-Entity::Entity(double x_, double y_, Sprite* sprite_) :
+Entity::Entity(const double x_, const double y_, Sprite* const sprite_) :
     x(x_),
     y(y_),
     sprite(sprite_),

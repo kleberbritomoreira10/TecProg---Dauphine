@@ -24,7 +24,7 @@ void PStateAerial::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
     this->player->move(keyStates_[GameKeys::LEFT], keyStates_[GameKeys::RIGHT]);
 }
 
-PStateAerial::PStateAerial(Player* player_) :
+PStateAerial::PStateAerial(Player* const player_) :
 	StatePlayer(player_)
 {
 

@@ -1,7 +1,7 @@
 #include "DynamicEntity.h"
 #include "Logger.h"
 
-DynamicEntity::DynamicEntity(double x_, double y_, Sprite* sprite_) :
+DynamicEntity::DynamicEntity(const double x_, const double y_, Sprite* const sprite_) :
     Entity(x_, y_, sprite_),
     vx(0),
     vy(0),
@@ -11,14 +11,14 @@ DynamicEntity::DynamicEntity(double x_, double y_, Sprite* sprite_) :
     levelW(0),
     levelH(0)
 {
-    this->rectangle = {(int)this->x, (int)this->y, (int)this->width, (int)this->height};
+
 }
 
 DynamicEntity::~DynamicEntity(){
     
 }
 
-void DynamicEntity::setLevelWH(unsigned int width_, unsigned int height_){
+void DynamicEntity::setLevelWH(const unsigned int width_, const unsigned int height_){
     this->levelW = width_;
     this->levelH = height_;
 }
@@ -55,20 +55,6 @@ void DynamicEntity::updatePosition(const double dt_){
         this->isGrounded = false;
     }
 
-    this->rectangle = {(int)this->x, (int)this->y, (int)this->width, (int)this->height};
-
-    // Check collision with solid tiles.
-    
-    // for(vector<Tile*>::const_iterator it = this->tiles.begin(); it != this->tiles.end(); it++){
-    //     if((*it)->isSolid()){
-    //         bool collided = checkCollision(this->rectangle, (*it)->getRectangle());
-    //         if(collided){
-    //             this->vx = 0;
-    //             this->vy = 0;
-    //         }
-    //     }
-    // }
-
 }
 
 void DynamicEntity::jump(){
@@ -79,7 +65,7 @@ void DynamicEntity::applyGravity(){
     this->vy += 2 * this->speed;
 }
 
-void DynamicEntity::move(bool movingLeft_, bool movingRight_){
+void DynamicEntity::move(const bool movingLeft_, const bool movingRight_){
     if(movingLeft_ || movingRight_){
         if(movingLeft_){
             this->vx -= this->speed;
@@ -102,8 +88,4 @@ void DynamicEntity::slowVx(){
 
 void DynamicEntity::roll(){
     this->vx = 70 * this->speed;
-}
-
-void DynamicEntity::setTiles(std::vector<Tile*>& tiles_){
-    this->tiles = tiles_;
 }

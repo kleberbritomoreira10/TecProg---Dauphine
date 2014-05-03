@@ -41,7 +41,7 @@ void TileMap::render(const double cameraX_, const double cameraY_){
 
 	for(auto tile : this->tiles){
 
-		bool tileIsOnScreen = Collision::checkCollision(camera, tile->getRectangle());
+		bool tileIsOnScreen = Collision::rectsCollided(camera, tile->getRectangle());
 		if(tileIsOnScreen){
 
 			const int dx = tile->getRectangle().x - cameraX_;

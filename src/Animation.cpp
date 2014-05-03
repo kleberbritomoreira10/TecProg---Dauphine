@@ -1,7 +1,9 @@
 #include "Animation.h"
 #include "Logger.h"
 
-Animation::Animation(int x_, int y_, int spriteWidth_, int spriteHeight_, int numberOfImages_, bool loop_):
+Animation::Animation(const int x_, const int y_, const int spriteWidth_,
+	const int spriteHeight_, const int numberOfImages_, const bool loop_) :
+
 	x(x_),
 	y(y_),
 	spriteWidth(spriteWidth_),
@@ -17,19 +19,19 @@ Animation::~Animation(){
 
 }
 
-void Animation::update(SDL_Rect& clip, double dt_, double totalTime_){
+void Animation::update(SDL_Rect& clip, const double dt_, const double totalTime_){
 
 	// Compare the position on the sprite with the number of positions to know if is the
 	// end of the animation.
-	bool endOfAnimation = (this->x + 1) >= this->numberOfImages;
+	const bool endOfAnimation = (this->x + 1) >= this->numberOfImages;
 
-	int deltaT_ = (int)(totalTime_ / this->numberOfImages);
+	const int deltaT = (int)(totalTime_ / this->numberOfImages);
 
-	// Verifica se mudou frame.
+	// Check if the frame has changed.
     this->totalElapsedTime += (int)dt_;
 
-    if(this->totalElapsedTime >= deltaT_) {
-        this->totalElapsedTime -= deltaT_;
+    if(this->totalElapsedTime >= deltaT) {
+        this->totalElapsedTime -= deltaT;
         this->x += 1;
         if(this->loop){
         	if(endOfAnimation){
@@ -43,14 +45,14 @@ void Animation::update(SDL_Rect& clip, double dt_, double totalTime_){
     	}
     }
 
-   	int positionX_ = this->x * this->spriteWidth;
-	int positionY_ = this->y * this->spriteHeight;
-	updateClip(clip, positionX_, positionY_, this->spriteWidth, this->spriteHeight);
+   	const int positionX_ = this->x * this->spriteWidth;
+	const int positionY_ = this->y * this->spriteHeight;
+	updateClip(clip, positionX_, positionY_);
 }
 
-void Animation::updateClip(SDL_Rect& clip, int positionX_, int positionY_, int spriteWidth_, int spriteHeight_ ){
-	clip.x = positionX_;
-	clip.y = positionY_;
-	clip.w = spriteWidth_;
-	clip.h = spriteHeight_;
+void Animation::updateClip(SDL_Rect& clip, const int x_, const int y_){
+	clip.x = x_;
+	clip.y = y_;
+	clip.w = this->spriteWidth;
+	clip.h = this->spriteHeight;
 }

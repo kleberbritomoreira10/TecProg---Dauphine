@@ -2,7 +2,6 @@
 #define INCLUDE_SPRITE_H
 
 #include "SDLWrapper.h"
-#include "Animation.h"
 #include <memory>
 #include <string>
 
@@ -13,21 +12,20 @@
 class Sprite {
 
 	public:
-		typedef std::shared_ptr<Sprite> SpritePtr;
+		typedef std::shared_ptr<Sprite> SpritePtr; /**< Typedef of a Sprite shared pointer. */
 
 		/**
 		* The constructor.
 		* Initializes all the data, and sets the desired renderer. Loads image with the desired
 		* 	path.
 		* @param path_ : the image path.
-		* @see Sprite::loadFrom(string path_)
+		* @see Sprite::loadFrom
 		*/
 		Sprite(const std::string& path_);
 
 		/**
 		* The destructor.
-		* Calls the free method, and sets the renderer pointer to null.
-		* @see Sprite::free()
+		* Destroys the SDL_Texture.
 		*/
 		~Sprite();
 
@@ -38,6 +36,7 @@ class Sprite {
 		* @param y_ : The position on the y axis of the screen.
 		* @param clip_ : Clips the texture, on the SDL_Rect bounds. If omitted, renders entire
 		* 	texture.
+		* @param stretch_ : Whether to stretch the image to the entire screen or not.
 		* @param angle_ : An angle in degrees that indicates the rotation that will be applied
 		* 	to the renderQuad. If omitted, no rotation will be applied.
 		* @param center_ : A point indicating the point around which renderQuad will be
@@ -45,10 +44,12 @@ class Sprite {
 		* @param flip_ : Value static which flipping actions should be performed on the
 		* 	texture.
 		* @note The only obligatory parameters are x_ and y_.
+		* @note If the Window renderer is null, will halt the game.
 		* @note If it fails to render, logs an error message.
 		*/
-		void render(double x_, double y_, SDL_Rect* clip_ = nullptr, bool stretch_ = false, double angle_ = 0.0,
-			SDL_Point* center_ = nullptr, SDL_RendererFlip flip_ = SDL_FLIP_NONE);
+		void render(const double x_, const double y_, SDL_Rect* const clip_ = nullptr,
+			const bool stretch_ = false, const double angle_ = 0.0,
+			SDL_Point* const center_ = nullptr, SDL_RendererFlip flip_ = SDL_FLIP_NONE);
 
 		/**
 		* @return The Sprite width.
@@ -74,7 +75,7 @@ class Sprite {
 
 		unsigned int width; /**< The loaded image's width. */
 		unsigned int height; /**< The loaded image's width. */
-		const std::string path;
+		const std::string path; /**< Holds the path from where the Sprite was loaded. */
 
 };
 

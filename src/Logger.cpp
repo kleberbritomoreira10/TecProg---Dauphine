@@ -16,7 +16,7 @@ void Logger::error(const std::string& message_){
 	std::cerr << "[Error]:   " << message_ << std::endl;
 }
 
-void Logger::errorSDL(const std::string& message_, const char *messageSDL_){
+void Logger::errorSDL(const std::string& message_, const char* messageSDL_){
 	std::cerr << "[Error]:   " << message_ << std::endl;
 	std::cerr << "   [SDL Error]: " << std::string(messageSDL_) << std::endl;
 }

@@ -37,7 +37,7 @@ void PStateMoving::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
     }
 }
 
-PStateMoving::PStateMoving(Player* player_) :
+PStateMoving::PStateMoving(Player* const player_) :
     StatePlayer(player_)
 {
 

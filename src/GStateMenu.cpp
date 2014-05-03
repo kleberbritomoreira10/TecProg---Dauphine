@@ -16,7 +16,7 @@ GStateMenu::~GStateMenu(){
 
 }
 
-void GStateMenu::update(double dt_){
+void GStateMenu::update(const double dt_){
 	this->passedTime += dt_;
 
 	if(this->passedTime >= this->lifeTime){

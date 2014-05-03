@@ -57,7 +57,7 @@ void LevelOne::load(){
 
 	TileMap* tileMap = new TileMap(tileData, "res/tilesheet.png");
 	addEntity(tileMap);
-	lPlayer->setTiles(tileMap->tiles);
+	//lPlayer->setTiles(tileMap->tiles);
 
 	setPlayer(lPlayer);
 	setCamera(lCamera);
@@ -68,7 +68,7 @@ void LevelOne::unload(){
 	cleanEntities();
 }
 
-void LevelOne::update(double dt_){
+void LevelOne::update(const double dt_){
 	// Update all the entities in the list.
 	for(auto entity : entities){
         entity->update(dt_);
@@ -86,7 +86,7 @@ void LevelOne::render(){
 	}
 }
 
-void LevelOne::setPlayer(Player* player_){
+void LevelOne::setPlayer(Player* const player_){
 	this->player = player_;
 
 	if(this->player != nullptr){
@@ -99,7 +99,7 @@ void LevelOne::setPlayer(Player* player_){
 	
 }
 
-void LevelOne::setCamera(Camera* camera_){
+void LevelOne::setCamera(Camera* const camera_){
 	this->camera = camera_;
 
 	if(this->camera != nullptr){

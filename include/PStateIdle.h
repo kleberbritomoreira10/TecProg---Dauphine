@@ -14,7 +14,7 @@ class PStateIdle : public StatePlayer {
 		* The constructor.
 		* @param player_ : Reference to the player.
 		*/
-		PStateIdle(Player* player_);
+		PStateIdle(Player* const player_);
 		
 		/**
 		* The destructor.

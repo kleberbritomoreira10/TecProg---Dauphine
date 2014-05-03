@@ -39,7 +39,7 @@ void PStateIdle::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 
 }
 
-PStateIdle::PStateIdle(Player* player_) :
+PStateIdle::PStateIdle(Player* const player_) :
 	StatePlayer(player_)
 {
 

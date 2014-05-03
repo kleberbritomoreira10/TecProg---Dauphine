@@ -16,7 +16,7 @@ class Camera {
 		* Initializes all the attributes.
 		* @param entity_ : The entity to centralize the camera on.
 		*/
-		Camera(Entity* entity_);
+		Camera(Entity* const entity_);
 
 		/**
 		* The destructor.
@@ -34,7 +34,7 @@ class Camera {
 		* Changes the entity to centralize upon.
 		* @param entity_ : The entity to centralize the camera on.
 		*/
-		void centralizeOn(Entity* entity_);
+		void centralizeOn(Entity* const entity_);
 
 		/**
 		* @return The camera clip (an SDL_Rect).
@@ -45,7 +45,7 @@ class Camera {
 		* @param width_,height_ : Tells the camera what the width and height of the level is.
 		* @see Level::update()
 		*/
-		void setLevelWH(unsigned int width_, unsigned int height_);
+		void setLevelWH(const unsigned int width_, const unsigned int height_);
 
 	private:
 		/**

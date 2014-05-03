@@ -20,16 +20,17 @@ class DynamicEntity : public Entity {
 		* @param y_ : position in y axis.
 		* @param sprite_ : which sprite to use.
 		*/
-		DynamicEntity(double x_, double y_, Sprite* sprite_);
+		DynamicEntity(const double x_, const double y_, Sprite* const sprite_);
 
 		/**
 		* The destructor.
 		*/
 		virtual ~DynamicEntity();
 
+
 		virtual void jump();
 		virtual void applyGravity();
-		virtual void move(bool movingLeft_, bool movingRight_);
+		virtual void move(const bool movingLeft_, const bool movingRight_);
 		virtual void slowVx();
 		virtual void roll();
 
@@ -37,9 +38,7 @@ class DynamicEntity : public Entity {
 		* @param width_,height_ : Tells the player what the width and height of the level is.
 		* @see Level::update()
 		*/
-		virtual void setLevelWH(unsigned int width_, unsigned int height_);
-
-		void setTiles(std::vector<Tile*>& tiles_);
+		virtual void setLevelWH(const unsigned int width_, const unsigned int height_);
 
 		double vx; /**< The dynamic entity's speed on the x axis. */
 		double vy; /**< The dynamic entity's speed on the x axis. */
@@ -58,9 +57,6 @@ class DynamicEntity : public Entity {
 
 		unsigned int levelW; /**< The width of the level. */
 		unsigned int levelH; /**< The height of the level. */
-
-		std::vector<Tile*> tiles;
-		SDL_Rect rectangle;
 
 };
 

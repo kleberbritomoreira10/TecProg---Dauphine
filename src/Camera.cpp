@@ -1,7 +1,7 @@
 #include "Camera.h"
 #include "Configuration.h"
 
-Camera::Camera(Entity* entity_):
+Camera::Camera(Entity* const entity_):
     entity(entity_),
     levelW(0),
     levelH(0),
@@ -44,11 +44,11 @@ void Camera::updatePosition(){
     }
 }
 
-void Camera::centralizeOn(Entity* entity_){
+void Camera::centralizeOn(Entity* const entity_){
     this->entity = entity_;
 }
 
-void Camera::setLevelWH(unsigned int width_, unsigned int height_){
+void Camera::setLevelWH(const unsigned int width_, const unsigned int height_){
     this->levelW = width_;
     this->levelH = height_;
 }

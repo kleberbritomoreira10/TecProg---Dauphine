@@ -5,7 +5,7 @@
 #include "Sprite.h"
 #include "InputKeys.h"
 #include "StatePlayer.h"
-
+#include "Animation.h"
 #include <map>
 
 class StatePlayer;
@@ -17,6 +17,9 @@ class StatePlayer;
 class Player : public DynamicEntity {
 
 	public:
+		/**
+		* All possible player states.
+		*/
 		enum PStates : uint8_t {
 			IDLE = 0,
 			MOVING,
@@ -31,12 +34,11 @@ class Player : public DynamicEntity {
 		* @param y_ : position in y axis.
 		* @param sprite_ : which sprite to use.
 		*/
-		Player(double x_, double y_, Sprite* sprite_);
+		Player(const double x_, const double y_, Sprite* const sprite_);
 
 		/**
 		* The destructor.
-		* Deletes the sprite.
-		* @todo See if just the entity deleting the sprite is enough.
+		* Exits the current state and destroys all states.
 		*/
 		virtual ~Player();
 
@@ -75,12 +77,15 @@ class Player : public DynamicEntity {
 		* @see StatePlayer::unload
 		* @param state_ : The state you want to be changed into. All states are inside Player.
 		*/
-		void changeState(PStates state_);
+		void changeState(const PStates state_);
 
+		/**
+		* @return The players current animation setting.
+		*/
 		Animation& getAnimation();
 
 	private:
-		Animation* animation;
+		Animation* animation; /**< Current player animation. */
 		StatePlayer* currentState; /**< The current state, which the player is in. */
 		std::map<PStates, StatePlayer*> statesMap; /**< Map containing all possible states. */
 		

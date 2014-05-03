@@ -13,7 +13,6 @@ class Entity {
 	public:
 		/**
 		* The destructor.
-		* Deletes the sprite.
 		*/
 		virtual ~Entity();
 
@@ -44,6 +43,9 @@ class Entity {
 		*/
 		unsigned int getHeight();
 
+		/**
+		* @return The Entity clip.
+		*/
 		SDL_Rect& getClip();
 
 		double x; /**< The position in the x axis. */
@@ -57,12 +59,12 @@ class Entity {
 		* @param y_ : position in y axis.
 		* @param sprite_ : which sprite to use.
 		*/
-		Entity(double x_, double y_, Sprite* sprite_);
+		Entity(const double x_, const double y_, Sprite* const sprite_);
 
 		Sprite* sprite; /**< The Sprite attributed to the entity. */
 		unsigned int width; /**< The entitys width, from its sprite. */
 		unsigned int height; /**< The entitys height, from its sprite. */
-		SDL_Rect clip;
+		SDL_Rect clip; /**< The current clip on the spritesheet, to determine animation. */
 
 };
 

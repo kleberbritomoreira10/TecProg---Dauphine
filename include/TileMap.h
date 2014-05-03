@@ -8,11 +8,25 @@
 
 #include <vector>
 
+/**
+* Represents the tile distrubution for a level.
+* @todo Revise Tile placement implementation.
+*/
 class TileMap : public Entity {
 
 	public:
-
+		/**
+		* The constructor.
+		* @param tileData_ : The vector containing numerical value of the map.
+		* @param path_ : Path to the desired tilesheet.
+		* @see TileMap::create
+		*/
 		TileMap(const std::vector<int>& tileData_, const std::string& path_);
+
+		/**
+		* The destructor.
+		* Deletes all the Tiles.
+		*/
 		~TileMap();
 
 		/**
@@ -32,13 +46,21 @@ class TileMap : public Entity {
 		*/
 		virtual void render(const double cameraX_, const double cameraY_);
 
+	private:
+		/**
+		* Creates the Tiles based on the numerical vector.
+		* @param tileData_ : The vector containing numerical value of the map.
+		*/
 		void create(const std::vector<int>& tileData_);
 
-		std::vector<Tile*> tiles;
-
-	private:
+		/**
+		* Clips the tiles.
+		* @todo Refactor this method.
+		*/
 		void clipTiles();
-		SDL_Rect clips[TileCode::TOTAL];
+
+		SDL_Rect clips[TileCode::TOTAL]; /**< Contains all the clips for each tile. */
+		std::vector<Tile*> tiles; /**< All the generated tiles. */
 
 
 };

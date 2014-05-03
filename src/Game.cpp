@@ -99,7 +99,7 @@ void Game::runGame(){
 
 }
 
-void Game::setState(GStates state_){
+void Game::setState(const GStates state_){
 	/// @todo Implement the transition between states.
 	this->currentState->unload();
 	this->currentState = this->statesMap.at(state_);
