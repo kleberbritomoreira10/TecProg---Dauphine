@@ -4,17 +4,13 @@
 Entity::Entity(const double x_, const double y_, Sprite* const sprite_) :
     x(x_),
     y(y_),
+    isRight(true),
     sprite(sprite_),
     width(0),
     height(0),
     clip{0,0,0,0}
 {
 	// Only serves as the initializer for the derived classes.
-	/// @todo Fix magic numbers.
-	if(this->sprite != nullptr){
-		this->width = 229;
-		this->height = 229;
-	}
 
 }
 

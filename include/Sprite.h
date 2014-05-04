@@ -60,6 +60,10 @@ class Sprite {
 		* @return The Sprite height.
 		*/
 		unsigned int getHeight();
+
+		void setHorizontalFlip(bool isRigth_);
+
+
 		
 	private:
 		/**
@@ -76,6 +80,7 @@ class Sprite {
 		unsigned int width; /**< The loaded image's width. */
 		unsigned int height; /**< The loaded image's width. */
 		const std::string path; /**< Holds the path from where the Sprite was loaded. */
+		bool flipHorizontal; /**< When true flip the image */
 
 };
 

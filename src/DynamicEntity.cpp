@@ -27,6 +27,14 @@ void DynamicEntity::updatePosition(const double dt_){
     /// @todo Fix all these magic/weird numbers.
     this->x += this->vx * dt_;
 
+    if(this->vx >= 0){
+        this->isRight = true;
+    }
+    else{
+        this->isRight = false;
+    }
+    this->sprite->setHorizontalFlip(this->isRight);
+
     // Left wall.
     if(this->x < 0){
         this->x = 0;
@@ -87,5 +95,10 @@ void DynamicEntity::slowVx(){
 }
 
 void DynamicEntity::roll(){
-    this->vx = 70 * this->speed;
+    if(this->isRight){
+        this->vx = 70 * this->speed;
+    }
+    else{
+        this->vx = -70 * this->speed;
+    }
 }

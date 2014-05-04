@@ -50,6 +50,7 @@ class Entity {
 
 		double x; /**< The position in the x axis. */
 		double y; /**< The position in the y axis. */
+		bool isRight; /**< The direction in the x axis. */ 
 
 	protected:
 		/**

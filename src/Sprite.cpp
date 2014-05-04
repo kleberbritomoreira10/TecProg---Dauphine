@@ -7,7 +7,8 @@ Sprite::Sprite(const std::string& path_) :
 	sdlTexture(nullptr),
 	width(0),
 	height(0),
-	path(path_)
+	path(path_),
+	flipHorizontal(false)
 {
 	loadFrom(this->path);
 }
@@ -69,6 +70,13 @@ void Sprite::render(const double x_, const double y_, SDL_Rect* const clip_,
 
 	}
 
+	if(flipHorizontal){
+		flip_ = SDL_FLIP_HORIZONTAL;
+	}
+	else{
+		flip_ = SDL_FLIP_NONE;
+	}
+
 	int successfullRender = (!stretch_) ?
 		SDL_RenderCopyEx(Window::getRenderer(), this->sdlTexture, clip_,
 			&renderQuad, angle_, center_, flip_) :
@@ -86,4 +94,13 @@ unsigned int Sprite::getWidth(){
 
 unsigned int Sprite::getHeight(){
 	return this->height;
+}
+
+void Sprite::setHorizontalFlip(bool isRight_){
+	if(isRight_){
+		this->flipHorizontal = false;
+	}
+	else{
+		this->flipHorizontal = true;
+	}
 }

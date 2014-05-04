@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Logger.h"
 #include "Configuration.h"
+#include "LuaScript.h"
 
 #include "PStateIdle.h"
 #include "PStateAerial.h"
@@ -14,6 +15,10 @@ Player::Player(const double x_, const double y_, Sprite* const sprite_) :
 {
 
     initializeStates();
+
+    LuaScript luaPlayer("lua/Level1.lua");
+    this->width = luaPlayer.unlua_get<int>("level.player.width");
+    this->height = luaPlayer.unlua_get<int>("level.player.height");
 
     // Shouldn't be here.
     this->animation = new Animation(0, 0, this->width, this->height, 11, false);
@@ -47,7 +52,7 @@ void Player::render(const double cameraX_, const double cameraY_){
     if(this->sprite != nullptr){
         const double dx = this->x - cameraX_;
         const double dy = this->y - cameraY_;
-        this->sprite->render(dx, dy, &clip);
+        this->sprite->render(dx, dy, &clip, false, 0.0, nullptr, SDL_FLIP_HORIZONTAL);
     }
 }
 

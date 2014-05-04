@@ -14,6 +14,8 @@ level = {
 	    	x = 450.0,
 	    	y = 300.0,
 	    },
+	    width = 229,
+	    height = 229,
 	    spritePath = "res/nadineSprite.png",
 	},
 
