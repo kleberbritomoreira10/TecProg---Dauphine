@@ -1,21 +1,21 @@
-#ifndef INCLUDE_ESTATEMOVING_H
-#define INCLUDE_ESTATEMOVING_H
+#ifndef INCLUDE_ESTATECURIOUS_H
+#define INCLUDE_ESTATECURIOUS_H
 
 #include "StateEnemy.h"
 
-class EStateMoving : public StateEnemy {
+class EStateCurious : public StateEnemy {
 
 	public:
 		/**
 		* The constructor.
 		* @param enemy_ : Reference to the Enemy.
 		*/
-		EStateMoving(Enemy* const enemy_);
+		EStateCurious(Enemy* const enemy_);
 		
 		/**
 		* The destructor.
 		*/
-		virtual ~EStateMoving(){}
+		virtual ~EStateCurious(){}
 
 		/**
 		* @see StateEnemy::enter
@@ -34,4 +34,4 @@ class EStateMoving : public StateEnemy {
 
 };
 
-#endif // INCLUDE_ESTATEMOVING_H
+#endif // INCLUDE_ESTATECURIOUS_H

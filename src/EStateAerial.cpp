@@ -2,7 +2,7 @@
 #include "Logger.h"
 
 void EStateAerial::enter(){
-	Logger::log("enter enemy aerial");	
+	Logger::verbose("enter enemy aerial");	
 }
 
 void EStateAerial::exit(){

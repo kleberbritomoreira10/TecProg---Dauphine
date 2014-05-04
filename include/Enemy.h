@@ -12,8 +12,10 @@ class Enemy : public DynamicEntity {
 	public:
 		enum EStates : uint8_t {
 			IDLE = 0,
-			MOVING,
-			AERIAL
+			AERIAL,
+			PATROLLING,
+			CURIOUS,
+			ALERT
 		};
 
 		Enemy(const double x_, const double y_, Sprite* const sprite_);
@@ -42,6 +44,8 @@ class Enemy : public DynamicEntity {
 
 		static double px;
 		static double py;
+		static double alertRange;
+		static double curiousRange;
 
 		double patrolX;
 		bool left;

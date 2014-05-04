@@ -1,15 +1,15 @@
-#include "EStateMoving.h"
+#include "EStateAlert.h"
 #include "Logger.h"
 
-void EStateMoving::enter(){
-	Logger::log("enter enemy moving");	
+void EStateAlert::enter(){
+	Logger::verbose("enter enemy moving");	
 }
 
-void EStateMoving::exit(){
+void EStateAlert::exit(){
 
 }
 
-void EStateMoving::update(){
+void EStateAlert::update(){
 	// Aerial
 	if(!this->enemy->isGrounded){
 		this->enemy->changeState(Enemy::EStates::AERIAL);
@@ -24,7 +24,7 @@ void EStateMoving::update(){
 	}
 }
 
-EStateMoving::EStateMoving(Enemy* const enemy_) :
+EStateAlert::EStateAlert(Enemy* const enemy_) :
 	StateEnemy(enemy_)
 {
 

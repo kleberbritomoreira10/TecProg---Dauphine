@@ -1,11 +1,15 @@
 #include "Enemy.h"
 
 #include "EStateIdle.h"
-#include "EStateMoving.h"
+#include "EStatePatrolling.h"
 #include "EStateAerial.h"
+#include "EStateCurious.h"
+#include "EStateAlert.h"
 
 double Enemy::px = 0.0;
 double Enemy::py = 0.0;
+double Enemy::alertRange = 300.0;
+double Enemy::curiousRange = 600.0;
 
 Enemy::Enemy(const double x_, const double y_, Sprite* const sprite_) :
 	DynamicEntity(x_, y_, sprite_),
@@ -44,7 +48,9 @@ void Enemy::render(const double cameraX_, const double cameraY_){
 void Enemy::initializeStates(){
     // Initialize all the states in Enemy here.
     this->statesMap.emplace(IDLE, new EStateIdle(this));
-    this->statesMap.emplace(MOVING, new EStateMoving(this));
+    this->statesMap.emplace(CURIOUS, new EStateCurious(this));
+    this->statesMap.emplace(PATROLLING, new EStatePatrolling(this));
+    this->statesMap.emplace(ALERT, new EStateAlert(this));
     this->statesMap.emplace(AERIAL, new EStateAerial(this));
 }
 
