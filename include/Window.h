@@ -73,6 +73,8 @@ class Window {
 		*/
 		static SDL_Renderer* getRenderer();
 
+		static void getLogicalSize(int* w, int* h);
+
 	private:
 		/**
 		* Creates the Window, with specified width and height.

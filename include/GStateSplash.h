@@ -54,6 +54,7 @@ class GStateSplash : public StateGame {
 		double passedTime; /**< The time already elapsed since the beggining of the splash. */
 		double lifeTime; /**< The amount of time the splash will be shown. */
 		Sprite* images[NUMBER_OF_SPLASH_IMAGES]; /**< Contains all the splash images. */
+		double ix;
 
 };
 

@@ -105,3 +105,7 @@ void Window::rescale(unsigned int size_){
 SDL_Renderer* Window::getRenderer(){
 	return Window::sdlRenderer;
 }
+
+void Window::getLogicalSize(int* w, int* h){
+	SDL_RenderGetLogicalSize(Window::getRenderer(), w, h);
+}

@@ -3,5 +3,5 @@ splash = {
 	spriteTechs = "res/techs_white_bg.png",
 	spriteLicenses = "res/licenses2.png",
 	spriteEsrb = "res/esrb_white_bg.png",
-	lifeTime = 0.1,
+	lifeTime = 1.5,
 }

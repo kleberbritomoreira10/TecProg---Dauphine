@@ -7,7 +7,8 @@
 GStateSplash::GStateSplash() :
 	current(0),
 	passedTime(0.0),
-	lifeTime(0.0)
+	lifeTime(0.0),
+	ix(-300)
 {
 	for(unsigned int i = 0; i < NUMBER_OF_SPLASH_IMAGES; i++){
 		this->images[i] = nullptr;
@@ -21,12 +22,18 @@ GStateSplash::~GStateSplash(){
 void GStateSplash::update(const double dt_){
 	this->passedTime += dt_;
 
+	if(this->ix < 0){
+		this->ix += 5;
+	}
+
+
 	if(this->passedTime >= this->lifeTime){
 		if(this->current >= NUMBER_OF_SPLASH_IMAGES - 1){
 			Game::instance().setState(Game::GStates::MENU);
 		}
 		else{
 			this->passedTime = 0;
+			this->ix = -300;
 			this->current++;
 		}
 	}
@@ -59,7 +66,7 @@ void GStateSplash::unload(){
 
 void GStateSplash::render(){
 	if(this->images[this->current] != nullptr){
-		this->images[this->current]->render(0, 0, nullptr, true);
+		this->images[this->current]->render(this->ix, 0, nullptr, true);
 	}
 	else{
 		Logger::warning("No image set for the splash screen!");

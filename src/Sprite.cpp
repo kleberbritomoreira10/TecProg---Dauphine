@@ -77,11 +77,16 @@ void Sprite::render(const double x_, const double y_, SDL_Rect* const clip_,
 		flip_ = SDL_FLIP_NONE;
 	}
 
+	int logicalw = 0;
+	int logicalh = 0;
+	Window::getLogicalSize(&logicalw, &logicalh);
+	SDL_Rect stretch = {(int)x_,(int)y_,logicalw,logicalh};
+
 	int successfullRender = (!stretch_) ?
 		SDL_RenderCopyEx(Window::getRenderer(), this->sdlTexture, clip_,
 			&renderQuad, angle_, center_, flip_) :
 		SDL_RenderCopyEx(Window::getRenderer(), this->sdlTexture, clip_,
-			nullptr, angle_, center_, flip_);
+			&stretch, angle_, center_, flip_);
 	
 	if(successfullRender != 0){
 		Logger::errorSDL("Failed to render sprite.", SDL_GetError());
