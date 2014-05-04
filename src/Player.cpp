@@ -21,7 +21,7 @@ Player::Player(const double x_, const double y_, Sprite* const sprite_) :
     this->height = luaPlayer.unlua_get<int>("level.player.height");
 
     // Shouldn't be here.
-    this->animation = new Animation(0, 0, this->width, this->height, 11, false);
+    this->animation = new Animation(0, 3, this->width, this->height, 11, false);
 
     if(this->sprite != nullptr){
         this->currentState = this->statesMap.at(IDLE);
@@ -45,7 +45,7 @@ void Player::update(const double dt_){
 
     this->currentState->handleInput(keyStates);
     updatePosition(dt_);
-    this->animation->update(this->clip, dt_, 1);
+    this->animation->update(this->clip, dt_);
 }
 
 void Player::render(const double cameraX_, const double cameraY_){

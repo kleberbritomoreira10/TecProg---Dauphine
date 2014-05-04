@@ -1,6 +1,9 @@
 #include "Animation.h"
 #include "Logger.h"
 
+const unsigned int ANIMATION_LIMIT = 11;
+int animationCount = 0;
+
 Animation::Animation(const int x_, const int y_, const int spriteWidth_,
 	const int spriteHeight_, const int numberOfImages_, const bool loop_) :
 
@@ -19,29 +22,37 @@ Animation::~Animation(){
 
 }
 
-void Animation::update(SDL_Rect& clip, const double dt_, const double totalTime_){
+void Animation::update(SDL_Rect& clip, const double dt_){
 
 	// Compare the position on the sprite with the number of positions to know if is the
 	// end of the animation.
-	const bool endOfAnimation = (this->x + 1) >= this->numberOfImages;
 
-	const double deltaT = (totalTime_ / this->numberOfImages);
+	bool endOfAnimation = animationCount + 1 >= this->numberOfImages;
+
+	const double deltaT = (this->totalTime / this->numberOfImages);
 
 	// Check if the frame has changed.
     this->totalElapsedTime += dt_;
 
     if(this->totalElapsedTime >= deltaT) {
-        this->totalElapsedTime -= deltaT;
-        this->x += 1;
-        if(this->loop){
-        	if(endOfAnimation){
-        		this->x= 0;
-        	}
+        
+        this->totalElapsedTime = 0;
+        animationCount += 1;
+
+        if(animationCount <= this->numberOfImages){
+	        if(this->x < ANIMATION_LIMIT){
+	        	this->x += 1;
+	        }
+	        else{
+	        	this->y += 1;
+	        	this->x = 0;
+	        }
     	}
-    	else {
-    		if(endOfAnimation){
-        		this->x -= 1;
-        	}
+
+    	if(endOfAnimation){
+    		this->x= this->initialX;
+    		this->y= this->initialY;
+    		animationCount = 0;
     	}
     }
 
@@ -50,11 +61,14 @@ void Animation::update(SDL_Rect& clip, const double dt_, const double totalTime_
 	updateClip(clip, positionX_, positionY_);
 }
 
-void Animation::changeAnimation(const int x_, const int y_, const int numberOfImages_, const bool loop_){
+void Animation::changeAnimation(const int x_, const int y_, const int numberOfImages_, const bool loop_, const double totalTime_){
 	this->x = x_;
 	this->y = y_;
+	this->initialX = x_;
+	this->initialY = y_;
 	this->numberOfImages = numberOfImages_;
 	this->loop = loop_;
+	this->totalTime = totalTime_;
 }
 
 void Animation::updateClip(SDL_Rect& clip, const int x_, const int y_){

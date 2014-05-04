@@ -2,7 +2,7 @@
 #include "Logger.h"
 
 void PStateAerial::enter(){
-	this->player->getAnimation()->changeAnimation(1,0,1,false);
+	this->player->getAnimation()->changeAnimation(0,1,15,false,1);
 }
 
 void PStateAerial::exit(){

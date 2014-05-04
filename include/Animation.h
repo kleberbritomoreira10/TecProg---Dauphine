@@ -35,9 +35,9 @@ class Animation{
 		* @param totalTime_ : How much time each frame should have. Affects the speed on which
 		* 	the animation changes.
 		*/
-		void update(SDL_Rect& clip_, const double dt_, const double totalTime_);
+		void update(SDL_Rect& clip_, const double dt_);
 
-		void changeAnimation(const int x_, const int y_, const int numberOfImages_, const bool loop_);
+		void changeAnimation(const int x_, const int y_, const int numberOfImages_, const bool loop_, const double totalTime_);
 
 	private:
 		/**
@@ -50,11 +50,14 @@ class Animation{
 
 		int x; /**< The position on x axis on the sprite. */
 		int y; /**< The position on x axis on the sprite. */
+		int initialX;
+		int initialY;
 		int spriteWidth; /**< The sprite width. */
 		int spriteHeight; /**< The sprite height. */
 		int numberOfImages; /**< The number of images to animate inside the spritesheet. */
 		bool loop; /**< Whether to loop or not. */
 		double totalElapsedTime; /**< Total time elapsed on the animation. */
+		double totalTime;
 
 };
 
