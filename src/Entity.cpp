@@ -6,12 +6,11 @@ Entity::Entity(const double x_, const double y_, Sprite* const sprite_) :
     y(y_),
     isRight(true),
     sprite(sprite_),
-    width(0),
-    height(0),
+    width(this->sprite->getWidth()),
+    height(this->sprite->getHeight()),
     clip{0,0,0,0}
 {
 	// Only serves as the initializer for the derived classes.
-
 }
 
 Entity::~Entity(){

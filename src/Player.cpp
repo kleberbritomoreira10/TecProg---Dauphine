@@ -43,7 +43,7 @@ Player::~Player(){
 void Player::update(const double dt_){
     std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
-    Player::currentState->handleInput(keyStates);
+    this->currentState->handleInput(keyStates);
     updatePosition(dt_);
     this->animation->update(this->clip, dt_, 1);
 }

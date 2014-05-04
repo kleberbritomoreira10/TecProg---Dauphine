@@ -5,8 +5,8 @@ DynamicEntity::DynamicEntity(const double x_, const double y_, Sprite* const spr
     Entity(x_, y_, sprite_),
     vx(0),
     vy(0),
-    speed(15),
-    maxSpeed(500),
+    speed(20),
+    maxSpeed(550),
     isGrounded(false),
     levelW(0),
     levelH(0)
@@ -66,21 +66,33 @@ void DynamicEntity::updatePosition(const double dt_){
 }
 
 void DynamicEntity::jump(){
-    this->vy = (-40) * this->speed;
+    this->vy = (-1) * 1500.0;
 }
 
 void DynamicEntity::applyGravity(){
-    this->vy += 2 * this->speed;
+    this->vy += 75;
 }
 
 void DynamicEntity::move(const bool movingLeft_, const bool movingRight_){
+    const double turnHandle = 5.5;
     if(movingLeft_ || movingRight_){
         if(movingLeft_){
-            this->vx -= this->speed;
+            if(this->vx > 0.0){
+                this->vx -= this->speed * turnHandle;
+            }
+            else{
+                this->vx -= this->speed;
+            }
+            
             this->vx = (this->vx < -this->maxSpeed) ? -this->maxSpeed : this->vx;
         }
         if(movingRight_){
-            this->vx += this->speed;
+            if(this->vx < 0.0){
+                this->vx += this->speed * turnHandle;
+            }
+            else{
+                this->vx += this->speed;
+            }
             this->vx = (this->vx > this->maxSpeed) ? this->maxSpeed : this->vx;
         }
     }

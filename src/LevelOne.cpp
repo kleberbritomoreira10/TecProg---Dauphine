@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "LuaScript.h"
 #include "Logger.h"
+#include "Enemy.h"
 
 #include "TileMap.h"
 
@@ -45,7 +46,6 @@ void LevelOne::load(){
 
 	// Loading the tile/tilemap.
 	std::ifstream mapFile("res/maps/level1.map");
-
 	int numberOfTiles = 0;
 	mapFile >> numberOfTiles;
 	std::vector<int> tileData;
@@ -54,10 +54,15 @@ void LevelOne::load(){
 		mapFile >> tileType;
 		tileData.push_back(tileType);
 	}
-
 	TileMap* tileMap = new TileMap(tileData, "res/tilesheet.png");
 	addEntity(tileMap);
 	//lPlayer->setTiles(tileMap->tiles);
+
+	Sprite* spriteEnemy;
+	spriteEnemy = Game::instance().getResources().get("res/InimigoVigilia.png");
+	Enemy* enemy = new Enemy(970.0, 400.0, spriteEnemy);
+	enemy->setLevelWH(this->width, this->height);
+	addEntity(enemy);
 
 	setPlayer(lPlayer);
 	setCamera(lCamera);
@@ -73,6 +78,10 @@ void LevelOne::update(const double dt_){
 	for(auto entity : entities){
         entity->update(dt_);
 	}
+
+	Enemy::px = this->player->x;
+	Enemy::py = this->player->y;
+
 	this->camera->update();
 }
 
