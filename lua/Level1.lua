@@ -16,7 +16,7 @@ level = {
 	    },
 	    width = 229,
 	    height = 229,
-	    spritePath = "res/nadineSprite.png",
+	    spritePath = "res/spriteSheetNadine.png",
 	},
 
 }
