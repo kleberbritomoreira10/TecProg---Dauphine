@@ -11,16 +11,28 @@ double Enemy::py = 0.0;
 double Enemy::alertRange = 300.0;
 double Enemy::curiousRange = 600.0;
 
-Enemy::Enemy(const double x_, const double y_, Sprite* const sprite_) :
+Enemy::Enemy(const double x_, const double y_, Sprite* const sprite_, const bool patrol_,
+    const double patrolLength_) :
+
 	DynamicEntity(x_, y_, sprite_),
     patrolX(100.0),
     left(true),
+    originalX(x_),
+    patrol(patrol_),
+    patrolLength(patrolLength_),
 	currentState(nullptr),
 	statesMap()
 {
 	initializeStates();
 
-    this->currentState = this->statesMap.at(IDLE);
+    this->speed = 0.7;
+
+    if(this->patrol){
+        this->currentState = this->statesMap.at(PATROLLING);
+    }
+    else{
+        this->currentState = this->statesMap.at(IDLE);
+    }
     this->currentState->enter();
 }
 

@@ -107,10 +107,11 @@ void DynamicEntity::slowVx(){
 }
 
 void DynamicEntity::roll(){
+    const double rollStrength = 120.0;
     if(this->isRight){
-        this->vx = 70 * this->speed;
+        this->vx = rollStrength * this->speed;
     }
     else{
-        this->vx = -70 * this->speed;
+        this->vx = -rollStrength * this->speed;
     }
 }

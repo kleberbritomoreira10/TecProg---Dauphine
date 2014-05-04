@@ -23,6 +23,11 @@ void EStateIdle::update(){
 		this->enemy->changeState(Enemy::EStates::ALERT);
 		return;
 	}
+	else if(abs(this->enemy->x - Enemy::px) < Enemy::curiousRange){
+		this->enemy->changeState(Enemy::EStates::CURIOUS);
+		return;
+	}
+
 }
 
 EStateIdle::EStateIdle(Enemy* const enemy_) :

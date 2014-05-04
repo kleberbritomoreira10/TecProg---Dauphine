@@ -12,7 +12,12 @@ void EStateAerial::exit(){
 void EStateAerial::update(){
 	// Idle
     if(this->enemy->isGrounded){
-    	this->enemy->changeState(Enemy::EStates::IDLE);
+    	if(this->enemy->patrol){
+	    	this->enemy->changeState(Enemy::EStates::PATROLLING);
+    	}
+    	else{
+	    	this->enemy->changeState(Enemy::EStates::IDLE);
+    	}
     	return;
     }
 

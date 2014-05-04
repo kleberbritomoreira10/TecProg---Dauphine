@@ -18,7 +18,9 @@ class Enemy : public DynamicEntity {
 			ALERT
 		};
 
-		Enemy(const double x_, const double y_, Sprite* const sprite_);
+		Enemy(const double x_, const double y_, Sprite* const sprite_, const bool patrol_,
+			const double patrolLength_);
+
 		virtual ~Enemy();
 
 		/**
@@ -49,12 +51,13 @@ class Enemy : public DynamicEntity {
 
 		double patrolX;
 		bool left;
+		double originalX;
+		bool patrol;
+		double patrolLength;
 
 	private:
 		StateEnemy* currentState;
 		std::map<EStates, StateEnemy*> statesMap;
-
-
 
 };
 

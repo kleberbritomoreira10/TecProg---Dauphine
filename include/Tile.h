@@ -2,22 +2,27 @@
 #define INCLUDE_TILE_H
 
 enum TileCode : int {
-	BLACK = 0,
-	WHITE,
-	RED,
-	GREEN,
-	BLUE,
-	YELLOW,
-	LIGHTBLUE,
-	PINK,
-	DARKGRAY,
-	GRAY,
+	FLOOR1 = 0,
+	FLOOR2,
+	WALL1,
+	WALL2,
+	WALL3,
+	WALL4,
+	WALL5,
+	WALL6,
+	WALL7,
+	WALL8,
+	WALL9,
+	WALL10,
+	WALL11,
+	WALL12,
+	WALL13,
 	TOTAL
 };
 
 const int TILE_PER_ROW_IMAGE = 5;
-const int TILE_WIDTH = 48;
-const int TILE_HEIGHT = 48;
+const int TILE_WIDTH = 64;
+const int TILE_HEIGHT = 64;
 
 #include "SDLWrapper.h"
 

@@ -46,8 +46,11 @@ void LevelOne::load(){
 
 	// Loading the tile/tilemap.
 	std::ifstream mapFile("res/maps/level1.map");
-	int numberOfTiles = 0;
-	mapFile >> numberOfTiles;
+	int levelWidthTiles = 0;
+	int levelHeightTiles = 0;
+	mapFile >> levelWidthTiles;
+	mapFile >> levelHeightTiles;
+	int numberOfTiles = (levelWidthTiles * levelHeightTiles) / TILE_WIDTH;
 	std::vector<int> tileData;
 	for(int i = 0; i < numberOfTiles; i++){
 		int tileType = 0;
@@ -60,7 +63,7 @@ void LevelOne::load(){
 
 	Sprite* spriteEnemy;
 	spriteEnemy = Game::instance().getResources().get("res/InimigoVigilia.png");
-	Enemy* enemy = new Enemy(970.0, 400.0, spriteEnemy);
+	Enemy* enemy = new Enemy(1100.0, 400.0, spriteEnemy, true, 200.0);
 	enemy->setLevelWH(this->width, this->height);
 	addEntity(enemy);
 
