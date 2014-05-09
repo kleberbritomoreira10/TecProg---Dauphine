@@ -101,6 +101,13 @@ unsigned int Sprite::getHeight(){
 	return this->height;
 }
 
+void Sprite::setWidth(unsigned int width_){
+	this->width = width_;
+}
+
+void Sprite::setHeight(unsigned int height_){
+	this->height = height_;
+}
 void Sprite::setHorizontalFlip(bool isRight_){
 	if(isRight_){
 		this->flipHorizontal = false;

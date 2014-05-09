@@ -18,7 +18,7 @@ GStateMenu::~GStateMenu(){
 }
 
 void GStateMenu::update(const double dt_){
-	this->passedTime = 0;
+	this->passedTime += dt_;
 
 	if(this->passedTime >= this->lifeTime){
 		Game::instance().setState(Game::GStates::LEVEL_ONE);
@@ -49,7 +49,12 @@ void GStateMenu::unload(){
 void GStateMenu::render(){
 	if(this->menuImage != nullptr){
 		this->menuImage->render(0, 0, nullptr, true);
-		this->menuSelector->render(0, 0, nullptr, true);
+
+		this->menuSelector->setWidth(50);
+		this->menuSelector->setHorizontalFlip(false);
+		this->menuSelector->render(430, 360, nullptr, false);
+		this->menuSelector->setHorizontalFlip(true);
+		this->menuSelector->render(680, 360, nullptr, false );
 	}
 	else{
 		Logger::warning("No background set for the splash screen!");
