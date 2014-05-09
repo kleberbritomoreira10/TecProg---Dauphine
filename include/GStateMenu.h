@@ -49,6 +49,7 @@ class GStateMenu : public StateGame {
 
 	private:
 		Sprite* menuImage; /**< The image shown on the menu. */
+		Sprite* menuSelector; /**< The selector shown on the menu. */
 		double passedTime; /**< The time already elapsed since the beggining of the menu. */
 		double lifeTime; /**< The amount of time the menu will be shown. */
 
