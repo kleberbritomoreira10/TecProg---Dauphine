@@ -69,6 +69,7 @@ void Animation::changeAnimation(const int x_, const int y_, const int numberOfIm
 	this->numberOfImages = numberOfImages_;
 	this->loop = loop_;
 	this->totalTime = totalTime_;
+	animationCount = 0;
 }
 
 void Animation::updateClip(SDL_Rect& clip, const int x_, const int y_){

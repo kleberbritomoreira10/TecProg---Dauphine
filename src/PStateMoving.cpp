@@ -2,7 +2,7 @@
 #include "Logger.h"
 
 void PStateMoving::enter(){
-    this->player->getAnimation()->changeAnimation(0,0,11,true,1);
+    this->player->getAnimation()->changeAnimation(3,0,8,true,1);
 }
 
 void PStateMoving::exit(){
