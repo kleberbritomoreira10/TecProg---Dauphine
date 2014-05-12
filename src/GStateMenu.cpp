@@ -9,10 +9,10 @@ GStateMenu::GStateMenu() :
 	menuImage(nullptr),
 	passedTime(0.0),
 	lifeTime(0.0),
-	selectorXPositionLeft {430, 460, 460, 470},
-	selectorYPositionLeft {360, 425, 480, 535},
+	selectorXPositionLeft {430, 455, 455, 470},
+	selectorYPositionLeft {360, 410, 465, 510},
 	selectorXPositionRight {680, 650, 650, 640},
-	selectorYPositionRight {360, 425, 480, 535},
+	selectorYPositionRight {360, 410, 465, 510},
 	selectorPosition(0)
 {
 
@@ -63,7 +63,7 @@ void GStateMenu::render(){
 void GStateMenu::handleSelectorMenu(){
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
-	const int selectorDelayTime = 0.2;
+	const float selectorDelayTime = 0.2;
 	const int cursorFirstPositioin = 0;
 	const int cursorLastPositioin = 3;
 
