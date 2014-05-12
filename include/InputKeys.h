@@ -9,6 +9,7 @@ enum GameKeys : uint8_t {
 	RIGHT,
 	DOWN,
 	ROLL,
+	SPACE,
 	MAX
 };
 

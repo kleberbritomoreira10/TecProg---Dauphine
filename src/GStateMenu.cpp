@@ -24,34 +24,7 @@ GStateMenu::~GStateMenu(){
 
 void GStateMenu::update(const double dt_){
 	this->passedTime += dt_;
-	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
-
-	if(keyStates[GameKeys::LEFT] == true){
-		if(this->passedTime >= 0.2){
-			if(selectorPosition <3){
-				selectorPosition++;
-			}
-			else{
-				selectorPosition = 0;
-			}
-			this->passedTime = 0;
-		}
-	}
-	else if(keyStates[GameKeys::RIGHT] == true){
-		if(this->passedTime >= 0.2){
-			if(selectorPosition >0){
-				selectorPosition--;
-			}
-			else{
-				selectorPosition = 3;
-			}
-			this->passedTime = 0;
-		}
-	}
-	else if(keyStates[GameKeys::UP] == true && selectorPosition == 0){
-		Game::instance().setState(Game::GStates::LEVEL_ONE);
-	}
-
+	handleSelectorMenu();	
 }
 
 void GStateMenu::load(){
@@ -84,5 +57,40 @@ void GStateMenu::render(){
 	}
 	else{
 		Logger::warning("No background set for the splash screen!");
+	}
+}
+
+void GStateMenu::handleSelectorMenu(){
+	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
+
+	const int selectorDelayTime = 0.2;
+	const int cursorFirstPositioin = 0;
+	const int cursorLastPositioin = 3;
+
+
+	if(keyStates[GameKeys::DOWN] == true || keyStates[GameKeys::LEFT] == true){
+		if(this->passedTime >= selectorDelayTime){
+			if(selectorPosition < cursorLastPositioin){
+				selectorPosition++;
+			}
+			else{
+				selectorPosition = cursorFirstPositioin;
+			}
+			this->passedTime = 0;
+		}
+	}
+	else if(keyStates[GameKeys::UP] == true || keyStates[GameKeys::RIGHT] == true){
+		if(this->passedTime >= selectorDelayTime){
+			if(selectorPosition > cursorFirstPositioin){
+				selectorPosition--;
+			}
+			else{
+				selectorPosition = cursorLastPositioin;
+			}
+			this->passedTime = 0;
+		}
+	}
+	else if(keyStates[GameKeys::SPACE] == true && selectorPosition == 0){
+		Game::instance().setState(Game::GStates::LEVEL_ONE);
 	}
 }

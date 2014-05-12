@@ -17,7 +17,7 @@ void PStateMoving::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
     }
 
     // Jump
-    if(keyStates_[GameKeys::UP] && this->player->isGrounded){
+    if(keyStates_[GameKeys::SPACE] && this->player->isGrounded){
         this->player->jump();
         this->player->changeState(Player::PStates::AERIAL);
         return;

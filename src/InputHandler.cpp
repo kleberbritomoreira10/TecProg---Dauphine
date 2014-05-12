@@ -35,7 +35,13 @@ void InputHandler::handleInput(){
 		if(this->sdlEvent.type == SDL_KEYDOWN){
 			switch(this->sdlEvent.key.keysym.sym){
 				case SDLK_SPACE: // Jump.
+					this->keyStates[GameKeys::SPACE] = true;
+					break;
+				case SDLK_UP: // UP.
 					this->keyStates[GameKeys::UP] = true;
+					break;
+				case SDLK_DOWN: // DOWN.
+					this->keyStates[GameKeys::DOWN] = true;
 					break;
 				case SDLK_LEFT: // Move left.
 					this->keyStates[GameKeys::LEFT] = true;
@@ -55,7 +61,13 @@ void InputHandler::handleInput(){
 		else if(this->sdlEvent.type == SDL_KEYUP){
 			switch(this->sdlEvent.key.keysym.sym){
 				case SDLK_SPACE: // Jump.
+					this->keyStates[GameKeys::SPACE] = false;
+					break;
+				case SDLK_UP: // UP.
 					this->keyStates[GameKeys::UP] = false;
+					break;
+				case SDLK_DOWN: // DOWN.
+					this->keyStates[GameKeys::DOWN] = false;
 					break;
 				case SDLK_LEFT: // Move left.
 					this->keyStates[GameKeys::LEFT] = false;

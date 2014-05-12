@@ -47,6 +47,8 @@ class GStateMenu : public StateGame {
 		*/
 		virtual void render();
 
+		void handleSelectorMenu();
+
 	private:
 		Sprite* menuImage; /**< The image shown on the menu. */
 		Sprite* menuSelector; /**< The selector shown on the menu. */
