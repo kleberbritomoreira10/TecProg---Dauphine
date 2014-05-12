@@ -52,7 +52,11 @@ class GStateMenu : public StateGame {
 		Sprite* menuSelector; /**< The selector shown on the menu. */
 		double passedTime; /**< The time already elapsed since the beggining of the menu. */
 		double lifeTime; /**< The amount of time the menu will be shown. */
-
+		int selectorXPositionLeft[4]; /**< The X position of the left selector.. */
+		int selectorYPositionLeft[4]; /**< The Y position of the left selector.. */
+		int selectorXPositionRight[4]; /**< The X position of the left selector.. */
+		int selectorYPositionRight[4]; /**< The Y position of the left selector.. */
+		int selectorPosition;
 };
 
 #endif // INCLUDE_GSTATEMENU_H
