@@ -2,6 +2,7 @@
 #define INCLUDE_TEXT_H
 
 #include "SDLWrapper.h"
+#include "Sprite.h"
 
 class Text{
 	public:
