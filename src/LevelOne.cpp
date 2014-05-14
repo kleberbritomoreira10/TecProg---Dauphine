@@ -59,7 +59,7 @@ void LevelOne::load(){
 	}
 	TileMap* tileMap = new TileMap(tileData, "res/tilesheet.png");
 	addEntity(tileMap);
-	//lPlayer->setTiles(tileMap->tiles);
+	lPlayer->setTiles(tileMap->tiles);
 
 	Sprite* spriteEnemy;
 	spriteEnemy = Game::instance().getResources().get("res/InimigoVigilia.png");

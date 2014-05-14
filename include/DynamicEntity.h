@@ -40,6 +40,8 @@ class DynamicEntity : public Entity {
 		*/
 		virtual void setLevelWH(const unsigned int width_, const unsigned int height_);
 
+		virtual void setTiles(const std::vector<Tile*>& tiles_);
+
 		double vx; /**< The dynamic entity's speed on the x axis. */
 		double vy; /**< The dynamic entity's speed on the x axis. */
 		double speed; /**< Speed that moves dynamic entity on input. */
@@ -57,6 +59,7 @@ class DynamicEntity : public Entity {
 
 		unsigned int levelW; /**< The width of the level. */
 		unsigned int levelH; /**< The height of the level. */
+		std::vector<Tile*> tiles;
 
 };
 

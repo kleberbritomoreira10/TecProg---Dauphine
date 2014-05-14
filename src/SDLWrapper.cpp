@@ -6,8 +6,24 @@ bool SDLWrapper::initialize(){
 	bool initSDL = false;
 	bool initIMG = false;
 	bool initMixer = false;
+	bool initTTF = false;
 
 	SDL_version compiled;
+
+	const int ttfInit = TTF_Init();
+	if(ttfInit == 0){
+		initTTF = true;
+
+		Logger::verbose("Initialized TTF");		
+		SDL_TTF_VERSION(&compiled);
+		SDLWrapper::logSDLVersion("SDL_TTF", compiled, *TTF_Linked_Version());
+	}
+	else{
+		Logger::errorSDL("Could not initialize TTF.", TTF_GetError());
+	}
+
+
+	printf("SDL_ttf inicializada com sucesso!\n");
 
 	// Initializing SDL with initFlags.
 	const Uint32 initFlags = SDL_INIT_EVERYTHING;
@@ -56,7 +72,7 @@ bool SDLWrapper::initialize(){
 	}
 
 	// If even one system fails to initialize, returns false.
-	return (initSDL && initIMG && initMixer);
+	return (initSDL && initIMG && initMixer && initTTF);
 }
 
 void SDLWrapper::close(){
@@ -71,6 +87,9 @@ void SDLWrapper::close(){
 
 	// Quits SDL.
 	SDL_Quit();
+
+	TTF_Quit();
+
 }
 
 void SDLWrapper::logSDLVersion(const std::string& what_, const SDL_version& compiled_,

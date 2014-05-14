@@ -40,7 +40,7 @@ void Animation::update(SDL_Rect& clip, const double dt_){
         animationCount += 1;
 
         if(animationCount <= this->numberOfImages){
-	        if(this->x < ANIMATION_LIMIT){
+	        if(this->x < (int)ANIMATION_LIMIT){
 	        	this->x += 1;
 	        }
 	        else{

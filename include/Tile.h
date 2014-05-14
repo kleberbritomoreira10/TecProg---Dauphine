@@ -58,9 +58,12 @@ class Tile {
 		*/
 		int getType();
 
+		bool isSolid();
+
 	private:
 		int type; /**< The type of the Tile. */
 		SDL_Rect rectangle; /**< The clip for the Tile. */
+		bool solid;
 
 
 };

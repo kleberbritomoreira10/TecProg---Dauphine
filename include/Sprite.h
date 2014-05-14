@@ -22,6 +22,7 @@ class Sprite {
 		* @see Sprite::loadFrom
 		*/
 		Sprite(const std::string& path_);
+		Sprite(SDL_Surface* const surface_);
 
 		/**
 		* The destructor.
@@ -78,6 +79,8 @@ class Sprite {
 			method.
 		*/
 		void loadFrom(const std::string& path_);
+
+		SDL_Texture* surfaceToTexture(SDL_Surface* const surface_);
 
 		SDL_Texture* sdlTexture; /**< The SDL texture to use as the image. */
 

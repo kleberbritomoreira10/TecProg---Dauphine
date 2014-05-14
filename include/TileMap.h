@@ -46,6 +46,8 @@ class TileMap : public Entity {
 		*/
 		virtual void render(const double cameraX_, const double cameraY_);
 
+		std::vector<Tile*> tiles; /**< All the generated tiles. */
+
 	private:
 		/**
 		* Creates the Tiles based on the numerical vector.
@@ -60,8 +62,7 @@ class TileMap : public Entity {
 		void clipTiles();
 
 		SDL_Rect clips[TileCode::TOTAL]; /**< Contains all the clips for each tile. */
-		std::vector<Tile*> tiles; /**< All the generated tiles. */
-
+		
 
 };
 

@@ -13,6 +13,19 @@ Sprite::Sprite(const std::string& path_) :
 	loadFrom(this->path);
 }
 
+Sprite::Sprite(SDL_Surface* const surface_) :
+	sdlTexture(surfaceToTexture(surface_)),
+	width(0),
+	height(0),
+	path("font"),
+	flipHorizontal(false)
+{
+	// Display error log if image wasn't loaded.
+	if(this->sdlTexture == nullptr){
+		Logger::error("Sprite load failed: " + this->path);
+	}
+}
+
 Sprite::~Sprite(){
 	if(this->sdlTexture != nullptr){
 		SDL_DestroyTexture(this->sdlTexture);
@@ -23,31 +36,11 @@ Sprite::~Sprite(){
 void Sprite::loadFrom(const std::string& path_){
 	assert(Window::getRenderer() != nullptr && "Window renderer should not be null!");
 
-	// The final texture.
-	SDL_Texture* newTexture = nullptr;
 
 	SDL_Surface* loadedSurface = IMG_Load(path_.c_str());
-	if(loadedSurface != nullptr){
-		// Create texture from the surface pixels.
-        newTexture = SDL_CreateTextureFromSurface(Window::getRenderer(), loadedSurface);
-		if(newTexture != nullptr){
-			// Set the Sprites width and height, from the loaded surface.
-			this->width = loadedSurface->w;
-			this->height = loadedSurface->h;
-		}
-		else{
-			Logger::errorSDL("Could not create texture from surface.", SDL_GetError());
-		}
-
-		// Free the loaded surface.
-		SDL_FreeSurface(loadedSurface);
-	}
-	else{
-		Logger::errorSDL("Could not load surface from path.", IMG_GetError());
-	}
 
 	// Returns whether the Sprites texture is null or not.
-	this->sdlTexture = newTexture;
+	this->sdlTexture = surfaceToTexture(loadedSurface);
 
 	// Display error log if image wasn't loaded.
 	if(this->sdlTexture == nullptr){
@@ -115,4 +108,30 @@ void Sprite::setHorizontalFlip(bool isRight_){
 	else{
 		this->flipHorizontal = true;
 	}
+}
+
+SDL_Texture* Sprite::surfaceToTexture(SDL_Surface* const surface_){
+	// The final texture.
+	SDL_Texture* newTexture = nullptr;
+
+	if(surface_ != nullptr){
+		// Create texture from the surface pixels.
+        newTexture = SDL_CreateTextureFromSurface(Window::getRenderer(), surface_);
+		if(newTexture != nullptr){
+			// Set the Sprites width and height, from the loaded surface.
+			this->width = surface_->w;
+			this->height = surface_->h;
+		}
+		else{
+			Logger::errorSDL("Could not create texture from surface.", SDL_GetError());
+		}
+
+		// Free the loaded surface.
+		SDL_FreeSurface(surface_);
+	}
+	else{
+		Logger::errorSDL("Could not load surface from path.", IMG_GetError());
+	}
+
+	return newTexture;
 }

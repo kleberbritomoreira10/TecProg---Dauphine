@@ -1,5 +1,6 @@
 #include "DynamicEntity.h"
 #include "Logger.h"
+#include "Collision.h"
 
 DynamicEntity::DynamicEntity(const double x_, const double y_, Sprite* const sprite_) :
     Entity(x_, y_, sprite_),
@@ -63,6 +64,12 @@ void DynamicEntity::updatePosition(const double dt_){
         this->isGrounded = false;
     }
 
+    for(auto tile : this->tiles){
+        if(Collision::rectsCollided(this->clip, tile->getRectangle()) && tile->isSolid()){
+            this->vx = 0;
+        }
+    }
+
 }
 
 void DynamicEntity::jump(){
@@ -114,4 +121,8 @@ void DynamicEntity::roll(){
     else{
         this->vx = -rollStrength * this->speed;
     }
+}
+
+void DynamicEntity::setTiles(const std::vector<Tile*>& tiles_){
+    this->tiles = tiles_;   
 }
