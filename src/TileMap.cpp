@@ -33,7 +33,7 @@ TileMap::~TileMap(){
 }
 
 void TileMap::update(const double dt_){
-	(void(dt_));
+	(void(dt_)); // Unused.
 }
 
 void TileMap::render(const double cameraX_, const double cameraY_){
@@ -52,21 +52,23 @@ void TileMap::render(const double cameraX_, const double cameraY_){
 }
 
 void TileMap::clipTiles(){
+	/// @todo Refactor this madness.
+
 	//Clip the sprite sheet
 	int xClip = 0;
 	int yClip = 0;
 	for(int i = 0; i < TileCode::TOTAL; i++){
 
-		if(i == TILE_PER_ROW_IMAGE){
+		if(i != 0 && i%TILE_PER_ROW_IMAGE == 0){
 			xClip = 0;
 			yClip++;
 		}
 
-		clips[i].x = TILE_WIDTH * xClip;
-		clips[i].y = TILE_HEIGHT * yClip;
+		clips[i].x = TILE_SIZE * xClip;
+		clips[i].y = TILE_SIZE * yClip;
 
-		clips[i].w = TILE_WIDTH;
-		clips[i].h = TILE_HEIGHT;
+		clips[i].w = TILE_SIZE;
+		clips[i].h = TILE_SIZE;
 
 		xClip++;
 

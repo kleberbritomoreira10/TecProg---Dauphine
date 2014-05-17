@@ -3,10 +3,8 @@
 #include "LuaScript.h"
 #include "Logger.h"
 #include "Enemy.h"
-
+#include "TmxWrapper.h"
 #include "TileMap.h"
-
-#include <fstream>
 
 LevelOne::LevelOne() :
 	Level()
@@ -30,8 +28,6 @@ void LevelOne::load(){
 		"level.player.spritePath");
 	const double scriptX = luaLevel1.unlua_get<double>("level.player.position.x");
 	const double scriptY = luaLevel1.unlua_get<double>("level.player.position.y");
-	const unsigned int levelW = luaLevel1.unlua_get<int>("level.boundaries.width");
-	const unsigned int levelH = luaLevel1.unlua_get<int>("level.boundaries.height");
 
 	// Loading the sprites.
 	Sprite* spritePlayer = nullptr;
@@ -41,25 +37,14 @@ void LevelOne::load(){
 	Player* lPlayer = new Player(scriptX, scriptY, spritePlayer);
 	Camera* lCamera = new Camera(lPlayer);
 
-	this->width = levelW;
-	this->height = levelH;
-
 	// Loading the tile/tilemap.
-	std::ifstream mapFile("res/maps/level1.map");
-	int levelWidthTiles = 0;
-	int levelHeightTiles = 0;
-	mapFile >> levelWidthTiles;
-	mapFile >> levelHeightTiles;
-	int numberOfTiles = (levelWidthTiles * levelHeightTiles) / TILE_WIDTH;
-	std::vector<int> tileData;
-	for(int i = 0; i < numberOfTiles; i++){
-		int tileType = 0;
-		mapFile >> tileType;
-		tileData.push_back(tileType);
-	}
-	TileMap* tileMap = new TileMap(tileData, "res/tilesheet.png");
+	TmxWrapper tmxw("res/maps/level1.tmx");
+	TileMap* tileMap = new TileMap(tmxw.getTileData(), "res/tilesheet.png");
 	addEntity(tileMap);
 	lPlayer->setTiles(tileMap->tiles);
+
+	this->width = tmxw.getMapWidth();
+	this->height = tmxw.getMapHeight();
 
 	Sprite* spriteEnemy;
 	spriteEnemy = Game::instance().getResources().get("res/InimigoVigilia.png");

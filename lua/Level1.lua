@@ -11,8 +11,8 @@ level = {
 
 	player = {
 	    position = {
-	    	x = 450.0,
-	    	y = 300.0,
+	    	x = 10.0,
+	    	y = 10.0,
 	    },
 	    width = 229,
 	    height = 229,
