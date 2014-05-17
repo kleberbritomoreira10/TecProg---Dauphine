@@ -1,7 +1,7 @@
 #include "InputHandler.h"
 
 InputHandler::InputHandler() :
-	quit(false)
+	quitFlag(false)
 {
 	for(unsigned int i = 0; i < GameKeys::MAX; i++){
 		this->keyStates[i] = false;
@@ -52,6 +52,9 @@ void InputHandler::handleInput(){
 				case SDLK_c: // Roll.
 					this->keyStates[GameKeys::ROLL] = true;
 					break;
+				case SDLK_ESCAPE: // ESC
+					this->keyStates[GameKeys::ESCAPE] = true;
+					break;
 				default:
 					break;
 			}
@@ -78,6 +81,9 @@ void InputHandler::handleInput(){
 				case SDLK_c: // Roll.
 					this->keyStates[GameKeys::ROLL] = false;
 					break;
+				case SDLK_ESCAPE: // ESC
+					this->keyStates[GameKeys::ESCAPE] = true;
+					break;
 				default:
 					break;
 			}
@@ -85,7 +91,7 @@ void InputHandler::handleInput(){
 		
 		//On window exit (X).
 		else if(this->sdlEvent.type == SDL_QUIT){
-	    	this->quit = true;
+	    	signalExit();
 	    }
 
 	} while(pendingEvent != 0);
@@ -95,6 +101,10 @@ std::array<bool, GameKeys::MAX> InputHandler::getKeyStates(){
 	return this->keyStates;
 }
 
-bool InputHandler::signalQuit(){
-	return this->quit;
+bool InputHandler::isQuitFlag(){
+	return this->quitFlag;
+}
+
+void InputHandler::signalExit(){
+	this->quitFlag = true;
 }

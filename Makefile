@@ -1,3 +1,10 @@
+## Edit this to fit your lua settings
+LUA_DIR := /usr/local
+LUA_LIBDIR := $(LUA_DIR)/lib
+LUA_INCDIR := $(LUA_DIR)/include
+LUA_LINK := -llua -ldl
+##
+
 # Folders containing files
 INCLUDES	:= include
 SOURCES		:= src
@@ -9,7 +16,7 @@ export LD := $(CXX)
 # Compiler flags
 CPPFLAGS=-O2 -g -W -Wall -pedantic -ansi -std=c++0x -Wextra -Wshadow
 # Linking flags
-LDFLAGS = -lSDL2 -lSDL2_ttf -lSDL2_image -lSDL2_mixer -lSDL2_gfx -llua -ldl -lm -lstdc++
+LDFLAGS = -lSDL2 -lSDL2_ttf -lSDL2_image -lSDL2_mixer -lSDL2_gfx -lstdc++ -L$(LUA_LIBDIR) $(LUA_LINK) -lm
 
 # Target program name
 TARGET := Dauphine
@@ -21,6 +28,7 @@ export OFILES := $(addprefix $(BUILD)/,$(CPPFILES:.cpp=.o))
 CPPFILES := $(addprefix $(SOURCES)/,$(CPPFILES))
 # Build a list of include paths
 export INCLUDE := $(foreach dir,$(INCLUDES), -I$(CURDIR)/$(dir)) -I$(CURDIR)/$(BUILD)
+INCLUDE += -I$(LUA_INCDIR)
 
 $(BUILD)/%.o:$(SOURCES)/%.cpp
 	@mkdir -p $(BUILD)

@@ -3,18 +3,19 @@
 #include <sstream>
 
 bool SDLWrapper::initialize(){
-	bool initSDL = false;
-	bool initIMG = false;
-	bool initMixer = false;
-	bool initTTF = false;
+	bool successSDL = false;
+	bool successIMG = false;
+	bool successMixer = false;
+	bool successTTF = false;
 
 	SDL_version compiled;
 
+	// Initializing SDL_TTF.
 	const int ttfInit = TTF_Init();
 	if(ttfInit == 0){
-		initTTF = true;
+		successTTF = true;
 
-		Logger::verbose("Initialized TTF");		
+		Logger::verbose("Initialized TTF.");
 		SDL_TTF_VERSION(&compiled);
 		SDLWrapper::logSDLVersion("SDL_TTF", compiled, *TTF_Linked_Version());
 	}
@@ -22,14 +23,11 @@ bool SDLWrapper::initialize(){
 		Logger::errorSDL("Could not initialize TTF.", TTF_GetError());
 	}
 
-
-	printf("SDL_ttf inicializada com sucesso!\n");
-
 	// Initializing SDL with initFlags.
 	const Uint32 initFlags = SDL_INIT_EVERYTHING;
 	const int sdlInit = SDL_Init(initFlags);
 	if(sdlInit == 0){
-		initSDL = true;
+		successSDL = true;
 
 		SDL_version linked;
 		SDL_VERSION(&compiled);
@@ -45,7 +43,7 @@ bool SDLWrapper::initialize(){
 	// Initializing SDL_image with imgFlags.
 	const Uint32 imgFlags = IMG_INIT_PNG;
 	if((IMG_Init(imgFlags) & imgFlags)){
-		initIMG = true;
+		successIMG = true;
 
 		Logger::verbose("Initialized SDL_Image.");
 		SDL_IMAGE_VERSION(&compiled);
@@ -61,7 +59,7 @@ bool SDLWrapper::initialize(){
 	const int chunksize = 4096;
 	const int initialized = Mix_OpenAudio(frequency, MIX_DEFAULT_FORMAT, channels, chunksize);
 	if(initialized == 0){
-		initMixer = true;
+		successMixer = true;
 
 		Logger::verbose("Initialized SDL_Mixer.");
 		SDL_MIXER_VERSION(&compiled);
@@ -72,7 +70,7 @@ bool SDLWrapper::initialize(){
 	}
 
 	// If even one system fails to initialize, returns false.
-	return (initSDL && initIMG && initMixer && initTTF);
+	return (successSDL && successIMG && successMixer && successTTF);
 }
 
 void SDLWrapper::close(){
@@ -88,8 +86,8 @@ void SDLWrapper::close(){
 	// Quits SDL.
 	SDL_Quit();
 
+	// Quits SDL_TTF.
 	TTF_Quit();
-
 }
 
 void SDLWrapper::logSDLVersion(const std::string& what_, const SDL_version& compiled_,

@@ -1,14 +1,15 @@
 #include "Game.h"
 #include "FPSWrapper.h"
-
 #include "Logger.h"
 #include "Configuration.h"
-
 #include <cassert>
 
 #include "GStateSplash.h"
 #include "LevelOne.h"
 #include "GStateMenu.h"
+#include "GStateOptions.h"
+#include "GStateCredits.h"
+#include "GStateGameOver.h"
 
 Game& Game::instance(){
 	static Game* instance = new Game();
@@ -26,7 +27,8 @@ Game::Game() :
 {
 	initializeStates();
 
-	this->window = new Window(Configuration::getScreenWidth(), Configuration::getScreenHeight(), Configuration::getWindowTitle());
+	this->window = new Window(Configuration::getScreenWidth(),
+		Configuration::getScreenHeight(), Configuration::getWindowTitle());
 
 	assert(this->window != nullptr && "The window should not be null!");
 
@@ -76,9 +78,9 @@ void Game::runGame(){
 		while(accumulatedTime >= deltaTime){
 			this->inputHandler->handleInput();
 
-			// Check for a quit signal from input.
-			if(this->inputHandler->signalQuit()){
-				this->isRunning = false;
+			// Check for an exit signal from input.
+			if(this->inputHandler->isQuitFlag() == true){
+				stop();
 				return;
 			}
 
@@ -110,9 +112,12 @@ void Game::initializeStates(){
 	// Initialize all the states in Game here.
 
 	// Emplace the states pointers onto the map.
-	this->statesMap.emplace(GStates::SPLASH, new GStateSplash());
-	this->statesMap.emplace(GStates::MENU, new GStateMenu());
+	this->statesMap.emplace(GStates::SPLASH, 	new GStateSplash());
+	this->statesMap.emplace(GStates::MENU, 		new GStateMenu());
 	this->statesMap.emplace(GStates::LEVEL_ONE,	new LevelOne());
+	this->statesMap.emplace(GStates::OPTIONS,	new GStateOptions());
+	this->statesMap.emplace(GStates::CREDITS,	new GStateCredits());
+	this->statesMap.emplace(GStates::GAMEOVER,	new GStateGameOver());
 }
 
 void Game::destroyStates(){
@@ -133,3 +138,13 @@ std::array<bool, GameKeys::MAX> Game::getInput(){
 ResourceManager& Game::getResources(){
 	return (*(this->resourceManager));
 }
+
+void Game::stop(){
+	this->isRunning = false;
+}
+
+// bool Game::getEscape(){
+// 	const bool escapePressed = this->keyStates(GameKeys::ESCAPE);
+// 	this->keyStates(GameKeys::ESCAPE) = false;
+// 	return escapePressed;
+// }

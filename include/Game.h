@@ -26,7 +26,10 @@ class Game {
 		enum GStates : uint8_t {
 			SPLASH = 0,
 			MENU,
-			LEVEL_ONE
+			LEVEL_ONE,
+			OPTIONS,
+			CREDITS,
+			GAMEOVER
 		};
 
 		/**
@@ -69,6 +72,11 @@ class Game {
 		* @return The resource manager.
 		*/
 		ResourceManager& getResources();
+
+		/**
+		* Stops execution and closes the game.
+		*/
+		void stop();
 
 	private:
 		/**

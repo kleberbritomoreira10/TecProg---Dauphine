@@ -8,6 +8,10 @@ https://github.com/EliasD/unnamed_lua_binder
 
 #include "lua.hpp"
 
+#ifndef LUA_OK
+#define LUA_OK 0
+#endif
+
 #include <string>
 #include <vector>
 
@@ -57,8 +61,8 @@ class LuaScript {
 		std::vector<std::string> unlua_getTableKeys(const std::string& name_);
 
 	private:
-		lua_State* luaState; /**< a */
-		int level; /**< a */
+		lua_State* luaState; /**< The lua state. */
+		int level; /**< Current level. */
 
 		inline void unlua_clean(){
 		    int n = lua_gettop(this->luaState);

@@ -33,21 +33,26 @@ class InputHandler {
 		void handleInput();
 
 		/**
-		* @return The keyStates attribute.
+		* @return InputHandler::keyStates
 		*/
 		std::array<bool, GameKeys::MAX> getKeyStates();
 
 		/**
-		* @return If a quit signal was recieved or not.
+		* @return InputHandler::quitFlag
 		*/
-		bool signalQuit();
+		bool isQuitFlag();
 
 	private:
+		/**
+		* Sets InputHandler::quitFlag to true.
+		*/
+		void signalExit();
+
 		ControllerHandler* controllerHandler; /**< Handles input if joystick is present. */
 		std::array<bool, GameKeys::MAX> keyStates; /**< Boolean array that controls which keys are
 			pressed or not. */
 		SDL_Event sdlEvent; /**< SDL internal event structure. */
-		bool quit; /**< If the quit signal was recieved or not. */
+		bool quitFlag; /**< If the quit signal was recieved or not. */
 
 };
 

@@ -2,8 +2,8 @@ config = {
 	
 	-- the size the game will load in
 	initialScreenSize = {
-		width = 800,
-		height = 600,
+		width = 960,
+		height = 540,
 	},
 
 	-- the max frames per second the game will run on
