@@ -3,6 +3,7 @@
 #include "LuaScript.h"
 #include "Logger.h"
 #include "Enemy.h"
+#include "Crosshair.h"
 
 #include "TileMap.h"
 
@@ -41,6 +42,16 @@ void LevelOne::load(){
 	Player* lPlayer = new Player(scriptX, scriptY, spritePlayer);
 	Camera* lCamera = new Camera(lPlayer);
 
+	Sprite* spriteCrosshair = nullptr;
+	spriteCrosshair = Game::instance().getResources().get("res/alvo.png");
+	Crosshair *crosshair = new Crosshair(500,600, spriteCrosshair);
+
+	Sprite* spriteBombPotion = nullptr;
+	spriteBombPotion = Game::instance().getResources().get("res/potion.png");
+	BombPotion *bombPotion = new BombPotion(300,600, spriteBombPotion);
+
+	lPlayer->setCrosshair(crosshair);
+	lPlayer->setBombPotion(bombPotion);
 	this->width = levelW;
 	this->height = levelH;
 
@@ -66,6 +77,8 @@ void LevelOne::load(){
 	Enemy* enemy = new Enemy(1100.0, 400.0, spriteEnemy, true, 200.0);
 	enemy->setLevelWH(this->width, this->height);
 	addEntity(enemy);
+	addEntity(crosshair);
+	addEntity(bombPotion);
 
 	setPlayer(lPlayer);
 	setCamera(lCamera);

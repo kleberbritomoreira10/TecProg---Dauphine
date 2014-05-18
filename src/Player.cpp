@@ -8,7 +8,7 @@
 #include "PStateAerial.h"
 #include "PStateMoving.h"
 #include "PStateRolling.h"
-
+#include "PStateAiming.h"
 Player::Player(const double x_, const double y_, Sprite* const sprite_) :
     DynamicEntity(x_, y_, sprite_),
     animation(nullptr)
@@ -62,6 +62,7 @@ void Player::initializeStates(){
     this->statesMap.emplace(MOVING, new PStateMoving(this));
     this->statesMap.emplace(AERIAL, new PStateAerial(this));
     this->statesMap.emplace(ROLLING, new PStateRolling(this));
+    this->statesMap.emplace(AIMING, new PStateAiming(this));
 }
 
 void Player::destroyStates(){
@@ -80,4 +81,24 @@ void Player::changeState(const PStates state_){
 
 Animation *Player::getAnimation(){
     return (this->animation);
+}
+
+Crosshair* Player::getCrosshair()
+{
+    return crosshair;
+}
+
+void Player::setCrosshair(Crosshair* crosshair)
+{
+    this->crosshair = crosshair;
+}
+
+BombPotion* Player::getBombPotion()
+{
+    return bombPotion;
+}
+
+void Player::setBombPotion(BombPotion* bombPotion)
+{
+    this->bombPotion = bombPotion;
 }

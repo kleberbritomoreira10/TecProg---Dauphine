@@ -3,6 +3,8 @@
 
 #include "Entity.h"
 #include "Tile.h"
+#include "Crosshair.h"
+#include "BombPotion.h"
 
 #include <vector>
 
@@ -33,6 +35,8 @@ class DynamicEntity : public Entity {
 		virtual void move(const bool movingLeft_, const bool movingRight_);
 		virtual void slowVx();
 		virtual void roll();
+		virtual void aim(Crosshair *crosshair, double direction);
+		virtual void useBombPotion(BombPotion *bombPotion, int strength, int distance);
 
 		/**
 		* @param width_,height_ : Tells the player what the width and height of the level is.

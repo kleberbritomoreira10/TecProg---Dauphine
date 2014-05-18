@@ -52,6 +52,12 @@ void InputHandler::handleInput(){
 				case SDLK_c: // Roll.
 					this->keyStates[GameKeys::ROLL] = true;
 					break;
+				case SDLK_a: // Roll.
+					this->keyStates[GameKeys::A] = true;
+					break;
+				case SDLK_d: // Roll.
+					this->keyStates[GameKeys::D] = true;
+					break;
 				case SDLK_ESCAPE: // ESC
 					this->keyStates[GameKeys::ESCAPE] = true;
 					break;
@@ -80,6 +86,12 @@ void InputHandler::handleInput(){
 					break;
 				case SDLK_c: // Roll.
 					this->keyStates[GameKeys::ROLL] = false;
+					break;
+				case SDLK_a: // Roll.
+					this->keyStates[GameKeys::A] = false;
+					break;
+				case SDLK_d: // Roll.
+					this->keyStates[GameKeys::D] = false;
 					break;
 				case SDLK_ESCAPE: // ESC
 					this->keyStates[GameKeys::ESCAPE] = true;
