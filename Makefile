@@ -1,11 +1,8 @@
-## Edit this to fit your settings ##
-
-## Lua settings
+## Edit this to fit your lua settings
 LUA_DIR := /usr/local
 LUA_LIBDIR := $(LUA_DIR)/lib
 LUA_INCDIR := $(LUA_DIR)/include
 LUA_LINK := -llua -ldl
-
 ##
 
 # Folders containing files
@@ -14,16 +11,12 @@ SOURCES		:= src
 RESOURCES	:= res
 BUILD		:= build
 
-# Lib settings
-LIB_DIR := $(CURDIR)/lib
-LINK_LIBS := -L$(LUA_LIBDIR) -L$(LIB_DIR) $(LUA_LINK) -lm -ltmxparser -ltinyxml -lz
-
 # Compiler
 export LD := $(CXX)
 # Compiler flags
 CPPFLAGS=-O2 -g -W -Wall -pedantic -ansi -std=c++0x -Wextra -Wshadow
 # Linking flags
-LDFLAGS = -lSDL2 -lSDL2_ttf -lSDL2_image -lSDL2_mixer -lSDL2_gfx -lstdc++ $(LINK_LIBS)
+LDFLAGS = -lSDL2 -lSDL2_ttf -lSDL2_image -lSDL2_mixer -lSDL2_gfx -lstdc++ -L$(LUA_LIBDIR) $(LUA_LINK) -lm
 
 # Target program name
 TARGET := Dauphine

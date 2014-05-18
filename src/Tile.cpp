@@ -3,12 +3,10 @@
 
 Tile::Tile(const int x_, const int y_, const int tileType_) :
 	type(tileType_),
-	rectangle{x_, y_, TILE_SIZE, TILE_SIZE}
+	rectangle{x_, y_, TILE_WIDTH, TILE_HEIGHT}
 {
 	switch(this->type){
-		case TileCode::WALL3:
-		case TileCode::FLOOR1:
-		case TileCode::FLOOR2:
+		case 4:
 			this->solid = false;
 			break;
 		default:
