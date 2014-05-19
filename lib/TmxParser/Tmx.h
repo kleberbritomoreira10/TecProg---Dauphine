@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// TmxImage.h
+// Tmx.h
 //
 // Copyright (c) 2010-2014, Tamir Atias
 // All rights reserved.
@@ -25,7 +25,9 @@
 //
 // Author: Tamir Atias
 //-----------------------------------------------------------------------------
-#pragma once
+
+#ifndef INCLUDE_TMX_H
+#define INCLUDE_TMX_H
 
 #include "TmxMap.h"
 #include "TmxTileset.h"
@@ -40,3 +42,5 @@
 #include "TmxPropertySet.h"
 #include "TmxUtil.h"
 #include "TmxImageLayer.h"
+
+#endif //INCLUDE_TMX_H

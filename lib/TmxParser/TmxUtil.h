@@ -25,7 +25,8 @@
 //
 // Author: Tamir Atias
 //-----------------------------------------------------------------------------
-#pragma once
+#ifndef INCLUDE_TMXUTIL_H
+#define INCLUDE_TMXUTIL_H
 
 #include <string>
 
@@ -40,4 +41,6 @@ namespace Tmx
 		// Decompress a gzip encoded byte array.
 		static char* DecompressGZIP(const char *data, int dataSize, int expectedSize);
 	};
-};
+}
+
+#endif //INCLUDE_TMXUTIL_H

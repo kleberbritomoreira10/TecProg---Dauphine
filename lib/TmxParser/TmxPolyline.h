@@ -25,7 +25,8 @@
 //
 // Author: Tamir Atias
 //-----------------------------------------------------------------------------
-#pragma once
+#ifndef INCLUDE_TMXPOLYLINE_H
+#define INCLUDE_TMXPOLYLINE_H
 
 #include <vector>
 
@@ -55,4 +56,6 @@ namespace Tmx
 	private:
 		std::vector< Tmx::Point > points;
 	};
-};
+}
+
+#endif //INCLUDE_TMXPOLYLINE_H

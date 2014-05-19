@@ -25,7 +25,8 @@
 //
 // Author: Tamir Atias
 //-----------------------------------------------------------------------------
-#pragma once
+#ifndef INCLUDE_TMXPOINT_H
+#define INCLUDE_TMXPOINT_H
 
 namespace Tmx
 {
@@ -38,3 +39,5 @@ namespace Tmx
 		int y;
 	};
 }
+
+#endif //INCLUDE_TMXPOINT_H

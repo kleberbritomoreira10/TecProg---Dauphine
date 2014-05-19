@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// TmxTileset.cpp
+// TmxImageLayer.cpp
 //
 // Copyright (c) 2010-2014, Tamir Atias
 // All rights reserved.
@@ -25,28 +25,26 @@
 //
 // Author: Tamir Atias
 //-----------------------------------------------------------------------------
-#include "tinyxml/tinyxml.h"
 
+#include "tinyxml/tinyxml.h"
 #include "TmxImageLayer.h"
 #include "TmxImage.h"
 
 using std::vector;
 using std::string;
 
-namespace Tmx 
-{
-	ImageLayer::ImageLayer(const Tmx::Map *_map) 
-		: map(_map)
-		, name()
-		, width(0)
-		, height(0)
-		, image(NULL)
-		, opacity(0)
-		, visible(0)
-		, zOrder(0)
+namespace Tmx {
 
-	{
-	}
+	ImageLayer::ImageLayer(const Tmx::Map *_map) :
+		map(_map),
+		name(),
+		width(0),
+		height(0),
+		image(NULL),
+		opacity(0),
+		visible(0),
+		zOrder(0)
+	{}
 
 	ImageLayer::~ImageLayer() 
 	{

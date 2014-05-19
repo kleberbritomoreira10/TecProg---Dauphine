@@ -25,7 +25,9 @@
 //
 // Author: Tamir Atias
 //-----------------------------------------------------------------------------
-#pragma once
+
+#ifndef INCLUDE_TMXLAYER_H
+#define INCLUDE_TMXLAYER_H 
 
 #include <string>
 
@@ -148,4 +150,6 @@ namespace Tmx
 		Tmx::LayerEncodingType encoding;
 		Tmx::LayerCompressionType compression;
 	};
-};
+}
+
+#endif //INCLUDE_TMXLAYER_H

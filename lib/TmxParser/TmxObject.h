@@ -25,7 +25,8 @@
 //
 // Author: Tamir Atias
 //-----------------------------------------------------------------------------
-#pragma once
+#ifndef INCLUDE_TMXOBJECT_H
+#define INCLUDE_TMXOBJECT_H
 
 #include <string>
 
@@ -100,4 +101,6 @@ namespace Tmx
 
 		Tmx::PropertySet properties;
 	};
-};
+}
+
+#endif //INCLUDE_TMXOBJECT_H

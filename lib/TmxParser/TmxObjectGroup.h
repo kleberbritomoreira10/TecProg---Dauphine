@@ -25,7 +25,8 @@
 //
 // Author: Tamir Atias
 //-----------------------------------------------------------------------------
-#pragma once
+#ifndef INCLUDE_TMXOBJECTGROUP_H
+#define INCLUDE_TMXOBJECTGROUP_H
 
 #include <string>
 #include <vector>
@@ -95,4 +96,6 @@ namespace Tmx
 
 		std::vector< Tmx::Object* > objects;
 	};
-};
+}
+
+#endif //INCLUDE_TMXOBJECTGROUP_H

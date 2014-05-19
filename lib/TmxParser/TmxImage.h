@@ -25,43 +25,48 @@
 //
 // Author: Tamir Atias
 //-----------------------------------------------------------------------------
-#pragma once
+
+#ifndef INCLUDE_TMXIMAGE_H
+#define INCLUDE_TMXIMAGE_H
 
 #include <string>
 
 class TiXmlNode;
 
-namespace Tmx 
-{
+namespace Tmx {
+
 	//-------------------------------------------------------------------------
 	// An image within a tileset.
 	//-------------------------------------------------------------------------
-	class Image 
-	{
-	public:
-		Image();
-		~Image();
+	class Image {
 
-		// Parses an image element.
-		void Parse(const TiXmlNode *imageNode);
+		public:
+			Image();
+			~Image();
 
-		// Get the path to the file of the image (relative to the map)
-		const std::string &GetSource() const { return source; }
+			// Parses an image element.
+			void Parse(const TiXmlNode *imageNode);
 
-		// Get the width of the image.
-		int GetWidth() const { return width; }
+			// Get the path to the file of the image (relative to the map)
+			const std::string &GetSource() const { return source; }
 
-		// Get the height of the image.
-		int GetHeight() const { return height; }
+			// Get the width of the image.
+			int GetWidth() const { return width; }
 
-		// Get the transparent color used in the image.
-		const std::string &GetTransparentColor() const 
-		{ return transparent_color; }
+			// Get the height of the image.
+			int GetHeight() const { return height; }
 
-	private:
-		std::string source;
-		int width;
-		int height;
-		std::string transparent_color;
+			// Get the transparent color used in the image.
+			const std::string &GetTransparentColor() const 
+			{ return transparent_color; }
+
+		private:
+			std::string source;
+			int width;
+			int height;
+			std::string transparent_color;
 	};
-};
+
+}
+
+#endif //INCLUDE_TMXIMAGE_H

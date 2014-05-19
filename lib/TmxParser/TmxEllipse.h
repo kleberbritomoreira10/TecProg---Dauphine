@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// TmxPolygon.h
+// TmxEllipse.h
 //
 // Copyright (c) 2010-2014, Tamir Atias
 // All rights reserved.
@@ -25,40 +25,44 @@
 //
 // Author: Tamir Atias
 //-----------------------------------------------------------------------------
-#pragma once
+
+#ifndef INCLUDE_TMXELLIPSE_H
+#define INCLUDE_TMXELLIPSE_H
 
 #include <vector>
-
 #include "TmxPoint.h"
 
 class TiXmlNode;
 
-namespace Tmx
-{
+namespace Tmx {
+
 	//-------------------------------------------------------------------------
 	// Class to store a Polygon of an Object.
 	//-------------------------------------------------------------------------
-	class Ellipse
-	{
-	public:
-		Ellipse( int x, int y, int width, int height );
+	class Ellipse {
 
-		// Get the center of the object, in pixels.
-		int GetCenterX() const { return x; }
+		public:
+			Ellipse( int x, int y, int width, int height );
 
-		// Get the center of the object, in pixels.
-		int GetCenterY() const { return y; }
-		
-		// Get the RadiusX of the object, in pixels.
-		int GetRadiusX() const { return radiusX; }
-		
-		// Get the RadiusY of the object, in pixels.
-		int GetRadiusY() const { return radiusY; }
+			// Get the center of the object, in pixels.
+			int GetCenterX() const { return x; }
 
-	private:
-		int x;
-		int y;
-		int radiusX;
-		int radiusY;
+			// Get the center of the object, in pixels.
+			int GetCenterY() const { return y; }
+			
+			// Get the RadiusX of the object, in pixels.
+			int GetRadiusX() const { return radiusX; }
+			
+			// Get the RadiusY of the object, in pixels.
+			int GetRadiusY() const { return radiusY; }
+
+		private:
+			int x;
+			int y;
+			int radiusX;
+			int radiusY;
 	};
-};
+
+}
+
+#endif //INCLUDE_TMXELLIPSE_H

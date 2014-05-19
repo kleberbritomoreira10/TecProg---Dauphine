@@ -1,5 +1,5 @@
 //-----------------------------------------------------------------------------
-// TmxTileset.h
+// TmxImageLayer.h
 //
 // Copyright (c) 2010-2014, Tamir Atias
 // All rights reserved.
@@ -25,7 +25,8 @@
 //
 // Author: Tamir Atias
 //-----------------------------------------------------------------------------
-#pragma once
+#ifndef INCLUDE_TMXIMAGELAYER_H
+#define INCLUDE_TMXIMAGELAYER_H
 
 #include <string>
 #include <vector>
@@ -94,4 +95,6 @@ namespace Tmx
 
 		Tmx::PropertySet properties;
 	};
-};
+}
+
+#endif //INCLUDE_TMXIMAGELAYER_H

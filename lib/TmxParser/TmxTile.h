@@ -25,7 +25,8 @@
 //
 // Author: Tamir Atias
 //-----------------------------------------------------------------------------
-#pragma once
+#ifndef INCLUDE_TMXTILE_H
+#define INCLUDE_TMXTILE_H
 
 #include "TmxPropertySet.h"
 
@@ -59,4 +60,6 @@ namespace Tmx
 
 		Tmx::PropertySet properties;
 	};
-};
+}
+
+#endif //INCLUDE_TMXTILE_H

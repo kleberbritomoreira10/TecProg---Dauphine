@@ -25,7 +25,9 @@
 //
 // Author: Tamir Atias
 //-----------------------------------------------------------------------------
-#pragma once
+
+#ifndef INCLUDE_TMXMAPTILE_H
+#define INCLUDE_TMXMAPTILE_H
 
 namespace Tmx 
 {
@@ -77,4 +79,6 @@ namespace Tmx
 		// True when the tile should be drawn flipped diagonally.
 		bool flippedDiagonally;
 	};
-};
+}
+
+#endif //INCLUDE_TMXMAPTILE_H

@@ -25,7 +25,8 @@
 //
 // Author: Tamir Atias
 //-----------------------------------------------------------------------------
-#pragma once
+#ifndef INCLUDE_TMXPROPERTYSET_H
+#define INCLUDE_TMXPROPERTYSET_H
 
 #include <map>
 #include <string>
@@ -70,4 +71,6 @@ namespace Tmx
 		std::map< std::string, std::string > properties;
 
 	};
-};
+}
+
+#endif //INCLUDE_TMXPROPERTYSET_H
