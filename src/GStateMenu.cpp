@@ -73,7 +73,7 @@ void GStateMenu::handleSelectorMenu(){
 
 	const double selectorDelayTime = 0.2;
 
-	if(keyStates[GameKeys::DOWN] == true || keyStates[GameKeys::LEFT] == true){
+	if(keyStates[GameKeys::DOWN] == true || keyStates[GameKeys::RIGHT] == true){
 		if(this->passedTime >= selectorDelayTime){
 			if(currentSelection < (Selection::TOTAL - 1)){
 				currentSelection++;
@@ -84,7 +84,7 @@ void GStateMenu::handleSelectorMenu(){
 			this->passedTime = 0.0;
 		}
 	}
-	else if(keyStates[GameKeys::UP] == true || keyStates[GameKeys::RIGHT] == true){
+	else if(keyStates[GameKeys::UP] == true || keyStates[GameKeys::LEFT] == true){
 		if(this->passedTime >= selectorDelayTime){
 			if(currentSelection > Selection::NEWGAME){
 				currentSelection--;

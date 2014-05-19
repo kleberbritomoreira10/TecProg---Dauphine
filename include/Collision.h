@@ -2,6 +2,7 @@
 #define INCLUDE_COLLISION_H
 
 #include "SDLWrapper.h"
+#include "Entity.h"
 
 /**
 * For now, has simple collision detection.
@@ -15,6 +16,7 @@ class Collision {
 		*/
 		static bool rectsCollided(const SDL_Rect& a_, const SDL_Rect& b_);
 
+		static bool Environment(Entity* a_, const SDL_Rect& _b);
 };
 
 

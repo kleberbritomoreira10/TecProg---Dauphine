@@ -65,9 +65,15 @@ void DynamicEntity::updatePosition(const double dt_){
     }
 
     for(auto tile : this->tiles){
-        if(Collision::rectsCollided(this->clip, tile->getRectangle()) && tile->isSolid()){
-            this->vx = 0;
-        }
+        
+    	if(tile->isSolid()){
+    	
+        	if(Collision::Environment((Entity*)this, tile->getRectangle())){
+		        this->vx = 0;
+		        this->vy = 0;
+		        this->y = 0;
+		    }
+		}
     }
 
 }
