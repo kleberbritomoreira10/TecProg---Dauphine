@@ -11,6 +11,7 @@ class Crosshair : public Entity{
 		void render(const double cameraX_, const double cameraY_);
 		unsigned int getWidth();
 		unsigned int getHeight();
+		bool activated;
 	private:
 
 

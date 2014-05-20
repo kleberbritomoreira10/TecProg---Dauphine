@@ -1,7 +1,8 @@
 #include "Crosshair.h"
 
 Crosshair::Crosshair(const double x_, const double y_, Sprite* const sprite_) :
-	Entity(x_, y_, sprite_)
+	Entity(x_, y_, sprite_),
+	activated(false)
 {
 
 }
@@ -24,7 +25,7 @@ void Crosshair::update(const double dt_){
 }
 		
 void Crosshair::render(const double cameraX_, const double cameraY_){
-	if(this->sprite != nullptr){
+	if(this->sprite != nullptr && activated){
         const double dx = this->x - cameraX_;
         const double dy = this->y - cameraY_;
         this->sprite->render(dx, dy, nullptr, false, 0.0, nullptr, SDL_FLIP_HORIZONTAL);

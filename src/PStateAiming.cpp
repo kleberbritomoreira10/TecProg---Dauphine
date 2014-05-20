@@ -47,7 +47,7 @@ void PStateAiming::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
 	}
 
 	if(keyStates_[GameKeys::SPACE]){
-		this->player->useBombPotion(this->player->getBombPotion(), 20, this->player->getCrosshair()->x -this->player->x);
+		this->player->useBombPotion(this->player->getBombPotion(), 20, this->player->getCrosshair()->x - this->player->x);
 	}
 	
 	if(keyStates_[GameKeys::A]){

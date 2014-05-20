@@ -128,6 +128,7 @@ void DynamicEntity::setTiles(const std::vector<Tile*>& tiles_){
 }
 
 void DynamicEntity::aim(Crosshair *crosshair, double direction){
+    crosshair->activated = true;
     double velocity = 2;
     crosshair->x += velocity*direction;
 }
@@ -136,7 +137,7 @@ void DynamicEntity::useBombPotion(BombPotion *bombPotion, int strength, int dist
     bombPotion->activated = true;
     bombPotion->x = this->x + 100;
     bombPotion->y = this->y + 100;
-    bombPotion->vy = 0;
+    bombPotion->vx = 0;
     bombPotion->strength = strength;
     bombPotion->distance = distance;
     bombPotion->isRight = this->isRight;
