@@ -1,7 +1,6 @@
 #include "Animation.h"
 #include "Logger.h"
 
-const unsigned int ANIMATION_LIMIT = 11;
 int animationCount = 0;
 
 Animation::Animation(const int x_, const int y_, const int spriteWidth_,
@@ -24,6 +23,7 @@ Animation::~Animation(){
 
 void Animation::update(SDL_Rect& clip, const double dt_){
 
+	const unsigned int ANIMATION_LIMIT = 11;
 	// Compare the position on the sprite with the number of positions to know if is the
 	// end of the animation.
 

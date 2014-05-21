@@ -5,13 +5,11 @@
 #define NONED 0
 
 void PStateAiming::enter(){
-	//this->player->getAnimation()->changeAnimation(1,0,1,false,0);
-	if(this->player->isRight)
-	{
+
+	if(this->player->isRight){
 		this->player->getCrosshair()->x = this->player->x + this->player->getWidth();
 	}
-	else
-	{
+	else{
 		this->player->getCrosshair()->x = this->player->x - this->player->getCrosshair()->getWidth();
 	}
 
@@ -22,23 +20,7 @@ void PStateAiming::exit(){
 }
 
 void PStateAiming::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
-	/*
-	// Aerial
-	if(!this->player->isGrounded){
-		this->player->changeState(Player::PStates::AERIAL);
-		return;
-	}
 
-	this->player->slowVx();
-
-	// Jump
-	if(keyStates_[GameKeys::SPACE] && this->player->isGrounded){
-		this->player->jump();
-		this->player->changeState(Player::PStates::AERIAL);
-		return;
-	}
-	*/
-	// Move
 	if(!keyStates_[GameKeys::DOWN]){
 		this->player->getCrosshair()->y = -600;
 		this->player->getCrosshair()->x = -600;
@@ -51,28 +33,31 @@ void PStateAiming::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
 	}
 	
 	if(keyStates_[GameKeys::A]){
-		if(this->player->isRight)
-		{
+		if(this->player->isRight){
 			if((this->player->getCrosshair()->x > (this->player->x + this->player->getWidth()))){
 				this->player->aim(this->player->getCrosshair(), LEFTD);
 			}
 				
 		}
-		else
+		else{
 			this->player->aim(this->player->getCrosshair(), LEFTD);
+		}
 		return;
-	}else if(keyStates_[GameKeys::D] ){
-		if(!this->player->isRight)
-		{
+	}
+
+	else if(keyStates_[GameKeys::D]){
+		if(!this->player->isRight){
 			if((this->player->getCrosshair()->x < (this->player->x - this->player->getCrosshair()->getWidth()))){
 				this->player->aim(this->player->getCrosshair(), RIGHTD);
 			}	
 		}
-		else
+		else{
 			this->player->aim(this->player->getCrosshair(), RIGHTD);
-		
+		}
 		return;
-	}else{
+	}
+
+	else{
 		this->player->aim(this->player->getCrosshair(), NONED);
 		return;
 	}
@@ -86,7 +71,6 @@ PStateAiming::PStateAiming(Player* const player_) :
 
 }
 
-int PStateAiming::absoluteCrosshairPlayerDistance()
-{
+int PStateAiming::absoluteCrosshairPlayerDistance(){
 	return (this->player->getCrosshair()->x - this->player->x);
 }

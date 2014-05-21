@@ -129,7 +129,7 @@ void DynamicEntity::setTiles(const std::vector<Tile*>& tiles_){
 
 void DynamicEntity::aim(Crosshair *crosshair, double direction){
     crosshair->activated = true;
-    double velocity = 2;
+    double velocity = 10;
     crosshair->x += velocity*direction;
 }
 
