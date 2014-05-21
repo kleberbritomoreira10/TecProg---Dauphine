@@ -35,7 +35,7 @@ namespace Tmx {
 		source(),
 		width(),
 		height(),
-		transparent_color(),
+		transparent_color()
 	{}
 
 	Image::~Image() 

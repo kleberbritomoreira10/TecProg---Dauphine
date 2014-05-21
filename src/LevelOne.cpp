@@ -56,7 +56,7 @@ void LevelOne::load(){
 	// Test enemy.
 	Sprite* spriteEnemy;
 	spriteEnemy = Game::instance().getResources().get(pathTempEnemy);
-	Enemy* enemy = new Enemy(11.0*64.0, 0.0, spriteEnemy, true, 200.0);
+	Enemy* enemy = new Enemy(704.0, 0.0, spriteEnemy, true, 200.0);
 	enemy->setLevelWH(this->width, this->height);
 	enemy->setTiles(tileMap->tiles);
 	addEntity(enemy);
