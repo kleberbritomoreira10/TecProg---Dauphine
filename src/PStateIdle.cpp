@@ -2,6 +2,7 @@
 #include "Logger.h"
 
 void PStateIdle::enter(){
+	Logger::verbose("::IDLE");
 	this->player->getAnimation()->changeAnimation(1,0,1,false,0);
 }
 

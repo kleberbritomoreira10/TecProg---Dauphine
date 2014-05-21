@@ -44,9 +44,9 @@ class Entity {
 		unsigned int getHeight();
 
 		/**
-		* @return The Entity clip.
+		* @return The Entity::animationClip.
 		*/
-		SDL_Rect& getClip();
+		SDL_Rect& getAnimationClip();
 
 		double x; /**< The position in the x axis. */
 		double y; /**< The position in the y axis. */
@@ -65,7 +65,8 @@ class Entity {
 		Sprite* sprite; /**< The Sprite attributed to the entity. */
 		unsigned int width; /**< The entitys width, from its sprite. */
 		unsigned int height; /**< The entitys height, from its sprite. */
-		SDL_Rect clip; /**< The current clip on the spritesheet, to determine animation. */
+		SDL_Rect animationClip; /**< The current clip on the spritesheet, to determine animation. */
+		SDL_Rect boundingBox;
 
 };
 

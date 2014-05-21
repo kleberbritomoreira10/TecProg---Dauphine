@@ -24,10 +24,10 @@ void GStateGameOver::load(){
 	Logger::verbose("Loading Game Over...");
 
 	LuaScript luaGameOver("lua/GameOver.lua");
-	const std::string gameOverPath = luaGameOver.unlua_get<std::string>("gameOver.spritePath");
+	const std::string pathGameOver = luaGameOver.unlua_get<std::string>("gameOver.images.gameOver");
 	const double luaLifeTime = luaGameOver.unlua_get<double>("gameOver.lifeTime");
 
-    this->gameOverImage = Game::instance().getResources().get(gameOverPath);
+    this->gameOverImage = Game::instance().getResources().get(pathGameOver);
 	this->lifeTime = luaLifeTime;
 }
 

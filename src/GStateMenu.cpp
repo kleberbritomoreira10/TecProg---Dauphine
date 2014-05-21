@@ -36,11 +36,11 @@ void GStateMenu::load(){
 	Logger::verbose("Loading menu...");
 
 	LuaScript luaMenu("lua/Menu.lua");
-	const std::string menuPath = luaMenu.unlua_get<std::string>("menu.spritePath");
-	const std::string cursorPath = luaMenu.unlua_get<std::string>("menu.cursorPath");
+	const std::string pathTitleScreen = luaMenu.unlua_get<std::string>("menu.images.titleScreen");
+	const std::string pathCursor = luaMenu.unlua_get<std::string>("menu.images.cursor");
 
-    this->menuImage = Game::instance().getResources().get(menuPath);
-    this->menuSelector = Game::instance().getResources().get(cursorPath);
+    this->menuImage = Game::instance().getResources().get(pathTitleScreen);
+    this->menuSelector = Game::instance().getResources().get(pathCursor);
 }
 
 void GStateMenu::unload(){

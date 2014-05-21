@@ -27,9 +27,9 @@ void GStateOptions::load(){
 	Logger::verbose("Loading options...");
 
 	LuaScript luaOptions("lua/Options.lua");
-	const std::string optionsPath = luaOptions.unlua_get<std::string>("options.spritePath");
+	const std::string pathOptions = luaOptions.unlua_get<std::string>("options.images.dummy");
 	
-    this->optionsImage = Game::instance().getResources().get(optionsPath);
+    this->optionsImage = Game::instance().getResources().get(pathOptions);
 }
 
 void GStateOptions::unload(){

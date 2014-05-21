@@ -16,9 +16,9 @@ Player::Player(const double x_, const double y_, Sprite* const sprite_) :
 
     initializeStates();
 
-    LuaScript luaPlayer("lua/Level1.lua");
-    this->width = luaPlayer.unlua_get<int>("level.player.width");
-    this->height = luaPlayer.unlua_get<int>("level.player.height");
+    LuaScript luaPlayer("lua/Player.lua");
+    this->width = luaPlayer.unlua_get<int>("player.dimensions.width");
+    this->height = luaPlayer.unlua_get<int>("player.dimensions.height");
 
     // Shouldn't be here.
     this->animation = new Animation(0, 3, this->width, this->height, 11, false);
@@ -45,14 +45,14 @@ void Player::update(const double dt_){
 
     this->currentState->handleInput(keyStates);
     updatePosition(dt_);
-    this->animation->update(this->clip, dt_);
+    this->animation->update(this->animationClip, dt_);
 }
 
 void Player::render(const double cameraX_, const double cameraY_){
     if(this->sprite != nullptr){
         const double dx = this->x - cameraX_;
         const double dy = this->y - cameraY_;
-        this->sprite->render(dx, dy, &clip, false, 0.0, nullptr, SDL_FLIP_HORIZONTAL);
+        this->sprite->render(dx, dy, &this->animationClip, false, 0.0, nullptr, SDL_FLIP_HORIZONTAL);
     }
 }
 

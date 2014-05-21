@@ -27,9 +27,9 @@ void GStateCredits::load(){
 	Logger::verbose("Loading credits...");
 
 	LuaScript luaCredits("lua/Credits.lua");
-	const std::string optionsPath = luaCredits.unlua_get<std::string>("credits.spritePath");
+	const std::string pathCredits = luaCredits.unlua_get<std::string>("credits.images.dummy");
 	
-    this->creditsImage = Game::instance().getResources().get(optionsPath);
+    this->creditsImage = Game::instance().getResources().get(pathCredits);
 }
 
 void GStateCredits::unload(){

@@ -6,6 +6,8 @@
 #include "TmxWrapper.h"
 #include "TileMap.h"
 
+#include "Text.h"
+
 LevelOne::LevelOne() :
 	Level()
 {
@@ -19,39 +21,51 @@ LevelOne::~LevelOne(){
 void LevelOne::load(){
 	Logger::verbose("Loading level 1...");
 
-	// Changing the music.
-	Game::instance().getAudioHandler().changeMusic("res/idk.ogg");
-
 	// Getting information from lua script.
 	LuaScript luaLevel1("lua/Level1.lua");
-	const std::string scriptPlayerSpritePath = luaLevel1.unlua_get<std::string>(
-		"level.player.spritePath");
-	const double scriptX = luaLevel1.unlua_get<double>("level.player.position.x");
-	const double scriptY = luaLevel1.unlua_get<double>("level.player.position.y");
+	const std::string pathPlayerSpriteSheet = luaLevel1.unlua_get<std::string>(
+		"level.player.spriteSheet");
+	const double initialPlayerX = luaLevel1.unlua_get<double>("level.player.position.x");
+	const double initialPlayerY = luaLevel1.unlua_get<double>("level.player.position.y");
+	const std::string pathBackgroundAudio = luaLevel1.unlua_get<std::string>(
+		"level.audio.background");
+	const std::string pathTileSheet = luaLevel1.unlua_get<std::string>("level.tileSheet");
+	const std::string pathTempEnemy = luaLevel1.unlua_get<std::string>("level.dummyEnemy");
+
+	// Changing the music.
+	Game::instance().getAudioHandler().changeMusic(pathBackgroundAudio);
 
 	// Loading the sprites.
 	Sprite* spritePlayer = nullptr;
-	spritePlayer = Game::instance().getResources().get(scriptPlayerSpritePath);
+	spritePlayer = Game::instance().getResources().get(pathPlayerSpriteSheet);
 
 	// Loading the player and the camera.
-	Player* lPlayer = new Player(scriptX, scriptY, spritePlayer);
+	Player* lPlayer = new Player(initialPlayerX, initialPlayerY, spritePlayer);
 	Camera* lCamera = new Camera(lPlayer);
 
 	// Loading the tile/tilemap.
 	TmxWrapper tmxw("res/maps/level1.tmx");
-	TileMap* tileMap = new TileMap(tmxw.getTileData(), "res/tilesheet.png");
+	TileMap* tileMap = new TileMap(tmxw.getTileData(), pathTileSheet);
 	addEntity(tileMap);
 	lPlayer->setTiles(tileMap->tiles);
 
+	// Setting the level width/height.
 	this->width = tmxw.getMapWidth();
 	this->height = tmxw.getMapHeight();
 
+	// Test enemy.
 	Sprite* spriteEnemy;
-	spriteEnemy = Game::instance().getResources().get("res/InimigoVigilia.png");
-	Enemy* enemy = new Enemy(1100.0, 400.0, spriteEnemy, true, 200.0);
+	spriteEnemy = Game::instance().getResources().get(pathTempEnemy);
+	Enemy* enemy = new Enemy(11.0*64.0, 0.0, spriteEnemy, true, 200.0);
 	enemy->setLevelWH(this->width, this->height);
+	enemy->setTiles(tileMap->tiles);
 	addEntity(enemy);
 
+	// Test text.
+	Text* text = new Text(200.0, 900.0, "res/fonts/KGFeeling22.ttf", 50, "dauphine");
+	addEntity(text);
+
+	// Finally, setting the player and the camera.
 	setPlayer(lPlayer);
 	setCamera(lCamera);
 }

@@ -1,12 +1,7 @@
 level = {
 
-	boundaries = {
-		width = 1920,
-		height = 1080,
-	},
-
-	background = {
-		spritePath = "res/newbg.png",
+	audio = {
+		background = "res/audio/testAudio.ogg",
 	},
 
 	player = {
@@ -14,9 +9,12 @@ level = {
 	    	x = 10.0,
 	    	y = 10.0,
 	    },
-	    width = 229,
-	    height = 229,
-	    spritePath = "res/spriteSheetNadine.png",
+	    spriteSheet = "res/images/spriteSheet_nadine.png",
 	},
+
+	tileSheet = "res/images/tileSheet_1.png",
+
+	-- temporary, should be removed later
+	dummyEnemy = "res/images/temp_enemy.png",
 
 }
