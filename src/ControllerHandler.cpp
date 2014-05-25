@@ -1,6 +1,8 @@
 #include "ControllerHandler.h"
 #include "Logger.h"
 
+#include <iostream>
+
 ControllerHandler::ControllerHandler() :
     gameController(nullptr)
 {
@@ -16,7 +18,7 @@ ControllerHandler::ControllerHandler() :
 }
 
 void ControllerHandler::handleInput(SDL_Event& sdlEvent_){
-    
+        
     SDL_Event fakeKeyInput;
         
     if(sdlEvent_.type == SDL_CONTROLLERBUTTONDOWN){
@@ -43,7 +45,6 @@ void ControllerHandler::handleInput(SDL_Event& sdlEvent_){
                 fakeKeyInput.key.keysym.sym = SDLK_c; 
                 fakeKeyInput.key.state = SDL_PRESSED;
                 break;
-
             default:
                 break;
         }
@@ -82,7 +83,37 @@ void ControllerHandler::handleInput(SDL_Event& sdlEvent_){
                 break;
         }
 
-        SDL_PushEvent(&fakeKeyInput);
-    }
+		SDL_PushEvent(&fakeKeyInput);
+	}
+	
+	if(sdlEvent_.type == SDL_CONTROLLERAXISMOTION){
+
+		std::cout << "Movement from axis " << (int)sdlEvent_.caxis.axis  << " with value" << sdlEvent_.caxis.value 	<< "\n";
+			
+		switch(sdlEvent_.caxis.axis){
+
+			case controllerMap::axes::LATRIGGER:
+					fakeKeyInput.key.keysym.sym = SDLK_DOWN; 
+		
+					if(sdlEvent_.caxis.value > TRIGGER_DEAD_ZONE){
+						fakeKeyInput.type = SDL_KEYDOWN;
+						fakeKeyInput.key.state = SDL_PRESSED;
+					}
+
+					else{
+						fakeKeyInput.type = SDL_KEYUP;
+						fakeKeyInput.key.state = SDL_RELEASED;
+					}
+					
+				break;
+				
+			default:
+				break;
+		
+		}
+
+		SDL_PushEvent(&fakeKeyInput);
+
+	}
 
 }

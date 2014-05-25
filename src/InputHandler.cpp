@@ -25,8 +25,9 @@ void InputHandler::handleInput(){
 	do{
 		pendingEvent = SDL_PollEvent(&this->sdlEvent); 
 
-		if(this->sdlEvent.type == SDL_CONTROLLERBUTTONDOWN
-			|| this->sdlEvent.type == SDL_CONTROLLERBUTTONUP){
+		if(this->sdlEvent.type == SDL_CONTROLLERBUTTONDOWN 
+			|| this->sdlEvent.type == SDL_CONTROLLERBUTTONUP 
+			|| this->sdlEvent.type == SDL_CONTROLLERAXISMOTION){
 			
 			this->controllerHandler->handleInput(this->sdlEvent);
 		}
