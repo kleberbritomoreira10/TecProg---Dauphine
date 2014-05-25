@@ -9,6 +9,8 @@
 #include "PStateMoving.h"
 #include "PStateRolling.h"
 
+#include <iostream>
+
 Player::Player(const double x_, const double y_, Sprite* const sprite_) :
     DynamicEntity(x_, y_, sprite_),
     animation(nullptr)
@@ -52,8 +54,11 @@ void Player::update(const double dt_){
 
 void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){
     if(detections_.at(CollisionSide::SOLID_TOP)){
-        this->y += 64 -(int)this->y%64;
-        this->vy = 0.0;
+        
+        if((int)this->y%64 > 0){
+        	this->y += 64 -(int)this->y%64 + 1; 
+        	this->vy = 0.0;
+    	}
     }
     if(detections_.at(CollisionSide::SOLID_BOTTOM)){
         if(this->currentState == this->statesMap.at(PStates::AERIAL)){
@@ -72,8 +77,12 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
         this->vx = 0.0;
     }
     if(detections_.at(CollisionSide::SOLID_RIGHT)){
-        this->x += (64 - (int)this->x%64);
-        this->vx = 0.0;
+    
+//    	std::cout << (int)this->x%64 << "\n";
+        if((int)this->x%64 > 0){
+        	this->x += (64 - (int)this->x%64) + 1;
+        	this->vx = 0.0;
+        }
     }
 }
 
