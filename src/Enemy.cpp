@@ -79,3 +79,5 @@ void Enemy::changeState(const EStates state_){
     this->currentState = this->statesMap.at(state_);
     this->currentState->enter();
 }
+
+void Enemy::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){}

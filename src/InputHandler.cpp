@@ -3,9 +3,7 @@
 InputHandler::InputHandler() :
 	quitFlag(false)
 {
-	for(unsigned int i = 0; i < GameKeys::MAX; i++){
-		this->keyStates[i] = false;
-	}
+	this->keyStates.fill(false);
 
 	// Opens controller handling.
 	this->controllerHandler = new ControllerHandler();

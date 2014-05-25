@@ -45,7 +45,36 @@ void Player::update(const double dt_){
 
     this->currentState->handleInput(keyStates);
     updatePosition(dt_);
+    std::array<bool, CollisionSide::SOLID_TOTAL> detections = detectCollision();
+    handleCollision(detections);
     this->animation->update(this->animationClip, dt_);
+}
+
+void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){
+    if(detections_.at(CollisionSide::SOLID_TOP)){
+        this->y += 64 -(int)this->y%64;
+        this->vy = 0.0;
+    }
+    if(detections_.at(CollisionSide::SOLID_BOTTOM)){
+        if(this->currentState == this->statesMap.at(PStates::AERIAL)){
+            this->y -= (int)(this->y + this->height)%64 - 1;
+            this->vy = 0.0;
+            changeState(PStates::IDLE);
+        }
+    }
+    else{
+        if(this->currentState != this->statesMap.at(PStates::AERIAL)){
+            changeState(PStates::AERIAL);
+        }
+    }
+    if(detections_.at(CollisionSide::SOLID_LEFT)){
+        this->x -= (int)(this->x + this->width)%64;
+        this->vx = 0.0;
+    }
+    if(detections_.at(CollisionSide::SOLID_RIGHT)){
+        this->x += (64 - (int)this->x%64);
+        this->vx = 0.0;
+    }
 }
 
 void Player::render(const double cameraX_, const double cameraY_){

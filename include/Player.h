@@ -85,6 +85,8 @@ class Player : public DynamicEntity {
 		Animation *getAnimation();
 
 	private:
+		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
+
 		Animation* animation; /**< Current player animation. */
 		StatePlayer* currentState; /**< The current state, which the player is in. */
 		std::map<PStates, StatePlayer*> statesMap; /**< Map containing all possible states. */

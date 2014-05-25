@@ -35,29 +35,29 @@ void DynamicEntity::updatePosition(const double dt_){
 
     this->isRight = (this->vx >= 0.0);
     this->sprite->setHorizontalFlip(this->isRight);
+}
+
+std::array<bool, CollisionSide::SOLID_TOTAL> DynamicEntity::detectCollision(){
+    std::array<bool, CollisionSide::SOLID_TOTAL> detections;
+    detections.fill(false);
 
     for(auto tile : this->tiles){
         const SDL_Rect tileBox = tile->getRectangle();
+        Collision::RectangleSide side = Collision::rectsCollidedSide(this->boundingBox, tileBox);
 
-    	if(tile->isSolid()){
-
-            Collision::RectangleSide side = Collision::rectsCollidedSide(this->boundingBox, tileBox);
+        if(tile->isSolid()){
             switch(side){
                 case Collision::RectangleSide::TOP: // Hitting under the tile.
-                    this->y = tileBox.y + tileBox.h;
-                    this->vy = 0.0;
+                    detections.at(SOLID_TOP) = true;
                     break;
                 case Collision::RectangleSide::BOTTOM: // Hitting top of the tile.
-                    this->y = tileBox.y - this->height;
-                    this->vy = 0.0;
+                    detections.at(SOLID_BOTTOM) = true;
                     break;
                 case Collision::RectangleSide::RIGHT: // Hitting right side of the tile.
-                    this->x = tileBox.x + tileBox.w;
-                    this->vx = 0.0;
+                    detections.at(SOLID_RIGHT) = true;
                     break;
                 case Collision::RectangleSide::LEFT: // Hitting left side of the tile.
-                    this->x = tileBox.x - this->width;
-                    this->vx = 0.0;
+                    detections.at(SOLID_LEFT) = true;
                     break;
                 case Collision::RectangleSide::NONE:
                     // No collision.
@@ -66,10 +66,10 @@ void DynamicEntity::updatePosition(const double dt_){
                     Logger::error("Unknown rectangle side collided with a dynamic entity.");
                     break;
             }
-
-		}
+        }
     }
 
+    return detections;
 }
 
 void DynamicEntity::jump(){
@@ -77,7 +77,9 @@ void DynamicEntity::jump(){
 }
 
 void DynamicEntity::applyGravity(){
-    this->vy += 75;
+    if(this->vy + 75 < this->maxSpeed*2){
+        this->vy += 75;
+    }
 }
 
 void DynamicEntity::move(const bool movingLeft_, const bool movingRight_){

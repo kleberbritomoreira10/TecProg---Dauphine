@@ -5,6 +5,15 @@
 #include "Tile.h"
 
 #include <vector>
+#include <array>
+
+enum CollisionSide : uint8_t {
+	SOLID_TOP = 0,
+	SOLID_BOTTOM,
+	SOLID_RIGHT,
+	SOLID_LEFT,
+	SOLID_TOTAL
+};
 
 /**
 * Subclass of Entity.
@@ -49,6 +58,8 @@ class DynamicEntity : public Entity {
 		bool isGrounded; /**< Check for if the dynamic entity is on the ground. */
 
 	protected:
+		
+
 		/**
 		* Updates the position of the dynamic entity
 		* Update is based on what input was recieved, and the players velocity.
@@ -56,6 +67,9 @@ class DynamicEntity : public Entity {
 		* 	of processing speed.
 		*/
 		virtual void updatePosition(const double dt_);
+
+		std::array<bool, CollisionSide::SOLID_TOTAL> detectCollision();
+		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_) = 0;
 
 		unsigned int levelW; /**< The width of the level. */
 		unsigned int levelH; /**< The height of the level. */
