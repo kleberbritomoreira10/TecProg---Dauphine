@@ -14,6 +14,7 @@ class BombPotion : public Entity{
 		bool isRight;
 		int strength;
 		double vx;
+		double vy;
 		int distance;
 	private:
 
