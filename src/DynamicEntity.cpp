@@ -73,12 +73,12 @@ std::array<bool, CollisionSide::SOLID_TOTAL> DynamicEntity::detectCollision(){
 }
 
 void DynamicEntity::jump(){
-    this->vy = (-1) * 1500.0;
+    this->vy = (-1) * 1000.0;
 }
 
 void DynamicEntity::applyGravity(){
-    if(this->vy + 75 < this->maxSpeed*2){
-        this->vy += 75;
+    if(this->vy + 50 < this->maxSpeed*2){
+        this->vy += 50;
     }
 }
 
