@@ -53,12 +53,11 @@ void Player::update(const double dt_){
 }
 
 void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){
-    if(detections_.at(CollisionSide::SOLID_TOP)){
-        
-       /* if((int)this->y%64 > 0){
+    if(detections_.at(CollisionSide::SOLID_TOP)){ 
+        if((int)this->y%64 > 0){
         	this->y += 64 -(int)this->y%64 + 1; 
         	this->vy = 0.0;
-    	}*/
+    	}
     }
     if(detections_.at(CollisionSide::SOLID_BOTTOM)){
         if(this->currentState == this->statesMap.at(PStates::AERIAL)){
@@ -73,7 +72,7 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
         }
     }
     if(detections_.at(CollisionSide::SOLID_LEFT)){
-        this->x -= (int)(this->x + this->width)%64;
+        this->x -= (int)(this->x + this->width)%64 + 1;
         this->vx = 0.0;
     }
     if(detections_.at(CollisionSide::SOLID_RIGHT)){
