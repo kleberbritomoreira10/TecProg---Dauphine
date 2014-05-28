@@ -68,7 +68,7 @@ class Sprite {
 
 		void setHorizontalFlip(bool isRigth_);
 
-
+		std::string getPath();
 		
 	private:
 		/**

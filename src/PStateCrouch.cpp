@@ -2,7 +2,6 @@
 #include "Logger.h"
 
 void PStateCrouch::enter(){
-	Logger::verbose("::CROUCH");
 	this->player->isGrounded = true;
 	this->player->maxSpeed /= 2;
 	this->player->speed = 15;

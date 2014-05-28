@@ -5,7 +5,6 @@
 #include "Enemy.h"
 #include "Crosshair.h"
 #include "TileMap.h"
-#include "TmxWrapper.h"
 
 LevelOne::LevelOne() :
 	Level()
@@ -18,7 +17,7 @@ LevelOne::~LevelOne(){
 }
 
 void LevelOne::load(){
-	Logger::verbose("Loading level 1...");
+	Log(DEBUG) << "Loading level 1...";
 
 	// Getting information from lua script.
 	LuaScript luaLevel1("lua/Level1.lua");
@@ -56,20 +55,18 @@ void LevelOne::load(){
 	this->height = 1080;
 
 	// Loading the tile/tilemap.
-	TmxWrapper tmxw("res/maps/level1.tmx");
-	TileMap* tileMap = new TileMap(tmxw.getTileData(), pathTileSheet);
-	addEntity(tileMap);
-	lPlayer->setTiles(tileMap->tiles);
+	this->tileMap = new TileMap("res/maps/level1.tmx");
+	lPlayer->setCollisionRects(this->tileMap->getCollisionRects());
 
 	// Setting the level width/height.
-	this->width = tmxw.getMapWidth();
-	this->height = tmxw.getMapHeight();
+	this->width = this->tileMap->getMapWidth();
+	this->height = this->tileMap->getMapHeight();
 
 	Sprite* spriteEnemy;
 	spriteEnemy = Game::instance().getResources().get(pathTempEnemy);
 	Enemy* enemy = new Enemy(704.0, 0.0, spriteEnemy, true, 200.0);
 	enemy->setLevelWH(this->width, this->height);
-	enemy->setTiles(tileMap->tiles);
+	//enemy->setTiles(tileMap->tiles);
 	addEntity(enemy);
 	addEntity(crosshair);
 	addEntity(bombPotion);
@@ -84,7 +81,7 @@ void LevelOne::load(){
 }
 
 void LevelOne::unload(){
-	Logger::verbose("\tUnloading level 1...");
+	Log(DEBUG) << "\tUnloading level 1...";
 	cleanEntities();
 }
 
@@ -94,6 +91,7 @@ void LevelOne::update(const double dt_){
         entity->update(dt_);
 	}
 
+	/// @todo Refactor this static Enemy::px, Enemy::py.
 	Enemy::px = this->player->x;
 	Enemy::py = this->player->y;
 
@@ -104,38 +102,12 @@ void LevelOne::render(){
 	const int cameraX = this->camera->getClip().x;
 	const int cameraY = this->camera->getClip().y;
 
+	// Render the tiles in the TileMap.
+	this->tileMap->render(cameraX, cameraY);
+
 	// Render all the entities in the list.
 	for(auto entity : entities){
         entity->render(cameraX, cameraY);
 	}
 }
 
-void LevelOne::setPlayer(Player* const player_){
-	this->player = player_;
-
-	if(this->player != nullptr){
-		this->player->setLevelWH(this->width, this->height);
-		addEntity(this->player);
-	}
-	else{
-		Logger::warning("Setting a null player!");
-	}
-	
-}
-
-void LevelOne::setCamera(Camera* const camera_){
-	this->camera = camera_;
-
-	if(this->camera != nullptr){
-		if(this->player != nullptr){
-			this->camera->setLevelWH(this->width, this->height);
-		}
-		else{
-			Logger::warning("Shouldn't set the camera before the player, in Level!");
-		}
-	}
-	else{
-		Logger::warning("Setting a null camera!");
-	}
-
-}

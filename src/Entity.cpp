@@ -19,7 +19,7 @@ Entity::Entity(const double x_, const double y_, Sprite* const sprite_) :
         this->height = this->sprite->getHeight();
     }
     else{
-        Logger::warning("Entity sprite is null, width and height will be undefined.");
+        Log(WARN) << "Entity sprite is null, width and height will be undefined.";
     }
 }
 

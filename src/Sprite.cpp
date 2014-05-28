@@ -22,7 +22,7 @@ Sprite::Sprite(SDL_Surface* const surface_) :
 {
 	// Display error log if image wasn't loaded.
 	if(this->sdlTexture == nullptr){
-		Logger::error("Sprite load failed: " + this->path);
+		Log(ERROR) << "Sprite load failed: " << this->path;
 	}
 }
 
@@ -44,7 +44,7 @@ void Sprite::loadFrom(const std::string& path_){
 
 	// Display error log if image wasn't loaded.
 	if(this->sdlTexture == nullptr){
-		Logger::error("Sprite load failed: " + path_);
+		Log(ERROR) << "Sprite load failed: " << path_;
 	}
 }
 
@@ -82,7 +82,7 @@ void Sprite::render(const double x_, const double y_, SDL_Rect* const clip_,
 			&stretch, angle_, center_, flip_);
 	
 	if(successfullRender != 0){
-		Logger::errorSDL("Failed to render sprite.", SDL_GetError());
+		Log(ERROR) << "Failed to render sprite." << SDL_GetError();
 	}
 }
 
@@ -123,15 +123,19 @@ SDL_Texture* Sprite::surfaceToTexture(SDL_Surface* const surface_){
 			this->height = surface_->h;
 		}
 		else{
-			Logger::errorSDL("Could not create texture from surface.", SDL_GetError());
+			Log(ERROR) << "Could not create texture from surface." << SDL_GetError();
 		}
 
 		// Free the loaded surface.
 		SDL_FreeSurface(surface_);
 	}
 	else{
-		Logger::errorSDL("Could not load surface from path.", IMG_GetError());
+		Log(ERROR) << "Could not load surface from path." << IMG_GetError();
 	}
 
 	return newTexture;
+}
+
+std::string Sprite::getPath(){
+	return this->path;
 }

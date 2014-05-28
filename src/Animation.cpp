@@ -1,5 +1,4 @@
 #include "Animation.h"
-#include "Logger.h"
 
 int animationCount = 0;
 

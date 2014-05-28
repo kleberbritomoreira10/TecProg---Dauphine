@@ -12,7 +12,7 @@ ControllerHandler::ControllerHandler() :
  	}
 
 	if(this->gameController == nullptr){
-		Logger::warning("Unable to find a controller, defaulting to keyboard.");
+		Log(INFO) << "Unable to find a controller, defaulting to keyboard.";
     }
 
 }

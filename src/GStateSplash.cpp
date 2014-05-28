@@ -41,7 +41,7 @@ void GStateSplash::update(const double dt_){
 }
 
 void GStateSplash::load(){
-	Logger::verbose("Loading splash screens...");
+	Log(DEBUG) << "Loading splash screens...";
 
 	LuaScript luaSplash("lua/Splash.lua");
 	const std::string pathLogo = luaSplash.unlua_get<std::string>("splash.images.alke");
@@ -59,7 +59,7 @@ void GStateSplash::load(){
 }
 
 void GStateSplash::unload(){
-	Logger::verbose("\tUnloading splash screens...");
+	Log(DEBUG) << "\tUnloading splash screens...";
 	this->current = 0;
 	cleanEntities();
 }
@@ -69,6 +69,6 @@ void GStateSplash::render(){
 		this->images[this->current]->render(this->ix, 0, nullptr, true);
 	}
 	else{
-		Logger::warning("No image set for the splash screen!");
+		Log(WARN) << "No image set for the splash screen!";
 	}
 }

@@ -30,7 +30,7 @@ Player::Player(const double x_, const double y_, Sprite* const sprite_) :
         this->currentState->enter();
     }
     else{
-        Logger::warning("No sprite set for the player! Null sprite.");
+        Log(WARN) << "No sprite set for the player! Null sprite.";
     }
 }
 
@@ -60,14 +60,14 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
     	}
     }
     if(detections_.at(CollisionSide::SOLID_BOTTOM)){
-        if(this->currentState == this->statesMap.at(PStates::AERIAL)){
+        if(isCurrentState(PStates::AERIAL)){
             this->y -= (int)(this->y + this->height)%64 - 1;
             this->vy = 0.0;
             changeState(PStates::IDLE);
         }
     }
     else{
-        if(this->currentState != this->statesMap.at(PStates::AERIAL)){
+        if(!isCurrentState(PStates::AERIAL)){
             changeState(PStates::AERIAL);
         }
     }
@@ -121,22 +121,22 @@ Animation *Player::getAnimation(){
     return (this->animation);
 }
 
-Crosshair* Player::getCrosshair()
-{
+Crosshair* Player::getCrosshair(){
     return crosshair;
 }
 
-void Player::setCrosshair(Crosshair* crosshair)
-{
+void Player::setCrosshair(Crosshair* crosshair){
     this->crosshair = crosshair;
 }
 
-BombPotion* Player::getBombPotion()
-{
+BombPotion* Player::getBombPotion(){
     return bombPotion;
 }
 
-void Player::setBombPotion(BombPotion* bombPotion)
-{
+void Player::setBombPotion(BombPotion* bombPotion){
     this->bombPotion = bombPotion;
+}
+
+bool Player::isCurrentState(const PStates state_){
+    return (this->currentState == this->statesMap.at(state_));
 }

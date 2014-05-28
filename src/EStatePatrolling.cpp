@@ -1,9 +1,7 @@
 #include "EStatePatrolling.h"
-#include "Logger.h"
 #include <cfloat>
 
 void EStatePatrolling::enter(){
-	Logger::verbose("enter enemy moving");	
 	this->enemy->isGrounded = true;
 }
 

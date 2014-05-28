@@ -83,6 +83,11 @@ class Player : public DynamicEntity {
 		void changeState(const PStates state_);
 
 		/**
+		*
+		*/
+		bool isCurrentState(const PStates state_);
+
+		/**
 		* @return The players current animation setting.
 		*/
 		Animation *getAnimation();

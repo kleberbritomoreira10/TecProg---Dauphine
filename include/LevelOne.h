@@ -46,19 +46,6 @@ class LevelOne : public Level {
 		*/
 		virtual void render();
 
-	protected:
-		/**
-		* @param player_ : Sets the player for the level.
-		*/
-		virtual void setPlayer(Player* const player_);
-
-		/**
-		* @param camera_ : Sets the camera for the level.
-		* @note You should only set the camera after setting the player. Will warn if you
-		* 	didn't.
-		*/
-		virtual void setCamera(Camera* const camera_);
-
 };
 
 #endif //INCLUDE_LEVELONE_H

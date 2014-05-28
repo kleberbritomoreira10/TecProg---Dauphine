@@ -20,7 +20,7 @@ LuaScript::LuaScript(const std::string& filename_) {
         }
     }
     else{
-        Logger::error("Failed to load (" + filename_ + ")");
+        Log(DEBUG) << "Failed to load (" << filename_ << ")";
         this->luaState = nullptr;
     }
 
@@ -72,7 +72,7 @@ std::vector<std::string> LuaScript::unlua_getTableKeys(const std::string& name_)
     std::vector<std::string> strings;
     std::string temp = "";
 
-    Logger::verbose("TEMP: " + test);
+    Log(DEBUG) << "TEMP: " << test;
 
     for(unsigned int i = 0; i < test.size(); i++) {
         if(test.at(i) != ',') {
@@ -100,7 +100,7 @@ bool LuaScript::unlua_getToStack(const std::string& variableName_) {
             }
 
             if(lua_isnil(this->luaState, -1)) {
-                Logger::error("Can't get " + variableName_ + ". " + var + " is not defined.");
+                Log(ERROR) << "Can't get " << variableName_ << ". " << var << " is not defined.";
                 return false;
             }
             else {
@@ -120,7 +120,7 @@ bool LuaScript::unlua_getToStack(const std::string& variableName_) {
     }
 
     if(lua_isnil(luaState, -1)) {
-        Logger::error("Can't get " + variableName_ + ". " + var + " is not defined.");
+        Log(ERROR) << "Can't get " << variableName_ << ". " << var << " is not defined.";
         return false;
     }
 

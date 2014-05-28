@@ -1,6 +1,5 @@
 #include "SDLWrapper.h"
 #include "Logger.h"
-#include <sstream>
 
 bool SDLWrapper::initialize(){
 	bool successSDL = false;
@@ -10,17 +9,18 @@ bool SDLWrapper::initialize(){
 
 	SDL_version compiled;
 
+	Log(DEBUG) << "Initializing systems...";
+
 	// Initializing SDL_TTF.
 	const int ttfInit = TTF_Init();
 	if(ttfInit == 0){
 		successTTF = true;
 
-		Logger::verbose("Initialized TTF.");
 		SDL_TTF_VERSION(&compiled);
-		SDLWrapper::logSDLVersion("SDL_TTF", compiled, *TTF_Linked_Version());
+		SDLWrapper::logSDLVersion("SDL_TTF", compiled);
 	}
 	else{
-		Logger::errorSDL("Could not initialize TTF.", TTF_GetError());
+		Log(ERROR) << "Could not initialize TTF." << TTF_GetError();
 	}
 
 	// Initializing SDL with initFlags.
@@ -33,11 +33,10 @@ bool SDLWrapper::initialize(){
 		SDL_VERSION(&compiled);
 		SDL_GetVersion(&linked);
 
-		Logger::verbose("Initialized SDL.");
-		SDLWrapper::logSDLVersion("SDL", compiled, linked, SDL_GetRevision());
+		SDLWrapper::logSDLVersion("SDL", compiled, SDL_GetRevision());
 	}
 	else{
-		Logger::errorSDL("Could not initialize SDL.", SDL_GetError());
+		Log(ERROR) << "Could not initialize SDL." << SDL_GetError();
 	}
 
 	// Initializing SDL_image with imgFlags.
@@ -45,12 +44,11 @@ bool SDLWrapper::initialize(){
 	if((IMG_Init(imgFlags) & imgFlags)){
 		successIMG = true;
 
-		Logger::verbose("Initialized SDL_Image.");
 		SDL_IMAGE_VERSION(&compiled);
-		SDLWrapper::logSDLVersion("SDL_image", compiled, *IMG_Linked_Version());
+		SDLWrapper::logSDLVersion("SDL_image", compiled);
 	}
 	else{
-		Logger::errorSDL("Could not initialize SDL_Image.", IMG_GetError());
+		Log(ERROR) << "Could not initialize SDL_Image." << IMG_GetError();
 	}
 
 	// Initializing SDL_mixer.
@@ -61,12 +59,11 @@ bool SDLWrapper::initialize(){
 	if(initialized == 0){
 		successMixer = true;
 
-		Logger::verbose("Initialized SDL_Mixer.");
 		SDL_MIXER_VERSION(&compiled);
-		SDLWrapper::logSDLVersion("SDL_mixer", compiled, *Mix_Linked_Version());
+		SDLWrapper::logSDLVersion("SDL_mixer", compiled);
 	}
 	else{
-		Logger::errorSDL("Could not initialize SDL_Mixer", Mix_GetError());
+		Log(ERROR) << "Could not initialize SDL_Mixer" << Mix_GetError();
 	}
 
 	// If even one system fails to initialize, returns false.
@@ -74,7 +71,7 @@ bool SDLWrapper::initialize(){
 }
 
 void SDLWrapper::close(){
-	Logger::verbose("Closing SDL.");
+	Log(DEBUG) << "Closing SDL.";
 
 	// Quits SDL_mixer.
 	Mix_CloseAudio();
@@ -91,18 +88,9 @@ void SDLWrapper::close(){
 }
 
 void SDLWrapper::logSDLVersion(const std::string& what_, const SDL_version& compiled_,
-	const SDL_version& linked_, std::string revision_){
+	std::string revision_){
 
-	std::stringstream ss;
-
-	ss << what_ << " Version (Compiled): " << (int)compiled_.major << "." << (int)compiled_.minor
-		<< "." << (int)compiled_.patch;
-
-	if (!revision_.empty()){
-		ss << " (" << revision_ << ")";
-	}
-	
-	Logger::verbose(ss.str());
-	Logger::verbose(what_ + " Version (Runtime):  " + std::to_string(linked_.major) + "." +
-		std::to_string(linked_.minor) + "." + std::to_string(linked_.patch));
+	Log(DEBUG) << what_ << " Version (Compiled): " << (int)compiled_.major << "." <<
+		(int)compiled_.minor << "." << (int)compiled_.patch <<
+		((!revision_.empty()) ? revision_ : "");
 }

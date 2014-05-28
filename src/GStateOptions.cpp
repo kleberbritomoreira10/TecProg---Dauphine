@@ -24,7 +24,7 @@ void GStateOptions::update(const double dt_){
 }
 
 void GStateOptions::load(){
-	Logger::verbose("Loading options...");
+	Log(DEBUG) << "Loading options...";
 
 	LuaScript luaOptions("lua/Options.lua");
 	const std::string pathOptions = luaOptions.unlua_get<std::string>("options.images.dummy");
@@ -33,7 +33,7 @@ void GStateOptions::load(){
 }
 
 void GStateOptions::unload(){
-	Logger::verbose("\tUnloading options...");
+	Log(DEBUG) << "\tUnloading options...";
 	cleanEntities();
 }
 
@@ -42,6 +42,6 @@ void GStateOptions::render(){
 		this->optionsImage->render(0, 0, nullptr, true);
 	}
 	else{
-		Logger::warning("No image set for the options screen!");
+		Log(WARN) << "No image set for the options screen!";
 	}
 }

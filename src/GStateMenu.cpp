@@ -33,7 +33,7 @@ void GStateMenu::update(const double dt_){
 }
 
 void GStateMenu::load(){
-	Logger::verbose("Loading menu...");
+	Log(DEBUG) << "Loading menu...";
 
 	LuaScript luaMenu("lua/Menu.lua");
 	const std::string pathTitleScreen = luaMenu.unlua_get<std::string>("menu.images.titleScreen");
@@ -44,7 +44,7 @@ void GStateMenu::load(){
 }
 
 void GStateMenu::unload(){
-	Logger::verbose("\tUnloading menu...");
+	Log(DEBUG) << "\tUnloading menu...";
 	cleanEntities();
 }
 
@@ -64,7 +64,7 @@ void GStateMenu::render(){
 
 	}
 	else{
-		Logger::warning("No image set to display on the menu!");
+		Log(WARN) << "No image set to display on the menu!";
 	}
 }
 

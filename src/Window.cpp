@@ -65,22 +65,22 @@ void Window::create(const unsigned int width_, const unsigned int height_){
 			// Set texture filtering to linear.
 			SDL_bool linearFilter = SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
 			if(linearFilter){
-				Logger::log("Linear texture filtering enabled!");
+				Log(INFO) << "Linear texture filtering enabled!";
 				rescale(Configuration::getLogicalRenderSize());
 			}
 			else{
-				Logger::warning("Linear texture filtering disabled!");
+				Log(WARN) << "Linear texture filtering disabled!";
 			}
 
-			Logger::verbose("Game successfully loaded.");
+			Log(DEBUG) << "Game successfully loaded.";
 				
 		}
 		else{
-			Logger::errorSDL("Renderer could not be created.", SDL_GetError());
+			Log(ERROR) << "Renderer could not be created. " << SDL_GetError();
 		}
 	}
 	else{
-		Logger::errorSDL("Window failed to be created.", SDL_GetError());
+		Log(ERROR) << "Window failed to be created. " << SDL_GetError();
 	}
 }
 
@@ -92,7 +92,7 @@ void Window::rescale(unsigned int size_){
 	// Just a precaution, so there is no abuse on the size.
 	if(size_ > 10){
 		size_ = 10;
-		Logger::warning("Trying to rescale for a value too big.");
+		Log(WARN) << "Trying to rescale for a value too big.";
 	}
 
 	SDL_RenderSetLogicalSize(

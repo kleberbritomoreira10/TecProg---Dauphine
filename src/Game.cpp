@@ -1,6 +1,5 @@
 #include "Game.h"
 #include "FPSWrapper.h"
-#include "Logger.h"
 #include "Configuration.h"
 #include <cassert>
 
@@ -142,9 +141,3 @@ ResourceManager& Game::getResources(){
 void Game::stop(){
 	this->isRunning = false;
 }
-
-// bool Game::getEscape(){
-// 	const bool escapePressed = this->keyStates(GameKeys::ESCAPE);
-// 	this->keyStates(GameKeys::ESCAPE) = false;
-// 	return escapePressed;
-// }
