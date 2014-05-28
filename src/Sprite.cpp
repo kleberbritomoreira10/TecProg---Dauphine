@@ -135,3 +135,7 @@ SDL_Texture* Sprite::surfaceToTexture(SDL_Surface* const surface_){
 
 	return newTexture;
 }
+
+std::string Sprite::getPath(){
+	return this->path;
+}

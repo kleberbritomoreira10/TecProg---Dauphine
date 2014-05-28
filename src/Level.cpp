@@ -5,7 +5,8 @@ Level::Level() :
 	width(0),
 	height(0),
 	player(nullptr),
-	camera(nullptr)
+	camera(nullptr),
+	tileMap(nullptr)
 {
 	// Only serves as the initializer for the derived classes.
 }

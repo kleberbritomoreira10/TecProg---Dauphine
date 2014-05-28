@@ -1,66 +1,72 @@
 #ifndef INCLUDE_TILEMAP_H
 #define INCLUDE_TILEMAP_H
 
-#include "Entity.h"
-#include "Tile.h"
-
+#include "../lib/TmxParser/Tmx.h"
+#include "Sprite.h"
 #include <vector>
+
+const int TILE_SIZE = 64;
 
 /**
 * Represents the tile distrubution for a level.
 * @todo Revise Tile placement implementation.
 */
-class TileMap : public Entity {
+class TileMap {
 
 	public:
 		/**
 		* The constructor.
-		* @param tileData_ : The vector containing numerical value of the map.
-		* @param path_ : Path to the desired tilesheet.
-		* @see TileMap::create
+		* @param mapPath_ : Path to the desired Tiled map.
 		*/
-		TileMap(const std::vector<int>& tileData_, const std::string& path_);
+		TileMap(const std::string& mapPath_);
 
 		/**
 		* The destructor.
-		* Deletes all the Tiles.
 		*/
 		~TileMap();
 
 		/**
-		* Updates the entity.
-		* Pure virtual function. Purpose is to update whatever is necessary, relative to the
-		* 	entity.
-		* @param dt_ : Delta time. Time elapsed between one frame and the other.
-		*/
-		virtual void update(const double dt_);
-
-		/**
-		* Renders the entity.
-		* Pure virtual function. Purpose is to copy the entity's texture onto the renderer.
-		* @note Usually just calls the render method from the Sprite class.
+		* Renders a certain layer from the TileMap.
+		* 
 		* @param cameraX_ : The x position of the camera.
 		* @param cameraY_ : The y position of the camera.
 		*/
-		virtual void render(const double cameraX_, const double cameraY_);
+		void renderLayer(const double cameraX_, const double cameraY_, const unsigned int layer_);
 
-		std::vector<Tile*> tiles; /**< All the generated tiles. */
+		unsigned int getMapWidth();
+		unsigned int getMapHeight();
+		unsigned int getLayers();
+
+		/**
+		* Returns a reference to the tile index at #x #y #z.
+		*/
+		std::vector <std::vector <int>>& operator[](int i){
+			return (this->tileMatrix[i]);
+		};
 
 	private:
 		/**
-		* Creates the Tiles based on the numerical vector.
-		* @param tileData_ : The vector containing numerical value of the map.
+		*
 		*/
-		void create(const std::vector<int>& tileData_);
+		void load(const std::string& mapPath_);
 
 		/**
-		* Clips the tiles.
-		* @todo Refactor this method.
+		*
 		*/
-		void clipTiles();
+		void addTileSet(const std::string& path_);
 
-		SDL_Rect clips[TileCode::TOTAL]; /**< Contains all the clips for each tile. */
-		
+		int isTileSet(const Tmx::Tileset* tmxTileSet_);
+
+		Tmx::Map* map;
+
+		unsigned int layers;
+		unsigned int mapWidth;
+		unsigned int mapHeight;
+
+		std::vector <std::vector <std::vector <int>>> tileMatrix; /**< Three-dimensional
+			matrix, that contains x = width, y = height, z = layers */
+
+		std::vector <Sprite*> tileSets;
 
 };
 

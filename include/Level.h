@@ -5,6 +5,7 @@
 #include "Player.h"
 #include "Camera.h"
 #include "StateGame.h"
+#include "TileMap.h"
 
 /**
 * Abstract class for levels.
@@ -53,6 +54,8 @@ class Level : public StateGame {
 
 		Player* player; /**< The direct reference to player, even though its in the list. */
 		Camera* camera; /**< The current camera for that level. */
+
+		TileMap* tileMap;
 
 };
 

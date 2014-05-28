@@ -2,9 +2,6 @@
 #include "Logger.h"
 #include "Collision.h"
 
-/////////////sajdgsahd saigdhiasid hgasd sahid ahiusdh 
-#include <iostream>
-
 DynamicEntity::DynamicEntity(const double x_, const double y_, Sprite* const sprite_) :
     Entity(x_, y_, sprite_),
     vx(0.0),
@@ -41,33 +38,33 @@ std::array<bool, CollisionSide::SOLID_TOTAL> DynamicEntity::detectCollision(){
     std::array<bool, CollisionSide::SOLID_TOTAL> detections;
     detections.fill(false);
 
-    for(auto tile : this->tiles){
-        const SDL_Rect tileBox = tile->getRectangle();
-        Collision::RectangleSide side = Collision::rectsCollidedSide(this->boundingBox, tileBox);
+    // for(auto tile : this->tiles){
+    //     const SDL_Rect tileBox = tile->getRectangle();
+    //     Collision::RectangleSide side = Collision::rectsCollidedSide(this->boundingBox, tileBox);
 
-        if(tile->isSolid()){
-            switch(side){
-                case Collision::RectangleSide::TOP: // Hitting under the tile.
-                    detections.at(SOLID_TOP) = true;
-                    break;
-                case Collision::RectangleSide::BOTTOM: // Hitting top of the tile.
-                    detections.at(SOLID_BOTTOM) = true;
-                    break;
-                case Collision::RectangleSide::RIGHT: // Hitting right side of the tile.
-                    detections.at(SOLID_RIGHT) = true;
-                    break;
-                case Collision::RectangleSide::LEFT: // Hitting left side of the tile.
-                    detections.at(SOLID_LEFT) = true;
-                    break;
-                case Collision::RectangleSide::NONE:
-                    // No collision.
-                    break;
-                default:
-                    Logger::error("Unknown rectangle side collided with a dynamic entity.");
-                    break;
-            }
-        }
-    }
+    //     if(tile->isSolid()){
+    //         switch(side){
+    //             case Collision::RectangleSide::TOP: // Hitting under the tile.
+    //                 detections.at(SOLID_TOP) = true;
+    //                 break;
+    //             case Collision::RectangleSide::BOTTOM: // Hitting top of the tile.
+    //                 detections.at(SOLID_BOTTOM) = true;
+    //                 break;
+    //             case Collision::RectangleSide::RIGHT: // Hitting right side of the tile.
+    //                 detections.at(SOLID_RIGHT) = true;
+    //                 break;
+    //             case Collision::RectangleSide::LEFT: // Hitting left side of the tile.
+    //                 detections.at(SOLID_LEFT) = true;
+    //                 break;
+    //             case Collision::RectangleSide::NONE:
+    //                 // No collision.
+    //                 break;
+    //             default:
+    //                 Logger::error("Unknown rectangle side collided with a dynamic entity.");
+    //                 break;
+    //         }
+    //     }
+    // }
 
     return detections;
 }
@@ -125,6 +122,6 @@ void DynamicEntity::roll(){
     }
 }
 
-void DynamicEntity::setTiles(const std::vector<Tile*>& tiles_){
-    this->tiles = tiles_;   
-}
+// void DynamicEntity::setTiles(const std::vector<Tile*>& tiles_){
+//     this->tiles = tiles_;   
+// }

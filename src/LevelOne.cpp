@@ -44,26 +44,24 @@ void LevelOne::load(){
 	Camera* lCamera = new Camera(lPlayer);
 
 	// Loading the tile/tilemap.
-	TmxWrapper tmxw("res/maps/level1.tmx");
-	TileMap* tileMap = new TileMap(tmxw.getTileData(), pathTileSheet);
-	addEntity(tileMap);
-	lPlayer->setTiles(tileMap->tiles);
+	this->tileMap = new TileMap("res/maps/level1.tmx");
+	//lPlayer->setTiles(tileMap->tiles);
 
 	// Setting the level width/height.
-	this->width = tmxw.getMapWidth();
-	this->height = tmxw.getMapHeight();
+	this->width = this->tileMap->getMapWidth();
+	this->height = this->tileMap->getMapHeight();
 
 	// Test enemy.
 	Sprite* spriteEnemy;
 	spriteEnemy = Game::instance().getResources().get(pathTempEnemy);
 	Enemy* enemy = new Enemy(704.0, 0.0, spriteEnemy, true, 200.0);
 	enemy->setLevelWH(this->width, this->height);
-	enemy->setTiles(tileMap->tiles);
+	//enemy->setTiles(tileMap->tiles);
 	addEntity(enemy);
 
 	// Test text.
-	Text* text = new Text(200.0, 900.0, "res/fonts/KGFeeling22.ttf", 50, "dauphine");
-	addEntity(text);
+	// Text* text = new Text(200.0, 900.0, "res/fonts/KGFeeling22.ttf", 50, "dauphine");
+	// addEntity(text);
 
 	// Finally, setting the player and the camera.
 	setPlayer(lPlayer);
@@ -76,11 +74,14 @@ void LevelOne::unload(){
 }
 
 void LevelOne::update(const double dt_){
+	Logger::verbose("Updating level 1...");
+
 	// Update all the entities in the list.
 	for(auto entity : entities){
         entity->update(dt_);
 	}
 
+	/// @todo Refactor this static Enemy::px, Enemy::py.
 	Enemy::px = this->player->x;
 	Enemy::py = this->player->y;
 
@@ -88,9 +89,19 @@ void LevelOne::update(const double dt_){
 }
 
 void LevelOne::render(){
+	Logger::verbose("Rendering level 1...");
+
 	const int cameraX = this->camera->getClip().x;
 	const int cameraY = this->camera->getClip().y;
 
+	Logger::verbose("Rendering level 1 TileMap...");
+	// Render the tiles in the TileMap, by layers.
+	for(unsigned int i = 0; i < this->tileMap->getLayers(); i++){
+		Logger::verbose("number: " + std::to_string(i));
+		this->tileMap->renderLayer(cameraX, cameraY, i);
+	}
+
+	Logger::verbose("Rendering level 1 entities...");
 	// Render all the entities in the list.
 	for(auto entity : entities){
         entity->render(cameraX, cameraY);

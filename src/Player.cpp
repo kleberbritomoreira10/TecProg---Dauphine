@@ -118,3 +118,7 @@ void Player::changeState(const PStates state_){
 Animation *Player::getAnimation(){
     return (this->animation);
 }
+
+bool Player::isCurrentState(const PStates state_){
+    return (this->currentState == this->statesMap.at(state_));
+}
