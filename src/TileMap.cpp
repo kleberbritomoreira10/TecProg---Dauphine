@@ -3,7 +3,7 @@
 #include "Collision.h"
 #include "Logger.h"
 
-#include <iostream>
+#include <cassert>
 
 TileMap::TileMap(const std::string& mapPath_) :
 	map(nullptr),
@@ -14,6 +14,10 @@ TileMap::TileMap(const std::string& mapPath_) :
 	load(mapPath_);
 }
 
+TileMap::~TileMap(){
+
+}
+
 void TileMap::load(const std::string& mapPath_){
 	this->map = new Tmx::Map();
 	this->map->ParseFile(mapPath_);
@@ -22,8 +26,8 @@ void TileMap::load(const std::string& mapPath_){
 
 		// Iterating through the tilesets to load their respective sprites.
 		for (int i = 0; i < this->map->GetNumTilesets(); ++i) {
-			const Tmx::Tileset* tileset = this->map->GetTileset(i);
-			addTileSet("res/maps/"+tileset->GetImage()->GetSource());
+			const Tmx::Tileset* tileSet = this->map->GetTileset(i);
+			addTileSet("res/maps/" + tileSet->GetImage()->GetSource());
 		}
 
 		// Getting the number of layers inside the map.
@@ -58,68 +62,79 @@ void TileMap::load(const std::string& mapPath_){
 		for (i = 0; i < this->layers; i++){
 			currentLayer = this->map->GetLayer(i);
 
-			/// @todo Don't count Collision layer here. (currentLayer->GetName())
-
 			// Saving all the tile IDs on the TileMap::tileMatrix
 			for (j = 0; j < this->mapWidth; j++){
 				for (k = 0; k < this->mapHeight; k++){
 					this->tileMatrix[j][k][i] = currentLayer->GetTileId(j, k);
+
+					if(currentLayer->GetName() == "Collision"){
+						if(this->tileMatrix[j][k][i] != 0){
+							SDL_Rect tile = {(int)(j * TILE_SIZE), (int)(k * TILE_SIZE), TILE_SIZE, TILE_SIZE};
+							this->collisionRects.push_back(tile);
+						}
+					}
 				}
 			}
 		}
 
-		Logger::verbose("TileMap::load Map loaded (width:" +
-               std::to_string(mapWidth)  +
-               " height:" +
-               std::to_string(mapHeight) +
-               " layers:" +
-               std::to_string(layers) +
-               ")");
+		Logger::verbose("TileMap::load Map loaded (width:" + std::to_string(mapWidth) +
+			" height:" + std::to_string(mapHeight) + " layers:" + std::to_string(layers) + ")");
+
 	}
 	else{
 		Logger::error("Unable to parse map at \"" + mapPath_ + "\" with error: " + this->map->GetErrorText());
 	}
 }
 
-TileMap::~TileMap(){
+void TileMap::render(const double cameraX_, const double cameraY_){
+	assert((this->tilesetSprites.size() > 0) && "No tilesets detected for the TileMap!");
 
+	for(unsigned int i = 0; i < this->layers - 1; i++){
+		if (i > this->tileMatrix[0][0].size()){
+			Logger::error("Invalid layer number for rendering a TileMap layer.");
+			continue;
+		}
+
+		renderLayer(cameraX_, cameraY_, i);
+	}
 }
 
 void TileMap::renderLayer(const double cameraX_, const double cameraY_, const unsigned int layer_){
-	if (this->tileSets.size() <= 0){
-		Logger::error("TileSet in TileMap is null!");
-		return;
-	}
-	if (layer_ > this->tileMatrix[0][0].size()){
-		Logger::error("Invalid layer number for rendering a TileMap layer.");
-		return;
-	}
+	const int tilesInX = this->tileMatrix.size();
+	const int tilesInY = this->tileMatrix[0].size();
 
-	const int x = this->tileMatrix.size();
-	const int y = this->tileMatrix[0].size();
+	const Tmx::Layer* currentLayer = this->map->GetLayer(layer_);
 
-	for (int i = 0; i < x; i++){
-		for (int j = 0; j < y; j++){
-			const int index = tileMatrix[i][j][layer_];
+	for (int i = 0; i < tilesInX; i++){
+		for (int j = 0; j < tilesInY; j++){
+			const int gid = tileMatrix[i][j][layer_];
 
 			// If its a valid tile.
-			if (index > 0){
+			if (gid > 0){
 				const double posX = ((i * TILE_SIZE) - cameraX_);
 				const double posY = ((j * TILE_SIZE) - cameraY_);
 
-				const Tmx::Tileset* ts = this->map->FindTileset(index);
-				int tileSetPosition = isTileSet(ts);
+				const int tileSetPosition = currentLayer->GetTileTilesetIndex(i,j);
 
-				std::cout << "TILESETPOSITION: " << tileSetPosition << std::endl;
+				const unsigned int tileSetSpriteWidth = this->tilesetSprites.at(tileSetPosition)->getWidth();
+				const int tilesPerX = tileSetSpriteWidth / TILE_SIZE;
+				SDL_Rect tileClip = {(gid%tilesPerX) * TILE_SIZE, (gid/tilesPerX) * TILE_SIZE, TILE_SIZE, TILE_SIZE};
 
-				unsigned int sw = this->tileSets.at(tileSetPosition)->getWidth();
-				int tpx = sw / TILE_SIZE;
-				SDL_Rect tileClip = {index%tpx * TILE_SIZE, index/tpx * TILE_SIZE, TILE_SIZE, TILE_SIZE};
-
-				this->tileSets.at(tileSetPosition)->render(posX, posY, &tileClip);
+				this->tilesetSprites.at(tileSetPosition)->render(posX, posY, &tileClip);
 			}
 		}
 	}
+
+}
+
+void TileMap::addTileSet(const std::string& path_){
+	Logger::verbose("Adding TileSet: " + path_);
+	Sprite* newTileSet = Game::instance().getResources().get(path_);
+	this->tilesetSprites.push_back(newTileSet);
+}
+
+std::vector <SDL_Rect>& TileMap::getCollisionRects(){
+	return this->collisionRects;
 }
 
 unsigned int TileMap::getMapWidth(){
@@ -128,26 +143,4 @@ unsigned int TileMap::getMapWidth(){
 
 unsigned int TileMap::getMapHeight(){
 	return this->mapHeight * TILE_SIZE;
-}
-
-unsigned int TileMap::getLayers(){
-	return this->layers;
-}
-
-void TileMap::addTileSet(const std::string& path_){
-	Logger::verbose("Adding TileSet: " + path_);
-	Sprite* newTileSet = Game::instance().getResources().get(path_);
-	this->tileSets.push_back(newTileSet);
-}
-
-int TileMap::isTileSet(const Tmx::Tileset* tmxTileSet_){
-	const std::string tmxPath = "res/maps/"+tmxTileSet_->GetImage()->GetSource();
-	for(int i = 0; i < this->tileSets.size(); i++){
-		const std::string spritePath = this->tileSets.at(i)->getPath();
-		if(tmxPath == spritePath){
-			return i;
-		}
-	}
-
-	return -1;
 }

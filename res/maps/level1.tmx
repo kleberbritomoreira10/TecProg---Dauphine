@@ -17,9 +17,6 @@
   </data>
  </layer>
  <layer name="Collision" width="30" height="17">
-  <properties>
-   <property name="Collision" value="true"/>
-  </properties>
   <data encoding="base64" compression="zlib">
    eJxjYBgFo2AUjALSgAQBPNLBYA4DQm6jldvpZS+6OeTYSw23EGPvQGEA23QEmQ==
   </data>

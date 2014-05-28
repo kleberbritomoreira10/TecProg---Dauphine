@@ -1,5 +1,5 @@
 #include "Level.h"
-#include <iostream>
+#include "Logger.h"
 
 Level::Level() :
 	width(0),
@@ -24,4 +24,34 @@ unsigned int Level::getWidth(){
 
 unsigned int Level::getHeight(){
 	return this->height;
+}
+
+void Level::setPlayer(Player* const player_){
+	this->player = player_;
+
+	if(this->player != nullptr){
+		this->player->setLevelWH(this->width, this->height);
+		addEntity(this->player);
+	}
+	else{
+		Logger::warning("Setting a null player for the level!");
+	}
+	
+}
+
+void Level::setCamera(Camera* const camera_){
+	this->camera = camera_;
+
+	if(this->camera != nullptr){
+		if(this->player != nullptr){
+			this->camera->setLevelWH(this->width, this->height);
+		}
+		else{
+			Logger::warning("Shouldn't set the camera before the player, in Level!");
+		}
+	}
+	else{
+		Logger::warning("Setting a null camera!");
+	}
+
 }

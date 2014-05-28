@@ -26,16 +26,16 @@ class TileMap {
 		~TileMap();
 
 		/**
-		* Renders a certain layer from the TileMap.
+		* Renders the TileMap.
 		* 
 		* @param cameraX_ : The x position of the camera.
 		* @param cameraY_ : The y position of the camera.
 		*/
-		void renderLayer(const double cameraX_, const double cameraY_, const unsigned int layer_);
+		void render(const double cameraX_, const double cameraY_);
 
 		unsigned int getMapWidth();
 		unsigned int getMapHeight();
-		unsigned int getLayers();
+		std::vector <SDL_Rect>& getCollisionRects();
 
 		/**
 		* Returns a reference to the tile index at #x #y #z.
@@ -55,7 +55,13 @@ class TileMap {
 		*/
 		void addTileSet(const std::string& path_);
 
-		int isTileSet(const Tmx::Tileset* tmxTileSet_);
+		/**
+		* Renders a certain layer from the TileMap.
+		* 
+		* @param cameraX_ : The x position of the camera.
+		* @param cameraY_ : The y position of the camera.
+		*/
+		void renderLayer(const double cameraX_, const double cameraY_, const unsigned int layer_);
 
 		Tmx::Map* map;
 
@@ -66,7 +72,9 @@ class TileMap {
 		std::vector <std::vector <std::vector <int>>> tileMatrix; /**< Three-dimensional
 			matrix, that contains x = width, y = height, z = layers */
 
-		std::vector <Sprite*> tileSets;
+		std::vector <Sprite*> tilesetSprites;
+
+		std::vector <SDL_Rect> collisionRects;
 
 };
 

@@ -45,7 +45,7 @@ void LevelOne::load(){
 
 	// Loading the tile/tilemap.
 	this->tileMap = new TileMap("res/maps/level1.tmx");
-	//lPlayer->setTiles(tileMap->tiles);
+	lPlayer->setCollisionRects(this->tileMap->getCollisionRects());
 
 	// Setting the level width/height.
 	this->width = this->tileMap->getMapWidth();
@@ -74,8 +74,6 @@ void LevelOne::unload(){
 }
 
 void LevelOne::update(const double dt_){
-	Logger::verbose("Updating level 1...");
-
 	// Update all the entities in the list.
 	for(auto entity : entities){
         entity->update(dt_);
@@ -89,51 +87,15 @@ void LevelOne::update(const double dt_){
 }
 
 void LevelOne::render(){
-	Logger::verbose("Rendering level 1...");
-
 	const int cameraX = this->camera->getClip().x;
 	const int cameraY = this->camera->getClip().y;
 
-	Logger::verbose("Rendering level 1 TileMap...");
-	// Render the tiles in the TileMap, by layers.
-	for(unsigned int i = 0; i < this->tileMap->getLayers(); i++){
-		Logger::verbose("number: " + std::to_string(i));
-		this->tileMap->renderLayer(cameraX, cameraY, i);
-	}
+	// Render the tiles in the TileMap.
+	this->tileMap->render(cameraX, cameraY);
 
-	Logger::verbose("Rendering level 1 entities...");
 	// Render all the entities in the list.
 	for(auto entity : entities){
         entity->render(cameraX, cameraY);
 	}
 }
 
-void LevelOne::setPlayer(Player* const player_){
-	this->player = player_;
-
-	if(this->player != nullptr){
-		this->player->setLevelWH(this->width, this->height);
-		addEntity(this->player);
-	}
-	else{
-		Logger::warning("Setting a null player!");
-	}
-	
-}
-
-void LevelOne::setCamera(Camera* const camera_){
-	this->camera = camera_;
-
-	if(this->camera != nullptr){
-		if(this->player != nullptr){
-			this->camera->setLevelWH(this->width, this->height);
-		}
-		else{
-			Logger::warning("Shouldn't set the camera before the player, in Level!");
-		}
-	}
-	else{
-		Logger::warning("Setting a null camera!");
-	}
-
-}
