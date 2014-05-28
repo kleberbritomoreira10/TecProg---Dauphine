@@ -50,8 +50,8 @@ void InputHandler::handleInput(){
 				case SDLK_c: // Roll.
 					this->keyStates[GameKeys::ROLL] = true;
 					break;
-				case SDLK_ESCAPE: // ESC
-					this->keyStates[GameKeys::ESCAPE] = true;
+				case SDLK_LCTRL: // ESC
+					this->keyStates[GameKeys::LCTRL] = true;
 					break;
 				default:
 					break;
@@ -79,8 +79,8 @@ void InputHandler::handleInput(){
 				case SDLK_c: // Roll.
 					this->keyStates[GameKeys::ROLL] = false;
 					break;
-				case SDLK_ESCAPE: // ESC
-					this->keyStates[GameKeys::ESCAPE] = true;
+				case SDLK_LCTRL: // ESC
+					this->keyStates[GameKeys::LCTRL] = false;
 					break;
 				default:
 					break;
