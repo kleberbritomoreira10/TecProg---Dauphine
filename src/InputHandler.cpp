@@ -23,8 +23,9 @@ void InputHandler::handleInput(){
 	do{
 		pendingEvent = SDL_PollEvent(&this->sdlEvent); 
 
-		if(this->sdlEvent.type == SDL_CONTROLLERBUTTONDOWN
-			|| this->sdlEvent.type == SDL_CONTROLLERBUTTONUP){
+		if(this->sdlEvent.type == SDL_CONTROLLERBUTTONDOWN 
+			|| this->sdlEvent.type == SDL_CONTROLLERBUTTONUP 
+			|| this->sdlEvent.type == SDL_CONTROLLERAXISMOTION){
 			
 			this->controllerHandler->handleInput(this->sdlEvent);
 		}
@@ -47,11 +48,19 @@ void InputHandler::handleInput(){
 				case SDLK_RIGHT: // Move right.
 					this->keyStates[GameKeys::RIGHT] = true;
 					break;
-				case SDLK_c: // Roll.
+				case SDLK_c: // roll.
 					this->keyStates[GameKeys::ROLL] = true;
 					break;
-				case SDLK_LCTRL: // ESC
+				case SDLK_LCTRL: // ltrcl
 					this->keyStates[GameKeys::LCTRL] = true;
+				case SDLK_a: // a.
+					this->keyStates[GameKeys::A] = true;
+					break;
+				case SDLK_d: // d.
+					this->keyStates[GameKeys::D] = true;
+					break;
+				case SDLK_ESCAPE: // Esc.
+					this->keyStates[GameKeys::ESCAPE] = false;
 					break;
 				default:
 					break;
@@ -79,8 +88,16 @@ void InputHandler::handleInput(){
 				case SDLK_c: // Roll.
 					this->keyStates[GameKeys::ROLL] = false;
 					break;
-				case SDLK_LCTRL: // ESC
+				case SDLK_LCTRL: // lctrl
 					this->keyStates[GameKeys::LCTRL] = false;
+				case SDLK_a: // a.
+					this->keyStates[GameKeys::A] = false;
+					break;
+				case SDLK_d: // d.
+					this->keyStates[GameKeys::D] = false;
+					break;
+				case SDLK_ESCAPE: // Esc.
+					this->keyStates[GameKeys::ESCAPE] = false;
 					break;
 				default:
 					break;

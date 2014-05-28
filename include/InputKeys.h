@@ -11,6 +11,9 @@ enum GameKeys : uint8_t {
 	ROLL,
 	SPACE,
 	LCTRL,
+	A,
+	D,
+	ESCAPE,
 	MAX
 };
 

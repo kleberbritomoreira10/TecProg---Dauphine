@@ -45,6 +45,11 @@ void PStateIdle::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 		return;
 	}
 
+	if(keyStates_[GameKeys::DOWN]){
+		this->player->changeState(Player::PStates::AIMING);
+		return;
+	}
+
 }
 
 PStateIdle::PStateIdle(Player* const player_) :

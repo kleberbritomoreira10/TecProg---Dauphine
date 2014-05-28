@@ -1,6 +1,8 @@
 #ifndef INCLUDE_TILEMAP_H
 #define INCLUDE_TILEMAP_H
 
+#define TILE_SIZE 48.0
+
 #include "Entity.h"
 #include "Tile.h"
 

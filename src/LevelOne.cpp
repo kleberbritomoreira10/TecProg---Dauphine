@@ -3,10 +3,9 @@
 #include "LuaScript.h"
 #include "Logger.h"
 #include "Enemy.h"
-#include "TmxWrapper.h"
+#include "Crosshair.h"
 #include "TileMap.h"
-
-#include "Text.h"
+#include "TmxWrapper.h"
 
 LevelOne::LevelOne() :
 	Level()
@@ -43,6 +42,19 @@ void LevelOne::load(){
 	Player* lPlayer = new Player(initialPlayerX, initialPlayerY, spritePlayer);
 	Camera* lCamera = new Camera(lPlayer);
 
+	Sprite* spriteCrosshair = nullptr;
+	spriteCrosshair = Game::instance().getResources().get("res/alvo.png");
+	Crosshair *crosshair = new Crosshair(500,600, spriteCrosshair);
+
+	Sprite* spriteBombPotion = nullptr;
+	spriteBombPotion = Game::instance().getResources().get("res/potion.png");
+	BombPotion *bombPotion = new BombPotion(300,600, spriteBombPotion);
+
+	lPlayer->setCrosshair(crosshair);
+	lPlayer->setBombPotion(bombPotion);
+	this->width = 1920;
+	this->height = 1080;
+
 	// Loading the tile/tilemap.
 	TmxWrapper tmxw("res/maps/level1.tmx");
 	TileMap* tileMap = new TileMap(tmxw.getTileData(), pathTileSheet);
@@ -53,17 +65,18 @@ void LevelOne::load(){
 	this->width = tmxw.getMapWidth();
 	this->height = tmxw.getMapHeight();
 
-	// Test enemy.
 	Sprite* spriteEnemy;
 	spriteEnemy = Game::instance().getResources().get(pathTempEnemy);
 	Enemy* enemy = new Enemy(704.0, 0.0, spriteEnemy, true, 200.0);
 	enemy->setLevelWH(this->width, this->height);
 	enemy->setTiles(tileMap->tiles);
 	addEntity(enemy);
+	addEntity(crosshair);
+	addEntity(bombPotion);
 
 	// Test text.
-	Text* text = new Text(200.0, 900.0, "res/fonts/KGFeeling22.ttf", 50, "dauphine");
-	addEntity(text);
+	// Text* text = new Text(200.0, 900.0, "res/fonts/KGFeeling22.ttf", 50, "dauphine");
+	// addEntity(text);
 
 	// Finally, setting the player and the camera.
 	setPlayer(lPlayer);

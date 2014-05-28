@@ -6,6 +6,7 @@
 #include "InputKeys.h"
 #include "StatePlayer.h"
 #include "Animation.h"
+#include "Crosshair.h"
 #include <map>
 
 class StatePlayer;
@@ -25,7 +26,8 @@ class Player : public DynamicEntity {
 			MOVING,
 			AERIAL,
 			ROLLING,
-			CROUCH
+			CROUCH,
+			AIMING
 		};
 
 		/**
@@ -85,12 +87,20 @@ class Player : public DynamicEntity {
 		*/
 		Animation *getAnimation();
 
+		Crosshair* getCrosshair();
+		void setCrosshair(Crosshair* crosshair);
+
+		BombPotion* getBombPotion();
+		void setBombPotion(BombPotion* bombPotion);
+
 	private:
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
 
 		Animation* animation; /**< Current player animation. */
 		StatePlayer* currentState; /**< The current state, which the player is in. */
 		std::map<PStates, StatePlayer*> statesMap; /**< Map containing all possible states. */
+		Crosshair* crosshair;
+		BombPotion *bombPotion;
 		
 };
 

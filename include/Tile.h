@@ -21,7 +21,8 @@ enum TileCode : int {
 };
 
 const int TILE_PER_ROW_IMAGE = 5;
-const int TILE_SIZE = 64;
+const int TILE_WIDTH = 64;
+const int TILE_HEIGHT = 64;
 
 #include "SDLWrapper.h"
 

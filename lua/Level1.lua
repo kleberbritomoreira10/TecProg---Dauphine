@@ -6,8 +6,8 @@ level = {
 
 	player = {
 	    position = {
-	    	x = 10.0,
-	    	y = 10.0,
+	    	x = 450.0,
+	    	y = 300.0,
 	    },
 	    spriteSheet = "res/images/spriteSheet_nadine.png",
 	},
