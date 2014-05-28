@@ -28,6 +28,12 @@ void PStateIdle::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 		return;
 	}
 
+	// Crouch
+	if(keyStates_[GameKeys::DOWN]){
+		this->player->changeState(Player::PStates::CROUCH);
+		return;
+	}
+
 	// Move
 	if(keyStates_[GameKeys::LEFT] || keyStates_[GameKeys::RIGHT]){
 		this->player->changeState(Player::PStates::MOVING);

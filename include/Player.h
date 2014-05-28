@@ -24,7 +24,8 @@ class Player : public DynamicEntity {
 			IDLE = 0,
 			MOVING,
 			AERIAL,
-			ROLLING
+			ROLLING,
+			CROUCH
 		};
 
 		/**

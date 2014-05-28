@@ -1,4 +1,5 @@
 #include "Enemy.h"
+#include "Logger.h"
 
 #include "EStateIdle.h"
 #include "EStatePatrolling.h"
@@ -27,12 +28,7 @@ Enemy::Enemy(const double x_, const double y_, Sprite* const sprite_, const bool
 
     this->speed = 0.7;
 
-    if(this->patrol){
-        this->currentState = this->statesMap.at(PATROLLING);
-    }
-    else{
-        this->currentState = this->statesMap.at(IDLE);
-    }
+    this->currentState = this->statesMap.at(AERIAL);
     this->currentState->enter();
 }
 

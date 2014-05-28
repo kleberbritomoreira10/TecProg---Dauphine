@@ -8,6 +8,7 @@
 #include "PStateAerial.h"
 #include "PStateMoving.h"
 #include "PStateRolling.h"
+#include "PStateCrouch.h"
 
 #include <iostream>
 
@@ -99,6 +100,7 @@ void Player::initializeStates(){
     this->statesMap.emplace(MOVING, new PStateMoving(this));
     this->statesMap.emplace(AERIAL, new PStateAerial(this));
     this->statesMap.emplace(ROLLING, new PStateRolling(this));
+    this->statesMap.emplace(CROUCH, new PStateCrouch(this));
 }
 
 void Player::destroyStates(){

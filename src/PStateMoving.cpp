@@ -23,6 +23,12 @@ void PStateMoving::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
         return;
     }
 
+    // Crouch
+    if(keyStates_[GameKeys::DOWN]){
+        this->player->changeState(Player::PStates::CROUCH);
+        return;
+    }
+
     this->player->move(keyStates_[GameKeys::LEFT], keyStates_[GameKeys::RIGHT]);
 
     if(keyStates_[GameKeys::ROLL]){
