@@ -1,7 +1,10 @@
 splash = {
-	spriteLogo = "res/alke_white_bg.png",
-	spriteTechs = "res/techs_white_bg.png",
-	spriteLicenses = "res/licenses2.png",
-	spriteEsrb = "res/esrb_white_bg.png",
+	images = {
+		alke = "res/images/splash_alke.png",
+		techs = "res/images/splash_techs.png",
+		licenses = "res/images/splash_licenses.png",
+		esrb = "res/images/splash_esrb.png",
+	},
+	
 	lifeTime = 0.2,
 }

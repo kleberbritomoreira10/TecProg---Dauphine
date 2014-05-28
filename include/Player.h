@@ -27,6 +27,7 @@ class Player : public DynamicEntity {
 			AERIAL,
 			ROLLING,
 			AIMING
+			CROUCH
 		};
 
 		/**
@@ -93,6 +94,8 @@ class Player : public DynamicEntity {
 		void setBombPotion(BombPotion* bombPotion);
 
 	private:
+		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
+
 		Animation* animation; /**< Current player animation. */
 		StatePlayer* currentState; /**< The current state, which the player is in. */
 		std::map<PStates, StatePlayer*> statesMap; /**< Map containing all possible states. */

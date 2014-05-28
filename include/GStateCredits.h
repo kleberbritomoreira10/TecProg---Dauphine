@@ -48,8 +48,11 @@ class GStateCredits : public StateGame {
 		virtual void render();
 
 	private:
-		Sprite* creditsImage; /**< The image shown on the menu. */
-
+		Sprite* creditsImage; /**< The image shown on the credits. */
+		const int creditsHeightSize;
+		const int creditsChangeSpeed;
+		SDL_Rect creditsClip; /**< The clip shown on the credits. */
+		
 };
 
 #endif // INCLUDE_GSTATECREDITS_H

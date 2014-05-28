@@ -1,3 +1,5 @@
 options = {
-	spritePath = "res/options.jpg",
+	images = {
+		dummy = "res/images/temp_menu_options.jpg",
+	}
 }

@@ -8,7 +8,10 @@
 #include "PStateAerial.h"
 #include "PStateMoving.h"
 #include "PStateRolling.h"
+
 #include "PStateAiming.h"
+#include "PStateCrouch.h"
+
 Player::Player(const double x_, const double y_, Sprite* const sprite_) :
     DynamicEntity(x_, y_, sprite_),
     animation(nullptr)
@@ -16,9 +19,9 @@ Player::Player(const double x_, const double y_, Sprite* const sprite_) :
 
     initializeStates();
 
-    LuaScript luaPlayer("lua/Level1.lua");
-    this->width = luaPlayer.unlua_get<int>("level.player.width");
-    this->height = luaPlayer.unlua_get<int>("level.player.height");
+    LuaScript luaPlayer("lua/Player.lua");
+    this->width = luaPlayer.unlua_get<int>("player.dimensions.width");
+    this->height = luaPlayer.unlua_get<int>("player.dimensions.height");
 
     // Shouldn't be here.
     this->animation = new Animation(0, 3, this->width, this->height, 11, false);
@@ -45,14 +48,49 @@ void Player::update(const double dt_){
 
     this->currentState->handleInput(keyStates);
     updatePosition(dt_);
-    this->animation->update(this->clip, dt_);
+    std::array<bool, CollisionSide::SOLID_TOTAL> detections = detectCollision();
+    handleCollision(detections);
+    this->animation->update(this->animationClip, dt_);
+}
+
+void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){
+    if(detections_.at(CollisionSide::SOLID_TOP)){ 
+        if((int)this->y%64 > 0){
+        	this->y += 64 -(int)this->y%64 + 1; 
+        	this->vy = 0.0;
+    	}
+    }
+    if(detections_.at(CollisionSide::SOLID_BOTTOM)){
+        if(this->currentState == this->statesMap.at(PStates::AERIAL)){
+            this->y -= (int)(this->y + this->height)%64 - 1;
+            this->vy = 0.0;
+            changeState(PStates::IDLE);
+        }
+    }
+    else{
+        if(this->currentState != this->statesMap.at(PStates::AERIAL)){
+            changeState(PStates::AERIAL);
+        }
+    }
+    if(detections_.at(CollisionSide::SOLID_LEFT)){
+        this->x -= (int)(this->x + this->width)%64 + 1;
+        this->vx = 0.0;
+    }
+    if(detections_.at(CollisionSide::SOLID_RIGHT)){
+    
+//    	std::cout << (int)this->x%64 << "\n";
+        if((int)this->x%64 > 0){
+        	this->x += (64 - (int)this->x%64) + 1;
+        	this->vx = 0.0;
+        }
+    }
 }
 
 void Player::render(const double cameraX_, const double cameraY_){
     if(this->sprite != nullptr){
         const double dx = this->x - cameraX_;
         const double dy = this->y - cameraY_;
-        this->sprite->render(dx, dy, &clip, false, 0.0, nullptr, SDL_FLIP_HORIZONTAL);
+        this->sprite->render(dx, dy, &this->animationClip, false, 0.0, nullptr, SDL_FLIP_HORIZONTAL);
     }
 }
 
@@ -63,6 +101,7 @@ void Player::initializeStates(){
     this->statesMap.emplace(AERIAL, new PStateAerial(this));
     this->statesMap.emplace(ROLLING, new PStateRolling(this));
     this->statesMap.emplace(AIMING, new PStateAiming(this));
+    this->statesMap.emplace(CROUCH, new PStateCrouch(this));
 }
 
 void Player::destroyStates(){

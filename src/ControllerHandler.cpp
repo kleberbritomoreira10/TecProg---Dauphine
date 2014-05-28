@@ -31,6 +31,16 @@ void ControllerHandler::handleInput(SDL_Event& sdlEvent_){
                 fakeKeyInput.key.state = SDL_PRESSED;
                 break;
             
+            case controllerMap::buttons::DUP: // Move Left.
+                fakeKeyInput.key.keysym.sym = SDLK_UP; 
+                fakeKeyInput.key.state = SDL_PRESSED;  
+            	break;
+            	
+            case controllerMap::buttons::DDOWN: // Move Left.
+                fakeKeyInput.key.keysym.sym = SDLK_DOWN; 
+                fakeKeyInput.key.state = SDL_PRESSED;  
+            	break;
+            
             case controllerMap::buttons::DLEFT: // Move Left.
                 fakeKeyInput.key.keysym.sym = SDLK_LEFT; 
                 fakeKeyInput.key.state = SDL_PRESSED;
@@ -68,7 +78,17 @@ void ControllerHandler::handleInput(SDL_Event& sdlEvent_){
                 fakeKeyInput.key.keysym.sym = SDLK_LEFT; 
                 fakeKeyInput.key.state = SDL_RELEASED;
                 break;
-
+			 
+            case controllerMap::buttons::DUP: // Move Left.
+                fakeKeyInput.key.keysym.sym = SDLK_UP; 
+                fakeKeyInput.key.state = SDL_RELEASED;  
+            	break;
+            
+            case controllerMap::buttons::DDOWN: // Move Left.
+                fakeKeyInput.key.keysym.sym = SDLK_DOWN; 
+                fakeKeyInput.key.state = SDL_RELEASED;  
+				break;
+			
             case controllerMap::buttons::DRIGHT: // Move Right.
                 fakeKeyInput.key.keysym.sym = SDLK_RIGHT; 
                 fakeKeyInput.key.state = SDL_RELEASED;

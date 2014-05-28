@@ -44,16 +44,16 @@ void GStateSplash::load(){
 	Logger::verbose("Loading splash screens...");
 
 	LuaScript luaSplash("lua/Splash.lua");
-	const std::string logoPath = luaSplash.unlua_get<std::string>("splash.spriteLogo");
-	const std::string techsPath = luaSplash.unlua_get<std::string>("splash.spriteTechs");
-	const std::string licensesPath = luaSplash.unlua_get<std::string>("splash.spriteLicenses");
-	const std::string esrbPath = luaSplash.unlua_get<std::string>("splash.spriteEsrb");
+	const std::string pathLogo = luaSplash.unlua_get<std::string>("splash.images.alke");
+	const std::string pathTechs = luaSplash.unlua_get<std::string>("splash.images.techs");
+	const std::string pathLicenses = luaSplash.unlua_get<std::string>("splash.images.licenses");
+	const std::string pathEsrb = luaSplash.unlua_get<std::string>("splash.images.esrb");
 	const double luaLifeTime = luaSplash.unlua_get<double>("splash.lifeTime");
 
-	this->images[0] = Game::instance().getResources().get(logoPath);
-	this->images[1] = Game::instance().getResources().get(techsPath);
-	this->images[2] = Game::instance().getResources().get(licensesPath);
-	this->images[3] = Game::instance().getResources().get(esrbPath);
+	this->images[0] = Game::instance().getResources().get(pathLogo);
+	this->images[1] = Game::instance().getResources().get(pathTechs);
+	this->images[2] = Game::instance().getResources().get(pathLicenses);
+	this->images[3] = Game::instance().getResources().get(pathEsrb);
 
 	this->lifeTime = luaLifeTime;
 }

@@ -1,4 +1,5 @@
 #include "Enemy.h"
+#include "Logger.h"
 
 #include "EStateIdle.h"
 #include "EStatePatrolling.h"
@@ -27,12 +28,7 @@ Enemy::Enemy(const double x_, const double y_, Sprite* const sprite_, const bool
 
     this->speed = 0.7;
 
-    if(this->patrol){
-        this->currentState = this->statesMap.at(PATROLLING);
-    }
-    else{
-        this->currentState = this->statesMap.at(IDLE);
-    }
+    this->currentState = this->statesMap.at(AERIAL);
     this->currentState->enter();
 }
 
@@ -47,6 +43,8 @@ Enemy::~Enemy(){
 void Enemy::update(const double dt_){
     this->currentState->update();
     updatePosition(dt_);
+    std::array<bool, CollisionSide::SOLID_TOTAL> detections = detectCollision();
+    handleCollision(detections);
 }
 
 void Enemy::render(const double cameraX_, const double cameraY_){
@@ -78,4 +76,37 @@ void Enemy::changeState(const EStates state_){
     this->currentState->exit();
     this->currentState = this->statesMap.at(state_);
     this->currentState->enter();
+}
+
+void Enemy::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){
+    if(detections_.at(CollisionSide::SOLID_TOP)){ 
+        if((int)this->y%64 > 0){
+            this->y += 64 -(int)this->y%64 + 1; 
+            this->vy = 0.0;
+        }
+    }
+    if(detections_.at(CollisionSide::SOLID_BOTTOM)){
+        if(this->currentState == this->statesMap.at(EStates::AERIAL)){
+            this->y -= (int)(this->y + this->height)%64 - 1;
+            this->vy = 0.0;
+            changeState(EStates::PATROLLING);
+        }
+    }
+    else{
+        if(this->currentState != this->statesMap.at(EStates::AERIAL)){
+            changeState(EStates::AERIAL);
+        }
+    }
+    if(detections_.at(CollisionSide::SOLID_LEFT)){
+        this->x -= (int)(this->x + this->width)%64 + 1;
+        this->vx = 0.0;
+    }
+    if(detections_.at(CollisionSide::SOLID_RIGHT)){
+    
+//      std::cout << (int)this->x%64 << "\n";
+        if((int)this->x%64 > 0){
+            this->x += (64 - (int)this->x%64) + 1;
+            this->vx = 0.0;
+        }
+    }
 }

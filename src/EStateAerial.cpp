@@ -3,6 +3,7 @@
 
 void EStateAerial::enter(){
 	Logger::verbose("enter enemy aerial");	
+	this->enemy->isGrounded = false;
 }
 
 void EStateAerial::exit(){

@@ -2,12 +2,15 @@
 #include "Logger.h"
 #include "Collision.h"
 
+/////////////sajdgsahd saigdhiasid hgasd sahid ahiusdh 
+#include <iostream>
+
 DynamicEntity::DynamicEntity(const double x_, const double y_, Sprite* const sprite_) :
     Entity(x_, y_, sprite_),
-    vx(0),
-    vy(0),
-    speed(20),
-    maxSpeed(550),
+    vx(0.0),
+    vy(0.0),
+    speed(20.0),
+    maxSpeed(550.0),
     isGrounded(false),
     levelW(0),
     levelH(0)
@@ -26,58 +29,57 @@ void DynamicEntity::setLevelWH(const unsigned int width_, const unsigned int hei
 
 void DynamicEntity::updatePosition(const double dt_){
     /// @todo Fix all these magic/weird numbers.
+    this->boundingBox = {(int)this->x, (int)this->y, (int)this->width, (int)this->height};
     this->x += this->vx * dt_;
-
-    if(this->vx >= 0){
-        this->isRight = true;
-    }
-    else{
-        this->isRight = false;
-    }
-    this->sprite->setHorizontalFlip(this->isRight);
-
-    // Left wall.
-    if(this->x < 0){
-        this->x = 0;
-        this->vx = 0;
-    }
-    // Right wall.
-    else if(this->x + this->width > this->levelW){
-        this->x = this->levelW - this->width;
-        this->vx = 0;
-    }
-
     this->y += this->vy * dt_;
 
-    // Top wall.
-    if(this->y < 0){
-        this->y = 0;
-        this->vy = 0;
-    }
-    // Bottom wall.
-    else if(this->y + this->height >= this->levelH){
-        this->y = this->levelH - this->height;
-        this->vy = 0;
-        this->isGrounded = true;
-    }
-    else{
-        this->isGrounded = false;
-    }
+    this->isRight = (this->vx >= 0.0);
+    this->sprite->setHorizontalFlip(this->isRight);
+}
+
+std::array<bool, CollisionSide::SOLID_TOTAL> DynamicEntity::detectCollision(){
+    std::array<bool, CollisionSide::SOLID_TOTAL> detections;
+    detections.fill(false);
 
     for(auto tile : this->tiles){
-        if(Collision::rectsCollided(this->clip, tile->getRectangle()) && tile->isSolid()){
-            this->vx = 0;
+        const SDL_Rect tileBox = tile->getRectangle();
+        Collision::RectangleSide side = Collision::rectsCollidedSide(this->boundingBox, tileBox);
+
+        if(tile->isSolid()){
+            switch(side){
+                case Collision::RectangleSide::TOP: // Hitting under the tile.
+                    detections.at(SOLID_TOP) = true;
+                    break;
+                case Collision::RectangleSide::BOTTOM: // Hitting top of the tile.
+                    detections.at(SOLID_BOTTOM) = true;
+                    break;
+                case Collision::RectangleSide::RIGHT: // Hitting right side of the tile.
+                    detections.at(SOLID_RIGHT) = true;
+                    break;
+                case Collision::RectangleSide::LEFT: // Hitting left side of the tile.
+                    detections.at(SOLID_LEFT) = true;
+                    break;
+                case Collision::RectangleSide::NONE:
+                    // No collision.
+                    break;
+                default:
+                    Logger::error("Unknown rectangle side collided with a dynamic entity.");
+                    break;
+            }
         }
     }
 
+    return detections;
 }
 
 void DynamicEntity::jump(){
-    this->vy = (-1) * 1500.0;
+    this->vy = (-1) * 1000.0;
 }
 
 void DynamicEntity::applyGravity(){
-    this->vy += 75;
+    if(this->vy + 50 < this->maxSpeed*2){
+        this->vy += 50;
+    }
 }
 
 void DynamicEntity::move(const bool movingLeft_, const bool movingRight_){

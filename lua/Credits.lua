@@ -1,3 +1,5 @@
 credits = {
-	spritePath = "res/credits.jpg",
+	images = {
+		dummy = "res/images/temp_menu_credits.jpg",
+	}
 }

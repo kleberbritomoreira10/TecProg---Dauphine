@@ -1,4 +1,6 @@
 menu = {
-	spritePath = "res/title.jpg",
-	cursorPath = "res/cursor.png",
+	images = {
+		titleScreen = "res/images/menu_titleScreen.jpg",
+		cursor = "res/images/cursor_regular.png",
+	},
 }

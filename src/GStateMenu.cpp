@@ -36,11 +36,11 @@ void GStateMenu::load(){
 	Logger::verbose("Loading menu...");
 
 	LuaScript luaMenu("lua/Menu.lua");
-	const std::string menuPath = luaMenu.unlua_get<std::string>("menu.spritePath");
-	const std::string cursorPath = luaMenu.unlua_get<std::string>("menu.cursorPath");
+	const std::string pathTitleScreen = luaMenu.unlua_get<std::string>("menu.images.titleScreen");
+	const std::string pathCursor = luaMenu.unlua_get<std::string>("menu.images.cursor");
 
-    this->menuImage = Game::instance().getResources().get(menuPath);
-    this->menuSelector = Game::instance().getResources().get(cursorPath);
+    this->menuImage = Game::instance().getResources().get(pathTitleScreen);
+    this->menuSelector = Game::instance().getResources().get(pathCursor);
 }
 
 void GStateMenu::unload(){
@@ -73,7 +73,7 @@ void GStateMenu::handleSelectorMenu(){
 
 	const double selectorDelayTime = 0.2;
 
-	if(keyStates[GameKeys::DOWN] == true || keyStates[GameKeys::LEFT] == true){
+	if(keyStates[GameKeys::DOWN] == true || keyStates[GameKeys::RIGHT] == true){
 		if(this->passedTime >= selectorDelayTime){
 			if(currentSelection < (Selection::TOTAL - 1)){
 				currentSelection++;
@@ -84,7 +84,7 @@ void GStateMenu::handleSelectorMenu(){
 			this->passedTime = 0.0;
 		}
 	}
-	else if(keyStates[GameKeys::UP] == true || keyStates[GameKeys::RIGHT] == true){
+	else if(keyStates[GameKeys::UP] == true || keyStates[GameKeys::LEFT] == true){
 		if(this->passedTime >= selectorDelayTime){
 			if(currentSelection > Selection::NEWGAME){
 				currentSelection--;

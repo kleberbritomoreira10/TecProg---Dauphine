@@ -8,9 +8,13 @@ Tile::Tile(const int x_, const int y_, const int tileType_) :
 	switch(this->type){
 		case 4:
 			this->solid = false;
-			break;
-		default:
+		case 0:
 			this->solid = true;
+			break;
+		
+		default:
+			this->solid = false;
+			break;
 	}
 }
 

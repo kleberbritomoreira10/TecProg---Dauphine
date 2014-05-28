@@ -56,6 +56,7 @@ class Enemy : public DynamicEntity {
 		double patrolLength;
 
 	private:
+		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
 		StateEnemy* currentState;
 		std::map<EStates, StateEnemy*> statesMap;
 
