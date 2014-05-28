@@ -1,10 +1,9 @@
 #include "EStateIdle.h"
-#include "Logger.h"
 #include <cmath>
 #include "SDLWrapper.h"
 
 void EStateIdle::enter(){
-	Logger::verbose("enter enemy idle");	
+
 }
 
 void EStateIdle::exit(){

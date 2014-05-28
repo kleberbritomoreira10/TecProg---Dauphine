@@ -1,5 +1,4 @@
 #include "PStateRolling.h"
-#include "Logger.h"
 
 void PStateRolling::enter(){
 	this->player->getAnimation()->changeAnimation(0,3,18,true,0.6);

@@ -1,5 +1,4 @@
 #include "Animation.h"
-#include "Logger.h"
 
 const unsigned int ANIMATION_LIMIT = 11;
 int animationCount = 0;

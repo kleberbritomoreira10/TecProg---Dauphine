@@ -30,7 +30,7 @@ Player::Player(const double x_, const double y_, Sprite* const sprite_) :
         this->currentState->enter();
     }
     else{
-        Logger::warning("No sprite set for the player! Null sprite.");
+        Log(WARN) << "No sprite set for the player! Null sprite.";
     }
 }
 

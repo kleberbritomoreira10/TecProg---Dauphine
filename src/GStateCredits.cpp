@@ -28,7 +28,7 @@ void GStateCredits::update(const double dt_){
 }
 
 void GStateCredits::load(){
-	Logger::verbose("Loading credits...");
+	Log(DEBUG) << "Loading credits...";
 
 	LuaScript luaCredits("lua/Credits.lua");
 	const std::string pathCredits = luaCredits.unlua_get<std::string>("credits.images.dummy");
@@ -38,7 +38,7 @@ void GStateCredits::load(){
 }
 
 void GStateCredits::unload(){
-	Logger::verbose("\tUnloading credits...");
+	Log(DEBUG) << "\tUnloading credits...";
 	this->creditsClip.y = 0;
 	cleanEntities();
 }
@@ -51,6 +51,6 @@ void GStateCredits::render(){
 		this->creditsImage->render(0, 0, &this->creditsClip, true);
 	}
 	else{
-		Logger::warning("No image set for the options screen!");
+		Log(WARN) << "No image set for the options screen!";
 	}
 }

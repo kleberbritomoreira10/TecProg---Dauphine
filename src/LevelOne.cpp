@@ -3,7 +3,6 @@
 #include "LuaScript.h"
 #include "Logger.h"
 #include "Enemy.h"
-#include "TmxWrapper.h"
 #include "TileMap.h"
 
 #include "Text.h"
@@ -19,7 +18,7 @@ LevelOne::~LevelOne(){
 }
 
 void LevelOne::load(){
-	Logger::verbose("Loading level 1...");
+	Log(DEBUG) << "Loading level 1...";
 
 	// Getting information from lua script.
 	LuaScript luaLevel1("lua/Level1.lua");
@@ -69,7 +68,7 @@ void LevelOne::load(){
 }
 
 void LevelOne::unload(){
-	Logger::verbose("\tUnloading level 1...");
+	Log(DEBUG) << "\tUnloading level 1...";
 	cleanEntities();
 }
 

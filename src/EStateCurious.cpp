@@ -1,9 +1,7 @@
 #include "EStateCurious.h"
-#include "Logger.h"
 
 void EStateCurious::enter(){
 	this->enemy->jump();
-	Logger::verbose("enter enemy moving");	
 }
 
 void EStateCurious::exit(){

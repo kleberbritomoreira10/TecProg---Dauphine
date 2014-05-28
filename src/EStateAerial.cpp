@@ -1,8 +1,7 @@
 #include "EStateAerial.h"
-#include "Logger.h"
 
 void EStateAerial::enter(){
-	Logger::verbose("enter enemy aerial");	
+
 }
 
 void EStateAerial::exit(){

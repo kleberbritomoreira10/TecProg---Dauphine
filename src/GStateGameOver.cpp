@@ -21,7 +21,7 @@ void GStateGameOver::update(const double dt_){
 }
 
 void GStateGameOver::load(){
-	Logger::verbose("Loading Game Over...");
+	Log(DEBUG) << "Loading Game Over...";
 
 	LuaScript luaGameOver("lua/GameOver.lua");
 	const std::string pathGameOver = luaGameOver.unlua_get<std::string>("gameOver.images.gameOver");
@@ -32,7 +32,7 @@ void GStateGameOver::load(){
 }
 
 void GStateGameOver::unload(){
-	Logger::verbose("\tUnloading Game Over...");
+	Log(DEBUG) << "\tUnloading Game Over...";
 	cleanEntities();
 }
 
@@ -41,6 +41,6 @@ void GStateGameOver::render(){
 		this->gameOverImage->render(0, 0, nullptr, true);
 	}
 	else{
-		Logger::warning("No image set for the game over screen!");
+		Log(WARN) << "No image set for the game over screen!";
 	}
 }

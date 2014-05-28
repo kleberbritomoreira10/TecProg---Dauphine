@@ -3,11 +3,12 @@
 #include "Configuration.h"
 
 int main(int argc, char** argv){
-	if(argc == 2 && argv[1] == std::string("-v")){
-		Logger::isVerbose = true;
-	}
 
-	Logger::verbose("Starting Dauphine...");
+	// Unused.
+	((void)argc);
+	((void)argv);
+
+	Log(DEBUG) << "Starting Dauphine...";
 
 	Configuration::initialize();
 
@@ -18,11 +19,11 @@ int main(int argc, char** argv){
 		delete &Game::instance();
 	}
 	else{
-		Logger::error("System were not initialized.");
+		Log(ERROR) << "System were not initialized.";
 	}
 
 	SDLWrapper::close();
 
-	Logger::verbose("Exiting Dauphine...");
+	Log(DEBUG) << "Exiting Dauphine...";
 	return 0;
 }

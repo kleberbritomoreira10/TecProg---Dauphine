@@ -42,7 +42,7 @@ class SDLWrapper {
 		* @param revision_ : If any, the revision.
 		*/
 		static void logSDLVersion(const std::string& what_, const SDL_version& compiled_,
-			const SDL_version& linked_, std::string revision_ = std::string(""));
+			std::string revision_ = std::string(""));
 
 };
 

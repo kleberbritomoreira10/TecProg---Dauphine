@@ -34,7 +34,7 @@ void Level::setPlayer(Player* const player_){
 		addEntity(this->player);
 	}
 	else{
-		Logger::warning("Setting a null player for the level!");
+		Log(WARN) << "Setting a null player for the level!";
 	}
 	
 }
@@ -47,11 +47,11 @@ void Level::setCamera(Camera* const camera_){
 			this->camera->setLevelWH(this->width, this->height);
 		}
 		else{
-			Logger::warning("Shouldn't set the camera before the player, in Level!");
+			Log(WARN) << "Shouldn't set the camera before the player, in Level!";
 		}
 	}
 	else{
-		Logger::warning("Setting a null camera!");
+		Log(WARN) << "Setting a null camera!";
 	}
 
 }

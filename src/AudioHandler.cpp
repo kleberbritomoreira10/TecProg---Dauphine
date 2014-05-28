@@ -32,7 +32,7 @@ void AudioHandler::playMusic(const int times_){
 		Mix_PlayMusic(this->currentMusic, times_);
 	}
 	else{
-		Logger::warning("There is no song loaded.");
+		Log(WARN) << "There is no song loaded.";
 	}
 }
 
@@ -57,7 +57,7 @@ void AudioHandler::playEffect(const int times_){
 		Mix_PlayChannel(1, this->currentEffect, times_);
 	}
 	else{
-		Logger::warning("There is no effect loaded.");
+		Log(WARN) << "There is no effect loaded.";
 	}
 }
 

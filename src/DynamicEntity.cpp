@@ -58,7 +58,7 @@ std::array<bool, CollisionSide::SOLID_TOTAL> DynamicEntity::detectCollision(){
                 // No collision.
                 break;
             default:
-                Logger::error("Unknown rectangle side collided with a dynamic entity.");
+                Log(ERROR) << "Unknown rectangle side collided with a dynamic entity.";
                 break;
         }
     

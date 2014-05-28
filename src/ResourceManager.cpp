@@ -12,7 +12,7 @@ ResourceManager::~ResourceManager(){
 	
 	for(it = this->resources.begin(); it != this->resources.end(); it++){
 		if(it->second.use_count() != 1){
-			Logger::warning("Resource deleted with use count different than 1 (" + it->first + ").");
+			Log(WARN) << "Resource deleted with use count different than 1 (" << it->first << ").";
 		}
 	}
 }

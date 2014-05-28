@@ -1,8 +1,7 @@
 #include "EStateAlert.h"
-#include "Logger.h"
 
 void EStateAlert::enter(){
-	Logger::verbose("enter enemy moving");	
+
 }
 
 void EStateAlert::exit(){
