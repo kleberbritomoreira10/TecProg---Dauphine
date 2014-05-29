@@ -2,19 +2,18 @@
 #include "Logger.h"
 
 void PStateCrouching::enter(){
+	this->player->getAnimation()->changeAnimation(10,13,2,false,0.3);
 	this->player->isGrounded = true;
-	this->player->maxSpeed /= 2;
-	this->player->speed = 15;
 }
 
 void PStateCrouching::exit(){
-	this->player->maxSpeed *= 2;
-	this->player->speed = 20;
+	this->player->getAnimation()->changeAnimation(1,14,2,false,0.3);
 }
 
 void PStateCrouching::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
+	this->player->getAnimation()->changeAnimation(8,9,1,false,0);
 
-	if(!keyStates_[GameKeys::LCTRL]){
+	if(!keyStates_[GameKeys::CROUCH]){
 		this->player->changeState(Player::PStates::IDLE);
 		return;
 	}
@@ -28,7 +27,10 @@ void PStateCrouching::handleInput(const std::array<bool, GameKeys::MAX> keyState
 		return;
 	}
 
-	this->player->move(keyStates_[GameKeys::LEFT], keyStates_[GameKeys::RIGHT]);
+	if(keyStates_[GameKeys::LEFT] || keyStates_[GameKeys::RIGHT]){
+		this->player->changeState(Player::PStates::MOVINGCROUCH);
+		return;
+	}
 
 	if(keyStates_[GameKeys::ROLL]){
 		this->player->changeState(Player::PStates::ROLLING);

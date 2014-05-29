@@ -1,7 +1,9 @@
 #include "PStateIdle.h"
+#include "Logger.h"
 
 void PStateIdle::enter(){
-	this->player->getAnimation()->changeAnimation(1,0,1,false,0);
+	Log(INFO) << "STATE IDLE.";
+	this->player->getAnimation()->changeAnimation(0,0,26,false,2.6);
 	this->player->isGrounded = true;
 }
 
@@ -27,7 +29,7 @@ void PStateIdle::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 	}
 
 	// Crouch
-	if(keyStates_[GameKeys::LCTRL]){
+	if(keyStates_[GameKeys::CROUCH]){
 		this->player->changeState(Player::PStates::CROUCHING);
 		return;
 	}

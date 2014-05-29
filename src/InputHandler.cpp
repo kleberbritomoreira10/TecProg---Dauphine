@@ -51,8 +51,8 @@ void InputHandler::handleInput(){
 				case SDLK_c: // roll.
 					this->keyStates[GameKeys::ROLL] = true;
 					break;
-				case SDLK_LCTRL: // ltrcl
-					this->keyStates[GameKeys::LCTRL] = true;
+				case SDLK_v: // crouch
+					this->keyStates[GameKeys::CROUCH] = true;
 				case SDLK_a: // a.
 					this->keyStates[GameKeys::A] = true;
 					break;
@@ -88,8 +88,8 @@ void InputHandler::handleInput(){
 				case SDLK_c: // Roll.
 					this->keyStates[GameKeys::ROLL] = false;
 					break;
-				case SDLK_LCTRL: // lctrl
-					this->keyStates[GameKeys::LCTRL] = false;
+				case SDLK_v: // crouch
+					this->keyStates[GameKeys::CROUCH] = false;
 				case SDLK_a: // a.
 					this->keyStates[GameKeys::A] = false;
 					break;

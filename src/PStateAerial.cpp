@@ -1,7 +1,9 @@
 #include "PStateAerial.h"
+#include "Logger.h"
 
 void PStateAerial::enter(){
-	this->player->getAnimation()->changeAnimation(0,1,15,false,1);
+	Log(INFO) << "STATE AERIAL.";
+	this->player->getAnimation()->changeAnimation(4,3,14,false,1.4);
 	this->player->isGrounded = false;
 }
 

@@ -10,6 +10,7 @@
 #include "PStateRolling.h"
 #include "PStateCrouching.h"
 #include "PStateAiming.h"
+#include "PStateMovingCrouch.h"
 
 Player::Player(const double x_, const double y_, Sprite* const sprite_) :
     DynamicEntity(x_, y_, sprite_),
@@ -101,6 +102,7 @@ void Player::initializeStates(){
     this->statesMap.emplace(ROLLING, new PStateRolling(this));
     this->statesMap.emplace(CROUCHING, new PStateCrouching(this));
     this->statesMap.emplace(AIMING, new PStateAiming(this));
+    this->statesMap.emplace(MOVINGCROUCH, new PStateMovingCrouch(this));
 }
 
 void Player::destroyStates(){

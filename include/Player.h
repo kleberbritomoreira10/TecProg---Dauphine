@@ -27,7 +27,8 @@ class Player : public DynamicEntity {
 			AERIAL,
 			ROLLING,
 			CROUCHING,
-			AIMING
+			AIMING,
+			MOVINGCROUCH
 		};
 
 		/**

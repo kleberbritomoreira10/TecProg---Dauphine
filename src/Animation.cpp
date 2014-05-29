@@ -22,7 +22,7 @@ Animation::~Animation(){
 
 void Animation::update(SDL_Rect& clip, const double dt_){
 
-	const unsigned int ANIMATION_LIMIT = 11;
+	const unsigned int ANIMATION_LIMIT = 10;
 
 	// Compare the position on the sprite with the number of positions to know if is the
 	// end of the animation.

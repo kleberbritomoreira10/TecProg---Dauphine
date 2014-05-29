@@ -26,7 +26,7 @@ void DynamicEntity::setLevelWH(const unsigned int width_, const unsigned int hei
 
 void DynamicEntity::updatePosition(const double dt_){
     /// @todo Fix all these magic/weird numbers.
-    this->boundingBox = {(int)this->x, (int)this->y, (int)this->width, (int)this->height};
+    this->boundingBox = {(int)this->x, (int)this->y + 11, 229, 229};
     this->x += this->vx * dt_;
     this->y += this->vy * dt_;
 

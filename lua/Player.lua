@@ -1,6 +1,6 @@
 player = {
 	dimensions = {
-		width = 229,
-		height = 229,
+		width = 240,
+		height = 240,
 	},
 }

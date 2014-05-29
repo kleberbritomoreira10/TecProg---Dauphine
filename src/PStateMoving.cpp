@@ -1,7 +1,9 @@
 #include "PStateMoving.h"
+#include "Logger.h"
 
 void PStateMoving::enter(){
-    this->player->getAnimation()->changeAnimation(3,0,8,true,1);
+    Log(INFO) << "STATE MOVING.";
+    this->player->getAnimation()->changeAnimation(4,2,9,false,0.9);
 }
 
 void PStateMoving::exit(){
@@ -23,7 +25,7 @@ void PStateMoving::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
     }
 
     // Crouch
-    if(keyStates_[GameKeys::LCTRL]){
+    if(keyStates_[GameKeys::CROUCH]){
         this->player->changeState(Player::PStates::CROUCHING);
         return;
     }
