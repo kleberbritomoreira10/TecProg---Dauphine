@@ -74,6 +74,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a0c5597fedd9b09878ec8acddca54c2f7"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#a0c5597fedd9b09878ec8acddca54c2f7">Sprite</a> (const std::string &amp;path_)</td></tr>
 <tr class="memdesc:a0c5597fedd9b09878ec8acddca54c2f7"><td class="mdescLeft">&#160;</td><td class="mdescRight">The constructor.  <a href="#a0c5597fedd9b09878ec8acddca54c2f7">More...</a><br/></td></tr>
 <tr class="separator:a0c5597fedd9b09878ec8acddca54c2f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a29730aadf31a6433746f5fa5bee9550f"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a29730aadf31a6433746f5fa5bee9550f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>Sprite</b> (SDL_Surface *const surface_)</td></tr>
+<tr class="separator:a29730aadf31a6433746f5fa5bee9550f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8accab430f9d90ae5117b57d67e32b84"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#a8accab430f9d90ae5117b57d67e32b84">~Sprite</a> ()</td></tr>
 <tr class="memdesc:a8accab430f9d90ae5117b57d67e32b84"><td class="mdescLeft">&#160;</td><td class="mdescRight">The destructor.  <a href="#a8accab430f9d90ae5117b57d67e32b84">More...</a><br/></td></tr>
 <tr class="separator:a8accab430f9d90ae5117b57d67e32b84"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -82,14 +85,29 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ac82a01b98130b9b1403667059640163b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8f425d524e48eea595ef74dc310e0417"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#a8f425d524e48eea595ef74dc310e0417">getWidth</a> ()</td></tr>
 <tr class="separator:a8f425d524e48eea595ef74dc310e0417"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5105482cff23d7b13899aa834b23ad83"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5105482cff23d7b13899aa834b23ad83"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setWidth</b> (unsigned int width_)</td></tr>
+<tr class="separator:a5105482cff23d7b13899aa834b23ad83"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acc2ba583261bbcda5b3e37d923bb7ad2"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="acc2ba583261bbcda5b3e37d923bb7ad2"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setHeight</b> (unsigned int height_)</td></tr>
+<tr class="separator:acc2ba583261bbcda5b3e37d923bb7ad2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a02fcba350f07d226b110f7d0712f5154"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#a02fcba350f07d226b110f7d0712f5154">getHeight</a> ()</td></tr>
 <tr class="separator:a02fcba350f07d226b110f7d0712f5154"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b58d5a19aeabdda9a6c89f401d706f8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a6b58d5a19aeabdda9a6c89f401d706f8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>setHorizontalFlip</b> (bool isRigth_)</td></tr>
+<tr class="separator:a6b58d5a19aeabdda9a6c89f401d706f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38399275797600991cd2d95cc803fa0a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a38399275797600991cd2d95cc803fa0a"></a>
+std::string&#160;</td><td class="memItemRight" valign="bottom"><b>getPath</b> ()</td></tr>
+<tr class="separator:a38399275797600991cd2d95cc803fa0a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
 <tr class="memitem:a9ba64ddfcd3f79c45b74ec1c1a16c396"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#a9ba64ddfcd3f79c45b74ec1c1a16c396">loadFrom</a> (const std::string &amp;path_)</td></tr>
 <tr class="memdesc:a9ba64ddfcd3f79c45b74ec1c1a16c396"><td class="mdescLeft">&#160;</td><td class="mdescRight">Loads image from a path.  <a href="#a9ba64ddfcd3f79c45b74ec1c1a16c396">More...</a><br/></td></tr>
 <tr class="separator:a9ba64ddfcd3f79c45b74ec1c1a16c396"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98bb8afceb93d82270c9e5e7e8f9b49d"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a98bb8afceb93d82270c9e5e7e8f9b49d"></a>
+SDL_Texture *&#160;</td><td class="memItemRight" valign="bottom"><b>surfaceToTexture</b> (SDL_Surface *const surface_)</td></tr>
+<tr class="separator:a98bb8afceb93d82270c9e5e7e8f9b49d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -105,6 +123,10 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a2bd9395c3ebb407e632723c3aae2a267"><td class="memItemLeft" align="right" valign="top">const std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#a2bd9395c3ebb407e632723c3aae2a267">path</a></td></tr>
 <tr class="memdesc:a2bd9395c3ebb407e632723c3aae2a267"><td class="mdescLeft">&#160;</td><td class="mdescRight">Holds the path from where the <a class="el" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a> was loaded.  <a href="#a2bd9395c3ebb407e632723c3aae2a267">More...</a><br/></td></tr>
 <tr class="separator:a2bd9395c3ebb407e632723c3aae2a267"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa70e85ab29425537f1b0e41abbbfe852"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="aa70e85ab29425537f1b0e41abbbfe852"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sprite.html#aa70e85ab29425537f1b0e41abbbfe852">flipHorizontal</a></td></tr>
+<tr class="memdesc:aa70e85ab29425537f1b0e41abbbfe852"><td class="mdescLeft">&#160;</td><td class="mdescRight">When true flip the image. <br/></td></tr>
+<tr class="separator:aa70e85ab29425537f1b0e41abbbfe852"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Visual representation of game objects. </p>
@@ -408,7 +430,7 @@ If it fails to render, logs an error message. </dd></dl>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 3 2014 02:25:31 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 29 2014 00:11:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

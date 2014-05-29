@@ -66,9 +66,15 @@
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
 Public Types</h2></td></tr>
-<tr class="memitem:a738b70d48686f5774e6f5882bd871256"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#a738b70d48686f5774e6f5882bd871256">GStates</a> : uint8_t { <b>SPLASH</b> = 0, 
+<tr class="memitem:a738b70d48686f5774e6f5882bd871256"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#a738b70d48686f5774e6f5882bd871256">GStates</a> : uint8_t { <br/>
+&#160;&#160;<b>SPLASH</b> = 0, 
 <b>MENU</b>, 
-<b>LEVEL_ONE</b>
+<b>LEVEL_ONE</b>, 
+<b>OPTIONS</b>, 
+<br/>
+&#160;&#160;<b>CREDITS</b>, 
+<b>GAMEOVER</b>
+<br/>
  }</td></tr>
 <tr class="memdesc:a738b70d48686f5774e6f5882bd871256"><td class="mdescLeft">&#160;</td><td class="mdescRight">All possible game states. <br/></td></tr>
 <tr class="separator:a738b70d48686f5774e6f5882bd871256"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -90,6 +96,10 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a76067c5eab048e88307d0a1c75328eda"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4e4876901d3284ae8778c52afa834d4d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_resource_manager.html">ResourceManager</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#a4e4876901d3284ae8778c52afa834d4d">getResources</a> ()</td></tr>
 <tr class="separator:a4e4876901d3284ae8778c52afa834d4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a17fbb36fd4a2085f9ff4f1fa93d7d08b"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a17fbb36fd4a2085f9ff4f1fa93d7d08b"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_game.html#a17fbb36fd4a2085f9ff4f1fa93d7d08b">stop</a> ()</td></tr>
+<tr class="memdesc:a17fbb36fd4a2085f9ff4f1fa93d7d08b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Stops execution and closes the game. <br/></td></tr>
+<tr class="separator:a17fbb36fd4a2085f9ff4f1fa93d7d08b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
 Static Public Member Functions</h2></td></tr>
@@ -354,7 +364,7 @@ Private Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000012">Todo:</a></b></dt><dd>Implement the transition between states. </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000014">Todo:</a></b></dt><dd>Implement the transition between states. </dd></dl>
 
 </div>
 </div>
@@ -543,7 +553,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 3 2014 02:25:31 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 29 2014 00:11:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

@@ -51,6 +51,7 @@
 <a href="#pub-methods">Public Member Functions</a> &#124;
 <a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
+<a href="#pri-static-attribs">Static Private Attributes</a> &#124;
 <a href="class_animation-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Animation Class Reference</div>  </div>
@@ -71,9 +72,12 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_animation.html#a401b68793d4fbf48d481c030ee4b2a16">~Animation</a> ()</td></tr>
 <tr class="memdesc:a401b68793d4fbf48d481c030ee4b2a16"><td class="mdescLeft">&#160;</td><td class="mdescRight">The destructor. <br/></td></tr>
 <tr class="separator:a401b68793d4fbf48d481c030ee4b2a16"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1e3a9b4004d678781d4fec1e7a5fcee0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_animation.html#a1e3a9b4004d678781d4fec1e7a5fcee0">update</a> (SDL_Rect &amp;clip_, const double dt_, const double totalTime_)</td></tr>
-<tr class="memdesc:a1e3a9b4004d678781d4fec1e7a5fcee0"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the animation clip.  <a href="#a1e3a9b4004d678781d4fec1e7a5fcee0">More...</a><br/></td></tr>
-<tr class="separator:a1e3a9b4004d678781d4fec1e7a5fcee0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7017337003829eef3787b4a10a31e8fb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_animation.html#a7017337003829eef3787b4a10a31e8fb">update</a> (SDL_Rect &amp;clip_, const double dt_)</td></tr>
+<tr class="memdesc:a7017337003829eef3787b4a10a31e8fb"><td class="mdescLeft">&#160;</td><td class="mdescRight">Updates the animation clip.  <a href="#a7017337003829eef3787b4a10a31e8fb">More...</a><br/></td></tr>
+<tr class="separator:a7017337003829eef3787b4a10a31e8fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a235a1164df25e4aa66b743c9effe9389"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_animation.html#a235a1164df25e4aa66b743c9effe9389">changeAnimation</a> (const int x_, const int y_, const int numberOfImages_, const bool loop_, const double totalTime_)</td></tr>
+<tr class="memdesc:a235a1164df25e4aa66b743c9effe9389"><td class="mdescLeft">&#160;</td><td class="mdescRight">Changes the animation to another.  <a href="#a235a1164df25e4aa66b743c9effe9389">More...</a><br/></td></tr>
+<tr class="separator:a235a1164df25e4aa66b743c9effe9389"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
 Private Member Functions</h2></td></tr>
@@ -89,6 +93,12 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a72467306123dccc6abee23b0fe86d046"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_animation.html#a72467306123dccc6abee23b0fe86d046">y</a></td></tr>
 <tr class="memdesc:a72467306123dccc6abee23b0fe86d046"><td class="mdescLeft">&#160;</td><td class="mdescRight">The position on x axis on the sprite.  <a href="#a72467306123dccc6abee23b0fe86d046">More...</a><br/></td></tr>
 <tr class="separator:a72467306123dccc6abee23b0fe86d046"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba49daee599cf1c73ec12fe9adf7a424"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_animation.html#aba49daee599cf1c73ec12fe9adf7a424">initialX</a></td></tr>
+<tr class="memdesc:aba49daee599cf1c73ec12fe9adf7a424"><td class="mdescLeft">&#160;</td><td class="mdescRight">Where to start/restart the animation on x.  <a href="#aba49daee599cf1c73ec12fe9adf7a424">More...</a><br/></td></tr>
+<tr class="separator:aba49daee599cf1c73ec12fe9adf7a424"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8aae31b208d2ecbebdd4a3d0827fdef6"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_animation.html#a8aae31b208d2ecbebdd4a3d0827fdef6">initialY</a></td></tr>
+<tr class="memdesc:a8aae31b208d2ecbebdd4a3d0827fdef6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Where to start/restart the animation on y.  <a href="#a8aae31b208d2ecbebdd4a3d0827fdef6">More...</a><br/></td></tr>
+<tr class="separator:a8aae31b208d2ecbebdd4a3d0827fdef6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a030a8f97b36c7e77ba8ce544ea3b3132"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_animation.html#a030a8f97b36c7e77ba8ce544ea3b3132">spriteWidth</a></td></tr>
 <tr class="memdesc:a030a8f97b36c7e77ba8ce544ea3b3132"><td class="mdescLeft">&#160;</td><td class="mdescRight">The sprite width.  <a href="#a030a8f97b36c7e77ba8ce544ea3b3132">More...</a><br/></td></tr>
 <tr class="separator:a030a8f97b36c7e77ba8ce544ea3b3132"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -101,9 +111,19 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:a951ff207e048c16b7c5dde293eb5419b"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_animation.html#a951ff207e048c16b7c5dde293eb5419b">loop</a></td></tr>
 <tr class="memdesc:a951ff207e048c16b7c5dde293eb5419b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Whether to loop or not.  <a href="#a951ff207e048c16b7c5dde293eb5419b">More...</a><br/></td></tr>
 <tr class="separator:a951ff207e048c16b7c5dde293eb5419b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a362b77b845be75376a2f372a1204db53"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_animation.html#a362b77b845be75376a2f372a1204db53">totalElapsedTime</a></td></tr>
-<tr class="memdesc:a362b77b845be75376a2f372a1204db53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total time elapsed on the animation.  <a href="#a362b77b845be75376a2f372a1204db53">More...</a><br/></td></tr>
-<tr class="separator:a362b77b845be75376a2f372a1204db53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a23cf823fb939c2ed05a98e5a1239bac1"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_animation.html#a23cf823fb939c2ed05a98e5a1239bac1">totalElapsedTime</a></td></tr>
+<tr class="memdesc:a23cf823fb939c2ed05a98e5a1239bac1"><td class="mdescLeft">&#160;</td><td class="mdescRight"><pre class="fragment">                      Total time elapsed on the animation, to check if the
+</pre><p> frame changed.  <a href="#a23cf823fb939c2ed05a98e5a1239bac1">More...</a><br/></td></tr>
+<tr class="separator:a23cf823fb939c2ed05a98e5a1239bac1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6315668e311f54415bdd708b076bb35d"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_animation.html#a6315668e311f54415bdd708b076bb35d">totalTime</a></td></tr>
+<tr class="memdesc:a6315668e311f54415bdd708b076bb35d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Total time for each animation loop.  <a href="#a6315668e311f54415bdd708b076bb35d">More...</a><br/></td></tr>
+<tr class="separator:a6315668e311f54415bdd708b076bb35d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-static-attribs"></a>
+Static Private Attributes</h2></td></tr>
+<tr class="memitem:a60909550da61fcc3632571ad671b26db"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a60909550da61fcc3632571ad671b26db"></a>
+static int&#160;</td><td class="memItemRight" valign="bottom"><b>animationCount</b> = 0</td></tr>
+<tr class="separator:a60909550da61fcc3632571ad671b26db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Class in control of animating a sprite. </p>
@@ -173,7 +193,54 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a1e3a9b4004d678781d4fec1e7a5fcee0"></a>
+<a class="anchor" id="a235a1164df25e4aa66b743c9effe9389"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Animation::changeAnimation </td>
+          <td>(</td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>x_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>y_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const int&#160;</td>
+          <td class="paramname"><em>numberOfImages_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const bool&#160;</td>
+          <td class="paramname"><em>loop_</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const double&#160;</td>
+          <td class="paramname"><em>totalTime_</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Changes the animation to another. </p>
+<dl class="section note"><dt>Note</dt><dd>See <a class="el" href="class_animation.html#ab5cd94854354cfc0e841ec65f250e4c8" title="The constructor. ">Animation::Animation</a> for the parameters descriptions. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a7017337003829eef3787b4a10a31e8fb"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -187,13 +254,7 @@ Private Attributes</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">const double&#160;</td>
-          <td class="paramname"><em>dt_</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">const double&#160;</td>
-          <td class="paramname"><em>totalTime_</em>&#160;</td>
+          <td class="paramname"><em>dt_</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -266,6 +327,50 @@ Private Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
+<a class="anchor" id="aba49daee599cf1c73ec12fe9adf7a424"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Animation::initialX</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Where to start/restart the animation on x. </p>
+
+</div>
+</div>
+<a class="anchor" id="a8aae31b208d2ecbebdd4a3d0827fdef6"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int Animation::initialY</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Where to start/restart the animation on y. </p>
+
+</div>
+</div>
 <a class="anchor" id="a951ff207e048c16b7c5dde293eb5419b"></a>
 <div class="memitem">
 <div class="memproto">
@@ -354,7 +459,7 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="a362b77b845be75376a2f372a1204db53"></a>
+<a class="anchor" id="a23cf823fb939c2ed05a98e5a1239bac1"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -362,7 +467,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">int Animation::totalElapsedTime</td>
+          <td class="memname">double Animation::totalElapsedTime</td>
         </tr>
       </table>
   </td>
@@ -372,7 +477,30 @@ Private Attributes</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p>Total time elapsed on the animation. </p>
+<p><pre class="fragment">                      Total time elapsed on the animation, to check if the
+</pre><p> frame changed. </p>
+
+</div>
+</div>
+<a class="anchor" id="a6315668e311f54415bdd708b076bb35d"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Animation::totalTime</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Total time for each animation loop. </p>
 
 </div>
 </div>
@@ -427,7 +555,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 3 2014 02:25:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 29 2014 00:11:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

@@ -56,20 +56,30 @@
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define INCLUDE_COLLISION_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;SDLWrapper.h&quot;</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="code" href="class_collision.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_collision.html" title="For now, has simple collision detection. ">Collision</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_collision.html#a1ca688777eff8626a0dd950d69c0371c">rectsCollided</a>(<span class="keyword">const</span> SDL_Rect&amp; a_, <span class="keyword">const</span> SDL_Rect&amp; b_);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;};</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#endif // INCLUDE_COLLISION_H</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;Entity.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="code" href="class_collision.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_collision.html" title="Simple collision detection. ">Collision</a> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="code" href="class_collision.html#aff63033fba1bd69e0ff7c267aadd58ca">   16</a></span>&#160;        <span class="keyword">enum</span> <a class="code" href="class_collision.html#aff63033fba1bd69e0ff7c267aadd58ca" title="Possible sides a rectangle can collide. ">RectangleSide</a> : uint8_t {</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;            TOP = 0,</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;            BOTTOM,</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;            LEFT,</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;            RIGHT,</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            NONE</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        };</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keyword">static</span> <span class="keywordtype">bool</span> <a class="code" href="class_collision.html#a1ca688777eff8626a0dd950d69c0371c">rectsCollided</a>(<span class="keyword">const</span> SDL_Rect&amp; a_, <span class="keyword">const</span> SDL_Rect&amp; b_);</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keyword">static</span> <a class="code" href="class_collision.html#aff63033fba1bd69e0ff7c267aadd58ca" title="Possible sides a rectangle can collide. ">RectangleSide</a> <a class="code" href="class_collision.html#a271d4cfeafc94b90fad82437b55f56a6">rectsCollidedSide</a>(<span class="keyword">const</span> SDL_Rect&amp; a_, <span class="keyword">const</span> SDL_Rect&amp; b_);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;};</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="preprocessor">#endif // INCLUDE_COLLISION_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 3 2014 02:25:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 29 2014 00:11:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

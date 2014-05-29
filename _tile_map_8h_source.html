@@ -55,38 +55,54 @@
 <div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#ifndef INCLUDE_TILEMAP_H</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="preprocessor"></span><span class="preprocessor">#define INCLUDE_TILEMAP_H</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define TILE_SIZE 48.0</span></div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor"></span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;Entity.h&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;Tile.h&quot;</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;</div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="code" href="class_tile_map.html">   15</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_tile_map.html" title="Represents the tile distrubution for a level. ">TileMap</a> : <span class="keyword">public</span> <a class="code" href="class_entity.html" title="Base class for all game objects (entities). ">Entity</a> {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="class_tile_map.html#ac8442d23e4a12d16808863eca31cce83" title="The constructor. ">TileMap</a>(<span class="keyword">const</span> std::vector&lt;int&gt;&amp; tileData_, <span class="keyword">const</span> std::string&amp; path_);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <a class="code" href="class_tile_map.html#a3448728e45d6a43fff3a02d4c6d72e9d" title="The destructor. ">~TileMap</a>();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_tile_map.html#a0cae9a5e06510fa8e1a140d21259a091" title="Updates the entity. ">update</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> dt_);</div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;../lib/TmxParser/Tmx.h&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;Sprite.h&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;</div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">const</span> <span class="keywordtype">int</span> TILE_SIZE = 64;</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="code" href="class_tile_map.html">   14</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_tile_map.html" title="Represents the tile distrubution for a level. ">TileMap</a> {</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="class_tile_map.html#a217b46575d014ccdb83252a0eb2eb9fc" title="The constructor. ">TileMap</a>(<span class="keyword">const</span> std::string&amp; mapPath_);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="class_tile_map.html#a3448728e45d6a43fff3a02d4c6d72e9d" title="The destructor. ">~TileMap</a>();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_tile_map.html#a32a55b24dcd57316042e66443299c1dc" title="Renders the TileMap. ">render</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> cameraX_, <span class="keyword">const</span> <span class="keywordtype">double</span> cameraY_);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getMapWidth();</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> getMapHeight();</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        std::vector &lt;SDL_Rect&gt;&amp; getCollisionRects();</div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_tile_map.html#a32a55b24dcd57316042e66443299c1dc" title="Renders the entity. ">render</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> cameraX_, <span class="keyword">const</span> <span class="keywordtype">double</span> cameraY_);</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_tile_map.html#ae4608393d83d39155dc044e79fdf6791" title="Creates the Tiles based on the numerical vector. ">create</a>(<span class="keyword">const</span> std::vector&lt;int&gt;&amp; tileData_);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_tile_map.html#a70b0b8623bd0fe235eb62bacb5b19b21" title="Clips the tiles. ">clipTiles</a>();</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="class_tile_map.html#ac71de8e1dc0cff77313d819fed013f9c">   62</a></span>&#160;        SDL_Rect <a class="code" href="class_tile_map.html#ac71de8e1dc0cff77313d819fed013f9c" title="Contains all the clips for each tile. ">clips</a>[TileCode::TOTAL]; </div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="class_tile_map.html#a28ed97bec50c5ae9cd19dbd097958e0b">   63</a></span>&#160;        std::vector&lt;Tile*&gt; <a class="code" href="class_tile_map.html#a28ed97bec50c5ae9cd19dbd097958e0b" title="All the generated tiles. ">tiles</a>; </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;};</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="code" href="class_tile_map.html#af9175d5bd5bd23dcda3d15fb107143d5">   43</a></span>&#160;        std::vector &lt;std::vector &lt;int&gt;&gt;&amp; <a class="code" href="class_tile_map.html#af9175d5bd5bd23dcda3d15fb107143d5" title="Returns a reference to the tile index at #x #y #z. ">operator[]</a>(<span class="keywordtype">int</span> i){</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">return</span> (this-&gt;<a class="code" href="class_tile_map.html#a9a787d53ae5da8497799994d56dfb228" title="                      Three-dimensional  matrix, that contains x = width, y = height, z = layers ">tileMatrix</a>[i]);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        };</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordtype">void</span> load(<span class="keyword">const</span> std::string&amp; mapPath_);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordtype">void</span> addTileSet(<span class="keyword">const</span> std::string&amp; path_);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_tile_map.html#af9aa6702484d185dbfdf8529086f8718" title="Renders a certain layer from the TileMap. ">renderLayer</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> cameraX_, <span class="keyword">const</span> <span class="keywordtype">double</span> cameraY_, <span class="keyword">const</span> <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> layer_);</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        Tmx::Map* map;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;<span class="preprocessor">#endif // INCLUDE_TILEMAP_H</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> layers;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> mapWidth;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> mapHeight;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="code" href="class_tile_map.html#a9a787d53ae5da8497799994d56dfb228">   72</a></span>&#160;        std::vector &lt;std::vector &lt;std::vector &lt;int&gt;&gt;&gt; <a class="code" href="class_tile_map.html#a9a787d53ae5da8497799994d56dfb228" title="                      Three-dimensional  matrix, that contains x = width, y = height, z = layers ">tileMatrix</a>; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        std::vector &lt;Sprite*&gt; tilesetSprites;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        std::vector &lt;SDL_Rect&gt; collisionRects;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;};</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;<span class="preprocessor">#endif // INCLUDE_TILEMAP_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 3 2014 02:25:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 29 2014 00:11:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

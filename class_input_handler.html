@@ -49,6 +49,7 @@
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pri-methods">Private Member Functions</a> &#124;
 <a href="#pri-attribs">Private Attributes</a> &#124;
 <a href="class_input_handler-members.html">List of all members</a>  </div>
   <div class="headertitle">
@@ -74,8 +75,15 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a820f483265aa3f6da39b9d93c1311966"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af7087290a2fd7d973a47768049cfe5eb"><td class="memItemLeft" align="right" valign="top">std::array&lt; bool, GameKeys::MAX &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#af7087290a2fd7d973a47768049cfe5eb">getKeyStates</a> ()</td></tr>
 <tr class="separator:af7087290a2fd7d973a47768049cfe5eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf21c50e1ab745a4df1d6ca2de9a8ece"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#abf21c50e1ab745a4df1d6ca2de9a8ece">signalQuit</a> ()</td></tr>
-<tr class="separator:abf21c50e1ab745a4df1d6ca2de9a8ece"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d103ecce85288f454876b5bef8b3aee"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#a7d103ecce85288f454876b5bef8b3aee">isQuitFlag</a> ()</td></tr>
+<tr class="separator:a7d103ecce85288f454876b5bef8b3aee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private Member Functions</h2></td></tr>
+<tr class="memitem:ae3546fa674d3db49d755b4047503f4e8"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae3546fa674d3db49d755b4047503f4e8"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#ae3546fa674d3db49d755b4047503f4e8">signalExit</a> ()</td></tr>
+<tr class="memdesc:ae3546fa674d3db49d755b4047503f4e8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets <a class="el" href="class_input_handler.html#a6bd166e013cbd6313609eab276f00abd" title="If the quit signal was recieved or not. ">InputHandler::quitFlag</a> to true. <br/></td></tr>
+<tr class="separator:ae3546fa674d3db49d755b4047503f4e8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
 Private Attributes</h2></td></tr>
@@ -89,9 +97,9 @@ Private Attributes</h2></td></tr>
 <tr class="memitem:ab2fa06988077060c7a3dca6c3d643dd3"><td class="memItemLeft" align="right" valign="top">SDL_Event&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#ab2fa06988077060c7a3dca6c3d643dd3">sdlEvent</a></td></tr>
 <tr class="memdesc:ab2fa06988077060c7a3dca6c3d643dd3"><td class="mdescLeft">&#160;</td><td class="mdescRight">SDL internal event structure.  <a href="#ab2fa06988077060c7a3dca6c3d643dd3">More...</a><br/></td></tr>
 <tr class="separator:ab2fa06988077060c7a3dca6c3d643dd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae83295e50f34dd7e2b54f9ac4dcecac8"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#ae83295e50f34dd7e2b54f9ac4dcecac8">quit</a></td></tr>
-<tr class="memdesc:ae83295e50f34dd7e2b54f9ac4dcecac8"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the quit signal was recieved or not.  <a href="#ae83295e50f34dd7e2b54f9ac4dcecac8">More...</a><br/></td></tr>
-<tr class="separator:ae83295e50f34dd7e2b54f9ac4dcecac8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bd166e013cbd6313609eab276f00abd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_input_handler.html#a6bd166e013cbd6313609eab276f00abd">quitFlag</a></td></tr>
+<tr class="memdesc:a6bd166e013cbd6313609eab276f00abd"><td class="mdescLeft">&#160;</td><td class="mdescRight">If the quit signal was recieved or not.  <a href="#a6bd166e013cbd6313609eab276f00abd">More...</a><br/></td></tr>
+<tr class="separator:a6bd166e013cbd6313609eab276f00abd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Handles player input. </p>
@@ -146,7 +154,7 @@ Private Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>The keyStates attribute. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_input_handler.html#af8e03451ccf5a1028b2bc38ed85fad19" title="                   Boolean array that controls which keys are  pressed or not. ">InputHandler::keyStates</a> </dd></dl>
 
 </div>
 </div>
@@ -168,19 +176,19 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="abf21c50e1ab745a4df1d6ca2de9a8ece"></a>
+<a class="anchor" id="a7d103ecce85288f454876b5bef8b3aee"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool InputHandler::signalQuit </td>
+          <td class="memname">bool InputHandler::isQuitFlag </td>
           <td>(</td>
           <td class="paramname">)</td><td></td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>If a quit signal was recieved or not. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="class_input_handler.html#a6bd166e013cbd6313609eab276f00abd" title="If the quit signal was recieved or not. ">InputHandler::quitFlag</a> </dd></dl>
 
 </div>
 </div>
@@ -230,7 +238,7 @@ Private Attributes</h2></td></tr>
 
 </div>
 </div>
-<a class="anchor" id="ae83295e50f34dd7e2b54f9ac4dcecac8"></a>
+<a class="anchor" id="a6bd166e013cbd6313609eab276f00abd"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -238,7 +246,7 @@ Private Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">bool InputHandler::quit</td>
+          <td class="memname">bool InputHandler::quitFlag</td>
         </tr>
       </table>
   </td>
@@ -281,7 +289,7 @@ Private Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 3 2014 02:25:31 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 29 2014 00:11:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

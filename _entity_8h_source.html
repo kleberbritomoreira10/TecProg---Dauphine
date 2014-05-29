@@ -71,24 +71,27 @@
 <div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_entity.html#aabc8b9eb5a82e2ebea415814754b0de3">getHeight</a>();</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        SDL_Rect&amp; <a class="code" href="class_entity.html#a35f8cd572e6ccfd3be86369e849bcd92">getClip</a>();</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        SDL_Rect&amp; <a class="code" href="class_entity.html#a91daae2b749ee81bff15a1a409321726">getAnimationClip</a>();</div>
 <div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;</div>
 <div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="class_entity.html#abe84b2274427a984d952acd6d4c4061f">   51</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_entity.html#abe84b2274427a984d952acd6d4c4061f" title="The position in the x axis. ">x</a>; </div>
 <div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="class_entity.html#aeaf8012f92ad9f8ea0df589e3fc67c8f">   52</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_entity.html#aeaf8012f92ad9f8ea0df589e3fc67c8f" title="The position in the y axis. ">y</a>; </div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keyword">protected</span>:</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <a class="code" href="class_entity.html#a6be886b9dff92e1b16ac54921efdfb52" title="The constructor. ">Entity</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> x_, <span class="keyword">const</span> <span class="keywordtype">double</span> y_, <a class="code" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a>* <span class="keyword">const</span> sprite_);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;</div>
-<div class="line"><a name="l00064"></a><span class="lineno"><a class="code" href="class_entity.html#a4da30cea569f19c66c033358e1e99c04">   64</a></span>&#160;        <a class="code" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a>* <a class="code" href="class_entity.html#a4da30cea569f19c66c033358e1e99c04" title="The Sprite attributed to the entity. ">sprite</a>; </div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="class_entity.html#ac5e09232fb967bf716cc6e6684d32cea">   65</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_entity.html#ac5e09232fb967bf716cc6e6684d32cea" title="The entitys width, from its sprite. ">width</a>; </div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="class_entity.html#aebf02bb745e69e68f44d5b5cee318d97">   66</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_entity.html#aebf02bb745e69e68f44d5b5cee318d97" title="The entitys height, from its sprite. ">height</a>; </div>
-<div class="line"><a name="l00067"></a><span class="lineno"><a class="code" href="class_entity.html#a0b4b3fa2d30ea59c4d54c6d7a510dd0f">   67</a></span>&#160;        SDL_Rect <a class="code" href="class_entity.html#a0b4b3fa2d30ea59c4d54c6d7a510dd0f" title="The current clip on the spritesheet, to determine animation. ">clip</a>; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;};</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="class_entity.html#af5d1b2ff7c52953fc76718d94979eae4">   53</a></span>&#160;        <span class="keywordtype">bool</span> <a class="code" href="class_entity.html#af5d1b2ff7c52953fc76718d94979eae4" title="The direction in the x axis. ">isRight</a>; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <a class="code" href="class_entity.html#a6be886b9dff92e1b16ac54921efdfb52" title="The constructor. ">Entity</a>(<span class="keyword">const</span> <span class="keywordtype">double</span> x_, <span class="keyword">const</span> <span class="keywordtype">double</span> y_, <a class="code" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a>* <span class="keyword">const</span> sprite_);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;</div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="code" href="class_entity.html#a4da30cea569f19c66c033358e1e99c04">   65</a></span>&#160;        <a class="code" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a>* <a class="code" href="class_entity.html#a4da30cea569f19c66c033358e1e99c04" title="The Sprite attributed to the entity. ">sprite</a>; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="class_entity.html#ac5e09232fb967bf716cc6e6684d32cea">   66</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_entity.html#ac5e09232fb967bf716cc6e6684d32cea" title="The entitys width, from its sprite. ">width</a>; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="code" href="class_entity.html#aebf02bb745e69e68f44d5b5cee318d97">   67</a></span>&#160;        <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_entity.html#aebf02bb745e69e68f44d5b5cee318d97" title="The entitys height, from its sprite. ">height</a>; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="class_entity.html#a8a9c838e66e2a9f34c6c18c8a2a10e86">   68</a></span>&#160;        SDL_Rect <a class="code" href="class_entity.html#a8a9c838e66e2a9f34c6c18c8a2a10e86" title="The current clip on the spritesheet, to determine animation. ">animationClip</a>; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        SDL_Rect boundingBox;</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="preprocessor">#endif //INCLUDE_ENTITY_H</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;};</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;<span class="preprocessor">#endif //INCLUDE_ENTITY_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 3 2014 02:25:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 29 2014 00:11:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

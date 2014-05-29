@@ -79,8 +79,8 @@ virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="c
 <tr class="separator:a6ef38983d55696bba55f36b568f527e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aabc8b9eb5a82e2ebea415814754b0de3"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#aabc8b9eb5a82e2ebea415814754b0de3">getHeight</a> ()</td></tr>
 <tr class="separator:aabc8b9eb5a82e2ebea415814754b0de3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a35f8cd572e6ccfd3be86369e849bcd92"><td class="memItemLeft" align="right" valign="top">SDL_Rect &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a35f8cd572e6ccfd3be86369e849bcd92">getClip</a> ()</td></tr>
-<tr class="separator:a35f8cd572e6ccfd3be86369e849bcd92"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91daae2b749ee81bff15a1a409321726"><td class="memItemLeft" align="right" valign="top">SDL_Rect &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a91daae2b749ee81bff15a1a409321726">getAnimationClip</a> ()</td></tr>
+<tr class="separator:a91daae2b749ee81bff15a1a409321726"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public Attributes</h2></td></tr>
@@ -90,6 +90,9 @@ Public Attributes</h2></td></tr>
 <tr class="memitem:aeaf8012f92ad9f8ea0df589e3fc67c8f"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#aeaf8012f92ad9f8ea0df589e3fc67c8f">y</a></td></tr>
 <tr class="memdesc:aeaf8012f92ad9f8ea0df589e3fc67c8f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The position in the y axis.  <a href="#aeaf8012f92ad9f8ea0df589e3fc67c8f">More...</a><br/></td></tr>
 <tr class="separator:aeaf8012f92ad9f8ea0df589e3fc67c8f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af5d1b2ff7c52953fc76718d94979eae4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#af5d1b2ff7c52953fc76718d94979eae4">isRight</a></td></tr>
+<tr class="memdesc:af5d1b2ff7c52953fc76718d94979eae4"><td class="mdescLeft">&#160;</td><td class="mdescRight">The direction in the x axis.  <a href="#af5d1b2ff7c52953fc76718d94979eae4">More...</a><br/></td></tr>
+<tr class="separator:af5d1b2ff7c52953fc76718d94979eae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected Member Functions</h2></td></tr>
@@ -108,9 +111,12 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:aebf02bb745e69e68f44d5b5cee318d97"><td class="memItemLeft" align="right" valign="top">unsigned int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#aebf02bb745e69e68f44d5b5cee318d97">height</a></td></tr>
 <tr class="memdesc:aebf02bb745e69e68f44d5b5cee318d97"><td class="mdescLeft">&#160;</td><td class="mdescRight">The entitys height, from its sprite.  <a href="#aebf02bb745e69e68f44d5b5cee318d97">More...</a><br/></td></tr>
 <tr class="separator:aebf02bb745e69e68f44d5b5cee318d97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0b4b3fa2d30ea59c4d54c6d7a510dd0f"><td class="memItemLeft" align="right" valign="top">SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a0b4b3fa2d30ea59c4d54c6d7a510dd0f">clip</a></td></tr>
-<tr class="memdesc:a0b4b3fa2d30ea59c4d54c6d7a510dd0f"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current clip on the spritesheet, to determine animation.  <a href="#a0b4b3fa2d30ea59c4d54c6d7a510dd0f">More...</a><br/></td></tr>
-<tr class="separator:a0b4b3fa2d30ea59c4d54c6d7a510dd0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a9c838e66e2a9f34c6c18c8a2a10e86"><td class="memItemLeft" align="right" valign="top">SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_entity.html#a8a9c838e66e2a9f34c6c18c8a2a10e86">animationClip</a></td></tr>
+<tr class="memdesc:a8a9c838e66e2a9f34c6c18c8a2a10e86"><td class="mdescLeft">&#160;</td><td class="mdescRight">The current clip on the spritesheet, to determine animation.  <a href="#a8a9c838e66e2a9f34c6c18c8a2a10e86">More...</a><br/></td></tr>
+<tr class="separator:a8a9c838e66e2a9f34c6c18c8a2a10e86"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5abd3d852354279a4492fec08b84500e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a5abd3d852354279a4492fec08b84500e"></a>
+SDL_Rect&#160;</td><td class="memItemRight" valign="bottom"><b>boundingBox</b></td></tr>
+<tr class="separator:a5abd3d852354279a4492fec08b84500e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Base class for all game objects (entities). </p>
@@ -164,24 +170,23 @@ Protected Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000011">Todo:</a></b></dt><dd>Fix magic numbers. </dd></dl>
 
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a35f8cd572e6ccfd3be86369e849bcd92"></a>
+<a class="anchor" id="a91daae2b749ee81bff15a1a409321726"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">SDL_Rect &amp; Entity::getClip </td>
+          <td class="memname">SDL_Rect &amp; Entity::getAnimationClip </td>
           <td>(</td>
           <td class="paramname">)</td><td></td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
-<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="class_entity.html" title="Base class for all game objects (entities). ">Entity</a> clip. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The <a class="el" href="class_entity.html#a8a9c838e66e2a9f34c6c18c8a2a10e86" title="The current clip on the spritesheet, to determine animation. ">Entity::animationClip</a>. </dd></dl>
 
 </div>
 </div>
@@ -260,7 +265,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="class_player.html#aa9f504c0cd5c4d9c7383ca78c1a36b46">Player</a>, and <a class="el" href="class_tile_map.html#a32a55b24dcd57316042e66443299c1dc">TileMap</a>.</p>
+<p>Implemented in <a class="el" href="class_player.html#aa9f504c0cd5c4d9c7383ca78c1a36b46">Player</a>, <a class="el" href="class_enemy.html#ae6c7b7a6b0b1b9911246321b27f07e3c">Enemy</a>, <a class="el" href="class_bomb_potion.html#a2c16c7e333e06d4110e1c2bceb415770">BombPotion</a>, <a class="el" href="class_text.html#a6eeeba1338e99cf3f1645a521c302742">Text</a>, and <a class="el" href="class_crosshair.html#ac02ab42480974fc1b2578f502c8d4b57">Crosshair</a>.</p>
 
 </div>
 </div>
@@ -295,12 +300,12 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Implemented in <a class="el" href="class_player.html#a5fc1b10886df85d351a62dc5b88fe42d">Player</a>, and <a class="el" href="class_tile_map.html#a0cae9a5e06510fa8e1a140d21259a091">TileMap</a>.</p>
+<p>Implemented in <a class="el" href="class_player.html#a5fc1b10886df85d351a62dc5b88fe42d">Player</a>, <a class="el" href="class_enemy.html#a385e402648c7fd208401ac6dd7dbc2a3">Enemy</a>, <a class="el" href="class_bomb_potion.html#a0dfda4630e8cbac4a705329b7fe4285c">BombPotion</a>, <a class="el" href="class_text.html#a0162afce6d58ef4a01e9cc9c4de3fa3e">Text</a>, and <a class="el" href="class_crosshair.html#abeea067807a0fb0d9be2b62f43765a87">Crosshair</a>.</p>
 
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a0b4b3fa2d30ea59c4d54c6d7a510dd0f"></a>
+<a class="anchor" id="a8a9c838e66e2a9f34c6c18c8a2a10e86"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -308,7 +313,7 @@ Protected Attributes</h2></td></tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">SDL_Rect Entity::clip</td>
+          <td class="memname">SDL_Rect Entity::animationClip</td>
         </tr>
       </table>
   </td>
@@ -341,6 +346,20 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>The entitys height, from its sprite. </p>
+
+</div>
+</div>
+<a class="anchor" id="af5d1b2ff7c52953fc76718d94979eae4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Entity::isRight</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The direction in the x axis. </p>
 
 </div>
 </div>
@@ -423,7 +442,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 3 2014 02:25:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 29 2014 00:11:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

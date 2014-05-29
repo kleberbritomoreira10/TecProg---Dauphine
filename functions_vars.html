@@ -67,6 +67,7 @@
       <li><a href="#index_l"><span>l</span></a></li>
       <li><a href="#index_m"><span>m</span></a></li>
       <li><a href="#index_n"><span>n</span></a></li>
+      <li><a href="#index_o"><span>o</span></a></li>
       <li><a href="#index_p"><span>p</span></a></li>
       <li><a href="#index_q"><span>q</span></a></li>
       <li><a href="#index_r"><span>r</span></a></li>
@@ -86,6 +87,9 @@
 <li>animation
 : <a class="el" href="class_player.html#a9be5b1b79872b12d722d0e8c5e547480">Player</a>
 </li>
+<li>animationClip
+: <a class="el" href="class_entity.html#a8a9c838e66e2a9f34c6c18c8a2a10e86">Entity</a>
+</li>
 <li>audioHandler
 : <a class="el" href="class_game.html#a0669fc05427f97820f44f2ac5cc7cef0">Game</a>
 </li>
@@ -104,13 +108,18 @@
 </li>
 <li>clip
 : <a class="el" href="class_camera.html#a3e33feaa65673d9de0067aecabdbe249">Camera</a>
-, <a class="el" href="class_entity.html#a0b4b3fa2d30ea59c4d54c6d7a510dd0f">Entity</a>
 </li>
-<li>clips
-: <a class="el" href="class_tile_map.html#ac71de8e1dc0cff77313d819fed013f9c">TileMap</a>
+<li>collisionRects
+: <a class="el" href="class_dynamic_entity.html#a60e6b11567e689505b4a826af56ba49f">DynamicEntity</a>
 </li>
 <li>controllerHandler
 : <a class="el" href="class_input_handler.html#a50ac48002b081c2c03af8f638c47dbe7">InputHandler</a>
+</li>
+<li>creditsClip
+: <a class="el" href="class_g_state_credits.html#a2cfed21a62aba0a295935fe2f4e3771b">GStateCredits</a>
+</li>
+<li>creditsImage
+: <a class="el" href="class_g_state_credits.html#ad9eda97880664c3ae9dc3e1bdf7c1b5c">GStateCredits</a>
 </li>
 <li>current
 : <a class="el" href="class_g_state_splash.html#a82effba472015357574e84821b9a3bf4">GStateSplash</a>
@@ -129,6 +138,9 @@
 
 
 <h3><a class="anchor" id="index_e"></a>- e -</h3><ul>
+<li>enemy
+: <a class="el" href="class_state_enemy.html#ae5af5e566953eb13da79bce57ac6eaad">StateEnemy</a>
+</li>
 <li>entities
 : <a class="el" href="class_state_game.html#a235653a14367a3a5e203c5ed607ba4c2">StateGame</a>
 </li>
@@ -139,6 +151,9 @@
 
 
 <h3><a class="anchor" id="index_f"></a>- f -</h3><ul>
+<li>flipHorizontal
+: <a class="el" href="class_sprite.html#aa70e85ab29425537f1b0e41abbbfe852">Sprite</a>
+</li>
 <li>fpsManager
 : <a class="el" href="class_game.html#a5817ea6f0896abffc6ab8bc893382a31">Game</a>
 </li>
@@ -148,6 +163,9 @@
 <h3><a class="anchor" id="index_g"></a>- g -</h3><ul>
 <li>gameController
 : <a class="el" href="class_controller_handler.html#a65bbcf23b90f3ab1b4087acd136518b2">ControllerHandler</a>
+</li>
+<li>gameOverImage
+: <a class="el" href="class_g_state_game_over.html#af8f98c948ae2b3f9812c24233349065f">GStateGameOver</a>
 </li>
 </ul>
 
@@ -165,17 +183,23 @@
 <li>images
 : <a class="el" href="class_g_state_splash.html#ac0fb39609512b954fd0dd9dda366ae94">GStateSplash</a>
 </li>
+<li>initialX
+: <a class="el" href="class_animation.html#aba49daee599cf1c73ec12fe9adf7a424">Animation</a>
+</li>
+<li>initialY
+: <a class="el" href="class_animation.html#a8aae31b208d2ecbebdd4a3d0827fdef6">Animation</a>
+</li>
 <li>inputHandler
 : <a class="el" href="class_game.html#aa0ca10b15de880181ddcfede0de9226c">Game</a>
 </li>
 <li>isGrounded
 : <a class="el" href="class_dynamic_entity.html#ac478ab308879b2cae4779e2efc27e6bf">DynamicEntity</a>
 </li>
+<li>isRight
+: <a class="el" href="class_entity.html#af5d1b2ff7c52953fc76718d94979eae4">Entity</a>
+</li>
 <li>isRunning
 : <a class="el" href="class_game.html#adb424734b2454f9ed1e6d6bd44e6dfaf">Game</a>
-</li>
-<li>isVerbose
-: <a class="el" href="class_logger.html#ae30227e919c8a1301bd8a4d48eb18972">Logger</a>
 </li>
 </ul>
 
@@ -201,7 +225,7 @@
 </li>
 <li>lifeTime
 : <a class="el" href="class_g_state_splash.html#abf354c2e82ccac0aabc241e4eb251fc3">GStateSplash</a>
-, <a class="el" href="class_g_state_menu.html#afcac0cc60016efee48da479cf33528c9">GStateMenu</a>
+, <a class="el" href="class_g_state_game_over.html#ae82c6a8e64e756d325ed0256d01d78c7">GStateGameOver</a>
 </li>
 <li>logicalRenderSize
 : <a class="el" href="class_configuration.html#a9c18ad1f19aa75b6c8fa4a626cc206f0">Configuration</a>
@@ -225,6 +249,9 @@
 <li>menuImage
 : <a class="el" href="class_g_state_menu.html#a0cd044964e70c0c97e0856325dee6349">GStateMenu</a>
 </li>
+<li>menuSelector
+: <a class="el" href="class_g_state_menu.html#aaba2bd99cf4340548aebc8634f9b865b">GStateMenu</a>
+</li>
 </ul>
 
 
@@ -235,9 +262,17 @@
 </ul>
 
 
+<h3><a class="anchor" id="index_o"></a>- o -</h3><ul>
+<li>optionsImage
+: <a class="el" href="class_g_state_options.html#a3ff47ba45c8bb2bf985e35c10ec5e1fe">GStateOptions</a>
+</li>
+</ul>
+
+
 <h3><a class="anchor" id="index_p"></a>- p -</h3><ul>
 <li>passedTime
-: <a class="el" href="class_g_state_menu.html#a25de269d14fd6e31adbad822b3d055d0">GStateMenu</a>
+: <a class="el" href="class_g_state_game_over.html#ae4f04fa0bd55eb7cecfab3102405327a">GStateGameOver</a>
+, <a class="el" href="class_g_state_menu.html#a25de269d14fd6e31adbad822b3d055d0">GStateMenu</a>
 , <a class="el" href="class_g_state_splash.html#ad56266f001a226e3853fca27b5597443">GStateSplash</a>
 </li>
 <li>path
@@ -251,16 +286,13 @@
 
 
 <h3><a class="anchor" id="index_q"></a>- q -</h3><ul>
-<li>quit
-: <a class="el" href="class_input_handler.html#ae83295e50f34dd7e2b54f9ac4dcecac8">InputHandler</a>
+<li>quitFlag
+: <a class="el" href="class_input_handler.html#a6bd166e013cbd6313609eab276f00abd">InputHandler</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_r"></a>- r -</h3><ul>
-<li>rectangle
-: <a class="el" href="class_tile.html#a43551e657dc00cd8779ffeafcb13ecf0">Tile</a>
-</li>
 <li>resolutionHeight
 : <a class="el" href="class_configuration.html#a469e15c3c77e7eced8d2682aa127e10b">Configuration</a>
 </li>
@@ -295,6 +327,18 @@
 <li>sdlWindow
 : <a class="el" href="class_window.html#a6be667ef970fd951a4853e7bcc933ac8">Window</a>
 </li>
+<li>selectorXPositionLeft
+: <a class="el" href="class_g_state_menu.html#aee50cf11807bae7e157f2371e1552eaf">GStateMenu</a>
+</li>
+<li>selectorXPositionRight
+: <a class="el" href="class_g_state_menu.html#aff67fd07792ccedc6efff336935cdc4a">GStateMenu</a>
+</li>
+<li>selectorYPositionLeft
+: <a class="el" href="class_g_state_menu.html#a3ca71cbcf3a699ef1ea90608ae7e6565">GStateMenu</a>
+</li>
+<li>selectorYPositionRight
+: <a class="el" href="class_g_state_menu.html#a0a4730afec311cc5495d94f0fe9ae6c4">GStateMenu</a>
+</li>
 <li>speed
 : <a class="el" href="class_dynamic_entity.html#afb9769a95740aa1819e1d843d1a7c4db">DynamicEntity</a>
 </li>
@@ -308,21 +352,21 @@
 : <a class="el" href="class_animation.html#a030a8f97b36c7e77ba8ce544ea3b3132">Animation</a>
 </li>
 <li>statesMap
-: <a class="el" href="class_player.html#abf589351714d92a8f8b4421798f1d10a">Player</a>
-, <a class="el" href="class_game.html#a9d6b3d33b550f2ac3425d324d5e235e8">Game</a>
+: <a class="el" href="class_game.html#a9d6b3d33b550f2ac3425d324d5e235e8">Game</a>
+, <a class="el" href="class_player.html#abf589351714d92a8f8b4421798f1d10a">Player</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_t"></a>- t -</h3><ul>
-<li>tiles
-: <a class="el" href="class_tile_map.html#a28ed97bec50c5ae9cd19dbd097958e0b">TileMap</a>
+<li>tileMatrix
+: <a class="el" href="class_tile_map.html#a9a787d53ae5da8497799994d56dfb228">TileMap</a>
 </li>
 <li>totalElapsedTime
-: <a class="el" href="class_animation.html#a362b77b845be75376a2f372a1204db53">Animation</a>
+: <a class="el" href="class_animation.html#a23cf823fb939c2ed05a98e5a1239bac1">Animation</a>
 </li>
-<li>type
-: <a class="el" href="class_tile.html#a47b4b331f7bd36979c40b68a041c7759">Tile</a>
+<li>totalTime
+: <a class="el" href="class_animation.html#a6315668e311f54415bdd708b076bb35d">Animation</a>
 </li>
 </ul>
 
@@ -370,7 +414,7 @@
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 3 2014 02:25:31 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 29 2014 00:11:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>

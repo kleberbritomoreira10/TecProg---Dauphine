@@ -73,17 +73,32 @@
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;</div>
 <div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_g_state_menu.html#a97ecce453eaafb3438d8363f4110fd43" title="Renders the state. ">render</a>();</div>
 <div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="class_g_state_menu.html#a0cd044964e70c0c97e0856325dee6349">   51</a></span>&#160;        <a class="code" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a>* <a class="code" href="class_g_state_menu.html#a0cd044964e70c0c97e0856325dee6349" title="The image shown on the menu. ">menuImage</a>; </div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="class_g_state_menu.html#a25de269d14fd6e31adbad822b3d055d0">   52</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_g_state_menu.html#a25de269d14fd6e31adbad822b3d055d0" title="The time already elapsed since the beggining of the menu. ">passedTime</a>; </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="class_g_state_menu.html#afcac0cc60016efee48da479cf33528c9">   53</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_g_state_menu.html#afcac0cc60016efee48da479cf33528c9" title="The amount of time the menu will be shown. ">lifeTime</a>; </div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;};</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="preprocessor">#endif // INCLUDE_GSTATEMENU_H</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordtype">void</span> handleSelectorMenu();</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keyword">enum</span> Selection : uint8_t {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            NEWGAME = 0,</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            CONTINUE,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            OPTIONS,</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            CREDITS,</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            TOTAL</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        };</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;</div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="code" href="class_g_state_menu.html#a0cd044964e70c0c97e0856325dee6349">   61</a></span>&#160;        <a class="code" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a>* <a class="code" href="class_g_state_menu.html#a0cd044964e70c0c97e0856325dee6349" title="The image shown on the menu. ">menuImage</a>; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="code" href="class_g_state_menu.html#aaba2bd99cf4340548aebc8634f9b865b">   62</a></span>&#160;        <a class="code" href="class_sprite.html" title="Visual representation of game objects. ">Sprite</a>* <a class="code" href="class_g_state_menu.html#aaba2bd99cf4340548aebc8634f9b865b" title="The selector shown on the menu. ">menuSelector</a>; </div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="code" href="class_g_state_menu.html#a25de269d14fd6e31adbad822b3d055d0">   63</a></span>&#160;        <span class="keywordtype">double</span> <a class="code" href="class_g_state_menu.html#a25de269d14fd6e31adbad822b3d055d0" title="The time already elapsed since the beggining of the menu. ">passedTime</a>; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordtype">int</span> currentSelection;</div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="class_g_state_menu.html#aee50cf11807bae7e157f2371e1552eaf">   66</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_g_state_menu.html#aee50cf11807bae7e157f2371e1552eaf" title="The X position of the left selector. ">selectorXPositionLeft</a>[Selection::TOTAL]; </div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="code" href="class_g_state_menu.html#a3ca71cbcf3a699ef1ea90608ae7e6565">   67</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_g_state_menu.html#a3ca71cbcf3a699ef1ea90608ae7e6565" title="The Y position of the left selector. ">selectorYPositionLeft</a>[Selection::TOTAL]; </div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="class_g_state_menu.html#aff67fd07792ccedc6efff336935cdc4a">   68</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_g_state_menu.html#aff67fd07792ccedc6efff336935cdc4a" title="The X position of the left selector. ">selectorXPositionRight</a>[Selection::TOTAL]; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="code" href="class_g_state_menu.html#a0a4730afec311cc5495d94f0fe9ae6c4">   69</a></span>&#160;        <span class="keywordtype">int</span> <a class="code" href="class_g_state_menu.html#a0a4730afec311cc5495d94f0fe9ae6c4" title="The Y position of the left selector. ">selectorYPositionRight</a>[Selection::TOTAL]; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;};</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="preprocessor">#endif // INCLUDE_GSTATEMENU_H</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Sat May 3 2014 02:25:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu May 29 2014 00:11:30 for Dauphine by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.4
 </small></address>
