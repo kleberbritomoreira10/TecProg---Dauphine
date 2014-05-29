@@ -10,8 +10,7 @@ DynamicEntity::DynamicEntity(const double x_, const double y_, Sprite* const spr
     maxSpeed(550.0),
     isGrounded(false),
     levelW(0),
-    levelH(0),
-    collisionRects()
+    levelH(0)
 {
 
 }
@@ -119,10 +118,6 @@ void DynamicEntity::roll(){
     else{
         this->vx = -rollStrength * this->speed;
     }
-}
-
-void DynamicEntity::setCollisionRects(const std::vector<SDL_Rect>& collisionRects_){
-    this->collisionRects = collisionRects_;   
 }
 
 void DynamicEntity::aim(Crosshair* const crosshair, const double direction){

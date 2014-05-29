@@ -3,6 +3,7 @@
 
 #include "Sprite.h"
 #include "SDLWrapper.h"
+#include <vector>
 
 /**
 * Base class for all game objects (entities).
@@ -48,6 +49,10 @@ class Entity {
 		*/
 		SDL_Rect& getAnimationClip();
 
+		SDL_Rect& getBoundingBox();
+
+		virtual void setCollisionRects(const std::vector<SDL_Rect>& collisionRects_);
+
 		double x; /**< The position in the x axis. */
 		double y; /**< The position in the y axis. */
 		bool isRight; /**< The direction in the x axis. */ 
@@ -67,6 +72,9 @@ class Entity {
 		unsigned int height; /**< The entitys height, from its sprite. */
 		SDL_Rect animationClip; /**< The current clip on the spritesheet, to determine animation. */
 		SDL_Rect boundingBox;
+
+		std::vector<SDL_Rect> collisionRects; /**< The SDL_Rects containing collidable tiles 
+			positions. */
 
 };
 

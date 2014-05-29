@@ -6,6 +6,7 @@
 #include "Camera.h"
 #include "StateGame.h"
 #include "TileMap.h"
+#include "QuadTree.h"
 
 /**
 * Abstract class for levels.
@@ -56,6 +57,7 @@ class Level : public StateGame {
 		Camera* camera; /**< The current camera for that level. */
 
 		TileMap* tileMap;
+		QuadTree* quadTree;
 
 };
 

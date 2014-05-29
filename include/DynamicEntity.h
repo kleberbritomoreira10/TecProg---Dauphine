@@ -4,7 +4,6 @@
 #include "Entity.h"
 #include "Crosshair.h"
 #include "BombPotion.h"
-#include <vector>
 #include <array>
 
 enum CollisionSide : uint8_t {
@@ -50,8 +49,6 @@ class DynamicEntity : public Entity {
 		*/
 		virtual void setLevelWH(const unsigned int width_, const unsigned int height_);
 
-		virtual void setCollisionRects(const std::vector<SDL_Rect>& collisionRects_);
-
 		double vx; /**< The dynamic entity's speed on the x axis. */
 		double vy; /**< The dynamic entity's speed on the x axis. */
 		double speed; /**< Speed that moves dynamic entity on input. */
@@ -79,8 +76,6 @@ class DynamicEntity : public Entity {
 
 		unsigned int levelW; /**< The width of the level. */
 		unsigned int levelH; /**< The height of the level. */
-		std::vector<SDL_Rect> collisionRects; /**< The SDL_Rects containing collidable tiles 
-			positions. */
 
 };
 

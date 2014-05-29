@@ -19,6 +19,15 @@ LevelOne::~LevelOne(){
 void LevelOne::load(){
 	Log(DEBUG) << "Loading level 1...";
 
+	// Loading the tile/tilemap.
+	this->tileMap = new TileMap("res/maps/level1.tmx");
+
+	// Setting the level width/height.
+	this->width = this->tileMap->getMapWidth();
+	this->height = this->tileMap->getMapHeight();
+	SDL_Rect bounds = {0, 0, (int)this->width, (int)this->height};
+	this->quadTree = new QuadTree(0, bounds);
+
 	// Getting information from lua script.
 	LuaScript luaLevel1("lua/Level1.lua");
 	const std::string pathPlayerSpriteSheet = luaLevel1.unlua_get<std::string>(
@@ -34,43 +43,29 @@ void LevelOne::load(){
 	Game::instance().getAudioHandler().changeMusic(pathBackgroundAudio);
 
 	// Loading the sprites.
-	Sprite* spritePlayer = nullptr;
-	spritePlayer = Game::instance().getResources().get(pathPlayerSpriteSheet);
+	Sprite* spritePlayer = Game::instance().getResources().get(pathPlayerSpriteSheet);
 
 	// Loading the player and the camera.
 	Player* lPlayer = new Player(initialPlayerX, initialPlayerY, spritePlayer);
 	Camera* lCamera = new Camera(lPlayer);
 
-	Sprite* spriteCrosshair = nullptr;
-	spriteCrosshair = Game::instance().getResources().get("res/images/alvo.png");
-	Crosshair *crosshair = new Crosshair(500,600, spriteCrosshair);
+	Sprite* spriteCrosshair = Game::instance().getResources().get("res/images/alvo.png");
+	Crosshair* crosshair = new Crosshair(500, 600, spriteCrosshair);
 
-	Sprite* spriteBombPotion = nullptr;
-	spriteBombPotion = Game::instance().getResources().get("res/images/potion.png");
-	BombPotion *bombPotion = new BombPotion(300,600, spriteBombPotion);
+	Sprite* spriteBombPotion = Game::instance().getResources().get("res/images/potion.png");
+	BombPotion* bombPotion = new BombPotion(300, 600, spriteBombPotion);
 
-	lPlayer->setCrosshair(crosshair);
-	lPlayer->setBombPotion(bombPotion);
-	this->width = 1920;
-	this->height = 1080;
-
-	// Loading the tile/tilemap.
-	this->tileMap = new TileMap("res/maps/level1.tmx");
-	lPlayer->setCollisionRects(this->tileMap->getCollisionRects());
-
-	// Setting the level width/height.
-	this->width = this->tileMap->getMapWidth();
-	this->height = this->tileMap->getMapHeight();
-
-	Sprite* spriteEnemy;
-	spriteEnemy = Game::instance().getResources().get(pathTempEnemy);
-	Enemy* enemy = new Enemy(704.0, 0.0, spriteEnemy, true, 200.0);
-	enemy->setLevelWH(this->width, this->height);
-	enemy->setCollisionRects(this->tileMap->getCollisionRects());
-	addEntity(enemy);
 	addEntity(crosshair);
 	addEntity(bombPotion);
 
+	lPlayer->setCrosshair(crosshair);
+	lPlayer->setBombPotion(bombPotion);
+
+	Sprite* spriteEnemy = Game::instance().getResources().get(pathTempEnemy);
+	Enemy* enemy = new Enemy(704.0, 0.0, spriteEnemy, true, 200.0);
+	enemy->setLevelWH(this->width, this->height);
+	addEntity(enemy);
+	
 	// Test text.
 	// Text* text = new Text(200.0, 900.0, "res/fonts/KGFeeling22.ttf", 50, "dauphine");
 	// addEntity(text);
@@ -86,9 +81,16 @@ void LevelOne::unload(){
 }
 
 void LevelOne::update(const double dt_){
-	// Update all the entities in the list.
-	for(auto entity : entities){
-        entity->update(dt_);
+	// Populating the QuadTree.
+	this->quadTree->setObjects(this->tileMap->getCollisionRects());
+
+	// // Updating the entities, using the QuadTree.
+	std::vector<SDL_Rect> returnObjects;
+	for (auto entity : this->entities) {
+		returnObjects.clear();
+		this->quadTree->retrieve(returnObjects, entity->getBoundingBox());
+		entity->setCollisionRects(returnObjects);
+		entity->update(dt_);
 	}
 
 	/// @todo Refactor this static Enemy::px, Enemy::py.

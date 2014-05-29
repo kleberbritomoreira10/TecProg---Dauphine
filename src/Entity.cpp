@@ -10,13 +10,16 @@ Entity::Entity(const double x_, const double y_, Sprite* const sprite_) :
     width(0),
     height(0),
     animationClip{0,0,0,0},
-    boundingBox{0,0,0,0}
+    boundingBox{(int)x_, (int)y_, 0, 0}
 {
     // Only serves as the initializer for the derived classes.
 
     if(this->sprite != nullptr){
         this->width = this->sprite->getWidth();
         this->height = this->sprite->getHeight();
+        
+        this->boundingBox.w = this->width;
+        this->boundingBox.h = this->height;
     }
     else{
         Log(WARN) << "Entity sprite is null, width and height will be undefined.";
@@ -37,4 +40,12 @@ unsigned int Entity::getHeight(){
 
 SDL_Rect& Entity::getAnimationClip(){
 	return this->animationClip;
+}
+
+SDL_Rect& Entity::getBoundingBox(){
+    return this->boundingBox;
+}
+
+void Entity::setCollisionRects(const std::vector<SDL_Rect>& collisionRects_){
+    this->collisionRects = collisionRects_;   
 }
