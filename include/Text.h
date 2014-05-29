@@ -4,6 +4,9 @@
 #include "SDLWrapper.h"
 #include "Entity.h"
 
+/**
+* @todo Actually make this work.
+*/
 class Text : public Entity {
 
 	public:

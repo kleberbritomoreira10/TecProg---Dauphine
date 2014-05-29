@@ -36,14 +36,13 @@ class DynamicEntity : public Entity {
 		*/
 		virtual ~DynamicEntity();
 
-
 		virtual void jump();
 		virtual void applyGravity();
 		virtual void move(const bool movingLeft_, const bool movingRight_);
 		virtual void slowVx();
 		virtual void roll();
-		virtual void aim(Crosshair *crosshair, double direction);
-		virtual void useBombPotion(BombPotion *bombPotion, int strength, int distance);
+		virtual void aim(Crosshair* const crosshair, double direction);
+		virtual void useBombPotion(BombPotion* const bombPotion, const int strength, const int distance);
 
 		/**
 		* @param width_,height_ : Tells the player what the width and height of the level is.
@@ -60,8 +59,6 @@ class DynamicEntity : public Entity {
 		bool isGrounded; /**< Check for if the dynamic entity is on the ground. */
 
 	protected:
-		
-
 		/**
 		* Updates the position of the dynamic entity
 		* Update is based on what input was recieved, and the players velocity.
@@ -70,12 +67,20 @@ class DynamicEntity : public Entity {
 		*/
 		virtual void updatePosition(const double dt_);
 
+		/**
+		* @return A bool array with the sides the DynamicEntity collided.
+		*/
 		std::array<bool, CollisionSide::SOLID_TOTAL> detectCollision();
+
+		/**
+		* Handles the collision.
+		*/
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_) = 0;
 
 		unsigned int levelW; /**< The width of the level. */
 		unsigned int levelH; /**< The height of the level. */
-		std::vector<SDL_Rect> collisionRects;
+		std::vector<SDL_Rect> collisionRects; /**< The SDL_Rects containing collidable tiles 
+			positions. */
 
 };
 

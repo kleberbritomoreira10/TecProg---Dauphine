@@ -66,7 +66,7 @@ void LevelOne::load(){
 	spriteEnemy = Game::instance().getResources().get(pathTempEnemy);
 	Enemy* enemy = new Enemy(704.0, 0.0, spriteEnemy, true, 200.0);
 	enemy->setLevelWH(this->width, this->height);
-	//enemy->setTiles(tileMap->tiles);
+	enemy->setCollisionRects(this->tileMap->getCollisionRects());
 	addEntity(enemy);
 	addEntity(crosshair);
 	addEntity(bombPotion);

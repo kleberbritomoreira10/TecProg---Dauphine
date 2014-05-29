@@ -24,7 +24,7 @@ void PStateMoving::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
 
     // Crouch
     if(keyStates_[GameKeys::LCTRL]){
-        this->player->changeState(Player::PStates::CROUCH);
+        this->player->changeState(Player::PStates::CROUCHING);
         return;
     }
 

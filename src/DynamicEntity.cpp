@@ -10,7 +10,8 @@ DynamicEntity::DynamicEntity(const double x_, const double y_, Sprite* const spr
     maxSpeed(550.0),
     isGrounded(false),
     levelW(0),
-    levelH(0)
+    levelH(0),
+    collisionRects()
 {
 
 }
@@ -124,13 +125,13 @@ void DynamicEntity::setCollisionRects(const std::vector<SDL_Rect>& collisionRect
     this->collisionRects = collisionRects_;   
 }
 
-void DynamicEntity::aim(Crosshair *crosshair, double direction){
+void DynamicEntity::aim(Crosshair* const crosshair, const double direction){
     crosshair->activated = true;
-    double velocity = 10;
+    const double velocity = 10;
     crosshair->x += velocity*direction;
 }
 
-void DynamicEntity::useBombPotion(BombPotion *bombPotion, int strength, int distance){
+void DynamicEntity::useBombPotion(BombPotion* const bombPotion, const int strength, const int distance){
     bombPotion->activated = true;
 //    bombPotion->x = this->x + this->getWidth() - 20;
 

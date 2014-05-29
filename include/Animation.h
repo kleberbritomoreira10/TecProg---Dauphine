@@ -37,6 +37,10 @@ class Animation{
 		*/
 		void update(SDL_Rect& clip_, const double dt_);
 
+		/**
+		* Changes the animation to another.
+		* @note See Animation::Animation for the parameters descriptions.
+		*/
 		void changeAnimation(const int x_, const int y_, const int numberOfImages_, const bool loop_, const double totalTime_);
 
 	private:
@@ -50,14 +54,17 @@ class Animation{
 
 		int x; /**< The position on x axis on the sprite. */
 		int y; /**< The position on x axis on the sprite. */
-		int initialX;
-		int initialY;
+		int initialX; /**< Where to start/restart the animation on x. */
+		int initialY; /**< Where to start/restart the animation on y. */
 		int spriteWidth; /**< The sprite width. */
 		int spriteHeight; /**< The sprite height. */
 		int numberOfImages; /**< The number of images to animate inside the spritesheet. */
 		bool loop; /**< Whether to loop or not. */
-		double totalElapsedTime; /**< Total time elapsed on the animation. */
-		double totalTime;
+		double totalElapsedTime; /**< Total time elapsed on the animation, to check if the
+			frame changed. */
+		double totalTime; /**< Total time for each animation loop. */
+
+		static int animationCount;
 
 };
 

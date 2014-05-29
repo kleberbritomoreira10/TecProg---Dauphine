@@ -19,6 +19,8 @@ BombPotion::~BombPotion(){
 }
 
 void BombPotion::update(const double dt_){
+	((void)dt_); // Unused?
+
 	if(activated){
 
 		if(this->vx <= this->distance){

@@ -1,20 +1,20 @@
-#include "PStateCrouch.h"
+#include "PStateCrouching.h"
 #include "Logger.h"
 
-void PStateCrouch::enter(){
+void PStateCrouching::enter(){
 	this->player->isGrounded = true;
 	this->player->maxSpeed /= 2;
 	this->player->speed = 15;
 }
 
-void PStateCrouch::exit(){
+void PStateCrouching::exit(){
 	this->player->maxSpeed *= 2;
 	this->player->speed = 20;
 }
 
-void PStateCrouch::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
+void PStateCrouching::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 
-	if(!keyStates_[GameKeys::DOWN]){
+	if(!keyStates_[GameKeys::LCTRL]){
 		this->player->changeState(Player::PStates::IDLE);
 		return;
 	}
@@ -37,7 +37,7 @@ void PStateCrouch::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
 
 }
 
-PStateCrouch::PStateCrouch(Player* const player_) :
+PStateCrouching::PStateCrouching(Player* const player_) :
 	StatePlayer(player_)
 {
 	

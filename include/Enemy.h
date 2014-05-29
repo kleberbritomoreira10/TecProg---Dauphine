@@ -18,9 +18,15 @@ class Enemy : public DynamicEntity {
 			ALERT
 		};
 
+		/**
+		* The constructor.
+		*/
 		Enemy(const double x_, const double y_, Sprite* const sprite_, const bool patrol_,
 			const double patrolLength_);
 
+		/**
+		* The destructor.
+		*/
 		virtual ~Enemy();
 
 		/**

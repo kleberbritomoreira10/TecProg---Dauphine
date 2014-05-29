@@ -1,5 +1,5 @@
-#ifndef INCLUDE_PSTATECROUCH_H
-#define INCLUDE_PSTATECROUCH_H
+#ifndef INCLUDE_PSTATECROUCHING_H
+#define INCLUDE_PSTATECROUCHING_H
 
 #include "StatePlayer.h"
 
@@ -7,19 +7,19 @@
 * The state when the player is idle.
 *
 */
-class PStateCrouch : public StatePlayer {
+class PStateCrouching : public StatePlayer {
 
 	public:
 		/**
 		* The constructor.
 		* @param player_ : Reference to the player.
 		*/
-		PStateCrouch(Player* const player_);
+		PStateCrouching(Player* const player_);
 		
 		/**
 		* The destructor.
 		*/
-		virtual ~PStateCrouch(){}
+		virtual ~PStateCrouching(){}
 
 		/**
 		* @see StatePlayer::enter
@@ -38,4 +38,4 @@ class PStateCrouch : public StatePlayer {
 
 };
 
-#endif // INCLUDE_PSTATECROUCH_H
+#endif // INCLUDE_PSTATECROUCHING_H

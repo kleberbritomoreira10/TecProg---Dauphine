@@ -8,7 +8,7 @@
 #include "PStateAerial.h"
 #include "PStateMoving.h"
 #include "PStateRolling.h"
-#include "PStateCrouch.h"
+#include "PStateCrouching.h"
 #include "PStateAiming.h"
 
 Player::Player(const double x_, const double y_, Sprite* const sprite_) :
@@ -22,7 +22,7 @@ Player::Player(const double x_, const double y_, Sprite* const sprite_) :
     this->width = luaPlayer.unlua_get<int>("player.dimensions.width");
     this->height = luaPlayer.unlua_get<int>("player.dimensions.height");
 
-    // Shouldn't be here.
+    // Shouldn't be here?
     this->animation = new Animation(0, 3, this->width, this->height, 11, false);
 
     if(this->sprite != nullptr){
@@ -47,8 +47,10 @@ void Player::update(const double dt_){
 
     this->currentState->handleInput(keyStates);
     updatePosition(dt_);
-    std::array<bool, CollisionSide::SOLID_TOTAL> detections = detectCollision();
+
+    const std::array<bool, CollisionSide::SOLID_TOTAL> detections = detectCollision();
     handleCollision(detections);
+
     this->animation->update(this->animationClip, dt_);
 }
 
@@ -76,8 +78,6 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
         this->vx = 0.0;
     }
     if(detections_.at(CollisionSide::SOLID_RIGHT)){
-    
-//    	std::cout << (int)this->x%64 << "\n";
         if((int)this->x%64 > 0){
         	this->x += (64 - (int)this->x%64) + 1;
         	this->vx = 0.0;
@@ -99,7 +99,7 @@ void Player::initializeStates(){
     this->statesMap.emplace(MOVING, new PStateMoving(this));
     this->statesMap.emplace(AERIAL, new PStateAerial(this));
     this->statesMap.emplace(ROLLING, new PStateRolling(this));
-    this->statesMap.emplace(CROUCH, new PStateCrouch(this));
+    this->statesMap.emplace(CROUCHING, new PStateCrouching(this));
     this->statesMap.emplace(AIMING, new PStateAiming(this));
 }
 
@@ -125,16 +125,16 @@ Crosshair* Player::getCrosshair(){
     return crosshair;
 }
 
-void Player::setCrosshair(Crosshair* crosshair){
-    this->crosshair = crosshair;
+void Player::setCrosshair(Crosshair* const crosshair_){
+    this->crosshair = crosshair_;
 }
 
 BombPotion* Player::getBombPotion(){
     return bombPotion;
 }
 
-void Player::setBombPotion(BombPotion* bombPotion){
-    this->bombPotion = bombPotion;
+void Player::setBombPotion(BombPotion* const bombPotion_){
+    this->bombPotion = bombPotion_;
 }
 
 bool Player::isCurrentState(const PStates state_){

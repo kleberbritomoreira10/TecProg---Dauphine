@@ -12,6 +12,7 @@ Crosshair::~Crosshair(){
 }
 
 void Crosshair::update(const double dt_){
+	((void)dt_); // Unused?
 	/*if(activated){
 		if(isRight){
 			this->x+= this->strength;
@@ -32,15 +33,17 @@ void Crosshair::render(const double cameraX_, const double cameraY_){
     }
 }
 unsigned int Crosshair::getWidth(){
-	if(this->sprite)
+	if(this->sprite){
 		return this->sprite->getWidth();
+	}
 
 	return 0;
 }
 
 unsigned int Crosshair::getHeight(){
-	if(this->sprite)
+	if(this->sprite){
 		return this->sprite->getHeight();
+	}
 
 	return 0;
 }

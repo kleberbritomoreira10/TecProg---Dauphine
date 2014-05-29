@@ -25,21 +25,6 @@ bool Collision::rectsCollided(const SDL_Rect& a_, const SDL_Rect& b_){
 
 }
 
-bool Collision::environmentCollided(Entity* const a_, const SDL_Rect& b_){
-
-	// Calculate the bottom of rect A.
-    const int bottomA = a_->y + a_->getHeight();
-
-    // Calculate the top of rect B.
-    const int topB = b_.y;
-
-	if(bottomA > topB){
-		return true;
-    }
-
-    return false;
-}
-
 Collision::RectangleSide Collision::rectsCollidedSide(const SDL_Rect& a_, const SDL_Rect& b_){
     const double w = 0.5 * (a_.w + b_.w);
     const double h = 0.5 * (a_.h + b_.h);

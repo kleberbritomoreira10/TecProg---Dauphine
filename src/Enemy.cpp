@@ -102,8 +102,6 @@ void Enemy::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detecti
         this->vx = 0.0;
     }
     if(detections_.at(CollisionSide::SOLID_RIGHT)){
-    
-//      std::cout << (int)this->x%64 << "\n";
         if((int)this->x%64 > 0){
             this->x += (64 - (int)this->x%64) + 1;
             this->vx = 0.0;

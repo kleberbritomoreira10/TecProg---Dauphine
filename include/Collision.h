@@ -5,11 +5,14 @@
 #include "Entity.h"
 
 /**
-* For now, has simple collision detection.
+* Simple collision detection.
 */
 class Collision {
 
 	public:
+		/**
+		* Possible sides a rectangle can collide.
+		*/
 		enum RectangleSide : uint8_t {
 			TOP = 0,
 			BOTTOM,
@@ -25,10 +28,9 @@ class Collision {
 		static bool rectsCollided(const SDL_Rect& a_, const SDL_Rect& b_);
 
 		/**
-		*
+		* @return The side (RectangleSide) which two SDL_Rects collided on.
+		* @param a_ , b_ : The rectangles to check.
 		*/
-		static bool environmentCollided(Entity* const a_, const SDL_Rect& b_);
-
 		static RectangleSide rectsCollidedSide(const SDL_Rect& a_, const SDL_Rect& b_);
 
 };

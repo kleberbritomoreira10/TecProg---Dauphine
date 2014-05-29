@@ -26,7 +26,7 @@ class Player : public DynamicEntity {
 			MOVING,
 			AERIAL,
 			ROLLING,
-			CROUCH,
+			CROUCHING,
 			AIMING
 		};
 
@@ -83,7 +83,7 @@ class Player : public DynamicEntity {
 		void changeState(const PStates state_);
 
 		/**
-		*
+		* @return Whether the player is currently in PStates::state_ or not.
 		*/
 		bool isCurrentState(const PStates state_);
 
@@ -93,10 +93,10 @@ class Player : public DynamicEntity {
 		Animation *getAnimation();
 
 		Crosshair* getCrosshair();
-		void setCrosshair(Crosshair* crosshair);
+		void setCrosshair(Crosshair* const crosshair);
 
 		BombPotion* getBombPotion();
-		void setBombPotion(BombPotion* bombPotion);
+		void setBombPotion(BombPotion* const bombPotion);
 
 	private:
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
@@ -105,7 +105,7 @@ class Player : public DynamicEntity {
 		StatePlayer* currentState; /**< The current state, which the player is in. */
 		std::map<PStates, StatePlayer*> statesMap; /**< Map containing all possible states. */
 		Crosshair* crosshair;
-		BombPotion *bombPotion;
+		BombPotion* bombPotion;
 		
 };
 
