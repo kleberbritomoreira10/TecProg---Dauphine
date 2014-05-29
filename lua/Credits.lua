@@ -1,5 +1,5 @@
 credits = {
 	images = {
-		dummy = "res/images/temp_menu_credits.jpg",
+		dummy = "res/images/temp_menu_credits.png",
 	}
 }
