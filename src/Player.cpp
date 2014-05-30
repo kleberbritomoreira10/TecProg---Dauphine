@@ -4,6 +4,7 @@
 #include "Configuration.h"
 #include "LuaScript.h"
 #include <cmath>
+#include <cfloat>
 
 #include "PStateIdle.h"
 #include "PStateAerial.h"
@@ -59,14 +60,15 @@ void Player::update(const double dt_){
 }
 
 void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){
+    /// @todo Fix this magic 16, and the TOP collision.
+
     if(detections_.at(CollisionSide::SOLID_TOP)){ 
         this->nextY = this->y;
+        this->vy = 0.0;
     }
     if(detections_.at(CollisionSide::SOLID_BOTTOM)){
-        if(isCurrentState(PStates::AERIAL)){
-            //FIX THIS STUPID 16
-            this->nextY -= fmod(this->nextY,64.0) - 16;
-            Log(DEBUG) << fmod(this->nextY,64.0) << " y: " << this->y << " nextY: " << this->nextY ;
+        if(isCurrentState(PStates::AERIAL)){ 
+            this->nextY -= fmod(this->nextY, 64.0) - 16.0;
             this->vy = 0.0;
             changeState(PStates::IDLE);
         }
@@ -78,21 +80,16 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
     }
     if(detections_.at(CollisionSide::SOLID_LEFT)){
         this->nextX = this->x;
-        this->vx = 0;
+        this->vx = 0.0;
     }
     if(detections_.at(CollisionSide::SOLID_RIGHT)){
         this->nextX = this->x;
-        this->vx = 0;
+        this->vx = -0.001;
     }
 
 }
 
 void Player::render(const double cameraX_, const double cameraY_){
-    const double ddx = this->x - cameraX_;
-    const double ddy = this->y - cameraY_;
-    SDL_Rect guilherme = {(int)ddx + (int)this->width/4, (int)ddy, (int)this->width/2, (int)this->height};
-    //SDL_RenderFillRect(&Game::instance().getRenderer(), &guilherme);
-
     if(this->sprite != nullptr){
         const double dx = this->x - cameraX_;
         const double dy = this->y - cameraY_;

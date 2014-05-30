@@ -141,7 +141,3 @@ ResourceManager& Game::getResources(){
 void Game::stop(){
 	this->isRunning = false;
 }
-
-SDL_Renderer& Game::getRenderer(){
-	return *Window::getRenderer();
-}
