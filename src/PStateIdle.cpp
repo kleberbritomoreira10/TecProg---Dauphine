@@ -2,7 +2,6 @@
 #include "Logger.h"
 
 void PStateIdle::enter(){
-	Log(INFO) << "STATE IDLE.";
 	this->player->getAnimation()->changeAnimation(0,0,26,false,2.6);
 	this->player->isGrounded = true;
 }

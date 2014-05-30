@@ -2,6 +2,7 @@
 #include "Game.h"
 #include "Collision.h"
 #include "Logger.h"
+#include "Configuration.h"
 #include <cassert>
 
 TileMap::TileMap(const std::string& mapPath_) :
@@ -108,37 +109,50 @@ void TileMap::renderLayer(const double cameraX_, const double cameraY_, const un
 
 	const Tmx::Layer* currentLayer = this->map->GetLayer(layer_);
 
+	SDL_Rect camera = {(int)cameraX_, (int)cameraY_, (int)Configuration::getCameraDistanceWidth(), (int)Configuration::getCameraDistanceHeight()};
+
 	for (int x = 0; x < tilesInX; x++){
 		for (int y = 0; y < tilesInY; y++){
-			// Getting the tile position inside its tileset.
-			const int tilePosition = tileMatrix[x][y][layer_];
 
-			// If its a valid tile.
-			if (tilePosition > 0){
-				// The x,y position in the level of the tile.
-				const double posX = ((x * TILE_SIZE) - cameraX_);
-				const double posY = ((y * TILE_SIZE) - cameraY_);
+			SDL_Rect tileRect = {(x * TILE_SIZE), (y * TILE_SIZE), TILE_SIZE, TILE_SIZE};
+			const bool tileIsOnScreen = Collision::rectsCollided(camera, tileRect);
+			
+			if(tileIsOnScreen){
+				// Getting the tile position inside its tileset.
+				const int tilePosition = tileMatrix[x][y][layer_];
 
-				// Which tileset sprite the tile belongs to.
-				const int tilesetId = currentLayer->GetTileTilesetIndex(x,y);
+				// If its a valid tile.
+				if (tilePosition > 0){
+					// The x,y position in the level of the tile.
+					const double posX = ((x * TILE_SIZE) - cameraX_);
+					const double posY = ((y * TILE_SIZE) - cameraY_);
 
-				Sprite* const tilesetSprite = this->tilesetSprites.at(tilesetId);
+					// Which tileset sprite the tile belongs to.
+					const int tilesetId = currentLayer->GetTileTilesetIndex(x,y);
 
-				// The number of tiles per line, on that tileset.
-				const int tilesPerLine = tilesetSprite->getWidth() / TILE_SIZE;
+					Sprite* const tilesetSprite = this->tilesetSprites.at(tilesetId);
 
-				// The clip for the tileset.
-				SDL_Rect tileClip;
-				tileClip.x = (tilePosition%tilesPerLine) * TILE_SIZE;
-				tileClip.y = (tilePosition/tilesPerLine) * TILE_SIZE;
-				tileClip.w = TILE_SIZE;
-				tileClip.h = TILE_SIZE;
+					// The number of tiles per line, on that tileset.
+					const int tilesPerLine = tilesetSprite->getWidth() / TILE_SIZE;
 
-				tilesetSprite->render(posX, posY, &tileClip);
+					// The clip for the tileset.
+					SDL_Rect tileClip;
+					tileClip.x = (tilePosition%tilesPerLine) * TILE_SIZE;
+					tileClip.y = (tilePosition/tilesPerLine) * TILE_SIZE;
+					tileClip.w = TILE_SIZE;
+					tileClip.h = TILE_SIZE;
+
+					tilesetSprite->render(posX, posY, &tileClip);
+					
+				}
+				else{
+					// Do nothing, no rendering an empty tilespace.
+				}
 			}
 			else{
-				// Do nothing, no rendering an empty tilespace.
+				// Tile is not on screen, don't render.
 			}
+			
 		}
 	}
 }
