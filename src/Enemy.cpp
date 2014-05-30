@@ -51,7 +51,8 @@ void Enemy::render(const double cameraX_, const double cameraY_){
     if(this->sprite != nullptr){
         const double dx = this->x - cameraX_;
         const double dy = this->y - cameraY_;
-        this->sprite->render(dx, dy);
+        //                           &this->animationClip
+        this->sprite->render(dx, dy, nullptr,               false, 0.0, nullptr, getFlip());
     }
 }
 

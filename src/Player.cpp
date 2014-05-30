@@ -90,7 +90,8 @@ void Player::render(const double cameraX_, const double cameraY_){
     if(this->sprite != nullptr){
         const double dx = this->x - cameraX_;
         const double dy = this->y - cameraY_;
-        this->sprite->render(dx, dy, &this->animationClip, false, 0.0, nullptr, SDL_FLIP_HORIZONTAL);
+
+        this->sprite->render(dx, dy, &this->animationClip, false, 0.0, nullptr, getFlip());
     }
 }
 

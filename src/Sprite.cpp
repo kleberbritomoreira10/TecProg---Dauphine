@@ -60,22 +60,15 @@ void Sprite::render(const double x_, const double y_, SDL_Rect* const clip_,
 		renderQuad.h = clip_->h;
 	}
 	else{
-
+		// Don't clip the sprite.
 	}
 
-	if(flipHorizontal){
-		flip_ = SDL_FLIP_HORIZONTAL;
-	}
-	else{
-		flip_ = SDL_FLIP_NONE;
-	}
+	int logicalW = 0;
+	int logicalH = 0;
+	Window::getLogicalSize(&logicalW, &logicalH);
+	SDL_Rect stretch = {(int)x_, (int)y_, logicalW, logicalH};
 
-	int logicalw = 0;
-	int logicalh = 0;
-	Window::getLogicalSize(&logicalw, &logicalh);
-	SDL_Rect stretch = {(int)x_,(int)y_,logicalw,logicalh};
-
-	int successfullRender = (!stretch_) ?
+	const int successfullRender = (!stretch_) ?
 		SDL_RenderCopyEx(Window::getRenderer(), this->sdlTexture, clip_,
 			&renderQuad, angle_, center_, flip_) :
 		SDL_RenderCopyEx(Window::getRenderer(), this->sdlTexture, clip_,
@@ -100,14 +93,6 @@ void Sprite::setWidth(unsigned int width_){
 
 void Sprite::setHeight(unsigned int height_){
 	this->height = height_;
-}
-void Sprite::setHorizontalFlip(bool isRight_){
-	if(isRight_){
-		this->flipHorizontal = false;
-	}
-	else{
-		this->flipHorizontal = true;
-	}
 }
 
 SDL_Texture* Sprite::surfaceToTexture(SDL_Surface* const surface_){

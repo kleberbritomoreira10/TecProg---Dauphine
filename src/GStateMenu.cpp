@@ -54,13 +54,11 @@ void GStateMenu::render(){
 
 		this->menuSelector->setWidth(50);
 
-		this->menuSelector->setHorizontalFlip(false);
 		this->menuSelector->render(selectorXPositionLeft[currentSelection],
-			selectorYPositionLeft[currentSelection], nullptr, false);
+			selectorYPositionLeft[currentSelection], nullptr, false, 0.0, nullptr, SDL_FLIP_NONE);
 
-		this->menuSelector->setHorizontalFlip(true);
 		this->menuSelector->render(selectorXPositionRight[currentSelection],
-			selectorYPositionRight[currentSelection], nullptr, false);
+			selectorYPositionRight[currentSelection], nullptr, false, 0.0, nullptr, SDL_FLIP_HORIZONTAL);
 
 	}
 	else{

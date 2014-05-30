@@ -40,7 +40,7 @@ class TileMap {
 		/**
 		* Returns a reference to the tile index at #x #y #z.
 		*/
-		std::vector <std::vector <int>>& operator[](int i){
+		std::vector <std::vector <unsigned int>>& operator[](unsigned int i){
 			return (this->tileMatrix[i]);
 		};
 
@@ -69,7 +69,7 @@ class TileMap {
 		unsigned int mapWidth;
 		unsigned int mapHeight;
 
-		std::vector <std::vector <std::vector <int>>> tileMatrix; /**< Three-dimensional
+		std::vector <std::vector <std::vector <unsigned int>>> tileMatrix; /**< Three-dimensional
 			matrix, that contains x = width, y = height, z = layers */
 
 		std::vector <Sprite*> tilesetSprites;

@@ -67,12 +67,14 @@ class DynamicEntity : public Entity {
 		/**
 		* @return A bool array with the sides the DynamicEntity collided.
 		*/
-		std::array<bool, CollisionSide::SOLID_TOTAL> detectCollision();
+		virtual std::array<bool, CollisionSide::SOLID_TOTAL> detectCollision();
 
 		/**
 		* Handles the collision.
 		*/
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_) = 0;
+
+		virtual SDL_RendererFlip getFlip();
 
 		unsigned int levelW; /**< The width of the level. */
 		unsigned int levelH; /**< The height of the level. */

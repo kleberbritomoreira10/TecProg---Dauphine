@@ -31,7 +31,6 @@ void DynamicEntity::updatePosition(const double dt_){
     this->y += this->vy * dt_;
 
     this->isRight = (this->vx >= 0.0);
-    this->sprite->setHorizontalFlip(this->isRight);
 }
 
 std::array<bool, CollisionSide::SOLID_TOTAL> DynamicEntity::detectCollision(){
@@ -146,3 +145,12 @@ void DynamicEntity::useBombPotion(BombPotion* const bombPotion, const int streng
     bombPotion->isRight = this->isRight;
 }
 
+SDL_RendererFlip DynamicEntity::getFlip(){
+    SDL_RendererFlip flip = SDL_FLIP_NONE;
+
+    if(!this->isRight){
+        flip = SDL_FLIP_HORIZONTAL;
+    }
+
+    return flip;
+}

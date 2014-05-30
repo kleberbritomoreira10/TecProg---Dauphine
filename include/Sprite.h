@@ -66,8 +66,6 @@ class Sprite {
 		*/
 		unsigned int getHeight();
 
-		void setHorizontalFlip(bool isRigth_);
-
 		std::string getPath();
 		
 	private:
