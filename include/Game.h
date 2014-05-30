@@ -78,6 +78,8 @@ class Game {
 		*/
 		void stop();
 
+		SDL_Renderer& getRenderer();
+
 	private:
 		/**
 		* The constructor.

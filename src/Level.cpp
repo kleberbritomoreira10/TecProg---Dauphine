@@ -7,7 +7,8 @@ Level::Level() :
 	player(nullptr),
 	camera(nullptr),
 	tileMap(nullptr),
-	quadTree(nullptr)
+	quadTree(nullptr),
+	background(nullptr)
 {
 	// Only serves as the initializer for the derived classes.
 }

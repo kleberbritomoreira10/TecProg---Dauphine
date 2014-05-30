@@ -59,6 +59,8 @@ class Level : public StateGame {
 		TileMap* tileMap;
 		QuadTree* quadTree;
 
+		Sprite* background;
+
 };
 
 #endif //INCLUDE_LEVEL_H

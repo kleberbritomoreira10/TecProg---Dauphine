@@ -55,6 +55,10 @@ void ControllerHandler::handleInput(SDL_Event& sdlEvent_){
                 fakeKeyInput.key.keysym.sym = SDLK_c; 
                 fakeKeyInput.key.state = SDL_PRESSED;
                 break;
+            case controllerMap::buttons::LDTRIGGER: // Roll
+                fakeKeyInput.key.keysym.sym = SDLK_v; 
+                fakeKeyInput.key.state = SDL_PRESSED;
+                break;
             default:
                 break;
         }
@@ -98,6 +102,10 @@ void ControllerHandler::handleInput(SDL_Event& sdlEvent_){
                 fakeKeyInput.key.keysym.sym = SDLK_c; 
                 fakeKeyInput.key.state = SDL_RELEASED;
                 break;
+            case controllerMap::buttons::LDTRIGGER: // Roll
+                fakeKeyInput.key.keysym.sym = SDLK_v; 
+                fakeKeyInput.key.state = SDL_RELEASED;
+                break;
             
             default:
                 break;
@@ -107,8 +115,6 @@ void ControllerHandler::handleInput(SDL_Event& sdlEvent_){
 	}
 	
 	if(sdlEvent_.type == SDL_CONTROLLERAXISMOTION){
-
-		std::cout << "Movement from axis " << (int)sdlEvent_.caxis.axis  << " with value" << sdlEvent_.caxis.value 	<< "\n";
 			
 		switch(sdlEvent_.caxis.axis){
 

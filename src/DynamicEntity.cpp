@@ -9,6 +9,8 @@ DynamicEntity::DynamicEntity(const double x_, const double y_, Sprite* const spr
     speed(20.0),
     maxSpeed(550.0),
     isGrounded(false),
+    nextX(x_),
+    nextY(y_),
     levelW(0),
     levelH(0)
 {
@@ -25,12 +27,16 @@ void DynamicEntity::setLevelWH(const unsigned int width_, const unsigned int hei
 }
 
 void DynamicEntity::updatePosition(const double dt_){
-    /// @todo Fix all these magic/weird numbers.
-    this->boundingBox = {(int)this->x, (int)this->y + 11, 229, 229};
-    this->x += this->vx * dt_;
-    this->y += this->vy * dt_;
+    this->x = this->nextX;
+    this->y = this->nextY;
 
     this->isRight = (this->vx >= 0.0);
+}
+
+void DynamicEntity::scoutPosition(const double dt_){
+    this->nextX += this->vx * dt_;
+    this->nextY += this->vy * dt_;
+    this->boundingBox = {(int)this->nextX + (int)this->width/4, (int)this->nextY, (int)this->width/2, (int)this->height};
 }
 
 std::array<bool, CollisionSide::SOLID_TOTAL> DynamicEntity::detectCollision(){

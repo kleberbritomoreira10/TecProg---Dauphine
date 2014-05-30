@@ -28,6 +28,8 @@ void LevelOne::load(){
 	SDL_Rect bounds = {0, 0, (int)this->width, (int)this->height};
 	this->quadTree = new QuadTree(0, bounds);
 
+	this->background = Game::instance().getResources().get("res/images/lv1_background.png");
+
 	// Getting information from lua script.
 	LuaScript luaLevel1("lua/Level1.lua");
 	const std::string pathPlayerSpriteSheet = luaLevel1.unlua_get<std::string>(
@@ -103,6 +105,8 @@ void LevelOne::update(const double dt_){
 void LevelOne::render(){
 	const int cameraX = this->camera->getClip().x;
 	const int cameraY = this->camera->getClip().y;
+
+	this->background->render(0, 0);
 
 	// Render the tiles in the TileMap.
 	this->tileMap->render(cameraX, cameraY);

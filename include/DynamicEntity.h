@@ -54,6 +54,8 @@ class DynamicEntity : public Entity {
 		double speed; /**< Speed that moves dynamic entity on input. */
 		double maxSpeed; /**< Dynamic entity max speed. */		
 		bool isGrounded; /**< Check for if the dynamic entity is on the ground. */
+		double nextX;
+		double nextY;
 
 	protected:
 		/**
@@ -63,6 +65,8 @@ class DynamicEntity : public Entity {
 		* 	of processing speed.
 		*/
 		virtual void updatePosition(const double dt_);
+
+		virtual void scoutPosition(const double dt_); 
 
 		/**
 		* @return A bool array with the sides the DynamicEntity collided.

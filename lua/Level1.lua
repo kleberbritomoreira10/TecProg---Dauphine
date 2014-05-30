@@ -1,13 +1,13 @@
 level = {
 
 	audio = {
-		background = "res/audio/testAudio.ogg",
+		background = "res/audio/Beginnings.mid",
 	},
 
 	player = {
 	    position = {
-	    	x = 450.0,
-	    	y = 300.0,
+	    	x = 550.0,
+	    	y = 1000.0,
 	    },
 	    spriteSheet = "res/images/spriteSheet_nadine.png",
 	},
