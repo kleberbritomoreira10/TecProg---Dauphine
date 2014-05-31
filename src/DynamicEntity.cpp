@@ -36,7 +36,7 @@ void DynamicEntity::updatePosition(const double dt_){
 void DynamicEntity::scoutPosition(const double dt_){
     this->nextX += this->vx * dt_;
     this->nextY += this->vy * dt_;
-    this->boundingBox = {(int)this->nextX + (int)this->width/4, (int)this->nextY, (int)this->width/2, (int)this->height};
+    this->boundingBox = {(int)this->nextX + (int)this->width/4, (int)this->nextY + 70, (int)this->width/2, (int)this->height - 70};
 }
 
 std::array<bool, CollisionSide::SOLID_TOTAL> DynamicEntity::detectCollision(){

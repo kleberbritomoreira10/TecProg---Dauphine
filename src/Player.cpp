@@ -63,7 +63,7 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
     /// @todo Fix this magic 16, and the TOP collision.
 
     if(detections_.at(CollisionSide::SOLID_TOP)){ 
-        this->nextY = this->y;
+        //this->nextY += fmod(this->nextY, 64.0);
         this->vy = 0.0;
     }
     if(detections_.at(CollisionSide::SOLID_BOTTOM)){
