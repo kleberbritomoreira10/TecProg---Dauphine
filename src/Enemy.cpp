@@ -1,5 +1,6 @@
 #include "Enemy.h"
 #include "Logger.h"
+#include <cmath>
 
 #include "EStateIdle.h"
 #include "EStatePatrolling.h"
@@ -42,9 +43,13 @@ Enemy::~Enemy(){
 
 void Enemy::update(const double dt_){
     this->currentState->update();
-    updatePosition(dt_);
-    std::array<bool, CollisionSide::SOLID_TOTAL> detections = detectCollision();
+    scoutPosition(dt_);
+
+    const std::array<bool, CollisionSide::SOLID_TOTAL> detections = detectCollision();
     handleCollision(detections);
+
+    updatePosition(dt_);
+
 }
 
 void Enemy::render(const double cameraX_, const double cameraY_){
@@ -81,14 +86,11 @@ void Enemy::changeState(const EStates state_){
 
 void Enemy::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){
     if(detections_.at(CollisionSide::SOLID_TOP)){ 
-        if((int)this->y%64 > 0){
-            this->y += 64 -(int)this->y%64 + 1; 
-            this->vy = 0.0;
-        }
+        this->vy = 0.0;
     }
     if(detections_.at(CollisionSide::SOLID_BOTTOM)){
         if(this->currentState == this->statesMap.at(EStates::AERIAL)){
-            this->y -= (int)(this->y + this->height)%64 - 1;
+            this->nextY -= fmod(this->nextY, 64.0) - 16.0;
             this->vy = 0.0;
             changeState(EStates::PATROLLING);
         }
@@ -99,13 +101,11 @@ void Enemy::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detecti
         }
     }
     if(detections_.at(CollisionSide::SOLID_LEFT)){
-        this->x -= (int)(this->x + this->width)%64 + 1;
+        this->nextX = this->x;
         this->vx = 0.0;
     }
     if(detections_.at(CollisionSide::SOLID_RIGHT)){
-        if((int)this->x%64 > 0){
-            this->x += (64 - (int)this->x%64) + 1;
-            this->vx = 0.0;
-        }
+        this->nextX = this->x;
+        this->vx = -0.001;
     }
 }
