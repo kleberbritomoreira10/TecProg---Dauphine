@@ -4,6 +4,7 @@
 #include "../lib/TmxParser/Tmx.h"
 #include "Sprite.h"
 #include <vector>
+#include "CollisionRect.h"
 
 const int TILE_SIZE = 64;
 
@@ -35,14 +36,10 @@ class TileMap {
 
 		unsigned int getMapWidth();
 		unsigned int getMapHeight();
-		std::vector <SDL_Rect>& getCollisionRects();
+		std::vector <CollisionRect>& getCollisionRects();
 
-		/**
-		* Returns a reference to the tile index at #x #y #z.
-		*/
-		std::vector <std::vector <unsigned int>>& operator[](unsigned int i){
-			return (this->tileMatrix[i]);
-		};
+		double getInitialX();
+		double getInitialY();
 
 	private:
 		/**
@@ -68,13 +65,15 @@ class TileMap {
 		unsigned int layers;
 		unsigned int mapWidth;
 		unsigned int mapHeight;
+		unsigned int initialX;
+		unsigned int initialY;
 
 		std::vector <std::vector <std::vector <unsigned int>>> tileMatrix; /**< Three-dimensional
 			matrix, that contains x = width, y = height, z = layers */
 
 		std::vector <Sprite*> tilesetSprites;
 
-		std::vector <SDL_Rect> collisionRects;
+		std::vector <CollisionRect> collisionRects;
 
 };
 

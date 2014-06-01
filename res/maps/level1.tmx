@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.0" orientation="orthogonal" width="200" height="29" tilewidth="64" tileheight="64">
+<map version="1.0" orientation="orthogonal" width="198" height="29" tilewidth="64" tileheight="64">
  <tileset firstgid="1" name="Environment Tiles" tilewidth="64" tileheight="64">
   <image source="../images/tiles/tilemap_lv1.png" width="1024" height="1024"/>
   <terraintypes>
@@ -9,24 +9,57 @@
   <tile id="241" terrain="0,0,0,0"/>
  </tileset>
  <tileset firstgid="257" name="Meta Tileset" tilewidth="64" tileheight="64">
+  <properties>
+   <property name="meta" value=""/>
+  </properties>
   <image source="tileSheet_2.png" width="192" height="192"/>
+  <tile id="3">
+   <properties>
+    <property name="type" value="collision"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="type" value="jump_through"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="type" value="level_end"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="type" value="level_begin"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="type" value="climb"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="type" value="black"/>
+   </properties>
+  </tile>
  </tileset>
  <tileset firstgid="266" name="Basic Tiles" tilewidth="64" tileheight="64">
   <image source="tileSheet_1.png" width="320" height="256"/>
  </tileset>
- <layer name="Background" width="200" height="29">
+ <layer name="Background" width="198" height="29">
   <data encoding="base64" compression="zlib">
-   eJztzqENAEEMA8HU7sqfOuBxDsxKI1NnZgIAAHDgr+tfAAAAAAAAAAAAAAAAAAAA3OpSC+xSC+xSC+yuvwDwjg8LIXdM
+   eJztzscJQzEQRVHVLnBowKEBhwYcyvN4YRiMw+5LfJ0LhwGhxaullPrDIizDKqz//IW5+dTzfRO2YRf2HeyEKb33ej+EYziFcwc7oQeXcA23cO9gD0zpW613AQAAAAAAAAAAAAAAAAAAzF2upgsjy9V0YWS5mi6MLNd6CwDtPQBFUVcO
   </data>
  </layer>
- <layer name="Middleground" width="200" height="29">
+ <layer name="Middleground" width="198" height="29">
   <data encoding="base64" compression="zlib">
-   eJztmkFOwkAUhgfvgCaEBUfpUThK4xX0ACpeAPEAGHHDVt24IuiKnXHHynl0hkyajpS2MFP8vuTP2NDQx2s/XmtQCgAAAAAA4Phc6Vw70dtp0IIAImKkc+9khB8AW/ADwA9+APjBDwA/+AHgBz8A/OAHgB/8APCDHwB+8APAD34A+MEPAD9t8MP+hpLfTu4HfatPG/ywNcZYW8zQt/rgRzG9jlIXEeWpwmfAj/qYHqY20suzjkovzSr7mO1Er4OQNUptZa/bXqfeNdHV7/Gs15nOS+C86s89q3CNu33Lv9aE//v2OMQx61I0P8QD48cGWY0fR60tX6PU1te1nJdIHz/+nB9l+9hkj0Mcsy4ePxLjx1T2kdX4sSh6j6WTJrnNkuIHfkTmx8L4kcg+xpfEbu9iWZAqjLME8UO8wA/88Pgh91PK3l81RVlfZG7cZUlDzY+5isuPeYv9sPcBJ+RHavy4Udk60BnKtu8eq0lkbjxkSQ81P3Y5+qHi8uOjxX7Y+4AT8iMxfkxlH/33wM2harHfM8eYH7v8WKnMjzed98ARP1Yt9MM9n22dHxOdRycT81xu/BgqtZ0fm+fzQ/4Py37P5OeHrVFq65bsY9eps+h5yBfLWudT5yuC6DrSdQU/3L7lXyvbx7I9LsI9n+M9zl2dYzbBN9mZnwgTuif/Jb9ah8Cu
+   eJztmkFOwkAUhgfvgCaEBUfpUTjKxCvoAVS8AOIBMOKGrbphRaIrdsYdK9/QGdN0AikD7Uzh+5I/Q6GBx2s/XiEoBQAAAAAAAAAA0Bw3kttS5D4dsyaA2Iwkj6WM8ALOHLwA8MELAB+8APDBCwAfvADwwQsAH7wA8MELAB+8APBpixfu/yr8R2U/6FsYbfHC1ZlibSlD38LAi+30OkpdJZSXgPeAF2EUvNAupocXHaWv7Wr2s9uZrIOIdW5qq3q+9jqHnQtdeY5XWWeSt8h5l/c9Czi3i30rP3YM7/ftcYzXDGHbvDDnv/Vig1mtF7XXtKtOU1tfarmskD5e7JwXVft4zB7HeM0QdniRWS+mZj+zWi+WdddU5D6Pxgu8SMSLpfUiM/tZTzK33RTjPFG8MD7gBV6UvDDXTcpdRzWNmRMPeXSseTFXaXkxb7EXbu6fgBfaenGn8nUgGZrtJq6lzJx4yqNjzYuFSsuLRYu9cHP/BLzIrBdTs5/cHhRTVz3ucyWFebFSuRcfks/IMV6sWuhF8Xi2aV5MJM+lTOz3bevFUKn/ebH53l3nb1Luc6U8L1ydprZuxf51D6xzLfmSfCcQqUOvA7wo9q38WNU+HtLj4vEc73Hs6jyuVfghW/ObYGL35FzyBxfMsFA=
   </data>
  </layer>
- <layer name="Collision" width="200" height="29">
+ <layer name="Collision" width="198" height="29">
   <data encoding="base64" compression="zlib">
-   eJzt28EJgDAQRUEFsf+SLUC/GETdmBnY64ZA3jHTBAAA8L5l3g9wTB+Q6QMyfUCmD8j0AZk+INMHZPqATB+Q6QMyfUCmD8j0AZk+INMHZPqgd+uDb1gf9K5aH/4eUkm1Po52+LPLV6r3cbZbLzyt1z4qGeWeI/prH2+erY//0kf73qtD/+720fJejBltNi59BS8=
+   eJzt3MsKgzAQQNEK1v7/H3epdAq1mviYOQdmLSS5yc5xeAAfRl2Q0LTzXC+7eGmEJFp2AVnoAiJdQNSii28Dd9bjvdAFd6cLiHQBkS4g0gVEuoBIFxDpAiJdQKQLiKp08RzmYb2q61alC/iHLvpZ3rVXGdap2IVz1MYZrR71zYpdwC/Zu3Dvs0X2LmCLrF14J3I5ej+zdgF7ZOvCO5HLWfuZrQtoodf/QIypPG+1EQgK
   </data>
  </layer>
 </map>

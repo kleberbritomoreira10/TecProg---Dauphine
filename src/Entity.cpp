@@ -46,6 +46,6 @@ SDL_Rect& Entity::getBoundingBox(){
     return this->boundingBox;
 }
 
-void Entity::setCollisionRects(const std::vector<SDL_Rect>& collisionRects_){
+void Entity::setCollisionRects(const std::vector<CollisionRect>& collisionRects_){
     this->collisionRects = collisionRects_;   
 }

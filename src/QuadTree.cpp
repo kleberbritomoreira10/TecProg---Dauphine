@@ -49,8 +49,8 @@ void QuadTree::split(){
 
 int QuadTree::getIndex(SDL_Rect rect_){
 	int index = -1;
-	double verticalMidpoint = bounds.x + (bounds.w / 2);
-	double horizontalMidpoint = bounds.y + (bounds.h / 2);
+	double verticalMidpoint = this->bounds.x + (this->bounds.w / 2);
+	double horizontalMidpoint = this->bounds.y + (this->bounds.h / 2);
 
 	// Object can completely fit within the top quadrants
 	bool topQuadrant = (rect_.y < horizontalMidpoint && rect_.y + rect_.h < horizontalMidpoint);
@@ -79,9 +79,9 @@ int QuadTree::getIndex(SDL_Rect rect_){
 	return index;
 }
 
-void QuadTree::insert(SDL_Rect rect_){
+void QuadTree::insert(CollisionRect rect_){
 	if (nodes[0] != nullptr) {
-		int index = getIndex(rect_);
+		int index = getIndex(rect_.rect);
 
 		if (index != -1) {
 			nodes[index]->insert(rect_);
@@ -98,9 +98,9 @@ void QuadTree::insert(SDL_Rect rect_){
 
 		int i = 0;
 		while (i < (int)this->objects.size()) {
-			int index = getIndex(this->objects.at(i));
+			int index = getIndex(this->objects.at(i).rect);
 			if (index != -1) {
-				SDL_Rect moveRect = this->objects.at(i);
+				CollisionRect moveRect = this->objects.at(i);
 				this->objects.erase(this->objects.begin() + i);
 				nodes[index]->insert(moveRect);
 			}
@@ -111,7 +111,7 @@ void QuadTree::insert(SDL_Rect rect_){
 	}
 }
 
-std::vector<SDL_Rect> QuadTree::retrieve(std::vector<SDL_Rect>& returnObjects_, SDL_Rect rect_){
+std::vector<CollisionRect> QuadTree::retrieve(std::vector<CollisionRect>& returnObjects_, SDL_Rect rect_){
 	int index = getIndex(rect_);
 	if (index != -1 && nodes[0] != nullptr) {
 		nodes[index]->retrieve(returnObjects_, rect_);
@@ -122,7 +122,7 @@ std::vector<SDL_Rect> QuadTree::retrieve(std::vector<SDL_Rect>& returnObjects_, 
 	return returnObjects_;
 }
 
-void QuadTree::setObjects(std::vector<SDL_Rect>& objects_){
+void QuadTree::setObjects(std::vector<CollisionRect>& objects_){
 	this->objects.clear();
 	this->objects = objects_;
 }

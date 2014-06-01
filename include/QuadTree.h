@@ -1,7 +1,7 @@
 #ifndef INCLUDE_QUADTREE_H
 #define INCLUDE_QUADTREE_H
 
-#include "SDLWrapper.h"
+#include "CollisionRect.h"
 #include <vector>
 
 class QuadTree {
@@ -30,21 +30,21 @@ class QuadTree {
 		* Insert the object into the quadtree.
 		* If the node exceeds the capacity, it will split and add all objects to their corresponding nodes.
 		*/
-		void insert(SDL_Rect rect_);
+		void insert(CollisionRect rect_);
 
 		/**
 		* Return all objects that could collide with the given object.
 		*/
-		std::vector<SDL_Rect> retrieve(std::vector<SDL_Rect>& returnObjects_, SDL_Rect rect_);
+		std::vector<CollisionRect> retrieve(std::vector<CollisionRect>& returnObjects_, SDL_Rect rect_);
 
-		void setObjects(std::vector<SDL_Rect>& objects_);
+		void setObjects(std::vector<CollisionRect>& objects_);
 
 	private:
 		const int maxObjects;
 		const int maxLevels;
 
 		int level;
-		std::vector <SDL_Rect> objects;
+		std::vector <CollisionRect> objects;
 		SDL_Rect bounds;
 		QuadTree* nodes[4];
 

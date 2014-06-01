@@ -34,8 +34,6 @@ void LevelOne::load(){
 	LuaScript luaLevel1("lua/Level1.lua");
 	const std::string pathPlayerSpriteSheet = luaLevel1.unlua_get<std::string>(
 		"level.player.spriteSheet");
-	const double initialPlayerX = luaLevel1.unlua_get<double>("level.player.position.x");
-	const double initialPlayerY = luaLevel1.unlua_get<double>("level.player.position.y");
 	const std::string pathBackgroundAudio = luaLevel1.unlua_get<std::string>(
 		"level.audio.background");
 	const std::string pathTileSheet = luaLevel1.unlua_get<std::string>("level.tileSheet");
@@ -48,7 +46,7 @@ void LevelOne::load(){
 	Sprite* spritePlayer = Game::instance().getResources().get(pathPlayerSpriteSheet);
 
 	// Loading the player and the camera.
-	Player* lPlayer = new Player(initialPlayerX, initialPlayerY, spritePlayer);
+	Player* lPlayer = new Player(this->tileMap->getInitialX(), this->tileMap->getInitialY(), spritePlayer);
 	Camera* lCamera = new Camera(lPlayer);
 
 	Sprite* spriteCrosshair = Game::instance().getResources().get("res/images/alvo.png");
@@ -87,7 +85,7 @@ void LevelOne::update(const double dt_){
 	this->quadTree->setObjects(this->tileMap->getCollisionRects());
 
 	// // Updating the entities, using the QuadTree.
-	std::vector<SDL_Rect> returnObjects;
+	std::vector<CollisionRect> returnObjects;
 	for (auto entity : this->entities) {
 		returnObjects.clear();
 		this->quadTree->retrieve(returnObjects, entity->getBoundingBox());
@@ -100,6 +98,11 @@ void LevelOne::update(const double dt_){
 	Enemy::py = this->player->y;
 
 	this->camera->update();
+
+	if(this->player->reachedLevelEnd){
+		Game::instance().setState(Game::GStates::LEVEL_ONE);
+	}
+
 }
 
 void LevelOne::render(){

@@ -56,6 +56,7 @@ class DynamicEntity : public Entity {
 		bool isGrounded; /**< Check for if the dynamic entity is on the ground. */
 		double nextX;
 		double nextY;
+		bool reachedLevelEnd;
 
 	protected:
 		/**

@@ -9,7 +9,9 @@ TileMap::TileMap(const std::string& mapPath_) :
 	map(nullptr),
 	layers(0),
 	mapWidth(0),
-	mapHeight(0)
+	mapHeight(0),
+	initialX(0),
+	initialY(0)
 {
 	load(mapPath_);
 }
@@ -27,10 +29,21 @@ void TileMap::load(const std::string& mapPath_){
 
 	if(!this->map->HasError()){
 
+		const Tmx::Tileset* metaTileset = nullptr;
+
 		// Iterating through the tilesets to load their respective sprites.
 		for (int i = 0; i < this->map->GetNumTilesets(); i++) {
 			const Tmx::Tileset* tileSet = this->map->GetTileset(i);
+
+			if(tileSet->GetProperties().HasProperty("meta")){
+				metaTileset = tileSet;
+			}
+
 			addTileSet("res/maps/" + tileSet->GetImage()->GetSource());
+		}
+
+		if(metaTileset == nullptr){
+			Log(ERROR) << "The map (" << mapPath_ << ") does not contain a meta tileset!";
 		}
 
 		// Getting the number of layers inside the map.
@@ -86,8 +99,19 @@ void TileMap::load(const std::string& mapPath_){
 
 					if(currentLayer->GetName() == "Collision"){
 						if(this->tileMatrix[j][k][i] > 0){
-							SDL_Rect tile = {(int)(j * TILE_SIZE), (int)(k * TILE_SIZE), TILE_SIZE, TILE_SIZE};
-							this->collisionRects.push_back(tile);
+							const Tmx::Tile* tile = metaTileset->GetTile(tileId);
+							const std::string property = tile->GetProperties().GetList().begin()->second;
+							SDL_Rect tileRect = {(int)(j * TILE_SIZE), (int)(k * TILE_SIZE), TILE_SIZE, TILE_SIZE};
+
+							if(property == "level_begin"){
+								initialX = tileRect.x;
+								initialY = tileRect.y;
+								continue;
+							}
+
+							TypeCollision type = CollisionRect::stringToType(property);
+							CollisionRect collisionRect(tileRect, type);
+							this->collisionRects.push_back(collisionRect);
 						}
 					}
 				}
@@ -188,7 +212,7 @@ void TileMap::addTileSet(const std::string& path_){
 	this->tilesetSprites.push_back(newTileSet);
 }
 
-std::vector <SDL_Rect>& TileMap::getCollisionRects(){
+std::vector <CollisionRect>& TileMap::getCollisionRects(){
 	return this->collisionRects;
 }
 
@@ -199,3 +223,12 @@ unsigned int TileMap::getMapWidth(){
 unsigned int TileMap::getMapHeight(){
 	return this->mapHeight * TILE_SIZE;
 }
+
+double TileMap::getInitialX(){
+	return (double)this->initialX;
+}
+
+double TileMap::getInitialY(){
+	return (double)this->initialY;
+}
+

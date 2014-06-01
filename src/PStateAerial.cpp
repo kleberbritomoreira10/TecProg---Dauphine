@@ -2,7 +2,7 @@
 #include "Logger.h"
 
 void PStateAerial::enter(){
-	this->player->getAnimation()->changeAnimation(4,3,14,false,1.4);
+	this->player->getAnimation()->changeAnimation(4, 3, 14, false, 1.4);
 	this->player->isGrounded = false;
 }
 
