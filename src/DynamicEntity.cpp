@@ -13,7 +13,11 @@ DynamicEntity::DynamicEntity(const double x_, const double y_, Sprite* const spr
 	nextY(y_),
 	reachedLevelEnd(false),
 	levelW(0),
-	levelH(0)
+	levelH(0),
+    activated(false),
+    strength(0),
+    distance(0),
+    flightTime(0.0)
 {
 
 }
@@ -143,26 +147,6 @@ void DynamicEntity::aim(Crosshair* const crosshair, const double direction){
 	crosshair->activated = true;
 	const double velocity = 10;
 	crosshair->x += velocity*direction;
-}
-
-void DynamicEntity::useBombPotion(BombPotion* const bombPotion, const int strength, const int distance){
-	bombPotion->activated = true;
-//    bombPotion->x = this->x + this->getWidth() - 20;
-
-	if(this->isRight)
-		bombPotion->x = this->x + this->getWidth() - bombPotion->getWidth();
-	else
-		bombPotion->x = this->x;
-	
-	bombPotion->y = this->y + 100;
-	bombPotion->vx = 0;
-	
-	bombPotion->vy = 10;
-	
-//    bombPotion->vy = (-1)*20;
-	bombPotion->strength = strength;
-	bombPotion->distance = distance;
-	bombPotion->isRight = this->isRight;
 }
 
 SDL_RendererFlip DynamicEntity::getFlip(){

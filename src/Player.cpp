@@ -16,7 +16,8 @@
 
 Player::Player(const double x_, const double y_, Sprite* const sprite_) :
     DynamicEntity(x_, y_, sprite_),
-    animation(nullptr)
+    animation(nullptr),
+    potionsLeft(3)
 {
 
     initializeStates();
@@ -35,6 +36,7 @@ Player::Player(const double x_, const double y_, Sprite* const sprite_) :
     else{
         Log(WARN) << "No sprite set for the player! Null sprite.";
     }
+
 }
 
 Player::~Player(){
@@ -57,6 +59,10 @@ void Player::update(const double dt_){
     updatePosition(dt_);
 
     this->animation->update(this->animationClip, dt_);
+
+    for(auto potion : this->potions){
+        potion->update(dt_);
+    }
 }
 
 void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){
@@ -90,12 +96,38 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
 }
 
 void Player::render(const double cameraX_, const double cameraY_){
+    
+    const double dx = this->x - cameraX_;
+    const double dy = this->y - cameraY_;
     if(this->sprite != nullptr){
-        const double dx = this->x - cameraX_;
-        const double dy = this->y - cameraY_;
-
         this->sprite->render(dx, dy, &this->animationClip, false, 0.0, nullptr, getFlip());
     }
+
+    for (auto potion : this->potions) {
+        potion->getSprite()->render(potion->x - cameraX_, potion->y - cameraY_);
+    }
+
+}
+
+void Player::usePotion(const int whichPotion, const int strength, const int distance){
+    this->potions.at(whichPotion)->activated = true;
+//    this->x = this->x + this->getWidth() - 20;
+
+    if(this->isRight)
+        this->potions.at(whichPotion)->x = this->x + this->getWidth() - this->potions.at(whichPotion)->getWidth();
+    else
+        this->potions.at(whichPotion)->x = this->x;
+    
+    this->potions.at(whichPotion)->y = this->y + 100;
+    this->potions.at(whichPotion)->vx = 5;    
+    this->potions.at(whichPotion)->vy = 5;
+    
+//    this->vy = (-1)*20;
+    this->potions.at(whichPotion)->strength = strength;
+    this->potions.at(whichPotion)->distance = distance;
+    this->potions.at(whichPotion)->isRight = this->isRight;
+
+    this->potions.at(whichPotion)->flightTime = 0;
 }
 
 void Player::initializeStates(){
@@ -135,12 +167,12 @@ void Player::setCrosshair(Crosshair* const crosshair_){
     this->crosshair = crosshair_;
 }
 
-BombPotion* Player::getBombPotion(){
-    return bombPotion;
+Potion* Player::getPotion(){
+    return potions[potions.size()];
 }
 
-void Player::setBombPotion(BombPotion* const bombPotion_){
-    this->bombPotion = bombPotion_;
+void Player::setPotion(std::vector<Potion*> potions_){
+    this->potions = potions_;
 }
 
 bool Player::isCurrentState(const PStates state_){

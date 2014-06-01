@@ -7,10 +7,13 @@
 #include "StatePlayer.h"
 #include "Animation.h"
 #include "Crosshair.h"
+#include "Potion.h"
 #include <map>
+#include <vector>
 
 class StatePlayer;
 
+class Potion;
 /**
 * The player entity class.
 * Contains all the relevant implementation relative to the player.
@@ -96,8 +99,13 @@ class Player : public DynamicEntity {
 		Crosshair* getCrosshair();
 		void setCrosshair(Crosshair* const crosshair);
 
-		BombPotion* getBombPotion();
-		void setBombPotion(BombPotion* const bombPotion);
+		Potion* getPotion();
+		void setPotion(std::vector<Potion*> potions_);
+
+		void usePotion(const int whichPotion, const int strength, const int distance);
+
+		unsigned int potionsLeft;
+		std::vector<Potion*> potions;
 
 	private:
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
@@ -106,8 +114,6 @@ class Player : public DynamicEntity {
 		StatePlayer* currentState; /**< The current state, which the player is in. */
 		std::map<PStates, StatePlayer*> statesMap; /**< Map containing all possible states. */
 		Crosshair* crosshair;
-		BombPotion* bombPotion;
-		
 };
 
 #endif //INCLUDE_PLAYER_H

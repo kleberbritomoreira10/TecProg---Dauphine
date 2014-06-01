@@ -3,7 +3,6 @@
 
 #include "Entity.h"
 #include "Crosshair.h"
-#include "BombPotion.h"
 #include <array>
 
 enum CollisionSide : uint8_t {
@@ -41,7 +40,6 @@ class DynamicEntity : public Entity {
 		virtual void slowVx();
 		virtual void roll();
 		virtual void aim(Crosshair* const crosshair, double direction);
-		virtual void useBombPotion(BombPotion* const bombPotion, const int strength, const int distance);
 
 		/**
 		* @param width_,height_ : Tells the player what the width and height of the level is.
@@ -57,6 +55,11 @@ class DynamicEntity : public Entity {
 		double nextX;
 		double nextY;
 		bool reachedLevelEnd;
+
+	    bool activated;
+	    int strength;
+	    int distance;
+	    double flightTime;
 
 	protected:
 		/**

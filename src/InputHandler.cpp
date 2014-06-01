@@ -1,4 +1,5 @@
 #include "InputHandler.h"
+#include "Logger.h"
 
 InputHandler::InputHandler() :
 	quitFlag(false)
@@ -29,11 +30,16 @@ void InputHandler::handleInput(){
 			
 			this->controllerHandler->handleInput(this->sdlEvent);
 		}
-
 		// On keydown.
 		if(this->sdlEvent.type == SDL_KEYDOWN){
+
 			switch(this->sdlEvent.key.keysym.sym){
 				case SDLK_SPACE: // Jump.
+
+				if(this->sdlEvent.key.repeat != 0){
+					
+				}
+					
 					this->keyStates[GameKeys::SPACE] = true;
 					break;
 				case SDLK_UP: // UP.
@@ -51,13 +57,16 @@ void InputHandler::handleInput(){
 				case SDLK_c: // roll.
 					this->keyStates[GameKeys::ROLL] = true;
 					break;
-				case SDLK_v: // crouch
+				case SDLK_LCTRL: // crouch
 					this->keyStates[GameKeys::CROUCH] = true;
 				case SDLK_a: // a.
-					this->keyStates[GameKeys::A] = true;
+					this->keyStates[GameKeys::ACTION] = true;
 					break;
-				case SDLK_d: // d.
-					this->keyStates[GameKeys::D] = true;
+				case SDLK_LSHIFT: // d.
+					this->keyStates[GameKeys::AIM] = true;
+					break;
+				case SDLK_TAB:
+					this->keyStates[GameKeys::ITEMS] = false;
 					break;
 				case SDLK_ESCAPE: // Esc.
 					this->keyStates[GameKeys::ESCAPE] = false;
@@ -69,6 +78,9 @@ void InputHandler::handleInput(){
 
 		// On keyup.
 		else if(this->sdlEvent.type == SDL_KEYUP){
+			
+			Log(DEBUG) << "Keydown";
+
 			switch(this->sdlEvent.key.keysym.sym){
 				case SDLK_SPACE: // Jump.
 					this->keyStates[GameKeys::SPACE] = false;
@@ -88,13 +100,16 @@ void InputHandler::handleInput(){
 				case SDLK_c: // Roll.
 					this->keyStates[GameKeys::ROLL] = false;
 					break;
-				case SDLK_v: // crouch
+				case SDLK_LCTRL: // crouch
 					this->keyStates[GameKeys::CROUCH] = false;
 				case SDLK_a: // a.
-					this->keyStates[GameKeys::A] = false;
+					this->keyStates[GameKeys::ACTION] = false;
 					break;
-				case SDLK_d: // d.
-					this->keyStates[GameKeys::D] = false;
+				case SDLK_LSHIFT: // d.
+					this->keyStates[GameKeys::AIM] = false;
+					break;
+				case SDLK_TAB:
+					this->keyStates[GameKeys::ITEMS] = false;
 					break;
 				case SDLK_ESCAPE: // Esc.
 					this->keyStates[GameKeys::ESCAPE] = false;

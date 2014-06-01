@@ -52,14 +52,9 @@ void LevelOne::load(){
 	Sprite* spriteCrosshair = Game::instance().getResources().get("res/images/alvo.png");
 	Crosshair* crosshair = new Crosshair(500, 600, spriteCrosshair);
 
-	Sprite* spriteBombPotion = Game::instance().getResources().get("res/images/potion.png");
-	BombPotion* bombPotion = new BombPotion(300, 600, spriteBombPotion);
-
 	addEntity(crosshair);
-	addEntity(bombPotion);
 
 	lPlayer->setCrosshair(crosshair);
-	lPlayer->setBombPotion(bombPotion);
 
 	Sprite* spriteEnemy = Game::instance().getResources().get(pathTempEnemy);
 	Enemy* enemy = new Enemy(704.0, 0.0, spriteEnemy, true, 200.0);

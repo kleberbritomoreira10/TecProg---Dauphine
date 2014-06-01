@@ -30,7 +30,12 @@ void ControllerHandler::handleInput(SDL_Event& sdlEvent_){
                 fakeKeyInput.key.keysym.sym = SDLK_SPACE; 
                 fakeKeyInput.key.state = SDL_PRESSED;
                 break;
-            
+ 
+ 			case controllerMap::buttons::FACE_UP: // Action.
+                fakeKeyInput.key.keysym.sym = SDLK_a; 
+                fakeKeyInput.key.state = SDL_PRESSED;
+                break;
+ 
             case controllerMap::buttons::DUP: // Move Left.
                 fakeKeyInput.key.keysym.sym = SDLK_UP; 
                 fakeKeyInput.key.state = SDL_PRESSED;  
@@ -55,8 +60,8 @@ void ControllerHandler::handleInput(SDL_Event& sdlEvent_){
                 fakeKeyInput.key.keysym.sym = SDLK_c; 
                 fakeKeyInput.key.state = SDL_PRESSED;
                 break;
-            case controllerMap::buttons::LDTRIGGER: // Roll
-                fakeKeyInput.key.keysym.sym = SDLK_v; 
+            case controllerMap::buttons::LDTRIGGER: // Crouch
+                fakeKeyInput.key.keysym.sym = SDLK_LCTRL; 
                 fakeKeyInput.key.state = SDL_PRESSED;
                 break;
             default:
@@ -75,6 +80,11 @@ void ControllerHandler::handleInput(SDL_Event& sdlEvent_){
 
             case controllerMap::buttons::FACE_DOWN: // Jump.
                 fakeKeyInput.key.keysym.sym = SDLK_SPACE; 
+                fakeKeyInput.key.state = SDL_RELEASED;
+                break;
+            
+ 			case controllerMap::buttons::FACE_UP: // Action.
+                fakeKeyInput.key.keysym.sym = SDLK_a; 
                 fakeKeyInput.key.state = SDL_RELEASED;
                 break;
             
@@ -102,8 +112,8 @@ void ControllerHandler::handleInput(SDL_Event& sdlEvent_){
                 fakeKeyInput.key.keysym.sym = SDLK_c; 
                 fakeKeyInput.key.state = SDL_RELEASED;
                 break;
-            case controllerMap::buttons::LDTRIGGER: // Roll
-                fakeKeyInput.key.keysym.sym = SDLK_v; 
+            case controllerMap::buttons::LDTRIGGER: // Crouch
+                fakeKeyInput.key.keysym.sym = SDLK_LCTRL; 
                 fakeKeyInput.key.state = SDL_RELEASED;
                 break;
             
@@ -119,7 +129,7 @@ void ControllerHandler::handleInput(SDL_Event& sdlEvent_){
 		switch(sdlEvent_.caxis.axis){
 
 			case controllerMap::axes::LATRIGGER:
-					fakeKeyInput.key.keysym.sym = SDLK_DOWN; 
+					fakeKeyInput.key.keysym.sym = SDLK_LSHIFT; 
 		
 					if(sdlEvent_.caxis.value > TRIGGER_DEAD_ZONE){
 						fakeKeyInput.type = SDL_KEYDOWN;

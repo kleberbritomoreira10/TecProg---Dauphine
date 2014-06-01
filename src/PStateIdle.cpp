@@ -44,7 +44,7 @@ void PStateIdle::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 		return;
 	}
 
-	if(keyStates_[GameKeys::DOWN]){
+	if(keyStates_[GameKeys::AIM]){
 		this->player->changeState(Player::PStates::AIMING);
 		return;
 	}

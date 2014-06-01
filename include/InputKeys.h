@@ -9,10 +9,18 @@ enum GameKeys : uint8_t {
 	RIGHT,
 	DOWN,
 	ROLL,
+	
 	SPACE,
+	
 	CROUCH,
-	A,
-	D,
+	AIM,
+
+	ACTION,
+	LATTACK,
+	NLATTACK,
+
+	ITEMS,
+	
 	ESCAPE,
 	MAX
 };

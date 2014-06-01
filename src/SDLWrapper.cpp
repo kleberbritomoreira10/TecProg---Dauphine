@@ -26,6 +26,7 @@ bool SDLWrapper::initialize(){
 	// Initializing SDL with initFlags.
 	const Uint32 initFlags = SDL_INIT_EVERYTHING;
 	const int sdlInit = SDL_Init(initFlags);
+
 	if(sdlInit == 0){
 		successSDL = true;
 
