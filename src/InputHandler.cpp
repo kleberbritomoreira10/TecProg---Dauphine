@@ -79,8 +79,6 @@ void InputHandler::handleInput(){
 		// On keyup.
 		else if(this->sdlEvent.type == SDL_KEYUP){
 			
-			Log(DEBUG) << "Keydown";
-
 			switch(this->sdlEvent.key.keysym.sym){
 				case SDLK_SPACE: // Jump.
 					this->keyStates[GameKeys::SPACE] = false;

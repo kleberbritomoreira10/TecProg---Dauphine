@@ -1,7 +1,7 @@
 #include "EStateCurious.h"
 
 void EStateCurious::enter(){
-	this->enemy->jump();
+	
 }
 
 void EStateCurious::exit(){
@@ -15,7 +15,7 @@ void EStateCurious::update(){
 		return;
 	}
 	else{
-		if(abs(this->enemy->x - Enemy::px) < Enemy::alertRange){
+		if(abs(this->enemy->x - Enemy::px) < Enemy::alertRange && abs(this->enemy->y - Enemy::py) < Enemy::alertRange){
 			this->enemy->changeState(Enemy::EStates::ALERT);
 			return;		
 		}

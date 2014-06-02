@@ -16,7 +16,7 @@ void EStateIdle::update(){
 		this->enemy->changeState(Enemy::EStates::AERIAL);
 		return;
 	}
-
+	this->enemy->changeState(Enemy::EStates::PATROLLING);
 	/// @todo Make the range be only in the direciton the enemy is facing.
 	if(abs(this->enemy->x - Enemy::px) < Enemy::alertRange){
 		this->enemy->changeState(Enemy::EStates::ALERT);
