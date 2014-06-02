@@ -12,12 +12,12 @@ DynamicEntity::DynamicEntity(const double x_, const double y_, Sprite* const spr
 	nextX(x_),
 	nextY(y_),
 	reachedLevelEnd(false),
-	levelW(0),
-	levelH(0),
     activated(false),
     strength(0),
     distance(0),
-    flightTime(0.0)
+    flightTime(0.0),
+    levelW(0),
+	levelH(0)
 {
 
 }
@@ -32,6 +32,8 @@ void DynamicEntity::setLevelWH(const unsigned int width_, const unsigned int hei
 }
 
 void DynamicEntity::updatePosition(const double dt_){
+	((void)dt_); // Unused?
+
 	this->x = this->nextX;
 	this->y = this->nextY;
 

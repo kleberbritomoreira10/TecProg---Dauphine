@@ -2,9 +2,7 @@
 #include "Logger.h"
 #include <cmath>
 
-#include <iostream>
-
-Potion::Potion(const double x_, const double y_, Sprite* const sprite_, Player* player) :
+Potion::Potion(const double x_, const double y_, Sprite* const sprite_) :
 	DynamicEntity(x_, y_, sprite_),
 	activated(false),
 	strength(0),
@@ -26,10 +24,12 @@ void Potion::update(const double dt_){
 
 		this->flightTime +=dt_;
 
-		if(this->isRight)
+		if(this->isRight){
 			this->x += (this->distance/300.0)*(this->vx + this->strength * cos(angle/57.29) * flightTime);
-		else
+		}
+		else{
 			this->x -= (this->distance/300.0)*(this->vx + this->strength * cos(angle/57.29) * flightTime);
+		}
 
 		this->y -= this->vy + this->strength * sin(angle/57.29) * flightTime - 0.5*gravity*flightTime*flightTime;
 	}

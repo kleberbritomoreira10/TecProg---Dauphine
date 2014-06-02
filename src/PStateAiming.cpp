@@ -26,7 +26,7 @@ void PStateAiming::enter(){
 		Sprite* spritePotion = Game::instance().getResources().get("res/images/potion.png");
 		
 		if(spritePotion != nullptr){
-			Potion* potion = new Potion(300,300,spritePotion,this->player);	
+			Potion* potion = new Potion(this->player->x, this->player->y, spritePotion);
 			if(potion != nullptr){
 				Log(DEBUG) << potion->x;
 				this->player->potions.push_back(potion);

@@ -102,7 +102,7 @@ class Player : public DynamicEntity {
 		Potion* getPotion();
 		void setPotion(std::vector<Potion*> potions_);
 
-		void usePotion(const int whichPotion, const int strength, const int distance);
+		void usePotion(const int whichPotion_, const int strength_, const int distance_);
 
 		unsigned int potionsLeft;
 		std::vector<Potion*> potions;

@@ -16,8 +16,10 @@
 
 Player::Player(const double x_, const double y_, Sprite* const sprite_) :
     DynamicEntity(x_, y_, sprite_),
+    potionsLeft(3),
     animation(nullptr),
-    potionsLeft(3)
+    currentState(nullptr),
+    crosshair(nullptr)
 {
 
     initializeStates();
@@ -109,25 +111,25 @@ void Player::render(const double cameraX_, const double cameraY_){
 
 }
 
-void Player::usePotion(const int whichPotion, const int strength, const int distance){
-    this->potions.at(whichPotion)->activated = true;
+void Player::usePotion(const int whichPotion_, const int strength_, const int distance_){
+    this->potions.at(whichPotion_)->activated = true;
 //    this->x = this->x + this->getWidth() - 20;
 
     if(this->isRight)
-        this->potions.at(whichPotion)->x = this->x + this->getWidth() - this->potions.at(whichPotion)->getWidth();
+        this->potions.at(whichPotion_)->x = this->x + this->getWidth() - this->potions.at(whichPotion_)->getWidth();
     else
-        this->potions.at(whichPotion)->x = this->x;
+        this->potions.at(whichPotion_)->x = this->x;
     
-    this->potions.at(whichPotion)->y = this->y + 100;
-    this->potions.at(whichPotion)->vx = 5;    
-    this->potions.at(whichPotion)->vy = 5;
+    this->potions.at(whichPotion_)->y = this->y + 100;
+    this->potions.at(whichPotion_)->vx = 5;    
+    this->potions.at(whichPotion_)->vy = 5;
     
 //    this->vy = (-1)*20;
-    this->potions.at(whichPotion)->strength = strength;
-    this->potions.at(whichPotion)->distance = distance;
-    this->potions.at(whichPotion)->isRight = this->isRight;
+    this->potions.at(whichPotion_)->strength = strength_;
+    this->potions.at(whichPotion_)->distance = distance_;
+    this->potions.at(whichPotion_)->isRight = this->isRight;
 
-    this->potions.at(whichPotion)->flightTime = 0;
+    this->potions.at(whichPotion_)->flightTime = 0;
 }
 
 void Player::initializeStates(){

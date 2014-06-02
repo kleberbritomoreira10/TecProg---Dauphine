@@ -17,7 +17,7 @@ class Potion : public DynamicEntity{
 		*
 		*
 		*/
-		Potion(const double x_, const double y_, Sprite* const sprite_, Player* player);
+		Potion(const double x_, const double y_, Sprite* const sprite_);
 
 		/**
 		*

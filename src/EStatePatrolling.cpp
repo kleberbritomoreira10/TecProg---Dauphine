@@ -4,8 +4,6 @@
 void EStatePatrolling::enter(){
 	this->enemy->isGrounded = true;
 	this->enemy->x = this->enemy->originalX;
-
-	Log(DEBUG) << "Patrol";
 }
 
 void EStatePatrolling::exit(){
@@ -13,9 +11,7 @@ void EStatePatrolling::exit(){
 }
 
 void EStatePatrolling::update(){
-	Log(DEBUG) << this->enemy->x;
-	// Patrol
-	
+	// Patrol	
 	if(abs(this->enemy->x - this->enemy->originalX) < this->enemy->patrolLength){
 		this->enemy->vx -= this->enemy->speed;
 	}
