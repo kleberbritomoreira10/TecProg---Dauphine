@@ -66,7 +66,7 @@ class Entity {
 		* @param y_ : position in y axis.
 		* @param sprite_ : which sprite to use.
 		*/
-		Entity(const double x_, const double y_, const std::string& path_); //Sprite* const sprite_
+		Entity(const double x_, const double y_, const std::string& path_);
 
 		Sprite* sprite; /**< The Sprite attributed to the entity. */
 		unsigned int width; /**< The entitys width, from its sprite. */

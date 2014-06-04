@@ -1,35 +1,50 @@
 #include "EStateCurious.h"
+#include "Logger.h"
+
+#define MAX_CURIOUS_TIME 4.666
 
 void EStateCurious::enter(){
-	
+	Log(DEBUG) << "ENTER CURIOUS";
+	this->enemy->speed = 5.0;
 }
 
 void EStateCurious::exit(){
 
 }
 
-void EStateCurious::update(){
+void EStateCurious::update(const double dt_){
+
+	this->timeElapsed += dt_;
+
 	// Aerial
 	if(!this->enemy->isGrounded){
 		this->enemy->changeState(Enemy::EStates::AERIAL);
 		return;
 	}
+
+	if(this->enemy->x - Enemy::px < 0.0){
+		this->enemy->vx += this->enemy->speed;
+	}
 	else{
-		if(abs(this->enemy->x - Enemy::px) < Enemy::alertRange && abs(this->enemy->y - Enemy::py) < Enemy::alertRange){
-			this->enemy->changeState(Enemy::EStates::ALERT);
-			return;		
-		}
-		else{
-			this->enemy->changeState(Enemy::EStates::PATROLLING);
-			return;	
-		}
+		this->enemy->vx -= this->enemy->speed;
 	}
 
-	
+	// 
+	if(abs(this->enemy->x - Enemy::px) < Enemy::alertRange && abs(this->enemy->y - Enemy::py) < Enemy::alertRange){
+		this->enemy->changeState(Enemy::EStates::ALERT);
+		return;
+	}
+
+	if(timeElapsed >= MAX_CURIOUS_TIME){
+		this->enemy->changeState(Enemy::EStates::PATROLLING);
+		return;
+	}
+
 }
 
 EStateCurious::EStateCurious(Enemy* const enemy_) :
-	StateEnemy(enemy_)
+	StateEnemy(enemy_),
+	timeElapsed(0.0)
 {
 
 }

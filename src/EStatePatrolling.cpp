@@ -1,23 +1,37 @@
 #include "EStatePatrolling.h"
 #include <cfloat>
 #include "Logger.h"
+
 void EStatePatrolling::enter(){
+	Log(DEBUG) << "ENTER PATROLLING";
 	this->enemy->isGrounded = true;
 	this->enemy->x = this->enemy->originalX;
+	this->direction = 1.0;
 }
 
 void EStatePatrolling::exit(){
 
 }
 
-void EStatePatrolling::update(){
-	// Patrol	
-	if(abs(this->enemy->x - this->enemy->originalX) < this->enemy->patrolLength){
-		this->enemy->vx -= this->enemy->speed;
+void EStatePatrolling::update(const double dt_){
+	// Patrol.
+
+	if(abs(this->enemy->x - this->enemy->originalX) > this->enemy->patrolLength){
+		// right
+		if(this->enemy->x - this->enemy->originalX < 0.0){
+			this->direction = 1.0;
+		}
+		// left
+		else{
+			this->direction = -1.0;
+		}
+		
 	}
 	else{
-		this->enemy->vx += this->enemy->speed;
+		// Do nothing.
 	}
+
+	this->enemy->vx += this->enemy->speed * this->direction;
 
 	/// @todo Make the range be only in the direciton the enemy is facing.
 	if(abs(this->enemy->x - Enemy::px) < Enemy::alertRange && abs(this->enemy->y - Enemy::py) < Enemy::alertRange){
@@ -32,7 +46,8 @@ void EStatePatrolling::update(){
 }
 
 EStatePatrolling::EStatePatrolling(Enemy* const enemy_) :
-	StateEnemy(enemy_)
+	StateEnemy(enemy_),
+	direction(0.0)
 {
 
 }

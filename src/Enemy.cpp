@@ -10,6 +10,8 @@
 
 #include "Window.h"
 
+#define ADD_STATE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass(this))
+
 double Enemy::px = 0.0;
 double Enemy::py = 0.0;
 double Enemy::alertRange = 300.0;
@@ -19,8 +21,6 @@ Enemy::Enemy(const double x_, const double y_, const std::string& path_, const b
     const double patrolLength_) :
 
 	DynamicEntity(x_, y_, path_),
-    patrolX(100.0),
-    left(true),
     originalX(x_),
     patrol(patrol_),
     patrolLength(patrolLength_),
@@ -29,9 +29,9 @@ Enemy::Enemy(const double x_, const double y_, const std::string& path_, const b
 {
 	initializeStates();
 
-    this->speed = 0.7;
+    this->speed = 3.0;
 
-    this->currentState = this->statesMap.at(AERIAL);
+    this->currentState = this->statesMap.at(PATROLLING);
     this->currentState->enter();
 }
 
@@ -44,7 +44,9 @@ Enemy::~Enemy(){
 }
 
 void Enemy::update(const double dt_){
-    this->currentState->update();
+    this->currentState->update(dt_);
+    forceMaxSpeed();
+
     scoutPosition(dt_);
 
     this->boundingBox = {(int)this->nextX + (int)this->width/4, (int)this->nextY + 70, (int)this->width/2, (int)this->height - 70};
@@ -74,17 +76,17 @@ void Enemy::render(const double cameraX_, const double cameraY_){
     if(this->sprite != nullptr){
 
         //                           &this->animationClip
-        this->sprite->render(dx, dy, nullptr,               false, 0.0, nullptr, getFlip());
+        this->sprite->render(dx, dy, nullptr, false, 0.0, nullptr, getFlip());
     }
 }
 
 void Enemy::initializeStates(){
     // Initialize all the states in Enemy here.
-    this->statesMap.emplace(IDLE, new EStateIdle(this));
-    this->statesMap.emplace(CURIOUS, new EStateCurious(this));
-    this->statesMap.emplace(PATROLLING, new EStatePatrolling(this));
-    this->statesMap.emplace(ALERT, new EStateAlert(this));
-    this->statesMap.emplace(AERIAL, new EStateAerial(this));
+    ADD_STATE(IDLE, EStateIdle);
+    ADD_STATE(CURIOUS, EStateCurious);
+    ADD_STATE(PATROLLING, EStatePatrolling);
+    ADD_STATE(ALERT, EStateAlert);
+    ADD_STATE(AERIAL, EStateAerial);
 }
 
 void Enemy::destroyStates(){
@@ -125,4 +127,9 @@ void Enemy::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detecti
         this->nextX = this->x;
         this->vx = -0.001;
     }
+}
+
+void Enemy::forceMaxSpeed(){
+    this->vx = (this->vx >= this->maxSpeed) ? this->maxSpeed : this->vx ;
+    this->vy = (this->vy >= this->maxSpeed) ? this->maxSpeed : this->vy ;
 }

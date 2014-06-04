@@ -45,7 +45,7 @@ void LevelOne::load(){
 	Player* lPlayer = new Player(this->tileMap->getInitialX(), this->tileMap->getInitialY(), pathPlayerSpriteSheet);
 	Camera* lCamera = new Camera(lPlayer);
 
-	Enemy* enemy = new Enemy(704.0, 0.0, pathTempEnemy, true, 200.0);
+	Enemy* enemy = new Enemy(704.0, 0.0, pathTempEnemy, true, 0.0);
 	enemy->setLevelWH(this->width, this->height);
 	addEntity(enemy);
 	
@@ -77,8 +77,8 @@ void LevelOne::update(const double dt_){
 	}
 
 	/// @todo Refactor this static Enemy::px, Enemy::py.
-	Enemy::px = this->player->x;
-	Enemy::py = this->player->y;
+	Enemy::px = 4000;//this->player->x;
+	Enemy::py = 4000;//this->player->y;
 
 	this->camera->update();
 

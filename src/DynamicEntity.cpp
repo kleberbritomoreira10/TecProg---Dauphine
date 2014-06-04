@@ -66,11 +66,9 @@ std::array<bool, CollisionSide::SOLID_TOTAL> DynamicEntity::detectCollision(){
 					detections.at(SOLID_BOTTOM) = true;
 					if(tileBox.type == JUMP_THROUGH){
 						if(this->vy < 0.0 || (this->boundingBox.y + this->boundingBox.h) < tileBox.rect.y){
-							Log(DEBUG) << "true";
 							detections.at(SOLID_BOTTOM) = false;
 						}
 						else{
-							Log(DEBUG) << "false";
 						}
 					}
 					break;

@@ -55,8 +55,6 @@ class Enemy : public DynamicEntity {
 		static double alertRange;
 		static double curiousRange;
 
-		double patrolX;
-		bool left;
 		double originalX;
 		bool patrol;
 		double patrolLength;
@@ -64,6 +62,7 @@ class Enemy : public DynamicEntity {
 	private:
 		virtual void updateBoundingBox(){}
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
+		void forceMaxSpeed();
 		StateEnemy* currentState;
 		std::map<EStates, StateEnemy*> statesMap;
 

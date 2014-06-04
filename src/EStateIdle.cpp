@@ -1,22 +1,23 @@
 #include "EStateIdle.h"
 #include <cmath>
 #include "SDLWrapper.h"
+#include "Logger.h"
 
 void EStateIdle::enter(){
-
+	Log(DEBUG) << "ENTER IDLE";
 }
 
 void EStateIdle::exit(){
 
 }
 
-void EStateIdle::update(){
+void EStateIdle::update(const double dt_){
 	// Aerial
 	if(!this->enemy->isGrounded){
 		this->enemy->changeState(Enemy::EStates::AERIAL);
 		return;
 	}
-	this->enemy->changeState(Enemy::EStates::PATROLLING);
+
 	/// @todo Make the range be only in the direciton the enemy is facing.
 	if(abs(this->enemy->x - Enemy::px) < Enemy::alertRange){
 		this->enemy->changeState(Enemy::EStates::ALERT);

@@ -10,6 +10,8 @@
 #include "GStateCredits.h"
 #include "GStateGameOver.h"
 
+#define ADD_STATE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass())
+
 Game& Game::instance(){
 	static Game* instance = new Game();
 	return *instance;
@@ -111,12 +113,12 @@ void Game::initializeStates(){
 	// Initialize all the states in Game here.
 
 	// Emplace the states pointers onto the map.
-	this->statesMap.emplace(GStates::SPLASH, 	new GStateSplash());
-	this->statesMap.emplace(GStates::MENU, 		new GStateMenu());
-	this->statesMap.emplace(GStates::LEVEL_ONE,	new LevelOne());
-	this->statesMap.emplace(GStates::OPTIONS,	new GStateOptions());
-	this->statesMap.emplace(GStates::CREDITS,	new GStateCredits());
-	this->statesMap.emplace(GStates::GAMEOVER,	new GStateGameOver());
+	ADD_STATE(SPLASH, GStateSplash);
+	ADD_STATE(MENU, GStateMenu);
+	ADD_STATE(LEVEL_ONE, LevelOne);
+	ADD_STATE(OPTIONS, GStateOptions);
+	ADD_STATE(CREDITS, GStateCredits);
+	ADD_STATE(GAMEOVER, GStateGameOver);
 }
 
 void Game::destroyStates(){

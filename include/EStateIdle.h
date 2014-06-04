@@ -30,7 +30,7 @@ class EStateIdle : public StateEnemy {
 		/**
 		* @see StateEnemy::update
 		*/
-		virtual void update();
+		virtual void update(const double dt_);
 
 };
 

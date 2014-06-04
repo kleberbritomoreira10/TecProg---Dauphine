@@ -30,7 +30,10 @@ class EStatePatrolling : public StateEnemy {
 		/**
 		* @see StateEnemy::update
 		*/
-		virtual void update();
+		virtual void update(const double dt_);
+
+	private:
+		double direction;
 
 };
 
