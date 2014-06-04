@@ -2,7 +2,12 @@
 #include "Logger.h"
 
 void PStateMovingCrouch::enter(){
-	this->player->getAnimation()->changeAnimation(3,10,6,true,1);
+	this->box.x = (int)this->player->getWidth() / 5.3;
+	this->box.y = (int)this->player->getHeight() / 2;
+	this->box.w = (int)this->player->getWidth() / 2.7;
+	this->box.h = (int)this->player->getHeight() / 2;
+
+	this->player->getAnimation()->changeAnimation(3, 10, 6, true, 1);
 	this->player->isGrounded = true;
 	this->player->maxSpeed /= 2;
 	this->player->speed = 15;
@@ -15,12 +20,19 @@ void PStateMovingCrouch::exit(){
 
 void PStateMovingCrouch::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 
+	// Not crouching, goes to Idle.
 	if(!keyStates_[GameKeys::CROUCH]){
 		this->player->changeState(Player::PStates::IDLE);
 		return;
 	}
 
 	this->player->slowVx();
+
+	// Stops moving, goes to Crouch.
+    if(!keyStates_[GameKeys::LEFT] && !keyStates_[GameKeys::RIGHT]){
+        this->player->changeState(Player::PStates::CROUCHING);
+        return;
+    }
 
 	// Jump
 	if(keyStates_[GameKeys::SPACE]){

@@ -14,11 +14,15 @@
 #include "PStateAiming.h"
 #include "PStateMovingCrouch.h"
 
-Player::Player(const double x_, const double y_, Sprite* const sprite_) :
-    DynamicEntity(x_, y_, sprite_),
+#include "Window.h"
+
+#define ADD_STATE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass(this))
+
+Player::Player(const double x_, const double y_, const std::string& path_) :
+    DynamicEntity(x_, y_, path_),
     potionsLeft(50),
     maxPotions(50),
-    crosshair(new Crosshair(0.0, 0.0, Game::instance().getResources().get("res/images/alvo.png"))),
+    crosshair(new Crosshair(0.0, 0.0, "res/images/alvo.png")),
     animation(nullptr),
     currentState(nullptr)
 {
@@ -56,6 +60,8 @@ void Player::update(const double dt_){
     this->currentState->handleInput(keyStates);
     scoutPosition(dt_);
 
+    updateBoundingBox();
+
     const std::array<bool, CollisionSide::SOLID_TOTAL> detections = detectCollision();
     handleCollision(detections);
 
@@ -76,8 +82,10 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
         this->vy = 0.0;
     }
     if(detections_.at(CollisionSide::SOLID_BOTTOM)){
-        if(isCurrentState(PStates::AERIAL)){ 
-            this->nextY -= fmod(this->nextY, 64.0) - 16.0;
+        if(isCurrentState(PStates::AERIAL)){
+            const double magic = 16.0;
+            const double aerialToIdleCorrection = 64.0;
+            this->nextY -= fmod(this->nextY, 64.0) - magic + aerialToIdleCorrection;
             this->vy = 0.0;
             changeState(PStates::IDLE);
         }
@@ -99,8 +107,19 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
 }
 
 void Player::render(const double cameraX_, const double cameraY_){
+
     const double dx = this->x - cameraX_;
     const double dy = this->y - cameraY_;
+
+    // Actual.
+    SDL_Rect actualRect = {(int)dx, (int)dy, (int)this->width, (int)this->height};
+    SDL_SetRenderDrawColor( Window::getRenderer(), 0x00, 0x00, 0x00, 0xFF);
+    SDL_RenderFillRect(Window::getRenderer(), &actualRect);
+
+    // Bounding box.
+    SDL_Rect boundingBox2 = {(int)(this->boundingBox.x - cameraX_), (int)(this->boundingBox.y - cameraY_), (int)this->boundingBox.w, (int)this->boundingBox.h};
+    SDL_SetRenderDrawColor( Window::getRenderer(), 0xFF, 0xFF, 0xFF, 0xFF);
+    SDL_RenderFillRect(Window::getRenderer(), &boundingBox2);
 
     if(this->sprite != nullptr){
         this->sprite->render(dx, dy, &this->animationClip, false, 0.0, nullptr, getFlip());
@@ -119,22 +138,30 @@ void Player::render(const double cameraX_, const double cameraY_){
 void Player::usePotion(const int strength_, const int distance_){
     if(this->potionsLeft > 0){
         this->potionsLeft--;
-        Sprite* spritePotion = Game::instance().getResources().get("res/images/potion.png");
-        Potion* potion = new Potion( ((this->isRight) ? this->x + this->width : this->x), this->y, spritePotion, strength_, distance_, this->isRight);
+        Potion* potion = new Potion( ((this->isRight) ? this->x + this->width : this->x), this->y, "res/images/potion.png", strength_, distance_, this->isRight);
         potion->activated = true;
         this->potions.push_back(potion);
     }
 }
 
+void Player::addPotions(const unsigned int quantity_){
+    if(this->potionsLeft + quantity_ > this->maxPotions){
+        this->potionsLeft = this->maxPotions;
+    }
+    else{
+        this->potionsLeft += quantity_;
+    }
+}
+
 void Player::initializeStates(){
     // Initialize all the states in Player here.
-    this->statesMap.emplace(IDLE, new PStateIdle(this));
-    this->statesMap.emplace(MOVING, new PStateMoving(this));
-    this->statesMap.emplace(AERIAL, new PStateAerial(this));
-    this->statesMap.emplace(ROLLING, new PStateRolling(this));
-    this->statesMap.emplace(CROUCHING, new PStateCrouching(this));
-    this->statesMap.emplace(AIMING, new PStateAiming(this));
-    this->statesMap.emplace(MOVINGCROUCH, new PStateMovingCrouch(this));
+    ADD_STATE(IDLE,         PStateIdle);
+    ADD_STATE(MOVING,       PStateMoving);
+    ADD_STATE(AERIAL,       PStateAerial);
+    ADD_STATE(ROLLING,      PStateRolling);
+    ADD_STATE(CROUCHING,    PStateCrouching);
+    ADD_STATE(AIMING,       PStateAiming);
+    ADD_STATE(MOVINGCROUCH, PStateMovingCrouch);
 }
 
 void Player::destroyStates(){
@@ -158,3 +185,12 @@ Animation *Player::getAnimation(){
 bool Player::isCurrentState(const PStates state_){
     return (this->currentState == this->statesMap.at(state_));
 }
+
+
+void Player::updateBoundingBox(){
+    this->boundingBox.x = (int) this->nextX + this->currentState->box.x;
+    this->boundingBox.y = (int) this->nextY + this->currentState->box.y;
+    this->boundingBox.w = (int) this->width - this->currentState->box.w;
+    this->boundingBox.h = (int) this->height - this->currentState->box.h;
+}
+

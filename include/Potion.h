@@ -11,7 +11,7 @@ class Potion : public DynamicEntity {
 		/**
 		* The constructor.
 		*/
-		Potion(const double x_, const double y_, Sprite* const sprite_, const int strength_, const int distance_, const bool isRight_);
+		Potion(const double x_, const double y_, const std::string& path_, const int strength_, const int distance_, const bool isRight_);
 
 		/**
 		* The destructor.
@@ -35,7 +35,7 @@ class Potion : public DynamicEntity {
 		/**
 		*/
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
-
+		virtual void updateBoundingBox(){}
 		int strength;
 		int distance;
 		double flightTime;

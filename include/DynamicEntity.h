@@ -27,7 +27,7 @@ class DynamicEntity : public Entity {
 		* @param y_ : position in y axis.
 		* @param sprite_ : which sprite to use.
 		*/
-		DynamicEntity(const double x_, const double y_, Sprite* const sprite_);
+		DynamicEntity(const double x_, const double y_, const std::string& path_);
 
 		/**
 		* The destructor.
@@ -83,6 +83,8 @@ class DynamicEntity : public Entity {
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_) = 0;
 
 		virtual SDL_RendererFlip getFlip();
+
+		virtual void updateBoundingBox() = 0;
 
 		unsigned int levelW; /**< The width of the level. */
 		unsigned int levelH; /**< The height of the level. */

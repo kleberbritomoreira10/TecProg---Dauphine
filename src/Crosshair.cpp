@@ -1,7 +1,7 @@
 #include "Crosshair.h"
 
-Crosshair::Crosshair(const double x_, const double y_, Sprite* const sprite_) :
-	Entity(x_, y_, sprite_),
+Crosshair::Crosshair(const double x_, const double y_, const std::string& path_) :
+	Entity(x_, y_, path_),
 	activated(false)
 {
 

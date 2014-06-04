@@ -21,7 +21,7 @@ class Enemy : public DynamicEntity {
 		/**
 		* The constructor.
 		*/
-		Enemy(const double x_, const double y_, Sprite* const sprite_, const bool patrol_,
+		Enemy(const double x_, const double y_, const std::string& path_, const bool patrol_,
 			const double patrolLength_);
 
 		/**
@@ -62,6 +62,7 @@ class Enemy : public DynamicEntity {
 		double patrolLength;
 
 	private:
+		virtual void updateBoundingBox(){}
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
 		StateEnemy* currentState;
 		std::map<EStates, StateEnemy*> statesMap;

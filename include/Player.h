@@ -41,7 +41,7 @@ class Player : public DynamicEntity {
 		* @param y_ : position in y axis.
 		* @param sprite_ : which sprite to use.
 		*/
-		Player(const double x_, const double y_, Sprite* const sprite_);
+		Player(const double x_, const double y_, const std::string& path_);
 
 		/**
 		* The destructor.
@@ -97,6 +97,7 @@ class Player : public DynamicEntity {
 		Animation *getAnimation();
 
 		void usePotion(const int strength_, const int distance_);
+		void addPotions(const unsigned int quantity_);
 
 		unsigned int potionsLeft;
 		unsigned int maxPotions;
@@ -105,6 +106,7 @@ class Player : public DynamicEntity {
 		Crosshair* crosshair;
 
 	private:
+		virtual void updateBoundingBox();
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
 
 		Animation* animation; /**< Current player animation. */

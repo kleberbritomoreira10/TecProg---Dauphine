@@ -2,10 +2,10 @@
 #include "Logger.h"
 #include <cmath>
 
-Potion::Potion(const double x_, const double y_, Sprite* const sprite_, const int strength_,
+Potion::Potion(const double x_, const double y_, const std::string& path_, const int strength_,
 	const int distance_, const bool isRight_) :
 
-	DynamicEntity(x_, y_, sprite_),
+	DynamicEntity(x_, y_, path_),
 	activated(true),
 	strength(strength_),
 	distance(distance_),

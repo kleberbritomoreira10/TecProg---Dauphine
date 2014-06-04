@@ -1,12 +1,13 @@
 #include "Entity.h"
+#include "Game.h"
 #include "SDLWrapper.h"
 #include "Logger.h"
 
-Entity::Entity(const double x_, const double y_, Sprite* const sprite_) :
+Entity::Entity(const double x_, const double y_, const std::string& path_) :
     x(x_),
     y(y_),
     isRight(true),
-    sprite(sprite_),
+    sprite(Game::instance().getResources().get(path_)),
     width(0),
     height(0),
     animationClip{0,0,0,0},

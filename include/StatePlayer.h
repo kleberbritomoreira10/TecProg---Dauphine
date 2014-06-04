@@ -46,6 +46,7 @@ class StatePlayer {
 		virtual void handleInput(const std::array<bool, GameKeys::MAX> keyStates_) = 0;
 
 		Player* player; /**< Reference to the player. */
+		SDL_Rect box;
 
 };
 

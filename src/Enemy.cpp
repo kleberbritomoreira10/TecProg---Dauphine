@@ -8,15 +8,17 @@
 #include "EStateCurious.h"
 #include "EStateAlert.h"
 
+#include "Window.h"
+
 double Enemy::px = 0.0;
 double Enemy::py = 0.0;
 double Enemy::alertRange = 300.0;
 double Enemy::curiousRange = 600.0;
 
-Enemy::Enemy(const double x_, const double y_, Sprite* const sprite_, const bool patrol_,
+Enemy::Enemy(const double x_, const double y_, const std::string& path_, const bool patrol_,
     const double patrolLength_) :
 
-	DynamicEntity(x_, y_, sprite_),
+	DynamicEntity(x_, y_, path_),
     patrolX(100.0),
     left(true),
     originalX(x_),
@@ -45,6 +47,8 @@ void Enemy::update(const double dt_){
     this->currentState->update();
     scoutPosition(dt_);
 
+    this->boundingBox = {(int)this->nextX + (int)this->width/4, (int)this->nextY + 70, (int)this->width/2, (int)this->height - 70};
+
     const std::array<bool, CollisionSide::SOLID_TOTAL> detections = detectCollision();
     handleCollision(detections);
 
@@ -53,9 +57,22 @@ void Enemy::update(const double dt_){
 }
 
 void Enemy::render(const double cameraX_, const double cameraY_){
+
+    const double dx = this->x - cameraX_;
+    const double dy = this->y - cameraY_;
+
+    // Actual.
+    SDL_Rect actualRect = {(int)dx, (int)dy, (int)this->width, (int)this->height};
+    SDL_SetRenderDrawColor( Window::getRenderer(), 0x00, 0x00, 0x00, 0xFF);
+    SDL_RenderFillRect(Window::getRenderer(), &actualRect);
+
+    // Bounding box.
+    SDL_Rect boundingBox2 = {(int)(this->boundingBox.x - cameraX_), (int)(this->boundingBox.y - cameraY_), (int)this->boundingBox.w, (int)this->boundingBox.h};
+    SDL_SetRenderDrawColor( Window::getRenderer(), 0xFF, 0xFF, 0xFF, 0xFF);
+    SDL_RenderFillRect(Window::getRenderer(), &boundingBox2);
+
     if(this->sprite != nullptr){
-        const double dx = this->x - cameraX_;
-        const double dy = this->y - cameraY_;
+
         //                           &this->animationClip
         this->sprite->render(dx, dy, nullptr,               false, 0.0, nullptr, getFlip());
     }

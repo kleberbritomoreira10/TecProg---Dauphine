@@ -2,8 +2,8 @@
 #include "Logger.h"
 #include "Collision.h"
 
-DynamicEntity::DynamicEntity(const double x_, const double y_, Sprite* const sprite_) :
-	Entity(x_, y_, sprite_),
+DynamicEntity::DynamicEntity(const double x_, const double y_, const std::string& path_) :
+	Entity(x_, y_, path_),
 	vx(0.0),
 	vy(0.0),
 	speed(20.0),
@@ -43,7 +43,6 @@ void DynamicEntity::updatePosition(const double dt_){
 void DynamicEntity::scoutPosition(const double dt_){
 	this->nextX += this->vx * dt_;
 	this->nextY += this->vy * dt_;
-	this->boundingBox = {(int)this->nextX + (int)this->width/4, (int)this->nextY + 70, (int)this->width/2, (int)this->height - 70};
 }
 
 std::array<bool, CollisionSide::SOLID_TOTAL> DynamicEntity::detectCollision(){
@@ -65,8 +64,14 @@ std::array<bool, CollisionSide::SOLID_TOTAL> DynamicEntity::detectCollision(){
 
 				case Collision::RectangleSide::BOTTOM: // Hitting top of the tile.
 					detections.at(SOLID_BOTTOM) = true;
-					if(tileBox.type == JUMP_THROUGH && this->vy < 0.0){
-						detections.at(SOLID_BOTTOM) = false;
+					if(tileBox.type == JUMP_THROUGH){
+						if(this->vy < 0.0 || (this->boundingBox.y + this->boundingBox.h) < tileBox.rect.y){
+							Log(DEBUG) << "true";
+							detections.at(SOLID_BOTTOM) = false;
+						}
+						else{
+							Log(DEBUG) << "false";
+						}
 					}
 					break;
 
