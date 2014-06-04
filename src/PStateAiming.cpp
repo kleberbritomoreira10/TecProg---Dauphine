@@ -12,44 +12,35 @@
 
 void PStateAiming::enter(){
 
+	this->player->crosshair->activated = true;
+
 	if(this->player->isRight){
-		this->player->getCrosshair()->x = this->player->x + this->player->getWidth();
+		this->player->crosshair->x = this->player->x + this->player->getWidth();
 	}
 	else{
-		this->player->getCrosshair()->x = this->player->x - this->player->getCrosshair()->getWidth();
+		this->player->crosshair->x = this->player->x - this->player->crosshair->getWidth();
 	}
 
-	this->player->getCrosshair()->y = this->player->y + this->player->getHeight() - this->player->getCrosshair()->getHeight();
+	this->player->crosshair->y = this->player->y + this->player->getHeight() - this->player->crosshair->getHeight();
 
-	if(this->player->potions.size() < 3){
-
-		Sprite* spritePotion = Game::instance().getResources().get("res/images/potion.png");
-		
-		if(spritePotion != nullptr){
-			Potion* potion = new Potion(this->player->x, this->player->y, spritePotion);
-			if(potion != nullptr){
-				Log(DEBUG) << potion->x;
-				this->player->potions.push_back(potion);
-			}
-		}
-	}
 }
 
 void PStateAiming::exit(){
+	this->player->crosshair->activated = false;
 }
 
 void PStateAiming::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 
+	this->player->crosshair->render(0.0, 0.0);
+
 	if(!keyStates_[GameKeys::AIM]){
-		this->player->getCrosshair()->y = -600;
-		this->player->getCrosshair()->x = -600;
 		this->player->changeState(Player::PStates::IDLE);
 		return;
 	}
 
 	if(keyStates_[GameKeys::ACTION]){
 		if(this->player->potionsLeft > 0){	
-			this->player->usePotion(3 - this->player->potionsLeft, THROW_STRENGTH, this->absoluteCrosshairPlayerDistance());
+			this->player->usePotion(THROW_STRENGTH, absoluteCrosshairPlayerDistance());
 			this->player->potionsLeft--;
 			return;
 		}
@@ -58,14 +49,14 @@ void PStateAiming::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
 	if(keyStates_[GameKeys::LEFT]){
 		
 		if(this->player->isRight){
-			if((this->player->getCrosshair()->x > (this->player->x + this->player->getWidth()))){
-				this->player->aim(this->player->getCrosshair(), LEFTD);
+			if((this->player->crosshair->x > (this->player->x + this->player->getWidth()))){
+				this->player->aim(this->player->crosshair, LEFTD);
 			}
 				
 		}
 		
-		else if (this->absoluteCrosshairPlayerDistance() < MAX_DISTANCE) {
-			this->player->aim(this->player->getCrosshair(), LEFTD);
+		else if (absoluteCrosshairPlayerDistance() < MAX_DISTANCE) {
+			this->player->aim(this->player->crosshair, LEFTD);
 		}
 
 		return;
@@ -73,18 +64,18 @@ void PStateAiming::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
 
 	else if(keyStates_[GameKeys::RIGHT]){
 		if(!this->player->isRight){
-			if((this->player->getCrosshair()->x < (this->player->x - this->player->getCrosshair()->getWidth()))){
-				this->player->aim(this->player->getCrosshair(), RIGHTD);
+			if((this->player->crosshair->x < (this->player->x - this->player->crosshair->getWidth()))){
+				this->player->aim(this->player->crosshair, RIGHTD);
 			}	
 		}
-		else if (this->absoluteCrosshairPlayerDistance() < MAX_DISTANCE) {
-			this->player->aim(this->player->getCrosshair(), RIGHTD);
+		else if (absoluteCrosshairPlayerDistance() < MAX_DISTANCE) {
+			this->player->aim(this->player->crosshair, RIGHTD);
 		}
 		return;
 	}
 
 	else{
-		this->player->aim(this->player->getCrosshair(), NONED);
+		this->player->aim(this->player->crosshair, NONED);
 		return;
 	}
 
@@ -98,10 +89,18 @@ PStateAiming::PStateAiming(Player* const player_) :
 }
 
 int PStateAiming::absoluteCrosshairPlayerDistance(){
-	int distance =  (int)(this->player->isRight ? (this->player->getCrosshair()->x - this->player->x - this->player->getWidth()) : (this->player->x - this->player->getCrosshair()->x) - this->player->getCrosshair()->getWidth());
+	int distance = 0;
 
-	if(distance < MIN_DISTANCE)
+	if(this->player->isRight){
+		distance = (int) this->player->crosshair->x - this->player->x - this->player->getWidth();
+	}
+	else{
+		distance = (int) this->player->x - this->player->crosshair->x - this->player->crosshair->getWidth();
+	}
+
+	if(distance < MIN_DISTANCE){
 		distance = MIN_DISTANCE;
+	}
 
 	return distance;
 }

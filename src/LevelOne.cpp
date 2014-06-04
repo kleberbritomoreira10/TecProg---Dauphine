@@ -49,13 +49,6 @@ void LevelOne::load(){
 	Player* lPlayer = new Player(this->tileMap->getInitialX(), this->tileMap->getInitialY(), spritePlayer);
 	Camera* lCamera = new Camera(lPlayer);
 
-	Sprite* spriteCrosshair = Game::instance().getResources().get("res/images/alvo.png");
-	Crosshair* crosshair = new Crosshair(500, 600, spriteCrosshair);
-
-	addEntity(crosshair);
-
-	lPlayer->setCrosshair(crosshair);
-
 	Sprite* spriteEnemy = Game::instance().getResources().get(pathTempEnemy);
 	Enemy* enemy = new Enemy(704.0, 0.0, spriteEnemy, true, 200.0);
 	enemy->setLevelWH(this->width, this->height);

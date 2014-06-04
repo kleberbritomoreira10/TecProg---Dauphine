@@ -96,16 +96,13 @@ class Player : public DynamicEntity {
 		*/
 		Animation *getAnimation();
 
-		Crosshair* getCrosshair();
-		void setCrosshair(Crosshair* const crosshair);
-
-		Potion* getPotion();
-		void setPotion(std::vector<Potion*> potions_);
-
-		void usePotion(const int whichPotion_, const int strength_, const int distance_);
+		void usePotion(const int strength_, const int distance_);
 
 		unsigned int potionsLeft;
+		unsigned int maxPotions;
 		std::vector<Potion*> potions;
+
+		Crosshair* crosshair;
 
 	private:
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
@@ -113,7 +110,7 @@ class Player : public DynamicEntity {
 		Animation* animation; /**< Current player animation. */
 		StatePlayer* currentState; /**< The current state, which the player is in. */
 		std::map<PStates, StatePlayer*> statesMap; /**< Map containing all possible states. */
-		Crosshair* crosshair;
+
 };
 
 #endif //INCLUDE_PLAYER_H

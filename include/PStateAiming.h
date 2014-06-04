@@ -37,7 +37,10 @@ class PStateAiming : public StatePlayer {
 		virtual void handleInput(const std::array<bool, GameKeys::MAX> keyStates_);
 
 	private:
+		/**
+		*/
 		int absoluteCrosshairPlayerDistance();
+
 };
 
 #endif // INCLUDE_PSTATEAIMINGs_H

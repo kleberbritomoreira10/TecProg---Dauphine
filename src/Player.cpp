@@ -16,10 +16,11 @@
 
 Player::Player(const double x_, const double y_, Sprite* const sprite_) :
     DynamicEntity(x_, y_, sprite_),
-    potionsLeft(3),
+    potionsLeft(50),
+    maxPotions(50),
+    crosshair(new Crosshair(0.0, 0.0, Game::instance().getResources().get("res/images/alvo.png"))),
     animation(nullptr),
-    currentState(nullptr),
-    crosshair(nullptr)
+    currentState(nullptr)
 {
 
     initializeStates();
@@ -98,38 +99,31 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
 }
 
 void Player::render(const double cameraX_, const double cameraY_){
-    
     const double dx = this->x - cameraX_;
     const double dy = this->y - cameraY_;
+
     if(this->sprite != nullptr){
         this->sprite->render(dx, dy, &this->animationClip, false, 0.0, nullptr, getFlip());
     }
 
+    if(this->crosshair != nullptr){
+        this->crosshair->render(cameraX_, cameraY_);
+    }
+
     for (auto potion : this->potions) {
-        potion->getSprite()->render(potion->x - cameraX_, potion->y - cameraY_);
+        potion->render(cameraX_, cameraY_);
     }
 
 }
 
-void Player::usePotion(const int whichPotion_, const int strength_, const int distance_){
-    this->potions.at(whichPotion_)->activated = true;
-//    this->x = this->x + this->getWidth() - 20;
-
-    if(this->isRight)
-        this->potions.at(whichPotion_)->x = this->x + this->getWidth() - this->potions.at(whichPotion_)->getWidth();
-    else
-        this->potions.at(whichPotion_)->x = this->x;
-    
-    this->potions.at(whichPotion_)->y = this->y + 100;
-    this->potions.at(whichPotion_)->vx = 5;    
-    this->potions.at(whichPotion_)->vy = 5;
-    
-//    this->vy = (-1)*20;
-    this->potions.at(whichPotion_)->strength = strength_;
-    this->potions.at(whichPotion_)->distance = distance_;
-    this->potions.at(whichPotion_)->isRight = this->isRight;
-
-    this->potions.at(whichPotion_)->flightTime = 0;
+void Player::usePotion(const int strength_, const int distance_){
+    if(this->potionsLeft > 0){
+        this->potionsLeft--;
+        Sprite* spritePotion = Game::instance().getResources().get("res/images/potion.png");
+        Potion* potion = new Potion( ((this->isRight) ? this->x + this->width : this->x), this->y, spritePotion, strength_, distance_, this->isRight);
+        potion->activated = true;
+        this->potions.push_back(potion);
+    }
 }
 
 void Player::initializeStates(){
@@ -159,22 +153,6 @@ void Player::changeState(const PStates state_){
 
 Animation *Player::getAnimation(){
     return (this->animation);
-}
-
-Crosshair* Player::getCrosshair(){
-    return crosshair;
-}
-
-void Player::setCrosshair(Crosshair* const crosshair_){
-    this->crosshair = crosshair_;
-}
-
-Potion* Player::getPotion(){
-    return potions[potions.size()];
-}
-
-void Player::setPotion(std::vector<Potion*> potions_){
-    this->potions = potions_;
 }
 
 bool Player::isCurrentState(const PStates state_){

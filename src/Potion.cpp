@@ -2,13 +2,23 @@
 #include "Logger.h"
 #include <cmath>
 
-Potion::Potion(const double x_, const double y_, Sprite* const sprite_) :
-	DynamicEntity(x_, y_, sprite_),
-	activated(false),
-	strength(0),
-	flightTime(0)
-{
+Potion::Potion(const double x_, const double y_, Sprite* const sprite_, const int strength_,
+	const int distance_, const bool isRight_) :
 
+	DynamicEntity(x_, y_, sprite_),
+	activated(true),
+	strength(strength_),
+	distance(distance_),
+	flightTime(0.0)
+{
+	this->isRight = isRight_;
+	if(this->isRight){
+		this->x -= this->width;
+	}
+
+    this->y = this->y + 100;
+    this->vx = 5;    
+    this->vy = 5;
 }
 
 Potion::~Potion(){
@@ -24,14 +34,17 @@ void Potion::update(const double dt_){
 
 		this->flightTime +=dt_;
 
+		const double speedXIdk = (this->distance/300.0)*(this->vx + this->strength * cos(angle/57.29) * flightTime);
+		const double speedYIdk = (this->vy + this->strength * sin(angle/57.29) * flightTime - 0.5*gravity*flightTime*flightTime);
+
 		if(this->isRight){
-			this->x += (this->distance/300.0)*(this->vx + this->strength * cos(angle/57.29) * flightTime);
+			this->x += speedXIdk;
 		}
 		else{
-			this->x -= (this->distance/300.0)*(this->vx + this->strength * cos(angle/57.29) * flightTime);
+			this->x -= speedXIdk;
 		}
 
-		this->y -= this->vy + this->strength * sin(angle/57.29) * flightTime - 0.5*gravity*flightTime*flightTime;
+		this->y -= speedYIdk;
 	}
 }
 
@@ -44,8 +57,4 @@ void Potion::render(const double cameraX_, const double cameraY_){
         const double dy = this->y - cameraY_;
         this->sprite->render(dx, dy, nullptr, false, this->vx*3/2, nullptr, SDL_FLIP_HORIZONTAL);
     }
-}
-
-Sprite* Potion::getSprite(){
-	return this->sprite;
 }

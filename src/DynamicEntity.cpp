@@ -60,24 +60,24 @@ std::array<bool, CollisionSide::SOLID_TOTAL> DynamicEntity::detectCollision(){
 
 			switch(side) {
 				case Collision::RectangleSide::TOP: // Hitting under the tile.
-					// handleTopCollision(tileBox.type);
 					detections.at(SOLID_TOP) = (tileBox.type != JUMP_THROUGH) ? true : false;
 					break;
+
 				case Collision::RectangleSide::BOTTOM: // Hitting top of the tile.
-					// handleBottomCollision(tileBox.type);
 					detections.at(SOLID_BOTTOM) = true;
 					if(tileBox.type == JUMP_THROUGH && this->vy < 0.0){
 						detections.at(SOLID_BOTTOM) = false;
 					}
 					break;
+
 				case Collision::RectangleSide::RIGHT: // Hitting right side of the tile.
-					// handleRightCollision(tileBox.type);
 					detections.at(SOLID_RIGHT) = (tileBox.type != JUMP_THROUGH) ? true : false;
 					break;
+
 				case Collision::RectangleSide::LEFT: // Hitting left side of the tile.
-					// handleLeftCollision(tileBox.type);
 					detections.at(SOLID_LEFT) = (tileBox.type != JUMP_THROUGH) ? true : false;
 					break;
+
 				default:
 					Log(ERROR) << "Unknown rectangle side collided with a dynamic entity.";
 					break;
@@ -146,9 +146,8 @@ void DynamicEntity::roll(){
 }
 
 void DynamicEntity::aim(Crosshair* const crosshair, const double direction){
-	crosshair->activated = true;
-	const double velocity = 10;
-	crosshair->x += velocity*direction;
+	const double velocity = 10.0;
+	crosshair->x += velocity * direction;
 }
 
 SDL_RendererFlip DynamicEntity::getFlip(){
