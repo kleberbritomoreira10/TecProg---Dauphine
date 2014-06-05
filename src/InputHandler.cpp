@@ -2,12 +2,10 @@
 #include "Logger.h"
 
 InputHandler::InputHandler() :
-	quitFlag(false)
+	quitFlag(false),
+	controllerHandler(new ControllerHandler())
 {
 	this->keyStates.fill(false);
-
-	// Opens controller handling.
-	this->controllerHandler = new ControllerHandler();
 }
 
 InputHandler::~InputHandler(){
@@ -35,11 +33,6 @@ void InputHandler::handleInput(){
 
 			switch(this->sdlEvent.key.keysym.sym){
 				case SDLK_SPACE: // Jump.
-
-				if(this->sdlEvent.key.repeat != 0){
-					
-				}
-					
 					this->keyStates[GameKeys::SPACE] = true;
 					break;
 				case SDLK_UP: // UP.
@@ -59,8 +52,11 @@ void InputHandler::handleInput(){
 					break;
 				case SDLK_LCTRL: // crouch
 					this->keyStates[GameKeys::CROUCH] = true;
+					break;
 				case SDLK_a: // a.
-					this->keyStates[GameKeys::ACTION] = true;
+					if(this->sdlEvent.key.repeat == 0){
+						this->keyStates[GameKeys::ACTION] = true;
+					}
 					break;
 				case SDLK_LSHIFT: // d.
 					this->keyStates[GameKeys::AIM] = true;
@@ -135,4 +131,8 @@ bool InputHandler::isQuitFlag(){
 
 void InputHandler::signalExit(){
 	this->quitFlag = true;
+}
+
+void InputHandler::clearKey(const GameKeys key_){
+	this->keyStates.at(key_) = false;
 }

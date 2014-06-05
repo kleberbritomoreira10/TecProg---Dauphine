@@ -58,6 +58,9 @@ void Player::update(const double dt_){
     std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
     this->currentState->handleInput(keyStates);
+
+    Game::instance().clearKeyFromInput(GameKeys::ACTION);
+
     scoutPosition(dt_);
 
     updateBoundingBox();

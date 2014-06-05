@@ -78,6 +78,8 @@ class Game {
 		*/
 		void stop();
 
+		void clearKeyFromInput(const GameKeys key_);
+
 	private:
 		/**
 		* The constructor.

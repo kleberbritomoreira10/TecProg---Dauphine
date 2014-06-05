@@ -143,3 +143,7 @@ ResourceManager& Game::getResources(){
 void Game::stop(){
 	this->isRunning = false;
 }
+
+void Game::clearKeyFromInput(const GameKeys key_){
+	this->inputHandler->clearKey(key_);
+}
