@@ -43,7 +43,12 @@ void LevelOne::load(){
 
 	// Loading the player and the camera.
 	Player* lPlayer = new Player(this->tileMap->getInitialX(), this->tileMap->getInitialY(), pathPlayerSpriteSheet);
-	Camera* lCamera = new Camera(lPlayer);
+	Camera* lCamera = new Camera(lPlayer); 
+	
+	const std::string lPaths[] = {"res/images/hud/player_bar.png", "res/images/hud/player_hp_background.png",
+	 "res/images/hud/player_alert1.png"};
+	this->hud = new HUD(0, 0, "res/images/hud/player_bar.png", 3);
+	this->hud->setSprites(lPaths);
 
 	Enemy* enemy = new Enemy(704.0, 0.0, pathTempEnemy, true, 0.0);
 	enemy->setLevelWH(this->width, this->height);
@@ -97,6 +102,8 @@ void LevelOne::render(){
 
 	// Render the tiles in the TileMap.
 	this->tileMap->render(cameraX, cameraY);
+
+	this->hud->render(this->player->x - cameraX, this->player->y - cameraY);
 
 	// Render all the entities in the list.
 	for(auto entity : entities){
