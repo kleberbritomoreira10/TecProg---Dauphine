@@ -86,9 +86,9 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
     }
     if(detections_.at(CollisionSide::SOLID_BOTTOM)){
         if(isCurrentState(PStates::AERIAL)){
-            const double magic = 16.0;
-            const double aerialToIdleCorrection = 64.0;
-            this->nextY -= fmod(this->nextY, 64.0) - magic + aerialToIdleCorrection;
+            const double magic = 0.0;
+            const double aerialToIdleCorrection = 0.0;
+            this->nextY -= fmod(this->nextY, 16.0) - magic + aerialToIdleCorrection;
             this->vy = 0.0;
             changeState(PStates::IDLE);
         }
