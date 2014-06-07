@@ -3,12 +3,15 @@
 
 #include "Entity.h"
 #include "Sprite.h"
+#include "Player.h"
+
+#include <vector>
 
 /**
 * The HUD entity class.
 * Contains all the relevant implementation relative to the HUD.
 */
-class HUD : public Entity {
+class PlayerHUD {
 
 	public:
 
@@ -19,14 +22,13 @@ class HUD : public Entity {
 		* @param y_ : position in y axis.
 		* @param sprite_ : which sprite to use.
 		*/
-		HUD(const double x_, const double y_, const std::string path_, 
-			int numberOfSprites_);
+		PlayerHUD(Player* const player_);
 
 		/**
 		* The destructor.
 		* Exits the current state and destroys all states.
 		*/
-		virtual ~HUD();
+		virtual ~PlayerHUD();
 
 		/**
 		* Updates the HUD.
@@ -34,7 +36,7 @@ class HUD : public Entity {
 		* @param dt_ : Delta time. Time elapsed between one frame and the other, independent
 		* 	of processing speed.
 		*/
-		virtual void update(const double dt_);
+		virtual void update();
 
 		/**
 		* Renders the HUD.
@@ -45,11 +47,12 @@ class HUD : public Entity {
 		*/
 		virtual void render(const double cameraX_, const double cameraY_);
 
-		void setSprites(const std::string path_[]);
+		void initializeSprites();
 
 	private:
-		Sprite* hudSprites[3];
-		int numberOfSprites;
+		Sprite* playerHudSprites[5];
+		bool canRenderHud[5];
+		Player* player;
 };
 
 #endif //INCLUDE_HUD_H

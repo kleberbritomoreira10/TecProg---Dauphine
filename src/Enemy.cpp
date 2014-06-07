@@ -14,6 +14,7 @@
 
 double Enemy::px = 0.0;
 double Enemy::py = 0.0;
+unsigned int Enemy::pLife = 3;
 double Enemy::alertRange = 300.0;
 double Enemy::curiousRange = 600.0;
 

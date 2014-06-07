@@ -25,6 +25,7 @@ Player::Player(const double x_, const double y_, const std::string& path_) :
     potionsLeft(50),
     maxPotions(50),
     crosshair(new Crosshair(0.0, 0.0, "res/images/alvo.png")),
+    life(3),
     animation(nullptr),
     currentState(nullptr)
 {

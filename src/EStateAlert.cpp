@@ -26,6 +26,8 @@ void EStateAlert::update(const double dt_){
 
 	if(abs(this->enemy->x - Enemy::px) < 100){
 		this->enemy->vx = 0;
+		Enemy::pLife--;
+		return;
 	}
 
 	if(!(abs(this->enemy->x - Enemy::px) < Enemy::alertRange*2 && abs(this->enemy->y - Enemy::py) < Enemy::alertRange)){

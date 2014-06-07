@@ -7,7 +7,7 @@
 #include "StateGame.h"
 #include "TileMap.h"
 #include "QuadTree.h"
-#include "HUD.h"
+#include "PlayerHUD.h"
 
 /**
 * Abstract class for levels.
@@ -56,7 +56,7 @@ class Level : public StateGame {
 
 		Player* player; /**< The direct reference to player, even though its in the list. */
 		Camera* camera; /**< The current camera for that level. */
-		HUD* hud;
+		PlayerHUD* playerHud;
 
 		TileMap* tileMap;
 		QuadTree* quadTree;
