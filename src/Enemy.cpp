@@ -7,6 +7,7 @@
 #include "EStateAerial.h"
 #include "EStateCurious.h"
 #include "EStateAlert.h"
+#include "EStateAtack.h"
 
 #include "Window.h"
 
@@ -88,6 +89,7 @@ void Enemy::initializeStates(){
     ADD_STATE(PATROLLING, EStatePatrolling);
     ADD_STATE(ALERT, EStateAlert);
     ADD_STATE(AERIAL, EStateAerial);
+    ADD_STATE(ATACK, EStateAtack);
 }
 
 void Enemy::destroyStates(){
