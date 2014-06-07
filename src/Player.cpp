@@ -18,6 +18,8 @@
 
 #define ADD_STATE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass(this))
 
+#define FLOOR_OFFSET 8
+
 Player::Player(const double x_, const double y_, const std::string& path_) :
     DynamicEntity(x_, y_, path_),
     potionsLeft(50),
@@ -112,7 +114,7 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
 void Player::render(const double cameraX_, const double cameraY_){
 
     const double dx = this->x - cameraX_;
-    const double dy = this->y - cameraY_;
+    const double dy = this->y - cameraY_ + FLOOR_OFFSET;
 
     // // Actual.
     // SDL_Rect actualRect = {(int)dx, (int)dy, (int)this->width, (int)this->height};
