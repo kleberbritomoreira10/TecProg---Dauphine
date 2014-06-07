@@ -30,7 +30,12 @@ void Potion::update(const double dt_){
 	const int angle = 360 - 45;
 	const double gravity = 35;
 
-	if(activated){
+	updateBoundingBox();
+
+	const std::array<bool, CollisionSide::SOLID_TOTAL> detections = detectCollision();
+    handleCollision(detections);
+
+	if(this->activated){
 
 		this->flightTime +=dt_;
 
@@ -49,6 +54,36 @@ void Potion::update(const double dt_){
 }
 
 void Potion::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){
+
+
+    if(detections_.at(CollisionSide::SOLID_TOP)){ 
+       if((int)this->y%64 > 0){
+
+         	this->y += 64 -(int)this->y%64 + 1; 
+         	this->strength = 0.0;
+         	this->activated = false;
+    	}
+	}
+
+    if(detections_.at(CollisionSide::SOLID_BOTTOM)){
+    	this->strength = 0;
+    	this->activated = false;
+    }
+
+    if(detections_.at(CollisionSide::SOLID_LEFT)){
+
+        this->x -= (int)(this->x + this->width)%64 + 1;
+        this->strength = 0.0;
+        this->activated = false;
+    }
+
+    if(detections_.at(CollisionSide::SOLID_RIGHT)){
+        if((int)this->x%64 > 0){
+         	this->x += (64 - (int)this->x%64) + 1;
+         	this->vx = 0.0;
+        }
+        this->activated = false;
+    }
 }
 
 void Potion::render(const double cameraX_, const double cameraY_){
@@ -57,4 +92,11 @@ void Potion::render(const double cameraX_, const double cameraY_){
         const double dy = this->y - cameraY_;
         this->sprite->render(dx, dy, nullptr, false, this->vx*3/2, nullptr, SDL_FLIP_HORIZONTAL);
     }
+}
+
+void Potion::updateBoundingBox(){
+	this->boundingBox.x = (int) this->x;
+    this->boundingBox.y = (int) this->y;
+    this->boundingBox.w = (int) this->width;
+    this->boundingBox.h = (int) this->height;
 }

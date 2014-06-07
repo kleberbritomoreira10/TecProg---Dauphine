@@ -35,7 +35,7 @@ class Potion : public DynamicEntity {
 		/**
 		*/
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
-		virtual void updateBoundingBox(){}
+		virtual void updateBoundingBox();
 		int strength;
 		int distance;
 		double flightTime;
