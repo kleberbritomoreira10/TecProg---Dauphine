@@ -5,6 +5,7 @@ double atackTime;
 
 void EStateAtack::enter(){
 	Log(DEBUG) << "ENTER ATACK";
+	this->enemy->getAnimation()->changeAnimation(10, 0, 6, false, 0.6);
 	atackTime = 0;
 }
 
@@ -14,7 +15,7 @@ void EStateAtack::exit(){
 
 void EStateAtack::update(const double dt_){
 	atackTime += dt_;
-	const double atackTotalTime = 0.4;
+	const double atackTotalTime = 0.6;
 
 	this->enemy->vx = 0;
 	if(atackTime > atackTotalTime){

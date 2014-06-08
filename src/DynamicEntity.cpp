@@ -145,7 +145,7 @@ void DynamicEntity::move(const bool movingLeft_, const bool movingRight_){
 }
 
 void DynamicEntity::slowVx(){
-	this->vx *= 0.8;
+	this->vx *= 0.7;
 }
 
 void DynamicEntity::roll(){

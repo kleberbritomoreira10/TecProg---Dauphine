@@ -37,6 +37,8 @@ class Animation{
 		*/
 		void update(SDL_Rect& clip_, const double dt_);
 
+		int getCurrentFrame();
+		
 		/**
 		* Changes the animation to another.
 		* @note See Animation::Animation for the parameters descriptions.
@@ -64,7 +66,7 @@ class Animation{
 			frame changed. */
 		double totalTime; /**< Total time for each animation loop. */
 
-		static int animationCount;
+		int animationCount;
 
 };
 
