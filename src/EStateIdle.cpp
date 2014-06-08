@@ -12,6 +12,9 @@ void EStateIdle::exit(){
 }
 
 void EStateIdle::update(const double dt_){
+
+	((void)dt_); // Unused.
+	
 	// Aerial
 	if(!this->enemy->isGrounded){
 		this->enemy->changeState(Enemy::EStates::AERIAL);

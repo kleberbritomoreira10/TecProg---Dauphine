@@ -12,7 +12,7 @@ Crosshair::~Crosshair(){
 }
 
 void Crosshair::update(const double dt_){
-	
+	((void)dt_); // Unused.
 }
 		
 void Crosshair::render(const double cameraX_, const double cameraY_){
@@ -29,4 +29,3 @@ unsigned int Crosshair::getWidth(){
 unsigned int Crosshair::getHeight(){
 	return this->height;
 }
-

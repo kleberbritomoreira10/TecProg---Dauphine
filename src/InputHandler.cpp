@@ -2,8 +2,8 @@
 #include "Logger.h"
 
 InputHandler::InputHandler() :
-	quitFlag(false),
-	controllerHandler(new ControllerHandler())
+	controllerHandler(new ControllerHandler()),
+	quitFlag(false)
 {
 	this->keyStates.fill(false);
 }

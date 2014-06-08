@@ -1,11 +1,8 @@
-#ifndef INCLUDE_HUD_H
-#define INCLUDE_HUD_H
+#ifndef INCLUDE_PLAYERHUD_H
+#define INCLUDE_PLAYERHUD_H
 
-#include "Entity.h"
 #include "Sprite.h"
 #include "Player.h"
-
-#include <vector>
 
 /**
 * The HUD entity class.
@@ -36,7 +33,7 @@ class PlayerHUD {
 		* @param dt_ : Delta time. Time elapsed between one frame and the other, independent
 		* 	of processing speed.
 		*/
-		virtual void update();
+		void update();
 
 		/**
 		* Renders the HUD.
@@ -45,14 +42,23 @@ class PlayerHUD {
 		* @param cameraX_ : The x position of the camera.
 		* @param cameraY_ : The y position of the camera.
 		*/
-		virtual void render(const double cameraX_, const double cameraY_);
+		void render();
+
+	private:
+		enum HUD_Elements : uint8_t {
+			HEALTH_0 = 0,
+			HEALTH_33,
+			HEALTH_66,
+			HEALTH_100,
+			PLAYER_ICON,
+			TOTAL_HUD
+		};
 
 		void initializeSprites();
 
-	private:
-		Sprite* playerHudSprites[5];
-		bool canRenderHud[5];
+		Sprite* playerHudSprites[TOTAL_HUD];
+		bool canRenderHud[TOTAL_HUD];
 		Player* player;
 };
 
-#endif //INCLUDE_HUD_H
+#endif //INCLUDE_PLAYERHUD_H

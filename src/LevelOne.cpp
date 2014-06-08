@@ -104,7 +104,7 @@ void LevelOne::render(){
 	// Render the tiles in the TileMap.
 	this->tileMap->render(cameraX, cameraY);
 
-	this->playerHud->render(this->player->x - cameraX, this->player->y - cameraY);
+	this->playerHud->render();
 
 	// Render all the entities in the list.
 	for(auto entity : entities){

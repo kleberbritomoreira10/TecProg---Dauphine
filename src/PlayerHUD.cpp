@@ -2,13 +2,11 @@
 #include "Game.h"
 #include "Logger.h"
 
-const int numberOfSprites = 5;
-
 PlayerHUD::PlayerHUD(Player* const player_):
 	player(player_)
 {
 	initializeSprites();
-	for(int i = 0; i < numberOfSprites; i++){
+	for(int i = 0; i < TOTAL_HUD; i++){
 		this->canRenderHud[i] = true;
 	}
 }
@@ -33,10 +31,10 @@ void PlayerHUD::update(){
 	}
 }
 
-void PlayerHUD::render(const double cameraX_, const double cameraY_){
-	for(int i = 0; i < numberOfSprites; i++){
+void PlayerHUD::render(){
+	for(int i = 0; i < TOTAL_HUD; i++){
 		if(this->canRenderHud[i]){
-			this->playerHudSprites[i]->render(0, 0, nullptr, false, 0.0, nullptr);
+			this->playerHudSprites[i]->render(0, 0);
 		}
 	}
 }

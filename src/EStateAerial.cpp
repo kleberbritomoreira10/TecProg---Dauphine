@@ -11,6 +11,9 @@ void EStateAerial::exit(){
 }
 
 void EStateAerial::update(const double dt_){
+
+	((void)dt_); // Unused.
+
 	// Idle
 	if(this->enemy->isGrounded){
 		if(this->enemy->patrol){

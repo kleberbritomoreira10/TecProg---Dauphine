@@ -14,8 +14,10 @@ void EStatePatrolling::exit(){
 }
 
 void EStatePatrolling::update(const double dt_){
-	// Patrol.
 
+	((void)dt_); // Unused.
+	
+	// Patrol.
 	if(abs(this->enemy->x - this->enemy->originalX) > this->enemy->patrolLength){
 		// right
 		if(this->enemy->x - this->enemy->originalX < 0.0){
