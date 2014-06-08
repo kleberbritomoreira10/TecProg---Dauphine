@@ -67,12 +67,12 @@ std::array<bool, CollisionSide::SOLID_TOTAL> DynamicEntity::detectCollision(){
 
 					if(tileBox.type == JUMP_THROUGH){
 						// Going up, not colliding
-						if(this->vy < 0) {
+						if(this->vy < 0) {						
 							detections.at(SOLID_BOTTOM) = false;
 							//Log(DEBUG) << "Up and go";
 						}else
-						// Going down but not within 8 pixels tolerance
-						if(this->vy >= 0.0 && (this->boundingBox.y + this->boundingBox.h) > tileBox.rect.y + 8){
+						// Going down and goes through tile top
+						if(this->vy >= 0.0 && (this->boundingBox.y + this->boundingBox.h) > tileBox.rect.y + tileBox.rect.h){
 							detections.at(SOLID_BOTTOM) = false;
 							//Log(DEBUG) << "Not so fast";
 						}
