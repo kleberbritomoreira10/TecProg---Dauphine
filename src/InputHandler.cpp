@@ -77,6 +77,9 @@ void InputHandler::handleInput(){
 				case SDLK_LSHIFT: // d.
 					this->keyStates[GameKeys::AIM] = true;
 					break;
+				case SDLK_z: // z.
+					this->keyStates[GameKeys::LATTACK] = true;
+					break;
 				case SDLK_TAB:
 					this->keyStates[GameKeys::ITEMS] = true;
 					break;
@@ -117,6 +120,9 @@ void InputHandler::handleInput(){
 					break;
 				case SDLK_LSHIFT: // d.
 					this->keyStates[GameKeys::AIM] = false;
+					break;
+				case SDLK_z: // z.
+					this->keyStates[GameKeys::LATTACK] = false;
 					break;
 				case SDLK_TAB:
 					this->keyStates[GameKeys::ITEMS] = false;

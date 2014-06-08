@@ -8,7 +8,6 @@ level = {
 	    spriteSheet = "res/images/spriteSheet_nadine.png",
 	},
 
-	-- temporary, should be removed later
-	dummyEnemy = "res/images/temp_enemy.png",
+	enemy = "res/images/enemySheet.png",
 
 }

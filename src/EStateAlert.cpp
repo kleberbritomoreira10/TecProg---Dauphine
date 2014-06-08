@@ -3,6 +3,7 @@
 
 void EStateAlert::enter(){
 	Log(DEBUG) << "ENTER ALERT";
+	this->enemy->getAnimation()->changeAnimation(1, 0, 9, false, 0.9);
 	this->enemy->speed = 6.5;
 }
 
@@ -28,7 +29,9 @@ void EStateAlert::update(const double dt_){
 	}
 
 	if(abs(this->enemy->x - Enemy::px) < 100){
-		this->enemy->changeState(Enemy::EStates::ATACK);
+		if(abs(this->enemy->y - Enemy::py) < 200){
+			this->enemy->changeState(Enemy::EStates::ATACK);
+		}
 	}
 
 	if(!(abs(this->enemy->x - Enemy::px) < Enemy::alertRange*2 && abs(this->enemy->y - Enemy::py) < Enemy::alertRange)){

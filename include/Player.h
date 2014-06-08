@@ -31,7 +31,8 @@ class Player : public DynamicEntity {
 			ROLLING,
 			CROUCHING,
 			AIMING,
-			MOVINGCROUCH
+			MOVINGCROUCH,
+			ATTACK
 		};
 
 		/**

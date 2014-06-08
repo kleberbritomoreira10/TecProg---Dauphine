@@ -36,7 +36,7 @@ void LevelOne::load(){
 		"level.player.spriteSheet");
 	const std::string pathBackgroundAudio = luaLevel1.unlua_get<std::string>(
 		"level.audio.background");
-	const std::string pathTempEnemy = luaLevel1.unlua_get<std::string>("level.dummyEnemy");
+	const std::string pathEnemy = luaLevel1.unlua_get<std::string>("level.enemy");
 
 	// Changing the music.
 	Game::instance().getAudioHandler().changeMusic(pathBackgroundAudio);
@@ -48,7 +48,7 @@ void LevelOne::load(){
 
 	this->playerHud = new PlayerHUD(lPlayer);
 
-	Enemy* enemy = new Enemy(704.0, 0.0, pathTempEnemy, true, 0.0);
+	Enemy* enemy = new Enemy(704.0, 0.0, pathEnemy, true, 0.0);
 	enemy->setLevelWH(this->width, this->height);
 	addEntity(enemy);
 	

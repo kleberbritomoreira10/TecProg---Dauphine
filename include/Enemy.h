@@ -3,6 +3,7 @@
 
 #include "DynamicEntity.h"
 #include "StateEnemy.h"
+#include "Animation.h"
 #include <map>
 
 class StateEnemy;
@@ -50,6 +51,7 @@ class Enemy : public DynamicEntity {
 		void initializeStates();
 		void destroyStates();
 		void changeState(const EStates state_);
+		Animation* getAnimation();
 
 		static double px;
 		static double py;
@@ -66,6 +68,7 @@ class Enemy : public DynamicEntity {
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
 		void forceMaxSpeed();
 		StateEnemy* currentState;
+		Animation* animation;
 		std::map<EStates, StateEnemy*> statesMap;
 
 };

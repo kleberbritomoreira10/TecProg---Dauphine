@@ -1,5 +1,6 @@
 #include "Enemy.h"
 #include "Logger.h"
+#include "LuaScript.h"
 #include <cmath>
 
 #include "EStateIdle.h"
@@ -27,11 +28,18 @@ Enemy::Enemy(const double x_, const double y_, const std::string& path_, const b
     patrol(patrol_),
     patrolLength(patrolLength_),
 	currentState(nullptr),
+    animation(nullptr),
 	statesMap()
 {
 	initializeStates();
 
     this->speed = 3.0;
+
+    LuaScript luaEnemy("lua/Enemy.lua");
+    this->width = luaEnemy.unlua_get<int>("enemy.dimensions.width");
+    this->height = luaEnemy.unlua_get<int>("enemy.dimensions.height");
+
+    this->animation = new Animation(0, 0, this->width, this->height, 0, false);
 
     this->currentState = this->statesMap.at(PATROLLING);
     this->currentState->enter();
@@ -50,6 +58,8 @@ void Enemy::update(const double dt_){
     forceMaxSpeed();
 
     scoutPosition(dt_);
+
+    this->animation->update(this->animationClip, dt_);
 
     this->boundingBox = {(int)this->nextX + (int)this->width/4, (int)this->nextY + 70, (int)this->width/2, (int)this->height - 70};
 
@@ -76,9 +86,7 @@ void Enemy::render(const double cameraX_, const double cameraY_){
     SDL_RenderFillRect(Window::getRenderer(), &boundingBox2);
 
     if(this->sprite != nullptr){
-
-        //                           &this->animationClip
-        this->sprite->render(dx, dy, nullptr, false, 0.0, nullptr, getFlip());
+        this->sprite->render(dx, dy, &this->animationClip, false, 0.0, nullptr, getFlip());
     }
 }
 
@@ -135,4 +143,8 @@ void Enemy::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detecti
 void Enemy::forceMaxSpeed(){
     this->vx = (this->vx >= this->maxSpeed) ? this->maxSpeed : this->vx ;
     this->vy = (this->vy >= this->maxSpeed) ? this->maxSpeed : this->vy ;
+}
+
+Animation *Enemy::getAnimation(){
+    return (this->animation);
 }

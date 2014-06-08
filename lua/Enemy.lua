@@ -1,6 +1,6 @@
-player = {
+enemy = {
 	dimensions = {
-		width = 340,
+		width = 360,
 		height = 240,
 	},
 }

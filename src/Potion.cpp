@@ -30,7 +30,7 @@ void Potion::update(const double dt_){
 	const int angle = 360 - 45;
 	const double gravity = 35;
 
-	updateBoundingBox();
+    updateBoundingBox();
 
 	const std::array<bool, CollisionSide::SOLID_TOTAL> detections = detectCollision();
     handleCollision(detections);
@@ -54,11 +54,8 @@ void Potion::update(const double dt_){
 }
 
 void Potion::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){
-
-
     if(detections_.at(CollisionSide::SOLID_TOP)){ 
        if((int)this->y%64 > 0){
-
          	this->y += 64 -(int)this->y%64 + 1; 
          	this->strength = 0.0;
          	this->activated = false;
@@ -66,12 +63,12 @@ void Potion::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
 	}
 
     if(detections_.at(CollisionSide::SOLID_BOTTOM)){
-    	this->strength = 0;
+
+    	this->strength = 0.0;
     	this->activated = false;
     }
 
     if(detections_.at(CollisionSide::SOLID_LEFT)){
-
         this->x -= (int)(this->x + this->width)%64 + 1;
         this->strength = 0.0;
         this->activated = false;

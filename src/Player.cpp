@@ -13,6 +13,7 @@
 #include "PStateCrouching.h"
 #include "PStateAiming.h"
 #include "PStateMovingCrouch.h"
+#include "PStateAttack.h"
 
 #include "Window.h"
 
@@ -168,6 +169,7 @@ void Player::initializeStates(){
     ADD_STATE(CROUCHING,    PStateCrouching);
     ADD_STATE(AIMING,       PStateAiming);
     ADD_STATE(MOVINGCROUCH, PStateMovingCrouch);
+    ADD_STATE(ATTACK,       PStateAttack);
 }
 
 void Player::destroyStates(){
