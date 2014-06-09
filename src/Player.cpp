@@ -14,6 +14,7 @@
 #include "PStateAiming.h"
 #include "PStateMovingCrouch.h"
 #include "PStateAttack.h"
+#include "PStateSetUpTrap.h"
 
 #include "Window.h"
 
@@ -27,6 +28,7 @@ Player::Player(const double x_, const double y_, const std::string& path_) :
     maxPotions(50),
     crosshair(new Crosshair(0.0, 0.0, "res/images/alvo.png")),
     life(3),
+    currentItem(PItems::POTION),
     animation(nullptr),
     currentState(nullptr)
 {
@@ -79,6 +81,11 @@ void Player::update(const double dt_){
     for(auto potion : this->potions){
         potion->update(dt_);
     }
+
+    for(auto trap : this->traps){
+        trap->update(dt_);
+    }
+
 }
 
 void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){
@@ -118,15 +125,15 @@ void Player::render(const double cameraX_, const double cameraY_){
     const double dx = this->x - cameraX_;
     const double dy = this->y - cameraY_ + FLOOR_OFFSET;
 
-    // // Actual.
-    // SDL_Rect actualRect = {(int)dx, (int)dy, (int)this->width, (int)this->height};
-    // SDL_SetRenderDrawColor( Window::getRenderer(), 0x00, 0x00, 0x00, 0xFF);
-    // SDL_RenderFillRect(Window::getRenderer(), &actualRect);
+     // Actual.
+    SDL_Rect actualRect = {(int)dx, (int)dy, (int)this->width, (int)this->height};
+    SDL_SetRenderDrawColor( Window::getRenderer(), 0x00, 0x00, 0x00, 0xFF);
+    SDL_RenderFillRect(Window::getRenderer(), &actualRect);
 
-    // // Bounding box.
-    // SDL_Rect boundingBox2 = {(int)(this->boundingBox.x - cameraX_), (int)(this->boundingBox.y - cameraY_), (int)this->boundingBox.w, (int)this->boundingBox.h};
-    // SDL_SetRenderDrawColor( Window::getRenderer(), 0xFF, 0xFF, 0xFF, 0xFF);
-    // SDL_RenderFillRect(Window::getRenderer(), &boundingBox2);
+    // Bounding box.
+    SDL_Rect boundingBox2 = {(int)(this->boundingBox.x - cameraX_), (int)(this->boundingBox.y - cameraY_), (int)this->boundingBox.w, (int)this->boundingBox.h};
+    SDL_SetRenderDrawColor( Window::getRenderer(), 0xFF, 0xFF, 0xFF, 0xFF);
+    SDL_RenderFillRect(Window::getRenderer(), &boundingBox2);
 
     if(this->sprite != nullptr){
         this->sprite->render(dx, dy, &this->animationClip, false, 0.0, nullptr, getFlip());
@@ -138,6 +145,10 @@ void Player::render(const double cameraX_, const double cameraY_){
 
     for (auto potion : this->potions) {
         potion->render(cameraX_, cameraY_);
+    }
+
+    for (auto trap : this->traps) {
+        trap->render(cameraX_, cameraY_);
     }
 
 }
@@ -160,6 +171,12 @@ void Player::addPotions(const unsigned int quantity_){
     }
 }
 
+void Player::useTrap(){
+        Trap* trap = new Trap( this->x + this->width/2, this->y + this->height - 32, "res/images/bear_trap.png");
+        trap->activated = true;
+        this->traps.push_back(trap);
+}
+
 void Player::initializeStates(){
     // Initialize all the states in Player here.
     ADD_STATE(IDLE,         PStateIdle);
@@ -170,6 +187,8 @@ void Player::initializeStates(){
     ADD_STATE(AIMING,       PStateAiming);
     ADD_STATE(MOVINGCROUCH, PStateMovingCrouch);
     ADD_STATE(ATTACK,       PStateAttack);
+    ADD_STATE(SETUPTRAP,    PStateSetUpTrap);
+
 }
 
 void Player::destroyStates(){

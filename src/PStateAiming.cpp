@@ -43,10 +43,12 @@ void PStateAiming::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
 	}
 
 	if(keyStates_[GameKeys::ACTION]){
-		if(this->player->potionsLeft > 0){	
-			this->player->usePotion(THROW_STRENGTH, absoluteCrosshairPlayerDistance());
-			this->player->potionsLeft--;
-			return;
+		if(this->player->currentItem == Player::PItems::POTION){
+			if(this->player->potionsLeft > 0){	
+				this->player->usePotion(THROW_STRENGTH, absoluteCrosshairPlayerDistance());
+				this->player->potionsLeft--;
+				return;
+			}
 		}
 	}
 	

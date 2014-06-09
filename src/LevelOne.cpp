@@ -5,6 +5,7 @@
 #include "Enemy.h"
 #include "Crosshair.h"
 #include "TileMap.h"
+#include "Collision.h"
 
 LevelOne::LevelOne() :
 	Level()
@@ -48,9 +49,9 @@ void LevelOne::load(){
 
 	this->playerHud = new PlayerHUD(lPlayer);
 
-	Enemy* enemy = new Enemy(704.0, 0.0, pathEnemy, true, 0.0);
-	enemy->setLevelWH(this->width, this->height);
-	addEntity(enemy);
+	Enemy* lEnemy = new Enemy(704.0, 0.0, pathEnemy, true, 0.0);
+	lEnemy->setLevelWH(this->width, this->height);
+	this->enemy = lEnemy;
 	
 	// Test text.
 	// Text* text = new Text(200.0, 900.0, "res/fonts/KGFeeling22.ttf", 50, "dauphine");
@@ -79,18 +80,29 @@ void LevelOne::update(const double dt_){
 		entity->update(dt_);
 	}
 
+	for(auto potion : this->player->potions){
+		potion->setCollisionRects(returnObjects);
+	}
 	/// @todo Refactor this static Enemy::px, Enemy::py.
 	Enemy::px = this->player->x;
 	Enemy::py = this->player->y;
 	this->player->life = Enemy::pLife;
 
 	this->playerHud->update();
+	this->enemy->setCollisionRects(returnObjects);
+	this->enemy->update(dt_);
 
 	this->camera->update();
 
 	// Set next level if end is reached.
 	if(this->player->reachedLevelEnd){
 		Game::instance().setState(Game::GStates::LEVEL_ONE);
+	}
+
+	for(auto potion : this->player->potions){
+		if(Collision::rectsCollided(potion->getBoundingBox(), this->enemy->getBoundingBox())){
+			Log(DEBUG) << "enemy dead";
+		}
 	}
 
 }
@@ -105,7 +117,7 @@ void LevelOne::render(){
 	this->tileMap->render(cameraX, cameraY);
 
 	this->playerHud->render();
-
+	this->enemy->render(cameraX, cameraY);
 	// Render all the entities in the list.
 	for(auto entity : entities){
         entity->render(cameraX, cameraY);

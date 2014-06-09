@@ -8,6 +8,7 @@
 #include "Animation.h"
 #include "Crosshair.h"
 #include "Potion.h"
+#include "Trap.h"
 #include <map>
 #include <vector>
 
@@ -32,7 +33,13 @@ class Player : public DynamicEntity {
 			CROUCHING,
 			AIMING,
 			MOVINGCROUCH,
-			ATTACK
+			ATTACK,
+			SETUPTRAP
+		};
+
+		enum PItems : uint8_t {
+			POTION = 0,
+			TRAP
 		};
 
 		/**
@@ -99,14 +106,19 @@ class Player : public DynamicEntity {
 
 		void usePotion(const int strength_, const int distance_);
 		void addPotions(const unsigned int quantity_);
+		void useTrap();
 
 		unsigned int potionsLeft;
 		unsigned int maxPotions;
 		std::vector<Potion*> potions;
 
+		std::vector<Trap*> traps;
+
 		Crosshair* crosshair;
 
 		unsigned int life;
+		unsigned int currentItem;
+
 
 	private:
 		virtual void updateBoundingBox();

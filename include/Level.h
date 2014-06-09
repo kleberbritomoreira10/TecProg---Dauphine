@@ -8,6 +8,7 @@
 #include "TileMap.h"
 #include "QuadTree.h"
 #include "PlayerHUD.h"
+#include "Enemy.h"
 
 /**
 * Abstract class for levels.
@@ -57,6 +58,7 @@ class Level : public StateGame {
 		Player* player; /**< The direct reference to player, even though its in the list. */
 		Camera* camera; /**< The current camera for that level. */
 		PlayerHUD* playerHud;
+		Enemy* enemy;
 
 		TileMap* tileMap;
 		QuadTree* quadTree;
