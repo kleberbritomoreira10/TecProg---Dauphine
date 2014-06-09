@@ -9,6 +9,7 @@
 #include "EStateCurious.h"
 #include "EStateAlert.h"
 #include "EStateAtack.h"
+#include "EStateDead.h"
 
 #include "Window.h"
 
@@ -29,7 +30,8 @@ Enemy::Enemy(const double x_, const double y_, const std::string& path_, const b
     patrolLength(patrolLength_),
 	currentState(nullptr),
     animation(nullptr),
-	statesMap()
+	statesMap(),
+    dead(false)
 {
 	initializeStates();
 
@@ -98,6 +100,7 @@ void Enemy::initializeStates(){
     ADD_STATE(ALERT, EStateAlert);
     ADD_STATE(AERIAL, EStateAerial);
     ADD_STATE(ATACK, EStateAtack);
+    ADD_STATE(DEAD, EStateDead);
 }
 
 void Enemy::destroyStates(){
@@ -147,4 +150,12 @@ void Enemy::forceMaxSpeed(){
 
 Animation *Enemy::getAnimation(){
     return (this->animation);
+}
+
+void Enemy::setDead(bool isDead_){
+    this->dead = isDead_;
+}
+
+bool Enemy::isDead(){
+    return this->dead;
 }

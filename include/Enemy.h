@@ -17,7 +17,8 @@ class Enemy : public DynamicEntity {
 			PATROLLING,
 			CURIOUS,
 			ALERT,
-			ATACK
+			ATACK,
+			DEAD
 		};
 
 		/**
@@ -52,6 +53,8 @@ class Enemy : public DynamicEntity {
 		void destroyStates();
 		void changeState(const EStates state_);
 		Animation* getAnimation();
+		bool isDead();
+		void setDead(bool isDead_);
 
 		static double px;
 		static double py;
@@ -70,6 +73,7 @@ class Enemy : public DynamicEntity {
 		StateEnemy* currentState;
 		Animation* animation;
 		std::map<EStates, StateEnemy*> statesMap;
+		bool dead;
 
 };
 

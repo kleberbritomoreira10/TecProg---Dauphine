@@ -90,7 +90,9 @@ void LevelOne::update(const double dt_){
 
 	this->playerHud->update();
 	this->enemy->setCollisionRects(returnObjects);
-	this->enemy->update(dt_);
+	if(!this->enemy->isDead()){
+		this->enemy->update(dt_);
+	}	
 
 	this->camera->update();
 
@@ -101,7 +103,7 @@ void LevelOne::update(const double dt_){
 
 	for(auto potion : this->player->potions){
 		if(Collision::rectsCollided(potion->getBoundingBox(), this->enemy->getBoundingBox())){
-			Log(DEBUG) << "enemy dead";
+			this->enemy->changeState(Enemy::EStates::DEAD);
 		}
 	}
 
@@ -117,7 +119,9 @@ void LevelOne::render(){
 	this->tileMap->render(cameraX, cameraY);
 
 	this->playerHud->render();
-	this->enemy->render(cameraX, cameraY);
+	if(!this->enemy->isDead()){
+		this->enemy->render(cameraX, cameraY);
+	}
 	// Render all the entities in the list.
 	for(auto entity : entities){
         entity->render(cameraX, cameraY);
