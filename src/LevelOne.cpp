@@ -117,6 +117,12 @@ void LevelOne::update(const double dt_){
 			}
 		}
 	}
+
+	if(Collision::rectsCollided(this->player->getBoundingBox(), this->enemy->getBoundingBox())){
+		if(this->player->isCurrentState(Player::PStates::ATTACK)){
+			this->enemy->changeState(Enemy::EStates::DEAD);
+		}
+	}
 }
 
 void LevelOne::render(){
