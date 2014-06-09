@@ -136,7 +136,12 @@ void Player::render(const double cameraX_, const double cameraY_){
     SDL_RenderFillRect(Window::getRenderer(), &boundingBox2);
 
     if(this->sprite != nullptr){
-        this->sprite->render(dx, dy, &this->animationClip, false, 0.0, nullptr, getFlip());
+        SDL_RendererFlip flip = getFlip();
+
+        if(flip == SDL_FLIP_HORIZONTAL)
+            this->sprite->render(dx - 100, dy, &this->animationClip, false, 0.0, nullptr, flip);
+        else
+            this->sprite->render(dx, dy, &this->animationClip, false, 0.0, nullptr, flip);
     }
 
     if(this->crosshair != nullptr){

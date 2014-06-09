@@ -64,7 +64,15 @@ void Enemy::update(const double dt_){
 
     this->animation->update(this->animationClip, dt_);
 
-    this->boundingBox = {(int)this->nextX + (int)this->width/4, (int)this->nextY + 70, (int)this->width/2, (int)this->height - 70};
+    this->boundingBox.x = (int) this->nextX + 40;
+    this->boundingBox.y = (int) this->nextY + 40;
+    this->boundingBox.w = 150;
+    this->boundingBox.h = 200;
+
+    // this->boundingBox = {(int)this->nextX + (int)this->width/4,
+    //                      (int)this->nextY + 70, 
+    //                      (int)this->width/2, 
+    //                      (int)this->height - 70};
 
     const std::array<bool, CollisionSide::SOLID_TOTAL> detections = detectCollision();
     handleCollision(detections);
@@ -89,7 +97,12 @@ void Enemy::render(const double cameraX_, const double cameraY_){
     SDL_RenderFillRect(Window::getRenderer(), &boundingBox2);
 
     if(this->sprite != nullptr){
-        this->sprite->render(dx, dy, &this->animationClip, false, 0.0, nullptr, getFlip());
+        SDL_RendererFlip flip = getFlip();
+
+        if(flip == SDL_FLIP_HORIZONTAL)
+            this->sprite->render(dx - 120, dy, &this->animationClip, false, 0.0, nullptr, flip);
+        else
+            this->sprite->render(dx, dy, &this->animationClip, false, 0.0, nullptr, flip);
     }
 }
 

@@ -2,9 +2,9 @@
 #include "Logger.h"
 
 void PStateMovingCrouch::enter(){
-	this->box.x = (int)this->player->getWidth() / 5.3;
+	this->box.x = (int)this->player->getWidth() / 4 - 33;
+    this->box.w = (int)this->player->getWidth() / 1.7;
 	this->box.y = (int)this->player->getHeight() / 2;
-	this->box.w = (int)this->player->getWidth() / 2.7;
 	this->box.h = (int)this->player->getHeight() / 2;
 
 	this->player->getAnimation()->changeAnimation(3, 10, 6, true, 1);

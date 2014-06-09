@@ -2,10 +2,10 @@
 #include "Logger.h"
 
 void PStateSetUpTrap::enter(){
-	this->box.x = (int)this->player->getWidth() / 4;
-	this->box.y = (int)this->player->getHeight() / 3.5;
-	this->box.w = (int)this->player->getWidth() / 2;
-	this->box.h = (int)this->player->getHeight() / 3.5;
+	this->box.x = (int)this->player->getWidth() / 4 - 33;
+    this->box.w = (int)this->player->getWidth() / 1.7;
+	this->box.y = (int)this->player->getHeight() / 2;
+	this->box.h = (int)this->player->getHeight() / 2;
 
 	this->player->getAnimation()->changeAnimation(10, 12, 11, false, 1.1);
 	this->player->isGrounded = true;
