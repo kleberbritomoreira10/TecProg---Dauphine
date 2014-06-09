@@ -226,3 +226,6 @@ void Player::updateBoundingBox(){
     this->boundingBox.h = (int) this->height - this->currentState->box.h;
 }
 
+bool Player::isDead(){
+    return (this->life <= 0);
+}

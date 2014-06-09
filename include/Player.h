@@ -117,8 +117,11 @@ class Player : public DynamicEntity {
 		Crosshair* crosshair;
 
 		unsigned int life;
+		// unsigned int maxLife;
+
 		unsigned int currentItem;
 
+		bool isDead();
 
 	private:
 		virtual void updateBoundingBox();

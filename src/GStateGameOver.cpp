@@ -16,10 +16,6 @@ GStateGameOver::~GStateGameOver(){
 
 }
 
-void GStateGameOver::update(const double dt_){
-	this->passedTime += dt_;
-}
-
 void GStateGameOver::load(){
 	Log(DEBUG) << "Loading Game Over...";
 
@@ -34,6 +30,15 @@ void GStateGameOver::load(){
 void GStateGameOver::unload(){
 	Log(DEBUG) << "\tUnloading Game Over...";
 	cleanEntities();
+}
+
+void GStateGameOver::update(const double dt_){
+	this->passedTime += dt_;
+
+	if(this->passedTime >= this->lifeTime){
+		Game::instance().setState(Game::GStates::MENU);
+		return;
+	}
 }
 
 void GStateGameOver::render(){

@@ -80,27 +80,42 @@ void LevelOne::update(const double dt_){
 		entity->update(dt_);
 	}
 
+	// Set to GameOver if the player is dead.
+	if(this->player->isDead()){
+		Game::instance().setState(Game::GStates::GAMEOVER);
+		return;
+	}
+
+	// Updating the potions.
 	for(auto potion : this->player->potions){
 		potion->setCollisionRects(returnObjects);
 	}
-	/// @todo Refactor this static Enemy::px, Enemy::py.
+
+	/// @todo Maybe refactor this static Enemy::px, Enemy::py.
+	// Updating player info for the enemies.
 	Enemy::px = this->player->x;
 	Enemy::py = this->player->y;
 	this->player->life = Enemy::pLife;
 
+	// Updating the HUD.
 	this->playerHud->update();
+
+	// Updating the test enemy.
 	this->enemy->setCollisionRects(returnObjects);
 	if(!this->enemy->isDead()){
 		this->enemy->update(dt_);
 	}	
 
+	// Updating the camera.
 	this->camera->update();
 
 	// Set next level if end is reached.
 	if(this->player->reachedLevelEnd){
 		Game::instance().setState(Game::GStates::LEVEL_ONE);
+		return;
 	}
 
+	// Updating the potion/enemy collision.
 	for(auto potion : this->player->potions){
 		if(Collision::rectsCollided(potion->getBoundingBox(), this->enemy->getBoundingBox())){
 			if(potion->activated){
@@ -109,6 +124,7 @@ void LevelOne::update(const double dt_){
 		}
 	}
 
+	// Updating the trap/enemy collision.
 	for(auto trap : this->player->traps){
 		if(Collision::rectsCollided(trap->getBoundingBox(), this->enemy->getBoundingBox())){
 			if(trap->activated){
@@ -118,11 +134,13 @@ void LevelOne::update(const double dt_){
 		}
 	}
 
+	// Updating the player attack/enemy collision.
 	if(Collision::rectsCollided(this->player->getBoundingBox(), this->enemy->getBoundingBox())){
 		if(this->player->isCurrentState(Player::PStates::ATTACK)){
 			this->enemy->changeState(Enemy::EStates::DEAD);
 		}
 	}
+
 }
 
 void LevelOne::render(){
