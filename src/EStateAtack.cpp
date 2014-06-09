@@ -5,7 +5,7 @@ double atackTime;
 
 void EStateAtack::enter(){
 	Log(DEBUG) << "ENTER ATACK";
-	this->enemy->getAnimation()->changeAnimation(10, 0, 6, false, 0.6);
+	this->enemy->getAnimation()->changeAnimation(2, 1, 6, false, 0.6);
 	atackTime = 0;
 }
 

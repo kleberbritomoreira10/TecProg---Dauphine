@@ -5,6 +5,7 @@
 
 void EStateCurious::enter(){
 	Log(DEBUG) << "ENTER CURIOUS";
+	this->enemy->getAnimation()->changeAnimation(1, 0, 9, false, 1.2);
 	this->enemy->speed = 5.0;
 }
 

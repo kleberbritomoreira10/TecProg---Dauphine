@@ -103,10 +103,20 @@ void LevelOne::update(const double dt_){
 
 	for(auto potion : this->player->potions){
 		if(Collision::rectsCollided(potion->getBoundingBox(), this->enemy->getBoundingBox())){
-			this->enemy->changeState(Enemy::EStates::DEAD);
+			if(potion->activated){
+				this->enemy->changeState(Enemy::EStates::DEAD);
+			}
 		}
 	}
 
+	for(auto trap : this->player->traps){
+		if(Collision::rectsCollided(trap->getBoundingBox(), this->enemy->getBoundingBox())){
+			if(trap->activated){
+				this->enemy->changeState(Enemy::EStates::LOCK);
+				trap->activated = false;
+			}
+		}
+	}
 }
 
 void LevelOne::render(){

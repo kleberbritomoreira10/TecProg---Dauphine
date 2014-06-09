@@ -10,6 +10,7 @@
 #include "EStateAlert.h"
 #include "EStateAtack.h"
 #include "EStateDead.h"
+#include "EStateLock.h"
 
 #include "Window.h"
 
@@ -94,13 +95,14 @@ void Enemy::render(const double cameraX_, const double cameraY_){
 
 void Enemy::initializeStates(){
     // Initialize all the states in Enemy here.
-    ADD_STATE(IDLE, EStateIdle);
-    ADD_STATE(CURIOUS, EStateCurious);
-    ADD_STATE(PATROLLING, EStatePatrolling);
-    ADD_STATE(ALERT, EStateAlert);
-    ADD_STATE(AERIAL, EStateAerial);
-    ADD_STATE(ATACK, EStateAtack);
-    ADD_STATE(DEAD, EStateDead);
+    ADD_STATE(IDLE,         EStateIdle);
+    ADD_STATE(CURIOUS,      EStateCurious);
+    ADD_STATE(PATROLLING,   EStatePatrolling);
+    ADD_STATE(ALERT,        EStateAlert);
+    ADD_STATE(AERIAL,       EStateAerial);
+    ADD_STATE(ATACK,        EStateAtack);
+    ADD_STATE(DEAD,         EStateDead);
+    ADD_STATE(LOCK,         EStateLock);
 }
 
 void Enemy::destroyStates(){
