@@ -4,8 +4,6 @@
 #include "StateGame.h"
 #include "Sprite.h"
 
-#define NUMBER_OF_SPLASH_IMAGES 4
-
 /**
 * The state for the initial splash screen.
 * Game state that will contain the initial splash images, before the main menu state is called.
@@ -50,10 +48,18 @@ class GStateSplash : public StateGame {
 		virtual void render();
 
 	private:
-		int current; /**< Determines which is the current splash image. */
+		enum SplashImages : uint8_t {
+			ALKE_LOGO = 0,
+			TECHS,
+			LICENSES,
+			ESRB,
+			TOTAL_SPLASH_IMAGES
+		};
+
+		int currentSplash; /**< Determines which is the current splash image. */
 		double passedTime; /**< The time already elapsed since the beggining of the splash. */
 		double lifeTime; /**< The amount of time the splash will be shown. */
-		Sprite* images[NUMBER_OF_SPLASH_IMAGES]; /**< Contains all the splash images. */
+		Sprite* images[SplashImages::TOTAL_SPLASH_IMAGES]; /**< Contains all the splash images. */
 		double ix;
 
 };

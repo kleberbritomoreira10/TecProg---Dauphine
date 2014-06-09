@@ -5,12 +5,12 @@
 #include <string>
 
 GStateSplash::GStateSplash() :
-	current(0),
+	currentSplash(0),
 	passedTime(0.0),
 	lifeTime(0.0),
-	ix(-300)
+	ix(-300.0)
 {
-	for(unsigned int i = 0; i < NUMBER_OF_SPLASH_IMAGES; i++){
+	for(unsigned int i = 0; i < SplashImages::TOTAL_SPLASH_IMAGES; i++){
 		this->images[i] = nullptr;
 	}
 }
@@ -22,20 +22,27 @@ GStateSplash::~GStateSplash(){
 void GStateSplash::update(const double dt_){
 	this->passedTime += dt_;
 
-	if(this->ix < 0){
-		this->ix += 5;
+	// Increment current image x position.
+	if(this->ix < 0.0){
+		this->ix += 5.0;
 	}
 
-
 	if(this->passedTime >= this->lifeTime){
-		if(this->current >= NUMBER_OF_SPLASH_IMAGES - 1){
+		if(this->currentSplash >= SplashImages::TOTAL_SPLASH_IMAGES - 1){
 			Game::instance().setState(Game::GStates::MENU);
 		}
 		else{
-			this->passedTime = 0;
+			this->passedTime = 0.0;
 			this->ix = -300;
-			this->current++;
+			this->currentSplash++;
 		}
+	}
+
+	// Check if SPACE was pressed, to skip the splash images.
+	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
+	if(keyStates[GameKeys::SPACE] == true){
+		Game::instance().setState(Game::GStates::MENU);
+		return;
 	}
 
 }
@@ -50,23 +57,23 @@ void GStateSplash::load(){
 	const std::string pathEsrb = luaSplash.unlua_get<std::string>("splash.images.esrb");
 	const double luaLifeTime = luaSplash.unlua_get<double>("splash.lifeTime");
 
-	this->images[0] = Game::instance().getResources().get(pathLogo);
-	this->images[1] = Game::instance().getResources().get(pathTechs);
-	this->images[2] = Game::instance().getResources().get(pathLicenses);
-	this->images[3] = Game::instance().getResources().get(pathEsrb);
+	this->images[SplashImages::ALKE_LOGO] = Game::instance().getResources().get(pathLogo);
+	this->images[SplashImages::TECHS] = Game::instance().getResources().get(pathTechs);
+	this->images[SplashImages::LICENSES] = Game::instance().getResources().get(pathLicenses);
+	this->images[SplashImages::ESRB] = Game::instance().getResources().get(pathEsrb);
 
 	this->lifeTime = luaLifeTime;
 }
 
 void GStateSplash::unload(){
 	Log(DEBUG) << "\tUnloading splash screens...";
-	this->current = 0;
+	this->currentSplash = 0;
 	cleanEntities();
 }
 
 void GStateSplash::render(){
-	if(this->images[this->current] != nullptr){
-		this->images[this->current]->render(this->ix, 0, nullptr, true);
+	if(this->images[this->currentSplash] != nullptr){
+		this->images[this->currentSplash]->render(this->ix, 0, nullptr, true);
 	}
 	else{
 		Log(WARN) << "No image set for the splash screen!";

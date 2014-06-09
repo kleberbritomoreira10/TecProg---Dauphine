@@ -6,5 +6,5 @@ splash = {
 		esrb = "res/images/splash_esrb.png",
 	},
 	
-	lifeTime = 0.2,
+	lifeTime = 2.0, -- No need to change, just press SPACE in the splash screen to jump it.
 }
