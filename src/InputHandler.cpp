@@ -17,9 +17,17 @@ InputHandler::~InputHandler(){
 
 void InputHandler::handleInput(){
 
+	this->keyStates[GameKeys::SPACE]  = false;
+	this->keyStates[GameKeys::ROLL]  = false;
+	this->keyStates[GameKeys::LATTACK]  = false;
+	this->keyStates[GameKeys::NLATTACK]  = false;
+	this->keyStates[GameKeys::ACTION]  = false;
+
+
 	int pendingEvent = 0;
 
 	do{
+
 		pendingEvent = SDL_PollEvent(&this->sdlEvent); 
 
 		if(this->sdlEvent.type == SDL_CONTROLLERBUTTONDOWN 
@@ -27,13 +35,19 @@ void InputHandler::handleInput(){
 			|| this->sdlEvent.type == SDL_CONTROLLERAXISMOTION){
 			
 			this->controllerHandler->handleInput(this->sdlEvent);
+
+			for(unsigned int i = 0; i < this->keyStates.size(); i++)
+				this->keyStates[i] = this->controllerHandler->keyStates[i];
+			
 		}
 		// On keydown.
 		if(this->sdlEvent.type == SDL_KEYDOWN){
 
 			switch(this->sdlEvent.key.keysym.sym){
 				case SDLK_SPACE: // Jump.
-					this->keyStates[GameKeys::SPACE] = true;
+					if(this->sdlEvent.key.repeat == 0){
+						this->keyStates[GameKeys::SPACE] = true;
+					}	
 					break;
 				case SDLK_UP: // UP.
 					this->keyStates[GameKeys::UP] = true;
@@ -48,7 +62,9 @@ void InputHandler::handleInput(){
 					this->keyStates[GameKeys::RIGHT] = true;
 					break;
 				case SDLK_c: // roll.
-					this->keyStates[GameKeys::ROLL] = true;
+					if(this->sdlEvent.key.repeat == 0){
+						this->keyStates[GameKeys::ROLL] = true;
+					}
 					break;
 				case SDLK_LCTRL: // crouch
 					this->keyStates[GameKeys::CROUCH] = true;
@@ -65,10 +81,10 @@ void InputHandler::handleInput(){
 					this->keyStates[GameKeys::LATTACK] = true;
 					break;
 				case SDLK_TAB:
-					this->keyStates[GameKeys::ITEMS] = false;
+					this->keyStates[GameKeys::ITEMS] = true;
 					break;
 				case SDLK_ESCAPE: // Esc.
-					this->keyStates[GameKeys::ESCAPE] = false;
+					this->keyStates[GameKeys::ESCAPE] = true;
 					break;
 				default:
 					break;

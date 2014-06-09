@@ -4,7 +4,10 @@
 #define CONTROLLERSTICK_DEAD_ZONE 8000
 #define TRIGGER_DEAD_ZONE 8000
 
+#include "InputKeys.h"
 #include "SDLWrapper.h"
+
+#include <array>
 
 namespace controllerMap{
 
@@ -68,6 +71,9 @@ class ControllerHandler {
 		* @param sdlEvent_ : The SDL internal event structure.
 		*/
 		void handleInput(SDL_Event& sdlEvent_);
+
+		std::array<bool, GameKeys::MAX> keyStates; /**< Boolean array that controls which keys are
+		pressed or not. */
 
 	private:
 		SDL_GameController* gameController; /**< Pointer to the controller. */

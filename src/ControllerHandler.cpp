@@ -15,141 +15,177 @@ ControllerHandler::ControllerHandler() :
 		Log(INFO) << "Unable to find a controller, defaulting to keyboard.";
     }
 
+    this->keyStates.fill(false);
 }
 
 void ControllerHandler::handleInput(SDL_Event& sdlEvent_){
-        
-    SDL_Event fakeKeyInput;
-        
-    if(sdlEvent_.type == SDL_CONTROLLERBUTTONDOWN){
 
-        fakeKeyInput.type = SDL_KEYDOWN;
+    this->keyStates[GameKeys::SPACE]  = false;
+    this->keyStates[GameKeys::ROLL]  = false;
+    this->keyStates[GameKeys::LATTACK]  = false;
+    this->keyStates[GameKeys::NLATTACK]  = false;
+    this->keyStates[GameKeys::ACTION]  = false;
+
+    static int pressed = 0;
+
+    if(sdlEvent_.type == SDL_CONTROLLERBUTTONDOWN){
 
         switch(sdlEvent_.cbutton.button){
             case controllerMap::buttons::FACE_DOWN: // Jump.
-                fakeKeyInput.key.keysym.sym = SDLK_SPACE; 
-                fakeKeyInput.key.state = SDL_PRESSED;
-                break;
+                if(!(pressed & (1 << controllerMap::buttons::FACE_DOWN))){
+                    this->keyStates[GameKeys::SPACE] = true;
+                    pressed |= (1 << controllerMap::buttons::FACE_DOWN);
+                }
+            break;
  
  			case controllerMap::buttons::FACE_UP: // Action.
-                fakeKeyInput.key.keysym.sym = SDLK_a; 
-                fakeKeyInput.key.state = SDL_PRESSED;
+                if(!(pressed & (1 << controllerMap::buttons::FACE_UP))){
+                    this->keyStates[GameKeys::ACTION] = true;
+                    pressed |= (1 << controllerMap::buttons::FACE_UP);
+                }
                 break;
  
-            case controllerMap::buttons::DUP: // Move Left.
-                fakeKeyInput.key.keysym.sym = SDLK_UP; 
-                fakeKeyInput.key.state = SDL_PRESSED;  
-            	break;
+            case controllerMap::buttons::DUP: // Move Up.
+                this->keyStates[GameKeys::UP] = true;
+                break;
             	
-            case controllerMap::buttons::DDOWN: // Move Left.
-                fakeKeyInput.key.keysym.sym = SDLK_DOWN; 
-                fakeKeyInput.key.state = SDL_PRESSED;  
+            case controllerMap::buttons::DDOWN: // Move Down.
+                this->keyStates[GameKeys::DOWN] = true;
             	break;
             
             case controllerMap::buttons::DLEFT: // Move Left.
-                fakeKeyInput.key.keysym.sym = SDLK_LEFT; 
-                fakeKeyInput.key.state = SDL_PRESSED;
+                this->keyStates[GameKeys::LEFT] = true;
                 break;
 
             case controllerMap::buttons::DRIGHT: // Move Right.
-                fakeKeyInput.key.keysym.sym = SDLK_RIGHT; 
-                fakeKeyInput.key.state = SDL_PRESSED;
-                break;
+                this->keyStates[GameKeys::RIGHT] = true;
+            break;
 
             case controllerMap::buttons::RDTRIGGER: // Roll
-                fakeKeyInput.key.keysym.sym = SDLK_c; 
-                fakeKeyInput.key.state = SDL_PRESSED;
-                break;
+                if(!(pressed & (1 << controllerMap::buttons::RDTRIGGER))){
+                    this->keyStates[GameKeys::ROLL] = true;
+                    pressed |= (1 << controllerMap::buttons::RDTRIGGER);
+                }
+            break;
+
             case controllerMap::buttons::LDTRIGGER: // Crouch
-                fakeKeyInput.key.keysym.sym = SDLK_LCTRL; 
-                fakeKeyInput.key.state = SDL_PRESSED;
-                break;
+                this->keyStates[GameKeys::CROUCH] = true;
+            break;
+            
+            case controllerMap::buttons::FACE_LEFT: // Lethal Attack
+                 if(!(pressed & (1 << controllerMap::buttons::FACE_LEFT))){
+                    this->keyStates[GameKeys::LATTACK] = true;
+                    pressed |= (1 << controllerMap::buttons::FACE_LEFT);
+                }
+            break;
+
+            case controllerMap::buttons::FACE_RIGHT: // Lethal Attack
+                if(!(pressed & (1 << controllerMap::buttons::FACE_RIGHT))){
+                    this->keyStates[GameKeys::LATTACK] = true;
+                    pressed |= (1 << controllerMap::buttons::FACE_RIGHT);
+                }
+            break;
+
+            case controllerMap::buttons::START: // Options
+                this->keyStates[GameKeys::ESCAPE] = true;
+            break;
+
             default:
                 break;
         }
 
-        SDL_PushEvent(&fakeKeyInput);
     }
 
     // On keyup.
     if(sdlEvent_.type == SDL_CONTROLLERBUTTONUP){
 
-        fakeKeyInput.type = SDL_KEYUP;
-
         switch(sdlEvent_.cbutton.button){
 
             case controllerMap::buttons::FACE_DOWN: // Jump.
-                fakeKeyInput.key.keysym.sym = SDLK_SPACE; 
-                fakeKeyInput.key.state = SDL_RELEASED;
+                this->keyStates[GameKeys::SPACE] = false;
+                pressed &= ~(1 << controllerMap::buttons::FACE_DOWN);
+            break;
+ 
+            case controllerMap::buttons::FACE_UP: // Action.
+                this->keyStates[GameKeys::ACTION] = false;
+                pressed &= ~(1 << controllerMap::buttons::FACE_UP);
                 break;
-            
- 			case controllerMap::buttons::FACE_UP: // Action.
-                fakeKeyInput.key.keysym.sym = SDLK_a; 
-                fakeKeyInput.key.state = SDL_RELEASED;
+ 
+            case controllerMap::buttons::DUP: // Move Up.
+                this->keyStates[GameKeys::UP] = false;
+                break;
+                
+            case controllerMap::buttons::DDOWN: // Move Down.
+                this->keyStates[GameKeys::DOWN] = false;
                 break;
             
             case controllerMap::buttons::DLEFT: // Move Left.
-                fakeKeyInput.key.keysym.sym = SDLK_LEFT; 
-                fakeKeyInput.key.state = SDL_RELEASED;
-                break;
-			 
-            case controllerMap::buttons::DUP: // Move Left.
-                fakeKeyInput.key.keysym.sym = SDLK_UP; 
-                fakeKeyInput.key.state = SDL_RELEASED;  
-            	break;
-            
-            case controllerMap::buttons::DDOWN: // Move Left.
-                fakeKeyInput.key.keysym.sym = SDLK_DOWN; 
-                fakeKeyInput.key.state = SDL_RELEASED;  
-				break;
-			
-            case controllerMap::buttons::DRIGHT: // Move Right.
-                fakeKeyInput.key.keysym.sym = SDLK_RIGHT; 
-                fakeKeyInput.key.state = SDL_RELEASED;
+                this->keyStates[GameKeys::LEFT] = false;
                 break;
 
+            case controllerMap::buttons::DRIGHT: // Move Right.
+                this->keyStates[GameKeys::RIGHT] = false;
+            break;
+
             case controllerMap::buttons::RDTRIGGER: // Roll
-                fakeKeyInput.key.keysym.sym = SDLK_c; 
-                fakeKeyInput.key.state = SDL_RELEASED;
-                break;
+                this->keyStates[GameKeys::ROLL] = false;
+                pressed &= ~(1 << controllerMap::buttons::RDTRIGGER);
+            break;
+
             case controllerMap::buttons::LDTRIGGER: // Crouch
-                fakeKeyInput.key.keysym.sym = SDLK_LCTRL; 
-                fakeKeyInput.key.state = SDL_RELEASED;
-                break;
-            
+                this->keyStates[GameKeys::CROUCH] = false;
+            break;
+
+            case controllerMap::buttons::FACE_LEFT: // Lethal Attack
+                this->keyStates[GameKeys::LATTACK] = false;
+                pressed &= ~(1 << controllerMap::buttons::FACE_LEFT);
+            break;
+
+            case controllerMap::buttons::FACE_RIGHT: // Lethal Attack
+                this->keyStates[GameKeys::NLATTACK] = false;
+                pressed &= ~(1 << controllerMap::buttons::FACE_RIGHT);
+            break;
+
+            case controllerMap::buttons::START: // Lethal Attack
+                this->keyStates[GameKeys::ESCAPE] = false;
+            break;
+
             default:
                 break;
         }
-
-		SDL_PushEvent(&fakeKeyInput);
 	}
 	
 	if(sdlEvent_.type == SDL_CONTROLLERAXISMOTION){
 			
 		switch(sdlEvent_.caxis.axis){
 
-			case controllerMap::axes::LATRIGGER:
-					fakeKeyInput.key.keysym.sym = SDLK_LSHIFT; 
-		
+			case controllerMap::axes::LATRIGGER:		
 					if(sdlEvent_.caxis.value > TRIGGER_DEAD_ZONE){
-						fakeKeyInput.type = SDL_KEYDOWN;
-						fakeKeyInput.key.state = SDL_PRESSED;
+                        this->keyStates[GameKeys::AIM] = true;
 					}
 
 					else{
-						fakeKeyInput.type = SDL_KEYUP;
-						fakeKeyInput.key.state = SDL_RELEASED;
-					}
+					   this->keyStates[GameKeys::AIM] = false;
+                    }
 					
 				break;
 				
+
+            case controllerMap::axes::RATRIGGER:        
+                    if(sdlEvent_.caxis.value > TRIGGER_DEAD_ZONE){
+                        this->keyStates[GameKeys::ITEMS] = true;
+                    }
+
+                    else{
+                       this->keyStates[GameKeys::ITEMS] = false;
+                    }
+                    
+                break;
+
 			default:
 				break;
 		
 		}
-
-		SDL_PushEvent(&fakeKeyInput);
-
 	}
 
 }
