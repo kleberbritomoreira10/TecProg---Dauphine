@@ -52,6 +52,7 @@ void LevelOne::load(){
 	Enemy* lEnemy = new Enemy(704.0, 0.0, pathEnemy, true, 0.0);
 	lEnemy->setLevelWH(this->width, this->height);
 	this->enemy = lEnemy;
+	//addEntity(lEnemy);
 	
 	// Test text.
 	// Text* text = new Text(200.0, 900.0, "res/fonts/KGFeeling22.ttf", 50, "dauphine");

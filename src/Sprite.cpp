@@ -11,6 +11,7 @@ Sprite::Sprite(const std::string& path_) :
 	flipHorizontal(false)
 {
 	loadFrom(this->path);
+	setBlendMode(SDL_BLENDMODE_BLEND);
 }
 
 Sprite::Sprite(SDL_Surface* const surface_) :
@@ -123,4 +124,29 @@ SDL_Texture* Sprite::surfaceToTexture(SDL_Surface* const surface_){
 
 std::string Sprite::getPath(){
 	return this->path;
+}
+
+double Sprite::getAlpha(){
+	Uint8 alpha = 0;
+
+	const int rc = SDL_GetTextureAlphaMod(this->sdlTexture, &alpha);
+	if(rc != 0){
+		Log(ERROR) << "Could not get alpha value from Sprite (" << this->path << "). " << SDL_GetError();
+	}
+
+	return ((double)alpha); // /255.0
+}
+
+void Sprite::setAlpha(Uint8 alpha_){
+	const int rc = SDL_SetTextureAlphaMod(this->sdlTexture, alpha_);
+	if(rc != 0){
+		Log(ERROR) << "Could not set alpha value of Sprite (" << this->path << "). " << SDL_GetError();
+	}
+}
+
+void Sprite::setBlendMode(SDL_BlendMode blending_){
+	const int rc = SDL_SetTextureBlendMode(this->sdlTexture, blending_);
+	if(rc != 0){
+		Log(ERROR) << "Could not set blend mode of Sprite (" << this->path << "). " << SDL_GetError();
+	}
 }

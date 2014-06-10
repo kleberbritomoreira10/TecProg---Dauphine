@@ -14,9 +14,26 @@ Level::Level() :
 }
 
 Level::~Level(){
+	this->player = nullptr;
+
 	if(this->camera != nullptr){
 		delete this->camera;
 		this->camera = nullptr;
+	}
+
+	if(this->playerHud != nullptr){
+		delete this->playerHud;
+		this->playerHud = nullptr;
+	}
+
+	if(this->tileMap != nullptr){
+		delete this->tileMap;
+		this->tileMap = nullptr;
+	}
+
+	if(this->quadTree != nullptr){
+		delete this->quadTree;
+		this->quadTree = nullptr;
 	}
 }
 

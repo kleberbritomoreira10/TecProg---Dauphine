@@ -10,6 +10,8 @@
 #include "GStateCredits.h"
 #include "GStateGameOver.h"
 
+#include "Logger.h"
+
 #define ADD_STATE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass())
 
 Game& Game::instance(){
@@ -23,6 +25,7 @@ Game::Game() :
 	audioHandler(new AudioHandler()),
 	inputHandler(new InputHandler()),
 	resourceManager(new ResourceManager()),
+	fadeScreen(nullptr),
 	currentState(nullptr),
 	statesMap()
 {
@@ -61,6 +64,10 @@ Game::~Game(){
 }
 
 void Game::runGame(){
+	this->fadeScreen = new FadeScreen();
+	this->fadeScreen->fadeIn(100, 0.1); // remove
+
+	// this->fadeScreen->fadeOut(10, 2);
 	this->currentState = this->statesMap.at(GStates::SPLASH);
 	this->currentState->load();
 
@@ -86,6 +93,7 @@ void Game::runGame(){
 			}
 
 			this->currentState->update(deltaTime);
+			this->fadeScreen->update(deltaTime);
 
 			accumulatedTime -= deltaTime;
 			totalGameTime += deltaTime;
@@ -95,6 +103,7 @@ void Game::runGame(){
 		window->clear();
 
 		this->currentState->render();
+		this->fadeScreen->render();
 
 		window->render();
 		
@@ -146,4 +155,8 @@ void Game::stop(){
 
 void Game::clearKeyFromInput(const GameKeys key_){
 	this->inputHandler->clearKey(key_);
+}
+
+FadeScreen& Game::getFade(){
+	return (*(this->fadeScreen));
 }

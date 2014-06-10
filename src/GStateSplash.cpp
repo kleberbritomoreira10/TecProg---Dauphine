@@ -19,6 +19,30 @@ GStateSplash::~GStateSplash(){
 
 }
 
+void GStateSplash::load(){
+	Log(DEBUG) << "Loading splash screens...";
+
+	LuaScript luaSplash("lua/Splash.lua");
+	const std::string pathLogo = luaSplash.unlua_get<std::string>("splash.images.alke");
+	const std::string pathTechs = luaSplash.unlua_get<std::string>("splash.images.techs");
+	const std::string pathLicenses = luaSplash.unlua_get<std::string>("splash.images.licenses");
+	const std::string pathEsrb = luaSplash.unlua_get<std::string>("splash.images.esrb");
+	const double luaLifeTime = luaSplash.unlua_get<double>("splash.lifeTime");
+
+	this->images[SplashImages::ALKE_LOGO] = Game::instance().getResources().get(pathLogo);
+	this->images[SplashImages::TECHS] = Game::instance().getResources().get(pathTechs);
+	this->images[SplashImages::LICENSES] = Game::instance().getResources().get(pathLicenses);
+	this->images[SplashImages::ESRB] = Game::instance().getResources().get(pathEsrb);
+
+	this->lifeTime = luaLifeTime;
+}
+
+void GStateSplash::unload(){
+	Log(DEBUG) << "\tUnloading splash screens...";
+	this->currentSplash = 0;
+	cleanEntities();
+}
+
 void GStateSplash::update(const double dt_){
 	this->passedTime += dt_;
 
@@ -45,30 +69,6 @@ void GStateSplash::update(const double dt_){
 		return;
 	}
 
-}
-
-void GStateSplash::load(){
-	Log(DEBUG) << "Loading splash screens...";
-
-	LuaScript luaSplash("lua/Splash.lua");
-	const std::string pathLogo = luaSplash.unlua_get<std::string>("splash.images.alke");
-	const std::string pathTechs = luaSplash.unlua_get<std::string>("splash.images.techs");
-	const std::string pathLicenses = luaSplash.unlua_get<std::string>("splash.images.licenses");
-	const std::string pathEsrb = luaSplash.unlua_get<std::string>("splash.images.esrb");
-	const double luaLifeTime = luaSplash.unlua_get<double>("splash.lifeTime");
-
-	this->images[SplashImages::ALKE_LOGO] = Game::instance().getResources().get(pathLogo);
-	this->images[SplashImages::TECHS] = Game::instance().getResources().get(pathTechs);
-	this->images[SplashImages::LICENSES] = Game::instance().getResources().get(pathLicenses);
-	this->images[SplashImages::ESRB] = Game::instance().getResources().get(pathEsrb);
-
-	this->lifeTime = luaLifeTime;
-}
-
-void GStateSplash::unload(){
-	Log(DEBUG) << "\tUnloading splash screens...";
-	this->currentSplash = 0;
-	cleanEntities();
 }
 
 void GStateSplash::render(){

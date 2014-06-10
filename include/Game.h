@@ -11,6 +11,7 @@
 #include "AudioHandler.h"
 #include "InputHandler.h"
 #include "ResourceManager.h"
+#include "FadeScreen.h"
 
 /**
 * Main structure class for the game.
@@ -73,6 +74,8 @@ class Game {
 		*/
 		ResourceManager& getResources();
 
+		FadeScreen& getFade();
+
 		/**
 		* Stops execution and closes the game.
 		*/
@@ -107,6 +110,7 @@ class Game {
 		AudioHandler* audioHandler; /**< The Game AudioHandler. */
 		InputHandler* inputHandler; /**< The Game InputHandler. */
 		ResourceManager* resourceManager; /**< The Game ResourceManager. */
+		FadeScreen* fadeScreen;
 
 		StateGame* currentState; /**< The current state, which the game is in. */
 

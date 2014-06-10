@@ -67,6 +67,9 @@ class Sprite {
 		unsigned int getHeight();
 
 		std::string getPath();
+
+		double getAlpha();
+		void setAlpha(Uint8 alpha_);
 		
 	private:
 		/**
@@ -81,6 +84,8 @@ class Sprite {
 		SDL_Texture* surfaceToTexture(SDL_Surface* const surface_);
 
 		SDL_Texture* sdlTexture; /**< The SDL texture to use as the image. */
+
+		void setBlendMode(SDL_BlendMode blending_);
 
 		unsigned int width; /**< The loaded image's width. */
 		unsigned int height; /**< The loaded image's width. */
