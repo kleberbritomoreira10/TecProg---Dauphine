@@ -132,7 +132,7 @@ void Player::render(const double cameraX_, const double cameraY_){
     // SDL_Rect boundingBox2 = {(int)(this->boundingBox.x - cameraX_), (int)(this->boundingBox.y - cameraY_), (int)this->boundingBox.w, (int)this->boundingBox.h};
     // SDL_SetRenderDrawColor( Window::getRenderer(), 0xFF, 0xFF, 0xFF, 0xFF);
     // SDL_RenderFillRect(Window::getRenderer(), &boundingBox2);
-    ///////////////////////////////////////////////////////////////////////////////////////////
+    /////////////////////////////////////////////////////////////////////////////////////////
 
     if(this->sprite != nullptr){
         SDL_RendererFlip flip = getFlip();
@@ -160,7 +160,7 @@ void Player::render(const double cameraX_, const double cameraY_){
 void Player::usePotion(const int strength_, const int distance_){
     if(this->potionsLeft > 0){
         this->potionsLeft--;
-        Potion* potion = new Potion( ((this->isRight) ? this->x + this->width : this->x), this->y, "res/images/potion.png", strength_, distance_, this->isRight);
+        Potion* potion = new Potion( ((this->isRight) ? this->boundingBox.x + this->boundingBox.w : this->boundingBox.x), this->y, "res/images/potion.png", strength_, distance_, this->isRight);
         potion->activated = true;
         this->potions.push_back(potion);
     }
@@ -209,14 +209,13 @@ void Player::changeState(const PStates state_){
     this->currentState->enter();
 }
 
-Animation *Player::getAnimation(){
+Animation* Player::getAnimation(){
     return (this->animation);
 }
 
 bool Player::isCurrentState(const PStates state_){
     return (this->currentState == this->statesMap.at(state_));
 }
-
 
 void Player::updateBoundingBox(){
     this->boundingBox.x = (int) this->nextX + this->currentState->box.x;

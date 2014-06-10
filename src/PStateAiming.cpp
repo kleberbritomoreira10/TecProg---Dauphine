@@ -19,10 +19,10 @@ void PStateAiming::enter(){
 	this->player->crosshair->activated = true;
 
 	if(this->player->isRight){
-		this->player->crosshair->x = this->player->x + this->player->getWidth();
+		this->player->crosshair->x = this->player->getBoundingBox().x + this->player->getBoundingBox().w;
 	}
 	else{
-		this->player->crosshair->x = this->player->x - this->player->crosshair->getWidth();
+		this->player->crosshair->x = this->player->getBoundingBox().x - this->player->crosshair->getWidth();
 	}
 
 	this->player->crosshair->y = this->player->y + this->player->getHeight() - this->player->crosshair->getHeight();
@@ -55,7 +55,7 @@ void PStateAiming::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
 	if(keyStates_[GameKeys::LEFT]){
 		
 		if(this->player->isRight){
-			if((this->player->crosshair->x > (this->player->x + this->player->getWidth()))){
+			if((this->player->crosshair->x > (this->player->getBoundingBox().x + this->player->getBoundingBox().w))){
 				this->player->aim(this->player->crosshair, LEFTD);
 			}
 				
@@ -70,7 +70,7 @@ void PStateAiming::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
 
 	else if(keyStates_[GameKeys::RIGHT]){
 		if(!this->player->isRight){
-			if((this->player->crosshair->x < (this->player->x - this->player->crosshair->getWidth()))){
+			if((this->player->crosshair->x < (this->player->getBoundingBox().x - this->player->crosshair->getWidth()))){
 				this->player->aim(this->player->crosshair, RIGHTD);
 			}	
 		}
@@ -98,10 +98,10 @@ int PStateAiming::absoluteCrosshairPlayerDistance(){
 	int distance = 0;
 
 	if(this->player->isRight){
-		distance = (int) this->player->crosshair->x - this->player->x - this->player->getWidth();
+		distance = (int) this->player->crosshair->x - this->player->getBoundingBox().x - this->player->getBoundingBox().w;
 	}
 	else{
-		distance = (int) this->player->x - this->player->crosshair->x - this->player->crosshair->getWidth();
+		distance = (int) this->player->getBoundingBox().x - this->player->crosshair->x - this->player->crosshair->getWidth();
 	}
 
 	if(distance < MIN_DISTANCE){
