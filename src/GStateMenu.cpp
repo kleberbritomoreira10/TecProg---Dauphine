@@ -20,6 +20,24 @@ GStateMenu::~GStateMenu(){
 
 }
 
+void GStateMenu::load(){
+	Log(DEBUG) << "Loading menu...";
+
+	LuaScript luaMenu("lua/Menu.lua");
+	const std::string pathTitleScreen = luaMenu.unlua_get<std::string>("menu.images.titleScreen");
+	const std::string pathCursor = luaMenu.unlua_get<std::string>("menu.images.cursor");
+
+    this->menuImage = Game::instance().getResources().get(pathTitleScreen);
+    this->menuSelector = Game::instance().getResources().get(pathCursor);
+
+    Game::instance().getFade().fadeOut(0, 0.002);
+}
+
+void GStateMenu::unload(){
+	Log(DEBUG) << "\tUnloading menu...";
+	cleanEntities();
+}
+
 void GStateMenu::update(const double dt_){
 	this->passedTime += dt_;
 
@@ -30,22 +48,6 @@ void GStateMenu::update(const double dt_){
 		Game::instance().stop();
 	}
 
-}
-
-void GStateMenu::load(){
-	Log(DEBUG) << "Loading menu...";
-
-	LuaScript luaMenu("lua/Menu.lua");
-	const std::string pathTitleScreen = luaMenu.unlua_get<std::string>("menu.images.titleScreen");
-	const std::string pathCursor = luaMenu.unlua_get<std::string>("menu.images.cursor");
-
-    this->menuImage = Game::instance().getResources().get(pathTitleScreen);
-    this->menuSelector = Game::instance().getResources().get(pathCursor);
-}
-
-void GStateMenu::unload(){
-	Log(DEBUG) << "\tUnloading menu...";
-	cleanEntities();
 }
 
 void GStateMenu::render(){

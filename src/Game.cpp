@@ -65,9 +65,7 @@ Game::~Game(){
 
 void Game::runGame(){
 	this->fadeScreen = new FadeScreen();
-	this->fadeScreen->fadeIn(100, 0.1); // remove
 
-	// this->fadeScreen->fadeOut(10, 2);
 	this->currentState = this->statesMap.at(GStates::SPLASH);
 	this->currentState->load();
 

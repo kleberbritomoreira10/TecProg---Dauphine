@@ -46,6 +46,8 @@ void GStateSplash::unload(){
 void GStateSplash::update(const double dt_){
 	this->passedTime += dt_;
 
+	Game::instance().getFade().fadeOut(0, 0.002);
+
 	// Increment current image x position.
 	if(this->ix < 0.0){
 		this->ix += 5.0;
@@ -56,6 +58,7 @@ void GStateSplash::update(const double dt_){
 			Game::instance().setState(Game::GStates::MENU);
 		}
 		else{
+			Game::instance().getFade().fadeIn(100, 0.002);
 			this->passedTime = 0.0;
 			this->ix = -300;
 			this->currentSplash++;

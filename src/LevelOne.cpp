@@ -61,6 +61,8 @@ void LevelOne::load(){
 	// Finally, setting the player and the camera.
 	setPlayer(lPlayer);
 	setCamera(lCamera);
+
+	Game::instance().getFade().fadeOut(0, 0.002);
 }
 
 void LevelOne::unload(){

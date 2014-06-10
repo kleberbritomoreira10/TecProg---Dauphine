@@ -69,7 +69,7 @@ class Sprite {
 		std::string getPath();
 
 		double getAlpha();
-		void setAlpha(Uint8 alpha_);
+		void setAlpha(int alpha_);
 		
 	private:
 		/**
