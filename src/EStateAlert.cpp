@@ -2,7 +2,6 @@
 #include "Logger.h"
 
 void EStateAlert::enter(){
-	Log(DEBUG) << "ENTER ALERT";
 	this->enemy->getAnimation()->changeAnimation(1, 0, 9, false, 0.9);
 	this->enemy->speed = 6.5;
 }

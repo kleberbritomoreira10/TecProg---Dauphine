@@ -2,7 +2,6 @@
 #include "Logger.h"
 
 void EStateAerial::enter(){
-	Log(DEBUG) << "ENTER AERIAL";
 	this->enemy->isGrounded = false;
 }
 

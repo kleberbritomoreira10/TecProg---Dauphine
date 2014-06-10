@@ -22,8 +22,8 @@
 
 Player::Player(const double x_, const double y_, const std::string& path_) :
     DynamicEntity(x_, y_, path_),
-    potionsLeft(50),
-    maxPotions(50),
+    potionsLeft(3),
+    maxPotions(3),
     crosshair(new Crosshair(0.0, 0.0, "res/images/alvo.png")),
     life(3),
     currentItem(PItems::POTION),
@@ -76,10 +76,16 @@ void Player::update(const double dt_){
     this->animation->update(this->animationClip, dt_);
 
     for(auto potion : this->potions){
+        if(!potion->activated){
+            // Delete potion.
+        }
         potion->update(dt_);
     }
 
     for(auto trap : this->traps){
+        if(!trap->activated){
+            // Delete trap.
+        }
         trap->update(dt_);
     }
 
@@ -89,7 +95,6 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
     /// @todo Fix this magic 16, and the TOP collision.
 
     if(detections_.at(CollisionSide::SOLID_TOP)){ 
-        //this->nextY += fmod(this->nextY, 64.0);
         this->vy = 0.0;
     }
     if(detections_.at(CollisionSide::SOLID_BOTTOM)){
@@ -160,8 +165,8 @@ void Player::render(const double cameraX_, const double cameraY_){
 void Player::usePotion(const int strength_, const int distance_){
     if(this->potionsLeft > 0){
         this->potionsLeft--;
-        Potion* potion = new Potion( ((this->isRight) ? this->boundingBox.x + this->boundingBox.w : this->boundingBox.x), this->y, "res/images/potion.png", strength_, distance_, this->isRight);
-        potion->activated = true;
+        const double potionX = ((this->isRight) ? this->boundingBox.x + this->boundingBox.w : this->boundingBox.x);
+        Potion* potion = new Potion(potionX , this->y, "res/images/potion.png", strength_, distance_, this->isRight);
         this->potions.push_back(potion);
     }
 }

@@ -4,7 +4,6 @@
 double deadTime;
 
 void EStateDead::enter(){
-	Log(DEBUG) << "ENTER DEAD";
 	this->enemy->getAnimation()->changeAnimation(1, 1, 1, false, 0);
 }
 

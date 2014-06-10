@@ -3,7 +3,6 @@
 #include "Logger.h"
 
 void EStatePatrolling::enter(){
-	Log(DEBUG) << "ENTER PATROLLING";
 	this->enemy->isGrounded = true;
 	this->enemy->x = this->enemy->originalX;
 	this->direction = 1.0;

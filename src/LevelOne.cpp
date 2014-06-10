@@ -133,7 +133,7 @@ void LevelOne::update(const double dt_){
 	/// @todo Maybe refactor this static Enemy::px, Enemy::py.
 	// Updating player info for the enemies.
 	Enemy::px = this->player->x;
-	Enemy::py = -14000;//this->player->y;
+	Enemy::py = this->player->y;
 	this->player->life = Enemy::pLife;
 
 	// Updating the HUD.
@@ -163,7 +163,7 @@ void LevelOne::update(const double dt_){
 	for(auto trap : this->player->traps){
 		for(auto enemy : this->enemies){
 			if(Collision::rectsCollided(trap->getBoundingBox(), enemy->getBoundingBox())){
-				if(trap->activated){
+				if(trap->activated && !enemy->isDead()){
 					enemy->changeState(Enemy::EStates::LOCK);
 					trap->activated = false;
 				}

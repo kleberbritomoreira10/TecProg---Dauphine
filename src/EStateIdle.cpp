@@ -4,7 +4,6 @@
 #include "Logger.h"
 
 void EStateIdle::enter(){
-	Log(DEBUG) << "ENTER IDLE";
 	this->enemy->isGrounded = true;
 }
 
