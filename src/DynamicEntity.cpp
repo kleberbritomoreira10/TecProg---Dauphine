@@ -1,6 +1,7 @@
 #include "DynamicEntity.h"
 #include "Logger.h"
 #include "Collision.h"
+#include "Math.h"
 
 DynamicEntity::DynamicEntity(const double x_, const double y_, const std::string& path_) :
 	Entity(x_, y_, path_),
@@ -144,8 +145,13 @@ void DynamicEntity::move(const bool movingLeft_, const bool movingRight_){
 
 }
 
+
 void DynamicEntity::slowVx(){
-	this->vx *= 0.7;
+	const int vsign = Math::sign(this->vx);
+	this->vx -= 100 * vsign;
+	if (Math::sign(this->vx) != vsign) {
+        this->vx = 0.0001 * vsign;
+	}
 }
 
 void DynamicEntity::roll(){
