@@ -30,7 +30,7 @@ void EStateAlert::update(const double dt_){
 
 	if(abs(this->enemy->x - Enemy::px) < 100){
 		if(abs(this->enemy->y - Enemy::py) < 200){
-			this->enemy->changeState(Enemy::EStates::ATACK);
+			this->enemy->changeState(Enemy::EStates::ATTACK);
 		}
 	}
 

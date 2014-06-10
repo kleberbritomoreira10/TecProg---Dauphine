@@ -60,6 +60,8 @@ void LevelOne::load(){
 
 	// Finally, setting the player and the camera.
 	setPlayer(lPlayer);
+	Enemy::pLife = this->player->life;
+
 	setCamera(lCamera);
 
 	Game::instance().getFade().fadeOut(0, 0.002);

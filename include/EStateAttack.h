@@ -1,21 +1,21 @@
-#ifndef INCLUDE_ESTATEATACK_H
-#define INCLUDE_ESTATEATACK_H
+#ifndef INCLUDE_ESTATEATTACK_H
+#define INCLUDE_ESTATEATTACK_H
 
 #include "StateEnemy.h"
 
-class EStateAtack : public StateEnemy {
+class EStateAttack : public StateEnemy {
 
 	public:
 		/**
 		* The constructor.
 		* @param enemy_ : Reference to the Enemy.
 		*/
-		EStateAtack(Enemy* const enemy_);
+		EStateAttack(Enemy* const enemy_);
 		
 		/**
 		* The destructor.
 		*/
-		virtual ~EStateAtack(){}
+		virtual ~EStateAttack(){}
 
 		/**
 		* @see StateEnemy::enter
@@ -34,4 +34,4 @@ class EStateAtack : public StateEnemy {
 
 };
 
-#endif // INCLUDE_ESTATEATACK_H
+#endif // INCLUDE_ESTATEATTACK_H

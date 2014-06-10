@@ -8,7 +8,7 @@
 #include "EStateAerial.h"
 #include "EStateCurious.h"
 #include "EStateAlert.h"
-#include "EStateAtack.h"
+#include "EStateAttack.h"
 #include "EStateDead.h"
 #include "EStateLock.h"
 
@@ -86,15 +86,17 @@ void Enemy::render(const double cameraX_, const double cameraY_){
     const double dx = this->x - cameraX_;
     const double dy = this->y - cameraY_;
 
-    // Actual.
-    SDL_Rect actualRect = {(int)dx, (int)dy, (int)this->width, (int)this->height};
-    SDL_SetRenderDrawColor( Window::getRenderer(), 0x00, 0x00, 0x00, 0xFF);
-    SDL_RenderFillRect(Window::getRenderer(), &actualRect);
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    // // Actual.
+    // SDL_Rect actualRect = {(int)dx, (int)dy, (int)this->width, (int)this->height};
+    // SDL_SetRenderDrawColor( Window::getRenderer(), 0x00, 0x00, 0x00, 0xFF);
+    // SDL_RenderFillRect(Window::getRenderer(), &actualRect);
 
-    // Bounding box.
-    SDL_Rect boundingBox2 = {(int)(this->boundingBox.x - cameraX_), (int)(this->boundingBox.y - cameraY_), (int)this->boundingBox.w, (int)this->boundingBox.h};
-    SDL_SetRenderDrawColor( Window::getRenderer(), 0xFF, 0xFF, 0xFF, 0xFF);
-    SDL_RenderFillRect(Window::getRenderer(), &boundingBox2);
+    // // Bounding box.
+    // SDL_Rect boundingBox2 = {(int)(this->boundingBox.x - cameraX_), (int)(this->boundingBox.y - cameraY_), (int)this->boundingBox.w, (int)this->boundingBox.h};
+    // SDL_SetRenderDrawColor( Window::getRenderer(), 0xFF, 0xFF, 0xFF, 0xFF);
+    // SDL_RenderFillRect(Window::getRenderer(), &boundingBox2);
+    ///////////////////////////////////////////////////////////////////////////////////////////
 
     if(this->sprite != nullptr){
         SDL_RendererFlip flip = getFlip();
@@ -113,7 +115,7 @@ void Enemy::initializeStates(){
     ADD_STATE(PATROLLING,   EStatePatrolling);
     ADD_STATE(ALERT,        EStateAlert);
     ADD_STATE(AERIAL,       EStateAerial);
-    ADD_STATE(ATACK,        EStateAtack);
+    ADD_STATE(ATTACK,        EStateAttack);
     ADD_STATE(DEAD,         EStateDead);
     ADD_STATE(LOCK,         EStateLock);
 }

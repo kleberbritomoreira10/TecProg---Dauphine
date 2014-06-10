@@ -20,8 +20,6 @@
 
 #define ADD_STATE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass(this))
 
-#define FLOOR_OFFSET 8
-
 Player::Player(const double x_, const double y_, const std::string& path_) :
     DynamicEntity(x_, y_, path_),
     potionsLeft(50),
@@ -32,7 +30,6 @@ Player::Player(const double x_, const double y_, const std::string& path_) :
     animation(nullptr),
     currentState(nullptr)
 {
-
     initializeStates();
 
     LuaScript luaPlayer("lua/Player.lua");
@@ -123,17 +120,19 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
 void Player::render(const double cameraX_, const double cameraY_){
 
     const double dx = this->x - cameraX_;
-    const double dy = this->y - cameraY_ + FLOOR_OFFSET;
+    const double dy = this->y - cameraY_;
 
-     // Actual.
-    SDL_Rect actualRect = {(int)dx, (int)dy, (int)this->width, (int)this->height};
-    SDL_SetRenderDrawColor( Window::getRenderer(), 0x00, 0x00, 0x00, 0xFF);
-    SDL_RenderFillRect(Window::getRenderer(), &actualRect);
+    ///////////////////////////////////////////////////////////////////////////////////////////
+    // // Actual.
+    // SDL_Rect actualRect = {(int)dx, (int)dy, (int)this->width, (int)this->height};
+    // SDL_SetRenderDrawColor( Window::getRenderer(), 0x00, 0x00, 0x00, 0xFF);
+    // SDL_RenderFillRect(Window::getRenderer(), &actualRect);
 
-    // Bounding box.
-    SDL_Rect boundingBox2 = {(int)(this->boundingBox.x - cameraX_), (int)(this->boundingBox.y - cameraY_), (int)this->boundingBox.w, (int)this->boundingBox.h};
-    SDL_SetRenderDrawColor( Window::getRenderer(), 0xFF, 0xFF, 0xFF, 0xFF);
-    SDL_RenderFillRect(Window::getRenderer(), &boundingBox2);
+    // // Bounding box.
+    // SDL_Rect boundingBox2 = {(int)(this->boundingBox.x - cameraX_), (int)(this->boundingBox.y - cameraY_), (int)this->boundingBox.w, (int)this->boundingBox.h};
+    // SDL_SetRenderDrawColor( Window::getRenderer(), 0xFF, 0xFF, 0xFF, 0xFF);
+    // SDL_RenderFillRect(Window::getRenderer(), &boundingBox2);
+    ///////////////////////////////////////////////////////////////////////////////////////////
 
     if(this->sprite != nullptr){
         SDL_RendererFlip flip = getFlip();

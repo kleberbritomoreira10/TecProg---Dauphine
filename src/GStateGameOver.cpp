@@ -30,6 +30,9 @@ void GStateGameOver::load(){
 void GStateGameOver::unload(){
 	Log(DEBUG) << "\tUnloading Game Over...";
 	cleanEntities();
+
+	this->passedTime = 0.0;
+	this->lifeTime = 0.0;
 }
 
 void GStateGameOver::update(const double dt_){

@@ -12,6 +12,7 @@ void StateGame::addEntity(Entity* const entity){
 void StateGame::cleanEntities(){
 	for(auto entity : this->entities){
 		delete entity;
+		entity = nullptr;
 	}
 
 	this->entities.clear();
