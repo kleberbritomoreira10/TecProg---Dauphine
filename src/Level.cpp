@@ -74,3 +74,12 @@ void Level::setCamera(Camera* const camera_){
 	}
 
 }
+
+void Level::clearEnemies(){
+	for(auto enemy : this->enemies){
+		delete enemy;
+		enemy = nullptr;
+	}
+
+	this->enemies.clear();
+}

@@ -5,6 +5,7 @@
 
 void EStateIdle::enter(){
 	Log(DEBUG) << "ENTER IDLE";
+	this->enemy->isGrounded = true;
 }
 
 void EStateIdle::exit(){

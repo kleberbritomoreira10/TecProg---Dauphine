@@ -44,7 +44,13 @@ Enemy::Enemy(const double x_, const double y_, const std::string& path_, const b
 
 	this->animation = new Animation(0, 0, this->width, this->height, 0, false);
 
-	this->currentState = this->statesMap.at(PATROLLING);
+	if(this->patrol){
+		this->currentState = this->statesMap.at(PATROLLING);
+	}
+	else{
+		this->currentState = this->statesMap.at(IDLE);
+	}
+	
 	this->currentState->enter();
 }
 
@@ -134,7 +140,13 @@ void Enemy::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detecti
 		if(this->currentState == this->statesMap.at(EStates::AERIAL)){
 			this->nextY -= fmod(this->nextY, 64.0) - 16.0;
 			this->vy = 0.0;
-			changeState(EStates::PATROLLING);
+			if(this->patrol){
+				this->changeState(EStates::PATROLLING);
+			}
+			else{
+				this->changeState(EStates::IDLE);
+				return;
+			}
 		}
 	}
 	else{

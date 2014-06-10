@@ -52,18 +52,21 @@ class Level : public StateGame {
 		*/
 		virtual void setCamera(Camera* const camera_);
 
+		virtual void clearEnemies();
+
 		unsigned int width; /**< Width that defines the horizontal limits. */
 		unsigned int height; /**< Height that defines the vertical limits. */
 
 		Player* player; /**< The direct reference to player, even though its in the list. */
 		Camera* camera; /**< The current camera for that level. */
 		PlayerHUD* playerHud;
-		Enemy* enemy;
 
 		TileMap* tileMap;
 		QuadTree* quadTree;
 
 		Sprite* background;
+
+		std::vector <Enemy*> enemies;
 
 };
 

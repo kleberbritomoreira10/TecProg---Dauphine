@@ -18,11 +18,12 @@ void EStateAerial::update(const double dt_){
 	if(this->enemy->isGrounded){
 		if(this->enemy->patrol){
 			this->enemy->changeState(Enemy::EStates::PATROLLING);
+			return;
 		}
 		else{
 			this->enemy->changeState(Enemy::EStates::IDLE);
+			return;
 		}
-		return;
 	}
 
 	// Gravity

@@ -49,10 +49,33 @@ void LevelOne::load(){
 
 	this->playerHud = new PlayerHUD(lPlayer);
 
-	Enemy* lEnemy = new Enemy(704.0, 0.0, pathEnemy, true, 0.0);
+	Enemy* lEnemy = new Enemy(3712.0, 1400.0, pathEnemy, false, 0.0);
 	lEnemy->setLevelWH(this->width, this->height);
-	this->enemy = lEnemy;
-	addEntity(lEnemy);
+	this->enemies.push_back(lEnemy);
+
+	Enemy* lEnemy2 = new Enemy(4992.0, 1400.0, pathEnemy, false, 0.0);
+	lEnemy2->setLevelWH(this->width, this->height);
+	this->enemies.push_back(lEnemy2);
+
+	Enemy* lEnemy3 = new Enemy(5568.0, 1400.0, pathEnemy, true, 0.0);
+	lEnemy3->setLevelWH(this->width, this->height);
+	this->enemies.push_back(lEnemy3);
+
+	Enemy* lEnemy4 = new Enemy(7104.0, 1400.0, pathEnemy, true, 0.0);
+	lEnemy4->setLevelWH(this->width, this->height);
+	this->enemies.push_back(lEnemy4);
+
+	Enemy* lEnemy5 = new Enemy(8256.0, 1400.0, pathEnemy, true, 0.0);
+	lEnemy5->setLevelWH(this->width, this->height);
+	this->enemies.push_back(lEnemy5);
+
+	Enemy* lEnemy6 = new Enemy(10560.0, 1400.0, pathEnemy, false, 0.0);
+	lEnemy6->setLevelWH(this->width, this->height);
+	this->enemies.push_back(lEnemy6);
+
+	Enemy* lEnemy7 = new Enemy(10880.0, 1400.0, pathEnemy, false, 0.0);
+	lEnemy7->setLevelWH(this->width, this->height);
+	this->enemies.push_back(lEnemy7);
 	
 	// Test text.
 	// Text* text = new Text(200.0, 900.0, "res/fonts/KGFeeling22.ttf", 50, "dauphine");
@@ -70,19 +93,28 @@ void LevelOne::load(){
 void LevelOne::unload(){
 	Log(DEBUG) << "\tUnloading level 1...";
 	cleanEntities();
+	clearEnemies();
 }
 
 void LevelOne::update(const double dt_){
 	// Populating the QuadTree.
 	this->quadTree->setObjects(this->tileMap->getCollisionRects());
 
-	// // Updating the entities, using the QuadTree.
+	// Updating the entities, using the QuadTree.
 	std::vector<CollisionRect> returnObjects;
 	for (auto entity : this->entities) {
 		returnObjects.clear();
 		this->quadTree->retrieve(returnObjects, entity->getBoundingBox());
 		entity->setCollisionRects(returnObjects);
 		entity->update(dt_);
+	}
+
+	// Updating the enemies.
+	for(auto enemy : this->enemies){
+		returnObjects.clear();
+		this->quadTree->retrieve(returnObjects, enemy->getBoundingBox());
+		enemy->setCollisionRects(returnObjects);
+		enemy->update(dt_);
 	}
 
 	// Set to GameOver if the player is dead.
@@ -93,13 +125,15 @@ void LevelOne::update(const double dt_){
 
 	// Updating the potions.
 	for(auto potion : this->player->potions){
+		returnObjects.clear();
+		this->quadTree->retrieve(returnObjects, potion->getBoundingBox());
 		potion->setCollisionRects(returnObjects);
 	}
 
 	/// @todo Maybe refactor this static Enemy::px, Enemy::py.
 	// Updating player info for the enemies.
 	Enemy::px = this->player->x;
-	Enemy::py = this->player->y;
+	Enemy::py = -14000;//this->player->y;
 	this->player->life = Enemy::pLife;
 
 	// Updating the HUD.
@@ -116,29 +150,36 @@ void LevelOne::update(const double dt_){
 
 	// Updating the potion/enemy collision.
 	for(auto potion : this->player->potions){
-		if(Collision::rectsCollided(potion->getBoundingBox(), this->enemy->getBoundingBox())){
-			if(potion->activated){
-				this->enemy->changeState(Enemy::EStates::DEAD);
+		for(auto enemy : this->enemies){
+			if(Collision::rectsCollided(potion->getBoundingBox(), enemy->getBoundingBox())){
+				if(potion->activated){
+					enemy->changeState(Enemy::EStates::DEAD);
+				}
 			}
 		}
 	}
 
 	// Updating the trap/enemy collision.
 	for(auto trap : this->player->traps){
-		if(Collision::rectsCollided(trap->getBoundingBox(), this->enemy->getBoundingBox())){
-			if(trap->activated){
-				this->enemy->changeState(Enemy::EStates::LOCK);
-				trap->activated = false;
+		for(auto enemy : this->enemies){
+			if(Collision::rectsCollided(trap->getBoundingBox(), enemy->getBoundingBox())){
+				if(trap->activated){
+					enemy->changeState(Enemy::EStates::LOCK);
+					trap->activated = false;
+				}
 			}
 		}
 	}
 
 	// Updating the player attack/enemy collision.
-	if(Collision::rectsCollided(this->player->getBoundingBox(), this->enemy->getBoundingBox())){
-		if(this->player->isCurrentState(Player::PStates::ATTACK)){
-			this->enemy->changeState(Enemy::EStates::DEAD);
+	for(auto enemy : this->enemies){
+		if(Collision::rectsCollided(this->player->getBoundingBox(), enemy->getBoundingBox())){
+			if(this->player->isCurrentState(Player::PStates::ATTACK)){
+				enemy->changeState(Enemy::EStates::DEAD);
+			}
 		}
 	}
+	
 
 }
 
@@ -152,11 +193,13 @@ void LevelOne::render(){
 	this->tileMap->render(cameraX, cameraY);
 
 	this->playerHud->render();
-	if(!this->enemy->isDead()){
-		this->enemy->render(cameraX, cameraY);
+
+	for(auto enemy : this->enemies){
+		enemy->render(cameraX, cameraY);
 	}
+
 	// Render all the entities in the list.
-	for(auto entity : entities){
+	for(auto entity : this->entities){
         entity->render(cameraX, cameraY);
 	}
 }
