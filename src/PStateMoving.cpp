@@ -2,7 +2,7 @@
 #include "Logger.h"
 
 #define THROW_STRENGTH 30
-#define THROW_DISTANCE 150
+#define THROW_DISTANCE 400
 
 void PStateMoving::enter(){
     this->box.x = (int)this->player->getWidth() / 4 - 33;
@@ -32,11 +32,8 @@ void PStateMoving::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
     }
 
     if(keyStates_[GameKeys::ACTION]){
-        if(this->player->potionsLeft > 0){  
-            this->player->usePotion(THROW_STRENGTH, THROW_DISTANCE);
-            this->player->potionsLeft--;
-            return;
-        }
+        this->player->usePotion(THROW_STRENGTH, THROW_DISTANCE);
+        return;
     }
 
     // Crouch
