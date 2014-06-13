@@ -18,8 +18,7 @@ class Enemy : public DynamicEntity {
 			CURIOUS,
 			ALERT,
 			ATTACK,
-			DEAD,
-			LOCK
+			DEAD
 		};
 
 		/**

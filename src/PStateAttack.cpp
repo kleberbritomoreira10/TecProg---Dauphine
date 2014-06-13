@@ -15,6 +15,8 @@ void PStateAttack::exit(){
 }
 
 void PStateAttack::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
+	this->player->move(keyStates_[GameKeys::LEFT], keyStates_[GameKeys::RIGHT]);
+	
 	if(this->player->getAnimation()->getCurrentFrame() == 13){
 		this->player->changeState(Player::PStates::IDLE);
 	}

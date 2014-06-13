@@ -14,7 +14,6 @@
 #include "PStateAiming.h"
 #include "PStateMovingCrouch.h"
 #include "PStateAttack.h"
-#include "PStateSetUpTrap.h"
 
 #include "Window.h"
 
@@ -80,13 +79,6 @@ void Player::update(const double dt_){
             // Delete potion.
         }
         potion->update(dt_);
-    }
-
-    for(auto trap : this->traps){
-        if(!trap->activated){
-            // Delete trap.
-        }
-        trap->update(dt_);
     }
 
 }
@@ -156,10 +148,6 @@ void Player::render(const double cameraX_, const double cameraY_){
         potion->render(cameraX_, cameraY_);
     }
 
-    for (auto trap : this->traps) {
-        trap->render(cameraX_, cameraY_);
-    }
-
 }
 
 void Player::usePotion(const int strength_, const int distance_){
@@ -180,12 +168,6 @@ void Player::addPotions(const unsigned int quantity_){
     }
 }
 
-void Player::useTrap(){
-        Trap* trap = new Trap( this->x + this->width/2, this->y + this->height - 32, "res/images/bear_trap.png");
-        trap->activated = true;
-        this->traps.push_back(trap);
-}
-
 void Player::initializeStates(){
     // Initialize all the states in Player here.
     ADD_STATE(IDLE,         PStateIdle);
@@ -196,8 +178,6 @@ void Player::initializeStates(){
     ADD_STATE(AIMING,       PStateAiming);
     ADD_STATE(MOVINGCROUCH, PStateMovingCrouch);
     ADD_STATE(ATTACK,       PStateAttack);
-    ADD_STATE(SETUPTRAP,    PStateSetUpTrap);
-
 }
 
 void Player::destroyStates(){

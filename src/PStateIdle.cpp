@@ -32,7 +32,7 @@ void PStateIdle::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 		return;
 	}
 
-	// Jump
+	// Attack
 	if(keyStates_[GameKeys::LATTACK]){
 		this->player->changeState(Player::PStates::ATTACK);
 		return;
@@ -50,18 +50,16 @@ void PStateIdle::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 		return;
 	}
 
+	// Roll
 	if(keyStates_[GameKeys::ROLL]){
 		this->player->changeState(Player::PStates::ROLLING);
 		return;
 	}
 
+	// Aim
 	if(keyStates_[GameKeys::AIM]){
 		this->player->changeState(Player::PStates::AIMING);
 		return;
-	}
-
-	if(keyStates_[GameKeys::ACTION]){
-		this->player->changeState(Player::PStates::SETUPTRAP);
 	}
 
 }

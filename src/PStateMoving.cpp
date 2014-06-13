@@ -54,6 +54,12 @@ void PStateMoving::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
         this->player->changeState(Player::PStates::IDLE);
         return;
     }
+
+    // Attack
+    if(keyStates_[GameKeys::LATTACK]){
+        this->player->changeState(Player::PStates::ATTACK);
+        return;
+    }
 }
 
 PStateMoving::PStateMoving(Player* const player_) :

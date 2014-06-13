@@ -10,7 +10,6 @@
 #include "EStateAlert.h"
 #include "EStateAttack.h"
 #include "EStateDead.h"
-#include "EStateLock.h"
 
 #include "Window.h"
 
@@ -115,7 +114,6 @@ void Enemy::initializeStates(){
 	ADD_STATE(AERIAL,       EStateAerial);
 	ADD_STATE(ATTACK,       EStateAttack);
 	ADD_STATE(DEAD,         EStateDead);
-	ADD_STATE(LOCK,         EStateLock);
 }
 
 void Enemy::destroyStates(){

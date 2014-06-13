@@ -159,18 +159,6 @@ void LevelOne::update(const double dt_){
 		}
 	}
 
-	// Updating the trap/enemy collision.
-	for(auto trap : this->player->traps){
-		for(auto enemy : this->enemies){
-			if(Collision::rectsCollided(trap->getBoundingBox(), enemy->getBoundingBox())){
-				if(trap->activated && !enemy->isDead()){
-					enemy->changeState(Enemy::EStates::LOCK);
-					trap->activated = false;
-				}
-			}
-		}
-	}
-
 	// Updating the player attack/enemy collision.
 	for(auto enemy : this->enemies){
 		if(Collision::rectsCollided(this->player->getBoundingBox(), enemy->getBoundingBox())){
