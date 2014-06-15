@@ -2,10 +2,10 @@
 #include "Logger.h"
 
 void PStateAerial::enter(){
-    this->box.x = (int)this->player->getWidth() / 4 - 33;
-    this->box.y = (int)this->player->getHeight() / 3.5;
-    this->box.w = (int)this->player->getWidth() / 1.7;
-    this->box.h = (int)this->player->getHeight() / 3.5;
+    this->box.x = 58;
+    this->box.y = 72;
+    this->box.w = 97;
+    this->box.h = 145;
 
 	this->player->getAnimation()->changeAnimation(4, 3, 14, false, 1.4);
 	this->player->isGrounded = false;
@@ -21,6 +21,11 @@ void PStateAerial::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
     if(this->player->isGrounded){
     	this->player->changeState(Player::PStates::IDLE);
     	return;
+    }
+
+    if(keyStates_[GameKeys::LATTACK]){
+        this->player->changeState(Player::PStates::ATTACKJUMPING);
+        return;
     }
 
 	// Gravity

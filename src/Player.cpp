@@ -14,6 +14,8 @@
 #include "PStateAiming.h"
 #include "PStateMovingCrouch.h"
 #include "PStateAttack.h"
+#include "PStateAttackMoving.h"
+#include "PStateAttackJumping.h"
 
 #include "Window.h"
 
@@ -91,9 +93,13 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
     }
     if(detections_.at(CollisionSide::SOLID_BOTTOM)){
         if(isCurrentState(PStates::AERIAL)){
-            const double magic = 0.0;
-            const double aerialToIdleCorrection = 0.0;
-            this->nextY -= fmod(this->nextY, 16.0) - magic + aerialToIdleCorrection;
+            const double magic = 32.0;
+            const double aerialToIdleCorrection = 8.0;
+
+            this->nextY -= fmod(this->nextY, 64.0) - magic + aerialToIdleCorrection;
+
+            Log(DEBUG) << "NextY = " <<this->nextY + 160;            
+
             this->vy = 0.0;
             changeState(PStates::IDLE);
         }
@@ -105,10 +111,21 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
     }
     if(detections_.at(CollisionSide::SOLID_LEFT)){
         this->nextX = this->x;
+        
+        // Log(DEBUG) << "LEFT NextY = " <<this->nextY + 160;            
+
+        // Log(DEBUG) << "Collided LEFT";
+
         this->vx = 0.0;
     }
     if(detections_.at(CollisionSide::SOLID_RIGHT)){
+
+    //     Log(DEBUG) << "Collided RIGHT";        
+
         this->nextX = this->x;
+
+    //     Log(DEBUG) << "RIGHT NextY = " <<this->nextY + 160;            
+
         this->vx = -0.001;
     }
 
@@ -125,11 +142,11 @@ void Player::render(const double cameraX_, const double cameraY_){
     // SDL_SetRenderDrawColor( Window::getRenderer(), 0x00, 0x00, 0x00, 0xFF);
     // SDL_RenderFillRect(Window::getRenderer(), &actualRect);
 
-    // // Bounding box.
-    // SDL_Rect boundingBox2 = {(int)(this->boundingBox.x - cameraX_), (int)(this->boundingBox.y - cameraY_), (int)this->boundingBox.w, (int)this->boundingBox.h};
-    // SDL_SetRenderDrawColor( Window::getRenderer(), 0xFF, 0xFF, 0xFF, 0xFF);
-    // SDL_RenderFillRect(Window::getRenderer(), &boundingBox2);
-    /////////////////////////////////////////////////////////////////////////////////////////
+    // Bounding box.
+    SDL_Rect boundingBox2 = {(int)(this->boundingBox.x - cameraX_), (int)(this->boundingBox.y - cameraY_), (int)this->boundingBox.w, (int)this->boundingBox.h};
+    SDL_SetRenderDrawColor( Window::getRenderer(), 0xFF, 0xFF, 0xFF, 0xFF);
+    SDL_RenderFillRect(Window::getRenderer(), &boundingBox2);
+    /////////////////////////////////////////////////////////////////////////////////////
 
     if(this->sprite != nullptr){
         SDL_RendererFlip flip = getFlip();
@@ -178,6 +195,8 @@ void Player::initializeStates(){
     ADD_STATE(AIMING,       PStateAiming);
     ADD_STATE(MOVINGCROUCH, PStateMovingCrouch);
     ADD_STATE(ATTACK,       PStateAttack);
+    ADD_STATE(ATTACKMOVING, PStateAttackMoving);
+    ADD_STATE(ATTACKJUMPING,PStateAttackJumping);
 }
 
 void Player::destroyStates(){
@@ -205,8 +224,8 @@ bool Player::isCurrentState(const PStates state_){
 void Player::updateBoundingBox(){
     this->boundingBox.x = (int) this->nextX + this->currentState->box.x;
     this->boundingBox.y = (int) this->nextY + this->currentState->box.y;
-    this->boundingBox.w = (int) this->width - this->currentState->box.w;
-    this->boundingBox.h = (int) this->height - this->currentState->box.h;
+    this->boundingBox.w = this->currentState->box.w;
+    this->boundingBox.h = this->currentState->box.h;
 }
 
 bool Player::isDead(){

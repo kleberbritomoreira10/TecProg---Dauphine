@@ -2,10 +2,10 @@
 #include "Logger.h"
 
 void PStateRolling::enter(){
-	this->box.x = (int)this->player->getWidth() / 4 - 33;
-    this->box.w = (int)this->player->getWidth() / 1.7;
-	this->box.y = (int)this->player->getHeight() / 2;
-	this->box.h = (int)this->player->getHeight() / 2;
+	this->box.x = 58;
+	this->box.y = 72;
+	this->box.w = 140;
+	this->box.h = 160;
 
 	this->player->getAnimation()->changeAnimation(6, 4, 9, true, 0.6);
 	this->player->roll();

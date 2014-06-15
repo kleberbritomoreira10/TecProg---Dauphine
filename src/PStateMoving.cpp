@@ -5,12 +5,12 @@
 #define THROW_DISTANCE 400
 
 void PStateMoving::enter(){
-    this->box.x = (int)this->player->getWidth() / 4 - 33;
-    this->box.y = (int)this->player->getHeight() / 3.5;
-    this->box.w = (int)this->player->getWidth() / 1.7;
-    this->box.h = (int)this->player->getHeight() / 3.5;
+    this->box.x = 58;
+    this->box.y = 72;
+    this->box.w = 140;
+    this->box.h = 160;
 
-    this->player->getAnimation()->changeAnimation(4,2,9,false,0.9);
+    this->player->getAnimation()->changeAnimation(4,2,9,false,0.7);
 }
 
 void PStateMoving::exit(){
@@ -36,11 +36,16 @@ void PStateMoving::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
         return;
     }
 
-    // Crouch
-    if(keyStates_[GameKeys::CROUCH]){
-        this->player->changeState(Player::PStates::CROUCHING);
+    if(keyStates_[GameKeys::LATTACK]){
+        this->player->changeState(Player::PStates::ATTACKMOVING);
         return;
     }
+
+    // // Crouch
+    // if(keyStates_[GameKeys::CROUCH]){
+    //     this->player->changeState(Player::PStates::CROUCHING);
+    //     return;
+    // }
 
     this->player->move(keyStates_[GameKeys::LEFT], keyStates_[GameKeys::RIGHT]);
 

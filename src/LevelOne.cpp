@@ -162,7 +162,7 @@ void LevelOne::update(const double dt_){
 	// Updating the player attack/enemy collision.
 	for(auto enemy : this->enemies){
 		if(Collision::rectsCollided(this->player->getBoundingBox(), enemy->getBoundingBox())){
-			if(this->player->isCurrentState(Player::PStates::ATTACK)){
+			if(this->player->isCurrentState(Player::PStates::ATTACK) || this->player->isCurrentState(Player::PStates::ATTACKMOVING)){
 				enemy->changeState(Enemy::EStates::DEAD);
 			}
 		}

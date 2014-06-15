@@ -1,11 +1,20 @@
 #include "PStateIdle.h"
 #include "Logger.h"
 
+#define THROW_STRENGTH 30
+#define THROW_DISTANCE 400
+
 void PStateIdle::enter(){
-	this->box.x = (int)this->player->getWidth() / 4 - 33;
-	this->box.y = (int)this->player->getHeight() / 3.5;
-	this->box.w = (int)this->player->getWidth() / 1.7;
-	this->box.h = (int)this->player->getHeight() / 3.5;
+	
+	this->box.x = 58;
+	this->box.y = 72;
+	this->box.w = 140;
+	this->box.h = 160;
+
+	// this->box.x = (int)this->player->getWidth() / 4 - 33;
+	// this->box.y = (int)this->player->getHeight() / 3.5;
+	// this->box.w = (int)this->player->getWidth() / 1.7;
+	// this->box.h = (int)this->player->getHeight() / 3.5;
 
 	this->player->getAnimation()->changeAnimation(0, 0, 26, false, 2.6);
 	this->player->isGrounded = true;
@@ -38,11 +47,16 @@ void PStateIdle::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 		return;
 	}
 
-	// Crouch
-	if(keyStates_[GameKeys::CROUCH]){
-		this->player->changeState(Player::PStates::CROUCHING);
-		return;
-	}
+    if(keyStates_[GameKeys::ACTION]){
+        this->player->usePotion(THROW_STRENGTH, THROW_DISTANCE);
+        return;
+    }
+
+	// // Crouch
+	// if(keyStates_[GameKeys::CROUCH]){
+	// 	this->player->changeState(Player::PStates::CROUCHING);
+	// 	return;
+	// }
 
 	// Move
 	if(keyStates_[GameKeys::LEFT] || keyStates_[GameKeys::RIGHT]){
