@@ -16,6 +16,7 @@
 #include "PStateAttack.h"
 #include "PStateAttackMoving.h"
 #include "PStateAttackJumping.h"
+#include "PStateHited.h"
 
 #include "Window.h"
 
@@ -197,6 +198,7 @@ void Player::initializeStates(){
     ADD_STATE(ATTACK,       PStateAttack);
     ADD_STATE(ATTACKMOVING, PStateAttackMoving);
     ADD_STATE(ATTACKJUMPING,PStateAttackJumping);
+    ADD_STATE(HITED,        PStateHited);
 }
 
 void Player::destroyStates(){

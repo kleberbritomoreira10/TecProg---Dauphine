@@ -9,7 +9,9 @@ void PStateAttackJumping::enter(){
     this->box.w = 97;
     this->box.h = 145;
 
-	this->player->getAnimation()->changeAnimation(5, 9, 3, false, 0.3);
+	this->player->getAnimation()->changeAnimation(0, 4, 5, false, 0.5);
+	
+
 }
 
 void PStateAttackJumping::exit(){
@@ -17,11 +19,8 @@ void PStateAttackJumping::exit(){
 }
 
 void PStateAttackJumping::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
-	this->player->move(keyStates_[GameKeys::LEFT], keyStates_[GameKeys::RIGHT]);
 	
-	if(this->player->getAnimation()->getCurrentFrame() == 3){
-		this->player->changeState(Player::PStates::AERIAL);
-	}
+
 }
 
 PStateAttackJumping::PStateAttackJumping(Player* const player_) :
