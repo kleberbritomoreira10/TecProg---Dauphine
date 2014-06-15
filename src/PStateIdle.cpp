@@ -8,7 +8,7 @@ void PStateIdle::enter(){
 	
 	this->box.x = 58;
 	this->box.y = 72;
-	this->box.w = 140;
+	this->box.w = 130;
 	this->box.h = 160;
 
 	// this->box.x = (int)this->player->getWidth() / 4 - 33;
