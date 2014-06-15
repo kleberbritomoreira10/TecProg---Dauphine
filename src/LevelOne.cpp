@@ -134,7 +134,10 @@ void LevelOne::update(const double dt_){
 	// Updating player info for the enemies.
 	Enemy::px = this->player->x;
 	Enemy::py = this->player->y;
-	this->player->life = Enemy::pLife;
+	if(this->player->life != Enemy::pLife){
+		this->player->changeState(Player::PStates::HITED);
+		this->player->life = Enemy::pLife;
+	}
 
 	// Updating the HUD.
 	this->playerHud->update();
