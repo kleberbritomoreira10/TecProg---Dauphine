@@ -2,6 +2,7 @@
 #include "Logger.h"
 
 void PStateAerial::enter(){
+    Log(DEBUG) << "STATE AERIAL";
     this->box.x = 58;
     this->box.y = 72;
     this->box.w = 97;
