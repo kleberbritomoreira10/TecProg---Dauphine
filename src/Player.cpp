@@ -106,7 +106,7 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
         }
     }
     else{
-        if(!isCurrentState(PStates::AERIAL)){
+        if(!isCurrentState(PStates::AERIAL) && !isCurrentState(PStates::ATTACKJUMPING)){
             changeState(PStates::AERIAL);
         }
     }
