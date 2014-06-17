@@ -2,8 +2,7 @@
 #include "Logger.h"
 
 void PStateAttackJumping::enter(){
-	
-	Log(DEBUG) << "ENTER STATE ATTACK JUMPING";
+
    	this->box.x = 58;
     this->box.y = 72;
     this->box.w = 97;

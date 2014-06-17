@@ -98,9 +98,6 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
             const double aerialToIdleCorrection = 8.0;
 
             this->nextY -= fmod(this->nextY, 64.0) - magic + aerialToIdleCorrection;
-
-            Log(DEBUG) << "NextY = " <<this->nextY + 160;            
-
             this->vy = 0.0;
             changeState(PStates::IDLE);
         }
@@ -112,21 +109,10 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
     }
     if(detections_.at(CollisionSide::SOLID_LEFT)){
         this->nextX = this->x;
-        
-        // Log(DEBUG) << "LEFT NextY = " <<this->nextY + 160;            
-
-        // Log(DEBUG) << "Collided LEFT";
-
         this->vx = 0.0;
     }
     if(detections_.at(CollisionSide::SOLID_RIGHT)){
-
-    //     Log(DEBUG) << "Collided RIGHT";        
-
         this->nextX = this->x;
-
-    //     Log(DEBUG) << "RIGHT NextY = " <<this->nextY + 160;            
-
         this->vx = -0.001;
     }
 

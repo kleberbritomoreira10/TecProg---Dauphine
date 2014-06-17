@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.0" orientation="orthogonal" width="42" height="15" tilewidth="64" tileheight="64">
+ <tileset firstgid="1" name="Environment Tiles" tilewidth="64" tileheight="64">
+  <image source="../../../../../../../../Desktop/Jogos/Dauphine/res/maps/tilemap_lv1.png" width="1024" height="1024"/>
+ </tileset>
+ <tileset firstgid="257" name="Meta Tileset" tilewidth="64" tileheight="64">
+  <image source="../../../../../../../../Desktop/Jogos/Dauphine/res/maps/tileSheet_1.png" width="320" height="256"/>
+ </tileset>
+ <layer name="Tile Layer 1" width="42" height="15">
+  <data encoding="base64" compression="zlib">
+   eJy7zMDAcASIjw5SDHRbw2UIHnXnqDsHHR5156g7R9056s7BhoeiO68A8dVBiq9A3fkYyH4CxE+JoIlRQ00axga6sQEATP38cg==
+  </data>
+ </layer>
+</map>

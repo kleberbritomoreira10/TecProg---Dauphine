@@ -81,19 +81,19 @@ void TileMap::load(const std::string& mapPath_){
 			// Saving all the tile IDs on the TileMap::tileMatrix
 			for (j = 0; j < this->mapWidth; j++){
 				for (k = 0; k < this->mapHeight; k++){
+
 					int tileId = currentLayer->GetTileId(j, k);
 
 					if (currentLayer->IsTileFlippedDiagonally(j, k)){
 						tileId |= Tmx::FlippedDiagonallyFlag;
 					}
-					else{
-						if (currentLayer->IsTileFlippedHorizontally(j, k)){
-							tileId |= Tmx::FlippedHorizontallyFlag;
-						}
-						if (currentLayer->IsTileFlippedVertically(j, k)){
-							tileId |= Tmx::FlippedVerticallyFlag;
-						}
+					if (currentLayer->IsTileFlippedHorizontally(j, k)){
+						tileId |= Tmx::FlippedHorizontallyFlag;
 					}
+					if (currentLayer->IsTileFlippedVertically(j, k)){
+						tileId |= Tmx::FlippedVerticallyFlag;
+					}
+					
 
 					this->tileMatrix[j][k][i] = tileId;
 
@@ -157,7 +157,7 @@ void TileMap::renderLayer(const double cameraX_, const double cameraY_, const un
 
 			if(tileIsOnScreen){
 				// Getting the tile position inside its tileset.
-				const unsigned int tilePosition = tileMatrix[x][y][layer_];
+				unsigned int tilePosition = tileMatrix[x][y][layer_];
 				SDL_RendererFlip flip = SDL_FLIP_NONE;
 
 				if((tilePosition & Tmx::FlippedDiagonallyFlag) != 0){
@@ -170,6 +170,8 @@ void TileMap::renderLayer(const double cameraX_, const double cameraY_, const un
 				if((tilePosition & Tmx::FlippedVerticallyFlag) != 0){
 					flip = SDL_FLIP_VERTICAL;
 				}
+
+				tilePosition &= ~(Tmx::FlippedDiagonallyFlag | Tmx::FlippedHorizontallyFlag | Tmx::FlippedVerticallyFlag);
 
 				// If its a valid tile.
 				if (tilePosition > 0){
@@ -191,7 +193,7 @@ void TileMap::renderLayer(const double cameraX_, const double cameraY_, const un
 					tileClip.y = (tilePosition/tilesPerLine) * TILE_SIZE;
 					tileClip.w = TILE_SIZE;
 					tileClip.h = TILE_SIZE;
-
+					
 					tilesetSprite->render(posX, posY, &tileClip, false, 0.0, nullptr, flip);
 					
 				}
