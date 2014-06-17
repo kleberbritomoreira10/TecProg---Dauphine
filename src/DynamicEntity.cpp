@@ -112,9 +112,7 @@ void DynamicEntity::jump(){
 
 void DynamicEntity::applyGravity(){
 	if(this->vy + 50 < this->maxSpeed*2){
-		if(!detections_.at(CollisionSide::SOLID_BOTTOM)){
 			this->vy += 50;
-		}
 	}
 }
 
