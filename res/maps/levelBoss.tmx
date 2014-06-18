@@ -3,8 +3,41 @@
  <tileset firstgid="1" name="Environment Tiles" tilewidth="64" tileheight="64">
   <image source="tilemap_lv1.png" width="1024" height="1024"/>
  </tileset>
- <tileset firstgid="257" name="Meta Tiles" tilewidth="64" tileheight="64">
+ <tileset firstgid="257" name="Meta Tileset" tilewidth="64" tileheight="64">
+  <properties>
+   <property name="meta" value=""/>
+  </properties>
   <image source="tileSheet_2.png" width="192" height="192"/>
+  <tile id="3">
+   <properties>
+    <property name="type" value="collision"/>
+   </properties>
+  </tile>
+  <tile id="4">
+   <properties>
+    <property name="type" value="jump_through"/>
+   </properties>
+  </tile>
+  <tile id="5">
+   <properties>
+    <property name="type" value="level_end"/>
+   </properties>
+  </tile>
+  <tile id="6">
+   <properties>
+    <property name="type" value="level_begin"/>
+   </properties>
+  </tile>
+  <tile id="7">
+   <properties>
+    <property name="type" value="climb"/>
+   </properties>
+  </tile>
+  <tile id="8">
+   <properties>
+    <property name="type" value="black"/>
+   </properties>
+  </tile>
  </tileset>
  <layer name="Tile Layer 1" width="42" height="20">
   <data encoding="base64" compression="zlib">
@@ -13,7 +46,7 @@
  </layer>
  <layer name="Collision" width="42" height="20">
   <data encoding="base64" compression="zlib">
-   eJzt0jEKADAMQtEK6f2v3KF0L0HQgB/c32Bh2Ve4cy9ObnFyUzg3/qd0doqT22Rn5+cKp2NxcouTW5zcnnPCDithAhU=
+   eJzt0jEKACAMQ1EDFe9/YwdxlxJoKvmQ/VUMDPkCZ+rZye0n5xK4o+I9J95X6cxkJ7fOzsw/r3AqZic3O7nZye06O2wDeSACHQ==
   </data>
  </layer>
 </map>

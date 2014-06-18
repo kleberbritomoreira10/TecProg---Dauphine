@@ -18,10 +18,10 @@ LevelBoss::~LevelBoss(){
 }
 
 void LevelBoss::load(){
-	Log(DEBUG) << "Loading level 1...";
+	Log(DEBUG) << "Loading level boss...";
 
 	// Loading the tile/tilemap.
-	this->tileMap = new TileMap("res/maps/level1.tmx");
+	this->tileMap = new TileMap("res/maps/levelBoss.tmx");
 
 	// Setting the level width/height.
 	this->width = this->tileMap->getMapWidth();
@@ -67,7 +67,7 @@ void LevelBoss::load(){
 }
 
 void LevelBoss::unload(){
-	Log(DEBUG) << "\tUnloading level 1...";
+	Log(DEBUG) << "\tUnloading level boss...";
 	cleanEntities();
 	clearEnemies();
 }
