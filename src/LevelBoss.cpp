@@ -1,4 +1,4 @@
-#include "LevelOne.h"
+#include "LevelBoss.h"
 #include "Game.h"
 #include "LuaScript.h"
 #include "Logger.h"
@@ -7,17 +7,17 @@
 #include "TileMap.h"
 #include "Collision.h"
 
-LevelOne::LevelOne() :
+LevelBoss::LevelBoss() :
 	Level()
 {
 
 }
 
-LevelOne::~LevelOne(){
+LevelBoss::~LevelBoss(){
 
 }
 
-void LevelOne::load(){
+void LevelBoss::load(){
 	Log(DEBUG) << "Loading level 1...";
 
 	// Loading the tile/tilemap.
@@ -52,30 +52,6 @@ void LevelOne::load(){
 	Enemy* lEnemy = new Enemy(3712.0, 1400.0, pathEnemy, false, 0.0);
 	lEnemy->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy);
-
-	Enemy* lEnemy2 = new Enemy(4992.0, 1400.0, pathEnemy, false, 0.0);
-	lEnemy2->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy2);
-
-	Enemy* lEnemy3 = new Enemy(5568.0, 1400.0, pathEnemy, true, 0.0);
-	lEnemy3->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy3);
-
-	Enemy* lEnemy4 = new Enemy(7104.0, 1400.0, pathEnemy, true, 0.0);
-	lEnemy4->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy4);
-
-	Enemy* lEnemy5 = new Enemy(8256.0, 1400.0, pathEnemy, true, 0.0);
-	lEnemy5->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy5);
-
-	Enemy* lEnemy6 = new Enemy(10560.0, 1400.0, pathEnemy, false, 0.0);
-	lEnemy6->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy6);
-
-	Enemy* lEnemy7 = new Enemy(10880.0, 1400.0, pathEnemy, false, 0.0);
-	lEnemy7->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy7);
 	
 	// Test text.
 	// Text* text = new Text(200.0, 900.0, "res/fonts/KGFeeling22.ttf", 50, "dauphine");
@@ -90,13 +66,13 @@ void LevelOne::load(){
 	Game::instance().getFade().fadeOut(0, 0.002);
 }
 
-void LevelOne::unload(){
+void LevelBoss::unload(){
 	Log(DEBUG) << "\tUnloading level 1...";
 	cleanEntities();
 	clearEnemies();
 }
 
-void LevelOne::update(const double dt_){
+void LevelBoss::update(const double dt_){
 	// Populating the QuadTree.
 	this->quadTree->setObjects(this->tileMap->getCollisionRects());
 
@@ -147,7 +123,7 @@ void LevelOne::update(const double dt_){
 
 	// Set next level if end is reached.
 	if(this->player->reachedLevelEnd){
-		Game::instance().setState(Game::GStates::LEVEL_BOSS);
+		Game::instance().setState(Game::GStates::LEVEL_ONE);
 		return;
 	}
 
@@ -165,17 +141,16 @@ void LevelOne::update(const double dt_){
 	// Updating the player attack/enemy collision.
 	for(auto enemy : this->enemies){
 		if(Collision::rectsCollided(this->player->getBoundingBox(), enemy->getBoundingBox())){
-			if(this->player->isRight != enemy->isRight)
-				if(this->player->isCurrentState(Player::PStates::ATTACK) || this->player->isCurrentState(Player::PStates::ATTACKMOVING)){
-					enemy->changeState(Enemy::EStates::DEAD);
-				}
+			if(this->player->isCurrentState(Player::PStates::ATTACK) || this->player->isCurrentState(Player::PStates::ATTACKMOVING)){
+				enemy->changeState(Enemy::EStates::DEAD);
+			}
 		}
 	}
 	
 
 }
 
-void LevelOne::render(){
+void LevelBoss::render(){
 	const int cameraX = this->camera->getClip().x;
 	const int cameraY = this->camera->getClip().y;
 

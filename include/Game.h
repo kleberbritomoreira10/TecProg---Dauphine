@@ -28,6 +28,7 @@ class Game {
 			SPLASH = 0,
 			MENU,
 			LEVEL_ONE,
+			LEVEL_BOSS,
 			OPTIONS,
 			CREDITS,
 			GAMEOVER
