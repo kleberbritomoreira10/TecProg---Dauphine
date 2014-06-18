@@ -1,0 +1,26 @@
+
+- Implement potion explosion effect.
+- Implement enemy's upward attack.
+- Implement potion refill system.
+- Implement the checkpoint system.
+- Implement the final boss.
+- Implement menu screens properly (Options / Credits).
+- Implement textbox system.
+- Implement cutscenes.
+- Implement attract mode.
+- Implement loading thread.
+
+- Fix menu cursors.
+- Fix the unflipabble tile.
+- Fix enemy reviving if hit while aerial.
+- Fix the background (maybe implement parallax effect).
+- Fix Nadine's knockback after being hit.
+
+- Balance Nadine's attack.
+- Balance Nadine's jump.
+
+- Put the SFX in the game.
+- Decide whether to keep aim or not.
+- Animate the patrol 0 enemy.
+- Refactor combat system.
+- Finish at least 5 levels.
