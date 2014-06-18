@@ -2,6 +2,7 @@
 #include "Logger.h"
 #include "Configuration.h"
 
+#include <iostream>
 
 SDL_Renderer* Window::sdlRenderer = nullptr;
 
@@ -63,11 +64,13 @@ void Window::create(const unsigned int width_, const unsigned int height_){
 		if(Window::sdlRenderer != nullptr){
 
 			// Set texture filtering to linear.
-			SDL_bool linearFilter = SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "linear");
+			SDL_bool linearFilter = SDL_SetHint(SDL_HINT_RENDER_SCALE_QUALITY, "nearest");
+			
 			if(linearFilter){
 				Log(INFO) << "Linear texture filtering enabled!";
 				rescale(Configuration::getLogicalRenderSize());
 			}
+			
 			else{
 				Log(WARN) << "Linear texture filtering disabled!";
 			}
@@ -94,6 +97,8 @@ void Window::rescale(unsigned int size_){
 		size_ = 10;
 		Log(WARN) << "Trying to rescale for a value too big.";
 	}
+
+	Log(DEBUG) << "Size-> " << size_;
 
 	SDL_RenderSetLogicalSize(
 		Window::sdlRenderer,

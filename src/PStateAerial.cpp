@@ -4,7 +4,7 @@
 void PStateAerial::enter(){
     this->box.x = 58;
     this->box.y = 72;
-    this->box.w = 97;
+    this->box.w = 130;
     this->box.h = 145;
 
 	this->player->getAnimation()->changeAnimation(4, 3, 14, false, 1.4);

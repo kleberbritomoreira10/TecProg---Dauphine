@@ -130,9 +130,9 @@ void Player::render(const double cameraX_, const double cameraY_){
     // SDL_RenderFillRect(Window::getRenderer(), &actualRect);
 
     // Bounding box.
-    SDL_Rect boundingBox2 = {(int)(this->boundingBox.x - cameraX_), (int)(this->boundingBox.y - cameraY_), (int)this->boundingBox.w, (int)this->boundingBox.h};
-    SDL_SetRenderDrawColor( Window::getRenderer(), 0xFF, 0xFF, 0xFF, 0xFF);
-    SDL_RenderFillRect(Window::getRenderer(), &boundingBox2);
+    // SDL_Rect boundingBox2 = {(int)(this->boundingBox.x - cameraX_), (int)(this->boundingBox.y - cameraY_), (int)this->boundingBox.w, (int)this->boundingBox.h};
+    // SDL_SetRenderDrawColor( Window::getRenderer(), 0xFF, 0xFF, 0xFF, 0xFF);
+    // SDL_RenderFillRect(Window::getRenderer(), &boundingBox2);
     /////////////////////////////////////////////////////////////////////////////////////
 
     if(this->sprite != nullptr){

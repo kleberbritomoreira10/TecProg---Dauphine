@@ -13,6 +13,6 @@ config = {
 	windowTitle = "Dauphine",
 
 	-- the logical rendering size, practically looks like the distance of the camera
-	cameraDistance = 6,
+	cameraDistance = 8,
 
 }

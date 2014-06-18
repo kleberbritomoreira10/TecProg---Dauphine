@@ -7,7 +7,7 @@
 void PStateMoving::enter(){
     this->box.x = 58;
     this->box.y = 72;
-    this->box.w = 140;
+    this->box.w = 130;
     this->box.h = 160;
 
     this->player->getAnimation()->changeAnimation(4,2,9,false,0.7);
