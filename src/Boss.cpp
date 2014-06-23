@@ -2,27 +2,39 @@
 #include "Logger.h"
 #include <cmath>
 
+#include "BStateIdle.h"
+
 #include "Window.h"
+
+#define ADD_STATE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass(this))
 
 Boss::Boss(const double x_, const double y_, const std::string& path_) :
 	DynamicEntity(x_, y_, path_),	
 	animation(nullptr),
 	dead(false)
 {
+	initializeStates();
+
 	this->speed = 3.0;
 
 	this->width = 360;
 	this->height = 240;
 
 	this->animation = new Animation(0, 0, this->width, this->height, 0, false);
+	this->currentState = this->statesMap.at(IDLE);
+	this->currentState->enter();
 }
 
 Boss::~Boss(){
+	if(this->currentState != nullptr){
+		this->currentState->exit();
+	}
 
+	destroyStates();
 }
 
 void Boss::update(const double dt_){
-
+	
 	scoutPosition(dt_);
 
 	this->animation->update(this->animationClip, dt_);
@@ -34,6 +46,7 @@ void Boss::update(const double dt_){
 
 	updatePosition(dt_);
 
+	this->currentState->update(dt_);
 }
 
 void Boss::render(const double cameraX_, const double cameraY_){
@@ -61,6 +74,25 @@ void Boss::render(const double cameraX_, const double cameraY_){
 		else
 			this->sprite->render(dx, dy, &this->animationClip, false, 0.0, nullptr, flip);
 	}
+}
+
+void Boss::initializeStates(){
+	// Initialize all the states in Boss here.
+	ADD_STATE(IDLE,         BStateIdle);
+}
+
+void Boss::destroyStates(){
+	// Delete all the states in Boss here.
+	std::map<BStates, StateBoss*>::const_iterator it;
+	for(it = this->statesMap.begin(); it != this->statesMap.end(); it++){
+		delete it->second;
+	}
+}
+
+void Boss::changeState(const BStates state_){
+	this->currentState->exit();
+	this->currentState = this->statesMap.at(state_);
+	this->currentState->enter();
 }
 
 void Boss::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){

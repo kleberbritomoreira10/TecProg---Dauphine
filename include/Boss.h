@@ -2,11 +2,21 @@
 #define INCLUDE_BOSS_H
 
 #include "DynamicEntity.h"
+#include "StateBoss.h"
 #include "Animation.h"
+#include <map>
+
+class StateBoss;
 
 class Boss : public DynamicEntity {
 
 	public:
+
+		enum BStates : uint8_t {
+			IDLE = 0,
+			AERIAL,
+			DEAD
+		};
 
 		/**
 		* The constructor.
@@ -26,6 +36,10 @@ class Boss : public DynamicEntity {
 		*/
 		virtual void update(const double dt_);
 
+		void initializeStates();
+		void destroyStates();
+		void changeState(const BStates state_);
+
 		/**
 		* Renders the player.
 		* Uses the player's sprite render method.
@@ -42,7 +56,9 @@ class Boss : public DynamicEntity {
 	private:
 		virtual void updateBoundingBox();
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
+		StateBoss* currentState;
 		Animation* animation;
+		std::map<BStates, StateBoss*> statesMap;
 		bool dead;
 
 };
