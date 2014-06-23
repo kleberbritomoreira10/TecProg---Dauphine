@@ -45,22 +45,19 @@ void LevelBoss::load(){
 	// Loading the player and the camera.
 	Player* lPlayer = new Player(this->tileMap->getInitialX(), this->tileMap->getInitialY(), pathPlayerSpriteSheet);
 	Camera* lCamera = new Camera(lPlayer); 
-	
 
 	this->playerHud = new PlayerHUD(lPlayer);
 
-	Enemy* lEnemy = new Enemy(3712.0, 1400.0, pathEnemy, false, 0.0);
-	lEnemy->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy);
+	Boss* lBoss = new Boss(1000, 984.0, pathEnemy);
+	lBoss->getAnimation()->changeAnimation(0,0,1,false,0.0);
 	
 	// Test text.
 	// Text* text = new Text(200.0, 900.0, "res/fonts/KGFeeling22.ttf", 50, "dauphine");
 	// addEntity(text);
 
-	// Finally, setting the player and the camera.
+	// Finally, setting the player, the boss and the camera.
 	setPlayer(lPlayer);
-	Enemy::pLife = this->player->life;
-
+	setBoss(lBoss);
 	setCamera(lCamera);
 
 	Game::instance().getFade().fadeOut(0, 0.002);
@@ -85,14 +82,6 @@ void LevelBoss::update(const double dt_){
 		entity->update(dt_);
 	}
 
-	// Updating the enemies.
-	for(auto enemy : this->enemies){
-		returnObjects.clear();
-		this->quadTree->retrieve(returnObjects, enemy->getBoundingBox());
-		enemy->setCollisionRects(returnObjects);
-		enemy->update(dt_);
-	}
-
 	// Set to GameOver if the player is dead.
 	if(this->player->isDead()){
 		Game::instance().setState(Game::GStates::GAMEOVER);
@@ -106,17 +95,11 @@ void LevelBoss::update(const double dt_){
 		potion->setCollisionRects(returnObjects);
 	}
 
-	/// @todo Maybe refactor this static Enemy::px, Enemy::py.
-	// Updating player info for the enemies.
-	Enemy::px = this->player->x;
-	Enemy::py = this->player->y;
-	if(this->player->life != Enemy::pLife){
-		this->player->changeState(Player::PStates::HITED);
-		this->player->life = Enemy::pLife;
-	}
-
 	// Updating the HUD.
 	this->playerHud->update();
+
+	// Updating the boss.
+	this->boss->update(dt_);
 
 	// Updating the camera.
 	this->camera->update();
@@ -160,6 +143,8 @@ void LevelBoss::render(){
 	this->tileMap->render(cameraX, cameraY);
 
 	this->playerHud->render();
+
+	this->boss->render(cameraX, cameraY);
 
 	for(auto enemy : this->enemies){
 		enemy->render(cameraX, cameraY);

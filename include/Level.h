@@ -9,6 +9,7 @@
 #include "QuadTree.h"
 #include "PlayerHUD.h"
 #include "Enemy.h"
+#include "Boss.h"
 
 /**
 * Abstract class for levels.
@@ -52,6 +53,8 @@ class Level : public StateGame {
 		*/
 		virtual void setCamera(Camera* const camera_);
 
+		virtual void setBoss(Boss* const boss);
+
 		virtual void clearEnemies();
 
 		unsigned int width; /**< Width that defines the horizontal limits. */
@@ -60,6 +63,8 @@ class Level : public StateGame {
 		Player* player; /**< The direct reference to player, even though its in the list. */
 		Camera* camera; /**< The current camera for that level. */
 		PlayerHUD* playerHud;
+
+		Boss* boss;
 
 		TileMap* tileMap;
 		QuadTree* quadTree;

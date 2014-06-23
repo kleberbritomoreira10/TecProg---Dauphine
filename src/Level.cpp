@@ -75,6 +75,25 @@ void Level::setCamera(Camera* const camera_){
 
 }
 
+void Level::setBoss(Boss* const boss_){
+	this->boss = boss_;
+
+	if(this->boss != nullptr){
+		if(this->player != nullptr){
+			this->boss->setLevelWH(this->width, this->height);
+		}
+		else{
+			Log(WARN) << "Shouldn't set the boss before the player, in Level!";
+		}
+	}
+	else{
+		Log(WARN) << "Setting a null boss!";
+	}
+
+}
+
+
+
 void Level::clearEnemies(){
 	for(auto enemy : this->enemies){
 		delete enemy;
