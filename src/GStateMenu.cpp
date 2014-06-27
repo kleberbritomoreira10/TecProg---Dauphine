@@ -8,10 +8,10 @@ GStateMenu::GStateMenu() :
 	menuImage(nullptr),
 	passedTime(0.0),
 	currentSelection(Selection::NEWGAME),
-	selectorXPositionLeft {430, 455, 455, 470},
-	selectorYPositionLeft {360, 410, 465, 510},
-	selectorXPositionRight {680, 650, 650, 640},
-	selectorYPositionRight {360, 410, 465, 510}
+	selectorXPositionLeft {610, 635, 635, 645},
+	selectorYPositionLeft {560, 625, 690, 755},
+	selectorXPositionRight {880, 855, 855, 845},
+	selectorYPositionRight {560, 625, 690, 755}
 {
 
 }
