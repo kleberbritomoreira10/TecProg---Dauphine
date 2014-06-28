@@ -29,6 +29,7 @@ class Game {
 			MENU,
 			LEVEL_ONE,
 			LEVEL_BOSS,
+			CONTINUE,
 			OPTIONS,
 			CREDITS,
 			GAMEOVER

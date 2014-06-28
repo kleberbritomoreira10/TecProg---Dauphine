@@ -1,4 +1,3 @@
-
 - Implement potion explosion effect.
 - Implement enemy's upward attack.
 - Implement potion refill system.
@@ -10,7 +9,7 @@
 - Implement attract mode.
 - Implement loading thread.
 
-- Fix menu cursors.
+- Fix menu cursors. (DONE)
 - Fix the unflipabble tile.
 - Fix enemy reviving if hit while aerial.
 - Fix the background (maybe implement parallax effect).

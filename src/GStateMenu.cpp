@@ -98,9 +98,15 @@ void GStateMenu::handleSelectorMenu(){
 	else if(currentSelection == Selection::NEWGAME && keyStates[GameKeys::SPACE] == true){
 		Game::instance().setState(Game::GStates::LEVEL_ONE);
 	}
+
+	else if(currentSelection == Selection::CONTINUE && keyStates[GameKeys::SPACE] == true){
+		Game::instance().setState(Game::GStates::CONTINUE);
+	}
+
 	else if(currentSelection == Selection::OPTIONS && keyStates[GameKeys::SPACE] == true){
 		// Game::instance().setState(Game::GStates::OPTIONS);
 	}
+
 	else if(currentSelection == Selection::CREDITS && keyStates[GameKeys::SPACE] == true){
 		// Game::instance().setState(Game::GStates::CREDITS);
 	}

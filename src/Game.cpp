@@ -7,6 +7,7 @@
 #include "LevelOne.h"
 #include "LevelBoss.h"
 #include "GStateMenu.h"
+#include "GStateContinue.h"
 #include "GStateOptions.h"
 #include "GStateCredits.h"
 #include "GStateGameOver.h"
@@ -125,6 +126,7 @@ void Game::initializeStates(){
 	ADD_STATE(MENU, GStateMenu);
 	ADD_STATE(LEVEL_ONE, LevelOne);
 	ADD_STATE(LEVEL_BOSS, LevelBoss);
+	ADD_STATE(CONTINUE, GStateContinue);
 	ADD_STATE(OPTIONS, GStateOptions);
 	ADD_STATE(CREDITS, GStateCredits);
 	ADD_STATE(GAMEOVER, GStateGameOver);
