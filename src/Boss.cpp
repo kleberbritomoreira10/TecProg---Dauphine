@@ -12,8 +12,11 @@
 Boss::Boss(const double x_, const double y_, const std::string& path_) :
 	DynamicEntity(x_, y_, path_),	
 	potionsLeft(3),
-	animation(nullptr),
 	sawPlayer(false),
+	potions(),
+	currentState(nullptr),
+	animation(nullptr),
+	statesMap(),
 	dead(false)
 {
 	initializeStates();

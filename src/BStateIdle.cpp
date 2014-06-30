@@ -13,6 +13,8 @@ void BStateIdle::exit(){
 }
 
 void BStateIdle::update(const double dt_){
+	((void)dt_); // Unused.
+
 	if(this->boss->isRight && this->boss->x > 1960){
 		this->boss->isRight = false;
 	}

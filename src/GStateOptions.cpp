@@ -5,8 +5,8 @@
 #include <string>
 
 GStateOptions::GStateOptions() :
-	optionsImage(nullptr),
-	elapsedTime(0.0)
+	elapsedTime(0.0),
+	optionsImage(nullptr)
 {
 	this->currentResolution = R_800_600;
 

@@ -12,6 +12,8 @@ void BStateAttack::exit(){
 }
 
 void BStateAttack::update(const double dt_){
+	((void)dt_); // Unused.
+
 	this->boss->usePotion(30, 10);
 	this->boss->changeState(Boss::BStates::IDLE);
 }

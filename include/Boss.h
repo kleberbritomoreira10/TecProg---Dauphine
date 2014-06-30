@@ -53,10 +53,11 @@ class Boss : public DynamicEntity {
 
 		void usePotion(const int strength_, const int distance_);
 		
-		unsigned int potionsLeft;
 		Animation* getAnimation();
 		bool isDead();
 		void setDead(bool isDead_);
+
+		unsigned int potionsLeft;
 
 		bool sawPlayer;
 		std::vector<Potion*> potions;
@@ -64,6 +65,7 @@ class Boss : public DynamicEntity {
 	private:
 		virtual void updateBoundingBox();
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
+		
 		StateBoss* currentState;
 		Animation* animation;
 		std::map<BStates, StateBoss*> statesMap;
