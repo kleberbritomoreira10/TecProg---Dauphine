@@ -65,7 +65,8 @@ class Enemy : public DynamicEntity {
 		double originalX;
 		bool patrol;
 		double patrolLength;
-
+		unsigned int life;
+	
 	private:
 		virtual void updateBoundingBox();
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);

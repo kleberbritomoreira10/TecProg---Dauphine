@@ -114,8 +114,10 @@ class Player : public DynamicEntity {
 		Crosshair* crosshair;
 
 		unsigned int life;
-		// unsigned int maxLife;
+		unsigned int attackStrength;
+		//unsigned int maxLife;
 
+		bool canAttack;
 		unsigned int currentItem;
 
 		bool isDead();

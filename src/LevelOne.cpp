@@ -167,7 +167,15 @@ void LevelOne::update(const double dt_){
 		if(Collision::rectsCollided(this->player->getBoundingBox(), enemy->getBoundingBox())){
 			if(this->player->isRight != enemy->isRight)
 				if(this->player->isCurrentState(Player::PStates::ATTACK) || this->player->isCurrentState(Player::PStates::ATTACKMOVING)){
-					enemy->changeState(Enemy::EStates::DEAD);
+					
+					if(enemy->life > 0 && this->player->canAttack){
+						enemy->life -= this->player->attackStrength;
+						this->player->canAttack = false;
+					}
+					// Log(DEBUG) << "Enemy Life = " << enemy->life;
+
+					if(enemy->life <= 0)
+						enemy->changeState(Enemy::EStates::DEAD);
 				}
 		}
 	}

@@ -28,6 +28,8 @@ Player::Player(const double x_, const double y_, const std::string& path_) :
     maxPotions(3),
     crosshair(new Crosshair(0.0, 0.0, "res/images/alvo.png")),
     life(3),
+    attackStrength(50),
+    canAttack(true),
     currentItem(PItems::POTION),
     animation(nullptr),
     currentState(nullptr)

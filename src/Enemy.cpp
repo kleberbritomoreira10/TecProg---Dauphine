@@ -31,7 +31,8 @@ Enemy::Enemy(const double x_, const double y_, const std::string& path_, const b
 	currentState(nullptr),
 	animation(nullptr),
 	statesMap(),
-	dead(false)
+	dead(false),
+	life(100)
 {
 	initializeStates();
 

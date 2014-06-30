@@ -15,7 +15,7 @@ void PStateHited::enter(){
 	if(this->player->isRight){
 		direction = -1;
 	}
-	this->player->vx = 1000 * direction;
+	// this->player->vx = 1000 * direction;
 }
 
 void PStateHited::exit(){
