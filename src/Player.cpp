@@ -160,7 +160,7 @@ void Player::usePotion(const int strength_, const int distance_){
     if(this->potionsLeft > 0){
         this->potionsLeft--;
         const double potionX = ((this->isRight) ? this->boundingBox.x + this->boundingBox.w : this->boundingBox.x);
-        Potion* potion = new Potion(potionX , this->y, "res/images/potion.png", strength_, distance_, this->isRight);
+        Potion* potion = new Potion(potionX , this->y, "res/images/potion.png", strength_, this->vx, distance_, this->isRight);
         this->potions.push_back(potion);
     }
 }

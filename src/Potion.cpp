@@ -2,7 +2,7 @@
 #include "Logger.h"
 #include <cmath>
 
-Potion::Potion(const double x_, const double y_, const std::string& path_, const int strength_,
+Potion::Potion(const double x_, const double y_, const std::string& path_, const int strength_, const int inertia_,
 	const int distance_, const bool isRight_) :
 
 	DynamicEntity(x_, y_, path_),
@@ -17,7 +17,10 @@ Potion::Potion(const double x_, const double y_, const std::string& path_, const
 	}
 
     this->y = this->y + 100;
-    this->vx = 5;    
+
+    Log(DEBUG) << inertia_;
+
+    this->vx = 5 + abs(inertia_/80);    
     this->vy = 5;
 }
 
