@@ -48,18 +48,37 @@ class GStateOptions : public StateGame {
 		virtual void render();
 
 	private:
+		void applyOptions();
+
+		double elapsedTime;
+
+		enum Option : uint8_t {
+			O_RESOLUTION = 0,
+			O_VOLUME_MUSIC,
+			O_VOLUME_SFX,
+			O_APPLY,
+			O_RETURN,
+			O_TOTAL
+		};
+
 		enum Resolution : uint8_t {
 			R_800_600 = 0,
+			R_768_432,
 			R_960_540,
 			R_TOTAL
 		};
-
-		double elapsedTime;
 
 		Sprite* resolutions[R_TOTAL];
 		Sprite* optionsImage; /**< The image shown on the menu. */
 
 		uint8_t currentResolution;
+		uint8_t currentOption;
+
+		Sprite* selector; /**< The selector shown on the menu. */
+		int selectorXPositionLeft[Option::O_TOTAL]; /**< The X position of the left selector.. */
+		int selectorYPositionLeft[Option::O_TOTAL]; /**< The Y position of the left selector.. */
+		int selectorXPositionRight[Option::O_TOTAL]; /**< The X position of the left selector.. */
+		int selectorYPositionRight[Option::O_TOTAL]; /**< The Y position of the left selector.. */
 
 };
 
