@@ -18,8 +18,6 @@ Potion::Potion(const double x_, const double y_, const std::string& path_, const
 
     this->y = this->y + 100;
 
-    Log(DEBUG) << inertia_;
-
     this->vx = 5 + abs(inertia_/80);    
     this->vy = 5;
 }

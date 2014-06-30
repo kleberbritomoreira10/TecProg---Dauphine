@@ -28,11 +28,11 @@ Enemy::Enemy(const double x_, const double y_, const std::string& path_, const b
 	originalX(x_),
 	patrol(patrol_),
 	patrolLength(patrolLength_),
+	life(100),
 	currentState(nullptr),
 	animation(nullptr),
 	statesMap(),
-	dead(false),
-	life(100)
+	dead(false)
 {
 	initializeStates();
 

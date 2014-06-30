@@ -162,3 +162,7 @@ void Game::clearKeyFromInput(const GameKeys key_){
 FadeScreen& Game::getFade(){
 	return (*(this->fadeScreen));
 }
+
+void Game::resizeWindow(const unsigned int width_, const unsigned int height_){
+	this->window->resize(width_, height_);
+}

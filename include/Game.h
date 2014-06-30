@@ -84,6 +84,7 @@ class Game {
 		void stop();
 
 		void clearKeyFromInput(const GameKeys key_);
+		void resizeWindow(const unsigned int width_, const unsigned int height_);
 
 	private:
 		/**

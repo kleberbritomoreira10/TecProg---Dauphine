@@ -104,10 +104,10 @@ void GStateMenu::handleSelectorMenu(){
 	}
 
 	else if(currentSelection == Selection::OPTIONS && keyStates[GameKeys::SPACE] == true){
-		// Game::instance().setState(Game::GStates::OPTIONS);
+		Game::instance().setState(Game::GStates::OPTIONS);
 	}
 
 	else if(currentSelection == Selection::CREDITS && keyStates[GameKeys::SPACE] == true){
-		// Game::instance().setState(Game::GStates::CREDITS);
+		Game::instance().setState(Game::GStates::CREDITS);
 	}
 }
