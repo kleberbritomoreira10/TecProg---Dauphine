@@ -95,6 +95,10 @@ void LevelBoss::update(const double dt_){
 		potion->setCollisionRects(returnObjects);
 	}
 
+	if(this->boss->x < this->player->x + 10 && this->boss->x > this->player->x - 10){
+		this->boss->sawPlayer = true;
+	}
+
 	// Updating the HUD.
 	this->playerHud->update();
 

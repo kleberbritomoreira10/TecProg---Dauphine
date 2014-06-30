@@ -9,7 +9,7 @@ enum TypeCollision : uint8_t {
 	LEVEL_END,
 	LEVEL_BEGIN,
 	CLIMB,
-	BLACK,
+	CHECKPOINT,
 	NONE
 };
 

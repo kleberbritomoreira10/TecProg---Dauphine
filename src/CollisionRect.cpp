@@ -40,8 +40,8 @@ TypeCollision CollisionRect::stringToType(const std::string& strType_){
 	else if(strType_ == "climb"){
 		return CLIMB;
 	}
-	else if(strType_ == "black"){
-		return BLACK;
+	else if(strType_ == "checkpoint"){
+		return CHECKPOINT;
 	}
 	else{
 		Log(ERROR) << "Unknown collision type for " << strType_ << " .";

@@ -13,13 +13,26 @@ void BStateIdle::exit(){
 }
 
 void BStateIdle::update(const double dt_){
-	timeFalling += dt_;
-	if(timeFalling > 0.2){
-		this->boss->vy = -350;
-		timeFalling = 0;
+	((void)dt_); // Unused.
+
+	if(this->boss->isRight && this->boss->x > 1960){
+		this->boss->isRight = false;
+	}
+	else if(!this->boss->isRight && this->boss->x < 300){
+		this->boss->isRight = true;
+	}
+	
+	if(this->boss->isRight){
+		this->boss->move(false, true);
+	}
+	else{
+		this->boss->move(true, false);
 	}
 
-	this->boss->applyGravity();
+	if(this->boss->sawPlayer){
+		this->boss->changeState(Boss::BStates::ATTACK);
+	}
+
 }
 
 BStateIdle::BStateIdle(Boss* const boss_) :
