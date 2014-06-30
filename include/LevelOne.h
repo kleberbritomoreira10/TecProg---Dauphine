@@ -2,6 +2,7 @@
 #define INCLUDE_LEVELONE_H
 
 #include "Level.h"
+#include "Sprite.h"
 
 /**
 * The first level of the game.
@@ -45,6 +46,10 @@ class LevelOne : public Level {
 		* @see Sprite::render()
 		*/
 		virtual void render();
+
+		int itens[4];
+		bool pego[4];
+		int unsigned numeroItens = 4;
 
 };
 

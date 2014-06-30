@@ -6,9 +6,12 @@
 #include "Crosshair.h"
 #include "TileMap.h"
 #include "Collision.h"
+#include "Crosshair.h"
 
 LevelOne::LevelOne() :
-	Level()
+	Level(),
+	itens {5000, 6000, 7000, 8000},
+	pego{false,false,false,false}
 {
 
 }
@@ -48,7 +51,7 @@ void LevelOne::load(){
 	
 
 	this->playerHud = new PlayerHUD(lPlayer);
-
+	
 	Enemy* lEnemy = new Enemy(3712.0, 1400.0, pathEnemy, false, 0.0);
 	lEnemy->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy);
@@ -76,7 +79,8 @@ void LevelOne::load(){
 	Enemy* lEnemy7 = new Enemy(10880.0, 1400.0, pathEnemy, false, 0.0);
 	lEnemy7->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy7);
-	
+
+		
 	// Test text.
 	// Text* text = new Text(200.0, 900.0, "res/fonts/KGFeeling22.ttf", 50, "dauphine");
 	// addEntity(text);
@@ -134,6 +138,21 @@ void LevelOne::update(const double dt_){
 	// Updating player info for the enemies.
 	Enemy::px = this->player->x;
 	Enemy::py = this->player->y;
+
+
+
+	for (int i = 0; i < numeroItens; ++i)
+	{
+		if(abs(this->player->x - itens[i])<= 20 && pego[i] == false){
+		this->player->addPotions(3);
+		pego[i]=true;
+	}
+	}
+	
+
+
+
+
 	if(this->player->life != Enemy::pLife){
 		this->player->changeState(Player::PStates::HITED);
 		this->player->life = Enemy::pLife;
