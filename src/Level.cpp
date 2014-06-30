@@ -6,6 +6,7 @@ Level::Level() :
 	height(0),
 	player(nullptr),
 	camera(nullptr),
+	playerHud(nullptr),
 	tileMap(nullptr),
 	quadTree(nullptr),
 	background(nullptr)

@@ -48,7 +48,18 @@ class GStateOptions : public StateGame {
 		virtual void render();
 
 	private:
+		enum Resolution : uint8_t {
+			R_800_600 = 0,
+			R_960_540,
+			R_TOTAL
+		};
+
+		double elapsedTime;
+
+		Sprite* resolutions[R_TOTAL];
 		Sprite* optionsImage; /**< The image shown on the menu. */
+
+		uint8_t currentResolution;
 
 };
 
