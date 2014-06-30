@@ -3,6 +3,7 @@
 #include <cmath>
 
 #include "BStateIdle.h"
+#include "BStateAttack.h"
 
 #include "Window.h"
 
@@ -10,12 +11,16 @@
 
 Boss::Boss(const double x_, const double y_, const std::string& path_) :
 	DynamicEntity(x_, y_, path_),	
+	potionsLeft(3),
 	animation(nullptr),
+	sawPlayer(false),
 	dead(false)
 {
 	initializeStates();
 
-	this->speed = 3.0;
+	this->isRight = true;
+
+	this->speed = 400.0;
 
 	this->width = 360;
 	this->height = 240;
@@ -47,6 +52,13 @@ void Boss::update(const double dt_){
 	updatePosition(dt_);
 
 	this->currentState->update(dt_);
+
+    for(auto potion : this->potions){
+        if(!potion->activated){
+            // Delete potion.
+        }
+        potion->update(dt_);
+    }
 }
 
 void Boss::render(const double cameraX_, const double cameraY_){
@@ -74,11 +86,16 @@ void Boss::render(const double cameraX_, const double cameraY_){
 		else
 			this->sprite->render(dx, dy, &this->animationClip, false, 0.0, nullptr, flip);
 	}
+
+    for (auto potion : this->potions) {
+        potion->render(cameraX_, cameraY_);
+    }
 }
 
 void Boss::initializeStates(){
 	// Initialize all the states in Boss here.
 	ADD_STATE(IDLE,         BStateIdle);
+	ADD_STATE(ATTACK,       BStateAttack);
 }
 
 void Boss::destroyStates(){
@@ -111,6 +128,16 @@ void Boss::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detectio
 		this->nextX = this->x;
 		this->vx = -0.001;
 	}
+}
+
+void Boss::usePotion(const int strength_, const int distance_){
+    if(this->potionsLeft > 0){
+        this->potionsLeft--;
+        const double potionX = ((this->isRight) ? this->boundingBox.x + this->boundingBox.w : this->boundingBox.x);
+        Potion* potion = new Potion(potionX , this->y, "res/images/potion.png", strength_, this->vx, distance_, this->isRight);
+        this->potions.push_back(potion);
+    }
+    return ;
 }
 
 Animation *Boss::getAnimation(){

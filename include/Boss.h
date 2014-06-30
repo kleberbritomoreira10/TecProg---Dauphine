@@ -4,7 +4,9 @@
 #include "DynamicEntity.h"
 #include "StateBoss.h"
 #include "Animation.h"
+#include "Potion.h"
 #include <map>
+#include <vector>
 
 class StateBoss;
 
@@ -14,7 +16,7 @@ class Boss : public DynamicEntity {
 
 		enum BStates : uint8_t {
 			IDLE = 0,
-			AERIAL,
+			ATTACK,
 			DEAD
 		};
 
@@ -48,10 +50,16 @@ class Boss : public DynamicEntity {
 		* @param cameraY_ : The y position of the camera.
 		*/
 		virtual void render(const double cameraX_, const double cameraY_);
+
+		void usePotion(const int strength_, const int distance_);
 		
+		unsigned int potionsLeft;
 		Animation* getAnimation();
 		bool isDead();
 		void setDead(bool isDead_);
+
+		bool sawPlayer;
+		std::vector<Potion*> potions;
 
 	private:
 		virtual void updateBoundingBox();
