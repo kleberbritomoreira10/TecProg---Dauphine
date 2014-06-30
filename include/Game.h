@@ -86,6 +86,8 @@ class Game {
 		void clearKeyFromInput(const GameKeys key_);
 		void resizeWindow(const unsigned int width_, const unsigned int height_);
 
+		bool isPaused;
+
 	private:
 		/**
 		* The constructor.
@@ -107,8 +109,12 @@ class Game {
 		*/
 		void destroyStates();
 
+		void renderPause();
+
 		Window* window; /**< The game Window. */
 		bool isRunning; /**< Whether the game is currently running/looping or not. */		
+		Sprite* pauseImage;
+		Sprite* pauseSelector;
 
 		AudioHandler* audioHandler; /**< The Game AudioHandler. */
 		InputHandler* inputHandler; /**< The Game InputHandler. */
@@ -121,7 +127,23 @@ class Game {
 
 		FPSmanager fpsManager; /**< The FPSManager from SDL2_GFX. Handles the framerate
 			capping. */
+		void handleSelectorMenu();
+		void updatePause();
 
+		enum PSelection : uint8_t {
+			RESUME = 0,
+			SAVE,
+			EXIT,
+			TOTAL
+		};
+
+		double passedTime; /**< The time already elapsed since the beggining of the menu. */
+
+		int currentSelection;
+		int selectorXPositionLeft[PSelection::TOTAL]; /**< The X position of the left selector.. */
+		int selectorYPositionLeft[PSelection::TOTAL]; /**< The Y position of the left selector.. */
+		int selectorXPositionRight[PSelection::TOTAL]; /**< The X position of the left selector.. */
+		int selectorYPositionRight[PSelection::TOTAL]; /**< The Y position of the left selector.. */
 
 };
 

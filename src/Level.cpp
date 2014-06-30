@@ -1,5 +1,6 @@
 #include "Level.h"
 #include "Logger.h"
+#include "Game.h"
 
 Level::Level() :
 	width(0),

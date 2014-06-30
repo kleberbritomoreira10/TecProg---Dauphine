@@ -11,6 +11,7 @@
 #include "GStateOptions.h"
 #include "GStateCredits.h"
 #include "GStateGameOver.h"
+#include "Sprite.h"
 
 #include "Logger.h"
 
@@ -22,14 +23,22 @@ Game& Game::instance(){
 }
 
 Game::Game() :
+	isPaused(false),
 	window(nullptr),
 	isRunning(false),
+	pauseImage(nullptr),
 	audioHandler(new AudioHandler()),
 	inputHandler(new InputHandler()),
 	resourceManager(new ResourceManager()),
 	fadeScreen(nullptr),
 	currentState(nullptr),
-	statesMap()
+	statesMap(),
+	passedTime(0.0),
+	currentSelection(PSelection::RESUME),
+	selectorXPositionLeft {610, 635, 635},
+	selectorYPositionLeft {560, 625, 690},
+	selectorXPositionRight {880, 855, 855},
+	selectorYPositionRight {560, 625, 690}
 {
 	initializeStates();
 
@@ -37,6 +46,10 @@ Game::Game() :
 		Configuration::getScreenHeight(), Configuration::getWindowTitle());
 
 	assert(this->window != nullptr && "The window should not be null!");
+
+	this->pauseImage = getResources().get("res/images/pause_overlay.png");
+	this->pauseSelector = getResources().get("res/images/cursor_regular.png");
+	this->pauseSelector->setWidth(50);
 
 	this->isRunning = true;
 	FPSWrapper::initialize(this->fpsManager);
@@ -92,7 +105,21 @@ void Game::runGame(){
 				return;
 			}
 
-			this->currentState->update(deltaTime);
+			std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
+
+			if(keyStates[GameKeys::ESCAPE]){
+				this->isPaused = true;
+			}
+
+			if(!this->isPaused){
+				this->currentState->update(deltaTime);				    
+			}
+			else{
+				this->passedTime += deltaTime;
+				updatePause();
+			}
+
+
 			this->fadeScreen->update(deltaTime);
 
 			accumulatedTime -= deltaTime;
@@ -101,8 +128,11 @@ void Game::runGame(){
 
 		// Render.
 		window->clear();
-
-		this->currentState->render();
+		
+		this->currentState->render();				    
+		if(this->isPaused){
+			renderPause();
+		}
 		this->fadeScreen->render();
 
 		window->render();
@@ -130,6 +160,67 @@ void Game::initializeStates(){
 	ADD_STATE(OPTIONS, GStateOptions);
 	ADD_STATE(CREDITS, GStateCredits);
 	ADD_STATE(GAMEOVER, GStateGameOver);
+}
+
+void Game::renderPause(){
+	if(this->pauseImage != nullptr){
+		this->pauseImage->render(0, 0, nullptr, true);
+
+		this->pauseSelector->render(selectorXPositionLeft[currentSelection],
+			selectorYPositionLeft[currentSelection], nullptr, false, 0.0, nullptr, SDL_FLIP_NONE);
+
+		this->pauseSelector->render(selectorXPositionRight[currentSelection],
+			selectorYPositionRight[currentSelection], nullptr, false, 0.0, nullptr, SDL_FLIP_HORIZONTAL);
+	}
+	else{
+		Log(WARN) << "No image set to display on the menu!";
+	}
+}
+
+void Game::updatePause(){
+
+	handleSelectorMenu();
+}
+
+void Game::handleSelectorMenu(){
+	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
+
+	const double selectorDelayTime = 0.2;
+
+	if(keyStates[GameKeys::DOWN] == true || keyStates[GameKeys::RIGHT] == true){
+		if(this->passedTime >= selectorDelayTime){
+			if(currentSelection < (PSelection::TOTAL - 1)){
+				currentSelection++;
+			}
+			else{
+				currentSelection = PSelection::RESUME;
+			}
+			this->passedTime = 0.0;
+		}
+	}
+	else if(keyStates[GameKeys::UP] == true || keyStates[GameKeys::LEFT] == true){
+		if(this->passedTime >= selectorDelayTime){
+			if(currentSelection > PSelection::RESUME){
+				currentSelection--;
+			}
+			else{
+				currentSelection = (PSelection::TOTAL - 1);
+			}
+			this->passedTime = 0.0;
+		}
+	}
+	else if(currentSelection == PSelection::RESUME && keyStates[GameKeys::SPACE] == true){
+		this->isPaused = false;
+	}
+
+	else if(currentSelection == PSelection::SAVE && keyStates[GameKeys::SPACE] == true){
+		
+	}
+
+	else if(currentSelection == PSelection::EXIT && keyStates[GameKeys::SPACE] == true){
+		Game::instance().setState(Game::GStates::MENU);
+		this->isPaused = false;
+	}
 }
 
 void Game::destroyStates(){

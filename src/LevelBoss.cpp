@@ -70,6 +70,7 @@ void LevelBoss::unload(){
 }
 
 void LevelBoss::update(const double dt_){
+
 	// Populating the QuadTree.
 	this->quadTree->setObjects(this->tileMap->getCollisionRects());
 
@@ -134,7 +135,6 @@ void LevelBoss::update(const double dt_){
 		}
 	}
 	
-
 }
 
 void LevelBoss::render(){
