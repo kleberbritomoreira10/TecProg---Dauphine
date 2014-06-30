@@ -6,6 +6,11 @@
 void EStateCurious::enter(){
 	this->enemy->getAnimation()->changeAnimation(1, 0, 9, false, 1.2);
 	this->enemy->speed = 5.0;
+
+	if(enemy->life <= 0){
+		enemy->vy = 0;
+		enemy->changeState(Enemy::EStates::DEAD);
+	}
 }
 
 void EStateCurious::exit(){

@@ -7,6 +7,11 @@ void EStateAttack::enter(){
 	this->enemy->getAnimation()->changeAnimation(2, 1, 6, false, 0.6);
 	this->enemy->speed = 7.0;
 	attackTime = 0;
+
+	if(enemy->life <= 0){
+		enemy->vy = 0;
+		enemy->changeState(Enemy::EStates::DEAD);
+	}
 }
 
 void EStateAttack::exit(){

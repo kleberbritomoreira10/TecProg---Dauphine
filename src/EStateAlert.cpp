@@ -4,6 +4,11 @@
 void EStateAlert::enter(){
 	this->enemy->getAnimation()->changeAnimation(1, 0, 9, false, 0.9);
 	this->enemy->speed = 6.5;
+
+	if(enemy->life <= 0){
+		enemy->vy = 0;
+		enemy->changeState(Enemy::EStates::DEAD);
+	}
 }
 
 void EStateAlert::exit(){

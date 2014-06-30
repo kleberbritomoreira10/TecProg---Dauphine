@@ -6,6 +6,11 @@ void EStatePatrolling::enter(){
 	this->enemy->isGrounded = true;
 	this->enemy->x = this->enemy->originalX;
 	this->direction = 1.0;
+
+	if(enemy->life <= 0){
+		enemy->vy = 0;
+		enemy->changeState(Enemy::EStates::DEAD);
+	}
 }
 
 void EStatePatrolling::exit(){

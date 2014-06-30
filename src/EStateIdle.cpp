@@ -5,6 +5,11 @@
 
 void EStateIdle::enter(){
 	this->enemy->isGrounded = true;
+
+	if(enemy->life <= 0){
+		enemy->vy = 0;
+		enemy->changeState(Enemy::EStates::DEAD);
+	}
 }
 
 void EStateIdle::exit(){

@@ -156,7 +156,15 @@ void LevelOne::update(const double dt_){
 		for(auto enemy : this->enemies){
 			if(Collision::rectsCollided(potion->getBoundingBox(), enemy->getBoundingBox())){
 				if(potion->activated){
-					enemy->changeState(Enemy::EStates::DEAD);
+					
+					
+					if(enemy->life > 0 && this->player->canAttack){
+						enemy->life -= 100;
+					}
+					// Log(DEBUG) << "Enemy Life = " << enemy->life;
+
+					if(enemy->life <= 0)
+						enemy->changeState(Enemy::EStates::DEAD);
 				}
 			}
 		}

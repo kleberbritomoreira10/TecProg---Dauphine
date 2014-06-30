@@ -63,6 +63,7 @@ Enemy::~Enemy(){
 }
 
 void Enemy::update(const double dt_){
+	
 	this->currentState->update(dt_);
 	forceMaxSpeed();
 
