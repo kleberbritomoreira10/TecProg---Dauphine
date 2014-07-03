@@ -27,6 +27,7 @@ class Game {
 		enum GStates : uint8_t {
 			SPLASH = 0,
 			MENU,
+			NEW_GAME,
 			LEVEL_ONE,
 			LEVEL_BOSS,
 			CONTINUE,
@@ -87,6 +88,8 @@ class Game {
 		void resizeWindow(const unsigned int width_, const unsigned int height_);
 
 		bool isPaused;
+
+		static unsigned int currentSlot;
 
 	private:
 		/**

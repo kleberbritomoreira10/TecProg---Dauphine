@@ -1,6 +1,6 @@
 options = {
 	images = {
-		dummy = "res/images/temp_menu_options.png",
+		dummy = "res/images/options.png",
 		cursor = "res/images/cursor_regular.png",
 	}
 }

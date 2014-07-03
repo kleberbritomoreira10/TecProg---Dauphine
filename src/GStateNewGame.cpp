@@ -1,13 +1,10 @@
-#include "GStateContinue.h"
+#include "GStateNewGame.h"
 #include "LuaScript.h"
 #include "Game.h"
 
-#include <SDL2/SDL_ttf.h>
-#include "Window.h"
-
 #include <string>
 
-GStateContinue::GStateContinue() :
+GStateNewGame::GStateNewGame() :
 	background(nullptr),
 	selector(nullptr),
 	passedTime(0.0),
@@ -18,13 +15,14 @@ GStateContinue::GStateContinue() :
 
 }
 
-GStateContinue::~GStateContinue(){
+GStateNewGame::~GStateNewGame(){
 
 }
 
-void GStateContinue::load(){
-	Log(DEBUG) << "Loading Continue Screen...";
+void GStateNewGame::load(){
+	Log(DEBUG) << "Loading Choose Slot Screen...";
 
+	//As is uses the same resources as the Continue screen...
 	LuaScript luaMenu("lua/Continue.lua");
 	const std::string pathBackground = luaMenu.unlua_get<std::string>("continue.images.background");
 	const std::string pathSelector = luaMenu.unlua_get<std::string>("continue.images.selector");
@@ -35,12 +33,12 @@ void GStateContinue::load(){
     Game::instance().getFade().fadeOut(0, 0.002);
 }
 
-void GStateContinue::unload(){
+void GStateNewGame::unload(){
 	Log(DEBUG) << "\tUnloading menu...";
 	cleanEntities();
 }
 
-void GStateContinue::update(const double dt_){
+void GStateNewGame::update(const double dt_){
 	this->passedTime += dt_;
 
 	handleSelectorMenu();
@@ -52,34 +50,7 @@ void GStateContinue::update(const double dt_){
 
 }
 
-void GStateContinue::render(){
-
-	const char* text = "TEST TEST TEST";
-
-	if(!text)
-		Log(DEBUG) << "NULL Message";
-
-	TTF_Font* font = TTF_OpenFont("res/fonts/KGFeeling22.ttf", 60);
-
-	if(!font)
-		Log(DEBUG) << "NULL font";
-
-	SDL_Surface* renderedText = TTF_RenderText_Blended(font, text, {255, 0xCE, 0xCE, 0xCE});;
-
-	if(!renderedText)
-		Log(DEBUG) << "NULL renderedText";
-
-	SDL_Rect dest;
-	dest.x = 0;
-	dest.y = 0;
-	dest.h = 100;
-	dest.w = 100;
-
-	SDL_Texture* Message = SDL_CreateTextureFromSurface(Window::getRenderer(), renderedText);
-
-	SDL_RenderCopy(Window::getRenderer(), Message, NULL, &dest);
-
-	//Text* info = new Text(0.0, 0.0, "./res/fonts/maturasc.ttf", 100, "TEST TEST TEST");
+void GStateNewGame::render(){
 
 	if(this->background != nullptr){
 		this->background->render(0, 0, nullptr, true);
@@ -94,7 +65,7 @@ void GStateContinue::render(){
 	}
 }
 
-void GStateContinue::handleSelectorMenu(){
+void GStateNewGame::handleSelectorMenu(){
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
 	const double selectorDelayTime = 0.2;
@@ -127,13 +98,13 @@ void GStateContinue::handleSelectorMenu(){
 		}
 	}
 	else if(currentSelection == Selection::SLOT_1 && keyStates[GameKeys::SPACE] == true){
-		// Game::instance().setState(Game::GStates::LEVEL_ONE);
+		Game::instance().setState(Game::GStates::LEVEL_ONE);
 	}
 	else if(currentSelection == Selection::SLOT_2 && keyStates[GameKeys::SPACE] == true){
-		// Game::instance().setState(Game::GStates::LEVEL_ONE);
+		Game::instance().setState(Game::GStates::LEVEL_ONE);
 	}
 	else if(currentSelection == Selection::SLOT_3 && keyStates[GameKeys::SPACE] == true){
-		// Game::instance().setState(Game::GStates::LEVEL_ONE);
+		Game::instance().setState(Game::GStates::LEVEL_ONE);
 	}
 
 }

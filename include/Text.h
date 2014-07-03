@@ -10,8 +10,8 @@
 class Text : public Entity {
 
 	public:
-		Text(const double x_, const double y_, const std::string& path_, const int size_,
-			const std::string& text_);
+		Text(const double x_, const double y_, const char* path_, const int size_,
+	const char* text_); 
 
 		virtual ~Text();
 

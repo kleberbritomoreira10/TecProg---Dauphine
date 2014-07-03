@@ -10,10 +10,10 @@ GStateOptions::GStateOptions() :
 	currentResolution(R_800_600),
 	currentOption(O_RESOLUTION),
 	selector(nullptr),
-	selectorXPositionLeft  {590, 590, 590, 590, 590},
-	selectorYPositionLeft  {380, 460, 540, 620, 700},
-	selectorXPositionRight {900, 900, 900, 900, 900},
-	selectorYPositionRight {380, 460, 540, 620, 700}
+	selectorXPositionLeft  {780, 780, 780, 590, 590},
+	selectorYPositionLeft  {365, 468, 580, 665, 750},
+	selectorXPositionRight {1010, 1010, 1010, 900, 900},
+	selectorYPositionRight {365, 468, 580, 665, 750}
 {
 	for(unsigned int i = 0; i < R_TOTAL; i++){
 		this->resolutions[i] = nullptr;
@@ -126,12 +126,12 @@ void GStateOptions::render(){
 		Log(WARN) << "No image set for the options screen!";
 	}
 
-	if(this->resolutions[this->currentResolution] != nullptr){
-		this->resolutions[this->currentResolution]->render(650, 400);
-	}
-	else{
-		Log(WARN) << "No image set for the current resolution!";
-	}
+	// if(this->resolutions[this->currentResolution] != nullptr){
+	// 	this->resolutions[this->currentResolution]->render(650, 400);
+	// }
+	// else{
+	// 	Log(WARN) << "No image set for the current resolution!";
+	// }
 
 	if(this->selector != nullptr){
 		this->selector->render(selectorXPositionLeft[currentOption],

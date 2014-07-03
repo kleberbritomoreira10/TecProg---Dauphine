@@ -7,6 +7,7 @@
 #include "LevelOne.h"
 #include "LevelBoss.h"
 #include "GStateMenu.h"
+#include "GStateNewGame.h"
 #include "GStateContinue.h"
 #include "GStateOptions.h"
 #include "GStateCredits.h"
@@ -36,9 +37,9 @@ Game::Game() :
 	passedTime(0.0),
 	currentSelection(PSelection::RESUME),
 	selectorXPositionLeft {610, 635, 635},
-	selectorYPositionLeft {560, 625, 690},
+	selectorYPositionLeft {400, 500, 590},
 	selectorXPositionRight {880, 855, 855},
-	selectorYPositionRight {560, 625, 690}
+	selectorYPositionRight {400, 500, 590}
 {
 	initializeStates();
 
@@ -154,6 +155,7 @@ void Game::initializeStates(){
 	// Emplace the states pointers onto the map.
 	ADD_STATE(SPLASH, GStateSplash);
 	ADD_STATE(MENU, GStateMenu);
+	ADD_STATE(NEW_GAME, GStateNewGame);
 	ADD_STATE(LEVEL_ONE, LevelOne);
 	ADD_STATE(LEVEL_BOSS, LevelBoss);
 	ADD_STATE(CONTINUE, GStateContinue);
