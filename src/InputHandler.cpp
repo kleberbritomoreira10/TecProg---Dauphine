@@ -78,7 +78,9 @@ void InputHandler::handleInput(){
 					this->keyStates[GameKeys::AIM] = true;
 					break;
 				case SDLK_z: // z.
-					this->keyStates[GameKeys::LATTACK] = true;
+					if(this->sdlEvent.key.repeat == 0){
+						this->keyStates[GameKeys::LATTACK] = true;
+					}
 					break;
 				case SDLK_TAB:
 					this->keyStates[GameKeys::ITEMS] = true;

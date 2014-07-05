@@ -55,33 +55,6 @@ void GStateContinue::update(const double dt_){
 
 void GStateContinue::render(){
 
-	// const char* text = "TEST TEST TEST";
-
-	// if(!text)
-	// 	Log(DEBUG) << "NULL Message";
-
-	// TTF_Font* font = TTF_OpenFont("res/fonts/KGFeeling22.ttf", 60);
-
-	// if(!font)
-	// 	Log(DEBUG) << "NULL font";
-
-	// SDL_Surface* renderedText = TTF_RenderText_Blended(font, text, {255, 0xCE, 0xCE, 0xCE});;
-
-	// if(!renderedText)
-	// 	Log(DEBUG) << "NULL renderedText";
-
-	// SDL_Rect dest;
-	// dest.x = 0;
-	// dest.y = 0;
-	// dest.h = 100;
-	// dest.w = 100;
-
-	// SDL_Texture* Message = SDL_CreateTextureFromSurface(Window::getRenderer(), renderedText);
-
-	// SDL_RenderCopy(Window::getRenderer(), Message, NULL, &dest);
-
-	//Text* info = new Text(0.0, 0.0, "./res/fonts/maturasc.ttf", 100, "TEST TEST TEST");
-
 	if(this->background != nullptr){
 		this->background->render(0, 0, nullptr, true);
 

@@ -29,6 +29,7 @@ class Game {
 			MENU,
 			NEW_GAME,
 			LEVEL_ONE,
+			LEVEL_TWO,
 			LEVEL_BOSS,
 			CONTINUE,
 			OPTIONS,

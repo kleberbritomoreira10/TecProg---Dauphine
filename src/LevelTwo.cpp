@@ -1,6 +1,5 @@
-#include "LevelOne.h"
+#include "LevelTwo.h"
 #include "Game.h"
-#include "GameSave.h"
 #include "LuaScript.h"
 #include "Logger.h"
 #include "Enemy.h"
@@ -9,23 +8,23 @@
 #include "Collision.h"
 #include "Crosshair.h"
 
-LevelOne::LevelOne() :
+LevelTwo::LevelTwo() :
 	Level(),
-	items{5000, 6000, 7000, 8000},
-	caughtItems{false,false,false,false}
+	itens {5000, 6000, 7000, 8000},
+	pego{false,false,false,false}
 {
 
 }
 
-LevelOne::~LevelOne(){
+LevelTwo::~LevelTwo(){
 
 }
 
-void LevelOne::load(){
-	Log(DEBUG) << "Loading level 1...";
+void LevelTwo::load(){
+	Log(DEBUG) << "Loading level 2...";
 
 	// Loading the tile/tilemap.
-	this->tileMap = new TileMap("res/maps/level1.tmx");
+	this->tileMap = new TileMap("res/maps/level2.tmx");
 
 	// Setting the level width/height.
 	this->width = this->tileMap->getMapWidth();
@@ -34,7 +33,6 @@ void LevelOne::load(){
 	this->quadTree = new QuadTree(0, bounds);
 
 	this->background = Game::instance().getResources().get("res/images/lv1_background.png");
-	this->checkpoint = Game::instance().getResources().get("res/images/checkpoint.png");
 
 	// Getting information from lua script.
 	LuaScript luaLevel1("lua/Level1.lua");
@@ -49,12 +47,8 @@ void LevelOne::load(){
 
 	// Loading the player and the camera.
 	Player* lPlayer = new Player(this->tileMap->getInitialX(), this->tileMap->getInitialY(), pathPlayerSpriteSheet);
-	Log(DEBUG) << "Antes: " << lPlayer->x << " " << lPlayer->y;
-	GameSave::instance().restorePlayerPosition(lPlayer);
-	Log(DEBUG) << "Depois: " << lPlayer->x << " " << lPlayer->y;
 	Camera* lCamera = new Camera(lPlayer); 
 	
-
 	this->playerHud = new PlayerHUD(lPlayer);
 	
 	Enemy* lEnemy = new Enemy(3712.0, 1400.0, pathEnemy, false, 0.0);
@@ -84,6 +78,7 @@ void LevelOne::load(){
 	Enemy* lEnemy7 = new Enemy(10880.0, 1400.0, pathEnemy, false, 0.0);
 	lEnemy7->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy7);
+
 		
 	// Test text.
 	// Text* text = new Text(200.0, 900.0, "res/fonts/KGFeeling22.ttf", 50, "dauphine");
@@ -98,13 +93,13 @@ void LevelOne::load(){
 	Game::instance().getFade().fadeOut(0, 0.002);
 }
 
-void LevelOne::unload(){
+void LevelTwo::unload(){
 	Log(DEBUG) << "\tUnloading level 1...";
 	cleanEntities();
 	clearEnemies();
 }
 
-void LevelOne::update(const double dt_){
+void LevelTwo::update(const double dt_){
 	// Populating the QuadTree.
 	this->quadTree->setObjects(this->tileMap->getCollisionRects());
 
@@ -143,15 +138,15 @@ void LevelOne::update(const double dt_){
 	Enemy::px = this->player->x;
 	Enemy::py = this->player->y;
 
-	for (int i = 0; i < NUMBER_ITEMS; ++i){
-		if(abs(this->player->x - items[i])<= 20 && caughtItems[i] == false){
+	for (int i = 0; i < numeroItens; ++i){
+		if(abs(this->player->x - itens[i])<= 20 && pego[i] == false){
 			this->player->addPotions(3);
-			caughtItems[i]=true;
+			pego[i]=true;
 		}
 	}
 
 	if(this->player->life != Enemy::pLife){
-		this->player->changeState(Player::PStates::HITED);
+		// this->player->changeState(Player::PStates::HITED);
 		this->player->life = Enemy::pLife;
 	}
 
@@ -204,16 +199,10 @@ void LevelOne::update(const double dt_){
 		}
 	}
 	
-	//Saving the game state
-	if(!this->checkpointVisited && this->player->getBoundingBox().x >= 1490 && this->player->getBoundingBox().x <= 1501){
-		this->checkpoint = Game::instance().getResources().get("res/images/checkpoint_visited.png");
-		GameSave::instance().saveLevel(1, this->player, this->enemies);
-		this->checkpointVisited = true;
-	}
 
 }
 
-void LevelOne::render(){
+void LevelTwo::render(){
 	const int cameraX = this->camera->getClip().x;
 	const int cameraY = this->camera->getClip().y;
 
@@ -221,8 +210,6 @@ void LevelOne::render(){
 
 	// Render the tiles in the TileMap.
 	this->tileMap->render(cameraX, cameraY);
-
-	this->checkpoint->render(1500 - cameraX, 1600 - cameraY);
 
 	this->playerHud->render();
 
