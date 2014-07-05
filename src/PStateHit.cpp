@@ -11,15 +11,20 @@ void PStateHit::enter(){
 
 	this->player->getAnimation()->changeAnimation(4, 8, 1, false, 0);
 
-	// int direction = 1;
-	// if(this->player->isRight){
-	// 	direction = -1;
-	// }
-	// this->player->vx = 1000 * direction;
+	int direction = 1;
+	if(this->player->isRight){
+		direction = -1;
+	}
+	this->player->vy = -30;
+	this->player->vx = 1000 * direction;
 }
 
 void PStateHit::exit(){
 
+	if(this->player->isRight)
+		this->player->vx = 0.0;
+	else
+		this->player->vx = -0.001;
 }
 
 void PStateHit::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){

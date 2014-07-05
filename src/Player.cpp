@@ -93,7 +93,7 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
         this->vy = 0.0;
     }
     if(detections_.at(CollisionSide::SOLID_BOTTOM)){
-        if(isCurrentState(PStates::AERIAL) || isCurrentState(PStates::ATTACKJUMPING)){
+        if(isCurrentState(PStates::AERIAL) || isCurrentState(PStates::ATTACKJUMPING) || isCurrentState(PStates::HITED)){
             const double magic = 32.0;
             const double aerialToIdleCorrection = 8.0;
 

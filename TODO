@@ -11,12 +11,12 @@
 
 - Fix menu cursors. (DONE)
 - Fix the unflipabble tile.
-- Fix enemy reviving if hit while aerial.
+- Fix enemy reviving if hit while aerial. (DONE)
 - Fix the background (maybe implement parallax effect).
 - Fix Nadine's knockback after being hit.
 
-- Balance Nadine's attack.
-- Balance Nadine's jump.
+- Balance Nadine's attack. (DONE)
+- Balance Nadine's jump. 
 
 - Put the SFX in the game.
 - Decide whether to keep aim or not.

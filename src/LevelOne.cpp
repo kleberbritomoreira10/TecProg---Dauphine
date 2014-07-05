@@ -151,7 +151,7 @@ void LevelOne::update(const double dt_){
 	}
 
 	if(this->player->life != Enemy::pLife){
-		this->player->changeState(Player::PStates::HITED);
+		// this->player->changeState(Player::PStates::HITED);
 		this->player->life = Enemy::pLife;
 	}
 

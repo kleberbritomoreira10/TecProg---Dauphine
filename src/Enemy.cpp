@@ -137,7 +137,7 @@ void Enemy::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detecti
 		this->vy = 0.0;
 	}
 	if(detections_.at(CollisionSide::SOLID_BOTTOM)){
-		if(this->currentState == this->statesMap.at(EStates::AERIAL)){
+		if(this->currentState == this->statesMap.at(EStates::AERIAL) || this->currentState == this->statesMap.at(EStates::DEAD)){
 			this->nextY -= fmod(this->nextY, 64.0) - 16.0;
 			this->vy = 0.0;
 			if(this->isDead()){

@@ -107,7 +107,7 @@ std::array<bool, CollisionSide::SOLID_TOTAL> DynamicEntity::detectCollision(){
 }
 
 void DynamicEntity::jump(){
-	this->vy = (-1) * 1000.0;
+	this->vy = (-1) * 1210.0;
 }
 
 void DynamicEntity::applyGravity(){
