@@ -11,8 +11,8 @@
 
 LevelOne::LevelOne() :
 	Level(),
-	itens {5000, 6000, 7000, 8000},
-	pego{false,false,false,false}
+	items{5000, 6000, 7000, 8000},
+	caughtItems{false,false,false,false}
 {
 
 }
@@ -143,10 +143,10 @@ void LevelOne::update(const double dt_){
 	Enemy::px = this->player->x;
 	Enemy::py = this->player->y;
 
-	for (int i = 0; i < numeroItens; ++i){
-		if(abs(this->player->x - itens[i])<= 20 && pego[i] == false){
+	for (int i = 0; i < NUMBER_ITEMS; ++i){
+		if(abs(this->player->x - items[i])<= 20 && caughtItems[i] == false){
 			this->player->addPotions(3);
-			pego[i]=true;
+			caughtItems[i]=true;
 		}
 	}
 
