@@ -1,4 +1,4 @@
-#include "LevelOne.h"
+#include "LevelTwo.h"
 #include "Game.h"
 #include "LuaScript.h"
 #include "Logger.h"
@@ -8,7 +8,7 @@
 #include "Collision.h"
 #include "Crosshair.h"
 
-LevelOne::LevelOne() :
+LevelTwo::LevelTwo() :
 	Level(),
 	itens {5000, 6000, 7000, 8000},
 	pego{false,false,false,false}
@@ -16,15 +16,15 @@ LevelOne::LevelOne() :
 
 }
 
-LevelOne::~LevelOne(){
+LevelTwo::~LevelTwo(){
 
 }
 
-void LevelOne::load(){
-	Log(DEBUG) << "Loading level 1...";
+void LevelTwo::load(){
+	Log(DEBUG) << "Loading level 2...";
 
 	// Loading the tile/tilemap.
-	this->tileMap = new TileMap("res/maps/level1.tmx");
+	this->tileMap = new TileMap("res/maps/level2.tmx");
 
 	// Setting the level width/height.
 	this->width = this->tileMap->getMapWidth();
@@ -49,7 +49,6 @@ void LevelOne::load(){
 	Player* lPlayer = new Player(this->tileMap->getInitialX(), this->tileMap->getInitialY(), pathPlayerSpriteSheet);
 	Camera* lCamera = new Camera(lPlayer); 
 	
-
 	this->playerHud = new PlayerHUD(lPlayer);
 	
 	Enemy* lEnemy = new Enemy(3712.0, 1400.0, pathEnemy, false, 0.0);
@@ -94,13 +93,13 @@ void LevelOne::load(){
 	Game::instance().getFade().fadeOut(0, 0.002);
 }
 
-void LevelOne::unload(){
+void LevelTwo::unload(){
 	Log(DEBUG) << "\tUnloading level 1...";
 	cleanEntities();
 	clearEnemies();
 }
 
-void LevelOne::update(const double dt_){
+void LevelTwo::update(const double dt_){
 	// Populating the QuadTree.
 	this->quadTree->setObjects(this->tileMap->getCollisionRects());
 
@@ -139,18 +138,15 @@ void LevelOne::update(const double dt_){
 	Enemy::px = this->player->x;
 	Enemy::py = this->player->y;
 
-
-
-	for (int i = 0; i < numeroItens; ++i)
-	{
+	for (int i = 0; i < numeroItens; ++i){
 		if(abs(this->player->x - itens[i])<= 20 && pego[i] == false){
 			this->player->addPotions(3);
 			pego[i]=true;
 		}
 	}
-	
+
 	if(this->player->life != Enemy::pLife){
-		//this->player->changeState(Player::PStates::HITED);
+		// this->player->changeState(Player::PStates::HITED);
 		this->player->life = Enemy::pLife;
 	}
 
@@ -162,7 +158,7 @@ void LevelOne::update(const double dt_){
 
 	// Set next level if end is reached.
 	if(this->player->reachedLevelEnd){
-		Game::instance().setState(Game::GStates::LEVEL_TWO);
+		Game::instance().setState(Game::GStates::LEVEL_BOSS);
 		return;
 	}
 
@@ -206,7 +202,7 @@ void LevelOne::update(const double dt_){
 
 }
 
-void LevelOne::render(){
+void LevelTwo::render(){
 	const int cameraX = this->camera->getClip().x;
 	const int cameraY = this->camera->getClip().y;
 
