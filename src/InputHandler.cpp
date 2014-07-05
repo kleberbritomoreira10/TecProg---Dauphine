@@ -86,7 +86,9 @@ void InputHandler::handleInput(){
 					this->keyStates[GameKeys::ITEMS] = true;
 					break;
 				case SDLK_ESCAPE: // Esc.
-					this->keyStates[GameKeys::ESCAPE] = true;
+					if(this->sdlEvent.key.repeat == 0){
+						this->keyStates[GameKeys::ESCAPE] = true;
+					}
 					break;
 				default:
 					break;

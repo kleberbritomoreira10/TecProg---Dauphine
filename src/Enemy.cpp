@@ -140,6 +140,9 @@ void Enemy::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detecti
 		if(this->currentState == this->statesMap.at(EStates::AERIAL)){
 			this->nextY -= fmod(this->nextY, 64.0) - 16.0;
 			this->vy = 0.0;
+			if(this->isDead()){
+				this->changeState(EStates::DEAD);
+			}
 			if(this->patrol){
 				this->changeState(EStates::PATROLLING);
 			}

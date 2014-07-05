@@ -89,13 +89,11 @@ void Player::update(const double dt_){
 }
 
 void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){
-    /// @todo Fix this magic 16, and the TOP collision.
-
     if(detections_.at(CollisionSide::SOLID_TOP)){ 
         this->vy = 0.0;
     }
     if(detections_.at(CollisionSide::SOLID_BOTTOM)){
-        if(isCurrentState(PStates::AERIAL)){
+        if(isCurrentState(PStates::AERIAL) || isCurrentState(PStates::ATTACKJUMPING)){
             const double magic = 32.0;
             const double aerialToIdleCorrection = 8.0;
 
