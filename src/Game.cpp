@@ -109,7 +109,7 @@ void Game::runGame(){
 
 			std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
-			if(keyStates[GameKeys::ESCAPE]){
+			if(keyStates[GameKeys::ESCAPE] && isPauseable()){
 				this->isPaused = true;
 			}
 
@@ -260,4 +260,16 @@ FadeScreen& Game::getFade(){
 
 void Game::resizeWindow(const unsigned int width_, const unsigned int height_){
 	this->window->resize(width_, height_);
+}
+
+bool Game::isPauseable(){
+
+	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_ONE))
+		return true;
+	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_TWO))
+		return true;
+	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_BOSS))
+		return true;
+
+	return false;
 }

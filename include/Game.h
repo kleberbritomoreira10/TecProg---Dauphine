@@ -115,6 +115,8 @@ class Game {
 
 		void renderPause();
 
+		bool isPauseable();
+
 		Window* window; /**< The game Window. */
 		bool isRunning; /**< Whether the game is currently running/looping or not. */		
 		Sprite* pauseImage;

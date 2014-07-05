@@ -29,6 +29,10 @@ void GStateOptions::update(const double dt_){
 
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
+	if(keyStates[GameKeys::ESCAPE] == true){
+		Game::instance().setState(Game::GStates::MENU);
+	}
+
 	const double selectorDelayTime = 0.2;
 
 	if(keyStates[GameKeys::DOWN] == true){
