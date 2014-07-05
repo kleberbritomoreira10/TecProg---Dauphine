@@ -50,7 +50,7 @@ int GameSave::getSavedLevel(int continueSelection_){
 
 void GameSave::restorePlayerPosition(Player* player_){
 	double playerX_= 0;
-	double playerY_ = 0;
+	double playerY_= 0;
 	
 	if(!this->continueFile.fail()){
 		this->continueFile >> playerX_;
