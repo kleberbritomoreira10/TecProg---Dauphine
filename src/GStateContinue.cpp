@@ -1,6 +1,7 @@
 #include "GStateContinue.h"
 #include "LuaScript.h"
 #include "Game.h"
+#include "GameSave.h"
 
 #include <SDL2/SDL_ttf.h>
 #include "Window.h"
@@ -127,7 +128,9 @@ void GStateContinue::handleSelectorMenu(){
 		}
 	}
 	else if(currentSelection == Selection::SLOT_1 && keyStates[GameKeys::SPACE] == true){
-		// Game::instance().setState(Game::GStates::LEVEL_ONE);
+		if(GameSave::instance().getSavedLevel(Selection::SLOT_1)==1){
+			Game::instance().setState(Game::GStates::LEVEL_ONE);
+		}
 	}
 	else if(currentSelection == Selection::SLOT_2 && keyStates[GameKeys::SPACE] == true){
 		// Game::instance().setState(Game::GStates::LEVEL_ONE);

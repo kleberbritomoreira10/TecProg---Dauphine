@@ -34,6 +34,7 @@ void LevelOne::load(){
 	this->quadTree = new QuadTree(0, bounds);
 
 	this->background = Game::instance().getResources().get("res/images/lv1_background.png");
+	this->checkpoint = Game::instance().getResources().get("res/images/checkpoint.png");
 
 	// Getting information from lua script.
 	LuaScript luaLevel1("lua/Level1.lua");
@@ -48,6 +49,9 @@ void LevelOne::load(){
 
 	// Loading the player and the camera.
 	Player* lPlayer = new Player(this->tileMap->getInitialX(), this->tileMap->getInitialY(), pathPlayerSpriteSheet);
+	Log(DEBUG) << "Antes: " << lPlayer->x << " " << lPlayer->y;
+	GameSave::instance().restorePlayerPosition(lPlayer);
+	Log(DEBUG) << "Depois: " << lPlayer->x << " " << lPlayer->y;
 	Camera* lCamera = new Camera(lPlayer); 
 	
 
@@ -92,7 +96,6 @@ void LevelOne::load(){
 	setCamera(lCamera);
 
 	Game::instance().getFade().fadeOut(0, 0.002);
-	GameSave::instance().saveLevel(1, this->player, this->enemies);
 }
 
 void LevelOne::unload(){
@@ -201,6 +204,12 @@ void LevelOne::update(const double dt_){
 		}
 	}
 	
+	//Saving the game state
+	if(!this->checkpointVisited && this->player->getBoundingBox().x >= 1490 && this->player->getBoundingBox().x <= 1501){
+		this->checkpoint = Game::instance().getResources().get("res/images/checkpoint_visited.png");
+		GameSave::instance().saveLevel(1, this->player, this->enemies);
+		this->checkpointVisited = true;
+	}
 
 }
 
@@ -212,6 +221,8 @@ void LevelOne::render(){
 
 	// Render the tiles in the TileMap.
 	this->tileMap->render(cameraX, cameraY);
+
+	this->checkpoint->render(1500 - cameraX, 1600 - cameraY);
 
 	this->playerHud->render();
 
