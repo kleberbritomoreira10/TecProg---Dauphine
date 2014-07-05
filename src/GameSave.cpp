@@ -1,14 +1,17 @@
 #include "GameSave.h"
 #include "Logger.h"
 
-GameSave& GameSave::instance(int saveSelection_){
-	static GameSave* instance = new GameSave(saveSelection_);
+GameSave& GameSave::instance(){
+	static GameSave* instance = new GameSave();
 	return *instance;
 }
 
-GameSave::GameSave(int saveSelection_){
-	this->saveSelection = saveSelection_;
+GameSave::GameSave(){
 	Log(DEBUG) << "Saving level";
+}
+
+void GameSave::createSaveGameFile(int saveSelection_){
+	this->saveSelection = saveSelection_;
 	if(this->saveSelection == 0){
 		this->saveFile.open("saveSlot1.dauphine");
 	}
@@ -18,12 +21,12 @@ GameSave::GameSave(int saveSelection_){
 	else if(this->saveSelection == 2){
 		this->saveFile.open("saveSlot3.dauphine");
 	}
+}	
 
-}
-
-void GameSave::saveLevel(unsigned int level_, Player* player){
+void GameSave::saveLevel(unsigned int level_, Player* player, std::vector <Enemy*> enemies){
 	this->currentLevel = level_;
-	this->saveFile << this->currentLevel << endl;
-	this->saveFile << player->x << " " << player->y << endl;
+	this->saveFile << this->currentLevel << std::endl;
+	this->saveFile << player->x << " " << player->y << std::endl;
+	this->saveFile << enemies.size();
 	this->saveFile.close();
 }

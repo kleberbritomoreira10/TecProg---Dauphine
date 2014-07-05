@@ -3,15 +3,17 @@
 
 #include <fstream>
 #include "Player.h"
+#include "Enemy.h"
 
 class GameSave {
 
 	public:
 
-		GameSave& GameSave::instance(int saveSelection_);
-		GameSave(int saveSelection_);
+		static GameSave& instance();
+		GameSave();
 
-		void saveLevel(unsigned int level_, Player* player);
+		void createSaveGameFile(int saveSelection_);
+		void saveLevel(unsigned int level_, Player* player, std::vector <Enemy*> enemies);
 
 		int saveSelection;
 		unsigned int currentLevel;

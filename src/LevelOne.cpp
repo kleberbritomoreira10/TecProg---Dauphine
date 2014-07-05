@@ -1,5 +1,6 @@
 #include "LevelOne.h"
 #include "Game.h"
+#include "GameSave.h"
 #include "LuaScript.h"
 #include "Logger.h"
 #include "Enemy.h"
@@ -79,7 +80,6 @@ void LevelOne::load(){
 	Enemy* lEnemy7 = new Enemy(10880.0, 1400.0, pathEnemy, false, 0.0);
 	lEnemy7->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy7);
-
 		
 	// Test text.
 	// Text* text = new Text(200.0, 900.0, "res/fonts/KGFeeling22.ttf", 50, "dauphine");
@@ -92,6 +92,7 @@ void LevelOne::load(){
 	setCamera(lCamera);
 
 	Game::instance().getFade().fadeOut(0, 0.002);
+	GameSave::instance().saveLevel(1, this->player, this->enemies);
 }
 
 void LevelOne::unload(){
@@ -139,19 +140,12 @@ void LevelOne::update(const double dt_){
 	Enemy::px = this->player->x;
 	Enemy::py = this->player->y;
 
-
-
-	for (int i = 0; i < numeroItens; ++i)
-	{
+	for (int i = 0; i < numeroItens; ++i){
 		if(abs(this->player->x - itens[i])<= 20 && pego[i] == false){
-		this->player->addPotions(3);
-		pego[i]=true;
+			this->player->addPotions(3);
+			pego[i]=true;
+		}
 	}
-	}
-	
-
-
-
 
 	if(this->player->life != Enemy::pLife){
 		this->player->changeState(Player::PStates::HITED);
