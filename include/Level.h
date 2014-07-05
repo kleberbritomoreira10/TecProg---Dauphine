@@ -70,6 +70,8 @@ class Level : public StateGame {
 		QuadTree* quadTree;
 
 		Sprite* background;
+		Sprite* checkpoint;
+		bool checkpointVisited;
 
 		std::vector <Enemy*> enemies;
 

@@ -10,7 +10,8 @@ Level::Level() :
 	playerHud(nullptr),
 	tileMap(nullptr),
 	quadTree(nullptr),
-	background(nullptr)
+	background(nullptr),
+	checkpointVisited(false)
 {
 	// Only serves as the initializer for the derived classes.
 }
