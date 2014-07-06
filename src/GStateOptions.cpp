@@ -4,6 +4,8 @@
 
 #include <string>
 
+const std::string GStateOptions::possibleResolutions[3] = {"800x600", "768x432", "960x540"};
+
 GStateOptions::GStateOptions() :
 	elapsedTime(0.0),
 	optionsImage(nullptr),
@@ -13,11 +15,23 @@ GStateOptions::GStateOptions() :
 	selectorXPositionLeft  {780, 780, 780, 590, 590},
 	selectorYPositionLeft  {365, 468, 580, 665, 750},
 	selectorXPositionRight {1010, 1010, 1010, 900, 900},
-	selectorYPositionRight {365, 468, 580, 665, 750}
+	selectorYPositionRight {365, 468, 580, 665, 750},
+	resolution(nullptr),
+	volumeMusic(nullptr),
+	volumeSFX(nullptr)	
 {
 	for(unsigned int i = 0; i < R_TOTAL; i++){
 		this->resolutions[i] = nullptr;
 	}
+
+	SDL_Color textColorTest = {255, 255, 255, 255};
+	this->resolution = new Text(800.0, // x
+								365.0, // y
+								"res/fonts/maturasc.ttf", // font path
+								80, // size
+								possibleResolutions[currentResolution].c_str(), // text
+								textColorTest); // sdl_color
+
 }
 
 GStateOptions::~GStateOptions(){
@@ -129,6 +143,8 @@ void GStateOptions::render(){
 	else{
 		Log(WARN) << "No image set for the options screen!";
 	}
+
+	this->resolution->render(0, 0);
 
 	// if(this->resolutions[this->currentResolution] != nullptr){
 	// 	this->resolutions[this->currentResolution]->render(650, 400);

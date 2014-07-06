@@ -3,6 +3,7 @@
 
 #include "StateGame.h"
 #include "Sprite.h"
+#include "Text.h"
 
 /**
 * The state for the initial menu screen.
@@ -80,6 +81,11 @@ class GStateOptions : public StateGame {
 		int selectorXPositionRight[Option::O_TOTAL]; /**< The X position of the left selector.. */
 		int selectorYPositionRight[Option::O_TOTAL]; /**< The Y position of the left selector.. */
 
+		static const std::string possibleResolutions[3];
+
+		Text* resolution;
+		Text* volumeMusic;
+		Text* volumeSFX;
 };
 
 #endif // INCLUDE_GSTATEOPTIONS_H

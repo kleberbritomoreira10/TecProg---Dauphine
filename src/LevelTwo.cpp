@@ -147,8 +147,15 @@ void LevelTwo::update(const double dt_){
 	}
 
 	if(this->player->life != Enemy::pLife){
-		// this->player->changeState(Player::PStates::HITED);
-		this->player->life = Enemy::pLife;
+		if(this->player->isVulnerable){
+			this->player->life--;
+			Enemy::pLife = this->player->life;
+			this->player->changeState(Player::PStates::HITED);
+			this->player->isVulnerable = false;
+		}
+		else{
+
+		}
 	}
 
 	// Updating the HUD.
@@ -169,9 +176,9 @@ void LevelTwo::update(const double dt_){
 			if(Collision::rectsCollided(potion->getBoundingBox(), enemy->getBoundingBox())){
 				if(potion->activated){
 					
-					
 					if(enemy->life > 0 && this->player->canAttack){
 						enemy->life -= 100;
+						potion->activated = false;
 					}
 					// Log(DEBUG) << "Enemy Life = " << enemy->life;
 
@@ -199,8 +206,6 @@ void LevelTwo::update(const double dt_){
 				}
 		}
 	}
-	
-
 }
 
 void LevelTwo::render(){

@@ -9,7 +9,7 @@
 - Implement loading thread.
 
 - Fix menu cursors. (DONE)
-- Fix the unflipabble tile.
+- Fix the unflipabble tile. ("DONE")
 - Fix enemy reviving if hit while aerial. (DONE)
 - Fix the background (maybe implement parallax effect). (DONE)
 - Fix Nadine's knockback after being hit. (DONE)
