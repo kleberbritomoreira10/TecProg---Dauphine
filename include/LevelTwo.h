@@ -4,6 +4,8 @@
 #include "Level.h"
 #include "Sprite.h"
 
+#define NUMBER_ITEMS 4
+
 /**
 * The first level of the game.
 * Derived from Level class.
@@ -47,9 +49,8 @@ class LevelTwo : public Level {
 		*/
 		virtual void render();
 
-		int itens[4];
-		bool pego[4];
-		int unsigned numeroItens = 4;
+		int items[NUMBER_ITEMS];
+		bool caughtItems[NUMBER_ITEMS];
 
 };
 
