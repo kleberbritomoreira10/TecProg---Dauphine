@@ -1,5 +1,6 @@
 #include "Potion.h"
 #include "Logger.h"
+#include "Window.h"
 #include <cmath>
 
 Potion::Potion(const double x_, const double y_, const std::string& path_, const int strength_, const int inertia_,
@@ -7,14 +8,26 @@ Potion::Potion(const double x_, const double y_, const std::string& path_, const
 
 	DynamicEntity(x_, y_, path_),
 	activated(true),
+    canExplode(true),
+    isExploding(true),
 	strength(strength_),
 	distance(distance_),
-	flightTime(0.0)
+	flightTime(0.0),
+    animation(nullptr)
 {
+    this->width = 192;
+
 	this->isRight = isRight_;
 	if(this->isRight){
 		this->x -= this->width;
 	}
+    else{
+        this->x -= this->width;   
+    }
+
+    Log(DEBUG) << this->width;
+
+    this->animation = new Animation(0, 0, 192, 192, 13, false);
 
     this->y = this->y + 100;
 
@@ -32,11 +45,14 @@ void Potion::update(const double dt_){
 	const double gravity = 35;
 
     updateBoundingBox();
+    this->animation->update(this->animationClip, dt_);
 
 	const std::array<bool, CollisionSide::SOLID_TOTAL> detections = detectCollision();
     handleCollision(detections);
 
 	if(this->activated){
+
+        this->getAnimation()->changeAnimation(0, 0, 1, false, 0);
 
 		this->flightTime +=dt_;
 
@@ -52,6 +68,15 @@ void Potion::update(const double dt_){
 
 		this->y -= speedYIdk;
 	}
+    else{
+        if(this->canExplode){
+            this->getAnimation()->changeAnimation(1, 0, 12, false, 0.8);
+            this->canExplode = false;
+        }
+        if(this->getAnimation()->getCurrentFrame() == 12){
+            this->isExploding =false;
+        }
+    }
 }
 
 void Potion::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){
@@ -85,16 +110,32 @@ void Potion::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
 }
 
 void Potion::render(const double cameraX_, const double cameraY_){
-	if(this->sprite != nullptr && activated){
-        const double dx = this->x - cameraX_;
-        const double dy = this->y - cameraY_;
-        this->sprite->render(dx, dy, nullptr, false, this->vx*3/2, nullptr, SDL_FLIP_HORIZONTAL);
+	
+    const double dx = this->x - cameraX_ + this->width - 64;
+    const double dy = this->y - cameraY_ - this->height;
+
+    // // Actual.
+    // SDL_Rect actualRect = {(int)dx, (int)dy, (int)this->width, (int)this->height};
+    // SDL_SetRenderDrawColor( Window::getRenderer(), 0x00, 0x00, 0x00, 0xFF);
+    // SDL_RenderFillRect(Window::getRenderer(), &actualRect);
+
+    // // Bounding box.
+    // SDL_Rect boundingBox2 = {(int)(this->boundingBox.x - cameraX_), (int)(this->boundingBox.y - cameraY_), (int)this->boundingBox.w, (int)this->boundingBox.h};
+    // SDL_SetRenderDrawColor( Window::getRenderer(), 0xFF, 0xFF, 0xFF, 0xFF);
+    // SDL_RenderFillRect(Window::getRenderer(), &boundingBox2);
+
+    if(this->sprite != nullptr && this->isExploding){
+        this->sprite->render(dx, dy, &this->animationClip, false, this->vx*3/2, nullptr, SDL_FLIP_HORIZONTAL);
     }
 }
 
 void Potion::updateBoundingBox(){
-	this->boundingBox.x = (int) this->x;
-    this->boundingBox.y = (int) this->y;
-    this->boundingBox.w = (int) this->width;
-    this->boundingBox.h = (int) this->height;
+	this->boundingBox.x = (int) this->x + this->width;
+    this->boundingBox.y = (int) this->y - 32;
+    this->boundingBox.w = (int) 32;
+    this->boundingBox.h = (int) 32;
+}
+
+Animation* Potion::getAnimation(){
+    return (this->animation);
 }

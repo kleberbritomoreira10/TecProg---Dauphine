@@ -2,7 +2,7 @@
 #define INCLUDE_POTION_H
 
 #include "DynamicEntity.h"
-
+#include "Animation.h"
 /**
 * Class for the bomb potion.
 */
@@ -31,6 +31,11 @@ class Potion : public DynamicEntity {
 
 		bool activated;
 
+		Animation* getAnimation();
+
+		bool canExplode;
+		bool isExploding;
+
 	private:
 		/**
 		*/
@@ -39,6 +44,7 @@ class Potion : public DynamicEntity {
 		int strength;
 		int distance;
 		double flightTime;
+		Animation* animation;
 
 };
 

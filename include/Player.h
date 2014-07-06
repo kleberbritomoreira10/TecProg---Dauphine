@@ -121,6 +121,7 @@ class Player : public DynamicEntity {
 		unsigned int currentItem;
 
 		bool isDead();
+		bool closestEnemyIsRight;
 
 	private:
 		virtual void updateBoundingBox();

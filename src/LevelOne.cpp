@@ -149,7 +149,7 @@ void LevelOne::update(const double dt_){
 	}
 
 	if(this->player->life != Enemy::pLife){
-		// this->player->changeState(Player::PStates::HITED);
+		this->player->changeState(Player::PStates::HITED);
 		this->player->life = Enemy::pLife;
 	}
 
@@ -171,9 +171,9 @@ void LevelOne::update(const double dt_){
 			if(Collision::rectsCollided(potion->getBoundingBox(), enemy->getBoundingBox())){
 				if(potion->activated){
 					
-					
 					if(enemy->life > 0 && this->player->canAttack){
 						enemy->life -= 100;
+						potion->activated = false;
 					}
 					// Log(DEBUG) << "Enemy Life = " << enemy->life;
 
