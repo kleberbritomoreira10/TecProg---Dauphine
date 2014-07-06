@@ -25,6 +25,7 @@ Game& Game::instance(){
 }
 
 Game::Game() :
+	isCutscene(false),
 	isPaused(false),
 	window(nullptr),
 	isRunning(false),
@@ -44,10 +45,22 @@ Game::Game() :
 {
 	initializeStates();
 
+	currentLine = 0;
+
 	this->window = new Window(Configuration::getScreenWidth(),
 		Configuration::getScreenHeight(), Configuration::getWindowTitle());
 
 	assert(this->window != nullptr && "The window should not be null!");
+
+	std::string path = "res/images/Dialog/dialog";
+	std::string extension = ".png";	
+
+	for(int i = 0; i < numLines; i++){
+		dialog[i] = getResources().get(path + std::to_string(i) + extension);
+	
+		if(dialog[i] == nullptr)
+			Log(ERROR) << "Invalid dialog image.";
+	}
 
 	this->pauseImage = getResources().get("res/images/pause_overlay.png");
 	this->pauseSelector = getResources().get("res/images/cursor_regular.png");
@@ -117,9 +130,13 @@ void Game::runGame(){
 			if(!this->isPaused){
 				this->currentState->update(deltaTime);				    
 			}
-			else{
+			else if(!this->isCutscene){
 				this->passedTime += deltaTime;
 				updatePause();
+			}
+			else{
+				this->passedTime += deltaTime;
+				updateDialog();
 			}
 
 
@@ -136,6 +153,15 @@ void Game::runGame(){
 		if(this->isPaused){
 			renderPause();
 		}
+		else if(this->isCutscene){
+			if(currentLine < numLines)
+				renderDialog();
+			else{
+				currentLine = 0;
+				isCutscene = false;
+			}
+		}
+
 		this->fadeScreen->render();
 
 		window->render();
@@ -167,6 +193,36 @@ void Game::initializeStates(){
 	ADD_STATE(GAMEOVER, GStateGameOver);
 }
 
+void Game::renderDialog(){
+
+	if(currentLine > numLines){
+		currentLine = 0;
+		return;
+	}
+
+	if(this->dialog[currentLine])
+		this->dialog[currentLine]->render(0,0,nullptr,true);
+		
+}
+
+void Game::handleDialog(){
+	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
+
+	const double selectorDelayTime = 0.2;
+
+	if(keyStates[GameKeys::SPACE] == true ){
+		if(this->passedTime >= selectorDelayTime){
+			currentLine++;
+		}
+	}
+}
+
+void Game::updateDialog(){
+
+	handleDialog();
+
+}
+
 void Game::renderPause(){
 	if(this->pauseImage != nullptr){
 		this->pauseImage->render(0, 0, nullptr, true);
@@ -181,7 +237,6 @@ void Game::renderPause(){
 		Log(WARN) << "No image set to display on the menu!";
 	}
 }
-
 void Game::updatePause(){
 
 	handleSelectorMenu();

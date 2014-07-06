@@ -1,7 +1,7 @@
-- Implement potion explosion effect.
+- Implement potion explosion effect. (DONE)
 - Implement enemy's upward attack.
-- Implement potion refill system.
-- Implement the checkpoint system.
+- Implement potion refill system. (DONE)
+- Implement the checkpoint system. (DONE)
 - Implement the final boss.
 - Implement menu screens properly (Options / Credits).
 - Implement textbox system.
@@ -12,7 +12,7 @@
 - Fix menu cursors. (DONE)
 - Fix the unflipabble tile.
 - Fix enemy reviving if hit while aerial. (DONE)
-- Fix the background (maybe implement parallax effect).
+- Fix the background (maybe implement parallax effect). (DONE)
 - Fix Nadine's knockback after being hit.
 
 - Balance Nadine's attack. (DONE)
