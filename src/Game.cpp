@@ -47,12 +47,12 @@ Game::Game() :
 	selectorXPositionRight {930, 930},
 	selectorYPositionRight {400, 470}
 {
-	initializeStates();
-
 	this->window = new Window(Configuration::getScreenWidth(),
 		Configuration::getScreenHeight(), Configuration::getWindowTitle());
 
 	assert(this->window != nullptr && "The window should not be null!");
+
+	initializeStates();
 
 	std::string path = "res/images/Dialog/dialog";
 	std::string extension = ".png";	

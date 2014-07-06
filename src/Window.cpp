@@ -98,8 +98,6 @@ void Window::rescale(unsigned int size_){
 		Log(WARN) << "Trying to rescale for a value too big.";
 	}
 
-	Log(DEBUG) << "Size-> " << size_;
-
 	SDL_RenderSetLogicalSize(
 		Window::sdlRenderer,
 		Configuration::getResolutionWidth() * size_,

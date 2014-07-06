@@ -24,13 +24,27 @@ GStateOptions::GStateOptions() :
 		this->resolutions[i] = nullptr;
 	}
 
-	SDL_Color textColorTest = {255, 255, 255, 255};
+	SDL_Color whiteColor = {255, 255, 255, 255};
 	this->resolution = new Text(800.0, // x
 								365.0, // y
 								"res/fonts/maturasc.ttf", // font path
-								80, // size
+								65, // size
 								possibleResolutions[currentResolution].c_str(), // text
-								textColorTest); // sdl_color
+								whiteColor); // sdl_color
+
+	this->volumeMusic = new Text(800.0, // x
+								468.0, // y
+								"res/fonts/maturasc.ttf", // font path
+								65, // size
+								"rafael", // text
+								whiteColor); // sdl_color
+
+	this->volumeSFX = new Text(800.0, // x
+								580.0, // y
+								"res/fonts/maturasc.ttf", // font path
+								65, // size
+								"viadao", // text
+								whiteColor); // sdl_color
 
 }
 
@@ -145,6 +159,8 @@ void GStateOptions::render(){
 	}
 
 	this->resolution->render(0, 0);
+	this->volumeMusic->render(0, 0);
+	this->volumeSFX->render(0, 0);
 
 	// if(this->resolutions[this->currentResolution] != nullptr){
 	// 	this->resolutions[this->currentResolution]->render(650, 400);
