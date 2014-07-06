@@ -8,6 +8,7 @@
 #include "TileMap.h"
 #include "Collision.h"
 #include "Crosshair.h"
+#include "Text.h"
 
 LevelOne::LevelOne() :
 	Level(),
@@ -84,8 +85,14 @@ void LevelOne::load(){
 	this->enemies.push_back(lEnemy7);
 		
 	// Test text.
-	// Text* text = new Text(200.0, 900.0, "res/fonts/KGFeeling22.ttf", 50, "dauphine");
-	// addEntity(text);
+	SDL_Color textColorTest = {255, 255, 255, 255};
+	Text* text = new Text(this->tileMap->getInitialX(), // x
+						this->tileMap->getInitialY(), // y
+						"res/fonts/maturasc.ttf", // font path
+						500, // size
+						"dauphine", // text
+						textColorTest); // sdl_color
+	addEntity(text);
 
 	// Finally, setting the player and the camera.
 	setPlayer(lPlayer);

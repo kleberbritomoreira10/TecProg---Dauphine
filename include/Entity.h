@@ -68,6 +68,14 @@ class Entity {
 		*/
 		Entity(const double x_, const double y_, const std::string& path_);
 
+		/**
+		* The constructor.
+		* Initializes all the attributes.
+		* @param x_ : position in x axis.
+		* @param y_ : position in y axis.
+		*/
+		Entity(const double x_, const double y_);
+
 		Sprite* sprite; /**< The Sprite attributed to the entity. */
 		unsigned int width; /**< The entitys width, from its sprite. */
 		unsigned int height; /**< The entitys height, from its sprite. */

@@ -27,6 +27,19 @@ Entity::Entity(const double x_, const double y_, const std::string& path_) :
     }
 }
 
+Entity::Entity(const double x_, const double y_) :
+    x(x_),
+    y(y_),
+    isRight(true),
+    sprite(nullptr),
+    width(0),
+    height(0),
+    animationClip{0,0,0,0},
+    boundingBox{(int)x_, (int)y_, 0, 0}
+{
+    // Only serves as the initializer for the derived classes.
+}
+
 Entity::~Entity(){
 
 }

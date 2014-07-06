@@ -11,7 +11,7 @@ class Text : public Entity {
 
 	public:
 		Text(const double x_, const double y_, const char* path_, const int size_,
-	const char* text_); 
+			const char* text_, const SDL_Color color_); 
 
 		virtual ~Text();
 
