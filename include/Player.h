@@ -123,6 +123,9 @@ class Player : public DynamicEntity {
 		bool isDead();
 		bool closestEnemyIsRight;
 
+		bool isVulnerable;
+		double invulnerableTime;
+
 	private:
 		virtual void updateBoundingBox();
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);

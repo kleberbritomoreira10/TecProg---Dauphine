@@ -32,6 +32,8 @@ Player::Player(const double x_, const double y_, const std::string& path_) :
     canAttack(true),
     currentItem(PItems::POTION),
     closestEnemyIsRight(true),
+    isVulnerable(true),
+    invulnerableTime(0),
     animation(nullptr),
     currentState(nullptr)
 {
@@ -85,6 +87,14 @@ void Player::update(const double dt_){
             // Delete potion.
         }
         potion->update(dt_);
+    }
+
+    if(!this->isVulnerable){
+        this->invulnerableTime += dt_;
+        if(this->invulnerableTime >= 3){
+            this->invulnerableTime = 0;
+            this->isVulnerable = true;
+        }
     }
 
 }

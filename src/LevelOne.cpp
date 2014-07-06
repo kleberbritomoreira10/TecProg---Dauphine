@@ -149,8 +149,15 @@ void LevelOne::update(const double dt_){
 	}
 
 	if(this->player->life != Enemy::pLife){
-		this->player->changeState(Player::PStates::HITED);
-		this->player->life = Enemy::pLife;
+		if(this->player->isVulnerable){
+			this->player->life--;
+			Enemy::pLife = this->player->life;
+			this->player->changeState(Player::PStates::HITED);
+			this->player->isVulnerable = false;
+		}
+		else{
+
+		}
 	}
 
 	// Updating the HUD.
