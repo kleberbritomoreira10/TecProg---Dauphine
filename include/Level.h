@@ -70,6 +70,7 @@ class Level : public StateGame {
 		QuadTree* quadTree;
 
 		Sprite* background;
+		Sprite* backgroundTop;
 		Sprite* checkpoint;
 		bool checkpointVisited;
 

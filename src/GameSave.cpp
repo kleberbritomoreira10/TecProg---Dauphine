@@ -28,7 +28,10 @@ void GameSave::saveLevel(unsigned int level_, Player* player, std::vector <Enemy
 	this->currentLevel = level_;
 	this->saveFile << this->currentLevel << std::endl;
 	this->saveFile << player->x << " " << player->y << std::endl;
-	this->saveFile << enemies.size();
+	this->saveFile << enemies.size() << std::endl;
+	for(auto enemy : enemies){
+		this->saveFile << enemy->isDead() << " ";
+	}
 	this->saveFile.close();
 }
 

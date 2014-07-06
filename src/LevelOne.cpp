@@ -33,7 +33,8 @@ void LevelOne::load(){
 	SDL_Rect bounds = {0, 0, (int)this->width, (int)this->height};
 	this->quadTree = new QuadTree(0, bounds);
 
-	this->background = Game::instance().getResources().get("res/images/lv1_background.png");
+	this->background = Game::instance().getResources().get("res/images/lv1_background_parallax.png");
+	this->backgroundTop = Game::instance().getResources().get("res/images/lv1_parallax_top.png");
 	this->checkpoint = Game::instance().getResources().get("res/images/checkpoint.png");
 
 	// Getting information from lua script.
@@ -49,9 +50,6 @@ void LevelOne::load(){
 
 	// Loading the player and the camera.
 	Player* lPlayer = new Player(this->tileMap->getInitialX(), this->tileMap->getInitialY(), pathPlayerSpriteSheet);
-	Log(DEBUG) << "Antes: " << lPlayer->x << " " << lPlayer->y;
-	GameSave::instance().restorePlayerPosition(lPlayer);
-	Log(DEBUG) << "Depois: " << lPlayer->x << " " << lPlayer->y;
 	Camera* lCamera = new Camera(lPlayer); 
 	
 
@@ -205,7 +203,7 @@ void LevelOne::update(const double dt_){
 	}
 	
 	//Saving the game state
-	if(!this->checkpointVisited && this->player->getBoundingBox().x >= 1490 && this->player->getBoundingBox().x <= 1501){
+	if(!this->checkpointVisited && this->player->getBoundingBox().x >= 4500 && this->player->getBoundingBox().x <= 4550){
 		this->checkpoint = Game::instance().getResources().get("res/images/checkpoint_visited.png");
 		GameSave::instance().saveLevel(1, this->player, this->enemies);
 		this->checkpointVisited = true;
@@ -217,12 +215,13 @@ void LevelOne::render(){
 	const int cameraX = this->camera->getClip().x;
 	const int cameraY = this->camera->getClip().y;
 
-	this->background->render(0, 0);
+	this->backgroundTop->render(cameraX, 0);
+	this->background->render(0, 0 - cameraY);
 
 	// Render the tiles in the TileMap.
 	this->tileMap->render(cameraX, cameraY);
 
-	this->checkpoint->render(1500 - cameraX, 1600 - cameraY);
+	this->checkpoint->render(4500 - cameraX, 1600 - cameraY);
 
 	this->playerHud->render();
 
