@@ -8,12 +8,12 @@
 #include "TileMap.h"
 #include "Collision.h"
 #include "Crosshair.h"
-#include "Text.h"
 
 LevelOne::LevelOne() :
 	Level(),
-	items{5000, 6000, 7000, 8000},
-	caughtItems{false,false,false,false}
+	items{4900, 6800, 1000},
+	caughtItems{false,false,false}
+
 {
 
 }
@@ -45,6 +45,7 @@ void LevelOne::load(){
 	const std::string pathBackgroundAudio = luaLevel1.unlua_get<std::string>(
 		"level.audio.background");
 	const std::string pathEnemy = luaLevel1.unlua_get<std::string>("level.enemy");
+	
 
 	// Changing the music.
 	Game::instance().getAudioHandler().changeMusic(pathBackgroundAudio);
@@ -53,9 +54,12 @@ void LevelOne::load(){
 	Player* lPlayer = new Player(this->tileMap->getInitialX(), this->tileMap->getInitialY(), pathPlayerSpriteSheet);
 	Camera* lCamera = new Camera(lPlayer); 
 	
-
+	// Loading the refill of potion.
+	this->image = Game::instance().getResources().get("res/images/potion.png");
+	
 	this->playerHud = new PlayerHUD(lPlayer);
 	
+		
 	Enemy* lEnemy = new Enemy(3712.0, 1400.0, pathEnemy, false, 0.0);
 	lEnemy->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy);
@@ -85,14 +89,8 @@ void LevelOne::load(){
 	this->enemies.push_back(lEnemy7);
 		
 	// Test text.
-	SDL_Color textColorTest = {255, 255, 255, 255};
-	Text* text = new Text(this->tileMap->getInitialX(), // x
-						this->tileMap->getInitialY(), // y
-						"res/fonts/maturasc.ttf", // font path
-						500, // size
-						"dauphine", // text
-						textColorTest); // sdl_color
-	addEntity(text);
+	// Text* text = new Text(200.0, 900.0, "res/fonts/KGFeeling22.ttf", 50, "dauphine");
+	// addEntity(text);
 
 	// Finally, setting the player and the camera.
 	setPlayer(lPlayer);
@@ -107,6 +105,11 @@ void LevelOne::unload(){
 	Log(DEBUG) << "\tUnloading level 1...";
 	cleanEntities();
 	clearEnemies();
+	for (int i = 0; i < NUMBER_ITEMS; ++i)
+	{
+		caughtItems[i]=false;
+	}
+	
 }
 
 void LevelOne::update(const double dt_){
@@ -149,22 +152,15 @@ void LevelOne::update(const double dt_){
 	Enemy::py = this->player->y;
 
 	for (int i = 0; i < NUMBER_ITEMS; ++i){
-		if(abs(this->player->x - items[i])<= 20 && caughtItems[i] == false){
+		if(abs(this->player->x - items[i])<= 50 && caughtItems[i] == false){
 			this->player->addPotions(3);
 			caughtItems[i]=true;
 		}
 	}
 
 	if(this->player->life != Enemy::pLife){
-		if(this->player->isVulnerable){
-			this->player->life--;
-			Enemy::pLife = this->player->life;
-			this->player->changeState(Player::PStates::HITED);
-			this->player->isVulnerable = false;
-		}
-		else{
-
-		}
+		this->player->changeState(Player::PStates::HITED);
+		this->player->life = Enemy::pLife;
 	}
 
 	// Updating the HUD.
@@ -223,9 +219,11 @@ void LevelOne::update(const double dt_){
 		this->checkpointVisited = true;
 	}
 
+	
 }
 
 void LevelOne::render(){
+	
 	const int cameraX = this->camera->getClip().x;
 	const int cameraY = this->camera->getClip().y;
 
@@ -238,7 +236,9 @@ void LevelOne::render(){
 	this->checkpoint->render(4500 - cameraX, 1600 - cameraY);
 
 	this->playerHud->render();
+	
 
+	
 	for(auto enemy : this->enemies){
 		enemy->render(cameraX, cameraY);
 	}
@@ -247,5 +247,18 @@ void LevelOne::render(){
 	for(auto entity : this->entities){
         entity->render(cameraX, cameraY);
 	}
-}
 
+	for (int unsigned i = 0; i < NUMBER_ITEMS; ++i)
+	{
+	if(this->image != nullptr && caughtItems[i] == false ){
+			this->image->Sprite::render((items[i]+60) - cameraX, 1750 - cameraY);
+						
+		
+	}else{
+		Log(DEBUG)<<"FALHOU";
+
+	}
+	}
+	
+	
+}
