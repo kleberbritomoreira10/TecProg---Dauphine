@@ -138,7 +138,6 @@ class Game {
 
 		enum PSelection : uint8_t {
 			RESUME = 0,
-			SAVE,
 			EXIT,
 			TOTAL
 		};

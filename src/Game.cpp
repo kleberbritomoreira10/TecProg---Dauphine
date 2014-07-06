@@ -37,10 +37,10 @@ Game::Game() :
 	statesMap(),
 	passedTime(0.0),
 	currentSelection(PSelection::RESUME),
-	selectorXPositionLeft {610, 635, 635},
-	selectorYPositionLeft {400, 500, 590},
-	selectorXPositionRight {880, 855, 855},
-	selectorYPositionRight {400, 500, 590}
+	selectorXPositionLeft {550, 550},
+	selectorYPositionLeft {400, 470},
+	selectorXPositionRight {930, 930},
+	selectorYPositionRight {400, 470}
 {
 	initializeStates();
 
@@ -110,6 +110,7 @@ void Game::runGame(){
 			std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
 			if(keyStates[GameKeys::ESCAPE] && isPauseable()){
+				this->currentSelection = PSelection::RESUME;
 				this->isPaused = true;
 			}
 
@@ -215,10 +216,6 @@ void Game::handleSelectorMenu(){
 	}
 	else if(currentSelection == PSelection::RESUME && keyStates[GameKeys::SPACE] == true){
 		this->isPaused = false;
-	}
-
-	else if(currentSelection == PSelection::SAVE && keyStates[GameKeys::SPACE] == true){
-		
 	}
 
 	else if(currentSelection == PSelection::EXIT && keyStates[GameKeys::SPACE] == true){

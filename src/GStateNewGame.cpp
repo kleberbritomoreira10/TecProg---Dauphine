@@ -31,6 +31,8 @@ void GStateNewGame::load(){
 	this->background = Game::instance().getResources().get(pathBackground);
     this->selector = Game::instance().getResources().get(pathSelector);
 
+    this->currentSelection = Selection::SLOT_1;
+
     Game::instance().getFade().fadeOut(0, 0.002);
 }
 
