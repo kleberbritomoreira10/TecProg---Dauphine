@@ -28,3 +28,9 @@ html/
 
 # Temporary files, just in case
 *~
+
+# Kate files
+*.kate-swp
+
+# Dauphine save files
+*.dauphine
