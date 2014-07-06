@@ -18,7 +18,7 @@ void PStateAerial::enter(){
 }
 
 void PStateAerial::exit(){
-
+    this->player->isClimbing = false;
 }
 
 void PStateAerial::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){

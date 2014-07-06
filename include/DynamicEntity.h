@@ -37,7 +37,9 @@ class DynamicEntity : public Entity {
 		virtual void jump();
 		virtual void applyGravity();
 		virtual void move(const bool movingLeft_, const bool movingRight_);
+		virtual void moveVertical(const bool movingUp_, const bool movingDown_);
 		virtual void slowVx();
+		virtual void slowVy();
 		virtual void roll();
 		virtual void aim(Crosshair* const crosshair, double direction);
 
@@ -60,6 +62,8 @@ class DynamicEntity : public Entity {
 	    int strength;
 	    int distance;
 	    double flightTime;
+
+	    bool isClimbing;
 
 	protected:
 		/**

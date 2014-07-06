@@ -106,7 +106,7 @@ void GStateNewGame::handleSelectorMenu(){
 	}
 	else if(currentSelection == Selection::SLOT_2 && keyStates[GameKeys::SPACE] == true){
 		GameSave::instance().createSaveGameFile(Selection::SLOT_2);
-		Game::instance().setState(Game::GStates::LEVEL_ONE);
+		Game::instance().setState(Game::GStates::LEVEL_TWO);
 	}
 	else if(currentSelection == Selection::SLOT_3 && keyStates[GameKeys::SPACE] == true){
 		GameSave::instance().createSaveGameFile(Selection::SLOT_3);

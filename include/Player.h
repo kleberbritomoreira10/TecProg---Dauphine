@@ -35,7 +35,8 @@ class Player : public DynamicEntity {
 			ATTACK,
 			ATTACKMOVING,
 			ATTACKJUMPING,
-			HITED
+			HITED,
+			CLIMBING
 		};
 
 		enum PItems : uint8_t {

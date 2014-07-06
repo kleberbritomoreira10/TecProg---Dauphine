@@ -17,6 +17,7 @@ DynamicEntity::DynamicEntity(const double x_, const double y_, const std::string
     strength(0),
     distance(0),
     flightTime(0.0),
+    isClimbing(false),
     levelW(0),
 	levelH(0)
 {
@@ -86,10 +87,24 @@ std::array<bool, CollisionSide::SOLID_TOTAL> DynamicEntity::detectCollision(){
 
 				case Collision::RectangleSide::RIGHT: // Hitting right side of the tile.
 					detections.at(SOLID_RIGHT) = (tileBox.type != JUMP_THROUGH) ? true : false;
+					if(tileBox.type == CLIMB && !this->isGrounded){
+						Log(DEBUG) << "CLIMB RIGHT";
+						this->isClimbing = true;
+					}
+					else{
+						if(this->isClimbing){
+							Log(DEBUG) << "SAIU";
+							this->isClimbing = false;
+						}
+					}
 					break;
 
 				case Collision::RectangleSide::LEFT: // Hitting left side of the tile.
 					detections.at(SOLID_LEFT) = (tileBox.type != JUMP_THROUGH) ? true : false;
+					if(tileBox.type == CLIMB && !this->isGrounded){
+						Log(DEBUG) << "CLIMB LEFT";
+						this->isClimbing = true;
+					}
 					break;
 
 				default:
@@ -145,12 +160,48 @@ void DynamicEntity::move(const bool movingLeft_, const bool movingRight_){
 
 }
 
+void DynamicEntity::moveVertical(const bool movingUp_, const bool movingDown_){
+	const double turnHandle = 5.5;
+	if(movingUp_ || movingDown_){
+		if(movingUp_){
+			if(this->vy > 0.0){
+				this->vy -= this->speed * turnHandle;
+			}
+			else{
+				this->vy -= this->speed;
+			}
+			
+			this->vy = (this->vy < -this->maxSpeed) ? -this->maxSpeed : this->vy;
+		}
+		if(movingDown_){
+			if(this->vy < 0.0){
+				this->vy += this->speed * turnHandle;
+			}
+			else{
+				this->vy += this->speed;
+			}
+			this->vy = (this->vy > this->maxSpeed) ? this->maxSpeed : this->vy;
+		}
+	}
+	else{
+		slowVy();
+	}
+
+}
 
 void DynamicEntity::slowVx(){
 	const int vsign = Math::sign(this->vx);
 	this->vx -= 100 * vsign;
 	if (Math::sign(this->vx) != vsign) {
         this->vx = 0.0001 * vsign;
+	}
+}
+
+void DynamicEntity::slowVy(){
+	const int vsign = Math::sign(this->vy);
+	this->vy -= 100 * vsign;
+	if (Math::sign(this->vy) != vsign) {
+        this->vy = 0.0001 * vsign;
 	}
 }
 

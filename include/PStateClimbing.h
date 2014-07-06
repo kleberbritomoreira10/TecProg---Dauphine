@@ -1,11 +1,11 @@
-#ifndef INCLUDE_PSTATEMOVING_H
-#define INCLUDE_PSTATEMOVING_H
+#ifndef INCLUDE_PSTATECLIMBING_H
+#define INCLUDE_PSTATECLIMBING_H
 
 #include "StatePlayer.h"
 
 /**
-* The state when the player is grounded and moving.
-*
+* The state for when the player is not grounded.
+* 
 */
 class PStateClimbing : public StatePlayer {
 
@@ -15,7 +15,7 @@ class PStateClimbing : public StatePlayer {
 		* @param player_ : Reference to the player.
 		*/
 		PStateClimbing(Player* const player_);
-		
+
 		/**
 		* The destructor.
 		*/
@@ -38,4 +38,4 @@ class PStateClimbing : public StatePlayer {
 
 };
 
-#endif // INCLUDE_PSTATEMOVING_H
+#endif // INCLUDE_PSTATECLIMBING_H
