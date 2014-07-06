@@ -110,7 +110,7 @@ void GStateNewGame::handleSelectorMenu(){
 	}
 	else if(currentSelection == Selection::SLOT_3 && keyStates[GameKeys::SPACE] == true){
 		GameSave::instance().createSaveGameFile(Selection::SLOT_3);
-		Game::instance().setState(Game::GStates::LEVEL_ONE);
+		Game::instance().setState(Game::GStates::LEVEL_BOSS);
 	}
 
 }

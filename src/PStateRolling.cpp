@@ -1,5 +1,6 @@
 #include "PStateRolling.h"
 #include "Logger.h"
+#include "Game.h"
 
 void PStateRolling::enter(){
 	this->box.x = 58;
@@ -9,6 +10,9 @@ void PStateRolling::enter(){
 
 	this->player->getAnimation()->changeAnimation(6, 4, 9, true, 0.6);
 	this->player->roll();
+
+	Game::instance().getAudioHandler().setCurrentEffect("res/audio/FX_NADINE/ROLLING_NADINE_01.wav");
+    Game::instance().getAudioHandler().playEffect(0);
 }
 
 void PStateRolling::exit(){

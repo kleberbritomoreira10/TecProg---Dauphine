@@ -1,5 +1,6 @@
 #include "PStateAttack.h"
 #include "Logger.h"
+#include "Game.h"
 
 void PStateAttack::enter(){
 	this->box.x = 58;
@@ -8,6 +9,9 @@ void PStateAttack::enter(){
 	this->box.h = 160;
 
 	this->player->getAnimation()->changeAnimation(1, 7, 14, false, 0.466);
+
+	Game::instance().getAudioHandler().setCurrentEffect("res/audio/FX_NADINE/WOOSH_NADINE_02.wav");
+    Game::instance().getAudioHandler().playEffect(0);
 }
 
 void PStateAttack::exit(){

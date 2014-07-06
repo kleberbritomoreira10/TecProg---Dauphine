@@ -25,6 +25,9 @@ void GStateGameOver::load(){
 
     this->gameOverImage = Game::instance().getResources().get(pathGameOver);
 	this->lifeTime = luaLifeTime;
+
+	// Changing the music.
+	Game::instance().getAudioHandler().changeMusic("res/audio/MGOMP3.mp3");
 }
 
 void GStateGameOver::unload(){
@@ -33,6 +36,8 @@ void GStateGameOver::unload(){
 
 	this->passedTime = 0.0;
 	this->lifeTime = 0.0;
+
+	Game::instance().getAudioHandler().stopMusic();
 }
 
 void GStateGameOver::update(const double dt_){

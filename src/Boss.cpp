@@ -84,10 +84,12 @@ void Boss::render(const double cameraX_, const double cameraY_){
 	if(this->sprite != nullptr){
 		SDL_RendererFlip flip = getFlip();
 
-		if(flip == SDL_FLIP_HORIZONTAL)
+		if(flip == SDL_FLIP_HORIZONTAL){
 			this->sprite->render(dx - 120, dy, &this->animationClip, false, 0.0, nullptr, flip);
-		else
+		}
+		else{
 			this->sprite->render(dx, dy, &this->animationClip, false, 0.0, nullptr, flip);
+		}
 	}
 
     for (auto potion : this->potions) {
@@ -97,8 +99,8 @@ void Boss::render(const double cameraX_, const double cameraY_){
 
 void Boss::initializeStates(){
 	// Initialize all the states in Boss here.
-	ADD_STATE(IDLE,         BStateIdle);
-	ADD_STATE(ATTACK,       BStateAttack);
+	ADD_STATE(IDLE,		BStateIdle);
+	ADD_STATE(ATTACK,	BStateAttack);
 }
 
 void Boss::destroyStates(){
@@ -140,7 +142,6 @@ void Boss::usePotion(const int strength_, const int distance_){
         Potion* potion = new Potion(potionX , this->y, "res/images/potion.png", strength_, this->vx, distance_, this->isRight);
         this->potions.push_back(potion);
     }
-    return ;
 }
 
 Animation *Boss::getAnimation(){

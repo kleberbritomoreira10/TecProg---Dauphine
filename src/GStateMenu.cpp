@@ -23,6 +23,9 @@ GStateMenu::~GStateMenu(){
 void GStateMenu::load(){
 	Log(DEBUG) << "Loading menu...";
 
+	// Changing the music.
+	Game::instance().getAudioHandler().changeMusic("res/audio/mainmenump3.mp3");
+
 	LuaScript luaMenu("lua/Menu.lua");
 	const std::string pathTitleScreen = luaMenu.unlua_get<std::string>("menu.images.titleScreen");
 	const std::string pathCursor = luaMenu.unlua_get<std::string>("menu.images.cursor");

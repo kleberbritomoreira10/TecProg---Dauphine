@@ -1,5 +1,6 @@
 #include "PStateMoving.h"
 #include "Logger.h"
+#include "Game.h"
 
 #define THROW_STRENGTH 30
 #define THROW_DISTANCE 400
@@ -11,6 +12,9 @@ void PStateMoving::enter(){
     this->box.h = 160;
 
     this->player->getAnimation()->changeAnimation(4,2,9,false,0.7);
+
+    Game::instance().getAudioHandler().setCurrentEffect("res/audio/FX_NADINE/RUNNING_NADINE_01.wav");
+    Game::instance().getAudioHandler().playEffect(0);
 }
 
 void PStateMoving::exit(){

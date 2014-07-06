@@ -1,5 +1,6 @@
 #include "PStateAttackJumping.h"
 #include "Logger.h"
+#include "Game.h"
 
 void PStateAttackJumping::enter(){
 
@@ -10,6 +11,8 @@ void PStateAttackJumping::enter(){
 
     this->player->getAnimation()->changeAnimation(3, 9, 7, false, 0.4);
 
+    Game::instance().getAudioHandler().setCurrentEffect("res/audio/FX_NADINE/WOOSH_NADINE_02.wav");
+    Game::instance().getAudioHandler().playEffect(0);
 }
 
 void PStateAttackJumping::exit(){

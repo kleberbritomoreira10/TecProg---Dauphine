@@ -1,7 +1,10 @@
 #include "PStateAerial.h"
 #include "Logger.h"
+#include "Game.h"
 
 void PStateAerial::enter(){
+    Log(DEBUG) << "--- enter aerial";
+
     this->box.x = 58;
     this->box.y = 72;
     this->box.w = 130;
@@ -9,6 +12,9 @@ void PStateAerial::enter(){
 
 	this->player->getAnimation()->changeAnimation(4, 3, 14, false, 1.4);
 	this->player->isGrounded = false;
+
+    Game::instance().getAudioHandler().setCurrentEffect("res/audio/FX_NADINE/JUMP_NADINE_01.wav");
+    Game::instance().getAudioHandler().playEffect(0);
 }
 
 void PStateAerial::exit(){

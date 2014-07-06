@@ -21,7 +21,8 @@ LevelTwo::~LevelTwo(){
 }
 
 void LevelTwo::load(){
-	Log(DEBUG) << "Loading level 2...";
+	// Changing the music.
+	Game::instance().getAudioHandler().changeMusic("res/audio/leveldoismp3.mp3");
 
 	// Loading the tile/tilemap.
 	this->tileMap = new TileMap("res/maps/level2.tmx");
@@ -43,7 +44,7 @@ void LevelTwo::load(){
 	const std::string pathEnemy = luaLevel1.unlua_get<std::string>("level.enemy");
 
 	// Changing the music.
-	Game::instance().getAudioHandler().changeMusic(pathBackgroundAudio);
+	// Game::instance().getAudioHandler().changeMusic(pathBackgroundAudio);
 
 	// Loading the player and the camera.
 	Player* lPlayer = new Player(this->tileMap->getInitialX(), this->tileMap->getInitialY(), pathPlayerSpriteSheet);
