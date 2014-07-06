@@ -215,8 +215,8 @@ void LevelOne::render(){
 	const int cameraX = this->camera->getClip().x;
 	const int cameraY = this->camera->getClip().y;
 
-	this->backgroundTop->render(cameraX, 0);
-	this->background->render(0, 0 - cameraY);
+	this->background->render(0, 480 - cameraY);
+	this->backgroundTop->render(-cameraX/8, 1170 - cameraY);
 
 	// Render the tiles in the TileMap.
 	this->tileMap->render(cameraX, cameraY);
