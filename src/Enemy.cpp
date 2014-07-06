@@ -13,7 +13,8 @@
 
 #include "Window.h"
 
-#define ADD_STATE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass(this))
+#define ADD_STATE_EMPLACE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass(this))
+#define ADD_STATE_INSERT(stateEnum, stateClass) this->statesMap.insert(std::make_pair<EStates, StateEnemy*>(stateEnum, new stateClass(this)));
 
 double Enemy::px = 0.0;
 double Enemy::py = 0.0;
@@ -57,7 +58,13 @@ Enemy::Enemy(const double x_, const double y_, const std::string& path_, const b
 Enemy::~Enemy(){
 	if(this->currentState != nullptr){
 		this->currentState->exit();
+		this->currentState = nullptr;
 	}
+
+	if(this->animation != nullptr){
+        delete this->animation;
+        this->animation = nullptr;
+    }
 
 	destroyStates();
 }
@@ -109,13 +116,13 @@ void Enemy::render(const double cameraX_, const double cameraY_){
 
 void Enemy::initializeStates(){
 	// Initialize all the states in Enemy here.
-	ADD_STATE(IDLE,         EStateIdle);
-	ADD_STATE(CURIOUS,      EStateCurious);
-	ADD_STATE(PATROLLING,   EStatePatrolling);
-	ADD_STATE(ALERT,        EStateAlert);
-	ADD_STATE(AERIAL,       EStateAerial);
-	ADD_STATE(ATTACK,       EStateAttack);
-	ADD_STATE(DEAD,         EStateDead);
+	ADD_STATE_INSERT(IDLE,         EStateIdle);
+	ADD_STATE_INSERT(CURIOUS,      EStateCurious);
+	ADD_STATE_INSERT(PATROLLING,   EStatePatrolling);
+	ADD_STATE_INSERT(ALERT,        EStateAlert);
+	ADD_STATE_INSERT(AERIAL,       EStateAerial);
+	ADD_STATE_INSERT(ATTACK,       EStateAttack);
+	ADD_STATE_INSERT(DEAD,         EStateDead);
 }
 
 void Enemy::destroyStates(){

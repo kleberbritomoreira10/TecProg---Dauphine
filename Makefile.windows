@@ -1,4 +1,6 @@
-## Edit this to fit your lua settings
+## Edit this to fit your settings ##
+
+## Lua settings
 LUA_DIR := /usr/local
 LUA_LIBDIR := $(LUA_DIR)/lib
 LUA_INCDIR := $(LUA_DIR)/include
@@ -12,12 +14,17 @@ RESOURCES	:= res
 BUILD		:= build
 SDL_MINGW_ROOT = /usr/i686-w64-mingw32
 
+# Lib settings
+LIB_DIR := $(CURDIR)/lib
+LINK_LIBS := -L$(LUA_LIBDIR) -L$(LIB_DIR) $(LUA_LINK) -lm -ltmxparser -ltinyxml -lz
+
+
 # Compiler
 export LD := /usr/bin/i686-w64-mingw32-g++
 # Compiler flags
 CPPFLAGS= `$(SDL_MINGW_ROOT)/bin/sdl2-config --cflags` -O2 -g -W -Wall -pedantic -ansi -static-libgcc -static-libstdc++ -std=c++0x -Wextra -Wshadow
 # Linking flags
-LDFLAGS = `$(SDL_MINGW_ROOT)/bin/sdl2-config --libs` -lSDL2_image -lSDL2_mixer -lSDL2_gfx -lSDL2_ttf -L$(LUA_LIBDIR) $(LUA_LINK) -lm
+LDFLAGS = `$(SDL_MINGW_ROOT)/bin/sdl2-config --libs` -lSDL2_image -lSDL2_mixer -lSDL2_gfx -lSDL2_ttf $(LINK_LIBS)
 
 # Target program name
 TARGET := Dauphine
@@ -36,12 +43,26 @@ $(BUILD)/%.o:$(SOURCES)/%.cpp
 	@echo Building $^ ...
 	@$(LD) $(CPPFLAGS) -c $^ -o $@ $(INCLUDE)
 
-main:$(OFILES)
+main:$(LIB_DIR)/libtinyxml.a $(LIB_DIR)/libtmxparser.a $(OFILES)
 	@unzip -j windows.zip
 	@mkdir -p $(BUILD)
 	@echo Linking necessary libraries...
 	@$(LD) $(OFILES) $(CPPFLAGS) $(LDFLAGS) -o $(TARGET).exe
 	@echo Built executable "$(TARGET).exe"
+
+$(LIB_DIR)/libtinyxml.a:
+	@echo --- Creating libtinyxml.a ...
+	@cd $(LIB_DIR)/tinyxml && $(MAKE)
+	@cd $(LIB_DIR)/tinyxml && ar rcs libtinyxml.a *.o
+	@cd $(LIB_DIR)/tinyxml && mv libtinyxml.a ../
+	@cd $(LIB_DIR)/tinyxml && $(MAKE) clean
+	@echo --- Done.
+
+$(LIB_DIR)/libtmxparser.a:
+	@echo --- Creating libtmxparser.a ...
+	@cd $(LIB_DIR)/ && $(MAKE) -f Makefile.tmxparser
+	@cd $(LIB_DIR)/ && $(MAKE) -f Makefile.tmxparser clean
+	@echo --- Done.
 
 clean:
 	@echo Cleaning...
@@ -50,3 +71,8 @@ clean:
 	@rm -f $(TARGET).exe
 	@rm -f *.dll
 	@rm -f LICENSES.txt
+
+hardclean: clean
+	@echo Deleting static libraries...
+	@rm -f $(LIB_DIR)/*.a
+	@echo Done.

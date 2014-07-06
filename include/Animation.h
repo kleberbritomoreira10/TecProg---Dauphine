@@ -20,7 +20,7 @@ class Animation{
 		* @param loop_ : Whether to loop or not.
 		*/
 		Animation(const int x_, const int y_, const int spriteWidth_, const int spriteHeight_,
-			const int numberOfImages_, const bool loop_);
+			const unsigned int numberOfImages_, const bool loop_);
 
 		/**
 		* The destructor.
@@ -43,7 +43,7 @@ class Animation{
 		* Changes the animation to another.
 		* @note See Animation::Animation for the parameters descriptions.
 		*/
-		void changeAnimation(const int x_, const int y_, const int numberOfImages_, const bool loop_, const double totalTime_);
+		void changeAnimation(const int x_, const int y_, const unsigned int numberOfImages_, const bool loop_, const double totalTime_);
 
 	private:
 		/**

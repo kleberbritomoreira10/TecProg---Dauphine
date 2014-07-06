@@ -3,17 +3,19 @@
 int animationCount = 0;
 
 Animation::Animation(const int x_, const int y_, const int spriteWidth_,
-	const int spriteHeight_, const int numberOfImages_, const bool loop_) :
+	const int spriteHeight_, const unsigned int numberOfImages_, const bool loop_) :
 
 	x(x_),
 	y(y_),
+	initialX(0),
+	initialY(0),
 	spriteWidth(spriteWidth_),
 	spriteHeight(spriteHeight_),
-	numberOfImages(numberOfImages_),
 	loop(loop_),
-	totalElapsedTime(0.0)
+	totalElapsedTime(0.0),
+	totalTime(0.0)
 {
-
+	this->numberOfImages = (numberOfImages_ == 0) ? 1 : numberOfImages_;
 }
 
 Animation::~Animation(){
@@ -26,7 +28,7 @@ void Animation::update(SDL_Rect& clip, const double dt_){
 
 	// Compare the position on the sprite with the number of positions to know if is the
 	// end of the animation.
-	bool endOfAnimation = animationCount + 1 >= this->numberOfImages;
+	bool endOfAnimation = ((animationCount + 1) >= this->numberOfImages);
 
 	const double deltaT = (this->totalTime / this->numberOfImages);
 
@@ -60,14 +62,14 @@ void Animation::update(SDL_Rect& clip, const double dt_){
 	updateClip(clip, positionX_, positionY_);
 }
 
-void Animation::changeAnimation(const int x_, const int y_, const int numberOfImages_,
+void Animation::changeAnimation(const int x_, const int y_, const unsigned int numberOfImages_,
 	const bool loop_, const double totalTime_){
 
 	this->x = x_;
 	this->y = y_;
 	this->initialX = x_;
 	this->initialY = y_;
-	this->numberOfImages = numberOfImages_;
+	this->numberOfImages = (numberOfImages_ == 0) ? 1 : numberOfImages_;
 	this->loop = loop_;
 	this->totalTime = totalTime_;
 	animationCount = 0;

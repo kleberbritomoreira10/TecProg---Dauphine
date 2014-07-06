@@ -21,7 +21,8 @@
 
 #include "Window.h"
 
-#define ADD_STATE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass(this))
+#define ADD_STATE_EMPLACE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass(this))
+#define ADD_STATE_INSERT(stateEnum, stateClass) this->statesMap.insert(std::make_pair<PStates, StatePlayer*>(stateEnum, new stateClass(this)));
 
 Player::Player(const double x_, const double y_, const std::string& path_) :
     DynamicEntity(x_, y_, path_),
@@ -60,6 +61,12 @@ Player::Player(const double x_, const double y_, const std::string& path_) :
 Player::~Player(){
     if(this->currentState != nullptr){
         this->currentState->exit();
+        this->currentState = nullptr;
+    }
+
+    if(this->animation != nullptr){
+        delete this->animation;
+        this->animation = nullptr;
     }
 
     destroyStates();
@@ -192,18 +199,18 @@ void Player::addPotions(const unsigned int quantity_){
 
 void Player::initializeStates(){
     // Initialize all the states in Player here.
-    ADD_STATE(IDLE,         PStateIdle);
-    ADD_STATE(MOVING,       PStateMoving);
-    ADD_STATE(AERIAL,       PStateAerial);
-    ADD_STATE(ROLLING,      PStateRolling);
-    ADD_STATE(CROUCHING,    PStateCrouching);
-    ADD_STATE(AIMING,       PStateAiming);
-    ADD_STATE(MOVINGCROUCH, PStateMovingCrouch);
-    ADD_STATE(ATTACK,       PStateAttack);
-    ADD_STATE(ATTACKMOVING, PStateAttackMoving);
-    ADD_STATE(ATTACKJUMPING,PStateAttackJumping);
-    ADD_STATE(HITED,        PStateHit);
-    ADD_STATE(CLIMBING,     PStateClimbing);
+    ADD_STATE_INSERT(IDLE,         PStateIdle);
+    ADD_STATE_INSERT(MOVING,       PStateMoving);
+    ADD_STATE_INSERT(AERIAL,       PStateAerial);
+    ADD_STATE_INSERT(ROLLING,      PStateRolling);
+    ADD_STATE_INSERT(CROUCHING,    PStateCrouching);
+    ADD_STATE_INSERT(AIMING,       PStateAiming);
+    ADD_STATE_INSERT(MOVINGCROUCH, PStateMovingCrouch);
+    ADD_STATE_INSERT(ATTACK,       PStateAttack);
+    ADD_STATE_INSERT(ATTACKMOVING, PStateAttackMoving);
+    ADD_STATE_INSERT(ATTACKJUMPING,PStateAttackJumping);
+    ADD_STATE_INSERT(HITED,        PStateHit);
+    ADD_STATE_INSERT(CLIMBING,     PStateClimbing);
 }
 
 void Player::destroyStates(){

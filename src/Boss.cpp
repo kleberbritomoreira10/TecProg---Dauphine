@@ -7,7 +7,8 @@
 
 #include "Window.h"
 
-#define ADD_STATE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass(this))
+#define ADD_STATE_EMPLACE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass(this))
+#define ADD_STATE_INSERT(stateEnum, stateClass) this->statesMap.insert(std::make_pair<BStates, StateBoss*>(stateEnum, new stateClass(this)));
 
 Boss::Boss(const double x_, const double y_, const std::string& path_) :
 	DynamicEntity(x_, y_, path_),	
@@ -99,8 +100,8 @@ void Boss::render(const double cameraX_, const double cameraY_){
 
 void Boss::initializeStates(){
 	// Initialize all the states in Boss here.
-	ADD_STATE(IDLE,		BStateIdle);
-	ADD_STATE(ATTACK,	BStateAttack);
+	ADD_STATE_INSERT(IDLE,		BStateIdle);
+	ADD_STATE_INSERT(ATTACK,	BStateAttack);
 }
 
 void Boss::destroyStates(){

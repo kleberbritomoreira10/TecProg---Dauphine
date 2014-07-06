@@ -2,6 +2,7 @@
 #include "FPSWrapper.h"
 #include "Configuration.h"
 #include <cassert>
+#include "Util.h"
 
 #include "GStateSplash.h"
 #include "LevelOne.h"
@@ -17,7 +18,8 @@
 
 #include "Logger.h"
 
-#define ADD_STATE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass())
+#define ADD_STATE_EMPLACE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass())
+#define ADD_STATE_INSERT(stateEnum, stateClass) this->statesMap.insert(std::make_pair<GStates, StateGame*>(stateEnum, new stateClass()))
 
 Game& Game::instance(){
 	static Game* instance = new Game();
@@ -27,9 +29,11 @@ Game& Game::instance(){
 Game::Game() :
 	isCutscene(false),
 	isPaused(false),
+	currentLine(0),
 	window(nullptr),
 	isRunning(false),
 	pauseImage(nullptr),
+	pauseSelector(nullptr),
 	audioHandler(new AudioHandler()),
 	inputHandler(new InputHandler()),
 	resourceManager(new ResourceManager()),
@@ -45,8 +49,6 @@ Game::Game() :
 {
 	initializeStates();
 
-	currentLine = 0;
-
 	this->window = new Window(Configuration::getScreenWidth(),
 		Configuration::getScreenHeight(), Configuration::getWindowTitle());
 
@@ -56,10 +58,12 @@ Game::Game() :
 	std::string extension = ".png";	
 
 	for(int i = 0; i < numLines; i++){
-		dialog[i] = getResources().get(path + std::to_string(i) + extension);
+		this->dialog[i] = nullptr;
+		this->dialog[i] = getResources().get(path + Util::toString(i) + extension);
 	
-		if(dialog[i] == nullptr)
+		if(this->dialog[i] == nullptr){
 			Log(ERROR) << "Invalid dialog image.";
+		}
 	}
 
 	this->pauseImage = getResources().get("res/images/pause_overlay.png");
@@ -128,7 +132,7 @@ void Game::runGame(){
 			}
 
 			if(!this->isPaused){
-				this->currentState->update(deltaTime);				    
+				this->currentState->update(deltaTime);
 			}
 			else if(!this->isCutscene){
 				this->passedTime += deltaTime;
@@ -181,16 +185,16 @@ void Game::initializeStates(){
 	// Initialize all the states in Game here.
 
 	// Emplace the states pointers onto the map.
-	ADD_STATE(SPLASH, GStateSplash);
-	ADD_STATE(MENU, GStateMenu);
-	ADD_STATE(NEW_GAME, GStateNewGame);
-	ADD_STATE(LEVEL_ONE, LevelOne);
-	ADD_STATE(LEVEL_TWO, LevelTwo);
-	ADD_STATE(LEVEL_BOSS, LevelBoss);
-	ADD_STATE(CONTINUE, GStateContinue);
-	ADD_STATE(OPTIONS, GStateOptions);
-	ADD_STATE(CREDITS, GStateCredits);
-	ADD_STATE(GAMEOVER, GStateGameOver);
+	ADD_STATE_INSERT(SPLASH, GStateSplash);
+	ADD_STATE_INSERT(MENU, GStateMenu);
+	ADD_STATE_INSERT(NEW_GAME, GStateNewGame);
+	ADD_STATE_INSERT(LEVEL_ONE, LevelOne);
+	ADD_STATE_INSERT(LEVEL_TWO, LevelTwo);
+	ADD_STATE_INSERT(LEVEL_BOSS, LevelBoss);
+	ADD_STATE_INSERT(CONTINUE, GStateContinue);
+	ADD_STATE_INSERT(OPTIONS, GStateOptions);
+	ADD_STATE_INSERT(CREDITS, GStateCredits);
+	ADD_STATE_INSERT(GAMEOVER, GStateGameOver);
 }
 
 void Game::renderDialog(){
