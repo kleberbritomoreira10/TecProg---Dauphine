@@ -44,20 +44,32 @@ void GStateContinue::load(){
 	Log(DEBUG) << "Loading Continue Screen...";
 	
 	if(Game::instance().getSaves().isSaved(SLOT_1)){
-		Game::instance().getSaves().getSavedLevel(SLOT_1);
-		Log(DEBUG) << "Current Level " << Game::instance().getSaves().currentLevel;
+		
+		const int levelFromSave = Game::instance().getSaves().getSavedLevel(SLOT_1);
 
-		std::string currentLevel = "Level " + Util::toString(Game::instance().getSaves().currentLevel);
-		this->slot1->changeText(currentLevel.c_str(), {0xCE, 0xCE, 0xCE, 255});
+		const std::string currentLevel = "Level " + Util::toString(levelFromSave);
+		
+		if(levelFromSave == -1)
+			this->slot1->changeText("Empty Slot", {0xCE, 0xCE, 0xCE, 255});
+		else
+			this->slot1->changeText(currentLevel.c_str(), {0xCE, 0xCE, 0xCE, 255});
 	}
+
 	else{
 		this->slot1->changeText("Empty Slot", {0xCE, 0xCE, 0xCE, 255});
 	}
 
 
 	if(Game::instance().getSaves().isSaved(SLOT_2)){
-		Game::instance().getSaves().getSavedLevel(SLOT_1);
-		this->slot2->changeText("There is a Save", {0xCE, 0xCE, 0xCE, 255});
+		
+		const int levelFromSave = Game::instance().getSaves().getSavedLevel(SLOT_2);
+
+		const std::string currentLevel = "Level " + Util::toString(levelFromSave);
+		
+		if(levelFromSave == -1)
+			this->slot2->changeText("BLABLA", {0xCE, 0xCE, 0xCE, 255});
+		else
+			this->slot2->changeText(currentLevel.c_str(), {0xCE, 0xCE, 0xCE, 255});
 	}
 	else{
 		this->slot2->changeText("Empty Slot", {0xCE, 0xCE, 0xCE, 255});
@@ -65,8 +77,15 @@ void GStateContinue::load(){
 
 
 	if(Game::instance().getSaves().isSaved(SLOT_3)){
-		Game::instance().getSaves().getSavedLevel(SLOT_1);
-		this->slot3->changeText("There is a Save", {0xCE, 0xCE, 0xCE, 255});
+		
+		const int levelFromSave = Game::instance().getSaves().getSavedLevel(SLOT_3);
+
+		const std::string currentLevel = "Level " + Util::toString(levelFromSave);
+			
+		if(levelFromSave == -1)
+			this->slot3->changeText("Empty Slot", {0xCE, 0xCE, 0xCE, 255});
+		else
+			this->slot3->changeText(currentLevel.c_str(), {0xCE, 0xCE, 0xCE, 255});
 	}
 	else{
 		this->slot3->changeText("Empty Slot", {0xCE, 0xCE, 0xCE, 255});

@@ -127,7 +127,7 @@ void DynamicEntity::jump(){
 
 void DynamicEntity::applyGravity(){
 	if(this->vy + 50 < this->maxSpeed*2){
-			this->vy += 50;
+		this->vy += 50;
 	}
 }
 

@@ -3,7 +3,7 @@
 
 AudioHandler::AudioHandler() :
 	currentMusic(nullptr),
-	currentEffect(nullptr)
+	currentEffects()
 {
 
 }
@@ -13,10 +13,12 @@ AudioHandler::~AudioHandler(){
 		Mix_FreeMusic(this->currentMusic);
 		this->currentMusic = nullptr;
 	}
-	if(this->currentEffect != nullptr){
-		Mix_FreeChunk(this->currentEffect);
-		this->currentEffect = nullptr;
+
+	for(auto effect : this->currentEffects){
+		Mix_FreeChunk(effect);
 	}
+
+	this->currentEffects.clear();
 }
 
 void AudioHandler::setCurrentMusic(const std::string& path_){
@@ -45,19 +47,24 @@ void AudioHandler::setMusicVolume(const unsigned int percent_){
 	Mix_VolumeMusic(value);
 }
 
-void AudioHandler::setCurrentEffect(const std::string& path_){
-	if(this->currentEffect)
-		Mix_FreeChunk(this->currentEffect);
+void AudioHandler::addSoundEffect(const std::string& path_){
+	Mix_Chunk* effect = Mix_LoadWAV(path_.c_str());
 
-	this->currentEffect = Mix_LoadWAV(path_.c_str());
+	if(effect == nullptr){
+		Log(DEBUG) << "Loaded null chunk " << path_ << " " << Mix_GetError();
+	}
+
+	/// @todo Resource manager for audio.
+	this->currentEffects.push_back(effect);
+
+	playEffect(effect, 0);
 }
 
-void AudioHandler::playEffect(const int times_){
-	if(this->currentEffect){
-		Mix_PlayChannel(1, this->currentEffect, times_);
-	}
-	else{
-		Log(WARN) << "There is no effect loaded.";
+void AudioHandler::playEffect(Mix_Chunk* const effect_, const int times_){
+	const int playedChannel = Mix_PlayChannel(-1, effect_, times_);
+
+	if(playedChannel == -1){
+		Log(ERROR) << "Failed to play sound effect on a channel. " << Mix_GetError();
 	}
 }
 

@@ -11,8 +11,7 @@ void PStateAerial::enter(){
 	this->player->getAnimation()->changeAnimation(4, 3, 14, false, 1.4);
 	this->player->isGrounded = false;
 
-    Game::instance().getAudioHandler().setCurrentEffect("res/audio/FX_NADINE/JUMP_NADINE_01.wav");
-    Game::instance().getAudioHandler().playEffect(0);
+    Game::instance().getAudioHandler().addSoundEffect("res/audio/FX_NADINE/FX_AAAAAHH.wav");
 }
 
 void PStateAerial::exit(){

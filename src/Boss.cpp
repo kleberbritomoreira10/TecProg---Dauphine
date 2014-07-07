@@ -10,7 +10,7 @@
 #define ADD_STATE_EMPLACE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass(this))
 #define ADD_STATE_INSERT(stateEnum, stateClass) this->statesMap.insert(std::make_pair<BStates, StateBoss*>(stateEnum, new stateClass(this)));
 
-Boss::Boss(const double x_, const double y_, const std::string& path_) :
+Boss::Boss(const double x_, const double y_, const std::string& path_, Player* const player_) :
 	DynamicEntity(x_, y_, path_),	
 	potionsLeft(3),
 	sawPlayer(false),
@@ -20,7 +20,8 @@ Boss::Boss(const double x_, const double y_, const std::string& path_) :
 	currentState(nullptr),
 	animation(nullptr),
 	statesMap(),
-	dead(false)
+	dead(false),
+	player(player_)
 {
 	initializeStates();
 
@@ -34,12 +35,18 @@ Boss::Boss(const double x_, const double y_, const std::string& path_) :
 	this->animation = new Animation(0, 0, this->width, this->height, 0, false);
 	this->currentState = this->statesMap.at(IDLE);
 	this->currentState->enter();
+
+	if(this->player == nullptr){
+		Log(WARN) << "Passing a null player to the Boss.";
+	}
 }
 
 Boss::~Boss(){
 	if(this->currentState != nullptr){
 		this->currentState->exit();
 	}
+
+	this->player = nullptr;
 
 	destroyStates();
 }
@@ -163,6 +170,7 @@ void Boss::updateBoundingBox(){
 
 void Boss::randomSkill(const unsigned int index_){
 	this->hasShield = false;
+	slowVy();
 
 	switch(index_){
 		case BS_MAGIC_SHIELD:
@@ -196,10 +204,12 @@ void Boss::magicShield(){
 
 void Boss::teleport(){
 	Log(DEBUG) << "BOSS_SKILL: teleport";
+	applyGravity();
 }
 
 void Boss::magicProjectile(){
 	Log(DEBUG) << "BOSS_SKILL: magicProjectile";
+	this->x = this->player->x - 100;
 }
 
 void Boss::invokeWind(){

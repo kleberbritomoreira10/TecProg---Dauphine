@@ -11,8 +11,7 @@ void PStateAttackJumping::enter(){
 
     this->player->getAnimation()->changeAnimation(3, 9, 7, false, 0.4);
 
-    Game::instance().getAudioHandler().setCurrentEffect("res/audio/FX_NADINE/WOOSH_NADINE_02.wav");
-    Game::instance().getAudioHandler().playEffect(0);
+    Game::instance().getAudioHandler().addSoundEffect("res/audio/FX_NADINE/FX_SUPERAAAH.wav");
 }
 
 void PStateAttackJumping::exit(){

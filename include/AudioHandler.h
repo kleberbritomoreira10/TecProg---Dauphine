@@ -5,6 +5,7 @@
 
 #include "SDLWrapper.h"
 #include <string>
+#include <vector>
 
 /**
 * The audio handler.
@@ -38,7 +39,7 @@ class AudioHandler {
 		* @note Will warn if there is no effect loaded.
 		* @param times_ : Times to loop the song. MIX_LOOP (or -1) for infinite looping.
 		*/
-		void playEffect(const int times_);
+		void playEffect(Mix_Chunk* const effect_, const int times_);
 
 		/**
 		* Stops playing the current music.
@@ -78,11 +79,11 @@ class AudioHandler {
 		* If one already exists, frees it first.
 		* @param path_ : The path to the desired effect.
 		*/
-		void setCurrentEffect(const std::string& path_);
+		void addSoundEffect(const std::string& path_);
 
 	private:
 		Mix_Music* currentMusic; /**< The current music that is playing. */
-		Mix_Chunk* currentEffect; /**< The current effect that is playing. */
+		std::vector<Mix_Chunk*> currentEffects; /**< The current effect that is playing. */
 
 };
 

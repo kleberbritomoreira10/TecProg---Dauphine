@@ -13,8 +13,7 @@ void PStateMoving::enter(){
 
     this->player->getAnimation()->changeAnimation(4,2,9,false,0.7);
 
-    Game::instance().getAudioHandler().setCurrentEffect("res/audio/FX_NADINE/RUNNING_NADINE_01.wav");
-    Game::instance().getAudioHandler().playEffect(0);
+    Game::instance().getAudioHandler().addSoundEffect("res/audio/FX_NADINE/RUNNING_NADINE_01.wav");
 }
 
 void PStateMoving::exit(){

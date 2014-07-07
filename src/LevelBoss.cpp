@@ -48,7 +48,7 @@ void LevelBoss::load(){
 
 	this->playerHud = new PlayerHUD(lPlayer);
 
-	Boss* lBoss = new Boss(1200, 684.0, pathEnemy);
+	Boss* lBoss = new Boss(1200, 684.0, pathEnemy, lPlayer);
 	lBoss->getAnimation()->changeAnimation(0,0,1,false,0.0);
 	
 	// Test text.

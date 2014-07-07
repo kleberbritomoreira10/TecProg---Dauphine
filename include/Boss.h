@@ -7,6 +7,7 @@
 #include "Potion.h"
 #include <map>
 #include <vector>
+#include "Player.h"
 
 class StateBoss;
 
@@ -23,7 +24,7 @@ class Boss : public DynamicEntity {
 		/**
 		* The constructor.
 		*/
-		Boss(const double x_, const double y_, const std::string& path_);
+		Boss(const double x_, const double y_, const std::string& path_, Player* const player_);
 
 		/**
 		* The destructor.
@@ -90,6 +91,7 @@ class Boss : public DynamicEntity {
 		Animation* animation;
 		std::map<BStates, StateBoss*> statesMap;
 		bool dead;
+		Player* player;
 
 };
 

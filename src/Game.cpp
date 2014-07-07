@@ -144,7 +144,6 @@ void Game::runGame(){
 				updateDialog();
 			}
 
-
 			this->fadeScreen->update(deltaTime);
 
 			accumulatedTime -= deltaTime;
