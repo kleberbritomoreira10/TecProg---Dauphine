@@ -2,6 +2,8 @@
 #include "LuaScript.h"
 #include "Game.h"
 
+#include "Util.h"
+
 #include <string>
 
 const std::string GStateOptions::possibleResolutions[3] = {"800x600", "768x432", "960x540"};
@@ -9,7 +11,7 @@ const std::string GStateOptions::possibleResolutions[3] = {"800x600", "768x432",
 GStateOptions::GStateOptions() :
 	elapsedTime(0.0),
 	optionsImage(nullptr),
-	currentResolution(R_800_600),
+	currentResolution(R_960_540),
 	currentOption(O_RESOLUTION),
 	selector(nullptr),
 	selectorXPositionLeft  {780, 780, 780, 590, 590},
@@ -20,31 +22,34 @@ GStateOptions::GStateOptions() :
 	volumeMusic(nullptr),
 	volumeSFX(nullptr)	
 {
+	mVolume = 100;
+	fxVolume = 100;
+
 	for(unsigned int i = 0; i < R_TOTAL; i++){
 		this->resolutions[i] = nullptr;
 	}
 
-	SDL_Color whiteColor = {255, 255, 255, 255};
-	this->resolution = new Text(800.0, // x
+	SDL_Color textColor = {0xCE, 0xCE, 0xCE, 255};
+	this->resolution = new Text(830.0, // x
 								365.0, // y
 								"res/fonts/maturasc.ttf", // font path
-								65, // size
+								45, // size
 								possibleResolutions[currentResolution].c_str(), // text
-								whiteColor); // sdl_color
+								textColor); // sdl_color
 
-	this->volumeMusic = new Text(800.0, // x
+	this->volumeMusic = new Text(830.0, // x
 								468.0, // y
 								"res/fonts/maturasc.ttf", // font path
-								65, // size
-								"rafael", // text
-								whiteColor); // sdl_color
+								45, // size
+								Util::toString(mVolume).c_str(), // text
+								textColor); // sdl_color
 
-	this->volumeSFX = new Text(800.0, // x
+	this->volumeSFX = new Text(830.0, // x
 								580.0, // y
 								"res/fonts/maturasc.ttf", // font path
-								65, // size
-								"viadao", // text
-								whiteColor); // sdl_color
+								45, // size
+								Util::toString(fxVolume).c_str(), // text
+								textColor); // sdl_color
 
 }
 
@@ -54,6 +59,10 @@ GStateOptions::~GStateOptions(){
 
 void GStateOptions::update(const double dt_){
 	this->elapsedTime += dt_;
+
+	this->resolution->changeText(possibleResolutions[currentResolution].c_str(), {0xCE, 0xCE, 0xCE, 255});
+	this->volumeMusic->changeText(Util::toString(mVolume).c_str(), {0xCE, 0xCE, 0xCE, 255});
+	this->volumeSFX->changeText(Util::toString(fxVolume).c_str(), {0xCE, 0xCE, 0xCE, 255});	
 
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
@@ -100,14 +109,13 @@ void GStateOptions::update(const double dt_){
 			}
 			// Option == VOLUME MUSIC
 			else if(this->currentOption == O_VOLUME_MUSIC){
-
+				if(mVolume > 0)
+					mVolume-=5;
 			}
 			// Option == VOLUME SFX
 			else if(this->currentOption == O_VOLUME_SFX){
-
-			}
-			else {
-
+				if(fxVolume > 0)
+					fxVolume-=5;
 			}
 
 			this->elapsedTime = 0.0;
@@ -127,11 +135,14 @@ void GStateOptions::update(const double dt_){
 			}
 			// Option == VOLUME MUSIC
 			else if(this->currentOption == O_VOLUME_MUSIC){
-
+				if(mVolume < 100)
+					mVolume+=5;
+			
 			}
 			// Option == VOLUME SFX
 			else if(this->currentOption == O_VOLUME_SFX){
-
+				if(fxVolume < 100)
+					fxVolume+=5;
 			}
 			else {
 
@@ -189,7 +200,7 @@ void GStateOptions::load(){
 	const std::string pathOptions = luaOptions.unlua_get<std::string>("options.images.dummy");
 	const std::string pathCursor = luaOptions.unlua_get<std::string>("options.images.cursor");
 
-	this->currentResolution = R_800_600;
+	this->currentResolution = R_960_540;
 	this->currentOption = O_RESOLUTION;
 	
     this->optionsImage = Game::instance().getResources().get(pathOptions);
@@ -220,9 +231,9 @@ void GStateOptions::applyOptions(){
 	}
 
 	// Apply volume music
-	Game::instance().getAudioHandler().setMusicVolume(100);
+	Game::instance().getAudioHandler().setMusicVolume(mVolume);
 
 	// Apply volume sfx
-	Game::instance().getAudioHandler().setEffectVolume(100);
+	Game::instance().getAudioHandler().setEffectVolume(fxVolume);
 
 }

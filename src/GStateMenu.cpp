@@ -24,6 +24,8 @@ void GStateMenu::load(){
 	Log(DEBUG) << "Loading menu...";
 
 	// Changing the music.
+	Game::instance().clearKeyFromInput(GameKeys::ESCAPE);
+
 	Game::instance().getAudioHandler().changeMusic("res/audio/ppj.ogg");
 
 	LuaScript luaMenu("lua/Menu.lua");

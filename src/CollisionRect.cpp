@@ -43,6 +43,9 @@ TypeCollision CollisionRect::stringToType(const std::string& strType_){
 	else if(strType_ == "checkpoint"){
 		return CHECKPOINT;
 	}
+	else if(strType_ == "cutscene"){
+		return CUTSCENE;
+	}
 	else{
 		Log(ERROR) << "Unknown collision type for " << strType_ << " .";
 		return NONE;

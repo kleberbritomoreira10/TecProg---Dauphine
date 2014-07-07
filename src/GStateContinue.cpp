@@ -16,6 +16,29 @@ GStateContinue::GStateContinue() :
 	selectorXPosition(562),
 	selectorYPosition {500,610,723}
 {
+	std::string emptySlot = "Empty Slot";
+
+	this->slot1 = new Text(615.0, // x
+							520.0, // y
+							"res/fonts/maturasc.ttf", // font path
+							45, // size
+							emptySlot.c_str(), // text
+							{0xCE, 0XCE, 0XCE, 255}); // sdl_color
+
+	this->slot2 = new Text(615.0, // x
+							520.0, // y
+							"res/fonts/maturasc.ttf", // font path
+							45, // size
+							emptySlot.c_str(), // text
+							{0xCE, 0XCE, 0XCE, 255}); // sdl_color
+
+	this->slot3 = new Text(615.0, // x
+							520.0, // y
+							"res/fonts/maturasc.ttf", // font path
+							45, // size
+							emptySlot.c_str(), // text
+							{0xCE, 0XCE, 0XCE, 255}); // sdl_color
+
 
 }
 
@@ -32,6 +55,9 @@ void GStateContinue::load(){
 
 	this->background = Game::instance().getResources().get(pathBackground);
     this->selector = Game::instance().getResources().get(pathSelector);
+
+	this->selector->setWidth(410);
+	this->selector->setHeight(102);
 
     this->currentSelection = Selection::SLOT_1;
 
@@ -60,10 +86,9 @@ void GStateContinue::render(){
 	if(this->background != nullptr){
 		this->background->render(0, 0, nullptr, true);
 
-		this->selector->setWidth(410);
-		this->selector->setHeight(102);
-
 		this->selector->render(selectorXPosition, selectorYPosition[currentSelection], nullptr, false, 0.0, nullptr, SDL_FLIP_NONE);
+	
+		slot1->render(0, 0);
 	}
 	else{
 		Log(WARN) << "No image set to display on the menu!";

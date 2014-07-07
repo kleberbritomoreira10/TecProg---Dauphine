@@ -93,7 +93,7 @@ std::array<bool, CollisionSide::SOLID_TOTAL> DynamicEntity::detectCollision(){
 					}
 					else{
 						if(this->isClimbing){
-							Log(DEBUG) << "SAIU";
+							Log(DEBUG) << "EXIT CLIMB";
 							this->isClimbing = false;
 						}
 					}

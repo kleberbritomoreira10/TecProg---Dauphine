@@ -28,6 +28,8 @@ class Text : public Entity {
 		*/
 		virtual void render(const double cameraX_, const double cameraY_);
 
+		virtual void changeText(const char* text_, const SDL_Color color_);
+
 	private:
 		TTF_Font* font;
 

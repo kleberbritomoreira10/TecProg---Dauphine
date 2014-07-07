@@ -31,6 +31,23 @@ Text::~Text(){
 	TTF_CloseFont(this->font);
 }
 
+void Text::changeText(const char* text_, const SDL_Color color_){
+
+	SDL_Surface* surface = TTF_RenderText_Blended(this->font, text_, color_);
+
+	if(surface != nullptr){
+		this->sprite = new Sprite(surface);
+
+		// Idk.
+		this->sprite->setWidth(surface->w);
+		this->sprite->setHeight(surface->h);
+	}
+	else{
+		Log(ERROR) << "Could not load font surface.";
+	}
+
+}
+
 void Text::update(const double dt_){
 	(void(dt_)); //unused
 }

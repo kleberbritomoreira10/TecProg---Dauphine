@@ -83,6 +83,9 @@ class GStateOptions : public StateGame {
 
 		static const std::string possibleResolutions[3];
 
+		int mVolume;
+		int fxVolume;
+
 		Text* resolution;
 		Text* volumeMusic;
 		Text* volumeSFX;

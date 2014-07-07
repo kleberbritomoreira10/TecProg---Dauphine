@@ -9,6 +9,9 @@ void PStateClimbing::enter(){
     this->box.w = 130;
     this->box.h = 145;
 
+    this->player->vy = 0;
+	this->player->vx = 0;    
+
 	this->player->getAnimation()->changeAnimation(10, 5, 1, false, 0);
 }
 
