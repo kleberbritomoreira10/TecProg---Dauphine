@@ -22,7 +22,7 @@ LevelTwo::~LevelTwo(){
 
 void LevelTwo::load(){
 	// Changing the music.
-	Game::instance().getAudioHandler().changeMusic("res/audio/leveldoismp3.mp3");
+	Game::instance().getAudioHandler().changeMusic("res/audio/lv1.wav");
 
 	// Loading the tile/tilemap.
 	this->tileMap = new TileMap("res/maps/level2.tmx");

@@ -1,11 +1,6 @@
 #include "GameSave.h"
 #include "Logger.h"
-#include <stdlib.h>
-
-GameSave& GameSave::instance(){
-	static GameSave* instance = new GameSave();
-	return *instance;
-}
+#include <cstdlib>
 
 GameSave::GameSave(){
 
@@ -69,6 +64,28 @@ bool GameSave::isSaved(const int saveSlot_){
 	}	
 	return !this->continueFile.fail();
 }
+
+// void GameSave::getInfo(const int saveSlot_, int& level_){
+
+// 	if(saveSlot_ == 0){
+// 		this->continueFile.open("saveSlot1.dauphine");
+
+// 		// level_ = 
+
+// 		this->continueFile.close();
+// 	}
+// 	else if(saveSlot_ == 1){
+// 		this->continueFile.open("saveSlot2.dauphine");
+	
+// 		this->continueFile.close();
+// 	}
+// 	else if(saveSlot_ == 2){
+// 		this->continueFile.open("saveSlot3.dauphine");
+	
+// 		this->continueFile.close();
+// 	}
+
+// }
 
 void GameSave::restorePlayerPosition(Player* player_){
 	double playerX_= 0;

@@ -37,6 +37,7 @@ Game::Game() :
 	audioHandler(new AudioHandler()),
 	inputHandler(new InputHandler()),
 	resourceManager(new ResourceManager()),
+	gameSave(new GameSave()),
 	fadeScreen(nullptr),
 	currentState(nullptr),
 	statesMap(),
@@ -300,6 +301,10 @@ std::array<bool, GameKeys::MAX> Game::getInput(){
 
 ResourceManager& Game::getResources(){
 	return (*(this->resourceManager));
+}
+
+GameSave& Game::getSaves(){
+	return (*(this->gameSave));
 }
 
 void Game::stop(){

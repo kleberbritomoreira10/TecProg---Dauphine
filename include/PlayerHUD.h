@@ -3,6 +3,7 @@
 
 #include "Sprite.h"
 #include "Player.h"
+#include "Text.h"
 
 /**
 * The HUD entity class.
@@ -59,6 +60,7 @@ class PlayerHUD {
 		Sprite* playerHudSprites[TOTAL_HUD];
 		bool canRenderHud[TOTAL_HUD];
 		Player* player;
+		Text* potionsLeft;
 };
 
 #endif //INCLUDE_PLAYERHUD_H

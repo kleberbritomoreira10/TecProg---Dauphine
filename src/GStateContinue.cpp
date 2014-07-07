@@ -1,13 +1,7 @@
 #include "GStateContinue.h"
 #include "LuaScript.h"
 #include "Game.h"
-#include "GameSave.h"
-
 #include "Util.h"
-
-#include <SDL2/SDL_ttf.h>
-#include "Window.h"
-
 #include <string>
 
 GStateContinue::GStateContinue() :
@@ -49,11 +43,11 @@ GStateContinue::~GStateContinue(){
 void GStateContinue::load(){
 	Log(DEBUG) << "Loading Continue Screen...";
 	
-	if(GameSave::instance().isSaved(SLOT_1)){
-		GameSave::instance().getSavedLevel(SLOT_1);
-		Log(DEBUG) << "Current Level " << GameSave::instance().currentLevel;
+	if(Game::instance().getSaves().isSaved(SLOT_1)){
+		Game::instance().getSaves().getSavedLevel(SLOT_1);
+		Log(DEBUG) << "Current Level " << Game::instance().getSaves().currentLevel;
 
-		std::string currentLevel = "Level " + Util::toString(GameSave::instance().currentLevel);
+		std::string currentLevel = "Level " + Util::toString(Game::instance().getSaves().currentLevel);
 		this->slot1->changeText(currentLevel.c_str(), {0xCE, 0xCE, 0xCE, 255});
 	}
 	else{
@@ -61,8 +55,8 @@ void GStateContinue::load(){
 	}
 
 
-	if(GameSave::instance().isSaved(SLOT_2)){
-		GameSave::instance().getSavedLevel(SLOT_1);
+	if(Game::instance().getSaves().isSaved(SLOT_2)){
+		Game::instance().getSaves().getSavedLevel(SLOT_1);
 		this->slot2->changeText("There is a Save", {0xCE, 0xCE, 0xCE, 255});
 	}
 	else{
@@ -70,8 +64,8 @@ void GStateContinue::load(){
 	}
 
 
-	if(GameSave::instance().isSaved(SLOT_3)){
-		GameSave::instance().getSavedLevel(SLOT_1);
+	if(Game::instance().getSaves().isSaved(SLOT_3)){
+		Game::instance().getSaves().getSavedLevel(SLOT_1);
 		this->slot3->changeText("There is a Save", {0xCE, 0xCE, 0xCE, 255});
 	}
 	else{
@@ -161,7 +155,7 @@ void GStateContinue::handleSelectorMenu(){
 		}
 	}
 	else if(currentSelection == Selection::SLOT_1 && keyStates[GameKeys::SPACE] == true){
-		if(GameSave::instance().getSavedLevel(Selection::SLOT_1)==1){
+		if(Game::instance().getSaves().getSavedLevel(Selection::SLOT_1)==1){
 			Game::instance().setState(Game::GStates::LEVEL_ONE);
 		}
 	}

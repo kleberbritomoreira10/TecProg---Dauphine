@@ -8,8 +8,6 @@
 class GameSave {
 
 	public:
-
-		static GameSave& instance();
 		GameSave();
 
 		void createSaveGameFile(int saveSelection_);

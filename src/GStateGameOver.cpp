@@ -27,7 +27,7 @@ void GStateGameOver::load(){
 	this->lifeTime = luaLifeTime;
 
 	// Changing the music.
-	Game::instance().getAudioHandler().changeMusic("res/audio/MGOMP3.mp3");
+	Game::instance().getAudioHandler().changeMusic("res/audio/Game_Over.mid");
 }
 
 void GStateGameOver::unload(){
@@ -42,6 +42,13 @@ void GStateGameOver::unload(){
 
 void GStateGameOver::update(const double dt_){
 	this->passedTime += dt_;
+
+	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
+
+	if(keyStates[GameKeys::SPACE] || keyStates[GameKeys::LATTACK]){
+		Game::instance().setState(Game::GStates::MENU);
+		return;
+	}
 
 	if(this->passedTime >= this->lifeTime){
 		Game::instance().setState(Game::GStates::MENU);

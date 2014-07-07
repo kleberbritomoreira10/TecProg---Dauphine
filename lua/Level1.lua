@@ -1,7 +1,7 @@
 level = {
 
 	audio = {
-		background = "res/audio/testAudio.ogg",
+		background = "res/audio/lv1.wav",
 	},
 
 	player = {

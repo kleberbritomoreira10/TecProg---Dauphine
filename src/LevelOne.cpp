@@ -225,7 +225,7 @@ void LevelOne::update(const double dt_){
 	//Saving the game state
 	if(!this->checkpointVisited && this->player->getBoundingBox().x >= 4500 && this->player->getBoundingBox().x <= 4550){
 		this->checkpoint = Game::instance().getResources().get("res/images/checkpoint_visited.png");
-		GameSave::instance().saveLevel(1, this->player, this->enemies);
+		Game::instance().getSaves().saveLevel(1, this->player, this->enemies);
 		this->checkpointVisited = true;
 	}
 

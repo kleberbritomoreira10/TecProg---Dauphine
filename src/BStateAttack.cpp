@@ -10,8 +10,8 @@ void BStateAttack::enter(){
 	this->boss->getAnimation()->changeAnimation(0, 0, 1, false, 0);
 	this->boss->sawPlayer = false;
 
-	Game::instance().getAudioHandler().setCurrentEffect("res/audio/FX_NADINE/FX_SUPERAAAH.wav");
-	Game::instance().getAudioHandler().playEffect(0);
+	// Game::instance().getAudioHandler().setCurrentEffect("res/audio/FX_NADINE/FX_SUPERAAAH.wav");
+	// Game::instance().getAudioHandler().playEffect(0);
 }
 
 void BStateAttack::exit(){

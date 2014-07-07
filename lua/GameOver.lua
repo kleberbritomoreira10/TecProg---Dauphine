@@ -3,5 +3,5 @@ gameOver = {
 		gameOver = "res/images/gameOver.png",
 	},
 	
-	lifeTime = 2.5
+	lifeTime = 12.0
 }
