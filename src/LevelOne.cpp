@@ -87,10 +87,6 @@ void LevelOne::load(){
 	Enemy* lEnemy7 = new Enemy(10880.0, 1400.0, pathEnemy, false, 0.0);
 	lEnemy7->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy7);
-		
-	// Test text.
-	// Text* text = new Text(200.0, 900.0, "res/fonts/KGFeeling22.ttf", 50, "dauphine");
-	// addEntity(text);
 
 	// Finally, setting the player and the camera.
 	setPlayer(lPlayer);
@@ -103,10 +99,11 @@ void LevelOne::load(){
 
 void LevelOne::unload(){
 	Log(DEBUG) << "\tUnloading level 1...";
+
 	cleanEntities();
 	clearEnemies();
-	for (int i = 0; i < NUMBER_ITEMS; ++i)
-	{
+
+	for (int i = 0; i < NUMBER_ITEMS; ++i){
 		caughtItems[i]=false;
 	}
 	
@@ -135,7 +132,7 @@ void LevelOne::update(const double dt_){
 
 	// Set to GameOver if the player is dead.
 	if(this->player->isDead()){
-		Game::instance().setState(Game::GStates::GAMEOVER);
+		this->player->changeState(Player::PStates::DEAD);
 		return;
 	}
 
@@ -237,8 +234,6 @@ void LevelOne::render(){
 
 	this->playerHud->render();
 	
-
-	
 	for(auto enemy : this->enemies){
 		enemy->render(cameraX, cameraY);
 	}
@@ -248,17 +243,10 @@ void LevelOne::render(){
         entity->render(cameraX, cameraY);
 	}
 
-	for (int unsigned i = 0; i < NUMBER_ITEMS; ++i)
-	{
-	if(this->image != nullptr && caughtItems[i] == false ){
+	for (unsigned int i = 0; i < NUMBER_ITEMS; i++){
+		if(this->image != nullptr && caughtItems[i] == false){
 			this->image->Sprite::render((items[i]+60) - cameraX, 1750 - cameraY);
-						
-		
-	}else{
-		Log(DEBUG)<<"FALHOU";
+		}
+	}
 
-	}
-	}
-	
-	
 }

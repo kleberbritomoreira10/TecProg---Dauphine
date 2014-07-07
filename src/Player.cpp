@@ -18,6 +18,7 @@
 #include "PStateAttackJumping.h"
 #include "PStateHit.h"
 #include "PStateClimbing.h"
+#include "PStateDead.h"
 
 #include "Window.h"
 
@@ -117,7 +118,8 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
     }
     if(detections_.at(CollisionSide::SOLID_BOTTOM)){
         if(isCurrentState(PStates::AERIAL) || isCurrentState(PStates::ATTACKJUMPING) 
-            || isCurrentState(PStates::HITED)  || isCurrentState(PStates::CLIMBING)){
+            || isCurrentState(PStates::HITED)  || isCurrentState(PStates::CLIMBING) ||  
+            isCurrentState(PStates::DEAD)){
             const double magic = 32.0;
             const double aerialToIdleCorrection = 8.0;
 
@@ -128,7 +130,7 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
     }
     else{
         if(!isCurrentState(PStates::AERIAL) && !isCurrentState(PStates::ATTACKJUMPING)
-            && !isCurrentState(PStates::CLIMBING)){
+            && !isCurrentState(PStates::CLIMBING) && !isCurrentState(PStates::DEAD)){
             changeState(PStates::AERIAL);
         }
     }
@@ -211,6 +213,7 @@ void Player::initializeStates(){
     ADD_STATE_INSERT(ATTACKJUMPING,PStateAttackJumping);
     ADD_STATE_INSERT(HITED,        PStateHit);
     ADD_STATE_INSERT(CLIMBING,     PStateClimbing);
+    ADD_STATE_INSERT(DEAD,         PStateDead);
 }
 
 void Player::destroyStates(){

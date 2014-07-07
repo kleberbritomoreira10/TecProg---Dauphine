@@ -6,12 +6,18 @@
 
 GStateMenu::GStateMenu() :
 	menuImage(nullptr),
+	menuSelector(nullptr),
+	attractModeBg(nullptr),
+	attractMode(nullptr),
 	passedTime(0.0),
 	currentSelection(Selection::NEWGAME),
 	selectorXPositionLeft {610, 635, 635, 645},
 	selectorYPositionLeft {560, 625, 690, 755},
 	selectorXPositionRight {880, 855, 855, 845},
-	selectorYPositionRight {560, 625, 690, 755}
+	selectorYPositionRight {560, 625, 690, 755},
+	attractHeightSize(600),
+	attractChangeSpeed(1),
+	attractClip{0, 0, 0, this->attractHeightSize}
 {
 
 }
@@ -34,12 +40,16 @@ void GStateMenu::load(){
 
     this->menuImage = Game::instance().getResources().get(pathTitleScreen);
     this->menuSelector = Game::instance().getResources().get(pathCursor);
+    this->attractModeBg = Game::instance().getResources().get("res/images/bg.png");
+    this->attractMode = Game::instance().getResources().get("res/images/attract_no_bg.png");
+    this->attractClip.w = this->attractMode->getWidth();
 
     Game::instance().getFade().fadeOut(0, 0.002);
 }
 
 void GStateMenu::unload(){
 	Log(DEBUG) << "\tUnloading menu...";
+	this->attractClip.y = 0;
 	cleanEntities();
 }
 
@@ -56,21 +66,36 @@ void GStateMenu::update(const double dt_){
 }
 
 void GStateMenu::render(){
-	if(this->menuImage != nullptr){
-		this->menuImage->render(0, 0, nullptr, true);
 
-		this->menuSelector->setWidth(50);
-
-		this->menuSelector->render(selectorXPositionLeft[currentSelection],
-			selectorYPositionLeft[currentSelection], nullptr, false, 0.0, nullptr, SDL_FLIP_NONE);
-
-		this->menuSelector->render(selectorXPositionRight[currentSelection],
-			selectorYPositionRight[currentSelection], nullptr, false, 0.0, nullptr, SDL_FLIP_HORIZONTAL);
-
+	if(this->passedTime>10){
+		if(this->attractClip.y < (int)this->attractMode->getHeight() - this->attractHeightSize){
+			this->attractClip.y += this->attractChangeSpeed;
+		}
+		else{
+			this->passedTime = 0.0;
+			this->attractClip.y = 0;
+		}
+		this->attractModeBg->render(0, 0, nullptr, true);
+		this->attractMode->render(0, 0, &this->attractClip, true);
 	}
 	else{
-		Log(WARN) << "No image set to display on the menu!";
+		if(this->menuImage != nullptr){
+			this->menuImage->render(0, 0, nullptr, true);
+
+			this->menuSelector->setWidth(50);
+
+			this->menuSelector->render(selectorXPositionLeft[currentSelection],
+				selectorYPositionLeft[currentSelection], nullptr, false, 0.0, nullptr, SDL_FLIP_NONE);
+
+			this->menuSelector->render(selectorXPositionRight[currentSelection],
+				selectorYPositionRight[currentSelection], nullptr, false, 0.0, nullptr, SDL_FLIP_HORIZONTAL);
+
+		}
+		else{
+			Log(WARN) << "No image set to display on the menu!";
+		}
 	}
+
 }
 
 void GStateMenu::handleSelectorMenu(){
@@ -87,6 +112,7 @@ void GStateMenu::handleSelectorMenu(){
 				currentSelection = Selection::NEWGAME;
 			}
 			this->passedTime = 0.0;
+			this->attractClip.y = 0;
 		}
 	}
 	else if(keyStates[GameKeys::UP] == true || keyStates[GameKeys::LEFT] == true){
@@ -98,22 +124,30 @@ void GStateMenu::handleSelectorMenu(){
 				currentSelection = (Selection::TOTAL - 1);
 			}
 			this->passedTime = 0.0;
+			this->attractClip.y = 0;
 		}
 	}
 	else if(currentSelection == Selection::NEWGAME && keyStates[GameKeys::SPACE] == true){
 		Game::instance().setState(Game::GStates::NEW_GAME);
-		//Game::instance().setState(Game::GStates::LEVEL_ONE);
+		this->passedTime = 0.0;
+		this->attractClip.y = 0;
 	}
 
 	else if(currentSelection == Selection::CONTINUE && keyStates[GameKeys::SPACE] == true){
 		Game::instance().setState(Game::GStates::CONTINUE);
+		this->passedTime = 0.0;
+		this->attractClip.y = 0;
 	}
 
 	else if(currentSelection == Selection::OPTIONS && keyStates[GameKeys::SPACE] == true){
 		Game::instance().setState(Game::GStates::OPTIONS);
+		this->passedTime = 0.0;
+		this->attractClip.y = 0;
 	}
 
 	else if(currentSelection == Selection::CREDITS && keyStates[GameKeys::SPACE] == true){
 		Game::instance().setState(Game::GStates::CREDITS);
+		this->passedTime = 0.0;
+		this->attractClip.y = 0;
 	}
 }

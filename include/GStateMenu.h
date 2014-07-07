@@ -60,6 +60,8 @@ class GStateMenu : public StateGame {
 
 		Sprite* menuImage; /**< The image shown on the menu. */
 		Sprite* menuSelector; /**< The selector shown on the menu. */
+		Sprite* attractModeBg; /**< The image shown on the menu. */
+		Sprite* attractMode; /**< The selector shown on the menu. */
 		double passedTime; /**< The time already elapsed since the beggining of the menu. */
 
 		int currentSelection;
@@ -67,6 +69,10 @@ class GStateMenu : public StateGame {
 		int selectorYPositionLeft[Selection::TOTAL]; /**< The Y position of the left selector.. */
 		int selectorXPositionRight[Selection::TOTAL]; /**< The X position of the left selector.. */
 		int selectorYPositionRight[Selection::TOTAL]; /**< The Y position of the left selector.. */
+
+		const int attractHeightSize;
+		const int attractChangeSpeed;
+		SDL_Rect attractClip; /**< The clip shown on the credits. */
 };
 
 #endif // INCLUDE_GSTATEMENU_H
