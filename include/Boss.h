@@ -57,10 +57,30 @@ class Boss : public DynamicEntity {
 		bool isDead();
 		void setDead(bool isDead_);
 
+		enum BossSkills : uint8_t {
+			BS_MAGIC_SHIELD = 0,
+			BS_TELEPORT,
+			BS_MAGIC_PROJECTILE,
+			BS_INVOKE_WIND,
+			BS_ICE_PRISION,
+			BS_FINAL_SPLENDOR
+		};
+
+		void randomSkill(const unsigned int index_);
+		void magicShield();
+		void teleport();
+		void magicProjectile();
+		void invokeWind();
+		void icePrision();
+		void finalSplendor();
+
 		unsigned int potionsLeft;
 
 		bool sawPlayer;
 		std::vector<Potion*> potions;
+
+		unsigned int life;
+		bool hasShield;
 
 	private:
 		virtual void updateBoundingBox();

@@ -15,6 +15,8 @@ Boss::Boss(const double x_, const double y_, const std::string& path_) :
 	potionsLeft(3),
 	sawPlayer(false),
 	potions(),
+	life(200),
+	hasShield(false),
 	currentState(nullptr),
 	animation(nullptr),
 	statesMap(),
@@ -70,18 +72,13 @@ void Boss::render(const double cameraX_, const double cameraY_){
 	const double dx = this->x - cameraX_;
 	const double dy = this->y - cameraY_;
 
-	/////////////////////////////////////////////////////////////////////////////////////////
-	// //Actual.
-	// SDL_Rect actualRect = {(int)dx, (int)dy, (int)this->width, (int)this->height};
-	// SDL_SetRenderDrawColor( Window::getRenderer(), 0x00, 0x00, 0x00, 0xFF);
-	// SDL_RenderFillRect(Window::getRenderer(), &actualRect);
-
-	// //Bounding box.
-	// SDL_Rect boundingBox2 = {(int)(this->boundingBox.x - cameraX_), (int)(this->boundingBox.y - cameraY_), (int)this->boundingBox.w, (int)this->boundingBox.h};
-	// SDL_SetRenderDrawColor( Window::getRenderer(), 0xFF, 0xFF, 0xFF, 0xFF);
-	// SDL_RenderFillRect(Window::getRenderer(), &boundingBox2);
-	///////////////////////////////////////////////////////////////////////////////////////////
-
+	// Shield render.
+	if(this->hasShield){
+		SDL_Rect boundingBox2 = {(int)(this->boundingBox.x - cameraX_), (int)(this->boundingBox.y - cameraY_), (int)this->boundingBox.w, (int)this->boundingBox.h};
+		SDL_SetRenderDrawColor( Window::getRenderer(), 0xFF, 0xFF, 0xFF, 0xFF);
+		SDL_RenderFillRect(Window::getRenderer(), &boundingBox2);
+	}
+	
 	if(this->sprite != nullptr){
 		SDL_RendererFlip flip = getFlip();
 
@@ -163,3 +160,57 @@ void Boss::updateBoundingBox(){
 	this->boundingBox.w = 150;
 	this->boundingBox.h = 200;
 }
+
+void Boss::randomSkill(const unsigned int index_){
+	this->hasShield = false;
+
+	switch(index_){
+		case BS_MAGIC_SHIELD:
+			magicShield();
+			break;
+		case BS_TELEPORT:
+			teleport();
+			break;
+		case BS_MAGIC_PROJECTILE:
+			magicProjectile();
+			break;
+		case BS_INVOKE_WIND:
+			invokeWind();
+			break;
+		case BS_ICE_PRISION:
+			icePrision();
+			break;
+		case BS_FINAL_SPLENDOR:
+			finalSplendor();
+			break;
+		default:
+			Log(WARN) << "Random boss skill index does not exist.";
+			break;
+	}
+}
+
+void Boss::magicShield(){
+	Log(DEBUG) << "BOSS_SKILL: magicShield";
+	this->hasShield = true;
+}
+
+void Boss::teleport(){
+	Log(DEBUG) << "BOSS_SKILL: teleport";
+}
+
+void Boss::magicProjectile(){
+	Log(DEBUG) << "BOSS_SKILL: magicProjectile";
+}
+
+void Boss::invokeWind(){
+	Log(DEBUG) << "BOSS_SKILL: invokeWind";
+}
+
+void Boss::icePrision(){
+	Log(DEBUG) << "BOSS_SKILL: icePrision";
+}
+
+void Boss::finalSplendor(){
+	Log(DEBUG) << "BOSS_SKILL: finalSplendor";
+}
+
