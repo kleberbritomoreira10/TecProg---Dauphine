@@ -24,9 +24,7 @@ Potion::Potion(const double x_, const double y_, const std::string& path_, const
     else{
         this->x -= this->width;   
     }
-
-    Log(DEBUG) << this->width;
-
+    
     this->animation = new Animation(0, 0, 192, 192, 13, false);
 
     this->y = this->y + 100;

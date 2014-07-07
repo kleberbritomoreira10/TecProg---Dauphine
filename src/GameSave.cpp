@@ -8,7 +8,7 @@ GameSave& GameSave::instance(){
 }
 
 GameSave::GameSave(){
-	Log(DEBUG) << "Saving level";
+
 }
 
 void GameSave::createSaveGameFile(int saveSelection_){
@@ -33,11 +33,13 @@ void GameSave::saveLevel(unsigned int level_, Player* player, std::vector <Enemy
 		this->saveFile << enemy->isDead() << " ";
 	}
 	this->saveFile.close();
+
 }
 
 int GameSave::getSavedLevel(int continueSelection_){
 	this->saveSelection = continueSelection_;
-	std::string level;
+	std::string level = "-1";
+
 	if(this->saveSelection == 0){
 		this->continueFile.open("saveSlot1.dauphine");
 	}
@@ -49,6 +51,23 @@ int GameSave::getSavedLevel(int continueSelection_){
 	}
 	this->continueFile >> level;
 	return std::stoi(level);
+}
+
+bool GameSave::isSaved(const int saveSlot_){
+
+	if(saveSlot_ == 0){
+		this->continueFile.open("saveSlot1.dauphine");
+		this->continueFile.close();
+	}
+	else if(saveSlot_ == 1){
+		this->continueFile.open("saveSlot2.dauphine");
+		this->continueFile.close();
+	}
+	else if(saveSlot_ == 2){
+		this->continueFile.open("saveSlot3.dauphine");
+		this->continueFile.close();
+	}	
+	return !this->continueFile.fail();
 }
 
 void GameSave::restorePlayerPosition(Player* player_){

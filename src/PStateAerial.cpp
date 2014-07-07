@@ -3,8 +3,6 @@
 #include "Game.h"
 
 void PStateAerial::enter(){
-    Log(DEBUG) << "--- enter aerial";
-
     this->box.x = 58;
     this->box.y = 72;
     this->box.w = 130;

@@ -3,6 +3,8 @@
 #include "Game.h"
 #include "GameSave.h"
 
+#include "Util.h"
+
 #include <SDL2/SDL_ttf.h>
 #include "Window.h"
 
@@ -16,27 +18,25 @@ GStateContinue::GStateContinue() :
 	selectorXPosition(562),
 	selectorYPosition {500,610,723}
 {
-	std::string emptySlot = "Empty Slot";
-
 	this->slot1 = new Text(615.0, // x
 							520.0, // y
 							"res/fonts/maturasc.ttf", // font path
 							45, // size
-							emptySlot.c_str(), // text
+							"Empty Slot", // text
 							{0xCE, 0XCE, 0XCE, 255}); // sdl_color
 
-	this->slot2 = new Text(615.0, // x
-							520.0, // y
+	this->slot2 = new Text(615.0, // std::string slot1Text;std::string slot1Text;x
+							630.0, // y
 							"res/fonts/maturasc.ttf", // font path
 							45, // size
-							emptySlot.c_str(), // text
+							"Empty Slot", // text
 							{0xCE, 0XCE, 0XCE, 255}); // sdl_color
 
 	this->slot3 = new Text(615.0, // x
-							520.0, // y
+							730.0, // y
 							"res/fonts/maturasc.ttf", // font path
 							45, // size
-							emptySlot.c_str(), // text
+							"Empty Slot", // text
 							{0xCE, 0XCE, 0XCE, 255}); // sdl_color
 
 
@@ -48,6 +48,35 @@ GStateContinue::~GStateContinue(){
 
 void GStateContinue::load(){
 	Log(DEBUG) << "Loading Continue Screen...";
+	
+	if(GameSave::instance().isSaved(SLOT_1)){
+		GameSave::instance().getSavedLevel(SLOT_1);
+		Log(DEBUG) << "Current Level " << GameSave::instance().currentLevel;
+
+		std::string currentLevel = "Level " + Util::toString(GameSave::instance().currentLevel);
+		this->slot1->changeText(currentLevel.c_str(), {0xCE, 0xCE, 0xCE, 255});
+	}
+	else{
+		this->slot1->changeText("Empty Slot", {0xCE, 0xCE, 0xCE, 255});
+	}
+
+
+	if(GameSave::instance().isSaved(SLOT_2)){
+		GameSave::instance().getSavedLevel(SLOT_1);
+		this->slot2->changeText("There is a Save", {0xCE, 0xCE, 0xCE, 255});
+	}
+	else{
+		this->slot2->changeText("Empty Slot", {0xCE, 0xCE, 0xCE, 255});
+	}
+
+
+	if(GameSave::instance().isSaved(SLOT_3)){
+		GameSave::instance().getSavedLevel(SLOT_1);
+		this->slot3->changeText("There is a Save", {0xCE, 0xCE, 0xCE, 255});
+	}
+	else{
+		this->slot3->changeText("Empty Slot", {0xCE, 0xCE, 0xCE, 255});
+	}
 
 	LuaScript luaMenu("lua/Continue.lua");
 	const std::string pathBackground = luaMenu.unlua_get<std::string>("continue.images.background");
@@ -88,7 +117,11 @@ void GStateContinue::render(){
 
 		this->selector->render(selectorXPosition, selectorYPosition[currentSelection], nullptr, false, 0.0, nullptr, SDL_FLIP_NONE);
 	
-		slot1->render(0, 0);
+		this->slot1->render(0, 0);
+		this->slot2->render(0, 0);
+		this->slot3->render(0, 0);
+
+
 	}
 	else{
 		Log(WARN) << "No image set to display on the menu!";

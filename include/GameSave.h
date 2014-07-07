@@ -17,6 +17,8 @@ class GameSave {
 		int getSavedLevel(int continueSelection_);
 		void restorePlayerPosition(Player* player);
 
+		bool isSaved(const int saveSlot_);
+
 		int saveSelection;
 		unsigned int currentLevel;
 
