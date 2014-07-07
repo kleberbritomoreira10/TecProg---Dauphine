@@ -4,11 +4,15 @@
 
 #include "BStateIdle.h"
 #include "BStateAttack.h"
+#include "BStateShield.h"
+#include "BStateTeleport.h"
 
 #include "Window.h"
 
 #define ADD_STATE_EMPLACE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass(this))
 #define ADD_STATE_INSERT(stateEnum, stateClass) this->statesMap.insert(std::make_pair<BStates, StateBoss*>(stateEnum, new stateClass(this)));
+
+double timePasssed = 0;
 
 Boss::Boss(const double x_, const double y_, const std::string& path_, Player* const player_) :
 	DynamicEntity(x_, y_, path_),	
@@ -17,11 +21,12 @@ Boss::Boss(const double x_, const double y_, const std::string& path_, Player* c
 	potions(),
 	life(200),
 	hasShield(false),
+	canWalk(true),
+	player(player_),
 	currentState(nullptr),
 	animation(nullptr),
 	statesMap(),
-	dead(false),
-	player(player_)
+	dead(false)
 {
 	initializeStates();
 
@@ -53,6 +58,8 @@ Boss::~Boss(){
 
 void Boss::update(const double dt_){
 	
+	timePasssed += dt_;
+
 	scoutPosition(dt_);
 
 	this->animation->update(this->animationClip, dt_);
@@ -106,6 +113,8 @@ void Boss::initializeStates(){
 	// Initialize all the states in Boss here.
 	ADD_STATE_INSERT(IDLE,		BStateIdle);
 	ADD_STATE_INSERT(ATTACK,	BStateAttack);
+	ADD_STATE_INSERT(SHIELD,	BStateShield);
+	ADD_STATE_INSERT(TELEPORT,	BStateTeleport);
 }
 
 void Boss::destroyStates(){
@@ -162,34 +171,45 @@ bool Boss::isDead(){
 }
 
 void Boss::updateBoundingBox(){
-	this->boundingBox.x = (int) this->nextX + 40;
-	this->boundingBox.y = (int) this->nextY + 40;
+	this->boundingBox.x = (int) this->x + 40;
+	this->boundingBox.y = (int) this->y + 40;
 	this->boundingBox.w = 150;
 	this->boundingBox.h = 200;
 }
 
 void Boss::randomSkill(const unsigned int index_){
-	this->hasShield = false;
 	slowVy();
 
 	switch(index_){
-		case BS_MAGIC_SHIELD:
-			magicShield();
-			break;
 		case BS_TELEPORT:
-			teleport();
+			this->canWalk = teleport();
+			if(this->canWalk){
+				changeState(Boss::BStates::IDLE);
+			}
 			break;
 		case BS_MAGIC_PROJECTILE:
-			magicProjectile();
+			this->canWalk = magicProjectile();
+			if(this->canWalk){
+				changeState(Boss::BStates::IDLE);
+			}
 			break;
 		case BS_INVOKE_WIND:
-			invokeWind();
+			this->canWalk = invokeWind();
+			if(this->canWalk){
+				changeState(Boss::BStates::IDLE);
+			}
 			break;
 		case BS_ICE_PRISION:
-			icePrision();
+			this->canWalk = icePrision();
+			if(this->canWalk){
+				changeState(Boss::BStates::IDLE);
+			}
 			break;
 		case BS_FINAL_SPLENDOR:
-			finalSplendor();
+			this->canWalk = finalSplendor();
+			if(this->canWalk){
+				changeState(Boss::BStates::IDLE);
+			}
 			break;
 		default:
 			Log(WARN) << "Random boss skill index does not exist.";
@@ -197,30 +217,29 @@ void Boss::randomSkill(const unsigned int index_){
 	}
 }
 
-void Boss::magicShield(){
-	Log(DEBUG) << "BOSS_SKILL: magicShield";
-	this->hasShield = true;
+bool Boss::teleport(){
+
+		
+	return true;
 }
 
-void Boss::teleport(){
-	Log(DEBUG) << "BOSS_SKILL: teleport";
-	applyGravity();
-}
-
-void Boss::magicProjectile(){
+bool Boss::magicProjectile(){
 	Log(DEBUG) << "BOSS_SKILL: magicProjectile";
 	this->x = this->player->x - 100;
+	return true;
 }
 
-void Boss::invokeWind(){
+bool Boss::invokeWind(){
 	Log(DEBUG) << "BOSS_SKILL: invokeWind";
+	return true;
 }
 
-void Boss::icePrision(){
+bool Boss::icePrision(){
 	Log(DEBUG) << "BOSS_SKILL: icePrision";
+	return true;
 }
 
-void Boss::finalSplendor(){
+bool Boss::finalSplendor(){
 	Log(DEBUG) << "BOSS_SKILL: finalSplendor";
+	return true;
 }
-

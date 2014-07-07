@@ -1,10 +1,8 @@
 #include "BStateIdle.h"
 #include "Logger.h"
 
-double timeFalling = 0;
-
 void BStateIdle::enter(){
-
+	Log(DEBUG) << "STATE IDLE BOSS";
 	this->boss->getAnimation()->changeAnimation(0, 0, 1, false, 0);
 }
 

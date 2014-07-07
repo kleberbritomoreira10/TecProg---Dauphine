@@ -126,11 +126,18 @@ void LevelBoss::update(const double dt_){
 		}
 	}
 
-	// Updating the player attack/enemy collision.
-	for(auto enemy : this->enemies){
-		if(Collision::rectsCollided(this->player->getBoundingBox(), enemy->getBoundingBox())){
-			if(this->player->isCurrentState(Player::PStates::ATTACK) || this->player->isCurrentState(Player::PStates::ATTACKMOVING)){
-				enemy->changeState(Enemy::EStates::DEAD);
+	// Updating the player attack/boss collision.
+	if(Collision::rectsCollided(this->player->getBoundingBox(), this->boss->getBoundingBox())){
+		if(this->player->isCurrentState(Player::PStates::ATTACK) || this->player->isCurrentState(Player::PStates::ATTACKMOVING)
+			|| this->player->isCurrentState(Player::PStates::ATTACKJUMPING)){
+			if(this->boss->hasShield && this->player->canAttack){
+				this->boss->hasShield = false;
+				this->player->canAttack = false;
+			}
+			else if(this->player->canAttack){
+				this->boss->life -= 50;
+				this->player->canAttack = false;
+				Log(DEBUG) << this->boss->life;
 			}
 		}
 	}

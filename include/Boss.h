@@ -18,6 +18,8 @@ class Boss : public DynamicEntity {
 		enum BStates : uint8_t {
 			IDLE = 0,
 			ATTACK,
+			SHIELD,
+			TELEPORT,
 			DEAD
 		};
 
@@ -68,12 +70,11 @@ class Boss : public DynamicEntity {
 		};
 
 		void randomSkill(const unsigned int index_);
-		void magicShield();
-		void teleport();
-		void magicProjectile();
-		void invokeWind();
-		void icePrision();
-		void finalSplendor();
+		bool teleport();
+		bool magicProjectile();
+		bool invokeWind();
+		bool icePrision();
+		bool finalSplendor();
 
 		unsigned int potionsLeft;
 
@@ -82,6 +83,9 @@ class Boss : public DynamicEntity {
 
 		unsigned int life;
 		bool hasShield;
+		bool canWalk;
+		Player* player;
+		
 
 	private:
 		virtual void updateBoundingBox();
@@ -91,7 +95,6 @@ class Boss : public DynamicEntity {
 		Animation* animation;
 		std::map<BStates, StateBoss*> statesMap;
 		bool dead;
-		Player* player;
 
 };
 

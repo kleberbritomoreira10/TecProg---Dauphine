@@ -5,21 +5,32 @@
 #include <cstdlib>
 #include <ctime>
 
+int attackIndex = 0;
+
 void BStateAttack::enter(){
 	Log(DEBUG) << "STATE ATTACK BOSS";
 	this->boss->getAnimation()->changeAnimation(0, 0, 1, false, 0);
 	this->boss->sawPlayer = false;
+	attackIndex = rand()%2;
 }
 
 void BStateAttack::exit(){
-
+	this->boss->canWalk = false;
 }
 
 void BStateAttack::update(const double dt_){
 	((void)dt_); // Unused.
 
-	this->boss->randomSkill(rand()%6);
-	this->boss->changeState(Boss::BStates::IDLE);
+	if(attackIndex == 0){
+		this->boss->changeState(Boss::BStates::SHIELD);
+	}
+	else if(attackIndex == 1){
+		this->boss->changeState(Boss::BStates::TELEPORT);
+	}
+	else{
+
+	}
+
 }
 
 BStateAttack::BStateAttack(Boss* const boss_) :

@@ -16,6 +16,7 @@ void PStateAttackJumping::enter(){
 
 void PStateAttackJumping::exit(){
 	Log(DEBUG) << "EXIT STATE ATTACK JUMPING";
+	this->player->canAttack = true;
 }
 
 void PStateAttackJumping::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){

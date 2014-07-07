@@ -11,7 +11,7 @@ void PStateAttackMoving::enter(){
 }
 
 void PStateAttackMoving::exit(){
-
+	this->player->canAttack = true;
 }
 
 void PStateAttackMoving::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
