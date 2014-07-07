@@ -125,7 +125,9 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
 
             this->nextY -= fmod(this->nextY, 64.0) - magic + aerialToIdleCorrection;
             this->vy = 0.0;
-            changeState(PStates::IDLE);
+            if(!isCurrentState(PStates::DEAD)){
+                changeState(PStates::IDLE);
+            }
         }
     }
     else{

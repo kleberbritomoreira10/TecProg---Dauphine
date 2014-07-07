@@ -2,8 +2,6 @@
 #include "Logger.h"
 #include "Game.h"
 
-int ok = 0;
-
 void PStateDead::enter(){
 	Log(DEBUG) << "STATE DEAD";
 	
@@ -13,7 +11,7 @@ void PStateDead::enter(){
 	this->box.h = 160;
 
 	this->player->getAnimation()->changeAnimation(8, 4, 1, false, 0);
-	this->player->isGrounded = true;
+	this->player->isGrounded = false;
 }
 
 void PStateDead::exit(){
@@ -22,10 +20,6 @@ void PStateDead::exit(){
 
 void PStateDead::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 	((void) keyStates_); // Unused.
-	ok++;
-	if(ok > 100){
-		Game::instance().setState(Game::GStates::GAMEOVER);
-	}
 	this->player->applyGravity();
 }
 

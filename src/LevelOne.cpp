@@ -9,6 +9,8 @@
 #include "Collision.h"
 #include "Crosshair.h"
 
+double ok = 0;
+
 LevelOne::LevelOne() :
 	Level(),
 	items{4900, 6800, 1000},
@@ -133,6 +135,10 @@ void LevelOne::update(const double dt_){
 	// Set to GameOver if the player is dead.
 	if(this->player->isDead()){
 		this->player->changeState(Player::PStates::DEAD);
+		ok+= dt_;
+		if(ok>3){
+			Game::instance().setState(Game::GStates::GAMEOVER);
+		}
 		return;
 	}
 
@@ -155,10 +161,17 @@ void LevelOne::update(const double dt_){
 		}
 	}
 
-	if(this->player->life != Enemy::pLife){
-		this->player->changeState(Player::PStates::HITED);
-		this->player->life = Enemy::pLife;
-	}
+ 	if(this->player->life != Enemy::pLife){		
+		if(this->player->isVulnerable){
+			this->player->life--;
+			Enemy::pLife = this->player->life;
+			this->player->changeState(Player::PStates::HITED);
+			this->player->isVulnerable = false;
+		}
+		else{
+
+		}
+ 	}
 
 	// Updating the HUD.
 	this->playerHud->update();
