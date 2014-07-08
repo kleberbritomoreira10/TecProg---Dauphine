@@ -129,13 +129,26 @@ void TileMap::load(const std::string& mapPath_){
 void TileMap::render(const double cameraX_, const double cameraY_){
 	assert((this->tilesetSprites.size() > 0) && "No tilesets detected for the TileMap!");
 
+	const Tmx::Layer* currentLayer;
 	for(unsigned int i = 0; i < this->layers - 1; i++){
+		currentLayer = this->map->GetLayer(i);
 		if (i > this->tileMatrix[0][0].size()){
 			Log(ERROR) << "Invalid layer number for rendering a TileMap layer.";
 			continue;
 		}
 
-		renderLayer(cameraX_, cameraY_, i);
+		if(currentLayer->GetName() == "Background02"){
+			renderLayer(cameraX_/20, cameraY_, i);
+		}
+		else if(currentLayer->GetName() == "Background01"){
+			renderLayer(cameraX_/10, cameraY_, i);
+		}
+		else if(currentLayer->GetName() == "Background00"){
+			renderLayer(cameraX_/1.6, cameraY_, i);
+		}
+		else{
+			renderLayer(cameraX_, cameraY_, i);
+		}
 	}
 }
 
