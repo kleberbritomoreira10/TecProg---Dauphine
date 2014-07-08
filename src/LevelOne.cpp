@@ -208,6 +208,7 @@ void LevelOne::update(const double dt_){
 	// Updating player info for the enemies.
 	Enemy::px = this->player->x;
 	Enemy::py = this->player->y;
+	Enemy::pVulnerable = this->player->isVulnerable;
 
 	for (int i = 0; i < NUMBER_ITEMS; ++i){
 		if(abs(this->player->x - items[i])<= 50 && caughtItems[i] == false){
