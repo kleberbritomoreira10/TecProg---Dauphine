@@ -177,45 +177,62 @@ void GStateContinue::handleSelectorMenu(){
 		switch(Game::instance().getSaves().getSavedLevel(Selection::SLOT_1)){
 			Game::instance().currentSlot = Selection::SLOT_1;
 			case 1:
-				Game::instance().setState(Game::GStates::LEVEL_ONE);
-			break;
+				Game::instance().transitionTo = Game::GStates::LEVEL_ONE;
+				break;
 			case 2:
-				Game::instance().setState(Game::GStates::LEVEL_TWO);
-			break;
+				Game::instance().transitionTo = Game::GStates::LEVEL_TWO;
+				break;
 			case 6:
-				Game::instance().setState(Game::GStates::LEVEL_BOSS);
-			break;
+				Game::instance().transitionTo = Game::GStates::LEVEL_BOSS;
+				break;
+			default:
+				Log(ERROR) << "Unknown level to continue from.";
+				break;
 		}
+
+		Game::instance().setState(Game::instance().transitionTo);
 	}
 	else if(currentSelection == Selection::SLOT_2 && keyStates[GameKeys::SPACE] == true){
 		Game::instance().currentSlot = SLOT_2;
 
-		switch(Game::instance().getSaves().getSavedLevel(Selection::SLOT_2)){
+		switch(Game::instance().getSaves().getSavedLevel(Selection::SLOT_1)){
+			Game::instance().currentSlot = Selection::SLOT_1;
 			case 1:
-				Game::instance().setState(Game::GStates::LEVEL_ONE);
-			break;
+				Game::instance().transitionTo = Game::GStates::LEVEL_ONE;
+				break;
 			case 2:
-				Game::instance().setState(Game::GStates::LEVEL_TWO);
-			break;
+				Game::instance().transitionTo = Game::GStates::LEVEL_TWO;
+				break;
 			case 6:
-				Game::instance().setState(Game::GStates::LEVEL_BOSS);
-			break;
+				Game::instance().transitionTo = Game::GStates::LEVEL_BOSS;
+				break;
+			default:
+				Log(ERROR) << "Unknown level to continue from.";
+				break;
 		}
+
+		Game::instance().setState(Game::instance().transitionTo);
 	}
 	else if(currentSelection == Selection::SLOT_3 && keyStates[GameKeys::SPACE] == true){
 		Game::instance().currentSlot = SLOT_3;
 
-		switch(Game::instance().getSaves().getSavedLevel(Selection::SLOT_3)){
+		switch(Game::instance().getSaves().getSavedLevel(Selection::SLOT_1)){
+			Game::instance().currentSlot = Selection::SLOT_1;
 			case 1:
-				Game::instance().setState(Game::GStates::LEVEL_ONE);
-			break;
+				Game::instance().transitionTo = Game::GStates::LEVEL_ONE;
+				break;
 			case 2:
-				Game::instance().setState(Game::GStates::LEVEL_TWO);
-			break;
+				Game::instance().transitionTo = Game::GStates::LEVEL_TWO;
+				break;
 			case 6:
-				Game::instance().setState(Game::GStates::LEVEL_BOSS);
-			break;
+				Game::instance().transitionTo = Game::GStates::LEVEL_BOSS;
+				break;
+			default:
+				Log(ERROR) << "Unknown level to continue from.";
+				break;
 		}
+
+		Game::instance().setState(Game::instance().transitionTo);
 	}
 
 }

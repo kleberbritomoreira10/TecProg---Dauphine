@@ -14,6 +14,7 @@
 #include "GStateOptions.h"
 #include "GStateCredits.h"
 #include "GStateGameOver.h"
+#include "GStateTransition.h"
 #include "Sprite.h"
 
 #include "Logger.h"
@@ -30,6 +31,7 @@ Game::Game() :
 	isCutscene(false),
 	isPaused(false),
 	currentLine(0),
+	transitionTo(LEVEL_ONE),
 	window(nullptr),
 	isRunning(false),
 	pauseImage(nullptr),
@@ -195,6 +197,7 @@ void Game::initializeStates(){
 	ADD_STATE_INSERT(OPTIONS, GStateOptions);
 	ADD_STATE_INSERT(CREDITS, GStateCredits);
 	ADD_STATE_INSERT(GAMEOVER, GStateGameOver);
+	ADD_STATE_INSERT(TRANSITION, GStateTransition);
 }
 
 void Game::renderDialog(){

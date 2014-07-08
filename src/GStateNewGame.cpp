@@ -176,19 +176,22 @@ void GStateNewGame::handleSelectorMenu(){
 		Game::instance().currentSlot = Selection::SLOT_1;
 		Game::instance().getSaves().setSlot(Selection::SLOT_1);
 		Game::instance().getSaves().createSave();
-		Game::instance().setState(Game::GStates::LEVEL_ONE);
+		Game::instance().transitionTo = Game::GStates::LEVEL_ONE;
+		Game::instance().setState(Game::GStates::TRANSITION);
 	}
 	else if(currentSelection == Selection::SLOT_2 && keyStates[GameKeys::SPACE] == true){
 		Game::instance().currentSlot = Selection::SLOT_2;
 		Game::instance().getSaves().setSlot(Selection::SLOT_2);
 		Game::instance().getSaves().createSave();
-		Game::instance().setState(Game::GStates::LEVEL_TWO);
+		Game::instance().transitionTo = Game::GStates::LEVEL_TWO; //should be level one, two is here for testing purposes
+		Game::instance().setState(Game::GStates::TRANSITION);
 	}
 	else if(currentSelection == Selection::SLOT_3 && keyStates[GameKeys::SPACE] == true){
 		Game::instance().currentSlot = Selection::SLOT_3;
 		Game::instance().getSaves().setSlot(Selection::SLOT_3);
 		Game::instance().getSaves().createSave();
-		Game::instance().setState(Game::GStates::LEVEL_BOSS);
+		Game::instance().transitionTo = Game::GStates::LEVEL_BOSS; //should be level one, boss is here for testing purposes
+		Game::instance().setState(Game::GStates::TRANSITION);
 	}
 
 }

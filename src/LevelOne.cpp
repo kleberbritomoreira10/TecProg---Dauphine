@@ -209,7 +209,6 @@ void LevelOne::update(const double dt_){
 	Enemy::px = this->player->x;
 	Enemy::py = this->player->y;
 	Enemy::pVulnerable = this->player->isVulnerable;
-
 	
 	for (int i = 0; i < NUMBER_ITEMS; ++i){
 		
@@ -240,7 +239,8 @@ void LevelOne::update(const double dt_){
 
 	// Set next level if end is reached.
 	if(this->player->reachedLevelEnd){
-		Game::instance().setState(Game::GStates::LEVEL_TWO);
+		Game::instance().transitionTo = Game::GStates::LEVEL_TWO;
+		Game::instance().setState(Game::GStates::TRANSITION);
 		return;
 	}
 

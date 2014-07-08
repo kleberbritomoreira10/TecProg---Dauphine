@@ -35,7 +35,8 @@ class Game {
 			CONTINUE,
 			OPTIONS,
 			CREDITS,
-			GAMEOVER
+			GAMEOVER,
+			TRANSITION
 		};
 
 		/**
@@ -99,6 +100,8 @@ class Game {
 		static const int numLines = 14; 
 		unsigned int currentLine;
 		Sprite* dialog[numLines];
+
+		GStates transitionTo;
 
 	private:
 		/**

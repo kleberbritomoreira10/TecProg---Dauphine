@@ -72,45 +72,8 @@ void LevelTwo::load(){
 	
 	this->playerHud = new PlayerHUD(lPlayer);
 	
-<<<<<<< HEAD
-	Enemy* lEnemy = new Enemy(2400.0, 4720.0, pathEnemy, false, 0.0);
-	lEnemy->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy);
 
-	Enemy* lEnemy2 = new Enemy(5519.0, 4300.0, pathEnemy, false, 0.0);
-	lEnemy2->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy2);
-
-	Enemy* lEnemy3 = new Enemy(2900.0, 3600.0, pathEnemy, true, 0.0);
-	lEnemy3->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy3);
-
-	Enemy* lEnemy4 = new Enemy(3300.0, 2600.0, pathEnemy, true, 0.0);
-	lEnemy4->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy4);
-
-	Enemy* lEnemy5 = new Enemy(4700.0, 1600.0, pathEnemy, true, 0.0);
-	lEnemy5->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy5);
-
-	Enemy* lEnemy6 = new Enemy(7300.0, 1600.0, pathEnemy, false, 0.0);
-	lEnemy6->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy6);
-
-	Enemy* lEnemy7 = new Enemy(8900.0, 1500.0, pathEnemy, false, 0.0);
-	lEnemy7->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy7);
-
-	Enemy* lEnemy8 = new Enemy(8900.0, 2600.0, pathEnemy, false, 0.0);
-	lEnemy7->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy8);
-
-	Enemy* lEnemy9 = new Enemy(11000.0, 2600.0, pathEnemy, false, 0.0);
-	lEnemy7->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy9);
-=======
-		
-	Enemy* lEnemy1 = new Enemy(3712.0, 1400.0, pathEnemy, false, 0.0);
+	Enemy* lEnemy1 = new Enemy(2400.0, 4720.0, pathEnemy, false, 0.0);
 	
 	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
 		if(Game::instance().getSaves().isEnemyDead(0, Game::instance().currentSlot))
@@ -120,7 +83,7 @@ void LevelTwo::load(){
 	lEnemy1->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy1);
 
-	Enemy* lEnemy2 = new Enemy(4992.0, 1400.0, pathEnemy, false, 0.0);
+	Enemy* lEnemy2 = new Enemy(5519.0, 4300.0, pathEnemy, false, 0.0);
 	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
 		if(Game::instance().getSaves().isEnemyDead(1, Game::instance().currentSlot))
 			lEnemy2->setDead(true);
@@ -129,7 +92,7 @@ void LevelTwo::load(){
 	lEnemy2->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy2);
 
-	Enemy* lEnemy3 = new Enemy(5568.0, 1400.0, pathEnemy, true, 0.0);
+	Enemy* lEnemy3 = new Enemy(2900.0, 3600.0, pathEnemy, true, 0.0);
 	
 	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
 		if(Game::instance().getSaves().isEnemyDead(2, Game::instance().currentSlot))
@@ -139,7 +102,7 @@ void LevelTwo::load(){
 	lEnemy3->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy3);
 
-	Enemy* lEnemy4 = new Enemy(7104.0, 1400.0, pathEnemy, true, 0.0);
+	Enemy* lEnemy4 = new Enemy(3300.0, 2600.0, pathEnemy, true, 0.0);
 	
 	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
 		if(Game::instance().getSaves().isEnemyDead(3, Game::instance().currentSlot))
@@ -149,7 +112,7 @@ void LevelTwo::load(){
 	lEnemy4->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy4);
 
-	Enemy* lEnemy5 = new Enemy(8256.0, 1400.0, pathEnemy, true, 0.0);
+	Enemy* lEnemy5 = new Enemy(4700.0, 1600.0, pathEnemy, true, 0.0);
 	
 	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
 		if(Game::instance().getSaves().isEnemyDead(4, Game::instance().currentSlot))
@@ -159,7 +122,7 @@ void LevelTwo::load(){
 	lEnemy5->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy5);
 
-	Enemy* lEnemy6 = new Enemy(10560.0, 1400.0, pathEnemy, false, 0.0);
+	Enemy* lEnemy6 = new Enemy(7300.0, 1600.0, pathEnemy, false, 0.0);
 	
 	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
 		if(Game::instance().getSaves().isEnemyDead(5, Game::instance().currentSlot))
@@ -169,21 +132,14 @@ void LevelTwo::load(){
 	lEnemy6->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy6);
 
-	Enemy* lEnemy7 = new Enemy(10880.0, 1400.0, pathEnemy, false, 0.0);
+	Enemy* lEnemy7 = new Enemy(8900.0, 1500.0, pathEnemy, false, 0.0);
 	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
 		if(Game::instance().getSaves().isEnemyDead(6, Game::instance().currentSlot))
-			lEnemy6->setDead(true);
+			lEnemy7->setDead(true);
 	}
 
 	lEnemy7->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy7);
-
->>>>>>> 0ca773a8380f6a8e0aeab6f87b50babcc0c2f4c5
-
-		
-	// Test text.
-	// Text* text = new Text(200.0, 900.0, "res/fonts/KGFeeling22.ttf", 50, "dauphine");
-	// addEntity(text);
 
 	// Finally, setting the player and the camera.
 	setPlayer(lPlayer);
@@ -240,6 +196,7 @@ void LevelTwo::update(const double dt_){
 	// Updating player info for the enemies.
 	Enemy::px = this->player->x;
 	Enemy::py = this->player->y;
+	Enemy::pVulnerable = this->player->isVulnerable;
 
 	for (int i = 0; i < NUMBER_ITEMS; ++i){
 		
@@ -270,7 +227,8 @@ void LevelTwo::update(const double dt_){
 
 	// Set next level if end is reached.
 	if(this->player->reachedLevelEnd){
-		Game::instance().setState(Game::GStates::LEVEL_BOSS);
+		Game::instance().transitionTo = Game::GStates::LEVEL_BOSS;
+		Game::instance().setState(Game::GStates::TRANSITION);
 		return;
 	}
 
