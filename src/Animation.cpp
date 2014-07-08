@@ -85,3 +85,8 @@ void Animation::updateClip(SDL_Rect& clip, const int x_, const int y_){
 int Animation::getCurrentFrame(){
 	return animationCount + 1;
 }
+
+void Animation::changeWidthHeight(int width_, int height_){
+	this->spriteWidth = width_;
+	this->spriteHeight = height_;
+}

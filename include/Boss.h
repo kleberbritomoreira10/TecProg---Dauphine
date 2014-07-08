@@ -21,6 +21,7 @@ class Boss : public DynamicEntity {
 			SHIELD,
 			TELEPORT,
 			ICEPRISION,
+			MAGICPROJECTILE,
 			DEAD
 		};
 
@@ -86,7 +87,12 @@ class Boss : public DynamicEntity {
 		bool hasShield;
 		bool canWalk;
 		Player* player;
-
+		Animation* powerAnimation;
+		double powerX;
+		double powerY;
+		bool powerIsActivated;
+		Sprite* power;
+		SDL_Rect powerClip;
 
 	private:
 		virtual void updateBoundingBox();

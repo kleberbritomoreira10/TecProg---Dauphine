@@ -38,6 +38,8 @@ class Animation{
 		void update(SDL_Rect& clip_, const double dt_);
 
 		int getCurrentFrame();
+
+		void changeWidthHeight(int width_, int height_);
 		
 		/**
 		* Changes the animation to another.

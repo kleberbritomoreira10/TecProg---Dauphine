@@ -7,6 +7,7 @@
 #include "BStateShield.h"
 #include "BStateTeleport.h"
 #include "BStateIcePrision.h"
+#include "BStateMagicProjectile.h"
 
 #include "Window.h"
 
@@ -24,6 +25,12 @@ Boss::Boss(const double x_, const double y_, const std::string& path_, Player* c
 	hasShield(false),
 	canWalk(true),
 	player(player_),
+	powerAnimation(nullptr),
+	powerX(0.0),
+	powerY(0.0),
+	powerIsActivated(false),
+	power(nullptr),
+	powerClip{0,0,0,0},
 	currentState(nullptr),
 	animation(nullptr),
 	statesMap(),
@@ -39,6 +46,7 @@ Boss::Boss(const double x_, const double y_, const std::string& path_, Player* c
 	this->height = 240;
 
 	this->animation = new Animation(0, 0, this->width, this->height, 0, false);
+	this->powerAnimation = new Animation(0, 0, 0, 0, 0, false);
 	this->currentState = this->statesMap.at(IDLE);
 	this->currentState->enter();
 
@@ -64,6 +72,7 @@ void Boss::update(const double dt_){
 	scoutPosition(dt_);
 
 	this->animation->update(this->animationClip, dt_);
+	this->powerAnimation->update(this->powerClip, dt_);
 
 	updateBoundingBox();
 
@@ -105,6 +114,21 @@ void Boss::render(const double cameraX_, const double cameraY_){
 		}
 	}
 
+	const double pdx = this->powerX - cameraX_;
+	const double pdy = this->powerY - cameraY_;
+
+	if(this->power != nullptr && this->powerIsActivated){
+		SDL_RendererFlip flip = getFlip();
+
+		this->power->render(pdx, pdy, &this->powerClip);
+		if(flip == SDL_FLIP_HORIZONTAL){
+			
+		}
+		else{
+			this->power->render(pdx, pdy, &this->powerClip, false, 0.0, nullptr, flip);
+		}
+	}
+
     for (auto potion : this->potions) {
         potion->render(cameraX_, cameraY_);
     }
@@ -112,11 +136,12 @@ void Boss::render(const double cameraX_, const double cameraY_){
 
 void Boss::initializeStates(){
 	// Initialize all the states in Boss here.
-	ADD_STATE_INSERT(IDLE,			BStateIdle);
-	ADD_STATE_INSERT(ATTACK,		BStateAttack);
-	ADD_STATE_INSERT(SHIELD,		BStateShield);
-	ADD_STATE_INSERT(TELEPORT,		BStateTeleport);
-	ADD_STATE_INSERT(ICEPRISION,	BStateIcePrision);
+	ADD_STATE_INSERT(IDLE,				BStateIdle);
+	ADD_STATE_INSERT(ATTACK,			BStateAttack);
+	ADD_STATE_INSERT(SHIELD,			BStateShield);
+	ADD_STATE_INSERT(TELEPORT,			BStateTeleport);
+	ADD_STATE_INSERT(ICEPRISION,		BStateIcePrision);
+	ADD_STATE_INSERT(MAGICPROJECTILE,	BStateMagicProjectile);
 }
 
 void Boss::destroyStates(){
@@ -183,12 +208,6 @@ void Boss::randomSkill(const unsigned int index_){
 	slowVy();
 
 	switch(index_){
-		case BS_TELEPORT:
-			this->canWalk = teleport();
-			if(this->canWalk){
-				changeState(Boss::BStates::IDLE);
-			}
-			break;
 		case BS_MAGIC_PROJECTILE:
 			this->canWalk = magicProjectile();
 			if(this->canWalk){
@@ -201,12 +220,7 @@ void Boss::randomSkill(const unsigned int index_){
 				changeState(Boss::BStates::IDLE);
 			}
 			break;
-		case BS_ICE_PRISION:
-			this->canWalk = icePrision();
-			if(this->canWalk){
-				changeState(Boss::BStates::IDLE);
-			}
-			break;
+
 		case BS_FINAL_SPLENDOR:
 			this->canWalk = finalSplendor();
 			if(this->canWalk){
@@ -219,12 +233,6 @@ void Boss::randomSkill(const unsigned int index_){
 	}
 }
 
-bool Boss::teleport(){
-
-		
-	return true;
-}
-
 bool Boss::magicProjectile(){
 	Log(DEBUG) << "BOSS_SKILL: magicProjectile";
 	this->x = this->player->x - 100;
@@ -233,11 +241,6 @@ bool Boss::magicProjectile(){
 
 bool Boss::invokeWind(){
 	Log(DEBUG) << "BOSS_SKILL: invokeWind";
-	return true;
-}
-
-bool Boss::icePrision(){
-	Log(DEBUG) << "BOSS_SKILL: icePrision";
 	return true;
 }
 
