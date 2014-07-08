@@ -1,8 +1,10 @@
 #include "PStateClimbing.h"
 #include "Logger.h"
 
+bool isMoving = false;
+
 void PStateClimbing::enter(){
-	// Log(DEBUG) << "STATE CLIMBING";
+	Log(DEBUG) << "STATE CLIMBING";
 
 	this->player->isClimbing = true;
 	
@@ -10,6 +12,8 @@ void PStateClimbing::enter(){
     this->box.y = 72;
     this->box.w = 130;
     this->box.h = 145;
+
+    this->player->getAnimation()->changeAnimation(0, 6, 4, false, 1);
 
     this->player->vy -= 10;
     if(!this->player->isRight){
@@ -19,21 +23,32 @@ void PStateClimbing::enter(){
 		this->player->vx = 0.0;
 	}
 
-	this->player->getAnimation()->changeAnimation(0, 6, 1, false, 0);
-
 }
 
 void PStateClimbing::exit(){
 	this->player->isClimbing = false;
+	isMoving = false;
 }
 
 void PStateClimbing::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
 
 	this->player->moveVertical(keyStates_[GameKeys::UP], keyStates_[GameKeys::DOWN]);
 
+	if(abs(this->player->vy)<1){
+		this->player->getAnimation()->changeAnimation(this->player->getAnimation()->getCurrentFrame() - 1,
+			6, 1, false, 0);
+			isMoving = true;
+	}
+	else{
+		if(isMoving){
+			this->player->getAnimation()->changeAnimation(0, 6, 4, false, 1);
+			isMoving = false;
+		}
+	}
+
 	// Jump
 	if(keyStates_[GameKeys::SPACE]){
-		
+		Log(DEBUG) << "entrou";		
 		this->player->vy = -700;
 
 		if(this->player->isRight){

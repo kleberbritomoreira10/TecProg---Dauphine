@@ -110,7 +110,7 @@ void Player::update(const double dt_){
         }
     }
 
-    if(this->isClimbing){
+    if(this->isClimbing && !isCurrentState(PStates::CLIMBING)){
         changeState(PStates::CLIMBING);
     }
 
