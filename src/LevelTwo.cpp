@@ -158,7 +158,6 @@ void LevelTwo::unload(){
 }
 
 void LevelTwo::update(const double dt_){
-	Log(DEBUG)<<this->player->x<<"||"<<this->player->y;
 	// Populating the QuadTree.
 	this->quadTree->setObjects(this->tileMap->getCollisionRects());
 
