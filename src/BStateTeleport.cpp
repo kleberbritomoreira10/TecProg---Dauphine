@@ -5,6 +5,10 @@
 double tptime = 0;
 double pX = 0;
 double pY = 0;
+int powerCollisionWidth = 0;
+int powerCollisionHeight = 0;
+int offset = 33;
+bool right;
 
 void BStateTeleport::enter(){
 	Log(DEBUG) << "STATE TELEPORT BOSS";
@@ -15,6 +19,10 @@ void BStateTeleport::enter(){
 
 void BStateTeleport::exit(){
 	this->boss->powerIsActivated = false;
+	this->boss->player->isVulnerable = true;
+	this->boss->powerAnimation->changeAnimation(0, 0, 1, false, 0);
+	powerCollisionWidth = 0;
+	powerCollisionHeight = 0;
 	tptime = 0.0;
 }
 
@@ -26,7 +34,7 @@ void BStateTeleport::update(const double dt_){
 		this->boss->vx =0;
 		this->boss->vy =0;
 	}
-	else if(tptime >= 3 && tptime <= 3.5){
+	else if(tptime >= 3 && tptime <= 3.05){
 		this->boss->getAnimation()->changeAnimation(0, 0, 1, false, 0);
 		this->boss->vx = 0;
 		if(this->boss->player->isRight){
@@ -42,12 +50,36 @@ void BStateTeleport::update(const double dt_){
 		pY = this->boss->y;
 		if(!this->boss->isRight){
 			this->boss->powerFlip = SDL_FLIP_HORIZONTAL;
+			right = false;
 		}
 		else{
 			this->boss->powerFlip = SDL_FLIP_NONE;
+			right = false;
 		}
 	}
-	if(tptime >= 3.4 && tptime <= 5){
+	else if(tptime > 3.05 && tptime < 4){
+		this->boss->x = pX;
+		this->boss->y = pY;
+		if(right){
+			this->boss->isRight = false;
+		}
+		else{
+			this->boss->isRight = true;
+		}
+	}
+	if(tptime >= 4 && tptime <= 5){
+		if(this->boss->powerAnimation->getCurrentFrame() == 1){
+			powerCollisionWidth = 101;
+			powerCollisionHeight = 30;
+		}
+		else if(this->boss->powerAnimation->getCurrentFrame() == 2){
+			powerCollisionWidth = 539;
+			powerCollisionHeight = 117;
+		}
+		else{
+			powerCollisionWidth = 665;
+			powerCollisionHeight = 262;
+		}
 		if(this->boss->player->isRight){
 			this->boss->powerX = pX;
 			this->boss->powerY = pY;
@@ -56,12 +88,18 @@ void BStateTeleport::update(const double dt_){
 			this->boss->powerX = pX;
 			this->boss->powerY = pY;
 		}
-		if(tptime >= 3.9){
+		if(tptime >= 4.5){
 			this->boss->powerAnimation->changeAnimation(2, 0, 1, false, 0);
+			powerCollisionWidth = 665;
+			powerCollisionHeight = 262;
 		}
 		this->boss->powerIsActivated = true;
-		if(Collision::rectsCollided(this->boss->player->getBoundingBox(), this->boss->powerClip)){
-			Log(DEBUG) << "player se fudeu";
+		if(Collision::rectsCollided(this->boss->player->getBoundingBox(), {(int)this->boss->powerX, 
+		(int)this->boss->powerY + offset, powerCollisionWidth, powerCollisionHeight})){
+			if(this->boss->player->isVulnerable){
+				this->boss->player->life--;
+				this->boss->player->isVulnerable = false;
+			}
 		}
 	}
 	else if(tptime > 5){

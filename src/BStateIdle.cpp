@@ -3,7 +3,7 @@
 
 void BStateIdle::enter(){
 	Log(DEBUG) << "STATE IDLE BOSS";
-	this->boss->getAnimation()->changeAnimation(0, 0, 1, false, 0);
+	this->boss->getAnimation()->changeAnimation(0, 0, 7, false, 1);
 }
 
 void BStateIdle::exit(){

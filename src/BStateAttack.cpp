@@ -9,9 +9,9 @@ int attackIndex = 0;
 
 void BStateAttack::enter(){
 	Log(DEBUG) << "STATE ATTACK BOSS";
-	this->boss->getAnimation()->changeAnimation(0, 0, 1, false, 0);
+	this->boss->getAnimation()->changeAnimation(0, 0, 7, false, 1);
 	this->boss->sawPlayer = false;
-	attackIndex = rand()%4;
+	attackIndex = rand()%1;
 }
 
 void BStateAttack::exit(){
@@ -24,13 +24,13 @@ void BStateAttack::update(const double dt_){
 	if(attackIndex == 3){
 		this->boss->changeState(Boss::BStates::SHIELD);
 	}
-	else if(attackIndex == 2){
+	else if(attackIndex == 0){
 		this->boss->changeState(Boss::BStates::TELEPORT);
 	}
-	else if(attackIndex == 1){
+	else if(attackIndex == 2){
 		this->boss->changeState(Boss::BStates::ICEPRISION);
 	}
-	else if(attackIndex == 0){
+	else if(attackIndex == 1){
 		this->boss->changeState(Boss::BStates::MAGICPROJECTILE);
 	}
 	else{

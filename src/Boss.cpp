@@ -44,9 +44,9 @@ Boss::Boss(const double x_, const double y_, const std::string& path_, Player* c
 	this->speed = 400.0;
 
 	this->width = 360;
-	this->height = 240;
+	this->height = 360;
 
-	this->animation = new Animation(0, 0, this->width, this->height, 0, false);
+	this->animation = new Animation(0, 0, this->width, this->height, 7, false);
 	this->powerAnimation = new Animation(0, 0, 0, 0, 0, false);
 	this->currentState = this->statesMap.at(IDLE);
 	this->currentState->enter();
