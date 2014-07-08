@@ -10,7 +10,7 @@
 
 LevelTwo::LevelTwo() :
 	Level(),
-	items{5000, 6000, 7000, 8000},
+	items{{3500, 8000,4900, 10000},{2776, 1800,1750, 2712}},
 	caughtItems{false,false,false,false}
 {
 
@@ -35,6 +35,7 @@ void LevelTwo::load(){
 
 	this->background = Game::instance().getResources().get("res/images/lv1_background.png");
 	this->checkpoint = Game::instance().getResources().get("res/images/checkpoint.png");
+	this->image = Game::instance().getResources().get("res/images/potion.png");
 
 	// Getting information from lua script.
 	LuaScript luaLevel1("lua/Level1.lua");
@@ -66,33 +67,41 @@ void LevelTwo::load(){
 	
 	this->playerHud = new PlayerHUD(lPlayer);
 	
-	Enemy* lEnemy = new Enemy(3712.0, 1400.0, pathEnemy, false, 0.0);
+	Enemy* lEnemy = new Enemy(2400.0, 4720.0, pathEnemy, false, 0.0);
 	lEnemy->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy);
 
-	Enemy* lEnemy2 = new Enemy(4992.0, 1400.0, pathEnemy, false, 0.0);
+	Enemy* lEnemy2 = new Enemy(5519.0, 4300.0, pathEnemy, false, 0.0);
 	lEnemy2->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy2);
 
-	Enemy* lEnemy3 = new Enemy(5568.0, 1400.0, pathEnemy, true, 0.0);
+	Enemy* lEnemy3 = new Enemy(2900.0, 3600.0, pathEnemy, true, 0.0);
 	lEnemy3->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy3);
 
-	Enemy* lEnemy4 = new Enemy(7104.0, 1400.0, pathEnemy, true, 0.0);
+	Enemy* lEnemy4 = new Enemy(3300.0, 2600.0, pathEnemy, true, 0.0);
 	lEnemy4->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy4);
 
-	Enemy* lEnemy5 = new Enemy(8256.0, 1400.0, pathEnemy, true, 0.0);
+	Enemy* lEnemy5 = new Enemy(4700.0, 1600.0, pathEnemy, true, 0.0);
 	lEnemy5->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy5);
 
-	Enemy* lEnemy6 = new Enemy(10560.0, 1400.0, pathEnemy, false, 0.0);
+	Enemy* lEnemy6 = new Enemy(7300.0, 1600.0, pathEnemy, false, 0.0);
 	lEnemy6->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy6);
 
-	Enemy* lEnemy7 = new Enemy(10880.0, 1400.0, pathEnemy, false, 0.0);
+	Enemy* lEnemy7 = new Enemy(8900.0, 1500.0, pathEnemy, false, 0.0);
 	lEnemy7->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy7);
+
+	Enemy* lEnemy8 = new Enemy(8900.0, 2600.0, pathEnemy, false, 0.0);
+	lEnemy7->setLevelWH(this->width, this->height);
+	this->enemies.push_back(lEnemy8);
+
+	Enemy* lEnemy9 = new Enemy(11000.0, 2600.0, pathEnemy, false, 0.0);
+	lEnemy7->setLevelWH(this->width, this->height);
+	this->enemies.push_back(lEnemy9);
 
 		
 	// Test text.
@@ -116,6 +125,7 @@ void LevelTwo::unload(){
 }
 
 void LevelTwo::update(const double dt_){
+	Log(DEBUG)<<this->player->x<<"||"<<this->player->y;
 	// Populating the QuadTree.
 	this->quadTree->setObjects(this->tileMap->getCollisionRects());
 
@@ -155,9 +165,11 @@ void LevelTwo::update(const double dt_){
 	Enemy::py = this->player->y;
 
 	for (int i = 0; i < NUMBER_ITEMS; ++i){
-		if(abs(this->player->x - items[i])<= 20 && caughtItems[i] == false){
+		
+		if((abs(this->player->x - items[0][i])<= 50 && abs(this->player->y - items[1][i])<= 200) && (caughtItems[i] == false)){
 			this->player->addPotions(3);
-			caughtItems[i]=true;
+			caughtItems[i] = true;
+			
 		}
 	}
 
@@ -250,6 +262,14 @@ void LevelTwo::render(){
 	// Render all the entities in the list.
 	for(auto entity : this->entities){
         entity->render(cameraX, cameraY);
+	}
+
+	for (unsigned int i = 0; i < NUMBER_ITEMS; i++){
+		if(this->image != nullptr && caughtItems[i] == false){
+			
+			this->image->Sprite::render((items[0][i]+60) - cameraX, ((items[1][i]) - cameraY));
+		
+		}
 	}
 }
 

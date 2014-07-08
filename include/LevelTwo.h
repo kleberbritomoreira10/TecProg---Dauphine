@@ -48,8 +48,9 @@ class LevelTwo : public Level {
 		* @see Sprite::render()
 		*/
 		virtual void render();
-
-		int items[NUMBER_ITEMS];
+		
+		Sprite* image;
+		int items[2][NUMBER_ITEMS];
 		bool caughtItems[NUMBER_ITEMS];
 
 };

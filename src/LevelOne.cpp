@@ -13,8 +13,8 @@ double ok = 0;
 
 LevelOne::LevelOne() :
 	Level(),
-	items{4900, 6800, 1000},
-	caughtItems{false,false,false}
+	items{{4900, 10000,0,0},{1750, 1750,0,0}},
+	caughtItems{false,false,true,true}
 {
 
 }
@@ -209,9 +209,12 @@ void LevelOne::update(const double dt_){
 	Enemy::px = this->player->x;
 	Enemy::py = this->player->y;
 
+	
 	for (int i = 0; i < NUMBER_ITEMS; ++i){
-		if(abs(this->player->x - items[i])<= 50 && caughtItems[i] == false){
+		
+		if(abs(this->player->x - items[0][i])<= 50 && abs(this->player->y - items[1][i])<= 200 && caughtItems[i] == false){
 			this->player->addPotions(3);
+
 			caughtItems[i]=true;
 		}
 	}
@@ -317,7 +320,9 @@ void LevelOne::render(){
 
 	for (unsigned int i = 0; i < NUMBER_ITEMS; i++){
 		if(this->image != nullptr && caughtItems[i] == false){
-			this->image->Sprite::render((items[i]+60) - cameraX, 1750 - cameraY);
+			
+			this->image->Sprite::render((items[0][i]+60) - cameraX, ((items[1][i]) - cameraY));
+		
 		}
 	}
 
