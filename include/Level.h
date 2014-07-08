@@ -11,6 +11,8 @@
 #include "Enemy.h"
 #include "Boss.h"
 
+#include <vector>
+
 /**
 * Abstract class for levels.
 * Contains a background, player and a camera.
@@ -57,6 +59,9 @@ class Level : public StateGame {
 
 		virtual void clearEnemies();
 
+		void changeCheckpoints(int NUMBER_OF_CHECKPOINTS_, std::vector <double> checkpointsX_,
+		std::vector <double> checkpointsY_);
+
 		unsigned int width; /**< Width that defines the horizontal limits. */
 		unsigned int height; /**< Height that defines the vertical limits. */
 
@@ -71,8 +76,11 @@ class Level : public StateGame {
 
 		Sprite* background;
 		Sprite* backgroundTop;
-		Sprite* checkpoint;
-		bool checkpointVisited;
+		std::vector <Sprite*> checkpoints;
+		std::vector <double> checkpointsX;
+		std::vector <double> checkpointsY;
+		std::vector <bool> checkpointsVisited;
+		int NUMBER_OF_CHECKPOINTS;
 
 		std::vector <Enemy*> enemies;
 

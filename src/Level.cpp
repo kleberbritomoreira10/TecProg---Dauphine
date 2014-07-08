@@ -12,7 +12,10 @@ Level::Level() :
 	quadTree(nullptr),
 	background(nullptr),
 	backgroundTop(nullptr),
-	checkpointVisited(false)
+	checkpointsX{0,0,0,0,0},
+	checkpointsY{0,0,0,0,0},
+	checkpointsVisited{false,false,false,false,false},
+	NUMBER_OF_CHECKPOINTS(5)
 {
 	// Only serves as the initializer for the derived classes.
 }
@@ -39,6 +42,13 @@ Level::~Level(){
 		delete this->quadTree;
 		this->quadTree = nullptr;
 	}
+}
+
+void Level::changeCheckpoints(int NUMBER_OF_CHECKPOINTS_, std::vector <double> checkpointsX_,
+		std::vector <double> checkpointsY_){
+	this->checkpointsX = checkpointsX_;
+	this->checkpointsY = checkpointsY_;
+	this->NUMBER_OF_CHECKPOINTS = NUMBER_OF_CHECKPOINTS_;
 }
 
 unsigned int Level::getWidth(){

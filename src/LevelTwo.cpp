@@ -34,7 +34,7 @@ void LevelTwo::load(){
 	this->quadTree = new QuadTree(0, bounds);
 
 	this->background = Game::instance().getResources().get("res/images/lv1_background.png");
-	this->checkpoint = Game::instance().getResources().get("res/images/checkpoint.png");
+	//this->checkpoint = Game::instance().getResources().get("res/images/checkpoint.png");
 	this->image = Game::instance().getResources().get("res/images/potion.png");
 
 	// Getting information from lua script.
@@ -154,7 +154,7 @@ void LevelTwo::unload(){
 	Log(DEBUG) << "\tUnloading level 1...";
 	cleanEntities();
 	clearEnemies();
-	this->checkpointVisited = false;	
+	//this->checkpointVisited = false;	
 }
 
 void LevelTwo::update(const double dt_){
@@ -269,11 +269,11 @@ void LevelTwo::update(const double dt_){
 	}
 
 	//Saving the game state
-	if(!this->checkpointVisited && this->player->getBoundingBox().x >= 500 && this->player->getBoundingBox().x <= 550){
-		this->checkpoint = Game::instance().getResources().get("res/images/checkpoint_visited.png");
-		Game::instance().getSaves().saveLevel(2, this->player, this->enemies, Game::instance().currentSlot);
-		this->checkpointVisited = true;
-	}
+	// if(!this->checkpointVisited && this->player->getBoundingBox().x >= 500 && this->player->getBoundingBox().x <= 550){
+	// 	this->checkpoint = Game::instance().getResources().get("res/images/checkpoint_visited.png");
+	// 	Game::instance().getSaves().saveLevel(2, this->player, this->enemies, Game::instance().currentSlot);
+	// 	this->checkpointVisited = true;
+	// }
 }
 
 void LevelTwo::render(){
@@ -282,7 +282,7 @@ void LevelTwo::render(){
 
 	this->background->render(0, 0);
 
-	this->checkpoint->render(500 - cameraX, 5600 - cameraY);
+	//this->checkpoint->render(500 - cameraX, 5600 - cameraY);
 
 	// Render the tiles in the TileMap.
 	this->tileMap->render(cameraX, cameraY);
