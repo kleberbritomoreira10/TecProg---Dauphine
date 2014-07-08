@@ -10,8 +10,8 @@
 
 LevelFour::LevelFour() :
 	Level(),
-	items{{3500, 8000,4900, 10000},{2776, 1800,1750, 2712}},
-	caughtItems{false,false,false,false}
+	items{{207, 11261,6800, 10000},{5600, 2050,5850, 2712}},
+	caughtItems{false,false,false,true}
 {
 
 }
@@ -158,6 +158,7 @@ void LevelFour::unload(){
 }
 
 void LevelFour::update(const double dt_){
+	Log(DEBUG)<< this->player->x <<" || "<< this->player->y;
 	// Populating the QuadTree.
 	this->quadTree->setObjects(this->tileMap->getCollisionRects());
 

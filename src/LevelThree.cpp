@@ -10,8 +10,8 @@
 
 LevelThree::LevelThree() :
 	Level(),
-	items{{2900, 8800,4900, 10000},{4320, 5890,1750, 2712}},
-	caughtItems{false,false,false,false}
+	items{{2900, 8800,9161, 10000},{4320, 5850,4700, 2712}},
+	caughtItems{false,false,false,true}
 {
 
 }
@@ -158,7 +158,6 @@ void LevelThree::unload(){
 }
 
 void LevelThree::update(const double dt_){
-	Log(DEBUG)<< this->player->x <<" || "<< this->player->y;
 	// Populating the QuadTree.
 	this->quadTree->setObjects(this->tileMap->getCollisionRects());
 
