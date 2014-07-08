@@ -122,3 +122,51 @@ void GameSave::getPlayerPosition(double& playerX_, double& playerY_, const int s
 
 	this->continueFile.close();	
 }
+
+bool GameSave::isEnemyDead(const int numEnemy_, const int slot_){
+
+	double skip = 0;
+
+	int totalEnemies = 0;
+	int currentEnemy = 0;
+
+	bool rc = false;
+
+	setSlot(slot_);
+
+	this->continueFile.open(filePath.c_str(), std::ios_base::in);
+
+	this->continueFile >> skip;
+	this->continueFile >> skip;
+	this->continueFile >> skip;
+
+	this->continueFile >> totalEnemies;
+
+	Log(DEBUG) << "Total Enemies on Level " << totalEnemies;
+
+	for(int i = 0; i < totalEnemies; i++){
+
+		Log(DEBUG) << "Is Enemy " << i << " dead?";		
+		
+		this->continueFile >> currentEnemy;
+
+		Log(DEBUG) << "Enemy under test dead status: " << currentEnemy;		
+
+		if(i == numEnemy_){
+			if(currentEnemy == 1)
+				rc = true;
+
+			break;			
+		}
+	}
+
+	this->continueFile.close();	
+
+	if(rc)
+		Log(DEBUG) << "YES";		
+	else
+		Log(DEBUG) << "NO";		
+			
+
+	return rc;
+}

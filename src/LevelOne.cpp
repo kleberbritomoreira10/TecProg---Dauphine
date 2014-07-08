@@ -75,31 +75,71 @@ void LevelOne::load(){
 	this->playerHud = new PlayerHUD(lPlayer);
 	
 		
-	Enemy* lEnemy = new Enemy(3712.0, 1400.0, pathEnemy, false, 0.0);
-	lEnemy->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy);
+	Enemy* lEnemy1 = new Enemy(3712.0, 1400.0, pathEnemy, false, 0.0);
+	
+	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
+		if(Game::instance().getSaves().isEnemyDead(0, Game::instance().currentSlot))
+			lEnemy1->setDead(true);
+	}
+
+	lEnemy1->setLevelWH(this->width, this->height);
+	this->enemies.push_back(lEnemy1);
 
 	Enemy* lEnemy2 = new Enemy(4992.0, 1400.0, pathEnemy, false, 0.0);
+	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
+		if(Game::instance().getSaves().isEnemyDead(1, Game::instance().currentSlot))
+			lEnemy2->setDead(true);
+	}
+
 	lEnemy2->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy2);
 
 	Enemy* lEnemy3 = new Enemy(5568.0, 1400.0, pathEnemy, true, 0.0);
+	
+	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
+		if(Game::instance().getSaves().isEnemyDead(2, Game::instance().currentSlot))
+			lEnemy3->setDead(true);
+	}
+
 	lEnemy3->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy3);
 
 	Enemy* lEnemy4 = new Enemy(7104.0, 1400.0, pathEnemy, true, 0.0);
+	
+	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
+		if(Game::instance().getSaves().isEnemyDead(3, Game::instance().currentSlot))
+			lEnemy4->setDead(true);
+	}
+
 	lEnemy4->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy4);
 
 	Enemy* lEnemy5 = new Enemy(8256.0, 1400.0, pathEnemy, true, 0.0);
+	
+	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
+		if(Game::instance().getSaves().isEnemyDead(4, Game::instance().currentSlot))
+			lEnemy5->setDead(true);
+	}
+
 	lEnemy5->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy5);
 
 	Enemy* lEnemy6 = new Enemy(10560.0, 1400.0, pathEnemy, false, 0.0);
+	
+	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
+		if(Game::instance().getSaves().isEnemyDead(5, Game::instance().currentSlot))
+			lEnemy6->setDead(true);
+	}
+
 	lEnemy6->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy6);
 
 	Enemy* lEnemy7 = new Enemy(10880.0, 1400.0, pathEnemy, false, 0.0);
+	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
+		if(Game::instance().getSaves().isEnemyDead(6, Game::instance().currentSlot))
+			lEnemy6->setDead(true);
+	}
+
 	lEnemy7->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy7);
 
@@ -238,7 +278,7 @@ void LevelOne::update(const double dt_){
 	}
 	
 	//Saving the game state
-	if(!this->checkpointVisited && this->player->getBoundingBox().x >= 4500 && this->player->getBoundingBox().x <= 4550 && this->player->getBoundingBox().y >= 1560){
+	if(!this->checkpointVisited && this->player->getBoundingBox().x >= 9500 && this->player->getBoundingBox().x <= 9550 && this->player->getBoundingBox().y >= 1560){
 		this->checkpoint = Game::instance().getResources().get("res/images/checkpoint_visited.png");
 		
 		Log(DEBUG) << "Saved Player X = " << this->player->x;
@@ -262,7 +302,7 @@ void LevelOne::render(){
 	// Render the tiles in the TileMap.
 	this->tileMap->render(cameraX, cameraY);
 
-	this->checkpoint->render(4500 - cameraX, 1600 - cameraY);
+	this->checkpoint->render(9500 - cameraX, 1600 - cameraY);
 
 	this->playerHud->render();
 	

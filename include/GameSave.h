@@ -16,6 +16,8 @@ class GameSave {
 		int getSavedLevel(int continueSelection_);
 		void getPlayerPosition(double& playerX_, double& playerY_, const int slot_);
 
+		bool isEnemyDead(const int numEnemy_, const int slot_);
+
 		bool isSaved(const int saveSlot_);
 
 		std::string filePath;
