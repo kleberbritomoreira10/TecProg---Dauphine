@@ -93,6 +93,7 @@ class Boss : public DynamicEntity {
 		bool powerIsActivated;
 		Sprite* power;
 		SDL_Rect powerClip;
+		SDL_RendererFlip powerFlip;
 
 	private:
 		virtual void updateBoundingBox();

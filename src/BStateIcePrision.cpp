@@ -10,10 +10,13 @@ void BStateIcePrision::enter(){
 	this->boss->power = new Sprite("res/images/ice_prision.png");
 	this->boss->powerAnimation->changeWidthHeight(340,1020);
 	this->boss->powerAnimation->changeAnimation(0, 0, 2, false, 0.5);
+	this->boss->vx = 0;
+	this->boss->vy = 0;
 }
 
 void BStateIcePrision::exit(){
 	this->boss->powerIsActivated = false;
+	prisionTime = 0.0;
 }
 
 void BStateIcePrision::update(const double dt_){
@@ -21,8 +24,6 @@ void BStateIcePrision::update(const double dt_){
 	this->boss->powerIsActivated = true;
 	this->boss->powerX = this->boss->player->x - 30; 
 	this->boss->powerY = this->boss->player->y - 750;
-	this->boss->vx = 0;
-	this->boss->vy = 0;
 	if(prisionTime > 3){
 		this->boss->powerAnimation->changeAnimation(2, 0, 1, false, 0);
 		if(Collision::rectsCollided(this->boss->player->getBoundingBox(), this->boss->powerClip)){

@@ -31,6 +31,7 @@ Boss::Boss(const double x_, const double y_, const std::string& path_, Player* c
 	powerIsActivated(false),
 	power(nullptr),
 	powerClip{0,0,0,0},
+	powerFlip(SDL_FLIP_NONE),
 	currentState(nullptr),
 	animation(nullptr),
 	statesMap(),
@@ -118,14 +119,12 @@ void Boss::render(const double cameraX_, const double cameraY_){
 	const double pdy = this->powerY - cameraY_;
 
 	if(this->power != nullptr && this->powerIsActivated){
-		SDL_RendererFlip flip = getFlip();
-
-		this->power->render(pdx, pdy, &this->powerClip);
-		if(flip == SDL_FLIP_HORIZONTAL){
-			
+		
+		if(this->powerFlip == SDL_FLIP_HORIZONTAL){
+			this->power->render(pdx - this->powerClip.w, pdy, &this->powerClip, false, 0.0, nullptr, this->powerFlip);
 		}
 		else{
-			this->power->render(pdx, pdy, &this->powerClip, false, 0.0, nullptr, flip);
+			this->power->render(pdx, pdy, &this->powerClip, false, 0.0, nullptr, this->powerFlip);
 		}
 	}
 
