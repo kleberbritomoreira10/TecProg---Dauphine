@@ -11,7 +11,7 @@ void BStateAttack::enter(){
 	Log(DEBUG) << "STATE ATTACK BOSS";
 	this->boss->getAnimation()->changeAnimation(0, 0, 7, false, 1);
 	this->boss->sawPlayer = false;
-	attackIndex = rand()%1;
+	attackIndex = rand()%4;
 }
 
 void BStateAttack::exit(){

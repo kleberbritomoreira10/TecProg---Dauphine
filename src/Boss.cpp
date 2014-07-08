@@ -21,7 +21,7 @@ Boss::Boss(const double x_, const double y_, const std::string& path_, Player* c
 	potionsLeft(3),
 	sawPlayer(false),
 	potions(),
-	life(200),
+	life(8),
 	hasShield(false),
 	canWalk(true),
 	player(player_),

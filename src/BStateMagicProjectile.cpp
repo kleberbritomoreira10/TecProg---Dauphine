@@ -18,15 +18,7 @@ void BStateMagicProjectile::enter(){
 	this->boss->vy = 0;
 	this->boss->powerX = this->boss->x + 50;
 	this->boss->powerY = this->boss->y + 150;
-	this->boss->powerIsActivated = true;
-	/*
-	this.xToFollow = player.x - this.x;
-	this.yToFollow = player.y - this.y;
-	this.hypotenuse = Math.sqrt( (this.xToFollow*this.xToFollow)+(this.yToFollow*this.yToFollow) );
-	this.hypotenuse = (this.hypotenuse==0) ? 1 : this.hypotenuse;
-	this.xToFollow /= this.hypotenuse;
-	this.yToFollow /= this.hypotenuse;
-	*/
+
 	mpX = this->boss->player->getBoundingBox().x + 50 - this->boss->getBoundingBox().x;
 	mpY = this->boss->player->getBoundingBox().y + 50 - this->boss->getBoundingBox().y;
 	hypotenuse = sqrt((mpX*mpX)+(mpY*mpY));
@@ -41,12 +33,14 @@ void BStateMagicProjectile::exit(){
 	mpX = 0;
 	mpY = 0;
 	hypotenuse = 0;
+	this->boss->powerAnimation->changeWidthHeight(50,50);
 }
 
 void BStateMagicProjectile::update(const double dt_){
 	projectileTime += dt_;
 	this->boss->powerX += mpX * 15;
 	this->boss->powerY += mpY * 15;
+	this->boss->powerIsActivated = true;
 
 	if(Collision::rectsCollided(this->boss->player->getBoundingBox(), {(int)this->boss->powerX, 
 		(int)this->boss->powerY, 50, 50})){
