@@ -10,8 +10,8 @@
 
 LevelTwo::LevelTwo() :
 	Level(),
-	items{{3500, 8000,4900, 10000},{2776, 1800,1750, 2712}},
-	caughtItems{false,false,false,false}
+	items{{3500, 8000,4900, 10000},{2950, 1950,1950, 2912}},
+	caughtItems{false,false,true,false}
 {
 
 }
@@ -92,7 +92,7 @@ void LevelTwo::load(){
 	lEnemy2->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy2);
 
-	Enemy* lEnemy3 = new Enemy(2900.0, 3600.0, pathEnemy, true, 0.0);
+	Enemy* lEnemy3 = new Enemy(2900.0, 3550.0, pathEnemy, true, 0.0);
 	
 	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
 		if(Game::instance().getSaves().isEnemyDead(2, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 2)
