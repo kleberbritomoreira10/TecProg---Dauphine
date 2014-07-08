@@ -50,6 +50,7 @@ class LevelTwo : public Level {
 		virtual void render();
 
 		int items[NUMBER_ITEMS];
+		Sprite* image;
 		bool caughtItems[NUMBER_ITEMS];
 
 };

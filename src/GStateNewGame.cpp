@@ -1,6 +1,9 @@
 #include "GStateNewGame.h"
 #include "LuaScript.h"
 #include "Game.h"
+
+#include "Util.h"
+
 #include <string>
 
 GStateNewGame::GStateNewGame() :
@@ -11,7 +14,26 @@ GStateNewGame::GStateNewGame() :
 	selectorXPosition(562),
 	selectorYPosition {500,610,723}
 {
+	this->slot1 = new Text(615.0, // x
+							520.0, // y
+							"res/fonts/maturasc.ttf", // font path
+							45, // size
+							"Empty Slot", // text
+							{0xCE, 0XCE, 0XCE, 255}); // sdl_color
 
+	this->slot2 = new Text(615.0, // std::string slot1Text;std::string slot1Text;x
+							630.0, // y
+							"res/fonts/maturasc.ttf", // font path
+							45, // size
+							"Empty Slot", // text
+							{0xCE, 0XCE, 0XCE, 255}); // sdl_color
+
+	this->slot3 = new Text(615.0, // x
+							730.0, // y
+							"res/fonts/maturasc.ttf", // font path
+							45, // size
+							"Empty Slot", // text
+							{0xCE, 0XCE, 0XCE, 255}); // sdl_color
 }
 
 GStateNewGame::~GStateNewGame(){
@@ -21,6 +43,54 @@ GStateNewGame::~GStateNewGame(){
 void GStateNewGame::load(){
 	Log(DEBUG) << "Loading Choose Slot Screen...";
 
+	if(Game::instance().getSaves().isSaved(SLOT_1)){
+		
+		const int levelFromSave = Game::instance().getSaves().getSavedLevel(SLOT_1);
+
+		const std::string currentLevel = "Level " + Util::toString(levelFromSave);
+		
+		if(levelFromSave == -1)
+			this->slot1->changeText("Empty Slot", {0xCE, 0xCE, 0xCE, 255});
+		else
+			this->slot1->changeText(currentLevel.c_str(), {0xCE, 0xCE, 0xCE, 255});
+	}
+
+	else{
+		this->slot1->changeText("Empty Slot", {0xCE, 0xCE, 0xCE, 255});
+	}
+
+
+	if(Game::instance().getSaves().isSaved(SLOT_2)){
+		
+		const int levelFromSave = Game::instance().getSaves().getSavedLevel(SLOT_2);
+
+		const std::string currentLevel = "Level " + Util::toString(levelFromSave);
+		
+		if(levelFromSave == -1)
+			this->slot2->changeText("Empty Slot", {0xCE, 0xCE, 0xCE, 255});
+		else
+			this->slot2->changeText(currentLevel.c_str(), {0xCE, 0xCE, 0xCE, 255});
+	}
+	else{
+		this->slot2->changeText("Empty Slot", {0xCE, 0xCE, 0xCE, 255});
+	}
+
+
+	if(Game::instance().getSaves().isSaved(SLOT_3)){
+		
+		const int levelFromSave = Game::instance().getSaves().getSavedLevel(SLOT_3);
+
+		const std::string currentLevel = "Level " + Util::toString(levelFromSave);
+			
+		if(levelFromSave == -1)
+			this->slot3->changeText("Empty Slot", {0xCE, 0xCE, 0xCE, 255});
+		else
+			this->slot3->changeText(currentLevel.c_str(), {0xCE, 0xCE, 0xCE, 255});
+	}
+	else{
+		this->slot3->changeText("Empty Slot", {0xCE, 0xCE, 0xCE, 255});
+	}
+
 	//As is uses the same resources as the Continue screen...
 	LuaScript luaMenu("lua/Continue.lua");
 	const std::string pathBackground = luaMenu.unlua_get<std::string>("continue.images.background");
@@ -28,6 +98,9 @@ void GStateNewGame::load(){
 
 	this->background = Game::instance().getResources().get(pathBackground);
     this->selector = Game::instance().getResources().get(pathSelector);
+
+	this->selector->setWidth(410);
+	this->selector->setHeight(102);
 
     this->currentSelection = Selection::SLOT_1;
 
@@ -56,10 +129,11 @@ void GStateNewGame::render(){
 	if(this->background != nullptr){
 		this->background->render(0, 0, nullptr, true);
 
-		this->selector->setWidth(410);
-		this->selector->setHeight(102);
-
 		this->selector->render(selectorXPosition, selectorYPosition[currentSelection], nullptr, false, 0.0, nullptr, SDL_FLIP_NONE);
+
+		this->slot1->render(0, 0);
+		this->slot2->render(0, 0);
+		this->slot3->render(0, 0);
 	}
 	else{
 		Log(WARN) << "No image set to display on the menu!";
@@ -99,17 +173,19 @@ void GStateNewGame::handleSelectorMenu(){
 		}
 	}
 	else if(currentSelection == Selection::SLOT_1 && keyStates[GameKeys::SPACE] == true){
-		Log(DEBUG) << "HERE";
+		Game::instance().currentSlot = Selection::SLOT_1;
 		Game::instance().getSaves().setSlot(Selection::SLOT_1);
 		Game::instance().getSaves().createSave();
 		Game::instance().setState(Game::GStates::LEVEL_ONE);
 	}
 	else if(currentSelection == Selection::SLOT_2 && keyStates[GameKeys::SPACE] == true){
+		Game::instance().currentSlot = Selection::SLOT_2;
 		Game::instance().getSaves().setSlot(Selection::SLOT_2);
 		Game::instance().getSaves().createSave();
 		Game::instance().setState(Game::GStates::LEVEL_TWO);
 	}
 	else if(currentSelection == Selection::SLOT_3 && keyStates[GameKeys::SPACE] == true){
+		Game::instance().currentSlot = Selection::SLOT_3;
 		Game::instance().getSaves().setSlot(Selection::SLOT_3);
 		Game::instance().getSaves().createSave();
 		Game::instance().setState(Game::GStates::LEVEL_BOSS);

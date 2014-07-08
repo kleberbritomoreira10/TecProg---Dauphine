@@ -38,13 +38,14 @@ void GameSave::createSave(){
 	return;
 }
 
-void GameSave::saveLevel(unsigned int level_, Player* player, std::vector <Enemy*> enemies){
+void GameSave::saveLevel(unsigned int level_, Player* player, std::vector <Enemy*> enemies, unsigned slot_){
 
-	this->setSlot(saveSelection);	
+	this->setSlot(slot_);	
 
 	this->saveFile.open(this->filePath.c_str());
 
 	Log(DEBUG) << "Saved from level " << level_;
+	Log(DEBUG) << "Saved on file " << this->filePath;	
 
 	if(!this->saveFile.fail()){
 		this->currentLevel = level_;
@@ -142,15 +143,15 @@ bool GameSave::isEnemyDead(const int numEnemy_, const int slot_){
 
 	this->continueFile >> totalEnemies;
 
-	Log(DEBUG) << "Total Enemies on Level " << totalEnemies;
+	// Log(DEBUG) << "Total Enemies on Level " << totalEnemies;
 
 	for(int i = 0; i < totalEnemies; i++){
 
-		Log(DEBUG) << "Is Enemy " << i << " dead?";		
+		// Log(DEBUG) << "Is Enemy " << i << " dead?";		
 		
 		this->continueFile >> currentEnemy;
 
-		Log(DEBUG) << "Enemy under test dead status: " << currentEnemy;		
+		// Log(DEBUG) << "Enemy under test dead status: " << currentEnemy;		
 
 		if(i == numEnemy_){
 			if(currentEnemy == 1)
@@ -162,10 +163,10 @@ bool GameSave::isEnemyDead(const int numEnemy_, const int slot_){
 
 	this->continueFile.close();	
 
-	if(rc)
-		Log(DEBUG) << "YES";		
-	else
-		Log(DEBUG) << "NO";		
+	// if(rc)
+	// 	Log(DEBUG) << "YES";		
+	// else
+	// 	Log(DEBUG) << "NO";		
 			
 
 	return rc;
