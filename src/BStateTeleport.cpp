@@ -9,12 +9,14 @@ int powerCollisionWidth = 0;
 int powerCollisionHeight = 0;
 int offset = 33;
 bool right;
+int direction = 0;
 
 void BStateTeleport::enter(){
 	Log(DEBUG) << "STATE TELEPORT BOSS";
 	this->boss->power = new Sprite("res/images/laser_sheet.png");
 	this->boss->powerAnimation->changeWidthHeight(700,340);
 	this->boss->powerAnimation->changeAnimation(0, 0, 3, false, 0.5);
+	this->boss->player->isVulnerable = true;
 }
 
 void BStateTeleport::exit(){
@@ -62,9 +64,11 @@ void BStateTeleport::update(const double dt_){
 		this->boss->y = pY;
 		if(right){
 			this->boss->isRight = false;
+			direction = 0;
 		}
 		else{
 			this->boss->isRight = true;
+			direction = 1;
 		}
 	}
 	if(tptime >= 4 && tptime <= 5){
@@ -94,8 +98,8 @@ void BStateTeleport::update(const double dt_){
 			powerCollisionHeight = 262;
 		}
 		this->boss->powerIsActivated = true;
-		if(Collision::rectsCollided(this->boss->player->getBoundingBox(), {(int)this->boss->powerX, 
-		(int)this->boss->powerY + offset, powerCollisionWidth, powerCollisionHeight})){
+		if(Collision::rectsCollided(this->boss->player->getBoundingBox(), {(int)this->boss->powerX - direction * 665, 
+		(int)this->boss->powerY + offset, direction * 665, 262})){
 			if(this->boss->player->isVulnerable){
 				this->boss->player->life--;
 				this->boss->player->isVulnerable = false;

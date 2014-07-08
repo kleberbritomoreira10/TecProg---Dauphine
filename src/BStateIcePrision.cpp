@@ -22,17 +22,21 @@ void BStateIcePrision::exit(){
 	this->boss->player->isVulnerable = true;
 	this->boss->powerAnimation->changeAnimation(0, 0, 1, false, 0);
 	prisionTime = 0.0;
+	this->boss->player->canMove = true;
 }
 
 void BStateIcePrision::update(const double dt_){
 	prisionTime += dt_;
-	if(prisionTime > 3){
+	if(prisionTime > 1){
 		this->boss->powerAnimation->changeAnimation(2, 0, 1, false, 0);
 		if(Collision::rectsCollided(this->boss->player->getBoundingBox(),  {(int)this->boss->powerX, 
 		(int)this->boss->powerY, 340,1020})){
 			if(this->boss->player->isVulnerable){
-				this->boss->player->life--;
+				this->boss->player->canMove = false;
 				this->boss->player->isVulnerable = false;
+				this->boss->player->vx = 0;
+				this->boss->player->vy = 0;
+				this->boss->player->getAnimation()->changeAnimation(4, 8, 1, false, 0);
 			}
 		}
 	}

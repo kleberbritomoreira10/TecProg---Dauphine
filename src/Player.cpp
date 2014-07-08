@@ -37,6 +37,7 @@ Player::Player(const double x_, const double y_, const std::string& path_) :
     closestEnemyIsRight(true),
     isVulnerable(true),
     invulnerableTime(0),
+    canMove(true),
     animation(nullptr),
     currentState(nullptr)
 {
@@ -76,7 +77,9 @@ Player::~Player(){
 void Player::update(const double dt_){
     std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
-    this->currentState->handleInput(keyStates);
+    if(this->canMove){
+        this->currentState->handleInput(keyStates);
+    }
 
     Game::instance().clearKeyFromInput(GameKeys::ACTION);
 

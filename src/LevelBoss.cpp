@@ -136,11 +136,9 @@ void LevelBoss::update(const double dt_){
 			else if(this->player->canAttack){
 				this->boss->life -= 1;
 				this->player->canAttack = false;
-				Log(DEBUG) << this->boss->life;
 			}
 		}
 	}
-	
 }
 
 void LevelBoss::render(){

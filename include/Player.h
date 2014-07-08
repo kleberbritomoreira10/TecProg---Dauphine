@@ -127,6 +127,7 @@ class Player : public DynamicEntity {
 
 		bool isVulnerable;
 		double invulnerableTime;
+		bool canMove;
 
 	private:
 		virtual void updateBoundingBox();
