@@ -16,7 +16,7 @@ LevelOne::LevelOne() :
 	items{{4900, 10000,0,0},{1750, 1750,0,0}},
 	caughtItems{false,false,true,true}
 {
-
+	this->changeCheckpoints(3, {2000,4000,6000,8000,10000}, {1600,1600,1600,1600,1600});
 }
 
 LevelOne::~LevelOne(){
@@ -37,7 +37,9 @@ void LevelOne::load(){
 
 	this->background = Game::instance().getResources().get("res/images/lv1_background_parallax.png");
 	this->backgroundTop = Game::instance().getResources().get("res/images/lv1_parallax_top.png");
-	this->checkpoint = Game::instance().getResources().get("res/images/checkpoint.png");
+	for(int i = 0; i < this->NUMBER_OF_CHECKPOINTS; ++i){
+		this->checkpoints.push_back(Game::instance().getResources().get("res/images/checkpoint.png"));
+	}
 
 	// Getting information from lua script.
 	LuaScript luaLevel1("lua/Level1.lua");
@@ -150,8 +152,6 @@ void LevelOne::load(){
 	setCamera(lCamera);
 
 	Game::instance().getFade().fadeOut(0, 0.002);
-
-	checkpointVisited = false;
 }
 
 void LevelOne::unload(){
@@ -282,11 +282,15 @@ void LevelOne::update(const double dt_){
 	}
 	
 	//Saving the game state
-	if(!this->checkpointVisited && this->player->getBoundingBox().x >= 9500 && this->player->getBoundingBox().x <= 9550 && this->player->getBoundingBox().y >= 1560){
-		this->checkpoint = Game::instance().getResources().get("res/images/checkpoint_visited.png");
-		Game::instance().getSaves().saveLevel(1, this->player, this->enemies, Game::instance().currentSlot);
-		this->checkpointVisited = true;
-	}	
+	for(int j = 0; j < this->NUMBER_OF_CHECKPOINTS; ++j){
+		if(!this->checkpointsVisited[j] && this->player->getBoundingBox().x >= checkpointsX[j] 
+				&& this->player->getBoundingBox().x <= checkpointsX[j] + 100 && this->player->getBoundingBox().y >= checkpointsY[j]
+				&& this->player->getBoundingBox().y <= checkpointsY[j] + 200){
+			this->checkpoints[j] = Game::instance().getResources().get("res/images/checkpoint_visited.png");
+			Game::instance().getSaves().saveLevel(1, this->player, this->enemies, Game::instance().currentSlot);
+			this->checkpointsVisited[j] = true;
+		}	
+	}
 }
 
 void LevelOne::render(){
@@ -300,7 +304,9 @@ void LevelOne::render(){
 	// Render the tiles in the TileMap.
 	this->tileMap->render(cameraX, cameraY);
 
-	this->checkpoint->render(9500 - cameraX, 1600 - cameraY);
+	for(int j = 0; j < this->NUMBER_OF_CHECKPOINTS; ++j){
+		this->checkpoints[j]->render(this->checkpointsX[j] - cameraX, this->checkpointsY[j] - cameraY);
+	}
 
 	this->playerHud->render();
 	
