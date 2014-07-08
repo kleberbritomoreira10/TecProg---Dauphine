@@ -11,7 +11,7 @@ void BStateAttack::enter(){
 	Log(DEBUG) << "STATE ATTACK BOSS";
 	this->boss->getAnimation()->changeAnimation(0, 0, 1, false, 0);
 	this->boss->sawPlayer = false;
-	attackIndex = rand()%2;
+	attackIndex = rand()%3;
 }
 
 void BStateAttack::exit(){
@@ -26,6 +26,9 @@ void BStateAttack::update(const double dt_){
 	}
 	else if(attackIndex == 1){
 		this->boss->changeState(Boss::BStates::TELEPORT);
+	}
+	else if(attackIndex == 2){
+		this->boss->changeState(Boss::BStates::ICEPRISION);
 	}
 	else{
 

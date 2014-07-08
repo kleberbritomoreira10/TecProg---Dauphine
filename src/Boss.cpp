@@ -6,6 +6,7 @@
 #include "BStateAttack.h"
 #include "BStateShield.h"
 #include "BStateTeleport.h"
+#include "BStateIcePrision.h"
 
 #include "Window.h"
 
@@ -111,10 +112,11 @@ void Boss::render(const double cameraX_, const double cameraY_){
 
 void Boss::initializeStates(){
 	// Initialize all the states in Boss here.
-	ADD_STATE_INSERT(IDLE,		BStateIdle);
-	ADD_STATE_INSERT(ATTACK,	BStateAttack);
-	ADD_STATE_INSERT(SHIELD,	BStateShield);
-	ADD_STATE_INSERT(TELEPORT,	BStateTeleport);
+	ADD_STATE_INSERT(IDLE,			BStateIdle);
+	ADD_STATE_INSERT(ATTACK,		BStateAttack);
+	ADD_STATE_INSERT(SHIELD,		BStateShield);
+	ADD_STATE_INSERT(TELEPORT,		BStateTeleport);
+	ADD_STATE_INSERT(ICEPRISION,	BStateIcePrision);
 }
 
 void Boss::destroyStates(){

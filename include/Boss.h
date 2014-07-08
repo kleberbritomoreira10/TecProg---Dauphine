@@ -20,6 +20,7 @@ class Boss : public DynamicEntity {
 			ATTACK,
 			SHIELD,
 			TELEPORT,
+			ICEPRISION,
 			DEAD
 		};
 
@@ -85,7 +86,7 @@ class Boss : public DynamicEntity {
 		bool hasShield;
 		bool canWalk;
 		Player* player;
-		
+
 
 	private:
 		virtual void updateBoundingBox();
