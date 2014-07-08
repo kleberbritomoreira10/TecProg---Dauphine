@@ -337,6 +337,12 @@ bool Game::isPauseable(){
 		return true;
 	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_TWO))
 		return true;
+	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_THREE))
+		return true;
+	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_FOUR))
+		return true;
+	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_FIVE))
+		return true;
 	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_BOSS))
 		return true;
 

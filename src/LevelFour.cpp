@@ -22,10 +22,10 @@ LevelFour::~LevelFour(){
 
 void LevelFour::load(){
 	// Changing the music.
-	Game::instance().getAudioHandler().changeMusic("res/audio/lv3.wav");
+	Game::instance().getAudioHandler().changeMusic("res/audio/lv4.wav");
 
 	// Loading the tile/tilemap.
-	this->tileMap = new TileMap("res/maps/level3.tmx");
+	this->tileMap = new TileMap("res/maps/level4.tmx");
 
 	// Setting the level width/height.
 	this->width = this->tileMap->getMapWidth();

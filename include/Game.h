@@ -33,6 +33,7 @@ class Game {
 			LEVEL_TWO,
 			LEVEL_THREE,
 			LEVEL_FOUR,
+			LEVEL_FIVE,
 			LEVEL_BOSS,
 			CONTINUE,
 			OPTIONS,

@@ -51,7 +51,7 @@ void LevelThree::load(){
 	// Loading the player and the camera.
 	Player* lPlayer = nullptr;
 	
-	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 2){
+	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 3){
 		double savedPX = 0.0;
 		double savedPY = 0.0;
 
