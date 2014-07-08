@@ -55,7 +55,7 @@ void LevelOne::load(){
 
 	Player* lPlayer = nullptr;
 	
-	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
+	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 1){
 		double savedPX = 0.0;
 		double savedPY = 0.0;
 
@@ -208,6 +208,7 @@ void LevelOne::update(const double dt_){
 	// Updating player info for the enemies.
 	Enemy::px = this->player->x;
 	Enemy::py = this->player->y;
+	Enemy::pVulnerable = this->player->isVulnerable;
 
 	
 	for (int i = 0; i < NUMBER_ITEMS; ++i){
@@ -283,15 +284,9 @@ void LevelOne::update(const double dt_){
 	//Saving the game state
 	if(!this->checkpointVisited && this->player->getBoundingBox().x >= 9500 && this->player->getBoundingBox().x <= 9550 && this->player->getBoundingBox().y >= 1560){
 		this->checkpoint = Game::instance().getResources().get("res/images/checkpoint_visited.png");
-		
-		Log(DEBUG) << "Saved Player X = " << this->player->x;
-		Log(DEBUG) << "Saved Player Y = " << this->player->y;
-
-		Game::instance().getSaves().saveLevel(1, this->player, this->enemies);
+		Game::instance().getSaves().saveLevel(1, this->player, this->enemies, Game::instance().currentSlot);
 		this->checkpointVisited = true;
-	}
-
-	
+	}	
 }
 
 void LevelOne::render(){

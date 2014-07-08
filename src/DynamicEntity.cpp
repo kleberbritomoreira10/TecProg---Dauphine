@@ -88,12 +88,12 @@ std::array<bool, CollisionSide::SOLID_TOTAL> DynamicEntity::detectCollision(){
 				case Collision::RectangleSide::RIGHT: // Hitting right side of the tile.
 					detections.at(SOLID_RIGHT) = (tileBox.type != JUMP_THROUGH) ? true : false;
 					if(tileBox.type == CLIMB && !this->isGrounded){
-						Log(DEBUG) << "CLIMB RIGHT";
+						// Log(DEBUG) << "CLIMB RIGHT";
 						this->isClimbing = true;
 					}
 					else{
 						if(this->isClimbing){
-							Log(DEBUG) << "EXIT CLIMB";
+							// Log(DEBUG) << "EXIT CLIMB right";
 							this->isClimbing = false;
 						}
 					}
@@ -102,8 +102,14 @@ std::array<bool, CollisionSide::SOLID_TOTAL> DynamicEntity::detectCollision(){
 				case Collision::RectangleSide::LEFT: // Hitting left side of the tile.
 					detections.at(SOLID_LEFT) = (tileBox.type != JUMP_THROUGH) ? true : false;
 					if(tileBox.type == CLIMB && !this->isGrounded){
-						Log(DEBUG) << "CLIMB LEFT";
+						// Log(DEBUG) << "~~~~ CLIMB LEFT";
 						this->isClimbing = true;
+					}
+					else{
+						if(this->isClimbing){
+							// Log(DEBUG) << "EXIT CLIMB left";
+							this->isClimbing = false;
+						}
 					}
 					break;
 

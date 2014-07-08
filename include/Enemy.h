@@ -59,6 +59,7 @@ class Enemy : public DynamicEntity {
 		static double px;
 		static double py;
 		static unsigned int pLife;
+		static bool pVulnerable;
 		static double alertRange;
 		static double curiousRange;
 

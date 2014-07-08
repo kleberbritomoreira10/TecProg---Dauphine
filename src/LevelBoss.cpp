@@ -48,7 +48,7 @@ void LevelBoss::load(){
 
 	this->playerHud = new PlayerHUD(lPlayer);
 
-	Boss* lBoss = new Boss(1200, 684.0, pathEnemy, lPlayer);
+	Boss* lBoss = new Boss(1200, 684.0, "res/images/boss_sheet.png", lPlayer);
 	lBoss->getAnimation()->changeAnimation(0,0,1,false,0.0);
 	
 	// Test text.
@@ -115,13 +115,12 @@ void LevelBoss::update(const double dt_){
 		return;
 	}
 
-	// Updating the potion/enemy collision.
+	// Updating the potion/boss collision.
 	for(auto potion : this->player->potions){
-		for(auto enemy : this->enemies){
-			if(Collision::rectsCollided(potion->getBoundingBox(), enemy->getBoundingBox())){
-				if(potion->activated){
-					enemy->changeState(Enemy::EStates::DEAD);
-				}
+		if(Collision::rectsCollided(potion->getBoundingBox(), this->boss->getBoundingBox())){
+			if(potion->activated){
+				this->boss->life--;
+				potion->activated = false;
 			}
 		}
 	}
@@ -135,7 +134,7 @@ void LevelBoss::update(const double dt_){
 				this->player->canAttack = false;
 			}
 			else if(this->player->canAttack){
-				this->boss->life -= 50;
+				this->boss->life -= 1;
 				this->player->canAttack = false;
 				Log(DEBUG) << this->boss->life;
 			}

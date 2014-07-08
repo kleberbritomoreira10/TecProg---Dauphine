@@ -49,7 +49,10 @@ class LevelOne : public Level {
 		*/
 		virtual void render();
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 0ca773a8380f6a8e0aeab6f87b50babcc0c2f4c5
 		Sprite* image;
 		int items[2][NUMBER_ITEMS];
 		bool caughtItems[NUMBER_ITEMS];

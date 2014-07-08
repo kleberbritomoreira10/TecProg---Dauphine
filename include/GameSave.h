@@ -12,7 +12,7 @@ class GameSave {
 
 		void setSlot(int saveSelection);
 		void createSave();
-		void saveLevel(unsigned int level_, Player* player, std::vector <Enemy*> enemies);
+		void saveLevel(unsigned int level_, Player* player, std::vector <Enemy*> enemies, unsigned int slot_);
 		int getSavedLevel(int continueSelection_);
 		void getPlayerPosition(double& playerX_, double& playerY_, const int slot_);
 

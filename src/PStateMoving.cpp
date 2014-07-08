@@ -35,6 +35,7 @@ void PStateMoving::handleInput(const std::array<bool, GameKeys::MAX> keyStates_)
     }
 
     if(keyStates_[GameKeys::ACTION]){
+        // Game::instance().getAudioHandler().addSoundEffect("res/audio/FX_NADINE/WOOSH_NADINE_03.wav");
         this->player->usePotion(THROW_STRENGTH, THROW_DISTANCE);
         return;
     }

@@ -100,9 +100,10 @@ void Player::update(const double dt_){
 
     if(!this->isVulnerable){
         this->invulnerableTime += dt_;
-        if(this->invulnerableTime >= 3){
+        if(this->invulnerableTime >= 1){
             this->invulnerableTime = 0;
             this->isVulnerable = true;
+            this->canAttack = true;
         }
     }
 

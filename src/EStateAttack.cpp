@@ -25,13 +25,17 @@ void EStateAttack::update(const double dt_){
 
 	/// @todo Refactor the way the enemy hurts the player.
 	
-	if(this->enemy->vx >= 0)
+	if(this->enemy->vx >= 0){
 		this->enemy->vx = 0;
-	else
+	}
+	else{
 		this->enemy->vx = -0.001; //Set this value so that the Enemy won't Flip when attacking
+	}
 
 	if(attackTime > attackTotalTime){
-		Enemy::pLife--;
+		if(Enemy::pVulnerable){
+			Enemy::pLife--;
+		}
 		this->enemy->changeState(Enemy::EStates::ALERT);
 	}
 }
