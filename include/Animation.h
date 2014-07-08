@@ -47,6 +47,8 @@ class Animation{
 		*/
 		void changeAnimation(const int x_, const int y_, const unsigned int numberOfImages_, const bool loop_, const double totalTime_);
 
+		unsigned int ANIMATION_LIMIT;
+
 	private:
 		/**
 		* Updates the clip to a new position.

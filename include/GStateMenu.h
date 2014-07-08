@@ -3,6 +3,7 @@
 
 #include "StateGame.h"
 #include "Sprite.h"
+#include "Animation.h"
 
 /**
 * The state for the initial menu screen.
@@ -75,6 +76,11 @@ class GStateMenu : public StateGame {
 		const int attractHeightSize;
 		const int attractChangeSpeed;
 		SDL_Rect attractClip; /**< The clip shown on the credits. */
+
+		Animation* shwingAnimation;
+		bool shwingIsActivated;
+		Sprite* shwing;
+		SDL_Rect shwingClip;
 };
 
 #endif // INCLUDE_GSTATEMENU_H

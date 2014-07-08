@@ -18,7 +18,11 @@ GStateMenu::GStateMenu() :
 	selectorYPositionRight {560, 625, 690, 755},
 	attractHeightSize(600),
 	attractChangeSpeed(1),
-	attractClip{0, 0, 0, this->attractHeightSize}
+	attractClip{0, 0, 0, this->attractHeightSize},
+	shwingAnimation(nullptr),
+	shwingIsActivated(true),
+	shwing(nullptr),
+	shwingClip {0,0,0,0}
 {
 
 }
@@ -41,9 +45,12 @@ void GStateMenu::load(){
 
     this->menuImage = Game::instance().getResources().get(pathTitleScreen);
     this->menuSelector = Game::instance().getResources().get(pathCursor);
-    this->attractModeBg = Game::instance().getResources().get("res/images/bg.png");
-    this->attractMode = Game::instance().getResources().get("res/images/attract_no_bg.png");
+    this->attractModeBg = Game::instance().getResources().get("res/images/title_background.png");
+    this->attractMode = Game::instance().getResources().get("res/images/attract.png");
     this->attractClip.w = this->attractMode->getWidth();
+    this->shwingAnimation = new Animation(0, 0, 795, 360, 3, false);
+    this->shwing = new Sprite("res/images/shwing_sheet.png");
+    this->shwingAnimation->ANIMATION_LIMIT = 2;
 
     Game::instance().getFade().fadeOut(0, 0.002);
 }
@@ -59,9 +66,16 @@ void GStateMenu::update(const double dt_){
 
 	handleSelectorMenu();
 
+	this->shwingAnimation->update(this->shwingClip, dt_);	
+
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 	if(keyStates[GameKeys::ESCAPE] == true){
 		Game::instance().stop();
+	}
+
+	if(this->shwingIsActivated){
+		 this->shwingAnimation->changeAnimation(0,0,12,false,2);
+		 this->shwingIsActivated = false;
 	}
 
 }
@@ -69,16 +83,19 @@ void GStateMenu::update(const double dt_){
 void GStateMenu::render(){
 
 	if(this->passedTime>10){
+		this->attractModeBg->render(0, 0, nullptr, true);
+		this->attractMode->render(0, 0, &this->attractClip, true);
 		shouldIgnore = true;
 		if(this->attractClip.y < (int)this->attractMode->getHeight() - this->attractHeightSize){
 			this->attractClip.y += this->attractChangeSpeed;
 		}
 		else{
+			shwing->render(340,50,&this->shwingClip);
+		}
+		if(this->passedTime>75){
 			this->passedTime = 0.0;
 			this->attractClip.y = 0;
 		}
-		this->attractModeBg->render(0, 0, nullptr, true);
-		this->attractMode->render(0, 0, &this->attractClip, true);
 	}
 	else{
 		if(this->menuImage != nullptr){

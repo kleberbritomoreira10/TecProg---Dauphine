@@ -4,7 +4,8 @@ int animationCount = 0;
 
 Animation::Animation(const int x_, const int y_, const int spriteWidth_,
 	const int spriteHeight_, const unsigned int numberOfImages_, const bool loop_) :
-
+	
+	ANIMATION_LIMIT(10),
 	x(x_),
 	y(y_),
 	initialX(0),
@@ -23,8 +24,6 @@ Animation::~Animation(){
 }
 
 void Animation::update(SDL_Rect& clip, const double dt_){
-
-	const unsigned int ANIMATION_LIMIT = 10;
 
 	// Compare the position on the sprite with the number of positions to know if is the
 	// end of the animation.
