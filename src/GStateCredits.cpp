@@ -22,7 +22,8 @@ void GStateCredits::update(const double dt_){
 	(void(dt_)); //unused
 
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
-	if(keyStates[GameKeys::SPACE] == true){
+
+	if(keyStates[GameKeys::LATTACK] == true){
 		Game::instance().setState(Game::GStates::MENU);
 	}
 }

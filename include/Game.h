@@ -36,7 +36,8 @@ class Game {
 			OPTIONS,
 			CREDITS,
 			GAMEOVER,
-			TRANSITION
+			TRANSITION,
+			VICTORY
 		};
 
 		/**

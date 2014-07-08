@@ -15,6 +15,7 @@
 #include "GStateCredits.h"
 #include "GStateGameOver.h"
 #include "GStateTransition.h"
+#include "GStateVictory.h"
 #include "Sprite.h"
 
 #include "Logger.h"
@@ -198,6 +199,7 @@ void Game::initializeStates(){
 	ADD_STATE_INSERT(CREDITS, GStateCredits);
 	ADD_STATE_INSERT(GAMEOVER, GStateGameOver);
 	ADD_STATE_INSERT(TRANSITION, GStateTransition);
+	ADD_STATE_INSERT(VICTORY, GStateVictory);
 }
 
 void Game::renderDialog(){

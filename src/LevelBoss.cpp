@@ -109,9 +109,13 @@ void LevelBoss::update(const double dt_){
 	// Updating the camera.
 	this->camera->update();
 
+	if(this->boss->life <= 0){
+		this->player->reachedLevelEnd = true;
+	}
+
 	// Set next level if end is reached.
 	if(this->player->reachedLevelEnd){
-		Game::instance().setState(Game::GStates::LEVEL_ONE);
+		Game::instance().setState(Game::GStates::VICTORY);
 		return;
 	}
 
