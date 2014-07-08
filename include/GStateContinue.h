@@ -51,7 +51,7 @@ class GStateContinue : public StateGame {
 
 	private:
 		enum Selection : uint8_t {
-			SLOT_1,
+			SLOT_1 = 0,
 			SLOT_2,
 			SLOT_3,
 			TOTAL

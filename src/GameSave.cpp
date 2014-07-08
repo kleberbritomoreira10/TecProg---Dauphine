@@ -2,38 +2,69 @@
 #include "Logger.h"
 #include <cstdlib>
 
+std::string filePath = "";
+
 GameSave::GameSave(){
 
 }
 
-void GameSave::createSaveGameFile(int saveSelection_){
-	this->saveSelection = saveSelection_;
-	if(this->saveSelection == 0){
-		this->saveFile.open("saveSlot1.dauphine");
+void GameSave::setSlot(int saveSelection_){	
+	switch(saveSelection_){
+		case this->Selection::SLOT_1:
+			this->filePath = "saveSlot1.dauphine";
+		break;
+
+		case this->Selection::SLOT_2:
+			this->filePath = "saveSlot2.dauphine";
+		break;
+
+		case this->Selection::SLOT_3:
+			this->filePath = "saveSlot3.dauphine";
+		break;
 	}
-	else if(this->saveSelection == 1){
-		this->saveFile.open("saveSlot2.dauphine");
+}
+
+void GameSave::createSave(){
+	
+	this->saveFile.open(this->filePath.c_str());	
+
+	if(!this->saveFile.fail()){
+		this->saveFile << "-1" << std::endl;
+		this->saveFile.close();
 	}
-	else if(this->saveSelection == 2){
-		this->saveFile.open("saveSlot3.dauphine");
-	}
-	this->saveFile.close();
-}	
+	else
+		Log(DEBUG) << "Could not create save file at " + this->filePath;
+
+	return;
+}
 
 void GameSave::saveLevel(unsigned int level_, Player* player, std::vector <Enemy*> enemies){
-	createSaveGameFile(this->saveSelection);
-	this->currentLevel = level_;
-	this->saveFile << this->currentLevel << std::endl;
-	this->saveFile << player->x << " " << player->y << std::endl;
-	this->saveFile << enemies.size() << std::endl;
-	for(auto enemy : enemies){
-		this->saveFile << enemy->isDead() << " ";
+
+	this->setSlot(saveSelection);	
+
+	this->saveFile.open(this->filePath.c_str());
+
+	Log(DEBUG) << "Saved from level " << level_;
+
+	if(!this->saveFile.fail()){
+		this->currentLevel = level_;
+		this->saveFile << this->currentLevel << std::endl;
+		this->saveFile << player->x << std::endl;
+		this->saveFile << player->y << std::endl;
+		this->saveFile << enemies.size() << std::endl;
+		for(auto enemy : enemies){
+			this->saveFile << enemy->isDead() << " ";
+		}
+		
+		this->saveFile.close();
 	}
-	this->saveFile.close();
+	else
+		Log(DEBUG) << "Could not open save file at " + this->filePath;
 }
 
 int GameSave::getSavedLevel(int continueSelection_){
 	this->saveSelection = continueSelection_;
+	
 	std::string level = "-1";
 
 	if(this->saveSelection == 0){
@@ -45,40 +76,49 @@ int GameSave::getSavedLevel(int continueSelection_){
 	else if(this->saveSelection == 2){
 		this->continueFile.open("saveSlot3.dauphine");
 	}
+	
 	this->continueFile >> level;
+
+	this->continueFile.close();
+
 	return std::stoi(level);
 }
 
 bool GameSave::isSaved(const int saveSlot_){
 
-	if(saveSlot_ == 0){
-		this->continueFile.open("saveSlot1.dauphine");
-		this->continueFile.close();
-	}
-	else if(saveSlot_ == 1){
-		this->continueFile.open("saveSlot2.dauphine");
-		this->continueFile.close();
-	}
-	else if(saveSlot_ == 2){
-		this->continueFile.open("saveSlot3.dauphine");
-		this->continueFile.close();
-	}	
-	return !this->continueFile.fail();
-}
+	this->setSlot(saveSlot_);	
 
-void GameSave::restorePlayerPosition(Player* player_){
-	double playerX_= 0;
-	double playerY_= 0;
-	
-	if(!this->continueFile.fail()){
-		this->continueFile >> playerX_;
-		this->continueFile >> playerY_;
+	this->continueFile.open(this->filePath.c_str());
 
-		player_->x = playerX_;
-		player_->y = playerY_;
-		this->continueFile.close();	
+	std::string testSave = ""; 
+
+	this->continueFile >> testSave;
+
+	// Log(DEBUG) << "TestSave " << testSave;
+
+	this->continueFile.close();
+
+	if(testSave == "-1"){
+		// Log(WARN) << "There is NO save at slot " << 1 + saveSlot_; 
+		return false;
 	}
 	else{
-		Log(DEBUG) << "No save in this level";
+		// Log(WARN) << "There is a save at slot " << 1 + saveSlot_;
+		this->continueFile.close();
+		return true;
 	}
+}
+
+void GameSave::getPlayerPosition(double& playerX_, double& playerY_, const int slot_){
+	
+	setSlot(slot_);
+
+	this->continueFile.open(filePath.c_str(), std::ios_base::in);
+
+	this->continueFile >> currentLevel; 
+
+	this->continueFile >> playerX_;
+	this->continueFile >> playerY_;
+
+	this->continueFile.close();	
 }

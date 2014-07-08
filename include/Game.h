@@ -94,7 +94,7 @@ class Game {
 		bool isCutscene;
 		bool isPaused;
 
-		static unsigned int currentSlot;
+		unsigned int currentSlot;
 
 		static const int numLines = 14; 
 		unsigned int currentLine;

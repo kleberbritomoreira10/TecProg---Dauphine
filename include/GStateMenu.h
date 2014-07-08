@@ -49,6 +49,8 @@ class GStateMenu : public StateGame {
 
 		void handleSelectorMenu();
 
+		bool shouldIgnore;
+
 	private:
 		enum Selection : uint8_t {
 			NEWGAME = 0,

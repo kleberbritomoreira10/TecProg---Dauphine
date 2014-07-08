@@ -15,7 +15,6 @@ LevelOne::LevelOne() :
 	Level(),
 	items{4900, 6800, 1000},
 	caughtItems{false,false,false}
-
 {
 
 }
@@ -53,7 +52,21 @@ void LevelOne::load(){
 	Game::instance().getAudioHandler().changeMusic(pathBackgroundAudio);
 
 	// Loading the player and the camera.
-	Player* lPlayer = new Player(this->tileMap->getInitialX(), this->tileMap->getInitialY(), pathPlayerSpriteSheet);
+
+	Player* lPlayer = nullptr;
+	
+	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
+		double savedPX = 0.0;
+		double savedPY = 0.0;
+
+		Game::instance().getSaves().getPlayerPosition(savedPX, savedPY, Game::instance().currentSlot);
+
+		lPlayer = new Player(savedPX, savedPY, pathPlayerSpriteSheet);
+	}
+	else{
+		lPlayer = new Player(this->tileMap->getInitialX(), this->tileMap->getInitialY(), pathPlayerSpriteSheet);
+	}
+
 	Camera* lCamera = new Camera(lPlayer); 
 	
 	// Loading the refill of potion.
@@ -97,6 +110,8 @@ void LevelOne::load(){
 	setCamera(lCamera);
 
 	Game::instance().getFade().fadeOut(0, 0.002);
+
+	checkpointVisited = false;
 }
 
 void LevelOne::unload(){
@@ -223,8 +238,12 @@ void LevelOne::update(const double dt_){
 	}
 	
 	//Saving the game state
-	if(!this->checkpointVisited && this->player->getBoundingBox().x >= 4500 && this->player->getBoundingBox().x <= 4550){
+	if(!this->checkpointVisited && this->player->getBoundingBox().x >= 4500 && this->player->getBoundingBox().x <= 4550 && this->player->getBoundingBox().y >= 1560){
 		this->checkpoint = Game::instance().getResources().get("res/images/checkpoint_visited.png");
+		
+		Log(DEBUG) << "Saved Player X = " << this->player->x;
+		Log(DEBUG) << "Saved Player Y = " << this->player->y;
+
 		Game::instance().getSaves().saveLevel(1, this->player, this->enemies);
 		this->checkpointVisited = true;
 	}

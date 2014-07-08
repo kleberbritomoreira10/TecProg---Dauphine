@@ -67,7 +67,7 @@ void GStateContinue::load(){
 		const std::string currentLevel = "Level " + Util::toString(levelFromSave);
 		
 		if(levelFromSave == -1)
-			this->slot2->changeText("BLABLA", {0xCE, 0xCE, 0xCE, 255});
+			this->slot2->changeText("Empty Slot", {0xCE, 0xCE, 0xCE, 255});
 		else
 			this->slot2->changeText(currentLevel.c_str(), {0xCE, 0xCE, 0xCE, 255});
 	}
@@ -174,15 +174,49 @@ void GStateContinue::handleSelectorMenu(){
 		}
 	}
 	else if(currentSelection == Selection::SLOT_1 && keyStates[GameKeys::SPACE] == true){
-		if(Game::instance().getSaves().getSavedLevel(Selection::SLOT_1)==1){
-			Game::instance().setState(Game::GStates::LEVEL_ONE);
+		Game::instance().currentSlot = SLOT_1;
+
+		switch(Game::instance().getSaves().getSavedLevel(Selection::SLOT_1)){
+			case 1:
+				Game::instance().setState(Game::GStates::LEVEL_ONE);
+			break;
+			case 2:
+				Game::instance().setState(Game::GStates::LEVEL_TWO);
+			break;
+			case 6:
+				Game::instance().setState(Game::GStates::LEVEL_BOSS);
+			break;
 		}
 	}
 	else if(currentSelection == Selection::SLOT_2 && keyStates[GameKeys::SPACE] == true){
-		// Game::instance().setState(Game::GStates::LEVEL_ONE);
+		Game::instance().currentSlot = SLOT_2;
+
+		switch(Game::instance().getSaves().getSavedLevel(Selection::SLOT_2)){
+			case 1:
+				Game::instance().setState(Game::GStates::LEVEL_ONE);
+			break;
+			case 2:
+				Game::instance().setState(Game::GStates::LEVEL_TWO);
+			break;
+			case 6:
+				Game::instance().setState(Game::GStates::LEVEL_BOSS);
+			break;
+		}
 	}
 	else if(currentSelection == Selection::SLOT_3 && keyStates[GameKeys::SPACE] == true){
-		// Game::instance().setState(Game::GStates::LEVEL_ONE);
+		Game::instance().currentSlot = SLOT_3;
+
+		switch(Game::instance().getSaves().getSavedLevel(Selection::SLOT_3)){
+			case 1:
+				Game::instance().setState(Game::GStates::LEVEL_ONE);
+			break;
+			case 2:
+				Game::instance().setState(Game::GStates::LEVEL_TWO);
+			break;
+			case 6:
+				Game::instance().setState(Game::GStates::LEVEL_BOSS);
+			break;
+		}
 	}
 
 }

@@ -99,15 +99,19 @@ void GStateNewGame::handleSelectorMenu(){
 		}
 	}
 	else if(currentSelection == Selection::SLOT_1 && keyStates[GameKeys::SPACE] == true){
-		Game::instance().getSaves().createSaveGameFile(Selection::SLOT_1);
+		Log(DEBUG) << "HERE";
+		Game::instance().getSaves().setSlot(Selection::SLOT_1);
+		Game::instance().getSaves().createSave();
 		Game::instance().setState(Game::GStates::LEVEL_ONE);
 	}
 	else if(currentSelection == Selection::SLOT_2 && keyStates[GameKeys::SPACE] == true){
-		Game::instance().getSaves().createSaveGameFile(Selection::SLOT_2);
+		Game::instance().getSaves().setSlot(Selection::SLOT_2);
+		Game::instance().getSaves().createSave();
 		Game::instance().setState(Game::GStates::LEVEL_TWO);
 	}
 	else if(currentSelection == Selection::SLOT_3 && keyStates[GameKeys::SPACE] == true){
-		Game::instance().getSaves().createSaveGameFile(Selection::SLOT_3);
+		Game::instance().getSaves().setSlot(Selection::SLOT_3);
+		Game::instance().getSaves().createSave();
 		Game::instance().setState(Game::GStates::LEVEL_BOSS);
 	}
 

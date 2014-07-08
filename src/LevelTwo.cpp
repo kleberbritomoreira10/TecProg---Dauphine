@@ -48,7 +48,20 @@ void LevelTwo::load(){
 	// Game::instance().getAudioHandler().changeMusic(pathBackgroundAudio);
 
 	// Loading the player and the camera.
-	Player* lPlayer = new Player(this->tileMap->getInitialX(), this->tileMap->getInitialY(), pathPlayerSpriteSheet);
+	Player* lPlayer = nullptr;
+	
+	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
+		double savedPX = 0.0;
+		double savedPY = 0.0;
+
+		Game::instance().getSaves().getPlayerPosition(savedPX, savedPY, Game::instance().currentSlot);
+
+		lPlayer = new Player(savedPX, savedPY, pathPlayerSpriteSheet);
+	}
+	else{
+		lPlayer = new Player(this->tileMap->getInitialX(), this->tileMap->getInitialY(), pathPlayerSpriteSheet);
+	}
+	
 	Camera* lCamera = new Camera(lPlayer); 
 	
 	this->playerHud = new PlayerHUD(lPlayer);

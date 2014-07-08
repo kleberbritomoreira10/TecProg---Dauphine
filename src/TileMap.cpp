@@ -93,7 +93,6 @@ void TileMap::load(const std::string& mapPath_){
 					if (currentLayer->IsTileFlippedVertically(j, k)){
 						tileId |= Tmx::FlippedVerticallyFlag;
 					}
-					
 
 					this->tileMatrix[j][k][i] = tileId;
 

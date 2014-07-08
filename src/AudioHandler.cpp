@@ -34,7 +34,7 @@ void AudioHandler::playMusic(const int times_){
 		Mix_PlayMusic(this->currentMusic, times_);
 	}
 	else{
-		Log(WARN) << "There is no song loaded.";
+		// Log(WARN) << "There is no song loaded.";
 	}
 }
 
@@ -51,7 +51,7 @@ void AudioHandler::addSoundEffect(const std::string& path_){
 	Mix_Chunk* effect = Mix_LoadWAV(path_.c_str());
 
 	if(effect == nullptr){
-		Log(DEBUG) << "Loaded null chunk " << path_ << " " << Mix_GetError();
+		// Log(DEBUG) << "Loaded null chunk " << path_ << " " << Mix_GetError();
 	}
 
 	/// @todo Resource manager for audio.
@@ -64,7 +64,7 @@ void AudioHandler::playEffect(Mix_Chunk* const effect_, const int times_){
 	const int playedChannel = Mix_PlayChannel(-1, effect_, times_);
 
 	if(playedChannel == -1){
-		Log(ERROR) << "Failed to play sound effect on a channel. " << Mix_GetError();
+		// Log(ERROR) << "Failed to play sound effect on a channel. " << Mix_GetError();
 	}
 }
 

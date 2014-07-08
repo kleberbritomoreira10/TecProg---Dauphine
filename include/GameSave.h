@@ -10,18 +10,28 @@ class GameSave {
 	public:
 		GameSave();
 
-		void createSaveGameFile(int saveSelection_);
+		void setSlot(int saveSelection);
+		void createSave();
 		void saveLevel(unsigned int level_, Player* player, std::vector <Enemy*> enemies);
 		int getSavedLevel(int continueSelection_);
-		void restorePlayerPosition(Player* player);
+		void getPlayerPosition(double& playerX_, double& playerY_, const int slot_);
 
 		bool isSaved(const int saveSlot_);
 
+		std::string filePath;
 		int saveSelection;
 		unsigned int currentLevel;
 
 		std::ofstream saveFile;
 		std::ifstream continueFile;
+
+		enum Selection : uint8_t {
+			SLOT_1 = 0,
+			SLOT_2,
+			SLOT_3,
+			TOTAL
+		};
+
 };
 
 #endif //INCLUDE_GAMESAVE_H
