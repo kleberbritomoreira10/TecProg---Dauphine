@@ -184,6 +184,19 @@ void GStateContinue::handleSelectorMenu(){
 				Game::instance().transitionTo = Game::GStates::LEVEL_TWO;
 				Game::instance().setState(Game::instance().transitionTo);
 				break;
+			case 3:
+				Game::instance().transitionTo = Game::GStates::LEVEL_THREE;
+				Game::instance().setState(Game::instance().transitionTo);
+				break;
+			case 4:
+				Game::instance().transitionTo = Game::GStates::LEVEL_FOUR;
+				Game::instance().setState(Game::instance().transitionTo);
+				break;
+			case 5:
+				//CHANGE THIS AFTER CREATING FIFTH LEVEL
+				Game::instance().transitionTo = Game::GStates::LEVEL_FOUR;
+				Game::instance().setState(Game::instance().transitionTo);
+				break;
 			case 6:
 				Game::instance().transitionTo = Game::GStates::LEVEL_BOSS;
 				Game::instance().setState(Game::instance().transitionTo);
@@ -206,6 +219,19 @@ void GStateContinue::handleSelectorMenu(){
 				Game::instance().transitionTo = Game::GStates::LEVEL_TWO;
 				Game::instance().setState(Game::instance().transitionTo);
 				break;
+			case 3:
+				Game::instance().transitionTo = Game::GStates::LEVEL_THREE;
+				Game::instance().setState(Game::instance().transitionTo);
+				break;
+			case 4:
+				Game::instance().transitionTo = Game::GStates::LEVEL_FOUR;
+				Game::instance().setState(Game::instance().transitionTo);
+				break;
+			case 5:
+				//CHANGE THIS AFTER CREATING FIFTH LEVEL
+				Game::instance().transitionTo = Game::GStates::LEVEL_FOUR;
+				Game::instance().setState(Game::instance().transitionTo);
+				break;
 			case 6:
 				Game::instance().transitionTo = Game::GStates::LEVEL_BOSS;
 				Game::instance().setState(Game::instance().transitionTo);
@@ -226,6 +252,19 @@ void GStateContinue::handleSelectorMenu(){
 				break;
 			case 2:
 				Game::instance().transitionTo = Game::GStates::LEVEL_TWO;
+				Game::instance().setState(Game::instance().transitionTo);
+				break;
+			case 3:
+				Game::instance().transitionTo = Game::GStates::LEVEL_THREE;
+				Game::instance().setState(Game::instance().transitionTo);
+				break;
+			case 4:
+				Game::instance().transitionTo = Game::GStates::LEVEL_FOUR;
+				Game::instance().setState(Game::instance().transitionTo);
+				break;
+			case 5:
+				//CHANGE THIS AFTER CREATING FIFTH LEVEL
+				Game::instance().transitionTo = Game::GStates::LEVEL_FOUR;
 				Game::instance().setState(Game::instance().transitionTo);
 				break;
 			case 6:

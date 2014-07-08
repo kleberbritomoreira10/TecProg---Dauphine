@@ -7,6 +7,8 @@
 #include "GStateSplash.h"
 #include "LevelOne.h"
 #include "LevelTwo.h"
+#include "LevelThree.h"
+#include "LevelFour.h"
 #include "LevelBoss.h"
 #include "GStateMenu.h"
 #include "GStateNewGame.h"
@@ -193,6 +195,8 @@ void Game::initializeStates(){
 	ADD_STATE_INSERT(NEW_GAME, GStateNewGame);
 	ADD_STATE_INSERT(LEVEL_ONE, LevelOne);
 	ADD_STATE_INSERT(LEVEL_TWO, LevelTwo);
+	ADD_STATE_INSERT(LEVEL_THREE, LevelThree);
+	ADD_STATE_INSERT(LEVEL_FOUR, LevelFour);
 	ADD_STATE_INSERT(LEVEL_BOSS, LevelBoss);
 	ADD_STATE_INSERT(CONTINUE, GStateContinue);
 	ADD_STATE_INSERT(OPTIONS, GStateOptions);

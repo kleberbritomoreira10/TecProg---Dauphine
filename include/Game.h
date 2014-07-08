@@ -31,6 +31,8 @@ class Game {
 			NEW_GAME,
 			LEVEL_ONE,
 			LEVEL_TWO,
+			LEVEL_THREE,
+			LEVEL_FOUR,
 			LEVEL_BOSS,
 			CONTINUE,
 			OPTIONS,

@@ -115,7 +115,7 @@ void LevelBoss::update(const double dt_){
 
 	// Set next level if end is reached.
 	if(this->player->reachedLevelEnd){
-		Game::instance().setState(Game::GStates::VICTORY);
+		Game::instance().setState(Game::GStates::MENU);
 		return;
 	}
 
