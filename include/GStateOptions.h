@@ -69,7 +69,6 @@ class GStateOptions : public StateGame {
 			R_TOTAL
 		};
 
-		Sprite* resolutions[R_TOTAL];
 		Sprite* optionsImage; /**< The image shown on the menu. */
 
 		uint8_t currentResolution;
@@ -83,8 +82,8 @@ class GStateOptions : public StateGame {
 
 		static const std::string possibleResolutions[3];
 
-		int mVolume;
-		int fxVolume;
+		unsigned int musicVolume;
+		unsigned int sfxVolume;
 
 		Text* resolution;
 		Text* volumeMusic;

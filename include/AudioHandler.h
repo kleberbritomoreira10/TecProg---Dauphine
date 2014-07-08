@@ -1,11 +1,18 @@
 #ifndef INCLUDE_AUDIOHANDLER_H
 #define INCLUDE_AUDIOHANDLER_H
 
+#ifndef MIX_LOOP
 #define MIX_LOOP -1
+#endif
 
 #include "SDLWrapper.h"
 #include <string>
 #include <vector>
+
+typedef struct _SoundEffect {
+	Mix_Chunk* effect;
+	int channel;
+} SoundEffect;
 
 /**
 * The audio handler.
@@ -39,7 +46,7 @@ class AudioHandler {
 		* @note Will warn if there is no effect loaded.
 		* @param times_ : Times to loop the song. MIX_LOOP (or -1) for infinite looping.
 		*/
-		void playEffect(Mix_Chunk* const effect_, const int times_);
+		void playEffect(const int times_);
 
 		/**
 		* Stops playing the current music.
@@ -81,9 +88,13 @@ class AudioHandler {
 		*/
 		void addSoundEffect(const std::string& path_);
 
+		void clearChannel(const int channel_);
+
 	private:
+		static void channelDone(int channel_);
+
 		Mix_Music* currentMusic; /**< The current music that is playing. */
-		std::vector<Mix_Chunk*> currentEffects; /**< The current effect that is playing. */
+		std::vector<SoundEffect> currentEffects; /**< The current effect that is playing. */
 
 };
 

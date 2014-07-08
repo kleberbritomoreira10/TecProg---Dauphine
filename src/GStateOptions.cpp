@@ -18,17 +18,12 @@ GStateOptions::GStateOptions() :
 	selectorYPositionLeft  {365, 468, 580, 665, 750},
 	selectorXPositionRight {1010, 1010, 1010, 900, 900},
 	selectorYPositionRight {365, 468, 580, 665, 750},
+	musicVolume(100),
+	sfxVolume(100),
 	resolution(nullptr),
 	volumeMusic(nullptr),
 	volumeSFX(nullptr)	
 {
-	mVolume = 100;
-	fxVolume = 100;
-
-	for(unsigned int i = 0; i < R_TOTAL; i++){
-		this->resolutions[i] = nullptr;
-	}
-
 	SDL_Color textColor = {0xCE, 0xCE, 0xCE, 255};
 	this->resolution = new Text(830.0, // x
 								365.0, // y
@@ -41,14 +36,14 @@ GStateOptions::GStateOptions() :
 								468.0, // y
 								"res/fonts/maturasc.ttf", // font path
 								45, // size
-								Util::toString(mVolume).c_str(), // text
+								Util::toString(this->musicVolume).c_str(), // text
 								textColor); // sdl_color
 
 	this->volumeSFX = new Text(830.0, // x
 								580.0, // y
 								"res/fonts/maturasc.ttf", // font path
 								45, // size
-								Util::toString(fxVolume).c_str(), // text
+								Util::toString(this->sfxVolume).c_str(), // text
 								textColor); // sdl_color
 
 }
@@ -61,10 +56,10 @@ void GStateOptions::update(const double dt_){
 	this->elapsedTime += dt_;
 
 	this->resolution->changeText(possibleResolutions[currentResolution].c_str(), {0xCE, 0xCE, 0xCE, 255});
-	this->volumeMusic->changeText(Util::toString(mVolume).c_str(), {0xCE, 0xCE, 0xCE, 255});
-	this->volumeSFX->changeText(Util::toString(fxVolume).c_str(), {0xCE, 0xCE, 0xCE, 255});	
+	this->volumeMusic->changeText(Util::toString(this->musicVolume).c_str(), {0xCE, 0xCE, 0xCE, 255});
+	this->volumeSFX->changeText(Util::toString(this->sfxVolume).c_str(), {0xCE, 0xCE, 0xCE, 255});	
 
-	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
+	const std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
 	if(keyStates[GameKeys::ESCAPE] == true){
 		Game::instance().setState(Game::GStates::MENU);
@@ -109,13 +104,13 @@ void GStateOptions::update(const double dt_){
 			}
 			// Option == VOLUME MUSIC
 			else if(this->currentOption == O_VOLUME_MUSIC){
-				if(mVolume > 0)
-					mVolume-=5;
+				if(this->musicVolume > 0)
+					this->musicVolume -= 5;
 			}
 			// Option == VOLUME SFX
 			else if(this->currentOption == O_VOLUME_SFX){
-				if(fxVolume > 0)
-					fxVolume-=5;
+				if(this->sfxVolume > 0)
+					this->sfxVolume -= 5;
 			}
 
 			this->elapsedTime = 0.0;
@@ -135,14 +130,14 @@ void GStateOptions::update(const double dt_){
 			}
 			// Option == VOLUME MUSIC
 			else if(this->currentOption == O_VOLUME_MUSIC){
-				if(mVolume < 100)
-					mVolume+=5;
+				if(this->musicVolume < 100)
+					this->musicVolume += 5;
 			
 			}
 			// Option == VOLUME SFX
 			else if(this->currentOption == O_VOLUME_SFX){
-				if(fxVolume < 100)
-					fxVolume+=5;
+				if(this->sfxVolume < 100)
+					this->sfxVolume += 5;
 			}
 			else {
 
@@ -173,13 +168,6 @@ void GStateOptions::render(){
 	this->volumeMusic->render(0, 0);
 	this->volumeSFX->render(0, 0);
 
-	// if(this->resolutions[this->currentResolution] != nullptr){
-	// 	this->resolutions[this->currentResolution]->render(650, 400);
-	// }
-	// else{
-	// 	Log(WARN) << "No image set for the current resolution!";
-	// }
-
 	if(this->selector != nullptr){
 		this->selector->render(selectorXPositionLeft[currentOption],
 			selectorYPositionLeft[currentOption], nullptr, false, 0.0, nullptr, SDL_FLIP_NONE);
@@ -207,10 +195,6 @@ void GStateOptions::load(){
     this->selector = Game::instance().getResources().get(pathCursor);
 
     this->selector->setWidth(50);
-
-    this->resolutions[R_800_600] = Game::instance().getResources().get("res/images/800x600.png");
-    this->resolutions[R_768_432] = Game::instance().getResources().get("res/images/768x432.png");
-    this->resolutions[R_960_540] = Game::instance().getResources().get("res/images/960x540.png");
 }
 
 void GStateOptions::unload(){
@@ -231,9 +215,9 @@ void GStateOptions::applyOptions(){
 	}
 
 	// Apply volume music
-	Game::instance().getAudioHandler().setMusicVolume(mVolume);
+	Game::instance().getAudioHandler().setMusicVolume(this->musicVolume);
 
 	// Apply volume sfx
-	Game::instance().getAudioHandler().setEffectVolume(fxVolume);
+	Game::instance().getAudioHandler().setEffectVolume(this->sfxVolume);
 
 }
