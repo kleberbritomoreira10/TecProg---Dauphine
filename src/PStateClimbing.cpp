@@ -10,9 +10,13 @@ void PStateClimbing::enter(){
     this->box.h = 145;
 
     this->player->vy = 0;
-	this->player->vx = 0;    
+    if(!this->player->isRight)
+		this->player->vx = -0.001;
+	else
+		this->player->vx = 0;
 
-	this->player->getAnimation()->changeAnimation(10, 5, 1, false, 0);
+	this->player->getAnimation()->changeAnimation(0, 6, 1, false, 0);
+
 }
 
 void PStateClimbing::exit(){
@@ -20,16 +24,24 @@ void PStateClimbing::exit(){
 }
 
 void PStateClimbing::handleInput(const std::array<bool, GameKeys::MAX> keyStates_){
-	if(keyStates_[GameKeys::UP]){
-		this->player->moveVertical(true, false);
-	}
-	if(keyStates_[GameKeys::DOWN]){
-		this->player->moveVertical(false, true);
-	}
+
+	this->player->moveVertical(keyStates_[GameKeys::UP], keyStates_[GameKeys::DOWN]);
+
+	// if(keyStates_[GameKeys::UP]){
+	// 	this->player->moveVertical(true, false);
+	// }
+	// if(keyStates_[GameKeys::DOWN]){
+	// 	this->player->moveVertical(false, true);
+	// }
 
 	// Jump
 	if(keyStates_[GameKeys::SPACE]){
-		this->player->vx = -500;
+		
+		if(this->player->isRight)
+			this->player->vx = -500;
+		else
+			this->player->vx = 500;
+
 		this->player->changeState(Player::PStates::AERIAL);
 		this->player->isGrounded = false;
 		return;

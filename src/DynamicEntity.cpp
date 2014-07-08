@@ -199,7 +199,7 @@ void DynamicEntity::slowVx(){
 
 void DynamicEntity::slowVy(){
 	const int vsign = Math::sign(this->vy);
-	this->vy -= 100 * vsign;
+	this->vy -= 1000 * vsign;
 	if (Math::sign(this->vy) != vsign) {
         this->vy = 0.0001 * vsign;
 	}
