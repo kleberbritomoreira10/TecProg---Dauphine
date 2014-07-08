@@ -3,6 +3,7 @@
 
 #include "StateGame.h"
 #include "Sprite.h"
+#include "Text.h"
 
 /**
 * The state for the Continue menu screen.
@@ -63,6 +64,10 @@ class GStateNewGame : public StateGame {
 		int currentSelection;
 		int selectorXPosition; /**< The X position of the slot selector. */
 		int selectorYPosition[Selection::TOTAL]; /**< The Y position of the slot selector. */
+
+		Text* slot1;
+		Text* slot2;
+		Text* slot3;
 };
 
 #endif // INCLUDE_GSTATEMENU_H

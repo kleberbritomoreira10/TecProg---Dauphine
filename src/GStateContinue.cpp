@@ -133,8 +133,6 @@ void GStateContinue::render(){
 		this->slot1->render(0, 0);
 		this->slot2->render(0, 0);
 		this->slot3->render(0, 0);
-
-
 	}
 	else{
 		Log(WARN) << "No image set to display on the menu!";
@@ -177,6 +175,7 @@ void GStateContinue::handleSelectorMenu(){
 		Game::instance().currentSlot = SLOT_1;
 
 		switch(Game::instance().getSaves().getSavedLevel(Selection::SLOT_1)){
+			Game::instance().currentSlot = Selection::SLOT_1;
 			case 1:
 				Game::instance().setState(Game::GStates::LEVEL_ONE);
 			break;

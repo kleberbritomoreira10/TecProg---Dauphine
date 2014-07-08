@@ -49,8 +49,6 @@ class LevelOne : public Level {
 		*/
 		virtual void render();
 
-
-		int unsigned numeroItens = 3;
 		Sprite* image;
 		int items[NUMBER_ITEMS];
 		bool caughtItems[NUMBER_ITEMS];
