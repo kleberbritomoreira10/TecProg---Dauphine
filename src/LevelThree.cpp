@@ -100,9 +100,15 @@ void LevelThree::load(){
 
 void LevelThree::unload(){
 	Log(DEBUG) << "\tUnloading level 3...";
+
 	cleanEntities();
 	clearEnemies();
 	clearDocuments();
+
+	for (int i = 0; i < NUMBER_ITEMS; ++i){
+		caughtItems[i] = false;
+	}
+
 	//this->checkpointVisited = false;	
 }
 
@@ -225,6 +231,16 @@ void LevelThree::update(const double dt_){
 			this->checkpointsVisited[j] = true;
 		}	
 	}
+
+	// Documents check
+	for(auto document : this->documents){
+		if(Collision::rectsCollided(this->player->getBoundingBox(), document->getBoundingBox())){
+			document->shouldRender = true;
+		}
+		else {
+			document->shouldRender = false;
+		}
+	}
 }
 
 void LevelThree::render(){
@@ -256,6 +272,14 @@ void LevelThree::render(){
 			
 			this->image->Sprite::render((items[0][i]+60) - cameraX, ((items[1][i]) - cameraY));
 		
+		}
+	}
+
+	// Document text image
+	for(auto document : this->documents){
+		document->render(cameraX, cameraY);
+		if(document->shouldRender){
+			document->renderDocumentText();
 		}
 	}
 }

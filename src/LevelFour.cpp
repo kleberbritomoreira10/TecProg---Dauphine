@@ -113,9 +113,16 @@ void LevelFour::load(){
 }
 
 void LevelFour::unload(){
-	Log(DEBUG) << "\tUnloading level 3...";
+	Log(DEBUG) << "\tUnloading level 4...";
+
 	cleanEntities();
 	clearEnemies();
+	clearDocuments();
+
+	for (int i = 0; i < NUMBER_ITEMS; ++i){
+		caughtItems[i] = false;
+	}
+
 	//this->checkpointVisited = false;	
 }
 

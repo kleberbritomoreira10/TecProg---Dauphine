@@ -108,9 +108,8 @@ void LevelOne::unload(){
 	clearDocuments();
 
 	for (int i = 0; i < NUMBER_ITEMS; ++i){
-		caughtItems[i]=false;
+		caughtItems[i] = false;
 	}
-	
 }
 
 void LevelOne::update(const double dt_){
@@ -236,6 +235,16 @@ void LevelOne::update(const double dt_){
 			this->checkpointsVisited[j] = true;
 		}	
 	}
+
+	// Documents check
+	for(auto document : this->documents){
+		if(Collision::rectsCollided(this->player->getBoundingBox(), document->getBoundingBox())){
+			document->shouldRender = true;
+		}
+		else {
+			document->shouldRender = false;
+		}
+	}
 }
 
 void LevelOne::render(){
@@ -269,6 +278,14 @@ void LevelOne::render(){
 			
 			this->image->Sprite::render((items[0][i]+60) - cameraX, ((items[1][i]) - cameraY));
 		
+		}
+	}
+
+	// Document text image
+	for(auto document : this->documents){
+		document->render(cameraX, cameraY);
+		if(document->shouldRender){
+			document->renderDocumentText();
 		}
 	}
 

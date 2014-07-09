@@ -99,10 +99,16 @@ void LevelTwo::load(){
 }
 
 void LevelTwo::unload(){
-	Log(DEBUG) << "\tUnloading level 1...";
+	Log(DEBUG) << "\tUnloading level 2...";
+
 	cleanEntities();
 	clearEnemies();
 	clearDocuments();
+
+	for (int i = 0; i < NUMBER_ITEMS; ++i){
+		caughtItems[i] = false;
+	}
+
 	//this->checkpointVisited = false;	
 }
 
@@ -225,6 +231,16 @@ void LevelTwo::update(const double dt_){
 			this->checkpointsVisited[j] = true;
 		}	
 	}
+
+	// Documents check
+	for(auto document : this->documents){
+		if(Collision::rectsCollided(this->player->getBoundingBox(), document->getBoundingBox())){
+			document->shouldRender = true;
+		}
+		else {
+			document->shouldRender = false;
+		}
+	}
 }
 
 void LevelTwo::render(){
@@ -256,6 +272,14 @@ void LevelTwo::render(){
 			
 			this->image->Sprite::render((items[0][i]+60) - cameraX, ((items[1][i]) - cameraY));
 		
+		}
+	}
+
+	// Document text image
+	for(auto document : this->documents){
+		document->render(cameraX, cameraY);
+		if(document->shouldRender){
+			document->renderDocumentText();
 		}
 	}
 }

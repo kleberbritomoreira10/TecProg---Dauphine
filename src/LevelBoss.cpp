@@ -65,8 +65,10 @@ void LevelBoss::load(){
 
 void LevelBoss::unload(){
 	Log(DEBUG) << "\tUnloading level boss...";
+
 	cleanEntities();
 	clearEnemies();
+	clearDocuments();
 }
 
 void LevelBoss::update(const double dt_){
@@ -143,7 +145,18 @@ void LevelBoss::update(const double dt_){
 			}
 		}
 	}
-	Log(DEBUG) << this->boss->life;
+
+	Log(DEBUG) << "Boss life: " << this->boss->life;
+
+	// Documents check
+	for(auto document : this->documents){
+		if(Collision::rectsCollided(this->player->getBoundingBox(), document->getBoundingBox())){
+			document->shouldRender = true;
+		}
+		else {
+			document->shouldRender = false;
+		}
+	}
 }
 
 void LevelBoss::render(){
@@ -162,6 +175,14 @@ void LevelBoss::render(){
 	// Render all the entities in the list.
 	for(auto entity : this->entities){
         entity->render(cameraX, cameraY);
+	}
+
+	// Document text image
+	for(auto document : this->documents){
+		document->render(cameraX, cameraY);
+		if(document->shouldRender){
+			document->renderDocumentText();
+		}
 	}
 }
 
