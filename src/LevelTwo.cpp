@@ -216,12 +216,10 @@ void LevelTwo::update(const double dt_){
 	Enemy::py = this->player->y;
 	Enemy::pVulnerable = this->player->isVulnerable;
 
-	for (int i = 0; i < NUMBER_ITEMS; ++i){
-		
-		if((abs(this->player->x - items[0][i])<= 50 && abs(this->player->y - items[1][i])<= 200) && (caughtItems[i] == false)){
+	for (int i = 0; i < NUMBER_ITEMS; ++i){	
+		if(Collision::rectsCollided(this->player->getBoundingBox(), {items[0][i], items[1][i], 192, 192}) && caughtItems[i] == false){
 			this->player->addPotions(3);
-			caughtItems[i] = true;
-			
+			caughtItems[i]=true;
 		}
 	}
 
