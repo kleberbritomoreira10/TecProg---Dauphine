@@ -9,6 +9,7 @@
 #include "QuadTree.h"
 #include "PlayerHUD.h"
 #include "Enemy.h"
+#include "Document.h"
 #include "Boss.h"
 
 #include <vector>
@@ -58,6 +59,7 @@ class Level : public StateGame {
 		virtual void setBoss(Boss* const boss);
 
 		virtual void clearEnemies();
+		virtual void clearDocuments();
 
 		void changeCheckpoints(int NUMBER_OF_CHECKPOINTS_, std::vector <double> checkpointsX_,
 		std::vector <double> checkpointsY_);
@@ -83,6 +85,7 @@ class Level : public StateGame {
 		int NUMBER_OF_CHECKPOINTS;
 
 		std::vector <Enemy*> enemies;
+		std::vector <Document*> documents;
 
 };
 

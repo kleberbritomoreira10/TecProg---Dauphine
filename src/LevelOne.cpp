@@ -105,6 +105,7 @@ void LevelOne::unload(){
 
 	cleanEntities();
 	clearEnemies();
+	clearDocuments();
 
 	for (int i = 0; i < NUMBER_ITEMS; ++i){
 		caughtItems[i]=false;

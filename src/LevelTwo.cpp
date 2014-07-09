@@ -173,6 +173,7 @@ void LevelTwo::unload(){
 	Log(DEBUG) << "\tUnloading level 1...";
 	cleanEntities();
 	clearEnemies();
+	clearDocuments();
 	//this->checkpointVisited = false;	
 }
 

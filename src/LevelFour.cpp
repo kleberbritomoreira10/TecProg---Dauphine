@@ -143,6 +143,19 @@ void LevelFour::load(){
 	lEnemy7->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy7);
 
+	// Documents;
+	Document* document1 = new Document(32*64, 23*64, "res/images/documentSprite.png", "res/images/Documents/d1.png");
+	this->documents.push_back(document1);
+
+	Document* document2 = new Document(69*64, 14*64, "res/images/documentSprite.png", "res/images/Documents/d2.png");
+	this->documents.push_back(document2);
+
+	Document* document3 = new Document(99*64, 90*64, "res/images/documentSprite.png", "res/images/Documents/d3.png");
+	this->documents.push_back(document3);
+
+	Document* document4 = new Document(143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d4.png");
+	this->documents.push_back(document4);
+
 	// Finally, setting the player and the camera.
 	setPlayer(lPlayer);
 	Enemy::pLife = this->player->life;
@@ -160,7 +173,6 @@ void LevelFour::unload(){
 }
 
 void LevelFour::update(const double dt_){
-	Log(DEBUG)<< this->player->x <<" || "<< this->player->y;
 	// Populating the QuadTree.
 	this->quadTree->setObjects(this->tileMap->getCollisionRects());
 
@@ -279,6 +291,16 @@ void LevelFour::update(const double dt_){
 			this->checkpointsVisited[j] = true;
 		}	
 	}
+
+	// Documents check
+	for(auto document : this->documents){
+		if(Collision::rectsCollided(this->player->getBoundingBox(), document->getBoundingBox())){
+			document->shouldRender = true;
+		}
+		else {
+			document->shouldRender = false;
+		}
+	}
 }
 
 void LevelFour::render(){
@@ -296,6 +318,8 @@ void LevelFour::render(){
 
 	this->playerHud->render();
 
+	
+
 	for(auto enemy : this->enemies){
 		enemy->render(cameraX, cameraY);
 	}
@@ -305,6 +329,7 @@ void LevelFour::render(){
         entity->render(cameraX, cameraY);
 	}
 
+	// Potion refill
 	for (unsigned int i = 0; i < NUMBER_ITEMS; i++){
 		if(this->image != nullptr && caughtItems[i] == false){
 			
@@ -312,5 +337,14 @@ void LevelFour::render(){
 		
 		}
 	}
+
+	// Document text image
+	for(auto document : this->documents){
+		document->render(cameraX, cameraY);
+		if(document->shouldRender){
+			document->renderDocumentText();
+		}
+	}
+
 }
 
