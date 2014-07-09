@@ -52,7 +52,7 @@ Boss::Boss(const double x_, const double y_, const std::string& path_, Player* c
 
 	this->animation = new Animation(0, 0, this->width, this->height, 7, false);
 	this->powerAnimation = new Animation(0, 0, 0, 0, 0, false);
-	this->shieldAnimation = new Animation(0, 0, 340, 340, 3, false);
+	this->shieldAnimation = new Animation(0, 0, 340, 340, 6, false);
 	this->shield = Game::instance().getResources().get("res/images/shield.png");
 	this->shieldAnimation->changeAnimation(0,0,3,false,1);
 	this->currentState = this->statesMap.at(IDLE);
@@ -122,7 +122,13 @@ void Boss::render(const double cameraX_, const double cameraY_){
 
 	// Shield render.
 	if(this->hasShield){
-		this->shield->render(dx, dy, &this->shieldClip);
+		SDL_RendererFlip flip = getFlip();
+		if(flip == SDL_FLIP_HORIZONTAL){
+			this->shield->render(dx, dy, &this->shieldClip);
+		}
+		else{
+			this->shield->render(dx -120, dy, &this->shieldClip);
+		}
 	}
 	
 	if(this->sprite != nullptr){

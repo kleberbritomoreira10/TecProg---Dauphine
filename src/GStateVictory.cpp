@@ -22,7 +22,7 @@ void GStateVictory::load(){
 	this->lifeTime = 5.0;
 
 	// Changing the music.
-	Game::instance().getAudioHandler().changeMusic("res/audio/victory_music.ogg");
+	Game::instance().getAudioHandler().changeMusic("res/audio/Victory!.mid");
 }
 
 void GStateVictory::unload(){
