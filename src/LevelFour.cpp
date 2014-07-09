@@ -69,11 +69,6 @@ void LevelFour::load(){
 	Camera* lCamera = new Camera(lPlayer); 
 	
 	this->playerHud = new PlayerHUD(lPlayer);
-
-	// Loading the refill of potion.
-	this->image = Game::instance().getResources().get("res/images/potion.png");
-	
-	this->playerHud = new PlayerHUD(lPlayer);
 	
 	// Load all the enemies from the tileMap.
 	for(unsigned  int i = 0; i < this->tileMap->getEnemiesX().size(); i++){

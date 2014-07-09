@@ -69,11 +69,6 @@ void LevelFive::load(){
 	Camera* lCamera = new Camera(lPlayer); 
 	
 	this->playerHud = new PlayerHUD(lPlayer);
-
-	// Loading the refill of potion.
-	this->image = Game::instance().getResources().get("res/images/potion.png");
-	
-	this->playerHud = new PlayerHUD(lPlayer);
 	
 	// Load all the enemies from the tileMap.
 	for(unsigned int i = 0; i < this->tileMap->getEnemiesX().size(); i++){
@@ -89,13 +84,12 @@ void LevelFive::load(){
 		enemy->setLevelWH(this->width, this->height);
 	}
 
+	// Documents
 	Document* document4 = new Document(143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d4.png");
 	this->documents.push_back(document4);
 
-
 	Document* document5 = new Document(143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d5.png");
 	this->documents.push_back(document5);
-
 
 	Document* document6 = new Document(143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d6.png");
 	this->documents.push_back(document6);
