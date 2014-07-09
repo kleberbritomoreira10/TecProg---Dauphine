@@ -1,6 +1,7 @@
 #include "BStateMagicProjectile.h"
 #include "Logger.h"
 #include "Sprite.h"
+#include "Game.h"
 #include "Collision.h"
 #include <cmath>
 
@@ -10,8 +11,8 @@ double mpY = 0;
 double hypotenuse = 0;
 
 void BStateMagicProjectile::enter(){
-	Log(DEBUG) << "STATE MAGIC PROJECTILE BOSS";
-	this->boss->power = new Sprite("res/images/projectile.png");
+	// Log(DEBUG) << "STATE MAGIC PROJECTILE BOSS";
+	this->boss->power = Game::instance().getResources().get("res/images/projectile.png");
 	this->boss->powerAnimation->changeWidthHeight(50,50);
 	this->boss->powerAnimation->changeAnimation(0, 0, 4, false, 0.5);
 	this->boss->vx = 0;
