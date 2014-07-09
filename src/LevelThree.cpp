@@ -13,7 +13,7 @@ LevelThree::LevelThree() :
 	items{{2900, 8800,9161, 10000},{4320, 5850,4700, 2712}},
 	caughtItems{false,false,false,true}
 {
-	this->changeCheckpoints(2, {1320,10440}, {4600,5630});
+	this->changeCheckpoints(3, {23*64, 139*64, 127*64}, {73*64, 88*64, 33*64});
 }
 
 LevelThree::~LevelThree(){

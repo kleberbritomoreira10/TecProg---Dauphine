@@ -14,7 +14,7 @@ LevelFour::LevelFour() :
 	items{{207, 11261,6800, 10000},{5600, 2050,5850, 2712}},
 	caughtItems{false,false,false,true}
 {
-	this->changeCheckpoints(2, {1850,10100}, {3200,1600});
+	this->changeCheckpoints(2, {58*64,71*64}, {113*64,20*64});
 }
 
 LevelFour::~LevelFour(){
@@ -91,17 +91,14 @@ void LevelFour::load(){
 	}
 
 	// Documents;
-	Document* document1 = new Document(32*64, 23*64, "res/images/documentSprite.png", "res/images/Documents/d1.png");
+	Document* document1 = new Document(28*64, 64*64, "res/images/documentSprite.png", "res/images/Documents/d1.png");
 	this->documents.push_back(document1);
 
-	Document* document2 = new Document(69*64, 14*64, "res/images/documentSprite.png", "res/images/Documents/d2.png");
+	Document* document2 = new Document(75*64, 34*64, "res/images/documentSprite.png", "res/images/Documents/d2.png");
 	this->documents.push_back(document2);
 
-	Document* document3 = new Document(99*64, 90*64, "res/images/documentSprite.png", "res/images/Documents/d3.png");
+	Document* document3 = new Document(151*64, 25*64, "res/images/documentSprite.png", "res/images/Documents/d3.png");
 	this->documents.push_back(document3);
-
-	Document* document4 = new Document(143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d4.png");
-	this->documents.push_back(document4);
 
 	// Finally, setting the player and the camera.
 	setPlayer(lPlayer);

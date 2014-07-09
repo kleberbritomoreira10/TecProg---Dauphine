@@ -7,6 +7,7 @@
 #include "TileMap.h"
 #include "Collision.h"
 #include "Crosshair.h"
+#include "Document.h"
 
 LevelFive::LevelFive() :
 	Level(),
@@ -87,6 +88,17 @@ void LevelFive::load(){
 		}
 		enemy->setLevelWH(this->width, this->height);
 	}
+
+	Document* document4 = new Document(143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d4.png");
+	this->documents.push_back(document4);
+
+
+	Document* document5 = new Document(143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d5.png");
+	this->documents.push_back(document5);
+
+
+	Document* document6 = new Document(143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d6.png");
+	this->documents.push_back(document6);
 
 	// Finally, setting the player and the camera.
 	setPlayer(lPlayer);
