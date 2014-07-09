@@ -1,6 +1,7 @@
 #include "BStateMagicProjectile.h"
 #include "Logger.h"
 #include "Sprite.h"
+#include "Game.h"
 #include "Collision.h"
 #include <cmath>
 

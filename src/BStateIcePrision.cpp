@@ -1,6 +1,7 @@
 #include "BStateIcePrision.h"
 #include "Logger.h"
 #include "Sprite.h"
+#include "Game.h"
 #include "Collision.h"
 
 double prisionTime = 0.0;
