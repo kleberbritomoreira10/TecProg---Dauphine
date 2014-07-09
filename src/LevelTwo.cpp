@@ -75,8 +75,7 @@ void LevelTwo::load(){
 	this->playerHud = new PlayerHUD(lPlayer);
 	
 
-	Enemy* lEnemy1 = new Enemy(2400.0, 4720.0, pathEnemy, false, 0.0);
-	
+	Enemy* lEnemy1 = new Enemy(1840.0, 4720.0, pathEnemy, false, 200.0);
 	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
 		if(Game::instance().getSaves().isEnemyDead(0, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 2)
 			lEnemy1->setDead(true);
@@ -85,7 +84,7 @@ void LevelTwo::load(){
 	lEnemy1->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy1);
 
-	Enemy* lEnemy2 = new Enemy(5519.0, 4300.0, pathEnemy, false, 0.0);
+	Enemy* lEnemy2 = new Enemy(4840.0, 4400.0, pathEnemy, false, 0.0);
 	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
 		if(Game::instance().getSaves().isEnemyDead(1, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 2)
 			lEnemy2->setDead(true);
@@ -94,7 +93,7 @@ void LevelTwo::load(){
 	lEnemy2->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy2);
 
-	Enemy* lEnemy3 = new Enemy(2900.0, 3550.0, pathEnemy, true, 0.0);
+	Enemy* lEnemy3 = new Enemy(4500.0, 3650.0, pathEnemy, true, 0.0);
 	
 	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
 		if(Game::instance().getSaves().isEnemyDead(2, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 2)
@@ -104,7 +103,7 @@ void LevelTwo::load(){
 	lEnemy3->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy3);
 
-	Enemy* lEnemy4 = new Enemy(3300.0, 2600.0, pathEnemy, true, 0.0);
+	Enemy* lEnemy4 = new Enemy(3160.0, 3600.0, pathEnemy, true, 0.0);
 	
 	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
 		if(Game::instance().getSaves().isEnemyDead(3, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 2)
@@ -114,7 +113,7 @@ void LevelTwo::load(){
 	lEnemy4->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy4);
 
-	Enemy* lEnemy5 = new Enemy(4700.0, 1600.0, pathEnemy, true, 0.0);
+	Enemy* lEnemy5 = new Enemy(3600.0, 2700.0, pathEnemy, true, 0.0);
 	
 	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
 		if(Game::instance().getSaves().isEnemyDead(4, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 2)
@@ -142,6 +141,24 @@ void LevelTwo::load(){
 
 	lEnemy7->setLevelWH(this->width, this->height);
 	this->enemies.push_back(lEnemy7);
+
+	Enemy* lEnemy8 = new Enemy(10600.0, 2700.0, pathEnemy, false, 0.0);
+	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
+		if(Game::instance().getSaves().isEnemyDead(7, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 2)
+			lEnemy8->setDead(true);
+	}
+
+	lEnemy8->setLevelWH(this->width, this->height);
+	this->enemies.push_back(lEnemy8);
+
+		Enemy* lEnemy9 = new Enemy(5400.0, 1700.0, pathEnemy, false, 400.0);
+	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
+		if(Game::instance().getSaves().isEnemyDead(7, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 2)
+			lEnemy9->setDead(true);
+	}
+
+	lEnemy9->setLevelWH(this->width, this->height);
+	this->enemies.push_back(lEnemy9);
 
 	// Finally, setting the player and the camera.
 	setPlayer(lPlayer);
