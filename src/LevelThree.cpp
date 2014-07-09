@@ -13,7 +13,7 @@ LevelThree::LevelThree() :
 	items{{2900, 8800,9161, 10000},{4320, 5850,4700, 2712}},
 	caughtItems{false,false,false,true}
 {
-
+	this->changeCheckpoints(3, {2000,4000,6000,8000,10000}, {1600,1600,1600,1600,1600});
 }
 
 LevelThree::~LevelThree(){
@@ -34,7 +34,9 @@ void LevelThree::load(){
 	this->quadTree = new QuadTree(0, bounds);
 
 	this->background = Game::instance().getResources().get("res/images/lv1_background.png");
-	//this->checkpoint = Game::instance().getResources().get("res/images/checkpoint.png");
+	for(int i = 0; i < this->NUMBER_OF_CHECKPOINTS; ++i){
+		this->checkpoints.push_back(Game::instance().getResources().get("res/images/checkpoint.png"));
+	}
 	this->image = Game::instance().getResources().get("res/images/potion.png");
 
 	// Getting information from lua script.
@@ -269,11 +271,15 @@ void LevelThree::update(const double dt_){
 	}
 
 	//Saving the game state
-	// if(!this->checkpointVisited && this->player->getBoundingBox().x >= 500 && this->player->getBoundingBox().x <= 550){
-	// 	this->checkpoint = Game::instance().getResources().get("res/images/checkpoint_visited.png");
-	// 	// Game::instance().getSaves().saveLevel(2, this->player, this->enemies, Game::instance().currentSlot);
-	// 	this->checkpointVisited = true;
-	// }
+	for(int j = 0; j < this->NUMBER_OF_CHECKPOINTS; ++j){
+		if(!this->checkpointsVisited[j] && this->player->getBoundingBox().x >= checkpointsX[j] 
+				&& this->player->getBoundingBox().x <= checkpointsX[j] + 100 && this->player->getBoundingBox().y >= checkpointsY[j]
+				&& this->player->getBoundingBox().y <= checkpointsY[j] + 200){
+			this->checkpoints[j] = Game::instance().getResources().get("res/images/checkpoint_visited.png");
+			Game::instance().getSaves().saveLevel(1, this->player, this->enemies, Game::instance().currentSlot);
+			this->checkpointsVisited[j] = true;
+		}	
+	}
 }
 
 void LevelThree::render(){
@@ -282,7 +288,9 @@ void LevelThree::render(){
 
 	this->background->render(0, 0);
 
-	//this->checkpoint->render(500 - cameraX, 5600 - cameraY);
+	for(int j = 0; j < this->NUMBER_OF_CHECKPOINTS; ++j){
+		this->checkpoints[j]->render(this->checkpointsX[j] - cameraX, this->checkpointsY[j] - cameraY);
+	}
 
 	// Render the tiles in the TileMap.
 	this->tileMap->render(cameraX, cameraY);
