@@ -75,75 +75,21 @@ void LevelOne::load(){
 	this->image = Game::instance().getResources().get("res/images/potion.png");
 	
 	this->playerHud = new PlayerHUD(lPlayer);
-	
-		
-	Enemy* lEnemy1 = new Enemy(3712.0, 1400.0, pathEnemy, false, 0.0);
-	
-	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
-		if(Game::instance().getSaves().isEnemyDead(0, Game::instance().currentSlot))
-			lEnemy1->setDead(true);
+
+	// Load all the enemies from the tileMap.
+	for(int i = 0; i < this->tileMap->getEnemiesX().size(); i++){
+		Enemy* enemy = new Enemy(this->tileMap->getEnemiesX().at(i),
+			this->tileMap->getEnemiesY().at(i), pathEnemy,
+			this->tileMap->getEnemiesPatrol().at(i), 0.0);
+
+		if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
+			if(Game::instance().getSaves().isEnemyDead(i, Game::instance().currentSlot)){
+				enemy->setDead(true);
+			}
+		}
+		enemy->setLevelWH(this->width, this->height);
+		this->enemies.push_back(enemy);
 	}
-
-	lEnemy1->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy1);
-
-	Enemy* lEnemy2 = new Enemy(4992.0, 1400.0, pathEnemy, false, 0.0);
-	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
-		if(Game::instance().getSaves().isEnemyDead(1, Game::instance().currentSlot))
-			lEnemy2->setDead(true);
-	}
-
-	lEnemy2->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy2);
-
-	Enemy* lEnemy3 = new Enemy(5568.0, 1400.0, pathEnemy, true, 0.0);
-	
-	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
-		if(Game::instance().getSaves().isEnemyDead(2, Game::instance().currentSlot))
-			lEnemy3->setDead(true);
-	}
-
-	lEnemy3->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy3);
-
-	Enemy* lEnemy4 = new Enemy(7104.0, 1400.0, pathEnemy, true, 0.0);
-	
-	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
-		if(Game::instance().getSaves().isEnemyDead(3, Game::instance().currentSlot))
-			lEnemy4->setDead(true);
-	}
-
-	lEnemy4->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy4);
-
-	Enemy* lEnemy5 = new Enemy(8256.0, 1400.0, pathEnemy, true, 0.0);
-	
-	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
-		if(Game::instance().getSaves().isEnemyDead(4, Game::instance().currentSlot))
-			lEnemy5->setDead(true);
-	}
-
-	lEnemy5->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy5);
-
-	Enemy* lEnemy6 = new Enemy(10560.0, 1400.0, pathEnemy, false, 0.0);
-	
-	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
-		if(Game::instance().getSaves().isEnemyDead(5, Game::instance().currentSlot))
-			lEnemy6->setDead(true);
-	}
-
-	lEnemy6->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy6);
-
-	Enemy* lEnemy7 = new Enemy(10880.0, 1400.0, pathEnemy, false, 0.0);
-	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
-		if(Game::instance().getSaves().isEnemyDead(6, Game::instance().currentSlot))
-			lEnemy6->setDead(true);
-	}
-
-	lEnemy7->setLevelWH(this->width, this->height);
-	this->enemies.push_back(lEnemy7);
 
 	// Finally, setting the player and the camera.
 	setPlayer(lPlayer);

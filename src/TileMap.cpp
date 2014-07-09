@@ -103,8 +103,14 @@ void TileMap::load(const std::string& mapPath_){
 							SDL_Rect tileRect = {(int)(j * TILE_SIZE), (int)(k * TILE_SIZE), TILE_SIZE, TILE_SIZE};
 
 							if(property == "level_begin"){
-								initialX = tileRect.x;
-								initialY = tileRect.y;
+								this->initialX = tileRect.x;
+								this->initialY = tileRect.y;
+								continue;
+							}
+							else if(property == "enemy_patrol" || property == "enemy_no_patrol"){
+								this->enemiesX.push_back(tileRect.x);
+								this->enemiesY.push_back(tileRect.y);
+								this->enemiesPatrol.push_back((property == "enemy_patrol") ? true : false);
 								continue;
 							}
 
@@ -246,3 +252,14 @@ double TileMap::getInitialY(){
 	return (double)this->initialY;
 }
 
+std::vector<int>& TileMap::getEnemiesX(){
+	return this->enemiesX;
+}
+
+std::vector<int>& TileMap::getEnemiesY(){
+	return this->enemiesY;
+}
+
+std::vector<bool>& TileMap::getEnemiesPatrol(){
+	return this->enemiesPatrol;
+}

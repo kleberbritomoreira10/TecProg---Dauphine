@@ -41,6 +41,10 @@ class TileMap {
 		double getInitialX();
 		double getInitialY();
 
+		std::vector<int>& getEnemiesX();
+		std::vector<int>& getEnemiesY();
+		std::vector<bool>& getEnemiesPatrol();		
+
 	private:
 		/**
 		*
@@ -74,6 +78,10 @@ class TileMap {
 		std::vector <Sprite*> tilesetSprites;
 
 		std::vector <CollisionRect> collisionRects;
+
+		std::vector<int> enemiesX;
+		std::vector<int> enemiesY;
+		std::vector<bool> enemiesPatrol;
 
 };
 
