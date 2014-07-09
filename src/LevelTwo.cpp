@@ -163,8 +163,6 @@ void LevelTwo::update(const double dt_){
 	// Populating the QuadTree.
 	this->quadTree->setObjects(this->tileMap->getCollisionRects());
 
-	Log(DEBUG) << this->player->x << " " << this->player->y;
-
 	// Updating the entities, using the QuadTree.
 	std::vector<CollisionRect> returnObjects;
 	for (auto entity : this->entities) {
@@ -278,7 +276,7 @@ void LevelTwo::update(const double dt_){
 				&& this->player->getBoundingBox().x <= checkpointsX[j] + 100 && this->player->getBoundingBox().y >= checkpointsY[j]
 				&& this->player->getBoundingBox().y <= checkpointsY[j] + 200){
 			this->checkpoints[j] = Game::instance().getResources().get("res/images/checkpoint_visited.png");
-			Game::instance().getSaves().saveLevel(1, this->player, this->enemies, Game::instance().currentSlot);
+			Game::instance().getSaves().saveLevel(2, this->player, this->enemies, Game::instance().currentSlot);
 			this->checkpointsVisited[j] = true;
 		}	
 	}
