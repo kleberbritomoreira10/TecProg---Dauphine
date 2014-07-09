@@ -13,7 +13,7 @@ LevelTwo::LevelTwo() :
 	items{{3500, 8000,4900, 10000},{2950, 1950,1950, 2912}},
 	caughtItems{false,false,true,false}
 {
-
+	this->changeCheckpoints(2, {4090,7870}, {2776,1700});
 }
 
 LevelTwo::~LevelTwo(){
@@ -34,7 +34,9 @@ void LevelTwo::load(){
 	this->quadTree = new QuadTree(0, bounds);
 
 	this->background = Game::instance().getResources().get("res/images/lv1_background.png");
-	//this->checkpoint = Game::instance().getResources().get("res/images/checkpoint.png");
+	for(int i = 0; i < this->NUMBER_OF_CHECKPOINTS; ++i){
+		this->checkpoints.push_back(Game::instance().getResources().get("res/images/checkpoint.png"));
+	}
 	this->image = Game::instance().getResources().get("res/images/potion.png");
 
 	// Getting information from lua script.
@@ -161,6 +163,8 @@ void LevelTwo::update(const double dt_){
 	// Populating the QuadTree.
 	this->quadTree->setObjects(this->tileMap->getCollisionRects());
 
+	Log(DEBUG) << this->player->x << " " << this->player->y;
+
 	// Updating the entities, using the QuadTree.
 	std::vector<CollisionRect> returnObjects;
 	for (auto entity : this->entities) {
@@ -269,11 +273,15 @@ void LevelTwo::update(const double dt_){
 	}
 
 	//Saving the game state
-	// if(!this->checkpointVisited && this->player->getBoundingBox().x >= 500 && this->player->getBoundingBox().x <= 550){
-	// 	this->checkpoint = Game::instance().getResources().get("res/images/checkpoint_visited.png");
-	// 	Game::instance().getSaves().saveLevel(2, this->player, this->enemies, Game::instance().currentSlot);
-	// 	this->checkpointVisited = true;
-	// }
+	for(int j = 0; j < this->NUMBER_OF_CHECKPOINTS; ++j){
+		if(!this->checkpointsVisited[j] && this->player->getBoundingBox().x >= checkpointsX[j] 
+				&& this->player->getBoundingBox().x <= checkpointsX[j] + 100 && this->player->getBoundingBox().y >= checkpointsY[j]
+				&& this->player->getBoundingBox().y <= checkpointsY[j] + 200){
+			this->checkpoints[j] = Game::instance().getResources().get("res/images/checkpoint_visited.png");
+			Game::instance().getSaves().saveLevel(1, this->player, this->enemies, Game::instance().currentSlot);
+			this->checkpointsVisited[j] = true;
+		}	
+	}
 }
 
 void LevelTwo::render(){
@@ -282,7 +290,9 @@ void LevelTwo::render(){
 
 	this->background->render(0, 0);
 
-	//this->checkpoint->render(500 - cameraX, 5600 - cameraY);
+	for(int j = 0; j < this->NUMBER_OF_CHECKPOINTS; ++j){
+		this->checkpoints[j]->render(this->checkpointsX[j] - cameraX, this->checkpointsY[j] - cameraY);
+	}
 
 	// Render the tiles in the TileMap.
 	this->tileMap->render(cameraX, cameraY);

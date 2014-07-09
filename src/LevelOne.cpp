@@ -16,7 +16,7 @@ LevelOne::LevelOne() :
 	items{{4900, 10000,0,0},{1750, 1750,0,0}},
 	caughtItems{false,false,true,true}
 {
-	this->changeCheckpoints(3, {2000,4000,6000,8000,10000}, {1600,1600,1600,1600,1600});
+	this->changeCheckpoints(2, {4000,7500}, {1600,1600});
 }
 
 LevelOne::~LevelOne(){
