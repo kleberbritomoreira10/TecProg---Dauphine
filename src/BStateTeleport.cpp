@@ -1,4 +1,5 @@
 #include "BStateTeleport.h"
+#include "Game.h"
 #include "Collision.h"
 #include "Logger.h"
 
@@ -12,9 +13,9 @@ bool right;
 int direction = 0;
 
 void BStateTeleport::enter(){
-	Log(DEBUG) << "STATE TELEPORT BOSS";
-	this->boss->power = new Sprite("res/images/laser_sheet.png");
-	this->boss->powerAnimation->changeWidthHeight(700,340);
+	// Log(DEBUG) << "STATE TELEPORT BOSS";
+	this->boss->power = Game::instance().getResources().get("res/images/laser_sheet.png");
+	this->boss->powerAnimation->changeWidthHeight(700, 340);
 	this->boss->powerAnimation->changeAnimation(0, 0, 3, false, 0.5);
 	this->boss->player->isVulnerable = true;
 }
@@ -29,7 +30,6 @@ void BStateTeleport::exit(){
 }
 
 void BStateTeleport::update(const double dt_){
-	((void)dt_); // Unused.
 	tptime += dt_;
 	
 	if(tptime < 3){
