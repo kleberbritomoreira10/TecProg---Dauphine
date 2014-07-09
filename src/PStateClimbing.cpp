@@ -15,7 +15,7 @@ void PStateClimbing::enter(){
 
     this->player->getAnimation()->changeAnimation(0, 6, 4, false, 1);
 
-    this->player->vy -= 10;
+    this->player->vy = 0;
     if(!this->player->isRight){
 		this->player->vx = -0.001;
     }
