@@ -118,6 +118,7 @@ void Player::update(const double dt_){
 
 void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){
     if(detections_.at(CollisionSide::SOLID_TOP)){ 
+        Log(DEBUG) << "COLLIDED_TOP";
         this->vy = 0.0;
     }
     if(detections_.at(CollisionSide::SOLID_BOTTOM)){

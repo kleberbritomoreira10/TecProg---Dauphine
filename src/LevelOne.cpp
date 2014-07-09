@@ -77,13 +77,13 @@ void LevelOne::load(){
 	this->playerHud = new PlayerHUD(lPlayer);
 
 	// Load all the enemies from the tileMap.
-	for(int i = 0; i < this->tileMap->getEnemiesX().size(); i++){
+	for(unsigned int i = 0; i < this->tileMap->getEnemiesX().size(); i++){
 		Enemy* enemy = new Enemy(this->tileMap->getEnemiesX().at(i),
 			this->tileMap->getEnemiesY().at(i), pathEnemy,
 			this->tileMap->getEnemiesPatrol().at(i), 0.0);
 
-		if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
-			if(Game::instance().getSaves().isEnemyDead(i, Game::instance().currentSlot)){
+		if(Game::instance().getSaves().isSaved(Game::instance().currentSlot) ){
+			if(Game::instance().getSaves().isEnemyDead(i, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 1){
 				enemy->setDead(true);
 			}
 		}

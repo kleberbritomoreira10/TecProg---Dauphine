@@ -186,7 +186,7 @@ void GStateNewGame::handleSelectorMenu(){
 		Game::instance().currentSlot = Selection::SLOT_3;
 		Game::instance().getSaves().setSlot(Selection::SLOT_3);
 		Game::instance().getSaves().createSave();
-		Game::instance().transitionTo = Game::GStates::LEVEL_BOSS; //should be level one, boss is here for testing purposes
+		Game::instance().transitionTo = Game::GStates::LEVEL_THREE; //should be level one, boss is here for testing purposes
 		Game::instance().setState(Game::GStates::TRANSITION);
 	}
 

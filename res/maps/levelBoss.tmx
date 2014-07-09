@@ -8,6 +8,11 @@
    <property name="meta" value=""/>
   </properties>
   <image source="tileSheet_2.png" width="192" height="256"/>
+  <tile id="2">
+   <properties>
+    <property name="type" value="enemy_no_patrol"/>
+   </properties>
+  </tile>
   <tile id="3">
    <properties>
     <property name="type" value="collision"/>
@@ -36,6 +41,11 @@
   <tile id="8">
    <properties>
     <property name="type" value="black"/>
+   </properties>
+  </tile>
+  <tile id="10">
+   <properties>
+    <property name="type" value="enemy_patrol"/>
    </properties>
   </tile>
  </tileset>
