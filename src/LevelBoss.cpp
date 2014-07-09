@@ -143,6 +143,7 @@ void LevelBoss::update(const double dt_){
 			}
 		}
 	}
+	Log(DEBUG) << this->boss->life;
 }
 
 void LevelBoss::render(){
