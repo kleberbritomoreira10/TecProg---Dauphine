@@ -1,4 +1,4 @@
-#include "LevelFour.h"
+#include "LevelFive.h"
 #include "Game.h"
 #include "LuaScript.h"
 #include "Logger.h"
@@ -8,7 +8,7 @@
 #include "Collision.h"
 #include "Crosshair.h"
 
-LevelFour::LevelFour() :
+LevelFive::LevelFive() :
 	Level(),
 	items{{207, 11261,6800, 10000},{5600, 2050,5850, 2712}},
 	caughtItems{false,false,false,true}
@@ -16,16 +16,16 @@ LevelFour::LevelFour() :
 
 }
 
-LevelFour::~LevelFour(){
+LevelFive::~LevelFive(){
 
 }
 
-void LevelFour::load(){
+void LevelFive::load(){
 	// Changing the music.
-	Game::instance().getAudioHandler().changeMusic("res/audio/lv4.wav");
+	Game::instance().getAudioHandler().changeMusic("res/audio/lv5.wav");
 
 	// Loading the tile/tilemap.
-	this->tileMap = new TileMap("res/maps/level4.tmx");
+	this->tileMap = new TileMap("res/maps/level5.tmx");
 
 	// Setting the level width/height.
 	this->width = this->tileMap->getMapWidth();
@@ -51,7 +51,7 @@ void LevelFour::load(){
 	// Loading the player and the camera.
 	Player* lPlayer = nullptr;
 	
-	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 4){
+	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 5){
 		double savedPX = 0.0;
 		double savedPY = 0.0;
 
@@ -76,7 +76,7 @@ void LevelFour::load(){
 	Enemy* lEnemy1 = new Enemy(2400.0, 4720.0, pathEnemy, false, 0.0);
 	
 	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
-		if(Game::instance().getSaves().isEnemyDead(0, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 4)
+		if(Game::instance().getSaves().isEnemyDead(0, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 5)
 			lEnemy1->setDead(true);
 	}
 
@@ -85,7 +85,7 @@ void LevelFour::load(){
 
 	Enemy* lEnemy2 = new Enemy(5519.0, 4300.0, pathEnemy, false, 0.0);
 	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
-		if(Game::instance().getSaves().isEnemyDead(1, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 4)
+		if(Game::instance().getSaves().isEnemyDead(1, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 5)
 			lEnemy2->setDead(true);
 	}
 
@@ -95,7 +95,7 @@ void LevelFour::load(){
 	Enemy* lEnemy3 = new Enemy(2900.0, 3600.0, pathEnemy, true, 0.0);
 	
 	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
-		if(Game::instance().getSaves().isEnemyDead(2, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 4)
+		if(Game::instance().getSaves().isEnemyDead(2, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 5)
 			lEnemy3->setDead(true);
 	}
 
@@ -105,7 +105,7 @@ void LevelFour::load(){
 	Enemy* lEnemy4 = new Enemy(3300.0, 2600.0, pathEnemy, true, 0.0);
 	
 	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
-		if(Game::instance().getSaves().isEnemyDead(3, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 4)
+		if(Game::instance().getSaves().isEnemyDead(3, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 5)
 			lEnemy4->setDead(true);
 	}
 
@@ -115,7 +115,7 @@ void LevelFour::load(){
 	Enemy* lEnemy5 = new Enemy(4700.0, 1600.0, pathEnemy, true, 0.0);
 	
 	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
-		if(Game::instance().getSaves().isEnemyDead(4, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 4)
+		if(Game::instance().getSaves().isEnemyDead(4, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 5)
 			lEnemy5->setDead(true);
 	}
 
@@ -125,7 +125,7 @@ void LevelFour::load(){
 	Enemy* lEnemy6 = new Enemy(7300.0, 1600.0, pathEnemy, false, 0.0);
 	
 	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
-		if(Game::instance().getSaves().isEnemyDead(5, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 4)
+		if(Game::instance().getSaves().isEnemyDead(5, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 5)
 			lEnemy6->setDead(true);
 	}
 
@@ -134,7 +134,7 @@ void LevelFour::load(){
 
 	Enemy* lEnemy7 = new Enemy(8900.0, 1500.0, pathEnemy, false, 0.0);
 	if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
-		if(Game::instance().getSaves().isEnemyDead(6, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 4)
+		if(Game::instance().getSaves().isEnemyDead(6, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 5)
 			lEnemy7->setDead(true);
 	}
 
@@ -150,14 +150,14 @@ void LevelFour::load(){
 	Game::instance().getFade().fadeOut(0, 0.002);
 }
 
-void LevelFour::unload(){
+void LevelFive::unload(){
 	Log(DEBUG) << "\tUnloading level 3...";
 	cleanEntities();
 	clearEnemies();
 	//this->checkpointVisited = false;	
 }
 
-void LevelFour::update(const double dt_){
+void LevelFive::update(const double dt_){
 	Log(DEBUG)<< this->player->x <<" || "<< this->player->y;
 	// Populating the QuadTree.
 	this->quadTree->setObjects(this->tileMap->getCollisionRects());
@@ -227,7 +227,7 @@ void LevelFour::update(const double dt_){
 
 	// Set next level if end is reached.
 	if(this->player->reachedLevelEnd){
-		Game::instance().transitionTo = Game::GStates::LEVEL_FIVE;
+		Game::instance().transitionTo = Game::GStates::LEVEL_BOSS;
 		Game::instance().setState(Game::GStates::TRANSITION);
 		return;
 	}
@@ -272,12 +272,12 @@ void LevelFour::update(const double dt_){
 	// //Saving the game state
 	// if(!this->checkpointVisited && this->player->getBoundingBox().x >= 500 && this->player->getBoundingBox().x <= 550){
 	// 	this->checkpoint = Game::instance().getResources().get("res/images/checkpoint_visited.png");
-	// 	Game::instance().getSaves().saveLevel(2, this->player, this->enemies, Game::instance().currentSlot);
+	// 	Game::instance().getSaves().saveLevel(5, this->player, this->enemies, Game::instance().currentSlot);
 	// 	this->checkpointVisited = true;
 	// }
 }
 
-void LevelFour::render(){
+void LevelFive::render(){
 	const int cameraX = this->camera->getClip().x;
 	const int cameraY = this->camera->getClip().y;
 

@@ -193,8 +193,7 @@ void GStateContinue::handleSelectorMenu(){
 				Game::instance().setState(Game::instance().transitionTo);
 				break;
 			case 5:
-				//CHANGE THIS AFTER CREATING FIFTH LEVEL
-				Game::instance().transitionTo = Game::GStates::LEVEL_FOUR;
+				Game::instance().transitionTo = Game::GStates::LEVEL_FIVE;
 				Game::instance().setState(Game::instance().transitionTo);
 				break;
 			case 6:
@@ -229,7 +228,7 @@ void GStateContinue::handleSelectorMenu(){
 				break;
 			case 5:
 				//CHANGE THIS AFTER CREATING FIFTH LEVEL
-				Game::instance().transitionTo = Game::GStates::LEVEL_FOUR;
+				Game::instance().transitionTo = Game::GStates::LEVEL_FIVE;
 				Game::instance().setState(Game::instance().transitionTo);
 				break;
 			case 6:
@@ -264,7 +263,7 @@ void GStateContinue::handleSelectorMenu(){
 				break;
 			case 5:
 				//CHANGE THIS AFTER CREATING FIFTH LEVEL
-				Game::instance().transitionTo = Game::GStates::LEVEL_FOUR;
+				Game::instance().transitionTo = Game::GStates::LEVEL_FIVE;
 				Game::instance().setState(Game::instance().transitionTo);
 				break;
 			case 6:
