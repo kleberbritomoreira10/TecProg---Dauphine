@@ -28,7 +28,10 @@ GStateMenu::GStateMenu() :
 }
 
 GStateMenu::~GStateMenu(){
-
+	if(this->shwingAnimation != nullptr){
+		delete this->shwingAnimation;
+		this->shwingAnimation = nullptr;
+	}
 }
 
 void GStateMenu::load(){
@@ -49,7 +52,7 @@ void GStateMenu::load(){
     this->attractMode = Game::instance().getResources().get("res/images/attract.png");
     this->attractClip.w = this->attractMode->getWidth();
     this->shwingAnimation = new Animation(0, 0, 795, 360, 3, false);
-    this->shwing = new Sprite("res/images/shwing_sheet.png");
+    this->shwing = Game::instance().getResources().get("res/images/shwing_sheet.png");
     this->shwingAnimation->ANIMATION_LIMIT = 2;
 
     Game::instance().getFade().fadeOut(0, 0.002);

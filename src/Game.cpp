@@ -97,9 +97,12 @@ Game::~Game(){
 	if(this->resourceManager != nullptr){
 		delete this->resourceManager;
 	}
+	if(this->fadeScreen != nullptr){
+		delete this->fadeScreen;
+	}
 
 	if(this->window != nullptr){
-		this->window->destroy();
+		delete this->window;
 		this->window = nullptr;
 	}
 }

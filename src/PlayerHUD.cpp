@@ -5,7 +5,7 @@
 
 PlayerHUD::PlayerHUD(Player* const player_):
 	player(player_),
-	potionsLeft(new Text(200.0, 25.0, "res/fonts/maturasc.ttf", 50, "Potions: x", {0xCE, 0xCE, 0xCE, 255}))
+	potionsLeft(new Text(200.0, 25.0, "res/fonts/maturasc.ttf", 50, "Potions: x"))
 {
 	for(unsigned int i = 0; i < TOTAL_HUD; i++){
 		this->playerHudSprites[i] = nullptr;
@@ -20,7 +20,10 @@ PlayerHUD::PlayerHUD(Player* const player_):
 }
 
 PlayerHUD::~PlayerHUD(){
-
+	if(this->potionsLeft != nullptr){
+		delete this->potionsLeft;
+		this->potionsLeft = nullptr;
+	}
 }
 
 void PlayerHUD::update(){
@@ -39,7 +42,7 @@ void PlayerHUD::update(){
 				break;
 		}
 
-		this->potionsLeft->changeText(("Potions: "+ Util::toString(this->player->potionsLeft)).c_str(),{0xCE, 0xCE, 0xCE, 255});
+		this->potionsLeft->changeText(("Potions: "+ Util::toString(this->player->potionsLeft)).c_str());
 
 	}
 }

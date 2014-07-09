@@ -13,6 +13,9 @@ class Text : public Entity {
 		Text(const double x_, const double y_, const char* path_, const int size_,
 			const char* text_, const SDL_Color color_); 
 
+		Text(const double x_, const double y_, const char* path_, const int size_,
+			const char* text_); 
+
 		virtual ~Text();
 
 		/**
@@ -29,6 +32,7 @@ class Text : public Entity {
 		virtual void render(const double cameraX_, const double cameraY_);
 
 		virtual void changeText(const char* text_, const SDL_Color color_);
+		virtual void changeText(const char* text_);
 
 	private:
 		TTF_Font* font;

@@ -14,30 +14,26 @@ GStateNewGame::GStateNewGame() :
 	selectorXPosition(562),
 	selectorYPosition {500,610,723}
 {
-	this->slot1 = new Text(615.0, // x
-							520.0, // y
-							"res/fonts/maturasc.ttf", // font path
-							45, // size
-							"Empty Slot", // text
-							{0xCE, 0XCE, 0XCE, 255}); // sdl_color
-
-	this->slot2 = new Text(615.0, // std::string slot1Text;std::string slot1Text;x
-							630.0, // y
-							"res/fonts/maturasc.ttf", // font path
-							45, // size
-							"Empty Slot", // text
-							{0xCE, 0XCE, 0XCE, 255}); // sdl_color
-
-	this->slot3 = new Text(615.0, // x
-							730.0, // y
-							"res/fonts/maturasc.ttf", // font path
-							45, // size
-							"Empty Slot", // text
-							{0xCE, 0XCE, 0XCE, 255}); // sdl_color
+	this->slot1 = new Text(615.0, 520.0, "res/fonts/maturasc.ttf", 45, "Empty Slot");
+	this->slot2 = new Text(615.0, 630.0, "res/fonts/maturasc.ttf", 45, "Empty Slot");
+	this->slot3 = new Text(615.0, 730.0, "res/fonts/maturasc.ttf", 45, "Empty Slot");
 }
 
 GStateNewGame::~GStateNewGame(){
+	if(this->slot1 != nullptr){
+		delete this->slot1;
+		this->slot1 = nullptr;
+	}
 
+	if(this->slot2 != nullptr){
+		delete this->slot2;
+		this->slot2 = nullptr;
+	}
+
+	if(this->slot3 != nullptr){
+		delete this->slot3;
+		this->slot3 = nullptr;
+	}
 }
 
 void GStateNewGame::load(){
@@ -50,13 +46,13 @@ void GStateNewGame::load(){
 		const std::string currentLevel = "Level " + Util::toString(levelFromSave);
 		
 		if(levelFromSave == -1)
-			this->slot1->changeText("Empty Slot", {0xCE, 0xCE, 0xCE, 255});
+			this->slot1->changeText("Empty Slot");
 		else
-			this->slot1->changeText(currentLevel.c_str(), {0xCE, 0xCE, 0xCE, 255});
+			this->slot1->changeText(currentLevel.c_str());
 	}
 
 	else{
-		this->slot1->changeText("Empty Slot", {0xCE, 0xCE, 0xCE, 255});
+		this->slot1->changeText("Empty Slot");
 	}
 
 
@@ -67,12 +63,12 @@ void GStateNewGame::load(){
 		const std::string currentLevel = "Level " + Util::toString(levelFromSave);
 		
 		if(levelFromSave == -1)
-			this->slot2->changeText("Empty Slot", {0xCE, 0xCE, 0xCE, 255});
+			this->slot2->changeText("Empty Slot");
 		else
-			this->slot2->changeText(currentLevel.c_str(), {0xCE, 0xCE, 0xCE, 255});
+			this->slot2->changeText(currentLevel.c_str());
 	}
 	else{
-		this->slot2->changeText("Empty Slot", {0xCE, 0xCE, 0xCE, 255});
+		this->slot2->changeText("Empty Slot");
 	}
 
 
@@ -83,12 +79,12 @@ void GStateNewGame::load(){
 		const std::string currentLevel = "Level " + Util::toString(levelFromSave);
 			
 		if(levelFromSave == -1)
-			this->slot3->changeText("Empty Slot", {0xCE, 0xCE, 0xCE, 255});
+			this->slot3->changeText("Empty Slot");
 		else
-			this->slot3->changeText(currentLevel.c_str(), {0xCE, 0xCE, 0xCE, 255});
+			this->slot3->changeText(currentLevel.c_str());
 	}
 	else{
-		this->slot3->changeText("Empty Slot", {0xCE, 0xCE, 0xCE, 255});
+		this->slot3->changeText("Empty Slot");
 	}
 
 	//As is uses the same resources as the Continue screen...
