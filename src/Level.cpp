@@ -116,3 +116,12 @@ void Level::clearEnemies(){
 
 	this->enemies.clear();
 }
+
+void Level::clearDocuments(){
+	for(auto document : this->documents){
+		delete document;
+		document = nullptr;
+	}
+
+	this->documents.clear();
+}

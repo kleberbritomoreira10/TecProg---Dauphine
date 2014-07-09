@@ -94,6 +94,9 @@ class Boss : public DynamicEntity {
 		Sprite* power;
 		SDL_Rect powerClip;
 		SDL_RendererFlip powerFlip;
+		Animation* shieldAnimation;
+		Sprite* shield;
+		SDL_Rect shieldClip;
 
 	private:
 		virtual void updateBoundingBox();

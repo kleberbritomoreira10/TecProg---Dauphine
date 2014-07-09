@@ -102,6 +102,7 @@ void LevelThree::unload(){
 	Log(DEBUG) << "\tUnloading level 3...";
 	cleanEntities();
 	clearEnemies();
+	clearDocuments();
 	//this->checkpointVisited = false;	
 }
 

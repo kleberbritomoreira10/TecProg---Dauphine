@@ -1,5 +1,6 @@
 #include "Boss.h"
 #include "Logger.h"
+#include "Game.h"
 #include <cmath>
 
 #include "BStateIdle.h"
@@ -32,6 +33,9 @@ Boss::Boss(const double x_, const double y_, const std::string& path_, Player* c
 	power(nullptr),
 	powerClip{0,0,0,0},
 	powerFlip(SDL_FLIP_NONE),
+	shieldAnimation(nullptr),
+	shield(nullptr),
+	shieldClip{0,0,0,0},
 	currentState(nullptr),
 	animation(nullptr),
 	statesMap(),
@@ -48,6 +52,9 @@ Boss::Boss(const double x_, const double y_, const std::string& path_, Player* c
 
 	this->animation = new Animation(0, 0, this->width, this->height, 7, false);
 	this->powerAnimation = new Animation(0, 0, 0, 0, 0, false);
+	this->shieldAnimation = new Animation(0, 0, 340, 340, 3, false);
+	this->shield = Game::instance().getResources().get("res/images/shield.png");
+	this->shieldAnimation->changeAnimation(0,0,3,false,1);
 	this->currentState = this->statesMap.at(IDLE);
 	this->currentState->enter();
 
@@ -74,6 +81,7 @@ void Boss::update(const double dt_){
 
 	this->animation->update(this->animationClip, dt_);
 	this->powerAnimation->update(this->powerClip, dt_);
+	this->shieldAnimation->update(this->shieldClip, dt_);
 
 	updateBoundingBox();
 
@@ -99,9 +107,7 @@ void Boss::render(const double cameraX_, const double cameraY_){
 
 	// Shield render.
 	if(this->hasShield){
-		SDL_Rect boundingBox2 = {(int)(this->boundingBox.x - cameraX_), (int)(this->boundingBox.y - cameraY_), (int)this->boundingBox.w, (int)this->boundingBox.h};
-		SDL_SetRenderDrawColor( Window::getRenderer(), 0xFF, 0xFF, 0xFF, 0xFF);
-		SDL_RenderFillRect(Window::getRenderer(), &boundingBox2);
+		this->shield->render(dx, dy, &this->shieldClip);
 	}
 	
 	if(this->sprite != nullptr){
