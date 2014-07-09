@@ -13,7 +13,7 @@ LevelThree::LevelThree() :
 	items{{2900, 8800,9161, 10000},{4320, 5850,4700, 2712}},
 	caughtItems{false,false,false,true}
 {
-	this->changeCheckpoints(3, {2000,4000,6000,8000,10000}, {1600,1600,1600,1600,1600});
+	this->changeCheckpoints(2, {1320,10440}, {4600,5630});
 }
 
 LevelThree::~LevelThree(){
@@ -276,7 +276,7 @@ void LevelThree::update(const double dt_){
 				&& this->player->getBoundingBox().x <= checkpointsX[j] + 100 && this->player->getBoundingBox().y >= checkpointsY[j]
 				&& this->player->getBoundingBox().y <= checkpointsY[j] + 200){
 			this->checkpoints[j] = Game::instance().getResources().get("res/images/checkpoint_visited.png");
-			Game::instance().getSaves().saveLevel(1, this->player, this->enemies, Game::instance().currentSlot);
+			Game::instance().getSaves().saveLevel(3, this->player, this->enemies, Game::instance().currentSlot);
 			this->checkpointsVisited[j] = true;
 		}	
 	}

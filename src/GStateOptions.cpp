@@ -24,40 +24,34 @@ GStateOptions::GStateOptions() :
 	volumeMusic(nullptr),
 	volumeSFX(nullptr)	
 {
-	SDL_Color textColor = {0xCE, 0xCE, 0xCE, 255};
-	this->resolution = new Text(830.0, // x
-								365.0, // y
-								"res/fonts/maturasc.ttf", // font path
-								45, // size
-								possibleResolutions[currentResolution].c_str(), // text
-								textColor); // sdl_color
-
-	this->volumeMusic = new Text(830.0, // x
-								468.0, // y
-								"res/fonts/maturasc.ttf", // font path
-								45, // size
-								Util::toString(this->musicVolume).c_str(), // text
-								textColor); // sdl_color
-
-	this->volumeSFX = new Text(830.0, // x
-								580.0, // y
-								"res/fonts/maturasc.ttf", // font path
-								45, // size
-								Util::toString(this->sfxVolume).c_str(), // text
-								textColor); // sdl_color
-
+	this->resolution = new Text(830.0, 365.0, "res/fonts/maturasc.ttf", 45, possibleResolutions[currentResolution].c_str());
+	this->volumeMusic = new Text(830.0, 468.0, "res/fonts/maturasc.ttf", 45, Util::toString(this->musicVolume).c_str());
+	this->volumeSFX = new Text(830.0, 580.0, "res/fonts/maturasc.ttf", 45, Util::toString(this->sfxVolume).c_str());
 }
 
 GStateOptions::~GStateOptions(){
+	if(this->resolution != nullptr){
+		delete this->resolution;
+		this->resolution = nullptr;
+	}
 
+	if(this->volumeMusic != nullptr){
+		delete this->volumeMusic;
+		this->volumeMusic = nullptr;
+	}
+
+	if(this->volumeSFX != nullptr){
+		delete this->volumeSFX;
+		this->volumeSFX = nullptr;
+	}
 }
 
 void GStateOptions::update(const double dt_){
 	this->elapsedTime += dt_;
 
-	this->resolution->changeText(possibleResolutions[currentResolution].c_str(), {0xCE, 0xCE, 0xCE, 255});
-	this->volumeMusic->changeText(Util::toString(this->musicVolume).c_str(), {0xCE, 0xCE, 0xCE, 255});
-	this->volumeSFX->changeText(Util::toString(this->sfxVolume).c_str(), {0xCE, 0xCE, 0xCE, 255});	
+	this->resolution->changeText(possibleResolutions[currentResolution].c_str());
+	this->volumeMusic->changeText(Util::toString(this->musicVolume).c_str());
+	this->volumeSFX->changeText(Util::toString(this->sfxVolume).c_str());
 
 	const std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 

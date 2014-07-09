@@ -27,6 +27,7 @@ AudioHandler::~AudioHandler(){
 void AudioHandler::setCurrentMusic(const std::string& path_){
 	if(this->currentMusic != nullptr){
 		Mix_FreeMusic(this->currentMusic);
+		this->currentMusic = nullptr;
 	}
 
 	this->currentMusic = Mix_LoadMUS(path_.c_str());

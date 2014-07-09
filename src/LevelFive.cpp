@@ -13,7 +13,7 @@ LevelFive::LevelFive() :
 	items{{207, 11261,6800, 10000},{5600, 2050,5850, 2712}},
 	caughtItems{false,false,false,true}
 {
-
+	this->changeCheckpoints(2, {590,5000}, {2700,630});
 }
 
 LevelFive::~LevelFive(){
@@ -34,7 +34,9 @@ void LevelFive::load(){
 	this->quadTree = new QuadTree(0, bounds);
 
 	this->background = Game::instance().getResources().get("res/images/lv1_background.png");
-	//this->checkpoint = Game::instance().getResources().get("res/images/checkpoint.png");
+	for(int i = 0; i < this->NUMBER_OF_CHECKPOINTS; ++i){
+		this->checkpoints.push_back(Game::instance().getResources().get("res/images/checkpoint.png"));
+	}
 	this->image = Game::instance().getResources().get("res/images/potion.png");
 
 	// Getting information from lua script.
@@ -158,7 +160,6 @@ void LevelFive::unload(){
 }
 
 void LevelFive::update(const double dt_){
-	Log(DEBUG)<< this->player->x <<" || "<< this->player->y;
 	// Populating the QuadTree.
 	this->quadTree->setObjects(this->tileMap->getCollisionRects());
 
@@ -269,12 +270,16 @@ void LevelFive::update(const double dt_){
 		}
 	}
 
-	// //Saving the game state
-	// if(!this->checkpointVisited && this->player->getBoundingBox().x >= 500 && this->player->getBoundingBox().x <= 550){
-	// 	this->checkpoint = Game::instance().getResources().get("res/images/checkpoint_visited.png");
-	// 	Game::instance().getSaves().saveLevel(5, this->player, this->enemies, Game::instance().currentSlot);
-	// 	this->checkpointVisited = true;
-	// }
+	//Saving the game state
+	for(int j = 0; j < this->NUMBER_OF_CHECKPOINTS; ++j){
+		if(!this->checkpointsVisited[j] && this->player->getBoundingBox().x >= checkpointsX[j] 
+				&& this->player->getBoundingBox().x <= checkpointsX[j] + 100 && this->player->getBoundingBox().y >= checkpointsY[j]
+				&& this->player->getBoundingBox().y <= checkpointsY[j] + 200){
+			this->checkpoints[j] = Game::instance().getResources().get("res/images/checkpoint_visited.png");
+			Game::instance().getSaves().saveLevel(5, this->player, this->enemies, Game::instance().currentSlot);
+			this->checkpointsVisited[j] = true;
+		}	
+	}
 }
 
 void LevelFive::render(){
@@ -283,7 +288,9 @@ void LevelFive::render(){
 
 	this->background->render(0, 0);
 
-	//this->checkpoint->render(500 - cameraX, 5600 - cameraY);
+	for(int j = 0; j < this->NUMBER_OF_CHECKPOINTS; ++j){
+		this->checkpoints[j]->render(this->checkpointsX[j] - cameraX, this->checkpointsY[j] - cameraY);
+	}
 
 	// Render the tiles in the TileMap.
 	this->tileMap->render(cameraX, cameraY);
