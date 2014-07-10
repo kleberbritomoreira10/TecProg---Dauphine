@@ -119,17 +119,6 @@ void Boss::render(const double cameraX_, const double cameraY_){
 
 	const double dx = this->x - cameraX_;
 	const double dy = this->y - cameraY_;
-
-	// Shield render.
-	if(this->hasShield){
-		SDL_RendererFlip flip = getFlip();
-		if(flip == SDL_FLIP_HORIZONTAL){
-			this->shield->render(dx, dy, &this->shieldClip);
-		}
-		else{
-			this->shield->render(dx -120, dy, &this->shieldClip);
-		}
-	}
 	
 	if(this->sprite != nullptr){
 		SDL_RendererFlip flip = getFlip();
@@ -139,6 +128,17 @@ void Boss::render(const double cameraX_, const double cameraY_){
 		}
 		else{
 			this->sprite->render(dx, dy, &this->animationClip, false, 0.0, nullptr, flip);
+		}
+	}
+	
+		// Shield render.
+	if(this->hasShield){
+		SDL_RendererFlip flip = getFlip();
+		if(flip == SDL_FLIP_HORIZONTAL){
+			this->shield->render(dx, dy, &this->shieldClip);
+		}
+		else{
+			this->shield->render(dx -120, dy, &this->shieldClip);
 		}
 	}
 

@@ -13,7 +13,7 @@ double ok = 0;
 
 LevelOne::LevelOne() :
 	Level(),
-	items{{4900, 10000,0,0},{1750, 1750,0,0}},
+	items{{59*64, 114*64,0,0},{1750, 1750,0,0}},
 	caughtItems{false,false,true,true}
 {
 	this->changeCheckpoints(2, {4000,7500}, {1600,1600});

@@ -10,7 +10,7 @@
 
 LevelTwo::LevelTwo() :
 	Level(),
-	items{{3500, 8000,4900, 10000},{2950, 1950,1950, 2912}},
+	items{{4090 - 3*64, 7870 - 3*64, 0, 0},{2776, 1700, 0, 0}},
 	caughtItems{false,false,true,false}
 {
 	this->changeCheckpoints(2, {4090,7870}, {2776,1700});

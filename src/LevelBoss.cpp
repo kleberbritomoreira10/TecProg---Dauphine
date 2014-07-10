@@ -20,6 +20,8 @@ LevelBoss::~LevelBoss(){
 void LevelBoss::load(){
 	Log(DEBUG) << "Loading level boss...";
 
+	Game::instance().getAudioHandler().changeMusic("res/audio/Tema_Boss_02.wav");
+
 	// Loading the tile/tilemap.
 	this->tileMap = new TileMap("res/maps/levelBoss.tmx");
 

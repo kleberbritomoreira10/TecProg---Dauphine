@@ -93,7 +93,7 @@ void GStateMenu::render(){
 			this->attractClip.y += this->attractChangeSpeed;
 		}
 		else{
-			shwing->render(340,50,&this->shwingClip);
+			//shwing->render(340,50,&this->shwingClip);
 		}
 		if(this->passedTime>75){
 			this->passedTime = 0.0;
