@@ -99,7 +99,7 @@ class Player : public DynamicEntity {
 		/**
 		* @return Whether the player is currently in PStates::state_ or not.
 		*/
-		bool isCurrentState(const PStates state_);
+		bool iscurrent_state(const PStates state_);
 
 		/**
 		* @return The players current animation setting.
@@ -134,7 +134,7 @@ class Player : public DynamicEntity {
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
 
 		Animation* animation; /**< Current player animation. */
-		StatePlayer* currentState; /**< The current state, which the player is in. */
+		StatePlayer* current_state; /**< The current state, which the player is in. */
 		std::map<PStates, StatePlayer*> statesMap; /**< Map containing all possible states. */
 
 };

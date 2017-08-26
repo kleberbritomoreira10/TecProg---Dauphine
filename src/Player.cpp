@@ -39,7 +39,7 @@ Player::Player(const double x_, const double y_, const std::string& path_) :
     invulnerableTime(0),
     canMove(true),
     animation(nullptr),
-    currentState(nullptr)
+    current_state(nullptr)
 {
     initializeStates();
 
@@ -51,8 +51,8 @@ Player::Player(const double x_, const double y_, const std::string& path_) :
     this->animation = new Animation(0, 3, this->width, this->height, 11, false);
 
     if(this->sprite != nullptr){
-        this->currentState = this->statesMap.at(IDLE);
-        this->currentState->enter();
+        this->current_state = this->statesMap.at(IDLE);
+        this->current_state->enter();
     }
     else{
         Log(WARN) << "No sprite set for the player! Null sprite.";
@@ -61,9 +61,9 @@ Player::Player(const double x_, const double y_, const std::string& path_) :
 }
 
 Player::~Player(){
-    if(this->currentState != nullptr){
-        this->currentState->exit();
-        this->currentState = nullptr;
+    if(this->current_state != nullptr){
+        this->current_state->exit();
+        this->current_state = nullptr;
     }
 
     if(this->animation != nullptr){
@@ -78,7 +78,7 @@ void Player::update(const double dt_){
     std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
     if(this->canMove){
-        this->currentState->handleInput(keyStates);
+        this->current_state->handleInput(keyStates);
     }
 
     Game::instance().clearKeyFromInput(GameKeys::ACTION);
@@ -110,7 +110,7 @@ void Player::update(const double dt_){
         }
     }
 
-    if(this->isClimbing && !isCurrentState(PStates::CLIMBING)){
+    if(this->isClimbing && !iscurrent_state(PStates::CLIMBING)){
         changeState(PStates::CLIMBING);
     }
 
@@ -122,22 +122,22 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
         this->vy = 0.0;
     }
     if(detections_.at(CollisionSide::SOLID_BOTTOM)){
-        if(isCurrentState(PStates::AERIAL) || isCurrentState(PStates::ATTACKJUMPING) 
-            || isCurrentState(PStates::HITED)  || isCurrentState(PStates::CLIMBING) ||  
-            isCurrentState(PStates::DEAD)){
+        if(iscurrent_state(PStates::AERIAL) || iscurrent_state(PStates::ATTACKJUMPING) 
+            || iscurrent_state(PStates::HITED)  || iscurrent_state(PStates::CLIMBING) ||  
+            iscurrent_state(PStates::DEAD)){
             const double magic = 32.0;
             const double aerialToIdleCorrection = 8.0;
 
             this->nextY -= fmod(this->nextY, 64.0) - magic + aerialToIdleCorrection;
             this->vy = 0.0;
-            if(!isCurrentState(PStates::DEAD)){
+            if(!iscurrent_state(PStates::DEAD)){
                 changeState(PStates::IDLE);
             }
         }
     }
     else{
-        if(!isCurrentState(PStates::AERIAL) && !isCurrentState(PStates::ATTACKJUMPING)
-            && !isCurrentState(PStates::CLIMBING) && !isCurrentState(PStates::DEAD)){
+        if(!iscurrent_state(PStates::AERIAL) && !iscurrent_state(PStates::ATTACKJUMPING)
+            && !iscurrent_state(PStates::CLIMBING) && !iscurrent_state(PStates::DEAD)){
             changeState(PStates::AERIAL);
         }
     }
@@ -232,24 +232,24 @@ void Player::destroyStates(){
 }
 
 void Player::changeState(const PStates state_){
-    this->currentState->exit();
-    this->currentState = this->statesMap.at(state_);
-    this->currentState->enter();
+    this->current_state->exit();
+    this->current_state = this->statesMap.at(state_);
+    this->current_state->enter();
 }
 
 Animation* Player::getAnimation(){
     return (this->animation);
 }
 
-bool Player::isCurrentState(const PStates state_){
-    return (this->currentState == this->statesMap.at(state_));
+bool Player::iscurrent_state(const PStates state_){
+    return (this->current_state == this->statesMap.at(state_));
 }
 
 void Player::updateBoundingBox(){
-    this->boundingBox.x = (int) this->nextX + this->currentState->box.x;
-    this->boundingBox.y = (int) this->nextY + this->currentState->box.y;
-    this->boundingBox.w = this->currentState->box.w;
-    this->boundingBox.h = this->currentState->box.h;
+    this->boundingBox.x = (int) this->nextX + this->current_state->box.x;
+    this->boundingBox.y = (int) this->nextY + this->current_state->box.y;
+    this->boundingBox.w = this->current_state->box.w;
+    this->boundingBox.h = this->current_state->box.h;
 }
 
 bool Player::isDead(){

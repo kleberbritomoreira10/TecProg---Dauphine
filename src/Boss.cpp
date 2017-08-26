@@ -36,7 +36,7 @@ Boss::Boss(const double x_, const double y_, const std::string& path_, Player* c
 	shieldAnimation(nullptr),
 	shield(nullptr),
 	shieldClip{0,0,0,0},
-	currentState(nullptr),
+	current_state(nullptr),
 	animation(nullptr),
 	statesMap(),
 	dead(false)
@@ -55,8 +55,8 @@ Boss::Boss(const double x_, const double y_, const std::string& path_, Player* c
 	this->shieldAnimation = new Animation(0, 0, 340, 340, 6, false);
 	this->shield = Game::instance().getResources().get("res/images/shield.png");
 	this->shieldAnimation->changeAnimation(0,0,3,false,1);
-	this->currentState = this->statesMap.at(IDLE);
-	this->currentState->enter();
+	this->current_state = this->statesMap.at(IDLE);
+	this->current_state->enter();
 
 	if(this->player == nullptr){
 		Log(WARN) << "Passing a null player to the Boss.";
@@ -79,8 +79,8 @@ Boss::~Boss(){
 		this->shieldAnimation = nullptr;
 	}
 
-	if(this->currentState != nullptr){
-		this->currentState->exit();
+	if(this->current_state != nullptr){
+		this->current_state->exit();
 	}
 
 	this->player = nullptr;
@@ -105,7 +105,7 @@ void Boss::update(const double dt_){
 
 	updatePosition(dt_);
 
-	this->currentState->update(dt_);
+	this->current_state->update(dt_);
 
     for(auto potion : this->potions){
         if(!potion->activated){
@@ -179,9 +179,9 @@ void Boss::destroyStates(){
 }
 
 void Boss::changeState(const BStates state_){
-	this->currentState->exit();
-	this->currentState = this->statesMap.at(state_);
-	this->currentState->enter();
+	this->current_state->exit();
+	this->current_state = this->statesMap.at(state_);
+	this->current_state->enter();
 }
 
 void Boss::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){

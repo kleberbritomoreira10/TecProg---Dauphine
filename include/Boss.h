@@ -102,7 +102,7 @@ class Boss : public DynamicEntity {
 		virtual void updateBoundingBox();
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
 		
-		StateBoss* currentState;
+		StateBoss* current_state;
 		Animation* animation;
 		std::map<BStates, StateBoss*> statesMap;
 		bool dead;

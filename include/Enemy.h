@@ -72,7 +72,7 @@ class Enemy : public DynamicEntity {
 		virtual void updateBoundingBox();
 		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
 		void forceMaxSpeed();
-		StateEnemy* currentState;
+		StateEnemy* current_state;
 		Animation* animation;
 		std::map<EStates, StateEnemy*> statesMap;
 		bool dead;

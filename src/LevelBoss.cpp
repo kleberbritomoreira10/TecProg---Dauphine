@@ -135,8 +135,8 @@ void LevelBoss::update(const double dt_){
 
 	// Updating the player attack/boss collision.
 	if(Collision::rectsCollided(this->player->getBoundingBox(), this->boss->getBoundingBox())){
-		if(this->player->isCurrentState(Player::PStates::ATTACK) || this->player->isCurrentState(Player::PStates::ATTACKMOVING)
-			|| this->player->isCurrentState(Player::PStates::ATTACKJUMPING)){
+		if(this->player->iscurrent_state(Player::PStates::ATTACK) || this->player->iscurrent_state(Player::PStates::ATTACKMOVING)
+			|| this->player->iscurrent_state(Player::PStates::ATTACKJUMPING)){
 			if(this->boss->hasShield && this->player->canAttack){
 				this->boss->hasShield = false;
 				this->player->canAttack = false;

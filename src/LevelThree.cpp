@@ -203,7 +203,7 @@ void LevelThree::update(const double dt_){
 	for(auto enemy : this->enemies){
 		if(Collision::rectsCollided(this->player->getBoundingBox(), enemy->getBoundingBox())){
 			if(this->player->isRight != enemy->isRight)
-				if(this->player->isCurrentState(Player::PStates::ATTACK) || this->player->isCurrentState(Player::PStates::ATTACKMOVING)){
+				if(this->player->iscurrent_state(Player::PStates::ATTACK) || this->player->iscurrent_state(Player::PStates::ATTACKMOVING)){
 					
 					if(enemy->life > 0 && this->player->canAttack){
 						enemy->life -= this->player->attackStrength;
