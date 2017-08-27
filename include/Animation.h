@@ -6,9 +6,10 @@
 /**
 * Class in control of animating a sprite.
 */
-class Animation{
+class Animation
+{
 
-	public:
+	public :
 		/**
 		* The constructor.
 		* Initializes all attributes.
@@ -19,13 +20,13 @@ class Animation{
 		* @param numberOfImages_ : The number of images to animate inside the spritesheet.
 		* @param loop_ : Whether to loop or not.
 		*/
-		Animation(const int x_, const int y_, const int spriteWidth_, const int spriteHeight_,
-			const unsigned int numberOfImages_, const bool loop_);
+		Animation ( const int x_, const int y_, const int spriteWidth_, const int spriteHeight_,
+			const unsigned int numberOfImages_, const bool loop_ );
 
 		/**
 		* The destructor.
 		*/
-		~Animation();
+		~Animation ();
 
 		/**
 		* Updates the animation clip.
@@ -35,17 +36,18 @@ class Animation{
 		* @param totalTime_ : How much time each frame should have. Affects the speed on which
 		* 	the animation changes.
 		*/
-		void update(SDL_Rect& clip_, const double dt_);
+		void update ( SDL_Rect &clip_, const double dt_ );
 
-		int getCurrentFrame();
+		int getCurrentFrame ();
 
-		void changeWidthHeight(int width_, int height_);
+		void changeWidthHeight ( int width_, int height_ );
 		
 		/**
 		* Changes the animation to another.
 		* @note See Animation::Animation for the parameters descriptions.
 		*/
-		void changeAnimation(const int x_, const int y_, const unsigned int numberOfImages_, const bool loop_, const double totalTime_);
+		void changeAnimation ( const int x_, const int y_, const unsigned int numberOfImages_,
+		 const bool loop_, const double totalTime_ );
 
 		unsigned int ANIMATION_LIMIT;
 
@@ -56,7 +58,7 @@ class Animation{
 		* @param x_ : New x position.
 		* @param y_ : New y position.
 		*/
-		void updateClip(SDL_Rect& clip_, const int x_, const int y_);
+		void updateClip ( SDL_Rect &clip_, const int x_, const int y_ );
 
 		int x; /**< The position on x axis on the sprite. */
 		int y; /**< The position on x axis on the sprite. */
