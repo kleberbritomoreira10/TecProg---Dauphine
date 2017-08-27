@@ -11,11 +11,14 @@
 
 class StateBoss;
 
-class Boss : public DynamicEntity {
+class Boss : public DynamicEntity 
+{
 
 	public:
 
-		enum BStates : uint8_t {
+		enum BStates : uint8_t 
+		{
+
 			IDLE = 0,
 			ATTACK,
 			SHIELD,
@@ -23,17 +26,18 @@ class Boss : public DynamicEntity {
 			ICEPRISION,
 			MAGICPROJECTILE,
 			DEAD
+
 		};
 
 		/**
 		* The constructor.
 		*/
-		Boss(const double x_, const double y_, const std::string& path_, Player* const player_);
+		Boss ( const double x_, const double y_, const std::string &path_, Player *const player_ );
 
 		/**
 		* The destructor.
 		*/
-		virtual ~Boss();
+		virtual ~Boss ();
 
 		/**
 		* Updates the player.
@@ -41,11 +45,11 @@ class Boss : public DynamicEntity {
 		* @param dt_ : Delta time. Time elapsed between one frame and the other, independent
 		* 	of processing speed.
 		*/
-		virtual void update(const double dt_);
+		virtual void update ( const double dt_ );
 
-		void initializeStates();
-		void destroyStates();
-		void changeState(const BStates state_);
+		void initializeStates ();
+		void destroyStates ();
+		void changeState ( const BStates state_ );
 
 		/**
 		* Renders the player.
@@ -54,57 +58,61 @@ class Boss : public DynamicEntity {
 		* @param cameraX_ : The x position of the camera.
 		* @param cameraY_ : The y position of the camera.
 		*/
-		virtual void render(const double cameraX_, const double cameraY_);
+		virtual void render ( const double cameraX_, const double cameraY_ );
 
-		void usePotion(const int strength_, const int distance_);
+		void usePotion ( const int strength_, const int distance_ );
 		
-		Animation* getAnimation();
-		bool isDead();
-		void setDead(bool isDead_);
+		Animation *getAnimation ();
+		bool isDead ();
+		void setDead ( bool isDead_ );
 
-		enum BossSkills : uint8_t {
+		enum BossSkills : uint8_t 
+		{
+
 			BS_MAGIC_SHIELD = 0,
 			BS_TELEPORT,
 			BS_MAGIC_PROJECTILE,
 			BS_INVOKE_WIND,
 			BS_ICE_PRISION,
 			BS_FINAL_SPLENDOR
+
 		};
 
-		void randomSkill(const unsigned int index_);
-		bool teleport();
-		bool magicProjectile();
-		bool invokeWind();
-		bool icePrision();
-		bool finalSplendor();
+		void randomSkill ( const unsigned int index_ );
+		bool teleport ();
+		bool magicProjectile ();
+		bool invokeWind ();
+		bool icePrision ();
+		bool finalSplendor ();
 
 		unsigned int potionsLeft;
 
 		bool sawPlayer;
-		std::vector<Potion*> potions;
+		std::vector < Potion *> potions;
 
 		unsigned int life;
 		bool hasShield;
 		bool canWalk;
-		Player* player;
-		Animation* powerAnimation;
+		Player *player;
+		Animation *powerAnimation;
 		double powerX;
 		double powerY;
 		bool powerIsActivated;
-		Sprite* power;
+		Sprite *power;
 		SDL_Rect powerClip;
 		SDL_RendererFlip powerFlip;
-		Animation* shieldAnimation;
-		Sprite* shield;
+		Animation *shieldAnimation;
+		Sprite *shield;
 		SDL_Rect shieldClip;
 
 	private:
-		virtual void updateBoundingBox();
-		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
+
+		virtual void updateBoundingBox ();
+		virtual void handleCollision ( std::array < bool, CollisionSide::SOLID_TOTAL > detections_ );
 		
-		StateBoss* currentState;
-		Animation* animation;
-		std::map<BStates, StateBoss*> statesMap;
+		StateBoss *currentState;
+		Animation *animation;
+		std::map < BStates, StateBoss * > statesMap;
 		bool dead;
 
 };

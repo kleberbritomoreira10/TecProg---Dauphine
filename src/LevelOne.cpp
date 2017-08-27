@@ -84,8 +84,7 @@ void LevelOne::load ()
 			Game::instance ().currentSlot );
 
 		lPlayer = new Player ( savedPX, savedPY, pathPlayerSpriteSheet );
-	}
-	else
+	}else
 	{
 		lPlayer = new Player ( this -> tileMap -> getInitialX (), this -> tileMap -> 
 			getInitialY (), pathPlayerSpriteSheet );
@@ -246,9 +245,7 @@ void LevelOne::update ( const double dt_ )
 			Enemy::pLife = this -> player -> life;
 			this -> player -> changeState ( Player::PStates::HITED );
 			this -> player -> isVulnerable = false;
-		} 
-
-		else
+		}else
 		{
 			//Do nothing.
 		}
@@ -368,8 +365,7 @@ void LevelOne::update ( const double dt_ )
 			document -> getBoundingBox () ) )
 		{
 			document -> shouldRender = true;
-		}
-		else
+		}else
 		{
 			document -> shouldRender = false;
 		}
