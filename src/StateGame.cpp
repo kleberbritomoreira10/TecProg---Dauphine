@@ -1,16 +1,20 @@
 #include "StateGame.h"
 
-StateGame::~StateGame(){
+StateGame::~StateGame()
+{
 	// Should be called in each state unload.
 	cleanEntities();
 }
 
-void StateGame::addEntity(Entity* const entity){
-	this->entities.push_back(entity);
+void StateGame::addEntity( Entity* const entity )
+{
+	this->entities.push_back( entity );
 }
 
-void StateGame::cleanEntities(){
-	for(auto entity : this->entities){
+void StateGame::cleanEntities()
+{
+	for ( auto entity : this->entities )
+	{
 		delete entity;
 		entity = nullptr;
 	}
