@@ -130,7 +130,7 @@ class Game {
 
 		void renderPause();
 
-		bool isPauseable();
+		bool isPauseAble();
 
 		void renderDialog();
 

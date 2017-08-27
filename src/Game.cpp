@@ -23,95 +23,110 @@
 
 #include "Logger.h"
 
-#define ADD_STATE_EMPLACE(stateEnum, stateClass) this->statesMap.emplace(stateEnum, new stateClass())
-#define ADD_STATE_INSERT(stateEnum, stateClass) this->statesMap.insert(std::make_pair<GStates, StateGame*>(stateEnum, new stateClass()))
+#define ADD_STATE_EMPLACE ( stateEnum, stateClass ) \
+	this -> statesMap.emplace ( stateEnum, new stateClass() )
+#define ADD_STATE_INSERT(stateEnum, stateClass) \
+	this -> statesMap.insert ( std::make_pair <GStates, StateGame*> ( stateEnum, new stateClass() ) )
+	
 
-Game& Game::instance(){
+Game& Game::instance ()
+{
 	static Game* instance = new Game();
 	return *instance;
 }
 
-Game::Game() :
-	isCutscene(false),
-	isPaused(false),
-	currentLine(0),
-	transitionTo(LEVEL_ONE),
-	window(nullptr),
-	isRunning(false),
-	pauseImage(nullptr),
-	pauseSelector(nullptr),
-	audioHandler(new AudioHandler()),
-	inputHandler(new InputHandler()),
-	resourceManager(new ResourceManager()),
-	gameSave(new GameSave()),
-	fadeScreen(nullptr),
-	currentState(nullptr),
+//Initializes method constructor with fundamental elements for playing the game. 
+Game::Game () :
+	isCutscene( false ),
+	isPaused( false ),
+	currentLine( 0 ),
+	transitionTo( LEVEL_ONE ),
+	window( nullptr ),
+	isRunning( false ),
+	pauseImage( nullptr ),
+	pauseSelector( nullptr ),
+	audioHandler( new AudioHandler() ),
+	inputHandler( new InputHandler() ),
+	resourceManager( new ResourceManager() ),
+	gameSave( new GameSave() ),
+	fadeScreen( nullptr ),
+	currentState( nullptr ),
 	statesMap(),
-	passedTime(0.0),
-	currentSelection(PSelection::RESUME),
-	selectorXPositionLeft {550, 550},
-	selectorYPositionLeft {400, 470},
-	selectorXPositionRight {930, 930},
-	selectorYPositionRight {400, 470}
+	passedTime( 0.0 ),
+	currentSelection( PSelection::RESUME ),
+	selectorXPositionLeft { 550, 550 },
+	selectorYPositionLeft { 400, 470 },
+	selectorXPositionRight { 930, 930 },
+	selectorYPositionRight { 400, 470 }
 {
-	this->window = new Window(Configuration::getScreenWidth(),
-		Configuration::getScreenHeight(), Configuration::getWindowTitle());
+	this->window = new Window( Configuration::getScreenWidth(),
+		Configuration::getScreenHeight(), Configuration::getWindowTitle() );
 
-	assert(this->window != nullptr && "The window should not be null!");
+	assert( this->window != nullptr && "The window should not be null!" );
 
 	initializeStates();
 
 	std::string path = "res/images/Dialog/dialog";
 	std::string extension = ".png";	
 
-	for(int i = 0; i < numLines; i++){
-		this->dialog[i] = nullptr;
-		this->dialog[i] = getResources().get(path + Util::toString(i) + extension);
+	for( int i = 0; i < numLines; i++ )
+	{
+		this->dialog[ i ] = nullptr;
+		this->dialog[ i ] = getResources().get( path + Util::toString(i) + extension );
 	
-		if(this->dialog[i] == nullptr){
-			Log(ERROR) << "Invalid dialog image.";
+		if( this->dialog[i] == nullptr )
+		{
+			Log( ERROR ) << "Invalid dialog image.";
 		}
 	}
 
 	this->pauseImage = getResources().get("res/images/pause_overlay.png");
 	this->pauseSelector = getResources().get("res/images/cursor_regular.png");
-	this->pauseSelector->setWidth(50);
+	this->pauseSelector -> setWidth(50);
 
 	this->isRunning = true;
-	FPSWrapper::initialize(this->fpsManager);
+	FPSWrapper::initialize( this -> fpsManager );
 }
 
-Game::~Game(){
-	if(this->currentState != nullptr){
-		this->currentState->unload();
+Game::~Game()
+{
+	if( this -> currentState != nullptr )
+	{
+		this -> currentState -> unload();
 	}
 
 	destroyStates();
 
-	if(this->audioHandler != nullptr){
-		delete this->audioHandler;
+	if( this -> audioHandler != nullptr )
+	{
+		delete this -> audioHandler;
 	}
-	if(this->inputHandler != nullptr){
+	if( this -> inputHandler != nullptr )
+	{
 		delete this->inputHandler;
 	}
-	if(this->resourceManager != nullptr){
-		delete this->resourceManager;
+	if( this -> resourceManager != nullptr )
+	{
+		delete this -> resourceManager;
 	}
-	if(this->fadeScreen != nullptr){
-		delete this->fadeScreen;
+	if( this -> fadeScreen != nullptr )
+	{
+		delete this -> fadeScreen;
 	}
 
-	if(this->window != nullptr){
-		delete this->window;
-		this->window = nullptr;
+	if( this -> window != nullptr )
+	{
+		delete this -> window;
+		this -> window = nullptr;
 	}
 }
 
-void Game::runGame(){
-	this->fadeScreen = new FadeScreen();
+void Game::runGame()
+{
+	this -> fadeScreen = new FadeScreen();
 
-	this->currentState = this->statesMap.at(GStates::SPLASH);
-	this->currentState->load();
+	this -> currentState = this -> statesMap.at(GStates::SPLASH);
+	this -> currentState -> load();
 
 	// Get the first game time.
 	double totalGameTime = 0.0;
@@ -119,237 +134,293 @@ void Game::runGame(){
 	double accumulatedTime = 0.0;
 
 	// This is the main game loop.
-	while(this->isRunning){
+	while( this -> isRunning )
+	{
 
-		const double frameTime = FPSWrapper::delay(this->fpsManager);
+		const double frameTime = FPSWrapper::delay( this -> fpsManager );
 		accumulatedTime += frameTime;
 
 		// Update.
-		while(accumulatedTime >= deltaTime){
-			this->inputHandler->handleInput();
+		while( accumulatedTime >= deltaTime )
+		{
+			this -> inputHandler -> handleInput();
 
 			// Check for an exit signal from input.
-			if(this->inputHandler->isQuitFlag() == true){
+			if( this -> inputHandler -> isQuitFlag() == true )
+			{
 				stop();
 				return;
 			}
 
 			std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
-			if(keyStates[GameKeys::ESCAPE] && isPauseable()){
-				this->currentSelection = PSelection::RESUME;
-				this->isPaused = true;
+			if( keyStates[ GameKeys::ESCAPE ] && isPauseAble() )
+			{
+				this -> currentSelection = PSelection::RESUME;
+				this -> isPaused = true;
 			}
 
-			if(!this->isPaused){
-				this->currentState->update(deltaTime);
+			if( !this -> isPaused )
+			{
+				this -> currentState -> update( deltaTime );
 			}
-			else if(!this->isCutscene){
-				this->passedTime += deltaTime;
+			else if( !this -> isCutscene)
+			{
+				this -> passedTime += deltaTime;
 				updatePause();
 			}
-			else{
-				this->passedTime += deltaTime;
+			else
+			{
+				this -> passedTime += deltaTime;
 				updateDialog();
 			}
 
-			this->fadeScreen->update(deltaTime);
+			this -> fadeScreen -> update( deltaTime );
 
 			accumulatedTime -= deltaTime;
 			totalGameTime += deltaTime;
 		}
 
-		// Render.
-		window->clear();
+		// Render of window.
+		window -> clear();
 		
-		this->currentState->render();				    
-		if(this->isPaused){
+		this -> currentState -> render();				    
+		if( this -> isPaused )
+		{
 			renderPause();
 		}
-		else if(this->isCutscene){
-			if(currentLine < numLines)
+		else if( this -> isCutscene )
+		{
+			if( currentLine < numLines )
 				renderDialog();
-			else{
+			else
+			{
 				currentLine = 0;
 				isCutscene = false;
 			}
 		}
 
-		this->fadeScreen->render();
+		this -> fadeScreen -> render();
 
-		window->render();
+		window -> render();
 		
 	}
 
 }
 
-void Game::setState(const GStates state_){
+void Game::setState( const GStates state_ )
+{
 	/// @todo Implement the transition between states.
-	this->currentState->unload();
-	this->currentState = this->statesMap.at(state_);
-	this->currentState->load();
+	this -> currentState -> unload();
+	this -> currentState = this -> statesMap.at( state_ );
+	this -> currentState -> load();
 }
 
-void Game::initializeStates(){
+void Game::initializeStates()
+{
 	// Initialize all the states in Game here.
 
 	// Emplace the states pointers onto the map.
-	ADD_STATE_INSERT(SPLASH, GStateSplash);
-	ADD_STATE_INSERT(MENU, GStateMenu);
-	ADD_STATE_INSERT(NEW_GAME, GStateNewGame);
-	ADD_STATE_INSERT(LEVEL_ONE, LevelOne);
-	ADD_STATE_INSERT(LEVEL_TWO, LevelTwo);
-	ADD_STATE_INSERT(LEVEL_THREE, LevelThree);
-	ADD_STATE_INSERT(LEVEL_FOUR, LevelFour);
-	ADD_STATE_INSERT(LEVEL_FIVE, LevelFive);
-	ADD_STATE_INSERT(LEVEL_BOSS, LevelBoss);
-	ADD_STATE_INSERT(CONTINUE, GStateContinue);
-	ADD_STATE_INSERT(OPTIONS, GStateOptions);
-	ADD_STATE_INSERT(CREDITS, GStateCredits);
-	ADD_STATE_INSERT(GAMEOVER, GStateGameOver);
-	ADD_STATE_INSERT(TRANSITION, GStateTransition);
-	ADD_STATE_INSERT(VICTORY, GStateVictory);
+	ADD_STATE_INSERT( SPLASH, GStateSplash );
+	ADD_STATE_INSERT( MENU, GStateMenu );
+	ADD_STATE_INSERT( NEW_GAME, GStateNewGame );
+	ADD_STATE_INSERT( LEVEL_ONE, LevelOne );
+	ADD_STATE_INSERT( LEVEL_TWO, LevelTwo );
+	ADD_STATE_INSERT( LEVEL_THREE, LevelThree );
+	ADD_STATE_INSERT( LEVEL_FOUR, LevelFour );
+	ADD_STATE_INSERT( LEVEL_FIVE, LevelFive );
+	ADD_STATE_INSERT( LEVEL_BOSS, LevelBoss );
+	ADD_STATE_INSERT( CONTINUE, GStateContinue );
+	ADD_STATE_INSERT( OPTIONS, GStateOptions );
+	ADD_STATE_INSERT( CREDITS, GStateCredits );
+	ADD_STATE_INSERT( GAMEOVER, GStateGameOver );
+	ADD_STATE_INSERT( TRANSITION, GStateTransition );
+	ADD_STATE_INSERT( VICTORY, GStateVictory );
 }
 
-void Game::renderDialog(){
+void Game::renderDialog()
+{
 
-	if(currentLine > numLines){
+	if( currentLine > numLines )
+	{
 		currentLine = 0;
 		return;
 	}
 
-	if(this->dialog[currentLine])
-		this->dialog[currentLine]->render(0,0,nullptr,true);
+	if( this -> dialog[ currentLine ] )
+		this -> dialog[ currentLine ] -> render( 0, 0, nullptr, true );
 		
 }
 
-void Game::handleDialog(){
+void Game::handleDialog()
+{
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
 	const double selectorDelayTime = 0.2;
 
-	if(keyStates[GameKeys::SPACE] == true ){
-		if(this->passedTime >= selectorDelayTime){
+	if( keyStates[ GameKeys::SPACE ] == true )
+	{
+		if( this -> passedTime >= selectorDelayTime )
+		{
 			currentLine++;
 		}
 	}
 }
 
-void Game::updateDialog(){
+void Game::updateDialog()
+{
 
 	handleDialog();
 
 }
 
-void Game::renderPause(){
-	if(this->pauseImage != nullptr){
-		this->pauseImage->render(0, 0, nullptr, true);
+void Game::renderPause()
+{
+	if( this -> pauseImage != nullptr )
+	{
+		this -> pauseImage -> render( 0, 0, nullptr, true );
 
-		this->pauseSelector->render(selectorXPositionLeft[currentSelection],
-			selectorYPositionLeft[currentSelection], nullptr, false, 0.0, nullptr, SDL_FLIP_NONE);
+		this -> pauseSelector -> render( selectorXPositionLeft[ currentSelection ],
+			selectorYPositionLeft[ currentSelection ], nullptr, false, 0.0, nullptr, SDL_FLIP_NONE );
 
-		this->pauseSelector->render(selectorXPositionRight[currentSelection],
-			selectorYPositionRight[currentSelection], nullptr, false, 0.0, nullptr, SDL_FLIP_HORIZONTAL);
+		this -> pauseSelector -> render( selectorXPositionRight[ currentSelection ],
+			selectorYPositionRight[ currentSelection ], nullptr, false, 0.0, nullptr, SDL_FLIP_HORIZONTAL );
 	}
-	else{
-		Log(WARN) << "No image set to display on the menu!";
+	else
+	{
+		Log( WARN ) << "No image set to display on the menu!";
 	}
 }
-void Game::updatePause(){
+
+void Game::updatePause()
+{
 
 	handleSelectorMenu();
 }
 
-void Game::handleSelectorMenu(){
+void Game::handleSelectorMenu()
+{
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
 	const double selectorDelayTime = 0.2;
 
-	if(keyStates[GameKeys::DOWN] == true || keyStates[GameKeys::RIGHT] == true){
-		if(this->passedTime >= selectorDelayTime){
-			if(currentSelection < (PSelection::TOTAL - 1)){
+	if( keyStates[ GameKeys::DOWN ] == true || keyStates[ GameKeys::RIGHT ] == true )
+	{
+		if( this -> passedTime >= selectorDelayTime )
+		{
+			if( currentSelection < ( PSelection::TOTAL - 1 )){
 				currentSelection++;
 			}
-			else{
+			else
+			{
 				currentSelection = PSelection::RESUME;
 			}
-			this->passedTime = 0.0;
+			this -> passedTime = 0.0;
 		}
 	}
-	else if(keyStates[GameKeys::UP] == true || keyStates[GameKeys::LEFT] == true){
-		if(this->passedTime >= selectorDelayTime){
-			if(currentSelection > PSelection::RESUME){
+	else if( keyStates[ GameKeys::UP ] == true || keyStates[ GameKeys::LEFT ] == true )
+	{
+		if(this -> passedTime >= selectorDelayTime )
+		{
+			if( currentSelection > PSelection::RESUME )
+			{
 				currentSelection--;
 			}
-			else{
-				currentSelection = (PSelection::TOTAL - 1);
+			else
+			{
+				currentSelection = ( PSelection::TOTAL - 1 );
 			}
-			this->passedTime = 0.0;
+			this -> passedTime = 0.0;
 		}
 	}
-	else if(currentSelection == PSelection::RESUME && keyStates[GameKeys::SPACE] == true){
-		this->isPaused = false;
+	else if( currentSelection == PSelection::RESUME && keyStates[ GameKeys::SPACE ] == true )
+	{
+		this -> isPaused = false;
 	}
 
-	else if(currentSelection == PSelection::EXIT && keyStates[GameKeys::SPACE] == true){
-		Game::instance().setState(Game::GStates::MENU);
-		this->isPaused = false;
+	else if( currentSelection == PSelection::EXIT && keyStates[ GameKeys::SPACE ] == true)
+	{
+		Game::instance().setState( Game::GStates::MENU );
+		this -> isPaused = false;
 	}
 }
 
-void Game::destroyStates(){
-	std::map<GStates, StateGame*>::const_iterator it;
-    for(it = this->statesMap.begin(); it != this->statesMap.end(); it++){
-        delete it->second;
+void Game::destroyStates()
+{
+	std::map<GStates, StateGame*>::const_iterator iterator;
+    for( iterator = this -> statesMap.begin(); iterator != this -> statesMap.end(); iterator++ )
+    {
+        delete iterator -> second;
     }
 }
 
-AudioHandler& Game::getAudioHandler(){
-	return (*(this->audioHandler));
+AudioHandler& Game::getAudioHandler()
+{
+	return ( *( this->audioHandler ));
 }
 
-std::array<bool, GameKeys::MAX> Game::getInput(){
-	return this->inputHandler->getKeyStates();
+std::array<bool, GameKeys::MAX> Game::getInput()
+{
+	return this -> inputHandler -> getKeyStates();
 }
 
-ResourceManager& Game::getResources(){
-	return (*(this->resourceManager));
+ResourceManager& Game::getResources()
+{
+	return ( *( this -> resourceManager ) );
 }
 
-GameSave& Game::getSaves(){
-	return (*(this->gameSave));
+GameSave& Game::getSaves()
+{
+	return ( *( this -> gameSave ) );
 }
 
-void Game::stop(){
-	this->isRunning = false;
+void Game::stop()
+{
+	this -> isRunning = false;
 }
 
-void Game::clearKeyFromInput(const GameKeys key_){
-	this->inputHandler->clearKey(key_);
+void Game::clearKeyFromInput( const GameKeys key_ )
+{
+	this -> inputHandler -> clearKey( key_ );
 }
 
-FadeScreen& Game::getFade(){
-	return (*(this->fadeScreen));
+FadeScreen& Game::getFade()
+{
+	return ( *( this -> fadeScreen ));
 }
 
-void Game::resizeWindow(const unsigned int width_, const unsigned int height_){
-	this->window->resize(width_, height_);
+void Game::resizeWindow( const unsigned int width_, const unsigned int height_ )
+{
+	this -> window -> resize( width_, height_ );
 }
 
-bool Game::isPauseable(){
+bool Game::isPauseAble()
+{
 
-	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_ONE))
+	if( this -> currentState == this -> statesMap.at( Game::GStates::LEVEL_ONE ) )
+	{
 		return true;
-	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_TWO))
+	}
+	if( this -> currentState == this -> statesMap.at( Game::GStates::LEVEL_TWO ) )
+	{
 		return true;
-	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_THREE))
+	}
+	if( this -> currentState == this -> statesMap.at( Game::GStates::LEVEL_THREE ) )
+	{
 		return true;
-	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_FOUR))
+	}
+	if( this -> currentState == this -> statesMap.at( Game::GStates::LEVEL_FOUR ) )
+	{
 		return true;
-	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_FIVE))
+	}
+	if(this -> currentState == this -> statesMap.at( Game::GStates::LEVEL_FIVE ) )
+	{
 		return true;
-	if(this->currentState == this->statesMap.at(Game::GStates::LEVEL_BOSS))
+	}
+	if(this -> currentState == this -> statesMap.at( Game::GStates::LEVEL_BOSS ) )
+	{
 		return true;
+	}
 
 	return false;
 }
