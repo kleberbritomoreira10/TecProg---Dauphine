@@ -3,34 +3,35 @@
 
 #include "StateBoss.h"
 
-class BStateAttack : public StateBoss {
+class BStateAttack : public StateBoss 
+{
 
 	public:
 		/**
 		* The constructor.
 		* @param boss_ : Reference to the Boss.
 		*/
-		BStateAttack(Boss* const boss_);
+		BStateAttack ( Boss *const boss_ );
 		
 		/**
 		* The destructor.
 		*/
-		virtual ~BStateAttack(){}
+		virtual ~BStateAttack () {}
 
 		/**
 		* @see StateBoss::enter
 		*/
-		virtual void enter();
+		virtual void enter ();
 
 		/**
 		* @see StateBoss::exit
 		*/
-		virtual void exit();
+		virtual void exit ();
 
 		/**
 		* @see StateBoss::update
 		*/
-		virtual void update(const double dt_);
+		virtual void update ( const double dt_ );
 
 };
 
