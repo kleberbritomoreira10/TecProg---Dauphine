@@ -10,13 +10,14 @@
 * Base class for all game objects (entities).
 * The entity contains the (x,y) position, width and height, and a sprite.
 */
-class Entity {
+class Entity 
+{
 
 	public:
 		/**
 		* The destructor.
 		*/
-		virtual ~Entity();
+		virtual ~Entity ();
 
 		/**
 		* Updates the entity.
@@ -24,7 +25,7 @@ class Entity {
 		* 	entity.
 		* @param dt_ : Delta time. Time elapsed between one frame and the other.
 		*/
-		virtual void update(const double dt_) = 0;
+		virtual void update ( const double dt_ ) = 0;
 
 		/**
 		* Renders the entity.
@@ -33,26 +34,26 @@ class Entity {
 		* @param cameraX_ : The x position of the camera.
 		* @param cameraY_ : The y position of the camera.
 		*/
-		virtual void render(const double cameraX_, const double cameraY_) = 0;
+		virtual void render ( const double cameraX_, const double cameraY_ ) = 0;
 
 		/**
 		* @return The Entity width.
 		*/
-		unsigned int getWidth();
+		unsigned int getWidth ();
 
 		/**
 		* @return The Entity height.
 		*/
-		unsigned int getHeight();
+		unsigned int getHeight ();
 
 		/**
 		* @return The Entity::animationClip.
 		*/
-		SDL_Rect& getAnimationClip();
+		SDL_Rect& getAnimationClip ();
+ 
+		SDL_Rect& getBoundingBox ();
 
-		SDL_Rect& getBoundingBox();
-
-		virtual void setCollisionRects(const std::vector<CollisionRect>& collisionRects_);
+		virtual void setCollisionRects ( const std::vector < CollisionRect > &collisionRects_ );
 
 		double x; /**< The position in the x axis. */
 		double y; /**< The position in the y axis. */
@@ -66,7 +67,7 @@ class Entity {
 		* @param y_ : position in y axis.
 		* @param sprite_ : which sprite to use.
 		*/
-		Entity(const double x_, const double y_, const std::string& path_);
+		Entity ( const double x_, const double y_, const std::string &path_ );
 
 		/**
 		* The constructor.
@@ -74,15 +75,15 @@ class Entity {
 		* @param x_ : position in x axis.
 		* @param y_ : position in y axis.
 		*/
-		Entity(const double x_, const double y_);
+		Entity ( const double x_, const double y_ );
 
-		Sprite* sprite; /**< The Sprite attributed to the entity. */
+		Sprite *sprite; /**< The Sprite attributed to the entity. */
 		unsigned int width; /**< The entitys width, from its sprite. */
 		unsigned int height; /**< The entitys height, from its sprite. */
 		SDL_Rect animationClip; /**< The current clip on the spritesheet, to determine animation. */
 		SDL_Rect boundingBox;
 
-		std::vector<CollisionRect> collisionRects; /**< The SDL_Rects containing collidable tiles 
+		std::vector < CollisionRect > collisionRects; /**< The SDL_Rects containing collidable tiles 
 			positions. */
 
 };

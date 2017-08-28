@@ -15,18 +15,20 @@ unsigned int Configuration::cameraDistanceWidth = 0;
 unsigned int Configuration::cameraDistanceHeight = 0;
 
 
-void Configuration::initialize(){
+void Configuration::initialize ()
+{
 	/// @todo Make sure recieved ints are not negative.
 
-	LuaScript luaConfig("lua/Config.lua");
+	LuaScript luaConfig( "lua/Config.lua" );
 
 	Configuration::maxFramerate =
-		(uint32_t) luaConfig.unlua_get<int>("config.maxFramerate");
+		(uint32_t) luaConfig.unlua_get < int > ( "config.maxFramerate" );
 
-	Configuration::windowTitle = luaConfig.unlua_get<std::string>("config.windowTitle");
+	Configuration::windowTitle = 
+		luaConfig.unlua_get < std::string >( "config.windowTitle" );
 
 	Configuration::logicalRenderSize =
-		(unsigned int) luaConfig.unlua_get<int>("config.cameraDistance");
+		(unsigned int) luaConfig.unlua_get < int > ( "config.cameraDistance" );
 
 	Configuration::cameraDistanceWidth =
 		Configuration::resolutionWidth * Configuration::logicalRenderSize;
@@ -35,45 +37,54 @@ void Configuration::initialize(){
 		Configuration::resolutionHeight * Configuration::logicalRenderSize;
 
 	Configuration::screenWidth =
-		(unsigned int) luaConfig.unlua_get<int>("config.initialScreenSize.width");
+		(unsigned int) luaConfig.unlua_get < int > ( "config.initialScreenSize.width" );
 
 	Configuration::screenHeight =
-		(unsigned int) luaConfig.unlua_get<int>("config.initialScreenSize.height");
+		(unsigned int) luaConfig.unlua_get < int > ( "config.initialScreenSize.height" );
 
 }
 
-unsigned int Configuration::getResolutionWidth(){
+unsigned int Configuration::getResolutionWidth ()
+{
 	return Configuration::resolutionWidth;
 }
 
-unsigned int Configuration::getResolutionHeight(){
+unsigned int Configuration::getResolutionHeight ()
+{
 	return Configuration::resolutionHeight;
 }
 
-uint32_t Configuration::getMaxFramerate(){
+uint32_t Configuration::getMaxFramerate ()
+{
 	return Configuration::maxFramerate;
 }
 
-std::string Configuration::getWindowTitle(){
+std::string Configuration::getWindowTitle ()
+{
 	return Configuration::windowTitle;
 }
 
-unsigned int Configuration::getLogicalRenderSize(){
+unsigned int Configuration::getLogicalRenderSize ()
+{
 	return Configuration::logicalRenderSize;
 }
 
-unsigned int Configuration::getScreenWidth(){
+unsigned int Configuration::getScreenWidth ()
+{
 	return Configuration::screenWidth;
 }
 
-unsigned int Configuration::getScreenHeight(){
+unsigned int Configuration::getScreenHeight ()
+{
 	return Configuration::screenHeight;
 }
 
-unsigned int Configuration::getCameraDistanceWidth(){
+unsigned int Configuration::getCameraDistanceWidth ()
+{
 	return Configuration::cameraDistanceWidth;
 }
 
-unsigned int Configuration::getCameraDistanceHeight(){
+unsigned int Configuration::getCameraDistanceHeight ()
+{
 	return Configuration::cameraDistanceHeight;
 }

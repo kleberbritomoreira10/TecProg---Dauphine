@@ -3,34 +3,35 @@
 
 #include "StateEnemy.h"
 
-class EStateDead : public StateEnemy {
+class EStateDead : public StateEnemy 
+{
 
 	public:
 		/**
 		* The constructor.
 		* @param enemy_ : Reference to the Enemy.
 		*/
-		EStateDead(Enemy* const enemy_);
+		EStateDead ( Enemy *const enemy_ );
 		
 		/**
 		* The destructor.
 		*/
-		virtual ~EStateDead(){}
+		virtual ~EStateDead () {}
 
 		/**
 		* @see StateEnemy::enter
 		*/
-		virtual void enter();
+		virtual void enter ();
 
 		/**
 		* @see StateEnemy::exit
 		*/
-		virtual void exit();
+		virtual void exit ();
 
 		/**
 		* @see StateEnemy::update
 		*/
-		virtual void update(const double dt_);
+		virtual void update ( const double dt_ );
 
 };
 
