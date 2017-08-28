@@ -9,13 +9,16 @@
 
 #include <array>
 
-namespace controllerMap{
+namespace controllerMap
+{
 
 	/**
 	* Button Enumeration for the Joystick
 	*/
 
-	enum buttons{		
+	enum buttons
+	{
+
  		FACE_DOWN, //X on PS4 controller - 0
  		FACE_RIGHT, //O on PS4 controller - 1
  		FACE_LEFT, //[] on PS4 controller - 2
@@ -38,9 +41,12 @@ namespace controllerMap{
 
  		PRESSED,
  		RELEASED
+
 	};
 
-	enum axes{
+	enum axes
+	{
+
 		LHORIZONTAL, //Left Analogue Stick X - 0
 		LVERTICAL, //Left Analogue Stick Y - 1
 		
@@ -55,14 +61,15 @@ namespace controllerMap{
 /**
 * The input handler for joysticks.
 */
-class ControllerHandler {
+class ControllerHandler 
+{
 	
 	public:
 		/**
 		* The constructor.
 		* Verifies if there is a joystick present.
 		*/
-		ControllerHandler();
+		ControllerHandler ();
 		
 		/**
 		* Handles controller the input.
@@ -70,13 +77,13 @@ class ControllerHandler {
 		* 	a stack.
 		* @param sdlEvent_ : The SDL internal event structure.
 		*/
-		void handleInput(SDL_Event& sdlEvent_);
+		void handleInput ( SDL_Event &sdlEvent_ );
 
-		std::array<bool, GameKeys::MAX> keyStates; /**< Boolean array that controls which keys are
+		std::array < bool, GameKeys::MAX > keyStates; /**< Boolean array that controls which keys are
 		pressed or not. */
 
 	private:
-		SDL_GameController* gameController; /**< Pointer to the controller. */
+		SDL_GameController *gameController; /**< Pointer to the controller. */
 };
 
 #endif

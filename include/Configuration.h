@@ -8,61 +8,63 @@
 * @todo Refactor the Configuration class.
 * @todo Implement all the possible resolutions the game will "want".
 */
-class Configuration {
+class Configuration 
+{
 
 	public:
 		/**
 		* Initializes all the attributes.
 		*/
-		static void initialize();
+		static void initialize ();
 
 		/**
 		* @return resolutionWidth
 		*/
-		static unsigned int getResolutionWidth();
+		static unsigned int getResolutionWidth ();
 
 		/**
 		* @return resolutionHeight
 		*/
-		static unsigned int getResolutionHeight();
+		static unsigned int getResolutionHeight ();
 
 		/**
 		* @return maxFramerate
 		*/
-		static uint32_t getMaxFramerate();
+		static uint32_t getMaxFramerate ();
 
 		/**
 		* @return windowTitle
 		*/
-		static std::string getWindowTitle();
+		static std::string getWindowTitle ();
 
 		/**
 		* @return initialMultiplier
 		* @see Window::rescale
 		*/
-		static unsigned int getLogicalRenderSize();
+		static unsigned int getLogicalRenderSize ();
 
 		/**
 		* @return cameraDistanceWidth
 		*/
-		static unsigned int getCameraDistanceWidth();
+		static unsigned int getCameraDistanceWidth ();
 
 		/**
 		* @return cameraDistanceHeight
 		*/
-		static unsigned int getCameraDistanceHeight();
+		static unsigned int getCameraDistanceHeight ();
 
 		/**
 		* @return The current screen width.
 		*/
-		static unsigned int getScreenWidth();
+		static unsigned int getScreenWidth ();
 
 		/**
 		* @return The current screen height.
 		*/
-		static unsigned int getScreenHeight();
+		static unsigned int getScreenHeight ();
 
 	private:
+		
 		static const unsigned int resolutionWidth; /**< The game's width resolution. (16) */
 		static const unsigned int resolutionHeight; /**< The game's height resolution. (10) */
 

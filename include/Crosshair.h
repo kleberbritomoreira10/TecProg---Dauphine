@@ -6,14 +6,16 @@
 /**
 * @todo Refactor.
 */
-class Crosshair : public Entity {
+class Crosshair : public Entity 
+{
 	public:
-		Crosshair(const double x_, const double y_, const std::string& path_);
+
+		Crosshair ( const double x_, const double y_, const std::string &path_ );
 		virtual ~Crosshair();
-		virtual void update(const double dt_);
-		virtual void render(const double cameraX_, const double cameraY_);
-		unsigned int getWidth();
-		unsigned int getHeight();
+		virtual void update ( const double dt_ );
+		virtual void render ( const double cameraX_, const double cameraY_ );
+		unsigned int getWidth ();
+		unsigned int getHeight ();
 		bool activated;
 
 };

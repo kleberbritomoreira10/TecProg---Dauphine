@@ -3,7 +3,9 @@
 
 #include "SDLWrapper.h"
 
-enum TypeCollision : uint8_t {
+enum TypeCollision : uint8_t 
+{
+
 	COLLISION = 0,
 	JUMP_THROUGH,
 	LEVEL_END,
@@ -12,22 +14,24 @@ enum TypeCollision : uint8_t {
 	CHECKPOINT,
 	CUTSCENE,
 	NONE
+
 };
 
 /**
 * Simple collision detection.
 */
-class CollisionRect {
+class CollisionRect 
+{
 
 	public:
-		CollisionRect(const int x_, const int y_, const int w_, const int h_,
-			const TypeCollision type_);
+		CollisionRect ( const int x_, const int y_, const int w_, const int h_,
+			const TypeCollision type_ );
 		
-		CollisionRect(const SDL_Rect rect_, const TypeCollision type_);
+		CollisionRect ( const SDL_Rect rect_, const TypeCollision type_ );
 		
-		virtual ~CollisionRect();
+		virtual ~CollisionRect ();
 
-		static TypeCollision stringToType(const std::string& strType_);
+		static TypeCollision stringToType ( const std::string& strType_ );
 
 		TypeCollision type;
 		SDL_Rect rect;
