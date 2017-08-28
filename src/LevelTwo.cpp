@@ -221,8 +221,9 @@ void LevelTwo::update ( const double dt_ )
           }
           // Log(DEBUG) << "Enemy Life = " << enemy->life;
 
-          if ( enemy->life <= 0 x )
+          if( enemy->life <= 0 ){
             enemy->changeState ( Enemy::EStates::DEAD );
+          }
         }
       }
     }
