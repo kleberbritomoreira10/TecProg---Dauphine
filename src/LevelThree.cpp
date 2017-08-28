@@ -10,98 +10,117 @@
 
 LevelThree::LevelThree() :
   Level(),
-  items{{20*64, 136*64, 124*64, 0}, {73*64, 88*64, 33*64, 0}},
-  caughtItems{false,false,false,true}
+  items{ { 20*64, 136*64, 124*64, 0 }, { 73*64, 88*64, 33*64, 0 } },
+  caughtItems{ false, false, false, true }
 {
-  this->changeCheckpoints(3, {23*64, 139*64, 127*64}, {73*64, 88*64, 33*64});
+  this -> changeCheckpoints( 3, { 23*64, 139*64, 127*64 }, { 73*64, 88*64, 33*64 } );
 }
 
-LevelThree::~LevelThree(){
+LevelThree::~LevelThree()
+{
 
 }
 
-void LevelThree::load(){
+void LevelThree::load()
+{
   // Changing the music.
-  Game::instance().getAudioHandler().changeMusic("res/audio/lv3.wav");
+  Game::instance().getAudioHandler().changeMusic( "res/audio/lv3.wav" );
 
   // Loading the tile/tilemap.
-  this->tileMap = new TileMap("res/maps/level3.tmx");
+  this -> tileMap = new TileMap( "res/maps/level3.tmx" );
 
   // Setting the level width/height.
-  this->width = this->tileMap->getMapWidth();
-  this->height = this->tileMap->getMapHeight();
-  SDL_Rect bounds = {0, 0, (int)this->width, (int)this->height};
-  this->quadTree = new QuadTree(0, bounds);
+  this -> width = this -> tileMap -> getMapWidth();
+  this -> height = this -> tileMap -> getMapHeight();
+  SDL_Rect bounds = {0, 0, ( int )this -> width, ( int )this -> height};
+  this -> quadTree = new QuadTree ( 0, bounds );
 
-  this->background = Game::instance().getResources().get("res/images/lv1_background.png");
-  for(int i = 0; i < this->NUMBER_OF_CHECKPOINTS; ++i){
-    this->checkpoints.push_back(Game::instance().getResources().get("res/images/checkpoint.png"));
+  this -> background = Game::instance().getResources().get( "res/images/lv1_background.png" );
+  for ( int i = 0; i < this -> NUMBER_OF_CHECKPOINTS; ++i )
+  {
+    this -> checkpoints.push_back( Game::instance().getResources().get( "res/images/checkpoint.png" ) );
   }
-  this->image = Game::instance().getResources().get("res/images/potion.png");
+  this -> image = Game::instance().getResources().get( "res/images/potion.png" );
 
   // Getting information from lua script.
-  LuaScript luaLevel1("lua/Level1.lua");
-  const std::string pathPlayerSpriteSheet = luaLevel1.unlua_get<std::string>(
-    "level.player.spriteSheet");
-  const std::string pathBackgroundAudio = luaLevel1.unlua_get<std::string>(
-    "level.audio.background");
-  const std::string pathEnemy = luaLevel1.unlua_get<std::string>("level.enemy");
+  LuaScript luaLevel1( "lua/Level1.lua" );
+  const std::string pathPlayerSpriteSheet = luaLevel1.unlua_get<std::string>( "level.player.spriteSheet" );
+  const std::string pathBackgroundAudio = luaLevel1.unlua_get<std::string>( "level.audio.background" );
+  const std::string pathEnemy = luaLevel1.unlua_get<std::string>( "level.enemy" );
 
   // Changing the music.
   // Game::instance().getAudioHandler().changeMusic(pathBackgroundAudio);
 
   // Loading the player and the camera.
-  Player* lPlayer = nullptr;
+  Player *lPlayer = nullptr;
   
-  if(Game::instance().getSaves().isSaved(Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 3){
+  if ( Game::instance().getSaves().isSaved(Game::instance().currentSlot) && 
+      Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 3 )
+  {
     double savedPX = 0.0;
     double savedPY = 0.0;
 
-    Game::instance().getSaves().getPlayerPosition(savedPX, savedPY, Game::instance().currentSlot);
+    Game::instance().getSaves().getPlayerPosition( savedPX, savedPY, Game::instance().currentSlot );
 
-    lPlayer = new Player(savedPX, savedPY, pathPlayerSpriteSheet);
+    lPlayer = new Player( savedPX, savedPY, pathPlayerSpriteSheet );
   }
-  else{
-    lPlayer = new Player(this->tileMap->getInitialX(), this->tileMap->getInitialY(), pathPlayerSpriteSheet);
+  else
+  {
+    lPlayer = new Player( this -> tileMap -> getInitialX(), this -> tileMap -> getInitialY(), pathPlayerSpriteSheet );
   }
   
-  Camera* lCamera = new Camera(lPlayer); 
+  Camera *lCamera = new Camera(lPlayer); 
   
-  this->playerHud = new PlayerHUD(lPlayer);
+  this -> playerHud = new PlayerHUD(lPlayer);
 
     
   // Load all the enemies from the tileMap.
-  for(unsigned  int i = 0; i < this->tileMap->getEnemiesX().size(); i++){
-    Enemy* enemy = new Enemy(this->tileMap->getEnemiesX().at(i),
-      this->tileMap->getEnemiesY().at(i), pathEnemy,
-      this->tileMap->getEnemiesPatrol().at(i), 0.0);
+  for ( unsigned  int i = 0; i < this -> tileMap -> getEnemiesX().size(); i++)
+  {
+    Enemy *enemy = new Enemy( this->tileMap->getEnemiesX().at(i),
+                              this -> tileMap -> getEnemiesY().at( i ), pathEnemy,
+                              this -> tileMap -> getEnemiesPatrol().at( i ), 0.0 );
 
-    if(Game::instance().getSaves().isSaved(Game::instance().currentSlot)){
-      if(Game::instance().getSaves().isEnemyDead(i, Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 3){
-        enemy->setDead(true);
+    if ( Game::instance().getSaves().isSaved( Game::instance().currentSlot ) )
+    {
+      if ( Game::instance().getSaves().isEnemyDead(i, Game::instance().currentSlot) && 
+          Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 3)
+      {
+        enemy -> setDead(true);
+      }
+      else
+      {
+        // nothing to do
       }
     }
-    enemy->setLevelWH(this->width, this->height);
-    this->enemies.push_back(enemy);
+    else
+    {
+      // nothing to do
+    }
+
+    enemy -> setLevelWH( this -> width, this -> height );
+    this -> enemies.push_back( enemy );
   }
 
   // Finally, setting the player and the camera.
-  setPlayer(lPlayer);
-  Enemy::pLife = this->player->life;
+  setPlayer( lPlayer );
+  Enemy::pLife = this -> player -> life;
 
-  setCamera(lCamera);
+  setCamera( lCamera );
 
-  Game::instance().getFade().fadeOut(0, 0.002);
+  Game::instance().getFade().fadeOut( 0, 0.002 );
 }
 
-void LevelThree::unload(){
-  Log(DEBUG) << "\tUnloading level 3...";
+void LevelThree::unload()
+{
+  Log( DEBUG ) << "\tUnloading level 3...";
 
   cleanEntities();
   clearEnemies();
   clearDocuments();
 
-  for (int i = 0; i < NUMBER_ITEMS; ++i){
+  for ( int i = 0; i < NUMBER_ITEMS; ++i )
+  {
     caughtItems[i] = false;
   }
 
@@ -330,43 +349,57 @@ void LevelThree::update( const double dt_ )
   }
 }
 
-void LevelThree::render(){
-  const int cameraX = this->camera->getClip().x;
-  const int cameraY = this->camera->getClip().y;
+void LevelThree::render()
+{
+  const int cameraX = this -> camera->getClip().x;
+  const int cameraY = this -> camera->getClip().y;
 
-  this->background->render(0, 0);
+  this -> background -> render(0, 0);
 
-  for(int j = 0; j < this->NUMBER_OF_CHECKPOINTS; ++j){
-    this->checkpoints[j]->render(this->checkpointsX[j] - cameraX, this->checkpointsY[j] - cameraY);
+  for ( int j = 0; j < this -> NUMBER_OF_CHECKPOINTS; ++j)
+  {
+    this -> checkpoints[j] -> render( this -> checkpointsX[j] - cameraX, this -> checkpointsY[j] - cameraY );
   }
 
   // Render the tiles in the TileMap.
-  this->tileMap->render(cameraX, cameraY);
+  this -> tileMap -> render( cameraX, cameraY );
 
-  this->playerHud->render();
+  this -> playerHud -> render();
 
-  for(auto enemy : this->enemies){
+  for ( auto enemy : this->enemies )
+  {
     enemy->render(cameraX, cameraY);
   }
 
   // Render all the entities in the list.
-  for(auto entity : this->entities){
-        entity->render(cameraX, cameraY);
+  for ( auto entity : this -> entities )
+  {
+    entity -> render( cameraX, cameraY );
   }
 
-  for (unsigned int i = 0; i < NUMBER_ITEMS; i++){
-    if(this->image != nullptr && caughtItems[i] == false){
-      
-      this->image->Sprite::render((items[0][i]+60) - cameraX, ((items[1][i]) - cameraY));
-    
+  for ( unsigned int i = 0; i < NUMBER_ITEMS; i++)
+  {
+    if ( this -> image != nullptr && caughtItems[i] == false )
+    {
+      this -> image -> Sprite::render( ( items[0][i]+60 ) - cameraX, ( ( items[1][i] ) - cameraY ) );
+    }
+    else
+    {
+      // nothing to do
     }
   }
 
   // Document text image
-  for(auto document : this->documents){
-    document->render(cameraX, cameraY);
-    if(document->shouldRender){
-      document->renderDocumentText();
+  for ( auto document : this -> documents )
+  {
+    document -> render( cameraX, cameraY );
+    if( document -> shouldRender )
+    {
+      document -> renderDocumentText();
+    }
+    else
+    {
+      // nothing to do
     }
   }
 }
