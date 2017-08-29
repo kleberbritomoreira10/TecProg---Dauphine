@@ -173,7 +173,7 @@ void TileMap::load( const std::string& mapPath_ )
       }
     }
 
-    Log(DEBUG) << "TileMap::load Map loaded (width:" << this->mapWidth << " height:" << this->mapHeight << " layers:" << this->layers << ")";
+    Log(DEBUG) << "TileMap::load Map loaded (width:" << this -> mapWidth << " height:" << this -> mapHeight << " layers:" << this -> layers << ")";
 
   }
   else
@@ -182,78 +182,114 @@ void TileMap::load( const std::string& mapPath_ )
   }
 }
 
-void TileMap::render(const double cameraX_, const double cameraY_){
-  assert((this->tilesetSprites.size() > 0) && "No tilesets detected for the TileMap!");
+void TileMap::render( const double cameraX_, const double cameraY_ )
+{
+  assert( ( this -> tilesetSprites.size() > 0) && "No tilesets detected for the TileMap!" );
 
-  const Tmx::Layer* currentLayer;
-  for(unsigned int i = 0; i < this->layers - 1; i++){
-    currentLayer = this->map->GetLayer(i);
-    if (i > this->tileMatrix[0][0].size()){
-      Log(ERROR) << "Invalid layer number for rendering a TileMap layer.";
+  const Tmx::Layer *currentLayer;
+  for ( unsigned int i = 0; i < this -> layers - 1; i++)
+  {
+    currentLayer = this -> map -> GetLayer( i );
+
+    if ( i > this -> tileMatrix[0][0].size() )
+    {
+      Log( ERROR ) << "Invalid layer number for rendering a TileMap layer.";
       continue;
     }
+    else
+    {
+      //Nothing to do
+    }
 
-    if(currentLayer->GetName() == "Background02"){
-      renderLayer(cameraX_/20, cameraY_, i);
+    if ( currentLayer -> GetName() == "Background02" )
+    {
+      renderLayer( cameraX_/20, cameraY_, i );
     }
-    else if(currentLayer->GetName() == "Background01"){
-      renderLayer(cameraX_/10, cameraY_, i);
+    else if ( currentLayer -> GetName() == "Background01" )
+    {
+      renderLayer( cameraX_/10, cameraY_, i );
     }
-    else if(currentLayer->GetName() == "Background00"){
-      renderLayer(cameraX_/1.6, cameraY_, i);
+    else if( currentLayer -> GetName() == "Background00" )
+    {
+      renderLayer( cameraX_/1.6, cameraY_, i );
     }
-    else{
-      renderLayer(cameraX_, cameraY_, i);
+    else
+    {
+      renderLayer( cameraX_, cameraY_, i );
     }
   }
 }
 
 
-void TileMap::renderLayer(const double cameraX_, const double cameraY_, const unsigned int layer_){
-  const int tilesInX = this->tileMatrix.size();
-  const int tilesInY = this->tileMatrix[0].size();
+void TileMap::renderLayer( const double cameraX_, const double cameraY_, const unsigned int layer_ )
+{
+  const int tilesInX = this -> tileMatrix.size();
+  const int tilesInY = this -> tileMatrix[0].size();
 
-  const Tmx::Layer* currentLayer = this->map->GetLayer(layer_);
+  const Tmx::Layer *currentLayer = this -> map -> GetLayer(layer_);
 
-  SDL_Rect camera = {(int)cameraX_, (int)cameraY_, (int)Configuration::getCameraDistanceWidth(), (int)Configuration::getCameraDistanceHeight()};
+  SDL_Rect camera = { ( int )cameraX_, ( int )cameraY_, 
+                      ( int )Configuration::getCameraDistanceWidth(), 
+                      ( int )Configuration::getCameraDistanceHeight() };
 
-  for (int x = 0; x < tilesInX; x++){
-    for (int y = 0; y < tilesInY; y++){
+  for ( int x = 0; x < tilesInX; x++ )
+  {
+    for ( int y = 0; y < tilesInY; y++)
+    {
 
       SDL_Rect tileRect = {(x * TILE_SIZE), (y * TILE_SIZE), TILE_SIZE, TILE_SIZE};
       const bool tileIsOnScreen = Collision::rectsCollided(camera, tileRect);
 
-      if(tileIsOnScreen){
+      if ( tileIsOnScreen )
+      {
         // Getting the tile position inside its tileset.
         unsigned int tilePosition = tileMatrix[x][y][layer_];
         SDL_RendererFlip flip = SDL_FLIP_NONE;
 
-        if((tilePosition & Tmx::FlippedDiagonallyFlag) != 0){
+        if ( ( tilePosition & Tmx::FlippedDiagonallyFlag ) != 0 )
+        {
           /// @todo Figure out how to make g++ stop bitching about (SDL_FLIP_HORIZONTAL | SDL_FLIP_VERTICAL).
           //flip = (SDL_FLIP_HORIZONTAL | SDL_FLIP_VERTICAL);
         }
-        if((tilePosition & Tmx::FlippedHorizontallyFlag) != 0){
+        else
+        {
+          //Nothing to do
+        }
+      
+        if ( ( tilePosition & Tmx::FlippedHorizontallyFlag ) != 0 )
+        {
           flip = SDL_FLIP_HORIZONTAL;	
         }
-        if((tilePosition & Tmx::FlippedVerticallyFlag) != 0){
+        else
+        {
+          //Nothing to do
+        }
+        
+        if ( ( tilePosition & Tmx::FlippedVerticallyFlag ) != 0 )
+        {
           flip = SDL_FLIP_VERTICAL;
         }
+        else
+        {
+          //Nothing to do
+        }
 
-        tilePosition &= ~(Tmx::FlippedDiagonallyFlag | Tmx::FlippedHorizontallyFlag | Tmx::FlippedVerticallyFlag);
+        tilePosition &= ~( Tmx::FlippedDiagonallyFlag | Tmx::FlippedHorizontallyFlag | Tmx::FlippedVerticallyFlag );
 
         // If its a valid tile.
-        if (tilePosition > 0){
+        if ( tilePosition > 0 )
+        {
           // The x,y position in the level of the tile.
-          const double posX = ((x * TILE_SIZE) - cameraX_);
-          const double posY = ((y * TILE_SIZE) - cameraY_);
+          const double posX = ( ( x * TILE_SIZE ) - cameraX_ );
+          const double posY = ( ( y * TILE_SIZE ) - cameraY_ );
 
           // Which tileset sprite the tile belongs to.
-          const int tilesetId = currentLayer->GetTileTilesetIndex(x,y);
+          const int tilesetId = currentLayer -> GetTileTilesetIndex( x,y );
 
-          Sprite* const tilesetSprite = this->tilesetSprites.at(tilesetId);
+          Sprite const *tilesetSprite = this -> tilesetSprites.at( tilesetId );
 
           // The number of tiles per line, on that tileset.
-          const int tilesPerLine = tilesetSprite->getWidth() / TILE_SIZE;
+          const int tilesPerLine = tilesetSprite -> getWidth() / TILE_SIZE;
 
           // The clip for the tileset.
           SDL_Rect tileClip;
@@ -262,54 +298,64 @@ void TileMap::renderLayer(const double cameraX_, const double cameraY_, const un
           tileClip.w = TILE_SIZE;
           tileClip.h = TILE_SIZE;
           
-          tilesetSprite->render(posX, posY, &tileClip, false, 0.0, nullptr, flip);
+          tilesetSprite -> render( posX, posY, &tileClip, false, 0.0, nullptr, flip );
           
         }
-        else{
+        else
+        {
           // Do nothing, no rendering an empty tilespace.
         }
       }
-      else{
+      else
+      {
         // Tile is not on screen, don't render.
       }
-      
     }
   }
 }
 
-void TileMap::addTileSet(const std::string& path_){
-  Sprite* newTileSet = Game::instance().getResources().get(path_);
-  this->tilesetSprites.push_back(newTileSet);
+void TileMap::addTileSet( const std::string& path_ )
+{
+  Sprite *newTileSet = Game::instance().getResources().get( path_ );
+  this -> tilesetSprites.push_back( newTileSet );
 }
 
-std::vector <CollisionRect>& TileMap::getCollisionRects(){
-  return this->collisionRects;
+std::vector <CollisionRect>& TileMap::getCollisionRects()
+{
+  return this -> collisionRects;
 }
 
-unsigned int TileMap::getMapWidth(){
-  return this->mapWidth * TILE_SIZE;
+unsigned int TileMap::getMapWidth()
+{
+  return this -> mapWidth * TILE_SIZE;
 }
 
-unsigned int TileMap::getMapHeight(){
-  return this->mapHeight * TILE_SIZE;
+unsigned int TileMap::getMapHeight()
+{
+  return this -> mapHeight * TILE_SIZE;
 }
 
-double TileMap::getInitialX(){
-  return (double)this->initialX;
+double TileMap::getInitialX()
+{
+  return ( double )this -> initialX;
 }
 
-double TileMap::getInitialY(){
-  return (double)this->initialY;
+double TileMap::getInitialY()
+{
+  return ( double )this -> initialY;
 }
 
-std::vector<int>& TileMap::getEnemiesX(){
-  return this->enemiesX;
+std::vector<int>& TileMap::getEnemiesX()
+{
+  return this -> enemiesX;
 }
 
-std::vector<int>& TileMap::getEnemiesY(){
-  return this->enemiesY;
+std::vector<int>& TileMap::getEnemiesY()
+{
+  return this -> enemiesY;
 }
 
-std::vector<bool>& TileMap::getEnemiesPatrol(){
-  return this->enemiesPatrol;
+std::vector<bool>& TileMap::getEnemiesPatrol()
+{
+  return this -> enemiesPatrol;
 }
