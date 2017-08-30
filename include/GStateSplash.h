@@ -8,7 +8,8 @@
 * The state for the initial splash screen.
 * Game state that will contain the initial splash images, before the main menu state is called.
 */
-class GStateSplash : public StateGame {
+class GStateSplash : public StateGame
+{
 
 	public:
 		/**
@@ -32,7 +33,7 @@ class GStateSplash : public StateGame {
 		* Updates the objects within the StateGame.
 		* @param dt_ : Delta time. Time elapsed between one frame and the other.
 		*/
-		virtual void update(const double dt_);
+		virtual void update( const double dt_ );
 
 		/**
 		* Unloads everything that was loaded.
@@ -59,7 +60,7 @@ class GStateSplash : public StateGame {
 		int currentSplash; /**< Determines which is the current splash image. */
 		double passedTime; /**< The time already elapsed since the beggining of the splash. */
 		double lifeTime; /**< The amount of time the splash will be shown. */
-		Sprite* images[SplashImages::TOTAL_SPLASH_IMAGES]; /**< Contains all the splash images. */
+		Sprite *images[SplashImages::TOTAL_SPLASH_IMAGES]; /**< Contains all the splash images. */
 		double ix;
 
 };

@@ -7,15 +7,16 @@
 * The state when the player is idle.
 *
 */
-class PStateCrouching : public StatePlayer {
+class PStateCrouching : public StatePlayer
+{
 
 	public:
 		/**
 		* The constructor.
 		* @param player_ : Reference to the player.
 		*/
-		PStateCrouching(Player* const player_);
-		
+		PStateCrouching( Player *const player_ );
+
 		/**
 		* The destructor.
 		*/
@@ -34,7 +35,7 @@ class PStateCrouching : public StatePlayer {
 		/**
 		* @see StatePlayer::handleInput
 		*/
-		virtual void handleInput(const std::array<bool, GameKeys::MAX> keyStates_);
+		virtual void handleInput( const std::array<bool, GameKeys::MAX> keyStates_ );
 
 };
 

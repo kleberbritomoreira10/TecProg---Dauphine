@@ -8,7 +8,8 @@
 * The state for the initial menu screen.
 * Game state that will contain the game over screen.
 */
-class GStateGameOver : public StateGame {
+class GStateGameOver : public StateGame
+{
 
 	public:
 		/**
@@ -32,7 +33,7 @@ class GStateGameOver : public StateGame {
 		* Updates the objects within the StateGame.
 		* @param dt_ : Delta time. Time elapsed between one frame and the other.
 		*/
-		virtual void update(const double dt_);
+		virtual void update( const double dt_ );
 
 		/**
 		* Unloads everything that was loaded.
@@ -48,7 +49,7 @@ class GStateGameOver : public StateGame {
 		virtual void render();
 
 	private:
-		Sprite* gameOverImage; /**< The image shown on the menu. */
+		Sprite *gameOverImage; /**< The image shown on the menu. */
 		double passedTime; /**< The time already elapsed since the beggining of the menu. */
 		double lifeTime; /**< The amount of time the menu will be shown. */
 

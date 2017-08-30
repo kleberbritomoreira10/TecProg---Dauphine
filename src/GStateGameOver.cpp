@@ -25,8 +25,8 @@ void GStateGameOver::load()
 	const std::string pathGameOver = luaGameOver.unlua_get<std::string>( "gameOver.images.gameOver" );
 	const double luaLifeTime = luaGameOver.unlua_get<double>( "gameOver.lifeTime" );
 
-    this->gameOverImage = Game::instance().getResources().get( pathGameOver );
-	this->lifeTime = luaLifeTime;
+    this -> gameOverImage = Game::instance().getResources().get( pathGameOver );
+	this -> lifeTime = luaLifeTime;
 
 	// Changing the music.
 	Game::instance().getAudioHandler().changeMusic( "res/audio/Game_Over.mid" );
@@ -37,15 +37,15 @@ void GStateGameOver::unload()
 	Log( DEBUG ) << "\tUnloading Game Over...";
 	cleanEntities();
 
-	this->passedTime = 0.0;
-	this->lifeTime = 0.0;
+	this -> passedTime = 0.0;
+	this -> lifeTime = 0.0;
 
 	Game::instance().getAudioHandler().stopMusic();
 }
 
 void GStateGameOver::update( const double dt_ )
 {
-	this->passedTime += dt_;
+	this -> passedTime += dt_;
 
 	std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
@@ -55,7 +55,7 @@ void GStateGameOver::update( const double dt_ )
 		return;
 	}
 
-	if ( this->passedTime >= this->lifeTime )
+	if ( this -> passedTime >= this -> lifeTime )
 	{
 		Game::instance().setState( Game::GStates::MENU );
 		return;
@@ -63,9 +63,9 @@ void GStateGameOver::update( const double dt_ )
 }
 
 void GStateGameOver::render(){
-	if ( this->gameOverImage != nullptr )
+	if ( this -> gameOverImage != nullptr )
 	{
-		this->gameOverImage->render( 0, 0, nullptr, true );
+		this -> gameOverImage -> render( 0, 0, nullptr, true );
 	} else
 	{
 		Log( WARN ) << "No image set for the game over screen!";

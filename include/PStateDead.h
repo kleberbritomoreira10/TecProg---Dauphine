@@ -7,15 +7,16 @@
 * The state when the player is idle.
 *
 */
-class PStateDead : public StatePlayer {
+class PStateDead : public StatePlayer
+{
 
 	public:
 		/**
 		* The constructor.
 		* @param player_ : Reference to the player.
 		*/
-		PStateDead(Player* const player_);
-		
+		PStateDead( Player *const player_ );
+
 		/**
 		* The destructor.
 		*/
@@ -34,7 +35,7 @@ class PStateDead : public StatePlayer {
 		/**
 		* @see StatePlayer::handleInput
 		*/
-		virtual void handleInput(const std::array<bool, GameKeys::MAX> keyStates_);
+		virtual void handleInput( const std::array<bool, GameKeys::MAX> keyStates_ );
 
 };
 

@@ -6,12 +6,13 @@
 /**
 * Class for the bomb potion.
 */
-class Potion : public DynamicEntity {
+class Potion : public DynamicEntity
+{
 	public:
 		/**
 		* The constructor.
 		*/
-		Potion(const double x_, const double y_, const std::string& path_, const int strength_, const int inertia_, const int distance_, const bool isRight_);
+		Potion( const double x_, const double y_, const std::string& path_, const int strength_, const int inertia_, const int distance_, const bool isRight_ );
 
 		/**
 		* The destructor.
@@ -21,17 +22,17 @@ class Potion : public DynamicEntity {
 		/**
 		*
 		*/
-		virtual void update(const double dt_);
+		virtual void update( const double dt_ );
 
 		/**
 		*
 		*
 		*/
-		virtual void render(const double cameraX_, const double cameraY_);
+		virtual void render( const double cameraX_, const double cameraY_ );
 
 		bool activated;
 
-		Animation* getAnimation();
+		Animation *getAnimation();
 
 		bool canExplode;
 		bool isExploding;
@@ -39,12 +40,12 @@ class Potion : public DynamicEntity {
 	private:
 		/**
 		*/
-		virtual void handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_);
+		virtual void handleCollision( std::array<bool, CollisionSide::SOLID_TOTAL> detections_ );
 		virtual void updateBoundingBox();
 		int strength;
 		int distance;
 		double flightTime;
-		Animation* animation;
+		Animation *animation;
 
 };
 

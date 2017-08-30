@@ -8,7 +8,8 @@
 * The state for the initial menu screen.
 * Game state that will contain the game over screen.
 */
-class GStateCredits : public StateGame {
+class GStateCredits : public StateGame
+{
 
 	public:
 		/**
@@ -32,7 +33,7 @@ class GStateCredits : public StateGame {
 		* Updates the objects within the StateGame.
 		* @param dt_ : Delta time. Time elapsed between one frame and the other.
 		*/
-		virtual void update(const double dt_);
+		virtual void update( const double dt_ );
 
 		/**
 		* Unloads everything that was loaded.
@@ -48,11 +49,11 @@ class GStateCredits : public StateGame {
 		virtual void render();
 
 	private:
-		Sprite* creditsImage; /**< The image shown on the credits. */
+		Sprite *creditsImage; /**< The image shown on the credits. */
 		const int creditsHeightSize;
 		const int creditsChangeSpeed;
 		SDL_Rect creditsClip; /**< The clip shown on the credits. */
-		
+
 };
 
 #endif // INCLUDE_GSTATECREDITS_H

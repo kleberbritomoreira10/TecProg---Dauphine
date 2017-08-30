@@ -6,18 +6,18 @@ StateGame::~StateGame()
 	cleanEntities();
 }
 
-void StateGame::addEntity( Entity* const entity )
+void StateGame::addEntity( Entity *const entity )
 {
-	this->entities.push_back( entity );
+	this -> entities.push_back( entity );
 }
 
 void StateGame::cleanEntities()
 {
-	for ( auto entity : this->entities )
+	for ( auto entity : this -> entities )
 	{
 		delete entity;
 		entity = nullptr;
 	}
 
-	this->entities.clear();
+	this -> entities.clear();
 }
