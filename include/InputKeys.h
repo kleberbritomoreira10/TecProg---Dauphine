@@ -3,7 +3,9 @@
 
 #include <cstdint>
 
-enum GameKeys : uint8_t { 
+enum GameKeys : uint8_t 
+{
+ 
 	UP = 0,
 	LEFT,
 	RIGHT,

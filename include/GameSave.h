@@ -10,15 +10,17 @@ class GameSave {
 	public:
 		GameSave();
 
-		void setSlot(int saveSelection);
-		void createSave();
-		void saveLevel(unsigned int level_, Player* player, std::vector <Enemy*> enemies, unsigned int slot_);
-		int getSavedLevel(int continueSelection_);
-		void getPlayerPosition(double& playerX_, double& playerY_, const int slot_);
+		void setSlot ( int saveSelection );
+		void createSave ();
+		void saveLevel ( unsigned int level_, Player* player, std::vector < Enemy * > enemies, 
+			unsigned int slot_);
 
-		bool isEnemyDead(const int numEnemy_, const int slot_);
+		int getSavedLevel ( int continueSelection_ );
+		void getPlayerPosition ( double &playerX_, double &playerY_, const int slot_ );
 
-		bool isSaved(const int saveSlot_);
+		bool isEnemyDead ( const int numEnemy_, const int slot_ );
+
+		bool isSaved ( const int saveSlot_ );
 
 		std::string filePath;
 		int saveSelection;
@@ -27,7 +29,8 @@ class GameSave {
 		std::ofstream saveFile;
 		std::ifstream continueFile;
 
-		enum Selection : uint8_t {
+		enum Selection : uint8_t 
+		{
 			SLOT_1 = 0,
 			SLOT_2,
 			SLOT_3,

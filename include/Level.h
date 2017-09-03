@@ -18,74 +18,77 @@
 * Abstract class for levels.
 * Contains a background, player and a camera.
 */
-class Level : public StateGame {
+class Level : public StateGame 
+{
 	
 	public:	
 		/**
 		* The destructor.
 		* Deletes all the allocated attributes, even though the specific levels should.
 		*/
-		virtual ~Level();
+		virtual ~Level ();
 
 		/**
 		* @return The Level width.
 		*/
-		unsigned int getWidth();
+		unsigned int getWidth ();
 
 		/**
 		* @return The Level height.
 		*/
-		unsigned int getHeight();
+		unsigned int getHeight ();
 
 	protected:
 		/**
 		* The constructor.
 		* Initializes all the attributes.
 		*/
-		Level();
+		Level ();
 
 		/**
 		* @param player_ : Sets the player for the level.
 		*/
-		virtual void setPlayer(Player* const player_);
+		virtual void setPlayer ( Player *const player_ );
 
 		/**
 		* @param camera_ : Sets the camera for the level.
 		* @note You should only set the camera after setting the player. Will warn if you
 		* 	didn't.
 		*/
-		virtual void setCamera(Camera* const camera_);
+		virtual void setCamera ( Camera *const camera_ );
 
-		virtual void setBoss(Boss* const boss);
+		virtual void setBoss ( Boss *const boss );
 
-		virtual void clearEnemies();
-		virtual void clearDocuments();
+		virtual void clearEnemies ();
+		virtual void clearDocuments ();
 
-		void changeCheckpoints(int NUMBER_OF_CHECKPOINTS_, std::vector <double> checkpointsX_,
-		std::vector <double> checkpointsY_);
+		void changeCheckpoints ( int NUMBER_OF_CHECKPOINTS_, std::vector < double > checkpointsX_,
+		std::vector < double > checkpointsY_ );
 
 		unsigned int width; /**< Width that defines the horizontal limits. */
 		unsigned int height; /**< Height that defines the vertical limits. */
 
-		Player* player; /**< The direct reference to player, even though its in the list. */
-		Camera* camera; /**< The current camera for that level. */
-		PlayerHUD* playerHud;
+		Player *player; /**< The direct reference to player, even though its in the list. */
+		Camera *camera; /**< The current camera for that level. */
+		PlayerHUD *layerHud;
 
-		Boss* boss;
+		Boss *boss;
 
-		TileMap* tileMap;
-		QuadTree* quadTree;
+		TileMap *tileMap;
+		QuadTree *quadTree;
 
-		Sprite* background;
-		Sprite* backgroundTop;
-		std::vector <Sprite*> checkpoints;
-		std::vector <double> checkpointsX;
-		std::vector <double> checkpointsY;
-		std::vector <bool> checkpointsVisited;
+		Sprite *background;
+		Sprite *backgroundTop;
+
+		std::vector < Sprite * > checkpoints;
+		std::vector < double > checkpointsX;
+		std::vector < double > checkpointsY;
+		std::vector < bool > checkpointsVisited;
+
 		int NUMBER_OF_CHECKPOINTS;
 
-		std::vector <Enemy*> enemies;
-		std::vector <Document*> documents;
+		std::vector < Enemy * > enemies;
+		std::vector < Document * > documents;
 
 };
 
