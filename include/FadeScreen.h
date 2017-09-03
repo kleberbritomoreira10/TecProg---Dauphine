@@ -5,21 +5,23 @@
 #include "Sprite.h"
 #include "FadeHandler.h"
 
-class FadeScreen{
+class FadeScreen
+{
 
 	public:
-		FadeScreen();
-		virtual ~FadeScreen();
+		FadeScreen ();
+		virtual ~FadeScreen ();
 
-		void update(const double dt_);
-		void render();
-		bool isFaded();
-		void fadeOut(const double percentage_, const double time_);
-		void fadeIn(const double percentage_, const double time_);
+		void update ( const double dt_ );
+		void render ();
+		bool isFaded ();
+		void fadeOut ( const double percentage_, const double time_ );
+		void fadeIn ( const double percentage_, const double time_ );
 
 	private:
-		Sprite* fadeImage;
-		FadeHandler* fadeHandler;
+
+		Sprite *fadeImage;
+		FadeHandler *fadeHandler;
 
 };
 

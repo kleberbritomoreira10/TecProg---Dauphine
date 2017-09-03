@@ -16,39 +16,40 @@ class GStateCredits : public StateGame
 		* The constructor.
 		* Initializes all the attributes.
 		*/
-		GStateCredits();
+		GStateCredits ();
 
 		/**
 		* The destructor.
 		*/
-		virtual ~GStateCredits();
+		virtual ~GStateCredits ();
 
 		/**
 		* Loads the level.
 		* From the menu.lua script, loads all the necessary objects.
 		*/
-		virtual void load();
+		virtual void load ();
 
 		/**
 		* Updates the objects within the StateGame.
 		* @param dt_ : Delta time. Time elapsed between one frame and the other.
 		*/
-		virtual void update( const double dt_ );
+		virtual void update ( const double dt_ );
 
 		/**
 		* Unloads everything that was loaded.
 		* @see GStateCredits::load
 		*/
-		virtual void unload();
+		virtual void unload ();
 
 		/**
 		* Renders the state.
 		* Always renders on 0,0 position.
 		* @see Sprite::render
 		*/
-		virtual void render();
+		virtual void render ();
 
 	private:
+		
 		Sprite *creditsImage; /**< The image shown on the credits. */
 		const int creditsHeightSize;
 		const int creditsChangeSpeed;
