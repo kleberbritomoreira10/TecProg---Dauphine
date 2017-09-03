@@ -16,40 +16,41 @@ class GStateSplash : public StateGame
 		* The constructor.
 		* Initializes all the attributes.
 		*/
-		GStateSplash();
+		GStateSplash ();
 
 		/**
 		* The destructor.
 		*/
-		virtual ~GStateSplash();
+		virtual ~GStateSplash ();
 
 		/**
 		* Loads the level.
 		* From the Splash.lua script, loads all the necessary objects.
 		*/
-		virtual void load();
+		virtual void load ();
 
 		/**
 		* Updates the objects within the StateGame.
 		* @param dt_ : Delta time. Time elapsed between one frame and the other.
 		*/
-		virtual void update( const double dt_ );
+		virtual void update ( const double dt_ );
 
 		/**
 		* Unloads everything that was loaded.
 		* @see GStateSplash::load
 		*/
-		virtual void unload();
+		virtual void unload ();
 
 		/**
 		* Renders the state.
 		* Always renders on 0,0 position.
 		* @see Sprite::render
 		*/
-		virtual void render();
+		virtual void render ();
 
 	private:
-		enum SplashImages : uint8_t {
+		enum SplashImages : uint8_t 
+		{
 			ALKE_LOGO = 0,
 			TECHS,
 			LICENSES,
@@ -60,7 +61,7 @@ class GStateSplash : public StateGame
 		int currentSplash; /**< Determines which is the current splash image. */
 		double passedTime; /**< The time already elapsed since the beggining of the splash. */
 		double lifeTime; /**< The amount of time the splash will be shown. */
-		Sprite *images[SplashImages::TOTAL_SPLASH_IMAGES]; /**< Contains all the splash images. */
+		Sprite *images [ SplashImages::TOTAL_SPLASH_IMAGES ]; /**< Contains all the splash images. */
 		double ix;
 
 };
