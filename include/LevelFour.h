@@ -10,48 +10,49 @@
 * The first level of the game.
 * Derived from Level class.
 */
-class LevelFour : public Level {
+class LevelFour : public Level 
+{
 	
 	public:
 		/**
 		* The constructor.
 		* @see Level::Level()
 		*/
-		LevelFour();
+		LevelFour ();
 
 		/**
 		* The destructor.
 		*/
-		virtual ~LevelFour();
+		virtual ~LevelFour ();
 
 		/**
 		* Loads the level.
 		* From the Level1.lua script, loads all the necessary objects.
 		*/
-		virtual void load();
+		virtual void load ();
 		
 		/**
 		* Updates the objects within the Level.
 		* @param dt_ : Delta time. Time elapsed between one frame and the other.
 		*/
-		virtual void update(const double dt_);
+		virtual void update ( const double dt_ );
 
 		/**
 		* Unloads everything that was loaded.
 		* @see LevelFour::load()
 		*/
-		virtual void unload();
+		virtual void unload ();
 
 		/**
 		* Renders the level.
 		* Always renders on 0,0 position.
 		* @see Sprite::render()
 		*/
-		virtual void render();
+		virtual void render ();
 
-		int items[2][NUMBER_ITEMS];
-		Sprite* image;
-		bool caughtItems[NUMBER_ITEMS];
+		int items [ 2 ] [ NUMBER_ITEMS ];
+		Sprite *image;
+		bool caughtItems [ NUMBER_ITEMS ];
 
 };
 

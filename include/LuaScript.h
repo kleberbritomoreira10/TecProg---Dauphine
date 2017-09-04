@@ -19,7 +19,8 @@ https://github.com/EliasD/unnamed_lua_binder
 * Parses lua scripts into C++.
 *
 */
-class LuaScript {
+class LuaScript
+{
 
 	public:
 		/**
@@ -27,13 +28,13 @@ class LuaScript {
 		* Initializes a new lua state, and loads the desired script.
 		* @param filename_ : Path to the desired script, i.e. "lua/level1/Player.lua".
 		*/
-		LuaScript(const std::string& filename_);
+		LuaScript ( const std::string &filename_ );
 
 		/**
 		* The destructor.
 		* Closes the lua state, if open.
 		*/
-		virtual ~LuaScript();
+		virtual ~LuaScript ();
 
 		/**
 		* Gets value of desired variable.
@@ -41,8 +42,8 @@ class LuaScript {
 		* @param variableName_ : The varaible you want to get a value from.
 		* @return The T value stored in 'variableName_' inside the lua script.
 		*/
-		template<typename T>
-		T unlua_get(const std::string& variableName_);
+		template < typename T >
+		T unlua_get ( const std::string &variableName_ );
 		
 		/**
 		* Gets an int vector.
@@ -50,7 +51,7 @@ class LuaScript {
 		* @param name_ : The table which contains the int vector.
 		* @return An int vector, containing all the ints inside the 'name_' array from the lua script.
 		*/
-		std::vector<int> unlua_getIntVector(const std::string& name_);
+		std::vector < int > unlua_getIntVector ( const std::string &name_ );
 
 		/**
 		* Gets the keys from a table.
@@ -58,15 +59,16 @@ class LuaScript {
 		* @param name_ : The name of the table.
 		* @return A string vector, containing all the keys from inside the 'name_' table from the lua script.
 		*/
-		std::vector<std::string> unlua_getTableKeys(const std::string& name_);
+		std::vector < std::string > unlua_getTableKeys ( const std::string &name_ );
 
 	private:
-		lua_State* luaState; /**< The lua state. */
+		lua_State *luaState; /**< The lua state. */
 		int level; /**< Current level. */
 
-		inline void unlua_clean(){
-		    int n = lua_gettop(this->luaState);
-		    lua_pop(this->luaState, n);
+		inline void unlua_clean ()
+		{
+		    int n = lua_gettop ( this -> luaState );
+		    lua_pop ( this -> luaState, n );
 		}
 
 		/**
@@ -75,7 +77,7 @@ class LuaScript {
 		* @param variableName_ : The varaible you want to get a value from.
 		* @return True for success, false for failure to get variable.
 		*/
-		bool unlua_getToStack(const std::string& variableName_);		
+		bool unlua_getToStack ( const std::string &variableName_ );		
 
 		/**
 		* Gets a T type value from lua script.
@@ -83,16 +85,16 @@ class LuaScript {
 		* @param variableName_ : The varaible you want to get a value from.
 		* @return T type value.
 		*/
-		template<typename T>
-		T unlua_getValue(const std::string& variableName_);
+		template < typename T >
+		T unlua_getValue ( const std::string &variableName_ );
 
 		/**
 		* Gets a default value.
 		* 
 		* @return Value 0 or a string "null", depending on how it is called.
 		*/
-		template<typename T>
-		T unlua_getDefault();
+		template < typename T >
+		T unlua_getDefault ();
 
 };
 
