@@ -12,7 +12,8 @@ class Potion : public DynamicEntity
 		/**
 		* The constructor.
 		*/
-		Potion( const double x_, const double y_, const std::string& path_, const int strength_, const int inertia_, const int distance_, const bool isRight_ );
+		Potion( const double x_, const double y_, const std::string& path_, const int strength_, const int inertia_, 
+			const int distance_, const bool isRight_ );
 
 		/**
 		* The destructor.

@@ -9,7 +9,8 @@
 * The HUD entity class.
 * Contains all the relevant implementation relative to the HUD.
 */
-class PlayerHUD {
+class PlayerHUD 
+{
 
 	public:
 
@@ -20,13 +21,13 @@ class PlayerHUD {
 		* @param y_ : position in y axis.
 		* @param sprite_ : which sprite to use.
 		*/
-		PlayerHUD(Player* const player_);
+		PlayerHUD ( Player *const player_ );
 
 		/**
 		* The destructor.
 		* Exits the current state and destroys all states.
 		*/
-		virtual ~PlayerHUD();
+		virtual ~PlayerHUD ();
 
 		/**
 		* Updates the HUD.
@@ -34,7 +35,7 @@ class PlayerHUD {
 		* @param dt_ : Delta time. Time elapsed between one frame and the other, independent
 		* 	of processing speed.
 		*/
-		void update();
+		void update ();
 
 		/**
 		* Renders the HUD.
@@ -43,10 +44,11 @@ class PlayerHUD {
 		* @param cameraX_ : The x position of the camera.
 		* @param cameraY_ : The y position of the camera.
 		*/
-		void render();
+		void render ();
 
 	private:
-		enum HUD_Elements : uint8_t {
+		enum HUD_Elements : uint8_t 
+		{
 			HEALTH_0 = 0,
 			HEALTH_33,
 			HEALTH_66,
@@ -55,12 +57,12 @@ class PlayerHUD {
 			TOTAL_HUD
 		};
 
-		void initializeSprites();
+		void initializeSprites ();
 
-		Sprite* playerHudSprites[TOTAL_HUD];
-		bool canRenderHud[TOTAL_HUD];
-		Player* player;
-		Text* potionsLeft;
+		Sprite *playerHudSprites [ TOTAL_HUD ];
+		bool canRenderHud [ TOTAL_HUD ];
+		Player *player;
+		Text *potionsLeft;
 };
 
 #endif //INCLUDE_PLAYERHUD_H
