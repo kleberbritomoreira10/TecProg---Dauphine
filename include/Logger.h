@@ -13,7 +13,7 @@ enum LogLevel : uint8_t
 	DEBUG
 };
 
-#define Log ( level ) Logger ().log ( level )
+#define Log( level ) Logger ().log ( level )
 
 /**
 * Class used for logging.
