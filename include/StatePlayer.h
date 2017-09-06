@@ -12,14 +12,15 @@ class Player;
 * Parent class for other player states.
 * 
 */
-class StatePlayer {
+class StatePlayer
+{
 
 	public:
 		/**
 		* The constructor.
 		* @param player_ : Reference to the player.
 		*/
-		StatePlayer(Player* const player_);
+		StatePlayer( Player *const player_ );
 
 		/**
 		* The destructor.
@@ -43,11 +44,10 @@ class StatePlayer {
 		* While the Player is on the state, this method runs every update.
 		* @param keyStates_ : Boolean array that contains all input data.
 		*/
-		virtual void handleInput(const std::array<bool, GameKeys::MAX> keyStates_) = 0;
+		virtual void handleInput( const std::array<bool, GameKeys::MAX> keyStates_ ) = 0;
 
-		Player* player; /**< Reference to the player. */
+		Player *player; /**< Reference to the player. */
 		SDL_Rect box;
-
 };
 
 #endif // INCLUDE_PLAYERSTATE_H

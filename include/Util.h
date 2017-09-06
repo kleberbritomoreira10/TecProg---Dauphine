@@ -3,10 +3,11 @@
 
 #include <string>
 
-class Util {
+class Util
+{
 
 	public:
-		static std::string toString(const int number_);
+		static std::string toString( const int number_ );
 
 };
 
