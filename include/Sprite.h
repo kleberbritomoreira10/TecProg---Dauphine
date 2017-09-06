@@ -9,10 +9,12 @@
 * Visual representation of game objects.
 * Holds the SDL_Texture from the SDL2 library.
 */
-class Sprite {
+class Sprite 
+{
 
 	public:
-		typedef std::shared_ptr<Sprite> SpritePtr; /**< Typedef of a Sprite shared pointer. */
+
+		typedef std::shared_ptr < Sprite > SpritePtr; /**< Typedef of a Sprite shared pointer. */
 
 		/**
 		* The constructor.
@@ -21,14 +23,14 @@ class Sprite {
 		* @param path_ : the image path.
 		* @see Sprite::loadFrom
 		*/
-		Sprite(const std::string& path_);
-		Sprite(SDL_Surface* const surface_);
+		Sprite ( const std::string &path_ );
+		Sprite (SDL_Surface *const surface_ );
 
 		/**
 		* The destructor.
 		* Destroys the SDL_Texture.
 		*/
-		~Sprite();
+		~Sprite ();
 
 		/**
 		* Renders the sprite.
@@ -48,28 +50,28 @@ class Sprite {
 		* @note If the Window renderer is null, will halt the game.
 		* @note If it fails to render, logs an error message.
 		*/
-		void render(const double x_, const double y_, SDL_Rect* const clip_ = nullptr,
+		void render ( const double x_, const double y_, SDL_Rect *const clip_ = nullptr,
 			const bool stretch_ = false, const double angle_ = 0.0,
-			SDL_Point* const center_ = nullptr, SDL_RendererFlip flip_ = SDL_FLIP_NONE);
+			SDL_Point *const center_ = nullptr, SDL_RendererFlip flip_ = SDL_FLIP_NONE);
 
 		/**
 		* @return The Sprite width.
 		*/
-		unsigned int getWidth();
+		unsigned int getWidth ();
 
-		void setWidth(unsigned int width_);
+		void setWidth ( unsigned int width_ );
 
-		void setHeight(unsigned int height_);
+		void setHeight ( unsigned int height_ );
 
 		/**
 		* @return The Sprite height.
 		*/
-		unsigned int getHeight();
+		unsigned int getHeight ();
 
-		std::string getPath();
+		std::string getPath ();
 
-		double getAlpha();
-		void setAlpha(int alpha_);
+		double getAlpha ();
+		void setAlpha ( int alpha_ );
 		
 	private:
 		/**
@@ -79,13 +81,13 @@ class Sprite {
 		* @note Error message is logged if the sprite's SDL_Texture (sdlTexture) is null after
 			method.
 		*/
-		void loadFrom(const std::string& path_);
+		void loadFrom ( const std::string &path_ );
 
-		SDL_Texture* surfaceToTexture(SDL_Surface* const surface_);
+		SDL_Texture* surfaceToTexture ( SDL_Surface *const surface_ );
 
 		SDL_Texture* sdlTexture; /**< The SDL texture to use as the image. */
 
-		void setBlendMode(SDL_BlendMode blending_);
+		void setBlendMode ( SDL_BlendMode blending_ );
 
 		unsigned int width; /**< The loaded image's width. */
 		unsigned int height; /**< The loaded image's width. */

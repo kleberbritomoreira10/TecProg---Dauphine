@@ -53,7 +53,7 @@ class StateGame
 		void cleanEntities();
 
 	protected:
-		std::vector<Entity*> entities; /**< List of all the entities in the state. */
+		std::vector < Entity * > entities; /**< List of all the entities in the state. */
 
 };
 
