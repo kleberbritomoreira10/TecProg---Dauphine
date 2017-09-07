@@ -232,7 +232,7 @@ void LevelFour::update( const double dt_ )
   }
 
   // Updating the player attack/enemy collision.
-  for ( auto enemy : this->enemies )
+  for ( auto enemy : this -> enemies )
   {
     if ( Collision::rectsCollided( this -> player -> getBoundingBox(), enemy -> getBoundingBox()) )
     {
