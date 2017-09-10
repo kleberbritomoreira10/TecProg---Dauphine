@@ -110,7 +110,7 @@ void Enemy::render(const double cameraX_, const double cameraY_)
 
 void Enemy::initializeStates()
 {
-	// Initialize all the states in Enemy here.
+	
 	ADD_STATE_INSERT(IDLE,         EStateIdle);
 	ADD_STATE_INSERT(CURIOUS,      EStateCurious);
 	ADD_STATE_INSERT(PATROLLING,   EStatePatrolling);
@@ -122,7 +122,7 @@ void Enemy::initializeStates()
 
 void Enemy::destroyStates()
 {
-	// Delete all the states in Enemy here.
+	
 	std::map<EStates, StateEnemy*>::const_iterator it;
 	for ( it = this -> statesMap.begin(); it != this -> statesMap.end(); it++ )
 	{

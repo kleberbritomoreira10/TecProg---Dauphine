@@ -34,7 +34,6 @@ using std::map;
 
 namespace Tmx 
 {
-		
 	PropertySet::PropertySet() : properties()  
 	{}
 
@@ -69,26 +68,25 @@ namespace Tmx
 		// Find the property in the map.
 		map< string, string >::const_iterator iter = properties.find(name);
 
-		if (iter == properties.end())
+		if ( iter == properties.end() )
 			return std::string("No such property!");
 
 		return iter->second;
 	}
 
-	int PropertySet::GetNumericProperty(const string &name) const 
+	int PropertySet::GetNumericProperty( const string &name) const 
 	{
 		return atoi(GetLiteralProperty(name).c_str());
 	}
 
-	float PropertySet::GetFloatProperty(const string &name) const 
+	float PropertySet::GetFloatProperty( const string &name) const 
 	{
 		return float(atof(GetLiteralProperty(name).c_str()));
 	}
 
 	bool PropertySet::HasProperty( const string& name ) const
 	{
-		if( properties.empty() ) return false;
+		if ( properties.empty() ) return false;
 		return ( properties.find(name) != properties.end() );
 	}
-
 };
