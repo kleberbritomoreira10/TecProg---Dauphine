@@ -94,7 +94,7 @@ void Boss::update( const double dt_)
     {
       if ( !potion -> activated )
       {
-      // Delete potion.
+      
       }
       potion -> update( dt_);
     }
@@ -117,7 +117,7 @@ void Boss::render( const double cameraX_, const double cameraY_)
 		  }
 	}
 	
-		// Shield render.
+		
 	if ( this -> hasShield )
 	{
 		SDL_RendererFlip flip = getFlip();
@@ -150,7 +150,7 @@ void Boss::render( const double cameraX_, const double cameraY_)
 
 void Boss::initializeStates()
 {
-	// Initialize all the states in Boss here.
+	
 	ADD_STATE_INSERT(IDLE,				BStateIdle);
 	ADD_STATE_INSERT(ATTACK,			BStateAttack);
 	ADD_STATE_INSERT(SHIELD,			BStateShield);
@@ -161,7 +161,7 @@ void Boss::initializeStates()
 
 void Boss::destroyStates()
 {
-	// Delete all the states in Boss here.
+	
 	std::map<BStates, StateBoss*>::const_iterator it;
 	for ( it = this -> statesMap.begin(); it != this -> statesMap.end(); it++)
 	{

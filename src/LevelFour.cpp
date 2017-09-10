@@ -24,13 +24,13 @@ LevelFour::~LevelFour()
 
 void LevelFour::load()
 {
-  // Changing the music.
+  
   Game::instance().getAudioHandler().changeMusic("res/audio/lv4.wav");
 
-  // Loading the tile/tilemap.
+  
   this -> tileMap = new TileMap("res/maps/level4.tmx");
 
-  // Setting the level width/height.
+  
   this -> width = this -> tileMap -> getMapWidth();
   this -> height = this -> tileMap -> getMapHeight();
   SDL_Rect bounds = { 0, 0, ( int ) this -> width, ( int ) this -> height };
@@ -43,16 +43,16 @@ void LevelFour::load()
   }
   this -> image = Game::instance().getResources().get("res/images/potion.png");
 
-  // Getting information from lua script.
+  
   LuaScript luaLevel1("lua/Level1.lua");
   const std::string pathPlayerSpriteSheet = luaLevel1.unlua_get<std::string>("level.player.spriteSheet");
   const std::string pathBackgroundAudio = luaLevel1.unlua_get<std::string>("level.audio.background");
   const std::string pathEnemy = luaLevel1.unlua_get<std::string>("level.enemy");
 
-  // Changing the music.
-  // Game::instance().getAudioHandler().changeMusic(pathBackgroundAudio);
+  
+  
 
-  // Loading the player and the camera.
+  
   Player* lPlayer = nullptr;
     
   if( Game::instance().getSaves().isSaved(Game::instance().currentSlot) && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot) == 4 )
@@ -71,7 +71,7 @@ void LevelFour::load()
     
   this -> playerHud = new PlayerHUD( lPlayer );
     
-  // Load all the enemies from the tileMap.
+  
   for( unsigned  int i = 0; i < this -> tileMap -> getEnemiesX().size(); i++ )
   {
     Enemy* enemy = new Enemy( this -> tileMap -> getEnemiesX().at(i),
@@ -89,7 +89,7 @@ void LevelFour::load()
     this -> enemies.push_back( enemy );
   }
 
-  // Documents;
+  
   Document* document1 = new Document( 28*64, 64*64, "res/images/documentSprite.png", "res/images/Documents/d1.png");
   this -> documents.push_back( document1 );
 
@@ -99,7 +99,7 @@ void LevelFour::load()
   Document* document3 = new Document(151*64, 25*64, "res/images/documentSprite.png", "res/images/Documents/d3.png");
   this -> documents.push_back( document3 );
 
-  // Finally, setting the player and the camera.
+  
   setPlayer( lPlayer );
   Enemy::pLife = this -> player -> life;
 
@@ -121,15 +121,15 @@ void LevelFour::unload()
     caughtItems[i] = false;
   }
 
-  //this->checkpointVisited = false;  
+    
 }
 
 void LevelFour::update( const double dt_ )
 {
-  // Populating the QuadTree.
+  
   this -> quadTree -> setObjects( this -> tileMap -> getCollisionRects() );
 
-  // Updating the entities, using the QuadTree.
+  
   std::vector<CollisionRect> returnObjects;
   for ( auto entity : this -> entities ) 
   {
@@ -139,7 +139,7 @@ void LevelFour::update( const double dt_ )
     entity -> update( dt_ );
   }
 
-  // Updating the enemies.
+  
   for( auto enemy : this -> enemies )
   {
     returnObjects.clear();
@@ -148,14 +148,14 @@ void LevelFour::update( const double dt_ )
     enemy -> update( dt_ );
   }
 
-  // Set to GameOver if the player is dead.
+  
   if ( this -> player -> isDead() )
   {
     Game::instance().setState( Game::GStates::GAMEOVER );
     return;
   }
 
-  // Updating the potions.
+  
   for ( auto potion : this -> player -> potions )
   {
     returnObjects.clear();
@@ -163,8 +163,8 @@ void LevelFour::update( const double dt_ )
     potion -> setCollisionRects( returnObjects );
   }
 
-  /// @todo Maybe refactor this static Enemy::px, Enemy::py.
-  // Updating player info for the enemies.
+  
+  
   Enemy::px = this -> player -> x;
   Enemy::py = this -> player -> y;
   Enemy::pVulnerable = this -> player -> isVulnerable;
@@ -192,13 +192,13 @@ void LevelFour::update( const double dt_ )
       }
   }
 
-  // Updating the HUD.
+  
   this -> playerHud -> update();
 
-  // Updating the camera.
+  
   this -> camera -> update();
 
-  // Set next level if end is reached.
+  
   if ( this -> player -> reachedLevelEnd )
   {
     Game::instance().transitionTo = Game::GStates::LEVEL_FIVE;
@@ -206,7 +206,7 @@ void LevelFour::update( const double dt_ )
     return;
   }
 
-  // Updating the potion/enemy collision.
+  
   for ( auto potion : this -> player -> potions )
   {
     for ( auto enemy : this->enemies )
@@ -220,7 +220,7 @@ void LevelFour::update( const double dt_ )
             enemy -> life -= 100;
             potion -> activated = false;
           }
-          // Log(DEBUG) << "Enemy Life = " << enemy->life;
+          
           if ( enemy -> life <= 0 )
           {
             enemy->changeState( Enemy::EStates::DEAD );
@@ -231,7 +231,7 @@ void LevelFour::update( const double dt_ )
     }
   }
 
-  // Updating the player attack/enemy collision.
+  
   for ( auto enemy : this -> enemies )
   {
     if ( Collision::rectsCollided( this -> player -> getBoundingBox(), enemy -> getBoundingBox()) )
@@ -245,7 +245,7 @@ void LevelFour::update( const double dt_ )
             enemy -> life -= this -> player -> attackStrength;
             this -> player -> canAttack = false;
           }
-          // Log(DEBUG) << "Enemy Life = " << enemy->life;
+          
           if ( enemy -> life <= 0 )
           {
             enemy -> changeState( Enemy::EStates::DEAD );
@@ -254,7 +254,7 @@ void LevelFour::update( const double dt_ )
     }
   }
 
-  //Saving the game state
+  
   for ( int j = 0; j < this -> NUMBER_OF_CHECKPOINTS; ++j )
   {
     if ( !this -> checkpointsVisited[j] && this -> player -> getBoundingBox().x >= checkpointsX[j] 
@@ -266,7 +266,7 @@ void LevelFour::update( const double dt_ )
     }   
   }
 
-  // Documents check
+  
   for ( auto document : this -> documents )
   {
     if ( Collision::rectsCollided(this -> player -> getBoundingBox(), document -> getBoundingBox()) )
@@ -290,7 +290,7 @@ void LevelFour::render()
     this -> checkpoints[j] -> render( this -> checkpointsX[j] - cameraX, this -> checkpointsY[j] - cameraY );
   }
 
-  // Render the tiles in the TileMap.
+  
   this -> tileMap -> render( cameraX, cameraY );
 
   this -> playerHud -> render();
@@ -300,13 +300,13 @@ void LevelFour::render()
     enemy -> render( cameraX, cameraY );
   }
 
-  // Render all the entities in the list.
+  
   for ( auto entity : this -> entities )
   {
     entity -> render( cameraX, cameraY );
   }
 
-  // Potion refill
+  
   for ( unsigned int i = 0; i < NUMBER_ITEMS; i++ )
   {
     if ( this -> image != nullptr && caughtItems[i] == false )
@@ -315,7 +315,7 @@ void LevelFour::render()
     }
   }
 
-  // Document text image
+  
   for ( auto document : this -> documents )
   {
     document -> render( cameraX, cameraY );
