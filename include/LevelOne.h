@@ -1,3 +1,11 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @LevelOne.h
+ * The first level of the game.
+ * Derived from Level class
+ */
+
 #ifndef INCLUDE_LEVELONE_H
 #define INCLUDE_LEVELONE_H
 

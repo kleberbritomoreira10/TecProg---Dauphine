@@ -1,3 +1,10 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @PStateMovingCrouch.cpp
+ * The state when the player is idle.
+ */
+ 
 #include "PStateMovingCrouch.h"
 #include "Logger.h"
 
@@ -61,5 +68,5 @@ void PStateMovingCrouch::handleInput ( const std::array < bool, GameKeys::MAX > 
 PStateMovingCrouch::PStateMovingCrouch ( Player *const player_ ) :
 	StatePlayer( player_ )
 {
-	
+
 }

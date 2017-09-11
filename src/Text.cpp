@@ -1,3 +1,10 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @Text.cpp
+ *  The state of the text in the game.
+ */
+
 #include "Text.h"
 #include "Logger.h"
 

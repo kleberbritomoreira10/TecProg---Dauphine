@@ -1,13 +1,16 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @PStateMovingCrouch.h
+ * The state when the player is idle.
+ */
+
 #ifndef INCLUDE_PSTATEMOVINGCROUCH_H
 #define INCLUDE_PSTATEMOVINGCROUCH_H
 
 #include "StatePlayer.h"
 
-/**
-* The state when the player is idle.
-*
-*/
-class PStateMovingCrouch : public StatePlayer 
+class PStateMovingCrouch : public StatePlayer
 {
 
 	public:
@@ -16,7 +19,7 @@ class PStateMovingCrouch : public StatePlayer
 		* @param player_ : Reference to the player.
 		*/
 		PStateMovingCrouch ( Player *const player_ );
-		
+
 		/**
 		* The destructor.
 		*/

@@ -1,3 +1,10 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @Text.h
+ * The state of the text in the game.
+ */
+
 #ifndef INCLUDE_TEXT_H
 #define INCLUDE_TEXT_H
 
@@ -12,10 +19,10 @@ class Text : public Entity
 
 	public:
 		Text( const double x_, const double y_, const char *path_, const int size_,
-			const char *text_, const SDL_Color color_ ); 
+			const char *text_, const SDL_Color color_ );
 
 		Text( const double x_, const double y_, const char *path_, const int size_,
-			const char *text_ ); 
+			const char *text_ );
 
 		virtual ~Text();
 
