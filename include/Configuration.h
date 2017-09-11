@@ -1,3 +1,10 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @Configuration.h
+ * Game configuration class
+ */
+
 #ifndef INCLUDE_CONFIGURATION_H
 #define INCLUDE_CONFIGURATION_H
 
@@ -8,7 +15,7 @@
 * @todo Refactor the Configuration class.
 * @todo Implement all the possible resolutions the game will "want".
 */
-class Configuration 
+class Configuration
 {
 
 	public:
@@ -64,20 +71,20 @@ class Configuration
 		static unsigned int getScreenHeight ();
 
 	private:
-		
-		static const unsigned int resolutionWidth; /**< The game's width resolution. (16) */
-		static const unsigned int resolutionHeight; /**< The game's height resolution. (10) */
 
-		static uint32_t maxFramerate; /**< The game's max framerate. */
-		static std::string windowTitle; /**< The game window's title. */
+		static const unsigned int resolutionWidth; // The game's width resolution. (16)
+		static const unsigned int resolutionHeight; // The game's height resolution. (10)
 
-		static unsigned int logicalRenderSize; /**< The size of the logical rendering. */
+		static uint32_t maxFramerate; // The game's max framerate.
+		static std::string windowTitle; // The game window's title.
 
-		static unsigned int screenWidth; /**< The screen width. */
-		static unsigned int screenHeight; /**< The screen height. */
+		static unsigned int logicalRenderSize; // The size of the logical rendering.
 
-		static unsigned int cameraDistanceWidth; /**< The width distance of the camera. */
-		static unsigned int cameraDistanceHeight; /**< The height distance of the camera. */
+		static unsigned int screenWidth; // The screen width.
+		static unsigned int screenHeight; // The screen height.
+
+		static unsigned int cameraDistanceWidth; // The width distance of the camera.
+		static unsigned int cameraDistanceHeight; // The height distance of the camera.
 
 };
 

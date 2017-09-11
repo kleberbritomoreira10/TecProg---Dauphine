@@ -10,9 +10,9 @@
 * The first level of the game.
 * Derived from Level class.
 */
-class LevelOne : public Level 
+class LevelOne : public Level
 {
-	
+
 	public:
 		/**
 		* The constructor.
@@ -20,9 +20,6 @@ class LevelOne : public Level
 		*/
 		LevelOne ();
 
-		/**
-		* The destructor.
-		*/
 		virtual ~LevelOne ();
 
 		/**
@@ -30,7 +27,7 @@ class LevelOne : public Level
 		* From the Level1.lua script, loads all the necessary objects.
 		*/
 		virtual void load ();
-		
+
 		/**
 		* Updates the objects within the Level.
 		* @param dt_ : Delta time. Time elapsed between one frame and the other.

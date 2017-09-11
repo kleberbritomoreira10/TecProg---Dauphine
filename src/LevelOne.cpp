@@ -1,3 +1,11 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @LevelOne.cpp
+ * The first level of the game.
+ * Derived from Level class
+ */
+
 #include "LevelOne.h"
 #include "Game.h"
 #include "GameSave.h"
@@ -24,6 +32,10 @@ LevelOne::~LevelOne ()
 
 }
 
+/**
+* Loads the level.
+* From the Level1.lua script, loads all the necessary objects.
+*/
 void LevelOne::load ()
 {
 	Log ( DEBUG ) << "Loading level 1...";
@@ -57,14 +69,14 @@ void LevelOne::load ()
 	// Getting information from lua script.
 	LuaScript luaLevel1 ( "lua/Level1.lua" );
 
-	const std::string pathPlayerSpriteSheet = luaLevel1.unlua_get <std::string> ( 
+	const std::string pathPlayerSpriteSheet = luaLevel1.unlua_get <std::string> (
 		"level.player.spriteSheet" );
 
 	const std::string pathBackgroundAudio = luaLevel1.unlua_get <std::string> (
 		"level.audio.background" );
 
 	const std::string pathEnemy = luaLevel1.unlua_get <std::string> ( "level.enemy" );
-	
+
 
 	// Changing the music.
 	Game::instance (). getAudioHandler (). changeMusic ( pathBackgroundAudio );
@@ -72,7 +84,7 @@ void LevelOne::load ()
 	// Loading the player and the camera.
 
 	Player *lPlayer = nullptr;
-	
+
 	if ( Game::instance (). getSaves (). isSaved ( Game::instance (). currentSlot )
 	 && Game::instance (). getSaves (). getSavedLevel ( Game::instance (). currentSlot ) == 1 )
 	{
@@ -80,21 +92,21 @@ void LevelOne::load ()
 		double savedPX = 0.0;
 		double savedPY = 0.0;
 
-		Game::instance (). getSaves (). getPlayerPosition ( savedPX, savedPY, 
+		Game::instance (). getSaves (). getPlayerPosition ( savedPX, savedPY,
 			Game::instance ().currentSlot );
 
 		lPlayer = new Player ( savedPX, savedPY, pathPlayerSpriteSheet );
 	}else
 	{
-		lPlayer = new Player ( this -> tileMap -> getInitialX (), this -> tileMap -> 
+		lPlayer = new Player ( this -> tileMap -> getInitialX (), this -> tileMap ->
 			getInitialY (), pathPlayerSpriteSheet );
 	}
 
-	Camera *lCamera = new Camera ( lPlayer ); 
-	
+	Camera *lCamera = new Camera ( lPlayer );
+
 	// Loading the refill of potion.
 	this -> image = Game::instance (). getResources (). get( "res/images/potion.png" );
-	
+
 	this -> playerHud = new PlayerHUD( lPlayer );
 
 	// Load all the enemies from the tileMap.
@@ -108,8 +120,8 @@ void LevelOne::load ()
 		if ( Game::instance (). getSaves (). isSaved ( Game::instance (). currentSlot ) )
 		{
 
-			if ( Game::instance (). getSaves (). isEnemyDead ( i, Game::instance (). currentSlot ) 
-				&& Game::instance (). getSaves (). getSavedLevel ( Game::instance (). currentSlot ) 
+			if ( Game::instance (). getSaves (). isEnemyDead ( i, Game::instance (). currentSlot )
+				&& Game::instance (). getSaves (). getSavedLevel ( Game::instance (). currentSlot )
 				== 1 )
 			{
 
@@ -133,6 +145,8 @@ void LevelOne::load ()
 	Game::instance (). getFade (). fadeOut ( 0, 0.002 );
 }
 
+// Unloads everything that was loaded.
+
 void LevelOne::unload ()
 {
 	Log ( DEBUG ) << "\tUnloading level 1...";
@@ -148,6 +162,10 @@ void LevelOne::unload ()
 	}
 }
 
+/**
+* Updates the objects within the Level.
+* @param dt_ : Delta time. Time elapsed between one frame and the other.
+*/
 void LevelOne::update ( const double dt_ )
 {
 
@@ -157,7 +175,7 @@ void LevelOne::update ( const double dt_ )
 	// Updating the entities, using the QuadTree.
 	std::vector < CollisionRect > returnObjects;
 
-	for ( auto entity : this -> entities ) 
+	for ( auto entity : this -> entities )
 	{
 
 		returnObjects. clear ();
@@ -220,11 +238,11 @@ void LevelOne::update ( const double dt_ )
 	Enemy::px = this -> player -> x;
 	Enemy::py = this -> player -> y;
 	Enemy::pVulnerable = this -> player -> isVulnerable;
-	
-	for ( int i = 0; i < NUMBER_ITEMS; ++i )
-	{	
 
-		if ( Collision::rectsCollided ( this -> player -> getBoundingBox (), 
+	for ( int i = 0; i < NUMBER_ITEMS; ++i )
+	{
+
+		if ( Collision::rectsCollided ( this -> player -> getBoundingBox (),
 			{ items [ 0 ] [ i ], items [ 1 ] [ i ], 192, 192 } ) && caughtItems [ i ] == false )
 		{
 
@@ -239,7 +257,7 @@ void LevelOne::update ( const double dt_ )
  	{
 
 		if ( this -> player -> isVulnerable )
-		{ 
+		{
 
 			this -> player -> life--;
 			Enemy::pLife = this -> player -> life;
@@ -273,13 +291,13 @@ void LevelOne::update ( const double dt_ )
 		for ( auto enemy : this -> enemies )
 		{
 
-			if ( Collision::rectsCollided ( potion -> getBoundingBox (), 
+			if ( Collision::rectsCollided ( potion -> getBoundingBox (),
 				enemy -> getBoundingBox () ) )
 			{
 
 				if ( potion -> activated )
 				{
-					
+
 					if ( enemy -> life > 0 && this -> player -> canAttack )
 					{
 
@@ -304,17 +322,17 @@ void LevelOne::update ( const double dt_ )
 	for ( auto enemy : this -> enemies )
 	{
 
-		if ( Collision::rectsCollided ( this -> player -> getBoundingBox (), 
+		if ( Collision::rectsCollided ( this -> player -> getBoundingBox (),
 			enemy -> getBoundingBox () ) )
 		{
 
 			if ( this -> player -> isRight != enemy -> isRight )
 			{
 
-				if ( this -> player -> isCurrentState ( Player::PStates::ATTACK ) || 
+				if ( this -> player -> isCurrentState ( Player::PStates::ATTACK ) ||
 					this -> player -> isCurrentState ( Player::PStates::ATTACKMOVING ) )
 				{
-					
+
 					if ( enemy -> life > 0 && this -> player -> canAttack )
 					{
 
@@ -332,36 +350,36 @@ void LevelOne::update ( const double dt_ )
 
 					}
 				}
-			}	
+			}
 		}
 	}
-	
+
 	//Saving the game state
 	for ( int j = 0; j < this -> NUMBER_OF_CHECKPOINTS; ++j )
 	{
 
-		if ( !this -> checkpointsVisited [ j ] && this -> player -> getBoundingBox (). x 
+		if ( !this -> checkpointsVisited [ j ] && this -> player -> getBoundingBox (). x
 			>= checkpointsX [ j ] && this -> player -> getBoundingBox (). x <= checkpointsX[j]
-		    + 100 && this -> player -> getBoundingBox (). y >= checkpointsY [ j ] 
+		    + 100 && this -> player -> getBoundingBox (). y >= checkpointsY [ j ]
 		    && this -> player -> getBoundingBox (). y <= checkpointsY [ j ] + 200 )
 		{
 
-			this -> checkpoints [ j ] = Game::instance (). getResources (). get ( 
+			this -> checkpoints [ j ] = Game::instance (). getResources (). get (
 				"res/images/checkpoint_visited.png" );
 
-			Game::instance (). getSaves ().saveLevel ( 1, this -> player, this -> enemies, 
+			Game::instance (). getSaves ().saveLevel ( 1, this -> player, this -> enemies,
 				Game::instance (). currentSlot );
 
 			this -> checkpointsVisited [ j ] = true;
 
-		}	
+		}
 	}
 
 	// Documents check
 	for ( auto document : this -> documents )
 	{
 
-		if ( Collision::rectsCollided ( this -> player -> getBoundingBox (), 
+		if ( Collision::rectsCollided ( this -> player -> getBoundingBox (),
 			document -> getBoundingBox () ) )
 		{
 			document -> shouldRender = true;
@@ -372,9 +390,13 @@ void LevelOne::update ( const double dt_ )
 	}
 }
 
-void LevelOne::render () 
+/*
+Renders the level.
+Always renders on 0,0 position.
+*/
+void LevelOne::render ()
 {
-	
+
 	const int cameraX = this -> camera -> getClip (). x;
 	const int cameraY = this -> camera -> getClip (). y;
 
@@ -384,14 +406,14 @@ void LevelOne::render ()
 	// Render the tiles in the TileMap.
 	this -> tileMap -> render ( cameraX, cameraY );
 
-	for ( int j = 0; j < this -> NUMBER_OF_CHECKPOINTS; ++j ) 
+	for ( int j = 0; j < this -> NUMBER_OF_CHECKPOINTS; ++j )
 	{
-		this -> checkpoints [ j ] -> render ( this -> checkpointsX [ j ] - cameraX, 
+		this -> checkpoints [ j ] -> render ( this -> checkpointsX [ j ] - cameraX,
 			this -> checkpointsY [ j ] - cameraY );
 	}
 
 	this -> playerHud -> render ();
-	 
+
 	for ( auto enemy : this -> enemies )
 	{
 		enemy -> render ( cameraX, cameraY );
@@ -403,20 +425,20 @@ void LevelOne::render ()
         entity -> render ( cameraX, cameraY );
 	}
 
-	for ( unsigned int i = 0; i < NUMBER_ITEMS; i++ ) 
+	for ( unsigned int i = 0; i < NUMBER_ITEMS; i++ )
 	{
 
 		if ( this -> image != nullptr && caughtItems [ i ] == false )
 		{
-			
-			this -> image -> Sprite::render ( ( items [ 0 ] [ i ] + 60 ) - cameraX, 
+
+			this -> image -> Sprite::render ( ( items [ 0 ] [ i ] + 60 ) - cameraX,
 				( ( items [ 1 ] [ i ] ) - cameraY ) );
-		
+
 		}
 	}
 
 	// Document text image
-	for ( auto document : this -> documents ) 
+	for ( auto document : this -> documents )
 	{
 
 		document -> render ( cameraX, cameraY );

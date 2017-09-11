@@ -1,6 +1,6 @@
 #include "Text.h"
 #include "Logger.h"
- 
+
 Text::Text ( const double x_, const double y_, const char *path_, const int size_,
 	const char *text_, const SDL_Color color_ ) :
 
@@ -21,7 +21,7 @@ Text::Text ( const double x_, const double y_, const char *path_, const int size
 	const int surfaceW = surface -> w;
 	const int surfaceH = surface -> h;
 
-	if ( surface != nullptr ) 
+	if ( surface != nullptr )
 	{
 
 		this -> sprite = new Sprite ( surface );
@@ -68,7 +68,7 @@ Text::Text ( const double x_, const double y_, const char *path_, const int size
 	{
 		Log ( ERROR ) << "Could not load font surface.";
 	}
-	
+
 }
 
 Text::~Text ()
@@ -83,10 +83,11 @@ Text::~Text ()
 	TTF_CloseFont ( this -> font );
 }
 
+//
 void Text::changeText ( const char *text_, const SDL_Color color_ )
 {
 
-	if ( this -> sprite != nullptr ) 
+	if ( this -> sprite != nullptr )
 	{
 		delete this-> sprite;
 		this -> sprite = nullptr;
@@ -113,6 +114,7 @@ void Text::changeText ( const char *text_, const SDL_Color color_ )
 
 }
 
+// Change de font of text surface
 void Text::changeText ( const char *text_ )
 {
 
@@ -142,11 +144,20 @@ void Text::changeText ( const char *text_ )
 	}
 }
 
+/**
+* Updates the text.
+* @param dt_ : Delta time. Time elapsed between one frame and the other.
+*/
 void Text::update ( const double dt_ )
 {
 	( void ( dt_ ) ); // Unused.
 }
 
+/**
+* Renders the text.
+* @param cameraX_ : The x position of the camera.
+* @param cameraY_ : The y position of the camera.
+*/
 void Text::render ( const double cameraX_, const double cameraY_ )
 {
 
