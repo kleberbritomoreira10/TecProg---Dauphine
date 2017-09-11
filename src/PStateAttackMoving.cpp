@@ -1,3 +1,10 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @PStateAttackMoving.cpp
+ * The state when the player is idle.
+ */
+
 #include "PStateAttackMoving.h"
 #include "Logger.h"
 
@@ -20,13 +27,14 @@ void PStateAttackMoving::exit ()
 void PStateAttackMoving::handleInput ( const std::array < bool, GameKeys::MAX > keyStates_ )
 {
 	this -> player -> move ( keyStates_ [ GameKeys::LEFT ], keyStates_ [ GameKeys::RIGHT ] );
-	
+
 	if ( this -> player -> getAnimation () -> getCurrentFrame () == 9 )
 	{
 		this -> player -> changeState ( Player::PStates::MOVING );
 	}
 }
 
+// @param player_ : Reference to the player.
 PStateAttackMoving::PStateAttackMoving ( Player *const player_ ) :
 	StatePlayer ( player_ )
 {

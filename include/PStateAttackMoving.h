@@ -1,3 +1,10 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @PStateAttackMoving.h
+ * The state when the player is idle.
+ */
+ 
 #ifndef INCLUDE_PSTATEATTACKMOVING_H
 #define INCLUDE_PSTATEATTACKMOVING_H
 
@@ -7,7 +14,7 @@
 * The state when the player is idle.
 *
 */
-class PStateAttackMoving : public StatePlayer 
+class PStateAttackMoving : public StatePlayer
 {
 
 	public:
@@ -16,7 +23,7 @@ class PStateAttackMoving : public StatePlayer
 		* @param player_ : Reference to the player.
 		*/
 		PStateAttackMoving (Player *const player_ );
-		
+
 		/**
 		* The destructor.
 		*/

@@ -1,3 +1,11 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @DynamicEntity.h
+ * Subclass of Entity.
+ * The objects of this class are entities, but have physics applied to them (such as velocity).
+ */
+
 #ifndef INCLUDE_DYNAMICENTITY_H
 #define INCLUDE_DYNAMICENTITY_H
 
@@ -5,7 +13,7 @@
 #include "Crosshair.h"
 #include <array>
 
-enum CollisionSide : uint8_t 
+enum CollisionSide : uint8_t
 {
 
 	SOLID_TOP = 0,
@@ -20,7 +28,7 @@ enum CollisionSide : uint8_t
 * Subclass of Entity.
 * The objects of this class are entities, but have physics applied to them (such as velocity).
 */
-class DynamicEntity : public Entity 
+class DynamicEntity : public Entity
 {
 
 	public:
@@ -56,7 +64,7 @@ class DynamicEntity : public Entity
 		double vx; /**< The dynamic entity's speed on the x axis. */
 		double vy; /**< The dynamic entity's speed on the x axis. */
 		double speed; /**< Speed that moves dynamic entity on input. */
-		double maxSpeed; /**< Dynamic entity max speed. */		
+		double maxSpeed; /**< Dynamic entity max speed. */
 		bool isGrounded; /**< Check for if the dynamic entity is on the ground. */
 		double nextX;
 		double nextY;
@@ -78,7 +86,7 @@ class DynamicEntity : public Entity
 		*/
 		virtual void updatePosition ( const double dt_ );
 
-		virtual void scoutPosition ( const double dt_ ); 
+		virtual void scoutPosition ( const double dt_ );
 
 		/**
 		* @return A bool array with the sides the DynamicEntity collided.

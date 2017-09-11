@@ -1,3 +1,10 @@
+/* Dauphine
+* Universidade de Brasília - FGA
+* Técnicas de Programação, 2/2017
+* @BStateTeleport.cpp
+* Objects in this class control the behavior of teleportation
+*/
+
 #include "BStateTeleport.h"
 #include "Game.h"
 #include "Collision.h"
@@ -24,6 +31,7 @@ void BStateTeleport::enter ()
 
 }
 
+
 void BStateTeleport::exit ()
 {
 	this -> boss -> powerIsActivated = false;
@@ -37,7 +45,7 @@ void BStateTeleport::exit ()
 void BStateTeleport::update ( const double dt_ )
 {
 	tptime += dt_;
-	
+
 	if ( tptime < 3 )
 	{
 		this -> boss -> vx = 0;
@@ -54,7 +62,7 @@ void BStateTeleport::update ( const double dt_ )
 
 			this -> boss -> x = this -> boss -> player -> x - 150 - 50;
 			this -> boss -> y = this -> boss -> player -> y;
-		
+
 		}else
 		{
 			this -> boss -> x = this -> boss->player -> x + 150 + 50;
@@ -71,7 +79,7 @@ void BStateTeleport::update ( const double dt_ )
 
 			this -> boss -> powerFlip = SDL_FLIP_HORIZONTAL;
 			right = false;
-	
+
 		}else
 		{
 
@@ -79,17 +87,17 @@ void BStateTeleport::update ( const double dt_ )
 			right = false;
 
 		}
-	}else if ( tptime > 3.05 && tptime < 4 ) 
+	}else if ( tptime > 3.05 && tptime < 4 )
 	{
 		this -> boss -> x = pX;
 		this -> boss -> y = pY;
-		
+
 		if ( right )
 		{
 
 			this -> boss -> isRight = false;
 			direction = 0;
-		
+
 		}else
 		{
 			this -> boss -> isRight = true;
@@ -111,13 +119,13 @@ void BStateTeleport::update ( const double dt_ )
 
 			powerCollisionWidth = 539;
 			powerCollisionHeight = 117;
-	
+
 		}else
 		{
 
 			powerCollisionWidth = 665;
 			powerCollisionHeight = 262;
-		
+
 		}
 
 		if ( this -> boss -> player -> isRight )
@@ -125,26 +133,26 @@ void BStateTeleport::update ( const double dt_ )
 
 			this -> boss -> powerX = pX;
 			this -> boss -> powerY = pY;
-		
+
 		}else
 		{
 
 			this -> boss -> powerX = pX;
 			this -> boss -> powerY = pY;
-		
+
 		}if ( tptime >= 4.5 )
 		{
 
 			this -> boss -> powerAnimation -> changeAnimation ( 2, 0, 1, false, 0 );
 			powerCollisionWidth = 665;
 			powerCollisionHeight = 262;
-		
+
 		}
 
 		this -> boss -> powerIsActivated = true;
 
-		if ( Collision::rectsCollided ( this -> boss -> player -> getBoundingBox (), 
-			{ ( int ) this -> boss -> powerX - direction * 665, ( int ) this -> boss -> powerY 
+		if ( Collision::rectsCollided ( this -> boss -> player -> getBoundingBox (),
+			{ ( int ) this -> boss -> powerX - direction * 665, ( int ) this -> boss -> powerY
 				+ offset, direction * 665, 262 }) )
 		{
 
@@ -154,13 +162,14 @@ void BStateTeleport::update ( const double dt_ )
 				this -> boss -> player -> isVulnerable = false;
 			}
 		}
-		
+
 	}else if ( tptime > 5 )
 	{
 		this -> boss -> changeState ( Boss::BStates::IDLE );
 	}
 }
 
+// @param boss_ : Reference to the Boss.
 BStateTeleport::BStateTeleport ( Boss *const boss_ ) :
 	StateBoss( boss_ )
 {

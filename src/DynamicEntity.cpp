@@ -1,8 +1,21 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @DynamicEntity.cpp
+ * Subclass of Entity.
+ * The objects of this class are entities, but have physics applied to them (such as velocity).
+ */
+
 #include "DynamicEntity.h"
 #include "Logger.h"
 #include "Collision.h"
 #include "Math.h"
 
+/*
+* @param x_ : position in x axis.
+* @param y_ : position in y axis.
+* @param sprite_ : which sprite to use.
+*/
 DynamicEntity::DynamicEntity ( const double x_, const double y_, const std::string &path_ ) :
 
 	Entity ( x_, y_, path_ ),
@@ -28,17 +41,24 @@ DynamicEntity::DynamicEntity ( const double x_, const double y_, const std::stri
 
 DynamicEntity::~DynamicEntity ()
 {
-	
+
 }
 
+// @param width_,height_ : Tells the player what the width and height of the level is.
+
 void DynamicEntity::setLevelWH ( const unsigned int width_, const unsigned int height_ )
-{ 
+{
 
 	this -> levelW = width_;
 	this -> levelH = height_;
 
 }
 
+
+/* Updates the position of the dynamic entity
+* @param dt_ : Delta time. Time elapsed between one frame and the other, independent
+* of processing speed.
+*/
 void DynamicEntity::updatePosition ( const double dt_ )
 {
 
@@ -50,8 +70,9 @@ void DynamicEntity::updatePosition ( const double dt_ )
 	this -> isRight = ( this -> vx >= 0.0 );
 }
 
+// Update is based on what input was recieved, and the players velocity.
 void DynamicEntity::scoutPosition ( const double dt_ )
-{ 
+{
 
 	this -> nextX += this -> vx * dt_;
 	this -> nextY += this -> vy * dt_;
@@ -67,10 +88,10 @@ std::array < bool, CollisionSide::SOLID_TOTAL > DynamicEntity::detectCollision (
 	for ( auto tileBox : this -> collisionRects )
 	{
 
-		const Collision::RectangleSide side = Collision::rectsCollidedSide ( 
+		const Collision::RectangleSide side = Collision::rectsCollidedSide (
 			this -> boundingBox, tileBox.rect);
 
-		if ( side != Collision::RectangleSide::NONE ) 
+		if ( side != Collision::RectangleSide::NONE )
 		{
 
 			if ( tileBox.type == LEVEL_END )
@@ -78,7 +99,7 @@ std::array < bool, CollisionSide::SOLID_TOTAL > DynamicEntity::detectCollision (
 				this -> reachedLevelEnd = true;
 			}
 
-			switch ( side ) 
+			switch ( side )
 			{
 
 				case Collision::RectangleSide::TOP:
@@ -96,7 +117,7 @@ std::array < bool, CollisionSide::SOLID_TOTAL > DynamicEntity::detectCollision (
 					{
 
 						// Going up, not colliding
-						if ( this -> vy < 0 ) 
+						if ( this -> vy < 0 )
 						{
 
 							detections.at ( SOLID_BOTTOM ) = false;
@@ -108,7 +129,7 @@ std::array < bool, CollisionSide::SOLID_TOTAL > DynamicEntity::detectCollision (
 						}
 
 						// Going down and goes through tile top
-						if ( this -> vy >= 0.0 && ( this -> boundingBox.y 
+						if ( this -> vy >= 0.0 && ( this -> boundingBox.y
 							+ this -> boundingBox.h ) > tileBox.rect.y + tileBox.rect.h )
 						{
 
@@ -180,7 +201,7 @@ std::array < bool, CollisionSide::SOLID_TOTAL > DynamicEntity::detectCollision (
 		}else{
 			// No collision.
 		}
-		
+
 	}
 
 	return detections;
@@ -223,7 +244,7 @@ void DynamicEntity::move ( const bool movingLeft_, const bool movingRight_ )
 				this -> vx -= this -> speed;
 
 			}
-			
+
 			this -> vx = ( this -> vx < -this -> maxSpeed ) ? -this -> maxSpeed : this -> vx;
 
 		}
@@ -231,7 +252,7 @@ void DynamicEntity::move ( const bool movingLeft_, const bool movingRight_ )
 		if ( movingRight_ )
 		{
 
-			if ( this -> vx < 0.0 ) 
+			if ( this -> vx < 0.0 )
 			{
 
 				this -> vx += this -> speed * turnHandle;
@@ -273,7 +294,7 @@ void DynamicEntity::moveVertical ( const bool movingUp_, const bool movingDown_ 
 				this -> vy -= this -> speed;
 
 			}
-			
+
 			this -> vy = ( this -> vy < -this -> maxSpeed ) ? -this -> maxSpeed : this -> vy;
 
 		}
@@ -309,7 +330,7 @@ void DynamicEntity::slowVx ()
 
 	this -> vx -= 100 * vsign;
 
-	if ( Math::sign ( this -> vx ) != vsign ) 
+	if ( Math::sign ( this -> vx ) != vsign )
 	{
         this -> vx = 0.0001 * vsign;
 	}
@@ -322,7 +343,7 @@ void DynamicEntity::slowVy ()
 
 	this -> vy -= 1000 * vsign;
 
-	if ( Math::sign ( this -> vy ) != vsign ) 
+	if ( Math::sign ( this -> vy ) != vsign )
 	{
 
         this -> vy = 0.0001 * vsign;
@@ -352,7 +373,7 @@ void DynamicEntity::aim ( Crosshair *const crosshair, const double direction)
 
 }
 
-SDL_RendererFlip DynamicEntity::getFlip () 
+SDL_RendererFlip DynamicEntity::getFlip ()
 {
 
 	SDL_RendererFlip flip = SDL_FLIP_NONE;

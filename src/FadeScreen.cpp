@@ -1,8 +1,16 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @FadeScreen.cpp
+ * Objects in this class are responsible for determining the behavior of the fade on the screen.
+ */
+
 #include "FadeScreen.h"
 #include "Game.h"
 #include "Logger.h"
 
 FadeScreen::FadeScreen() :
+
 
 	fadeImage ( Game::instance (). getResources (). get ( "res/images/black_screen.png" ) ),
 	fadeHandler ( new FadeHandler ( this -> fadeImage ) )
@@ -11,7 +19,7 @@ FadeScreen::FadeScreen() :
 
 }
 
-FadeScreen::~FadeScreen () 
+FadeScreen::~FadeScreen ()
 {
 
 	if ( this -> fadeHandler != nullptr )
@@ -19,16 +27,20 @@ FadeScreen::~FadeScreen ()
 
 		delete this -> fadeHandler;
 		this -> fadeHandler = nullptr;
-	
+
 	}
 }
 
+/*
+Update the position of fade and when show up or not
+@param dt_ : Delta time. Time elapsed between one frame and the other
+*/
 void FadeScreen::update ( const double dt_ )
 {
 	fadeHandler -> update ( dt_ );
 }
 
-void FadeScreen::render () 
+void FadeScreen::render ()
 {
 
 	if ( this -> fadeImage != nullptr )
@@ -37,7 +49,8 @@ void FadeScreen::render ()
 	}
 }
 
-bool FadeScreen::isFaded () 
+
+bool FadeScreen::isFaded ()
 {
 
 	bool faded = false;
@@ -52,13 +65,18 @@ bool FadeScreen::isFaded ()
 	return faded;
 }
 
+/*
+Fade out the image on screen according to the percentage and the time
+@param percentage_: Percentage of image appearance on screen
+@param time_: Time the image will appear on screen
+*/
 void FadeScreen::fadeOut ( const double percentage_, const double time_ )
 {
 	this -> fadeHandler -> fadeOut ( percentage_, time_ );
 }
 
+// Fade in the image on screen according to the percentage and the time
 void FadeScreen::fadeIn ( const double percentage_, const double time_ )
 {
 	this -> fadeHandler -> fadeIn ( percentage_, time_ );
 }
-

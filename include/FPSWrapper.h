@@ -1,3 +1,10 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @FPSWrapper.cpp
+ * Objects in this class are responsible for FPS manager and sets framerate.
+ */
+
 #ifndef INCLUDE_FPSWRAPPER_H
 #define INCLUDE_FPSWRAPPER_H
 
@@ -7,9 +14,9 @@
 * Wraps FPS handling in a class.
 * Uses SDL2_GFX, by ferzkopp.
 */
-class FPSWrapper 
+class FPSWrapper
 {
-	
+
 	public:
 		/**
 		* Initializes FPS managing.
@@ -27,7 +34,7 @@ class FPSWrapper
 		* @return The time in seconds since the last call.
 		*/
 		static double delay ( FPSmanager& fpsManager_ );
-		
+
 };
 
 #endif //INCLUDE_FPSWRAPPER_H
