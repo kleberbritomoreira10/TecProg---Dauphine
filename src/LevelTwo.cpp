@@ -46,6 +46,7 @@ void LevelTwo::load ()
   LuaScript luaLevel1 ( "lua/Level1.lua" );
   const std::string pathPlayerSpriteSheet = luaLevel1.unlua_get<std::string> (
     "level.player.spriteSheet" );
+  // Alert!: in variable pathBackgroundAudio is assigned a value is never used.
   const std::string pathBackgroundAudio = luaLevel1.unlua_get<std::string> (
     "level.audio.background" );
   const std::string pathEnemy = luaLevel1.unlua_get<std::string> ( "level.enemy" );
@@ -165,6 +166,7 @@ void LevelTwo::update ( const double dt_ )
   Enemy::py = this -> player -> y;
   Enemy::pVulnerable = this -> player -> isVulnerable;
 
+  //update number of potions where limit of number itens = 4 for level two. 
   for ( int i = 0; i < NUMBER_ITEMS; ++i )
   { 
     if ( Collision::rectsCollided ( this -> player -> getBoundingBox (), 
