@@ -1,3 +1,10 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @GStateNewGame.cpp
+* The state for the Continue menu screen.
+ */
+
 #include "GStateNewGame.h"
 #include "LuaScript.h"
 #include "Game.h"
@@ -7,7 +14,7 @@
 #include <string>
 
 GStateNewGame::GStateNewGame () :
-	
+
 	background ( nullptr ),
 	selector ( nullptr ),
 	passedTime ( 0.0 ),
@@ -16,13 +23,13 @@ GStateNewGame::GStateNewGame () :
 	selectorYPosition { 500, 610, 723 }
 {
 
-	this -> slot1 = new Text ( 615.0, 520.0, "res/fonts/maturasc.ttf", 
+	this -> slot1 = new Text ( 615.0, 520.0, "res/fonts/maturasc.ttf",
 		45, "Empty Slot");
 
-	this -> slot2 = new Text ( 615.0, 630.0, "res/fonts/maturasc.ttf", 
+	this -> slot2 = new Text ( 615.0, 630.0, "res/fonts/maturasc.ttf",
 		45, "Empty Slot");
 
-	this -> slot3 = new Text ( 615.0, 730.0, "res/fonts/maturasc.ttf", 
+	this -> slot3 = new Text ( 615.0, 730.0, "res/fonts/maturasc.ttf",
 		45, "Empty Slot");
 
 }
@@ -51,19 +58,23 @@ GStateNewGame::~GStateNewGame ()
 	}
 }
 
-void GStateNewGame::load () 
+/*
+Loads the level.
+From the menu.lua script, loads all the necessary objects.
+*/
+void GStateNewGame::load ()
 {
 
 	Log ( DEBUG ) << "Loading Choose Slot Screen...";
 
 	if ( Game::instance (). getSaves (). isSaved ( SLOT_1 ) )
 	{
-		
+
 		const int levelFromSave = Game::instance (). getSaves (). getSavedLevel( SLOT_1 );
 
-		const std::string currentLevel = "Level " + 
+		const std::string currentLevel = "Level " +
 			Util::toString ( levelFromSave );
-		
+
 		if ( levelFromSave == -1 )
 		{
 
@@ -73,23 +84,23 @@ void GStateNewGame::load ()
 		{
 			this -> slot1 -> changeText ( currentLevel. c_str () );
 		}
-	}else 
+	}else
 	{
 		this -> slot1 -> changeText ( "Empty Slot" );
 	}
 
 	if ( Game::instance (). getSaves (). isSaved ( SLOT_2 ) )
 	{
-		
+
 		const int levelFromSave = Game::instance (). getSaves (). getSavedLevel ( SLOT_2 );
 
 		const std::string currentLevel = "Level " + Util::toString ( levelFromSave );
-		
+
 		if ( levelFromSave == -1 )
 		{
 
 			this -> slot2 -> changeText ( "Empty Slot" );
-		
+
 		}else
 		{
 			this -> slot2 -> changeText ( currentLevel.c_str () );
@@ -102,11 +113,11 @@ void GStateNewGame::load ()
 
 	if ( Game::instance (). getSaves (). isSaved ( SLOT_3 ) )
 	{
-		
+
 		const int levelFromSave = Game::instance (). getSaves (). getSavedLevel ( SLOT_3 );
 
 		const std::string currentLevel = "Level " + Util::toString ( levelFromSave );
-			
+
 		if ( levelFromSave == -1 )
 		{
 			this -> slot3 -> changeText ( "Empty Slot" );
@@ -127,7 +138,7 @@ void GStateNewGame::load ()
 	const std::string pathBackground = luaMenu.unlua_get < std::string > (
 		"continue.images.background" );
 
-	const std::string pathSelector = luaMenu.unlua_get < std::string > ( 
+	const std::string pathSelector = luaMenu.unlua_get < std::string > (
 		"continue.images.selector" );
 
 	this -> background = Game::instance (). getResources (). get ( pathBackground );
@@ -141,6 +152,7 @@ void GStateNewGame::load ()
     Game::instance (). getFade (). fadeOut ( 0, 0.002 );
 }
 
+// Unloads everything that was loaded.
 void GStateNewGame::unload ()
 {
 
@@ -149,6 +161,7 @@ void GStateNewGame::unload ()
 
 }
 
+// Updates the objects within the StateGame.
 void GStateNewGame::update ( const double dt_ )
 {
 
@@ -164,10 +177,14 @@ void GStateNewGame::update ( const double dt_ )
 	}
 }
 
+/*
+Renders the state.
+Always renders on 0,0 position.
+*/
 void GStateNewGame::render ()
 {
 
-	if ( this -> background != nullptr )  
+	if ( this -> background != nullptr )
 	{
 
 		this -> background -> render ( 0, 0, nullptr, true );
@@ -185,6 +202,7 @@ void GStateNewGame::render ()
 	}
 }
 
+// Handle with the input that player select on menu in the game
 void GStateNewGame::handleSelectorMenu ()
 {
 
@@ -230,7 +248,7 @@ void GStateNewGame::handleSelectorMenu ()
 			{
 
 				currentSelection--;
-			
+
 			}else
 			{
 				currentSelection = ( Selection::TOTAL - 1 );
@@ -249,7 +267,7 @@ void GStateNewGame::handleSelectorMenu ()
 		Game::instance (). transitionTo = Game::GStates::LEVEL_ONE;
 		Game::instance (). setState( Game::GStates::TRANSITION );
 
-	}else if ( currentSelection == Selection::SLOT_2 && keyStates [ GameKeys::SPACE ] 
+	}else if ( currentSelection == Selection::SLOT_2 && keyStates [ GameKeys::SPACE ]
 				== true)
 			{
 
@@ -259,7 +277,7 @@ void GStateNewGame::handleSelectorMenu ()
 		Game::instance (). transitionTo = Game::GStates::LEVEL_ONE; //should be level one, two is here for testing purposes
 		Game::instance (). setState ( Game::GStates::TRANSITION );
 
-	}else if ( currentSelection == Selection::SLOT_3 && keyStates[GameKeys::SPACE] 
+	}else if ( currentSelection == Selection::SLOT_3 && keyStates[GameKeys::SPACE]
 				== true)
 			{
 

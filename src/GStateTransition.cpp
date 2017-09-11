@@ -1,3 +1,11 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @GStateTransition.cpp
+ * The state for the initial splash screen.
+ * Game state that will contain the initial splash images, before the main menu state is called.
+ */
+
 #include "GStateTransition.h"
 #include "Game.h"
 #include "Logger.h"
@@ -17,12 +25,16 @@ GStateTransition::~GStateTransition ()
 
 }
 
+/**
+* Loads the level.
+* From the Splash.lua script, loads all the necessary objects.
+*/
 void GStateTransition::load ()
 {
-	
+
 	Log ( DEBUG ) << "Loading transition...";
 
-	this -> loading = Game::instance (). getResources (). get ( 
+	this -> loading = Game::instance (). getResources (). get (
 		"res/images/loading.png" );
 
 	this -> point = Game::instance (). getResources (). get(
@@ -41,6 +53,10 @@ void GStateTransition::load ()
 	this -> lifeTime = 3.0;
 }
 
+/**
+* Unloads everything that was loaded.
+* @see GStateTransition::load
+*/
 void GStateTransition::unload ()
 {
 
@@ -49,10 +65,14 @@ void GStateTransition::unload ()
 	this -> passedTime = 0.0;
 	this -> lifeTime = 0.0;
 
-	cleanEntities (); 
+	cleanEntities ();
 
 }
 
+/**
+* Updates the objects within the StateGame.
+* @param dt_ : Delta time. Time elapsed between one frame and the other.
+*/
 void GStateTransition::update ( const double dt_ )
 {
 	this -> passedTime += dt_;
@@ -64,6 +84,12 @@ void GStateTransition::update ( const double dt_ )
 
 }
 
+
+/**
+* Renders the state.
+* Always renders on 0,0 position.
+* @see Sprite::render
+*/
 void GStateTransition::render ()
 {
 

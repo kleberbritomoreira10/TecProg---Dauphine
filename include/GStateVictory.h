@@ -1,3 +1,11 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @GStateVictory.h
+ * The state for the initial menu screen.
+ * Game state that will contain the game over screen.
+ */
+
 #ifndef INCLUDE_GSTATEVICTORY_H
 #define INCLUDE_GSTATEVICTORY_H
 
@@ -8,7 +16,7 @@
 * The state for the initial menu screen.
 * Game state that will contain the game over screen.
 */
-class GStateVictory : public StateGame 
+class GStateVictory : public StateGame
 {
 
 	public:

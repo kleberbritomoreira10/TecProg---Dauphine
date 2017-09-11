@@ -1,3 +1,10 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @GStateNewGame.h
+* The state for the Continue menu screen.
+ */
+
 #ifndef INCLUDE_GSTATENEWGAME_H
 #define INCLUDE_GSTATENEWGAME_H
 
@@ -8,7 +15,7 @@
 /**
 * The state for the Continue menu screen.
 */
-class GStateNewGame : public StateGame 
+class GStateNewGame : public StateGame
 {
 
 	public:
@@ -51,7 +58,7 @@ class GStateNewGame : public StateGame
 		void handleSelectorMenu ();
 
 	private:
-		enum Selection : uint8_t 
+		enum Selection : uint8_t
 		{
 
 			SLOT_1,

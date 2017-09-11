@@ -1,3 +1,11 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @GStateVictory.cpp
+ * The state for the initial menu screen.
+ * Game state that will contain the game over screen.
+ */
+
 #include "GStateVictory.h"
 #include "Game.h"
 #include "Logger.h"
@@ -16,12 +24,16 @@ GStateVictory::~GStateVictory ()
 
 }
 
+/**
+* Loads the level.
+* From the menu.lua script, loads all the necessary objects.
+*/
 void GStateVictory::load ()
 {
 
 	Log ( DEBUG ) << "Loading victory...";
 
-    this -> victoryImage = Game::instance (). getResources (). get( 
+    this -> victoryImage = Game::instance (). getResources (). get(
     	"res/images/victory.png" );
 
 	this -> lifeTime = 5.0;
@@ -30,6 +42,10 @@ void GStateVictory::load ()
 	Game::instance (). getAudioHandler (). changeMusic( "res/audio/Tema_Victory_01.wav" );
 }
 
+/**
+* Unloads everything that was loaded.
+* @see GStateVictory::load
+*/
 void GStateVictory::unload ()
 {
 
@@ -41,6 +57,10 @@ void GStateVictory::unload ()
 
 }
 
+/**
+* Updates the objects within the StateGame.
+* @param dt_ : Delta time. Time elapsed between one frame and the other.
+*/
 void GStateVictory::update ( const double dt_ )
 {
 
@@ -54,6 +74,11 @@ void GStateVictory::update ( const double dt_ )
 	}
 }
 
+/**
+* Renders the state.
+* Always renders on 0,0 position.
+* @see Sprite::render
+*/
 void GStateVictory::render ()
 {
 

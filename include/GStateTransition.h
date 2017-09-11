@@ -1,14 +1,18 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @GStateTransition.h
+ * The state for the initial splash screen.
+ * Game state that will contain the initial splash images, before the main menu state is called.
+ */
+
 #ifndef INCLUDE_STATETRANSITION_H
 #define INCLUDE_STATETRANSITION_H
 
 #include "StateGame.h"
 #include "Sprite.h"
 
-/**
-* The state for the initial splash screen.
-* Game state that will contain the initial splash images, before the main menu state is called.
-*/
-class GStateTransition : public StateGame 
+class GStateTransition : public StateGame
 {
 
 	public:
@@ -48,11 +52,11 @@ class GStateTransition : public StateGame
 		*/
 		virtual void render ();
 
-	private: 
+	private:
 
 		double passedTime; /**< The time already elapsed since the beggining of the splash. */
 		double lifeTime; /**< The amount of time the splash will be shown. */
-		
+
 		Sprite *loading;
 		Sprite *point;
 
