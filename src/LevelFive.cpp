@@ -96,7 +96,7 @@ void LevelFive::load()
 		 pathPlayerSpriteSheet );
 	}
 
-	Camera* lCamera = new Camera( lPlayer );
+	Camera *lCamera = new Camera( lPlayer );
 
 	this -> playerHud = new PlayerHUD( lPlayer );
 

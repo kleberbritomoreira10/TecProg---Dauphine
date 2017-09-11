@@ -36,7 +36,8 @@ void PStateDead::exit()
 
 /**
 * Handle the user inputs.
-  @param KeyStates_: The key states to be handled.
+  @param KeyStates_: Boolean array that controls which keys are
+					 pressed or not. 
 * @see StatePlayer::handleInput
 */
 void PStateDead::handleInput( const std::array<bool, GameKeys::MAX> keyStates_ )

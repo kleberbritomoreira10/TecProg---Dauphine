@@ -1,3 +1,9 @@
+/* Dauphine
+* Universidade de Brasília - FGA
+* Técnicas de Programação, 2/2017
+* @BStateAttack.cpp
+* The state when the player able to attack.*/
+
 #include "BStateAttack.h"
 #include "Logger.h"
 #include "Game.h"
@@ -7,6 +13,10 @@
 
 int attackIndex = 0;
 
+/**
+* Enter the State Attack.
+* @see StateBoss::enter
+*/
 void BStateAttack::enter()
 {
 	Log( DEBUG ) << "STATE ATTACK BOSS";
@@ -15,11 +25,21 @@ void BStateAttack::enter()
 	attackIndex = rand()%4;
 }
 
+/**
+* Exit the State Attack.
+* @see StateBoss::enter
+*/
 void BStateAttack::exit()
 {
 	this -> boss -> canWalk = false;
 }
 
+/**
+* Update the state.
+* @param dt_: Delta time. Time elapsed between one frame and the other, independent
+*   of processing speed.
+* @see StateBoss::update
+*/
 void BStateAttack::update( const double dt_ )
 {
 	( ( void )dt_ ); // Unused.
@@ -45,7 +65,12 @@ void BStateAttack::update( const double dt_ )
 	}
 
 }
-BStateAttack::BStateAttack( Boss* const boss_ ) :
+
+/**
+* The constructor.
+* @param boss_ : Reference to the Boss.
+*/
+BStateAttack::BStateAttack( Boss *const boss_ ) :
 	StateBoss( boss_ )
 {
 	srand( time( nullptr ) );

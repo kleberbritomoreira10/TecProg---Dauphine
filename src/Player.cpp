@@ -39,7 +39,7 @@
 * @param y_ : position in y axis.
 * @param sprite_ : which sprite to use.
 */
-Player::Player( const double x_, const double y_, const std::string& path_ ) :
+Player::Player( const double x_, const double y_, const std::string &path_ ) :
     DynamicEntity( x_, y_, path_ ),
     potionsLeft( 3 ),
     maxPotions( 3 ),
