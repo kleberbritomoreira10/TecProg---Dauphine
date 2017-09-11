@@ -1,3 +1,10 @@
+/* Dauphine
+* Universidade de Brasília - FGA
+* Técnicas de Programação, 2/2017
+* @Player.cpp
+* The player entity class.
+* Contains all the relevant implementation relative to the player.*/
+
 #include "Player.h"
 #include "Game.h"
 #include "Logger.h"
@@ -25,7 +32,14 @@
 #define ADD_STATE_EMPLACE( stateEnum, stateClass ) this  -> statesMap.emplace( stateEnum, new stateClass( this ) )
 #define ADD_STATE_INSERT( stateEnum, stateClass ) this -> statesMap.insert( std::make_pair<PStates, StatePlayer*>( stateEnum, new stateClass( this ) ) );
 
-Player::Player( const double x_, const double y_, const std::string& path_ ) :
+/**
+* The constructor.
+* Creates the player by setting the position and sprite.
+* @param x_ : position in x axis.
+* @param y_ : position in y axis.
+* @param sprite_ : which sprite to use.
+*/
+Player::Player( const double x_, const double y_, const std::string &path_ ) :
     DynamicEntity( x_, y_, path_ ),
     potionsLeft( 3 ),
     maxPotions( 3 ),
@@ -61,7 +75,12 @@ Player::Player( const double x_, const double y_, const std::string& path_ ) :
 
 }
 
-Player::~Player(){
+/**
+* The destructor.
+* Exits the current state and destroys all states.
+*/
+Player::~Player()
+{
     if ( this -> currentState != nullptr )
     {
         this -> currentState -> exit();
@@ -77,7 +96,14 @@ Player::~Player(){
     destroyStates();
 }
 
-void Player::update( const double dt_ ){
+/**
+* Updates the player.
+* @see Player::updateInput, Player::updatePosition
+* @param dt_ : Delta time. Time elapsed between one frame and the other, independent
+*   of processing speed.
+*/
+void Player::update( const double dt_ )
+{
     std::array<bool, GameKeys::MAX> keyStates = Game::instance().getInput();
 
     if ( this -> canMove )
@@ -125,7 +151,12 @@ void Player::update( const double dt_ ){
 
 }
 
-void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detections_){
+/**
+* Handle player's collision.
+  @param detections_: Array of detected collisions.
+*/
+void Player::handleCollision( std::array<bool, CollisionSide::SOLID_TOTAL> detections_ )
+{
     if ( detections_.at(CollisionSide::SOLID_TOP) )
     {
         Log(DEBUG) << "COLLIDED_TOP";
@@ -168,6 +199,13 @@ void Player::handleCollision(std::array<bool, CollisionSide::SOLID_TOTAL> detect
 
 }
 
+/**
+* Renders the player.
+* Uses the player's sprite render method.
+* @see Sprite::render
+* @param cameraX_ : The x position of the camera.
+* @param cameraY_ : The y position of the camera.
+*/
 void Player::render( const double cameraX_, const double cameraY_ )
 {
     const double dx = this -> x - cameraX_;
@@ -208,6 +246,11 @@ void Player::render( const double cameraX_, const double cameraY_ )
 
 }
 
+/**
+* Use player's potion.
+  @param strength_: The strength of the potion.
+  @param distance_: The distance of the potion.
+*/
 void Player::usePotion( const int strength_, const int distance_ )
 {
     if ( this -> potionsLeft > 0 )
@@ -220,6 +263,10 @@ void Player::usePotion( const int strength_, const int distance_ )
     }
 }
 
+/**
+* Add player's potion.
+  @param quantity_: Quantity of potions.
+*/
 void Player::addPotions( const unsigned int quantity_ )
 {
     if ( this -> potionsLeft + quantity_ > this -> maxPotions )
@@ -231,9 +278,12 @@ void Player::addPotions( const unsigned int quantity_ )
     }
 }
 
+/**
+* Loads all the states.
+* Every new state implemented should be initialized here.
+*/
 void Player::initializeStates()
 {
-    // Initialize all the states in Player here.
     ADD_STATE_INSERT( IDLE,         PStateIdle );
     ADD_STATE_INSERT( MOVING,       PStateMoving );
     ADD_STATE_INSERT( AERIAL,       PStateAerial );
@@ -249,6 +299,10 @@ void Player::initializeStates()
     ADD_STATE_INSERT( DEAD,         PStateDead );
 }
 
+/**
+* Deletes all the loaded states.
+* Every new state implemented should be deleted here.
+*/
 void Player::destroyStates()
 {
     // Delete all the states in Player here.
@@ -259,6 +313,11 @@ void Player::destroyStates()
     }
 }
 
+/**
+* Deletes all the loaded states.
+* Every new state implemented should be deleted here.
+  @param state_: The state to be changed.
+*/
 void Player::changeState( const PStates state_ )
 {
     this -> currentState -> exit();
@@ -266,16 +325,27 @@ void Player::changeState( const PStates state_ )
     this -> currentState -> enter();
 }
 
-Animation* Player::getAnimation()
+/**
+* Get the player's animation.
+* @return The players current animation setting.
+*/
+Animation *Player::getAnimation()
 {
     return ( this -> animation );
 }
 
+/**
+  @param state_: The state of the player.
+* @return Whether the player is currently in PStates::state_ or not.
+*/
 bool Player::isCurrentState(const PStates state_)
 {
     return ( this -> currentState == this -> statesMap.at(state_) );
 }
 
+/**
+* Update the bounding box.
+*/
 void Player::updateBoundingBox()
 {
     this -> boundingBox.x = (int) this -> nextX + this -> currentState -> box.x;
@@ -284,6 +354,9 @@ void Player::updateBoundingBox()
     this -> boundingBox.h = this -> currentState -> box.h;
 }
 
+/**
+* Verify is the player is dead.
+*/
 bool Player::isDead()
 {
     return ( this -> life <= 0 );

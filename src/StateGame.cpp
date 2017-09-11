@@ -1,16 +1,31 @@
+/* Dauphine
+* Universidade de Brasília - FGA
+* Técnicas de Programação, 2/2017
+* @StateGame.cpp
+* Parent class for other game states.*/
+
 #include "StateGame.h"
 
+/**
+* The destructor.
+*/
 StateGame::~StateGame()
 {
-	// Should be called in each state unload.
 	cleanEntities();
 }
 
+/**
+* Adds an entity to the vector.
+  @param entity: Reference to an Entity to be added.
+*/
 void StateGame::addEntity( Entity *const entity )
 {
 	this -> entities.push_back( entity );
 }
 
+/**
+* Deletes all the entities inside the vector.
+*/
 void StateGame::cleanEntities()
 {
 	for ( auto entity : this -> entities )

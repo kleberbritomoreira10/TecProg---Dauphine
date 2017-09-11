@@ -1,3 +1,11 @@
+/* Dauphine
+* Universidade de Brasília - FGA
+* Técnicas de Programação, 2/2017
+* @LevelFive.cpp
+* The first level of the game.
+* Derived from Level class.*/
+
+
 #include "LevelFive.h"
 #include "Game.h"
 #include "LuaScript.h"
@@ -9,6 +17,12 @@
 #include "Crosshair.h"
 #include "Document.h"
 
+#define MAX_NUMBER_OF_SLOTS 5
+
+/**
+* The constructor.
+* @see Level::Level()
+*/
 LevelFive::LevelFive() :
   Level(),
 	items{ { 207, 11261,6800, 10000 },{ 5600, 2050,5850, 2712 } },
@@ -22,6 +36,10 @@ LevelFive::~LevelFive()
 
 }
 
+/**
+* Loads the level.
+* From the Level1.lua script, loads all the necessary objects.
+*/
 void LevelFive::load()
 {
 	// Changing the music.
@@ -37,19 +55,22 @@ void LevelFive::load()
 	this -> quadTree = new QuadTree( 0, bounds );
 
 	this -> background = Game::instance().getResources().get( "res/images/lv1_background.png" );
+
+	// Loading checkpoint image.
 	for ( int i = 0; i < this -> NUMBER_OF_CHECKPOINTS; ++i )
 	{
-		this -> checkpoints.push_back(Game::instance().getResources().get( "res/images/checkpoint.png" ));
+		this -> checkpoints.push_back( Game::instance().getResources().get( "res/images/checkpoint.png" ));
 	}
+
 	this -> image = Game::instance().getResources().get( "res/images/potion.png" );
 
 	// Getting information from lua script.
 	LuaScript luaLevel1( "lua/Level1.lua" );
 	const std::string pathPlayerSpriteSheet = luaLevel1.unlua_get<std::string>(
-		"level.player.spriteSheet");
+		"level.player.spriteSheet" );
 	const std::string pathBackgroundAudio = luaLevel1.unlua_get<std::string>(
-		"level.audio.background");
-	const std::string pathEnemy = luaLevel1.unlua_get<std::string>("level.enemy");
+		"level.audio.background" );
+	const std::string pathEnemy = luaLevel1.unlua_get<std::string>( "level.enemy" );
 
 	/*Changing the music.
 	Game::instance().getAudioHandler().changeMusic(pathBackgroundAudio);
@@ -58,8 +79,9 @@ void LevelFive::load()
 
 	Player* lPlayer = nullptr;
 
-	if ( Game::instance().getSaves().isSaved(Game::instance().currentSlot)
-       && Game::instance().getSaves().getSavedLevel(Game::instance().currentSlot ) == 5 )
+	// Verifying number of games saved in the slots.
+	if ( Game::instance().getSaves().isSaved( Game::instance().currentSlot )
+       && Game::instance().getSaves().getSavedLevel( Game::instance().currentSlot ) == MAX_NUMBER_OF_SLOTS )
 	{
 		double savedPX = 0.0;
 		double savedPY = 0.0;
@@ -67,12 +89,14 @@ void LevelFive::load()
 		Game::instance().getSaves().getPlayerPosition( savedPX, savedPY, Game::instance().currentSlot );
 
 		lPlayer = new Player( savedPX, savedPY, pathPlayerSpriteSheet );
+
 	} else
 	{
-		lPlayer = new Player( this -> tileMap -> getInitialX(), this -> tileMap -> getInitialY(), pathPlayerSpriteSheet );
+		lPlayer = new Player( this -> tileMap -> getInitialX(), this -> tileMap -> getInitialY(),
+		 pathPlayerSpriteSheet );
 	}
 
-	Camera* lCamera = new Camera( lPlayer );
+	Camera *lCamera = new Camera( lPlayer );
 
 	this -> playerHud = new PlayerHUD( lPlayer );
 
@@ -94,7 +118,7 @@ void LevelFive::load()
 		enemy -> setLevelWH( this -> width, this -> height );
 	}
 
-	// Documents
+	// Loading documents.
 	Document* document4 = new Document( 143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d4.png" );
 	this -> documents.push_back( document4 );
 
@@ -104,7 +128,7 @@ void LevelFive::load()
 	Document* document6 = new Document( 143*64, 35*64, "res/images/documentSprite.png", "res/images/Documents/d6.png" );
 	this -> documents.push_back( document6 );
 
-	// Finally, setting the player and the camera.
+	// Setting the player and the camera.
 	setPlayer( lPlayer );
 	Enemy::pLife = this -> player -> life;
 
@@ -113,6 +137,10 @@ void LevelFive::load()
 	Game::instance().getFade().fadeOut( 0, 0.002 );
 }
 
+/**
+* Unloads everything that was loaded.
+* @see LevelFive::load()
+*/
 void LevelFive::unload()
 {
 	Log(DEBUG) << "\tUnloading level 5...";
@@ -121,6 +149,7 @@ void LevelFive::unload()
 	clearEnemies();
 	clearDocuments();
 
+	// Clearing caught items.
 	for (int i = 0; i < NUMBER_ITEMS; ++i)
 	{
 		caughtItems[i] = false;
@@ -129,7 +158,11 @@ void LevelFive::unload()
 	//this -> checkpointVisited = false;
 }
 
-void LevelFive::update( const double dt_ )
+/**
+* Updates the objects within the Level.
+* @param dt_ : Delta time. Time elapsed between one frame and the other.
+*/
+void LevelFive::update( const double dt_ ) 
 {
 	// Populating the QuadTree.
 	this -> quadTree -> setObjects(this -> tileMap -> getCollisionRects());
@@ -174,6 +207,7 @@ void LevelFive::update( const double dt_ )
 	Enemy::py = this -> player -> y;
 	Enemy::pVulnerable = this -> player -> isVulnerable;
 
+	// Updating number os potions left.
 	for ( int i = 0; i < NUMBER_ITEMS; ++i )
 	{
 		if ( Collision::rectsCollided(this -> player -> getBoundingBox(),
@@ -184,6 +218,7 @@ void LevelFive::update( const double dt_ )
 		}
 	}
 
+	// Updating player's life.
 	if ( this -> player -> life != Enemy::pLife )
 	{
 		if ( this -> player -> isVulnerable )
@@ -258,7 +293,7 @@ void LevelFive::update( const double dt_ )
 		}
 	}
 
-	//Saving the game state
+	// Saving the game state.
 	for ( int j = 0; j < this -> NUMBER_OF_CHECKPOINTS; ++j )
 	{
 		if ( !this -> checkpointsVisited[j] && this -> player -> getBoundingBox().x >= checkpointsX[j]
@@ -272,7 +307,7 @@ void LevelFive::update( const double dt_ )
 		}
 	}
 
-	// Documents check
+	// Documents check.
 	for ( auto document : this -> documents )
 	{
 		if ( Collision::rectsCollided(this -> player -> getBoundingBox(), document -> getBoundingBox()) ){
@@ -284,34 +319,43 @@ void LevelFive::update( const double dt_ )
 	}
 }
 
+/**
+* Renders the level.
+* Always renders on 0,0 position.
+* @see Sprite::render()
+ */
 void LevelFive::render()
 {
+	// Getting camera.
 	const int cameraX = this -> camera -> getClip().x;
 	const int cameraY = this -> camera -> getClip().y;
 
 	this -> background -> render( 0, 0 );
 
+	// Rendering checkpoint's camera.
 	for ( int j = 0; j < this -> NUMBER_OF_CHECKPOINTS; ++j )
 	{
 		this -> checkpoints[j] -> render( this -> checkpointsX[j] - cameraX, this -> checkpointsY[j] - cameraY );
 	}
 
-	// Render the tiles in the TileMap.
+	// Rendering the tiles in the TileMap.
 	this -> tileMap -> render( cameraX, cameraY );
 
 	this -> playerHud -> render();
 
+	// Rendering all the enemies in the list.
 	for ( auto enemy : this -> enemies )
 	{
 		enemy -> render( cameraX, cameraY );
 	}
 
-	// Render all the entities in the list.
+	// Rendering all the entities in the list.
 	for ( auto entity : this -> entities )
 	{
         entity -> render( cameraX, cameraY );
 	}
 
+	// Rendering images.
 	for ( unsigned int i = 0; i < NUMBER_ITEMS; i++ )
 	{
 		if ( this -> image != nullptr && caughtItems[i] == false )
@@ -320,7 +364,7 @@ void LevelFive::render()
 		}
 	}
 
-	// Document text image
+	// Document text image.
 	for ( auto document : this -> documents )
 	{
 		document -> render( cameraX, cameraY );

@@ -1,8 +1,18 @@
+/* Dauphine
+* Universidade de Brasília - FGA
+* Técnicas de Programação, 2/2017
+* @ControllerHandler.cpp
+* The input handler for joysticks.*/
+
 #include "ControllerHandler.h"
 #include "Logger.h"
 
 #include <iostream>
 
+/**
+* The constructor.
+* Verifies if there is a joystick present.
+*/
 ControllerHandler::ControllerHandler() :
     gameController( nullptr )
 {
@@ -18,6 +28,12 @@ ControllerHandler::ControllerHandler() :
     this -> keyStates.fill( false );
 }
 
+/**
+* Handles controller the input.
+* Detects the pending events, and simulates an appropriate KeyEvent by pushing one into
+*   a stack.
+* @param sdlEvent_ : The SDL internal event structure.
+*/
 void ControllerHandler::handleInput( SDL_Event& sdlEvent_ )
 {
 

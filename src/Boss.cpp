@@ -16,12 +16,13 @@
 double timePasssed = 0;
 
 Boss::Boss( const double x_, const double y_, const std::string& path_, Player* const player_ ) :
-	DynamicEntity(x_, y_, path_),	potionsLeft(3), sawPlayer(false), potions(), life(8), hasShield(false), canWalk(true), player(player_), powerAnimation(nullptr), powerX(0.0), powerY(0.0), powerIsActivated(false), power(nullptr),
+	DynamicEntity(x_, y_, path_), potionsLeft(3), sawPlayer(false), potions(), life(8), hasShield(false), canWalk(true), player(player_), powerAnimation(nullptr), powerX(0.0), powerY(0.0), powerIsActivated(false), power(nullptr),
 	  powerClip{0,0,0,0}, powerFlip(SDL_FLIP_NONE), shieldAnimation(nullptr), shield(nullptr), shieldClip{0,0,0,0},
 	  currentState(nullptr), animation(nullptr), statesMap(), dead(false)
 {
 	initializeStates();
 
+	// Initialize all the states for the Boss.
 	this -> isRight = true;
 	this -> speed = 400.0;
 	this -> width = 360;
@@ -34,32 +35,38 @@ Boss::Boss( const double x_, const double y_, const std::string& path_, Player* 
 	this -> currentState = this -> statesMap.at(IDLE);
 	this -> currentState->enter();
 
+	//Check if player is playing
 	if ( this -> player == nullptr )
 	{
 		Log(WARN) << "Passing a null player to the Boss.";
 	}
 }
 
+//Method to represent the Boss
 Boss::~Boss()
 {
+	//Delete animation if null
 	if ( this -> animation != nullptr )
 	{
 		delete this -> animation;
 		this -> animation = nullptr;
 	}
 	
+	//Delete powerAnimation if null
 	if ( this -> powerAnimation != nullptr )
 	{
 		delete this -> powerAnimation;
 		this -> powerAnimation = nullptr;
 	}
-
+  
+  //Delete shieldAnimation if null
 	if ( this -> shieldAnimation != nullptr )
 	{
 		delete this -> shieldAnimation;
 		this -> shieldAnimation = nullptr;
 	}
 
+	//Exit Boss if currentState is different of the null
 	if ( this -> currentState != nullptr )
 	{
 		this -> currentState -> exit();
@@ -70,34 +77,38 @@ Boss::~Boss()
 	destroyStates();
 }
 
+//Update the caracteristics Boss
 void Boss::update( const double dt_)
 {
 	
 	timePasssed += dt_;
 
 	scoutPosition(dt_);
-
+  
+  //Caracteristics boss to update
 	this -> animation -> update( this -> animationClip, dt_);
 	this -> powerAnimation -> update( this -> powerClip, dt_);
 	this -> shieldAnimation -> update( this -> shieldClip, dt_);
 
 	updateBoundingBox();
-
+  
+  //Array to detect collision
 	const std::array<bool, CollisionSide::SOLID_TOTAL> detections = detectCollision();
 	handleCollision( detections );
 
 	updatePosition( dt_);
 
+	//Update currentState Boss
 	this -> currentState -> update( dt_);
 
-    for( auto potion : this -> potions )
+  for( auto potion : this -> potions )
+  {
+    if ( !potion -> activated )
     {
-      if ( !potion -> activated )
-      {
       // Delete potion.
-      }
-      potion -> update( dt_);
     }
+     potion -> update( dt_);
+  }
 }
 
 void Boss::render( const double cameraX_, const double cameraY_)
@@ -107,6 +118,7 @@ void Boss::render( const double cameraX_, const double cameraY_)
 	
 	if ( this -> sprite != nullptr )
 	{
+		// Sprite render.
 		SDL_RendererFlip flip = getFlip();
 
 		if ( flip == SDL_FLIP_HORIZONTAL )
@@ -116,8 +128,7 @@ void Boss::render( const double cameraX_, const double cameraY_)
 			  this -> sprite -> render( dx, dy, &this->animationClip, false, 0.0, nullptr, flip );
 		  }
 	}
-	
-		// Shield render.
+	// Shield render.	
 	if ( this -> hasShield )
 	{
 		SDL_RendererFlip flip = getFlip();
@@ -129,9 +140,11 @@ void Boss::render( const double cameraX_, const double cameraY_)
 		  }
 	}
 
+	//Constants for define position x e y to camera
 	const double pdx = this -> powerX - cameraX_;
 	const double pdy = this -> powerY - cameraY_;
 
+	//Power render
 	if ( this -> power != nullptr && this -> powerIsActivated )
 	{	
 		if ( this -> powerFlip == SDL_FLIP_HORIZONTAL )
@@ -141,7 +154,7 @@ void Boss::render( const double cameraX_, const double cameraY_)
 			  this->power->render(pdx, pdy, &this->powerClip, false, 0.0, nullptr, this->powerFlip);
 		  }
 	}
-
+ 
   for ( auto potion : this -> potions ) 
   {
     potion -> render( cameraX_, cameraY_);
@@ -170,28 +183,33 @@ void Boss::destroyStates()
 }
 
 void Boss::changeState( const BStates state_)
-{
+{ 
+  //Exchange current state to Boss 
 	this -> currentState -> exit();
 	this -> currentState = this -> statesMap.at(state_);
 	this -> currentState -> enter();
 }
 
 void Boss::handleCollision( std::array<bool, CollisionSide::SOLID_TOTAL> detections_)
-{
+{ 
+	//Check collision occurrence on top
 	if ( detections_.at( CollisionSide::SOLID_TOP ) )
 	{ 
 		this -> vy = 0.0;
 	}
+	//Check collision occurrence on bottom
 	if ( detections_.at(CollisionSide::SOLID_BOTTOM ) )
 	{		
 		this -> nextY -= fmod( this -> nextY, 64.0) - 16.0;
 		this -> vy = 0.0;
 	}
+	//Check collision occurrence on left
 	if ( detections_.at(CollisionSide::SOLID_LEFT ))
 	{
 		this -> nextX = this -> x;
 		this -> vx = 0.0;
 	}
+	//Check collision occurrence on right
 	if ( detections_.at(CollisionSide::SOLID_RIGHT) )
 	{
 		this -> nextX = this -> x;
@@ -199,6 +217,7 @@ void Boss::handleCollision( std::array<bool, CollisionSide::SOLID_TOTAL> detecti
 	}
 }
 
+//Method to determine that Boss use a Potion
 void Boss::usePotion( const int strength_, const int distance_)
 {
   if ( this -> potionsLeft > 0)
@@ -215,18 +234,21 @@ Animation *Boss::getAnimation()
 	return ( this -> animation );
 }
 
+//Verify condition to Boss (dead or alive)
 void Boss::setDead(bool isDead_)
 {
 	this -> dead = isDead_;
 }
 
+//Check if Boss is alive
 bool Boss::isDead()
-{
+{ 
 	return this -> dead;
 }
 
 void Boss::updateBoundingBox()
-{
+{ 
+	//Updating boundaries for the boss
 	this -> boundingBox.x = (int) this -> x + 40;
 	this -> boundingBox.y = (int) this -> y + 40;
 	this -> boundingBox.w = 150;
