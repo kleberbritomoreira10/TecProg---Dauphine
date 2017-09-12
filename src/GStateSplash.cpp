@@ -1,9 +1,21 @@
+/* Dauphine
+* Universidade de Brasília - FGA
+* Técnicas de Programação, 2/2017
+* @AudioHandler.cpp
+* The audio handler.
+* The state for the initial splash screen.
+* Game state that will contain the initial splash images, before the main menu state is called.*/
+
 #include "GStateSplash.h"
 #include "LuaScript.h"
 #include "Game.h"
 
 #include <string>
 
+/**
+* The constructor.
+* Initializes all the attributes.
+*/
 GStateSplash::GStateSplash() :
 	currentSplash( 0 ),
 	passedTime( 0.0 ),
@@ -16,11 +28,18 @@ GStateSplash::GStateSplash() :
 	}
 }
 
+/**
+* The destructor.
+*/
 GStateSplash::~GStateSplash()
 {
 
 }
 
+/**
+* Loads the level.
+* From the Splash.lua script, loads all the necessary objects.
+*/
 void GStateSplash::load()
 {
 	Log( DEBUG ) << "Loading splash screens...";
@@ -40,6 +59,10 @@ void GStateSplash::load()
 	this -> lifeTime = luaLifeTime;
 }
 
+/**
+* Unloads everything that was loaded.
+* @see GStateSplash::load
+*/
 void GStateSplash::unload()
 {
 	Log( DEBUG ) << "\tUnloading splash screens...";
@@ -47,6 +70,10 @@ void GStateSplash::unload()
 	cleanEntities();
 }
 
+/**
+* Updates the objects within the StateGame.
+* @param dt_ : Delta time. Time elapsed between one frame and the other.
+*/
 void GStateSplash::update( const double dt_ )
 {
 	this -> passedTime += dt_;
@@ -83,6 +110,11 @@ void GStateSplash::update( const double dt_ )
 
 }
 
+/**
+* Renders the state.
+* Always renders on 0,0 position.
+* @see Sprite::render
+*/
 void GStateSplash::render()
 {
 	if ( this -> images[this -> currentSplash] != nullptr )

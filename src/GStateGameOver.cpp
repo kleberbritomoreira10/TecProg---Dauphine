@@ -1,9 +1,22 @@
+/* Dauphine
+* Universidade de Brasília - FGA
+* Técnicas de Programação, 2/2017
+* @AudioHandler.cpp
+* The audio handler.
+* The state for the initial menu screen.
+* Game state that will contain the game over screen.*/
+
+
 #include "GStateGameOver.h"
 #include "LuaScript.h"
 #include "Game.h"
 
 #include <string>
 
+/**
+* The constructor.
+* Initializes all the attributes.
+*/
 GStateGameOver::GStateGameOver() :
 	gameOverImage( nullptr ),
 	passedTime( 0.0 ),
@@ -12,11 +25,18 @@ GStateGameOver::GStateGameOver() :
 
 }
 
+/**
+* The destructor.
+*/
 GStateGameOver::~GStateGameOver()
 {
 
 }
 
+/**
+* Loads the level.
+* From the menu.lua script, loads all the necessary objects.
+*/
 void GStateGameOver::load()
 {
 	Log( DEBUG ) << "Loading Game Over...";
@@ -32,6 +52,10 @@ void GStateGameOver::load()
 	Game::instance().getAudioHandler().changeMusic( "res/audio/Game_Over.mid" );
 }
 
+/**
+* Unloads everything that was loaded.
+* @see GStateGameOver::load
+*/
 void GStateGameOver::unload()
 {
 	Log( DEBUG ) << "\tUnloading Game Over...";
@@ -43,6 +67,10 @@ void GStateGameOver::unload()
 	Game::instance().getAudioHandler().stopMusic();
 }
 
+/**
+* Updates the objects within the StateGame.
+* @param dt_ : Delta time. Time elapsed between one frame and the other.
+*/
 void GStateGameOver::update( const double dt_ )
 {
 	this -> passedTime += dt_;
@@ -62,6 +90,11 @@ void GStateGameOver::update( const double dt_ )
 	}
 }
 
+/**
+* Renders the state.
+* Always renders on 0,0 position.
+* @see Sprite::render
+*/
 void GStateGameOver::render(){
 	if ( this -> gameOverImage != nullptr )
 	{
