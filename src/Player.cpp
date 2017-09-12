@@ -356,6 +356,7 @@ void Player::updateBoundingBox()
 
 /**
 * Verify is the player is dead.
+* @return: Return true or false if the player is dead.
 */
 bool Player::isDead()
 {

@@ -1,19 +1,34 @@
+/* Dauphine
+* Universidade de Brasília - FGA
+* Técnicas de Programação, 2/2017
+* @Potion.cpp
+* Class for the bomb potion.*/
+
 #include "Potion.h"
 #include "Logger.h"
 #include "Window.h"
 #include <cmath>
 
-Potion::Potion( const double x_, const double y_, const std::string& path_, const int strength_, const int inertia_,
+/**
+* The constructor.
+* @param x_: The x position of de potion.
+* @param y_: The y position of the potion.
+* @param strength_: The strength of the potion.
+* @param inertia_: The inertia of the potion.
+* @param distance_: The distance of the potion.
+* @param isRight_: Boolean param to indicate if the potion is right.
+*/
+Potion::Potion( const double x_, const double y_, const std::string &path_, const int strength_, const int inertia_,
 	const int distance_, const bool isRight_ ) :
 
 	DynamicEntity( x_, y_, path_ ),
 	activated( true ),
-  canExplode( true ),
-  isExploding( true ),
+    canExplode( true ),
+    isExploding( true ),
 	strength( strength_ ),
 	distance( distance_ ),
 	flightTime( 0.0 ),
-  animation( nullptr )
+  	animation( nullptr )
 {
   this -> width = 192;
 
@@ -34,11 +49,20 @@ Potion::Potion( const double x_, const double y_, const std::string& path_, cons
     this -> vy = 5;
 }
 
+
+/**
+* The destructor.
+*/
 Potion::~Potion()
 {
 
 }
 
+/**
+* Update the potions.
+* @param dt_: Delta time. Time elapsed between one frame and the other, independent
+*   of processing speed.
+*/
 void Potion::update( const double dt_ )
 {
 
@@ -85,6 +109,11 @@ void Potion::update( const double dt_ )
     }
 }
 
+
+/**
+* Handle the detected collisions.
+* @param detections_: Array of detected collisions.
+*/
 void Potion::handleCollision( std::array<bool, CollisionSide::SOLID_TOTAL> detections_ )
 {
   if ( detections_.at( CollisionSide::SOLID_TOP ) )
@@ -121,6 +150,14 @@ void Potion::handleCollision( std::array<bool, CollisionSide::SOLID_TOTAL> detec
   }
 }
 
+
+/**
+* Renders the potion.
+* Uses the player's sprite render method.
+* @see Sprite::render
+* @param cameraX_ : The x position of the camera.
+* @param cameraY_ : The y position of the camera.
+*/
 void Potion::render( const double cameraX_, const double cameraY_ )
 {
 
@@ -142,15 +179,22 @@ void Potion::render( const double cameraX_, const double cameraY_ )
   }
 }
 
+/**
+* Update the bounding box.
+*/
 void Potion::updateBoundingBox()
 {
-	this -> boundingBox.x = ( int ) this -> x + this -> width;
+  this -> boundingBox.x = ( int ) this -> x + this -> width;
   this -> boundingBox.y = ( int ) this -> y - 32;
   this -> boundingBox.w = ( int ) 32;
   this -> boundingBox.h = ( int ) 32;
 }
 
-Animation* Potion::getAnimation()
+/**
+* Get the potion's animation.
+* @return: Return the animation.
+*/
+Animation *Potion::getAnimation()
 {
 	return ( this -> animation );
 }

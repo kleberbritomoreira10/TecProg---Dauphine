@@ -1,3 +1,10 @@
+/* Dauphine
+* Universidade de Brasília - FGA
+* Técnicas de Programação, 2/2017
+* @GStateCredits.cpp
+* The state for the initial menu screen.
+* Game state that will contain the game over screen.*/
+
 #include "GStateCredits.h"
 #include "LuaScript.h"
 #include "Logger.h"
@@ -5,6 +12,10 @@
 
 #include <string>
 
+/**
+* The constructor.
+* Initializes all the attributes.
+*/
 GStateCredits::GStateCredits() :
 	creditsImage( nullptr ),
 	creditsHeightSize( 600 ),
@@ -14,10 +25,17 @@ GStateCredits::GStateCredits() :
 
 }
 
+/**
+* The destructor.
+*/
 GStateCredits::~GStateCredits(){
 
 }
 
+/**
+* Updates the objects within the StateGame.
+* @param dt_ : Delta time. Time elapsed between one frame and the other.
+*/
 void GStateCredits::update( const double dt_ )
 {
 	( void( dt_ ) ); //unused
@@ -30,6 +48,10 @@ void GStateCredits::update( const double dt_ )
 	}
 }
 
+/**
+* Loads the level.
+* From the menu.lua script, loads all the necessary objects.
+*/
 void GStateCredits::load()
 {
 	Log( DEBUG ) << "Loading credits...";
@@ -41,6 +63,10 @@ void GStateCredits::load()
     this ->  creditsClip.w = this ->  creditsImage ->  getWidth();
 }
 
+/**
+* Unloads everything that was loaded.
+* @see GStateCredits::load
+*/
 void GStateCredits::unload()
 {
 	Log( DEBUG ) << "\tUnloading credits...";
@@ -48,6 +74,11 @@ void GStateCredits::unload()
 	cleanEntities();
 }
 
+/**
+* Renders the state.
+* Always renders on 0,0 position.
+* @see Sprite::render
+*/
 void GStateCredits::render()
 {
 	if ( this ->  creditsImage != nullptr )

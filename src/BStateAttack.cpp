@@ -63,7 +63,6 @@ void BStateAttack::update( const double dt_ )
 	{
 
 	}
-
 }
 
 /**

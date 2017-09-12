@@ -1,11 +1,21 @@
+/* Dauphine
+* Universidade de Brasília - FGA
+* Técnicas de Programação, 2/2017
+* @PStateCrauching.cpp
+* The state when the player is idle.*/
+
 #include "PStateCrouching.h"
 #include "Logger.h"
 
+/**
+* Enter the Crouching state.
+* @see StatePlayer::enter
+*/
 void PStateCrouching::enter()
 {
 
 	this -> box.x = ( int )this -> player -> getWidth() / 4 - 33;
-  this -> box.w = ( int )this -> player -> getWidth() / 1.7;
+  	this -> box.w = ( int )this -> player -> getWidth() / 1.7;
 	this -> box.y = ( int )this -> player -> getHeight() / 2;
 	this -> box.h = ( int )this -> player -> getHeight() / 2;
 
@@ -13,11 +23,21 @@ void PStateCrouching::enter()
 	this -> player -> isGrounded = true;
 }
 
+/**
+* Exit the Crouching state.
+* @see StatePlayer::exit
+*/
 void PStateCrouching::exit()
 {
 	this -> player -> getAnimation() -> changeAnimation( 1,14,2,false,0.3 );
 }
 
+/** 
+* Handle the state inputs.
+* @param KeyStates_: Boolean array that controls which keys are
+					 pressed or not. 
+* @see StatePlayer::handleInput
+*/
 void PStateCrouching::handleInput( const std::array<bool, GameKeys::MAX> keyStates_ )
 {
 	this -> player -> getAnimation() -> changeAnimation( 8,9,1,false,0 );
@@ -52,7 +72,11 @@ void PStateCrouching::handleInput( const std::array<bool, GameKeys::MAX> keyStat
 
 }
 
-PStateCrouching::PStateCrouching( Player* const player_ ) :
+/**
+* The constructor.
+* @param player_ : Reference to the player.
+*/
+PStateCrouching::PStateCrouching( Player *const player_ ) :
 	StatePlayer( player_ )
 {
 
