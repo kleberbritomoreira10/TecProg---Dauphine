@@ -3,19 +3,20 @@
  * Técnicas de Programação, 2/2017
  * @LuaScript.cpp
  * Include the characteristic of the language lua. Run Script
+ * License: Copyright (C) 2014 Alke Games.
  */
 
 #include "LuaScript.h"
 #include "Logger.h"
 
 /*
-https://github.com/CaioIcy/UnLua
-https://github.com/EliasD/unnamed_lua_binder
-*/
-
+ * The constructor.
+ * Initializes a new lua state, and loads the desired script.
+ * @param filename_ : Path to the desired script, i.e. "lua/level1/Player.lua".
+ */
 LuaScript::LuaScript(const std::string& filename_) 
 {
-  /// @todo Log an error message for different lua error codes.
+  // @todo Log an error message for different lua error codes.
   this -> level = 0;
   this -> luaState = luaL_newstate();
 
@@ -34,6 +35,10 @@ LuaScript::LuaScript(const std::string& filename_)
     }
 }
 
+/*
+ * The destructor.
+ * Closes the lua state, if open.
+ */
 LuaScript::~LuaScript() 
 {
   if ( this -> luaState != nullptr )
@@ -43,7 +48,11 @@ LuaScript::~LuaScript()
   this -> level = 0;
 }
 
-std::vector<int> LuaScript::unlua_getIntVector( const std::string& name_) 
+/*
+ * Gets an int vector.
+ * @param name_ : The table which contains the int vector. 
+ */
+std::vector<int> LuaScript::unlua_getIntVector( const std::string& name_ ) 
 {
   std::vector<int> v;
   unlua_getToStack(name_);
@@ -54,17 +63,21 @@ std::vector<int> LuaScript::unlua_getIntVector( const std::string& name_)
     return std::vector<int>();
   }
 
-  lua_pushnil(this->luaState);
-  while(lua_next(this->luaState, -2)) 
+  lua_pushnil( this -> luaState );
+  while(lua_next( this -> luaState, -2) ) 
   {
-    v.push_back((int)lua_tonumber(this->luaState, -1));
-    lua_pop(this->luaState, 1);
+    v.push_back((int)lua_tonumber( this -> luaState, -1 ));
+    lua_pop( this -> luaState, 1 );
   }
     
   unlua_clean();
   return v;
 }
 
+/*
+ * Gets the keys from a table.
+ * @param name_ : The name of the table.
+ */    
 std::vector<std::string> LuaScript::unlua_getTableKeys( const std::string& name_) 
 {
   // function for getting table keys
@@ -106,6 +119,11 @@ std::vector<std::string> LuaScript::unlua_getTableKeys( const std::string& name_
   return strings;
 }
 
+/*
+ * Validates existance of the variable.
+ * Checks where the 'variableName_' variable exists inside the lua script.
+ * @param variableName_ : The varaible you want to get a value from.
+ */
 bool LuaScript::unlua_getToStack( const std::string& variableName_ ) 
 {
   this -> level = 0;
@@ -116,17 +134,17 @@ bool LuaScript::unlua_getToStack( const std::string& variableName_ )
     {
       if ( this -> level == 0) 
       {
-        lua_getglobal(this->luaState, var.c_str());
+        lua_getglobal( this -> luaState, var.c_str());
       } else {
-          lua_getfield(this->luaState, -1, var.c_str());
+          lua_getfield( this -> luaState, -1, var.c_str());
         }
-      if ( lua_isnil(this->luaState, -1)) 
+      if ( lua_isnil( this -> luaState, -1)) 
       {
         Log(ERROR) << "Can't get " << variableName_ << ". " << var << " is not defined.";
         return false;
       } else {
           var = "";
-          this->level++;
+          this -> level++;
         }
     } else {
         var += variableName_.at(i);

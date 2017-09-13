@@ -4,6 +4,7 @@
  * @Boss.cpp
  * File responsible for implementing the boss, the most powerful enemy of the game. 
  * In this file the boss's characteristics are created and initialized, updated and destroyed when requested.
+ * License: Copyright (C) 2014 Alke Games.
  */
 
 #include "Boss.h"
@@ -23,6 +24,14 @@
 
 double timePasssed = 0;
 
+/*
+ * Method used to create all characteristics Boss
+ * @param x_ : Position on the x axis of the boss
+ * @param y_ : Position on the y axis of the boss
+ * @param path_ : The path to the desired sprite
+ * @param player_ : Pointer that points to the type player.
+ * @param SDL_FLIP_NONE : Renderer flip
+ */
 Boss::Boss( const double x_, const double y_, const std::string& path_, Player* const player_ ) :
 	DynamicEntity(x_, y_, path_), potionsLeft(3), sawPlayer(false), potions(), life(8), hasShield(false), canWalk(true), player(player_), powerAnimation(nullptr), powerX(0.0), powerY(0.0), powerIsActivated(false), power(nullptr),
 	  powerClip{0,0,0,0}, powerFlip(SDL_FLIP_NONE), shieldAnimation(nullptr), shield(nullptr), shieldClip{0,0,0,0},
@@ -50,7 +59,9 @@ Boss::Boss( const double x_, const double y_, const std::string& path_, Player* 
 	}
 }
 
-//Method to represent the Boss
+/*
+ * Method to represent the Boss
+ */
 Boss::~Boss()
 {
 	//Delete animation if null
@@ -85,7 +96,10 @@ Boss::~Boss()
 	destroyStates();
 }
 
-//Update the caracteristics Boss
+/*
+ * Update the characteristics Boss
+ * @param dt_ : Delta time (catch variation time).
+ */
 void Boss::update( const double dt_)
 {
 	
@@ -93,7 +107,7 @@ void Boss::update( const double dt_)
 
 	scoutPosition(dt_);
   
-  //Caracteristics boss to update
+  //Characteristics boss to update
 	this -> animation -> update( this -> animationClip, dt_);
 	this -> powerAnimation -> update( this -> powerClip, dt_);
 	this -> shieldAnimation -> update( this -> shieldClip, dt_);
@@ -119,6 +133,11 @@ void Boss::update( const double dt_)
   }
 }
 
+/*
+ * Render the characteristics Boss
+ * @param cameraX_ : Position on the x-axis of the camera.
+ * @param cameraY_ : Position on the y-axis of the camera.
+ */
 void Boss::render( const double cameraX_, const double cameraY_)
 {
 	const double dx = this -> x - cameraX_;
@@ -142,9 +161,9 @@ void Boss::render( const double cameraX_, const double cameraY_)
 		SDL_RendererFlip flip = getFlip();
 		if ( flip == SDL_FLIP_HORIZONTAL )
 		{
-			this -> shield->render( dx, dy, &this->shieldClip );
+			this -> shield->render( dx, dy, &this -> shieldClip );
 		} else {
-			  this->shield->render(dx -120, dy, &this->shieldClip);
+			  this -> shield->render(dx -120, dy, &this -> shieldClip);
 		  }
 	}
 
@@ -169,9 +188,11 @@ void Boss::render( const double cameraX_, const double cameraY_)
   }
 }
 
+/*
+ * Initialize all the states in Boss.
+ */
 void Boss::initializeStates()
 {
-	// Initialize all the states in Boss here.
 	ADD_STATE_INSERT(IDLE,				BStateIdle);
 	ADD_STATE_INSERT(ATTACK,			BStateAttack);
 	ADD_STATE_INSERT(SHIELD,			BStateShield);
@@ -180,9 +201,11 @@ void Boss::initializeStates()
 	ADD_STATE_INSERT(MAGICPROJECTILE,	BStateMagicProjectile);
 }
 
+/*
+ * Delete all the states in Boss.
+ */
 void Boss::destroyStates()
 {
-	// Delete all the states in Boss here.
 	std::map<BStates, StateBoss*>::const_iterator it;
 	for ( it = this -> statesMap.begin(); it != this -> statesMap.end(); it++)
 	{
@@ -190,14 +213,21 @@ void Boss::destroyStates()
 	}
 }
 
+/*
+ * Exchange current state to Boss.
+ * @param state_ : constant to know the state of the boss.
+ */
 void Boss::changeState( const BStates state_)
 { 
-  //Exchange current state to Boss 
 	this -> currentState -> exit();
 	this -> currentState = this -> statesMap.at(state_);
 	this -> currentState -> enter();
 }
 
+/*
+ * Method for handling the type of collision.
+ * @param detections_ : array to detect collisions.
+ */
 void Boss::handleCollision( std::array<bool, CollisionSide::SOLID_TOTAL> detections_)
 { 
 	//Check collision occurrence on top
@@ -225,7 +255,11 @@ void Boss::handleCollision( std::array<bool, CollisionSide::SOLID_TOTAL> detecti
 	}
 }
 
-//Method to determine that Boss use a Potion
+/*
+ * Method to determine that Boss use a Potion
+ * @param strength_ : Force with which the portion is thrown.
+ * @param distance_ : Distance with which the portion is thrown.
+ */
 void Boss::usePotion( const int strength_, const int distance_)
 {
   if ( this -> potionsLeft > 0)
@@ -237,26 +271,36 @@ void Boss::usePotion( const int strength_, const int distance_)
   }
 }
 
+/*
+ * Reference the animation.
+ */
 Animation *Boss::getAnimation()
 {
 	return ( this -> animation );
 }
 
-//Verify condition to Boss (dead or alive)
+/*
+ * Verify condition to Boss (dead or alive)
+ * @param isDead_ : boolean variable to check the boss's condition. 
+ */
 void Boss::setDead(bool isDead_)
 {
 	this -> dead = isDead_;
 }
 
-//Check if Boss is alive
+/*
+ * Check if Boss is alive
+ */
 bool Boss::isDead()
 { 
 	return this -> dead;
 }
 
+/*
+ * Updating boundaries for the boss
+ */
 void Boss::updateBoundingBox()
 { 
-	//Updating boundaries for the boss
 	this -> boundingBox.x = (int) this -> x + 40;
 	this -> boundingBox.y = (int) this -> y + 40;
 	this -> boundingBox.w = 150;

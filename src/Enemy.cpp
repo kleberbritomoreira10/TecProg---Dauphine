@@ -4,6 +4,7 @@
  * @Enemy.cpp
  * File responsible for implementing the enemies of the game (except the boss). 
  * They define the basic image and characteristics of the enemy, upgrade, destruction, collision among others.
+ * License: Copyright (C) 2014 Alke Games.
  */
 
 #include "Enemy.h"
@@ -35,6 +36,14 @@ double Enemy::alertRange = 300.0;
 //Double value existing at pvulnerable 
 double Enemy::curiousRange = 600.0;
 
+/*
+ * Method used to create all characteristics Enemy
+ * @param x_ : Position on the x axis of the enemy
+ * @param y_ : Position on the y axis of the enemy
+ * @param path_ : The path to the desired sprite
+ * @param patrol_ : Defines if the enemy patrols.
+ * @param patrolLength_ : Defines the space traveled by the patrolman
+ */
 Enemy::Enemy( const double x_, const double y_, const std::string& path_, const bool patrol_,
 	const double patrolLength_ ) : DynamicEntity(x_, y_, path_), originalX(x_), patrol(patrol_),
   patrolLength(patrolLength_), life(100), currentState(nullptr), animation(nullptr), statesMap(), dead(false)
@@ -62,7 +71,9 @@ Enemy::Enemy( const double x_, const double y_, const std::string& path_, const 
 	this -> currentState -> enter();
 }
 
-//Method to destroy the enemy
+/*
+ * Method to destroy the enemy
+ */
 Enemy::~Enemy()
 {
 	//Attribute null to current state
@@ -82,7 +93,10 @@ Enemy::~Enemy()
 	destroyStates();
 }
 
-//Method to update characteristics of the enemy
+/*
+ * Method to update characteristics of the enemy
+ * @param dt : delta time (time elapsed)
+ */
 void Enemy::update( const double dt_)
 {	
 	//const double dt is passed as a parameter to know the time elapsed.
@@ -102,11 +116,14 @@ void Enemy::update( const double dt_)
 	updatePosition( dt_);
 }
 
+/*
+ * Method to update characteristics of the enemy
+ * @param cameraX_ : Define the locate for the camera on the x-axis
+ * @param cameraY_ : Define the locate for the camera on the y-axis
+ */
 void Enemy::render( const double cameraX_, const double cameraY_)
 { 
-  //Used to locate the camera on the x-axis  
-	const double dx = this -> x - cameraX_;
-	//Used to locate the camera on the y-axis
+	const double dx = this -> x - cameraX_; 
 	const double dy = this -> y - cameraY_;
 
 	///////////////////////////////////////////////////////////////////////////////////////////
@@ -134,9 +151,11 @@ void Enemy::render( const double cameraX_, const double cameraY_)
 	}
 }
 
+/*
+ * Initialize all the states in Enemy here.
+ */
 void Enemy::initializeStates()
 {
-	// Initialize all the states in Enemy here.
 	ADD_STATE_INSERT(IDLE,         EStateIdle);
 	ADD_STATE_INSERT(CURIOUS,      EStateCurious);
 	ADD_STATE_INSERT(PATROLLING,   EStatePatrolling);
@@ -146,9 +165,11 @@ void Enemy::initializeStates()
 	ADD_STATE_INSERT(DEAD,         EStateDead);
 }
 
+/*
+ * Delete all the states in Enemy here.
+ */
 void Enemy::destroyStates()
 {
-	// Delete all the states in Enemy here.
 	std::map<EStates, StateEnemy*>::const_iterator it;
 	for ( it = this -> statesMap.begin(); it != this -> statesMap.end(); it++ )
 	{
@@ -156,7 +177,10 @@ void Enemy::destroyStates()
 	}
 }
 
-//Method used to exchange enemy of position
+/*
+ * Method used to exchange enemy of position
+ * @param state_ : Define state enemy 
+ */
 void Enemy::changeState( const EStates state_)
 {  
 	this -> currentState -> exit();
@@ -164,7 +188,10 @@ void Enemy::changeState( const EStates state_)
 	this -> currentState -> enter();
 }
 
-//Method used to check collision in enemy
+/*
+ * Method used to check collision in enemy
+ * @param detections : Pass an array of array containing the type of collision.
+ */
 void Enemy::handleCollision( std::array<bool, CollisionSide::SOLID_TOTAL> detections_)
 { 
 	//Collision on top
@@ -212,31 +239,43 @@ void Enemy::handleCollision( std::array<bool, CollisionSide::SOLID_TOTAL> detect
 	}
 }
 
-//Designates maximum velocity on the x-axis and y
+/*
+ * Designates maximum velocity on the x-axis and y
+ */
 void Enemy::forceMaxSpeed()
 {
 	this -> vx = ( this -> vx >= this -> maxSpeed) ? this -> maxSpeed : this -> vx ;
 	this -> vy = ( this -> vy >= this -> maxSpeed) ? this -> maxSpeed : this -> vy ;
 }
 
+/*
+ * Reference the specific animation.
+ */
 Animation *Enemy::getAnimation()
 {
 	return ( this -> animation );
 }
 
-//Setting enemy is dead
+/*
+ * Setting enemy is dead
+ * @param isDead_ : It says if it is alive or dead
+ */
 void Enemy::setDead( bool isDead_)
 {
 	this -> dead = isDead_;
 }
 
-//Inform that enemy is dead
+/*
+ * Inform that enemy is dead
+ */
 bool Enemy::isDead()
 {
 	return this -> dead;
 }
 
-//Method to delimit enemy dimensions update
+/*
+ * Method to delimit enemy dimensions update
+ */
 void Enemy::updateBoundingBox()
 { 
 	//Bounding box at x position 

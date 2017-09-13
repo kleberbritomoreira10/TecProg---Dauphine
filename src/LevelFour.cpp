@@ -4,6 +4,7 @@
  * @LevelFour.cpp
  * File responsible for implementing the phase 4 aspects of the game. 
  * Factors such as numbering of items that can be captured, HUD, enemies and aspects of basic settings.
+ * License: Copyright (C) 2014 Alke Games.
  */
 
 #include "LevelFour.h"
@@ -17,7 +18,9 @@
 #include "Crosshair.h"
 #include "Document.h"
 
-//Numbering for items that can be captured in phase 4
+/*
+ * Numbering for items that can be captured in phase 4.
+ */
 LevelFour::LevelFour() :
   Level(),
   items{ { 207, 11261, 6800, 10000 },{ 5600, 2050, 5850, 2712 } },
@@ -31,6 +34,9 @@ LevelFour::~LevelFour()
 
 }
 
+/*
+ * Initializing aspects related to phase 4 of the game.
+ */
 void LevelFour::load()
 {
   // Changing the music.
@@ -54,9 +60,11 @@ void LevelFour::load()
   //Referencing the image of the potion
   this -> image = Game::instance().getResources().get("res/images/potion.png");
 
-  /* Getting information from lua script.
+  /* 
+   * Getting information from lua script.
    * Changing the music. 
-   * Game::instance().getAudioHandler().changeMusic(pathBackgroundAudio);*/
+   * Game::instance().getAudioHandler().changeMusic(pathBackgroundAudio);
+   */
   LuaScript luaLevel1("lua/Level1.lua");
   const std::string pathPlayerSpriteSheet = luaLevel1.unlua_get<std::string>("level.player.spriteSheet");
   const std::string pathBackgroundAudio = luaLevel1.unlua_get<std::string>("level.audio.background");
@@ -120,6 +128,9 @@ void LevelFour::load()
   Game::instance().getFade().fadeOut( 0, 0.002 );
 }
 
+/*
+ * Clearing phase 4.
+ */
 void LevelFour::unload()
 {
   Log(DEBUG) << "\tUnloading level 4...";
@@ -135,6 +146,10 @@ void LevelFour::unload()
   //this->checkpointVisited = false; 
 }
 
+/*
+ * Updating all aspects of phase 4.
+ * @param dt_ : Delta time. Time elapsed between one frame and the other.
+ */
 void LevelFour::update( const double dt_ )
 {
   // Populating the QuadTree.
@@ -291,6 +306,9 @@ void LevelFour::update( const double dt_ )
   }
 }
 
+/*
+ * Rendering all aspects of phase 4.
+ */
 void LevelFour::render()
 {
   const int cameraX = this -> camera -> getClip().x;
