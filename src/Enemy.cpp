@@ -1,3 +1,11 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @Enemy.cpp
+ * File responsible for implementing the enemies of the game (except the boss). 
+ * They define the basic image and characteristics of the enemy, upgrade, destruction, collision among others.
+ */
+
 #include "Enemy.h"
 #include "Logger.h"
 #include "LuaScript.h"

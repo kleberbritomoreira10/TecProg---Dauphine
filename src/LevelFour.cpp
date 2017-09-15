@@ -1,3 +1,11 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @LevelFour.cpp
+ * File responsible for implementing the phase 4 aspects of the game. 
+ * Factors such as numbering of items that can be captured, HUD, enemies and aspects of basic settings.
+ */
+
 #include "LevelFour.h"
 #include "Game.h"
 #include "LuaScript.h"

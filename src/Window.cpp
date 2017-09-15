@@ -1,3 +1,11 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @Window.cpp
+ * File responsible for implementing the window to which the image will be displayed to the user, 
+ * giving the viewing options.
+ */
+
 #include "Window.h"
 #include "Logger.h"
 #include "Configuration.h"

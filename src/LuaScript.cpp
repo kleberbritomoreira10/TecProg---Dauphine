@@ -1,3 +1,10 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @LuaScript.cpp
+ * Include the characteristic of the language lua. Run Script
+ */
+
 #include "LuaScript.h"
 #include "Logger.h"
 
@@ -60,6 +67,7 @@ std::vector<int> LuaScript::unlua_getIntVector( const std::string& name_)
 
 std::vector<std::string> LuaScript::unlua_getTableKeys( const std::string& name_) 
 {
+  // function for getting table keys
   std::string code =
   "function getKeys(name_) "
   "s = \"\""
@@ -68,13 +76,15 @@ std::vector<std::string> LuaScript::unlua_getTableKeys( const std::string& name_
   "    end "
   "return s "
   "end"; 
-  // function for getting table keys
-
-  luaL_loadstring( this -> luaState, code.c_str()); // execute code
+  
+  // execute code
+  luaL_loadstring( this -> luaState, code.c_str()); 
   lua_pcall( this -> luaState, 0, 0, 0);
-  lua_getglobal( this -> luaState, "getKeys"); // get function
+  // get function
+  lua_getglobal( this -> luaState, "getKeys"); 
   lua_pushstring( this -> luaState, name_.c_str());
-  lua_pcall( this -> luaState, 1 , 1, 0 ); // execute function
+  // execute function
+  lua_pcall( this -> luaState, 1 , 1, 0 ); 
 
   const std::string test = lua_tostring( luaState, -1 );
   std::vector<std::string> strings;

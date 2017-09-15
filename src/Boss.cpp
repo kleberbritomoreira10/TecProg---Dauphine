@@ -1,3 +1,11 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @Boss.cpp
+ * File responsible for implementing the boss, the most powerful enemy of the game. 
+ * In this file the boss's characteristics are created and initialized, updated and destroyed when requested.
+ */
+
 #include "Boss.h"
 #include "Logger.h"
 #include "Game.h"
