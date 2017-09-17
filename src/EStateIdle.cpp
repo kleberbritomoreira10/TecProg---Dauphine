@@ -1,3 +1,10 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @EStateIdle.cpp
+ * File responsible for implementing idle state.
+ */
+
 #include "EStateIdle.h"
 #include <cmath>
 #include "SDLWrapper.h"

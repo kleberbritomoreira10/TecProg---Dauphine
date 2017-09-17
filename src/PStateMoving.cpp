@@ -1,3 +1,10 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @PStateMoving.cpp
+ * File responsible for implementing movement, animation and soundtrack in specific parts of the game
+ */
+
 #include "PStateMoving.h"
 #include "Logger.h"
 #include "Game.h"
@@ -51,33 +58,27 @@ void PStateMoving::handleInput( const std::array<bool, GameKeys::MAX> keyStates_
     return;
   }
 
-    // // Crouch
-    // if(keyStates_[GameKeys::CROUCH]){
-    //     this->player->changeState(Player::PStates::CROUCHING);
-    //     return;
-    // }
+  this -> player -> move(keyStates_[GameKeys::LEFT], keyStates_[GameKeys::RIGHT]);
 
-    this -> player -> move(keyStates_[GameKeys::LEFT], keyStates_[GameKeys::RIGHT]);
+  if ( keyStates_[GameKeys::ROLL])
+  {
+    this -> player->changeState(Player::PStates::ROLLING);
+    return;
+  }
 
-    if ( keyStates_[GameKeys::ROLL])
-    {
-      this -> player->changeState(Player::PStates::ROLLING);
-      return;
-    }
+  // Idle
+  if ( this -> player -> vx < 1.0 && this -> player -> vx > (-1.0))
+  {
+    this -> player->changeState(Player::PStates::IDLE);
+    return;
+  }
 
-    // Idle
-    if ( this -> player -> vx < 1.0 && this -> player -> vx > (-1.0))
-    {
-      this -> player->changeState(Player::PStates::IDLE);
-      return;
-    }
-
-    // Attack
-    if ( keyStates_[GameKeys::LATTACK])
-    {
-      this -> player->changeState(Player::PStates::ATTACK);
-      return;
-    }
+  // Attack
+  if ( keyStates_[GameKeys::LATTACK])
+  {
+    this -> player->changeState(Player::PStates::ATTACK);
+    return;
+  }
 }
 
 PStateMoving::PStateMoving( Player* const player_) :

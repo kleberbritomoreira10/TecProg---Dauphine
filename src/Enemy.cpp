@@ -85,7 +85,7 @@ Enemy::~Enemy()
 //Method to update characteristics of the enemy
 void Enemy::update( const double dt_)
 {	
-	//const double dt is passed as a parameter to know the position
+	//const double dt is passed as a parameter to know the time elapsed.
 	this -> currentState -> update( dt_);
 	forceMaxSpeed();
 

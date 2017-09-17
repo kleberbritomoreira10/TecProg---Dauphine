@@ -1,3 +1,10 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @FadeHandler.cpp
+ * File responsible for implementing fade type.
+ */
+
 #include "FadeHandler.h"
 #include "Logger.h"
 

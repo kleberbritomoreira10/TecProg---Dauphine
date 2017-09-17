@@ -1,3 +1,10 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @CollisionRect.cpp
+ * File responsible for checking if there is any type of collision.
+ */
+
 #include "CollisionRect.h"
 #include "Logger.h"
 

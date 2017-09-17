@@ -1,3 +1,11 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @EStateCurious.cpp
+ * File responsible for implementing the maximum time Nadine can observe without being discovered. 
+ * Using the time elapsed.
+ */
+
 #include "EStateCurious.h"
 #include "Logger.h"
 
