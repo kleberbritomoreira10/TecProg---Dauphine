@@ -1,3 +1,10 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @PStateHit.cpp
+ * File responsible for checking the state of the beat, manipulating the impact of the beat. 
+ */
+
 #include "PStateHit.h"
 #include "Logger.h"
 

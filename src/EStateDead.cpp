@@ -1,3 +1,10 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @EStateDead.cpp
+ * File responsible for implementing the dead state.
+ */
+
 #include "EStateDead.h"
 #include "Logger.h"
 

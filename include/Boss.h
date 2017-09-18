@@ -1,3 +1,10 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @Boss.h
+ * File responsible for implementing the characteristics of the boss. 
+ */
+
 #ifndef INCLUDE_BOSS_H
 #define INCLUDE_BOSS_H
 

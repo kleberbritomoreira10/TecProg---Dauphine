@@ -1,3 +1,10 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @Logger.cpp
+ * File responsible for displaying the progress of the game on the console
+ */
+
 #include "Logger.h"
 
 Logger::Logger()

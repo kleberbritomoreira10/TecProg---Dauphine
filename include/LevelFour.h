@@ -1,3 +1,12 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @Boss.h
+ * File responsible for implementing the level 4 features of the game. Using for this the virtual is 
+ * a function or method whose behavior can be overwritten in an inheriting class by a function with the
+ * same signature. 
+ */
+
 #ifndef INCLUDE_LEVELFOUR_H
 #define INCLUDE_LEVELFOUR_H
 
