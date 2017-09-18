@@ -3,6 +3,7 @@
  * Técnicas de Programação, 2/2017
  * @PStateMoving.cpp
  * File responsible for implementing movement, animation and soundtrack in specific parts of the game
+ * License: Copyright (C) 2014 Alke Games.
  */
 
 #include "PStateMoving.h"

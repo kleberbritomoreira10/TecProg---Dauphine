@@ -4,6 +4,7 @@
  * @EStateCurious.cpp
  * File responsible for implementing the maximum time Nadine can observe without being discovered. 
  * Using the time elapsed.
+ * License: Copyright (C) 2014 Alke Games.
  */
 
 #include "EStateCurious.h"

@@ -3,6 +3,7 @@
  * Técnicas de Programação, 2/2017
  * @PStateMoving.h
  * File responsible for implementing the state when the player is grounded and moving 
+ * License: Copyright (C) 2014 Alke Games.
  */
 
 #ifndef INCLUDE_PSTATEMOVING_H

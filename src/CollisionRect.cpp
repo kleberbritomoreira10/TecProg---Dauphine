@@ -3,6 +3,7 @@
  * Técnicas de Programação, 2/2017
  * @CollisionRect.cpp
  * File responsible for checking if there is any type of collision.
+ * License: Copyright (C) 2014 Alke Games.
  */
 
 #include "CollisionRect.h"

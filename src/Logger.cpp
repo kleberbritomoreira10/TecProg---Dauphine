@@ -3,6 +3,7 @@
  * Técnicas de Programação, 2/2017
  * @Logger.cpp
  * File responsible for displaying the progress of the game on the console
+ * License: Copyright (C) 2014 Alke Games.
  */
 
 #include "Logger.h"

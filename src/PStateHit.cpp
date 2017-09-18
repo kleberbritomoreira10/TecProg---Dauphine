@@ -3,6 +3,7 @@
  * Técnicas de Programação, 2/2017
  * @PStateHit.cpp
  * File responsible for checking the state of the beat, manipulating the impact of the beat. 
+ * License: Copyright (C) 2014 Alke Games.
  */
 
 #include "PStateHit.h"

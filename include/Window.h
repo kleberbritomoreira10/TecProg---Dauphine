@@ -3,6 +3,7 @@
  * Técnicas de Programação, 2/2017
  * @Window.h
  * File responsible for represents actual window that game runs on. 
+ * License: Copyright (C) 2014 Alke Games.
  */
 
 #ifndef INCLUDE_WINDOW_H

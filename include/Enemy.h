@@ -2,7 +2,8 @@
  * Universidade de Brasília - FGA
  * Técnicas de Programação, 2/2017
  * @Enemy.h
- * File responsible for implementing the characteristics of common enemies (except the boss) 
+ * File responsible for implementing the characteristics of common enemies (except the boss).
+ * License: Copyright (C) 2014 Alke Games. 
  */
 
 #ifndef INCLUDE_ENEMY_H

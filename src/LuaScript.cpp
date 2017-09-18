@@ -3,6 +3,7 @@
  * Técnicas de Programação, 2/2017
  * @LuaScript.cpp
  * Include the characteristic of the language lua. Run Script
+ * License: Copyright (C) 2014 Alke Games.
  */
 
 #include "LuaScript.h"

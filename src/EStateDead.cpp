@@ -3,6 +3,7 @@
  * Técnicas de Programação, 2/2017
  * @EStateDead.cpp
  * File responsible for implementing the dead state.
+ * License: Copyright (C) 2014 Alke Games.
  */
 
 #include "EStateDead.h"

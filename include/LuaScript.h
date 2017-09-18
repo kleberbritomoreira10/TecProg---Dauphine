@@ -2,7 +2,8 @@
  * Universidade de Brasília - FGA
  * Técnicas de Programação, 2/2017
  * @LuaScript.h
- * File responsible for implementing Lua language features. 
+ * File responsible for implementing Lua language features.
+ * License: Copyright (C) 2014 Alke Games. 
  */
 
 #ifndef INCLUDE_LUASCRIPT_H

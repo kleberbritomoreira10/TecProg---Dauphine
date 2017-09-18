@@ -4,6 +4,7 @@
  * @Enemy.cpp
  * File responsible for implementing the enemies of the game (except the boss). 
  * They define the basic image and characteristics of the enemy, upgrade, destruction, collision among others.
+ * License: Copyright (C) 2014 Alke Games.
  */
 
 #include "Enemy.h"

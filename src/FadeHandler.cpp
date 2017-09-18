@@ -3,6 +3,7 @@
  * Técnicas de Programação, 2/2017
  * @FadeHandler.cpp
  * File responsible for implementing fade type.
+ * License: Copyright (C) 2014 Alke Games.
  */
 
 #include "FadeHandler.h"

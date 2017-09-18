@@ -4,6 +4,7 @@
  * @Window.cpp
  * File responsible for implementing the window to which the image will be displayed to the user, 
  * giving the viewing options.
+ * License: Copyright (C) 2014 Alke Games.
  */
 
 #include "Window.h"

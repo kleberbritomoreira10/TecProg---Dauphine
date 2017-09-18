@@ -5,6 +5,7 @@
  * File responsible for implementing the level 4 features of the game. Using for this the virtual is 
  * a function or method whose behavior can be overwritten in an inheriting class by a function with the
  * same signature. 
+ * License: Copyright (C) 2014 Alke Games.
  */
 
 #ifndef INCLUDE_LEVELFOUR_H

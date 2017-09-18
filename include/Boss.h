@@ -3,6 +3,7 @@
  * Técnicas de Programação, 2/2017
  * @Boss.h
  * File responsible for implementing the characteristics of the boss. 
+ * License: Copyright (C) 2014 Alke Games.
  */
 
 #ifndef INCLUDE_BOSS_H

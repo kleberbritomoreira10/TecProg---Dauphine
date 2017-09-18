@@ -3,6 +3,7 @@
  * Técnicas de Programação, 2/2017
  * @EStateIdle.cpp
  * File responsible for implementing idle state.
+ * License: Copyright (C) 2014 Alke Games.
  */
 
 #include "EStateIdle.h"
