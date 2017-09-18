@@ -1,12 +1,18 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @PStateMoving.h
+ * File responsible for implementing the state when the player is grounded and moving 
+ */
+
 #ifndef INCLUDE_PSTATEMOVING_H
 #define INCLUDE_PSTATEMOVING_H
 
 #include "StatePlayer.h"
 
-/**
-* The state when the player is grounded and moving.
-*
-*/
+/*
+ * The state when the player is grounded and moving.
+ */
 class PStateMoving : public StatePlayer 
 {
 

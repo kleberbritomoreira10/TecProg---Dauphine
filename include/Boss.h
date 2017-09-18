@@ -18,6 +18,9 @@
 
 class StateBoss;
 
+/*
+ * Boss characteristics.
+ */
 class Boss : public DynamicEntity 
 {
   public:

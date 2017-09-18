@@ -1,3 +1,10 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @Enemy.h
+ * File responsible for implementing the characteristics of common enemies (except the boss) 
+ */
+
 #ifndef INCLUDE_ENEMY_H
 #define INCLUDE_ENEMY_H
 
@@ -8,6 +15,9 @@
 
 class StateEnemy;
 
+/* 
+ * Enemies characteristics.
+ */
 class Enemy : public DynamicEntity 
 {
 

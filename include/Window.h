@@ -1,3 +1,10 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @Window.h
+ * File responsible for represents actual window that game runs on. 
+ */
+
 #ifndef INCLUDE_WINDOW_H
 #define INCLUDE_WINDOW_H
 
@@ -5,10 +12,10 @@
 
 #include <string>
 
-/**
-* Represents actual window that game runs on.
-* Contains the SDL_Window and the SDL_Renderer, and methods related to these.
-*/
+/*
+ * Represents actual window that game runs on.
+ * Contains the SDL_Window and the SDL_Renderer, and methods related to these.
+ */
 class Window
 {
 

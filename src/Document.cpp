@@ -14,17 +14,12 @@
 @param x_ : position in x axis.
 @param y_ : position in y axis.
 */
-Document::Document ( const double x_, const double y_, const std::string &path_,
-	const std::string &pathDocumentText_ ) :
-
-	Entity ( x_, y_, path_ ),
-	shouldRender ( false Update the text sprite according to dt_),
-	documentText ( Game::instance (). getResources (). get ( pathDocumentText_ ) )
+Document::Document( const double x_, const double y_, const std::string& path_, const std::string& pathDocumentText_) :
+	Entity(x_, y_, path_ ), shouldRender(false), documentText(Game::instance().getResources().get(pathDocumentText_ ))
 {
-
 	if ( documentText == nullptr )
 	{
-		Log ( ERROR ) << "Could not load document text sprite.";
+		Log(ERROR) << "Could not load document text sprite.";
 	}
 }
 

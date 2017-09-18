@@ -1,3 +1,10 @@
+/* Dauphine
+ * Universidade de Brasília - FGA
+ * Técnicas de Programação, 2/2017
+ * @LuaScript.h
+ * File responsible for implementing Lua language features. 
+ */
+
 #ifndef INCLUDE_LUASCRIPT_H
 #define INCLUDE_LUASCRIPT_H
 
@@ -15,10 +22,9 @@ https://github.com/EliasD/unnamed_lua_binder
 #include <string>
 #include <vector>
 
-/**
-* Parses lua scripts into C++.
-*
-*/
+/*
+ * Parses lua scripts into C++.
+ */
 class LuaScript
 {
 
