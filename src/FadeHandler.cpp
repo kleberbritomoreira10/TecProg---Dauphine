@@ -9,6 +9,11 @@
 #include "FadeHandler.h"
 #include "Logger.h"
 
+/* 
+ * The constructor
+ * @param sprite_ : representation for animation
+ * @see StateEnemy::exit
+ */
 FadeHandler::FadeHandler(Sprite* const sprite_) :
 	shouldFadeIn(false),
 	shouldFadeOut(false),
@@ -21,11 +26,19 @@ FadeHandler::FadeHandler(Sprite* const sprite_) :
 	this -> currentPercentage = ( this -> sprite->getAlpha()/255.0 );
 }
 
+/* 
+ * The constructor
+ */
 FadeHandler::~FadeHandler() 
 {
 	this -> sprite = nullptr;
 }
 
+/* 
+ * Manipulate input characters on screen
+ * @param percentage : percentage fade in
+ * @param time: time fade in
+ */
 void FadeHandler::fadeIn( const double percentage_, const double time_)
 {
 	this -> shouldFadeIn = true;
@@ -35,6 +48,11 @@ void FadeHandler::fadeIn( const double percentage_, const double time_)
 	this -> rate = ( this -> percentageOfStop - this -> currentPercentage)/time_;
 }
 
+/* 
+ * Manipulate output characters on screen
+ * @param percentage : percentage fade out
+ * @param time: time fade out
+ */
 void FadeHandler::fadeOut( const double percentage_, const double time_)
 {
 	this -> shouldFadeOut = true;
@@ -44,6 +62,10 @@ void FadeHandler::fadeOut( const double percentage_, const double time_)
 	this -> rate = ( this -> currentPercentage - this -> percentageOfStop)/time_;
 }
 
+/* 
+ * Manipulate update characters on screen
+ * @param dt_ : delta time (time elapsed)
+ */
 void FadeHandler::update( const double dt_)
 {
 	if ( this -> sprite == nullptr )
@@ -78,6 +100,9 @@ void FadeHandler::update( const double dt_)
 	}
 }
 
+/* 
+ * Get current percentage 
+ */
 double FadeHandler::getCurrentPercentage()
 {
 	return this -> currentPercentage;

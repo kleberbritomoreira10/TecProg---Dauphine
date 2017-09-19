@@ -11,6 +11,10 @@
 
 double deadTime;
 
+/*
+ * Informs the dead state
+ * @see StateEnemy::enter
+ */
 void EStateDead::enter()
 {
 	this -> enemy -> life = 0;
@@ -18,11 +22,19 @@ void EStateDead::enter()
 	this -> enemy -> getAnimation() -> changeAnimation(1, 1, 1, false, 0);
 }
 
+/*
+ * @see StateEnemy::exit
+ */
 void EStateDead::exit()
 {
 
 }
 
+/*
+ * Update the status of the dead state
+ * @param dt_ : delta time (time elapsed)
+ * @see StateEnemy::update
+ */
 void EStateDead::update( const double dt_)
 {
 	deadTime += dt_;
@@ -33,6 +45,10 @@ void EStateDead::update( const double dt_)
 	this -> enemy -> vx = 0;
 }
 
+/*
+ * The constructor.
+ * @param enemy_ : Reference to the Enemy.
+ */
 EStateDead::EStateDead(Enemy* const enemy_) : StateEnemy(enemy_)
 {
 

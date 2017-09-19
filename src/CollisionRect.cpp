@@ -15,7 +15,7 @@ CollisionRect::CollisionRect( const int x_, const int y_, const int w_, const in
 
 }
 		
-CollisionRect::CollisionRect(const SDL_Rect rect_, const TypeCollision type_) : type(type_), rect(rect_)
+CollisionRect::CollisionRect( const SDL_Rect rect_, const TypeCollision type_) : type(type_), rect(rect_)
 {
 
 }
@@ -25,6 +25,10 @@ CollisionRect::~CollisionRect()
 
 }
 
+/*
+ * Method for checking the type collision.
+ * @param strType_ : type collision 
+ */
 TypeCollision CollisionRect::stringToType( const std::string& strType_)
 {
 	if ( strType_ == "collision")

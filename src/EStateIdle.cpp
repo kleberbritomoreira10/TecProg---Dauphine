@@ -11,6 +11,10 @@
 #include "SDLWrapper.h"
 #include "Logger.h"
 
+/*
+ * Check if the enemy is lying down, if yes declares him dead.
+ * @see StateEnemy::enter
+ */
 void EStateIdle::enter()
 {
 	this -> enemy -> isGrounded = true;
@@ -22,11 +26,19 @@ void EStateIdle::enter()
 	}
 }
 
+/*
+ * @see StateEnemy::exit
+ */
 void EStateIdle::exit()
 {
 
 }
 
+/*
+ * Update the datas for estate idle
+ * @param dt_ : delta time (time elapsed)	
+ * @see StateEnemy::update
+ */
 void EStateIdle::update( const double dt_)
 {
 	((void)dt_); // Unused.
@@ -51,6 +63,10 @@ void EStateIdle::update( const double dt_)
 	}
 }
 
+/*
+ * The constructor.
+ * @param enemy_ : Reference to the Enemy.
+ */
 EStateIdle::EStateIdle( Enemy* const enemy_) : StateEnemy(enemy_)
 {
 
